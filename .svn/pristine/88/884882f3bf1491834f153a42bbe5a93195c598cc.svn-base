@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GetWoHdrInfo_ROVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.GetWoHdrInfo_ROVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[SELECT distinct
+    XXSTG_WO_HEADER.WORK_ORDER_ID WORK_ORDER_ID, 
+    XXSTG_WO_HEADER.WORK_ORDER WORK_ORDER, 
+    XXSTG_WO_HEADER.PRIORITY PRIORITY, 
+    XXSTG_WO_HEADER.ASSET ASSET, 
+    XXSTG_WO_HEADER.TYPE TYPE, 
+    XXSTG_WO_HEADER.STATUS STATUS, 
+    XXSTG_WO_HEADER.START_DATE START_DATE, 
+    XXSTG_WO_HEADER.COMPLETION_DATE COMPLETION_DATE, 
+    XXSTG_WO_HEADER.ASSET_DESCRIPTION ASSET_DESCRIPTION, 
+    XXSTG_WO_HEADER.DESCRIPTION DESCRIPTION, 
+    XXSTG_WO_HEADER.RELEASED_DATE RELEASED_DATE, 
+    XXSTG_WO_HEADER.CLOSED_DATE CLOSED_DATE, 
+    XXSTG_WO_HEADER.ACTUAL_START_DATE ACTUAL_START_DATE, 
+    XXSTG_WO_HEADER.ITEM ITEM, 
+    XXSTG_WO_HEADER.SERIAL_NUMBER SERIAL_NUMBER, 
+    XXSTG_WO_HEADER.ACTUAL_COMPLETION_DATE ACTUAL_COMPLETION_DATE, 
+    XXSTG_WO_HEADER.NAME NAME, 
+    XXSTG_WO_HEADER.BILLABLE_TO BILLABLE_TO, 
+    XXSTG_WO_HEADER.DEFAULT_SUPPLY_TYPE DEFAULT_SUPPLY_TYPE, 
+    XXSTG_WO_HEADER.SUB_TYPE SUB_TYPE, 
+    XXSTG_WO_HEADER.VERSION VERSION, 
+    XXSTG_WO_HEADER.CREATED_BY CREATED_BY, 
+    XXSTG_WO_HEADER.CREATION_DATE CREATION_DATE, 
+    XXSTG_WO_HEADER.LAST_UPDATED_BY LAST_UPDATED_BY, 
+    XXSTG_WO_HEADER.LAST_UPDATE_DATE LAST_UPDATE_DATE, 
+    XXSTG_WO_HEADER.LAST_UPDATE_LOGIN LAST_UPDATE_LOGIN,
+    pu.unit_name,
+    pb.build_name,
+    pu.unit_id,
+    pb.build_id,
+    pu.property_id,
+'300000002841399' as ORG_ID,
+decode(BILLABLE_TO,'Landlord',
+nvl((select lcd.CUST_ID from XXPM_LANDLORD_CUST_DTLS lcd where lcd.VENDOR_ID=(select od.vend_id from xxpl_owner_dtle od where od.unit_id=pu.unit_id and rownum=1)),300000003531021),
+'Customer',
+(select c.CUST_ID_AR from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id)),
+null,(select c.CUST_ID_AR from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id))
+)as CUST_ID_AR,
+decode(BILLABLE_TO,'Landlord',
+nvl((select lcd.CUSTOMER_NAME from XXPM_LANDLORD_CUST_DTLS lcd where lcd.VENDOR_ID=(select od.vend_id from xxpl_owner_dtle od where od.unit_id=pu.unit_id and rownum=1)),'Eng. Mahmoud Abdul Wahid Al Farhan'),
+'Customer',
+(select c.cust_name from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id)),
+null,(select c.cust_name from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id))
+)as cust_name,
+decode(BILLABLE_TO,'Landlord',
+nvl((select lcd.SITE_NUMBER from XXPM_LANDLORD_CUST_DTLS lcd where lcd.VENDOR_ID=(select od.vend_id from xxpl_owner_dtle od where od.unit_id=pu.unit_id and rownum=1)),'81494'),
+'Customer',
+(select c.BILL_TO_ADDR from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id)),
+null,(select c.BILL_TO_ADDR from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id))
+)as bill_to,
+decode(BILLABLE_TO,'Landlord',
+nvl((select lcd.CUST_NUMBER from XXPM_LANDLORD_CUST_DTLS lcd where lcd.VENDOR_ID=(select od.vend_id from xxpl_owner_dtle od where od.unit_id=pu.unit_id and rownum=1)),'53023'),
+'Customer',
+(select c.CUSTOMER_NUMBER_AR from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id)),
+null,(select c.CUSTOMER_NUMBER_AR from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id))
+)as CUSTOMER_NUMBER,
+XXSTG_WO_HEADER.RESOURCE_COST,
+XXSTG_WO_HEADER.MATERIAL_COST,
+XXSTG_WO_HEADER.TOTAL_COST,
+XXSTG_WO_HEADER.BILLABLE_CONTRACT_STATUS,
+(select v.VENDOR_NAME from xxstg_vendor v where v.VEND_ID=(select ow.VEND_ID from XXPL_OWNER_DTLE ow where ow.UNIT_ID=pu.UNIT_ID and PRIMARY_YN='Y' and rownum=1)) as landlord_name,
+(select v.VENDOR_NAME from xxstg_vendor v where v.VEND_ID=(select ow.VEND_ID from XXPL_OWNER_DTLE ow where ow.UNIT_ID=pu.UNIT_ID and PRIMARY_YN is null and rownum=1)) as scndry_landlord_name,
+decode(BILLABLE_TO,'Landlord',
+nvl((select lcd.SITE_NUMBER from XXPM_LANDLORD_CUST_DTLS lcd where lcd.VENDOR_ID=(select od.vend_id from xxpl_owner_dtle od where od.unit_id=pu.unit_id and rownum=1)),'81494'),
+'Customer',
+(select c.BILL_TO_ADDR from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id)),
+null,(select c.BILL_TO_ADDR from xxpm_booking_customer c where c.booking_id=(select max(bd.booking_id) from xxpm_booking_detail bd where bd.unit_id=pu.unit_id))
+)||'/'||to_char(XXSTG_WO_HEADER.CLOSED_DATE,'MON')||'/'||to_char(XXSTG_WO_HEADER.CLOSED_DATE,'yyyy') as group_name
+FROM 
+    XXSTG_WO_HEADER XXSTG_WO_HEADER,xxpl_property_units pu,xxpl_property_buildings pb
+    where XXSTG_WO_HEADER.ASSET=pu.unit_shortcode(+) and
+    pu.build_id=pb.build_id(+)
+    order by XXSTG_WO_HEADER.WORK_ORDER_ID desc]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="WorkOrderId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="WORK_ORDER_ID"
+    Expression="WORK_ORDER_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WorkOrder"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="WORK_ORDER"
+    Expression="WORK_ORDER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.GetWoHdrInfo_ROVO.WorkOrder_LABEL"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Priority"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PRIORITY"
+    Expression="PRIORITY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Asset"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ASSET"
+    Expression="ASSET"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Type"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TYPE"
+    Expression="TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS"
+    Expression="STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StartDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="START_DATE"
+    Expression="START_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CompletionDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="COMPLETION_DATE"
+    Expression="COMPLETION_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AssetDescription"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ASSET_DESCRIPTION"
+    Expression="ASSET_DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReleasedDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="RELEASED_DATE"
+    Expression="RELEASED_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ClosedDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="CLOSED_DATE"
+    Expression="CLOSED_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ActualStartDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="ACTUAL_START_DATE"
+    Expression="ACTUAL_START_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Item"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEM"
+    Expression="ITEM"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SerialNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SERIAL_NUMBER"
+    Expression="SERIAL_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ActualCompletionDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="ACTUAL_COMPLETION_DATE"
+    Expression="ACTUAL_COMPLETION_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Name"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="NAME"
+    Expression="NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillableTo"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BILLABLE_TO"
+    Expression="BILLABLE_TO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DefaultSupplyType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DEFAULT_SUPPLY_TYPE"
+    Expression="DEFAULT_SUPPLY_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SubType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SUB_TYPE"
+    Expression="SUB_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Version"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VERSION"
+    Expression="VERSION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CREATED_BY"
+    Expression="CREATED_BY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreationDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="CREATION_DATE"
+    Expression="CREATION_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LAST_UPDATED_BY"
+    Expression="LAST_UPDATED_BY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="LAST_UPDATE_DATE"
+    Expression="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LAST_UPDATE_LOGIN"
+    Expression="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_NAME"
+    Expression="UNIT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_NAME"
+    Expression="BUILD_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="UNIT_ID"
+    Expression="UNIT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BUILD_ID"
+    Expression="BUILD_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROPERTY_ID"
+    Expression="PROPERTY_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ORG_ID"
+    Expression="ORG_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustIdAr"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="CUST_ID_AR"
+    Expression="CUST_ID_AR"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_NAME"
+    Expression="CUST_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillTo"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="152"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BILL_TO"
+    Expression="BILL_TO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="152"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUSTOMER_NUMBER"
+    Expression="CUSTOMER_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ResourceCost"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="RESOURCE_COST"
+    Expression="RESOURCE_COST"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MaterialCost"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MATERIAL_COST"
+    Expression="MATERIAL_COST"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalCost"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="TOTAL_COST"
+    Expression="TOTAL_COST"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillableContractStatus"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BILLABLE_CONTRACT_STATUS"
+    Expression="BILLABLE_CONTRACT_STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LandlordName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LANDLORD_NAME"
+    Expression="LANDLORD_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ScndryLandlordName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SCNDRY_LANDLORD_NAME"
+    Expression="SCNDRY_LANDLORD_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GroupName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="170"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="GROUP_NAME"
+    Expression="GROUP_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="170"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="findByStatusReleased"
+    ViewObjectName="model.ROVO.GetWoHdrInfo_ROVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow468"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Status"
+        ViewAttribute="Status"
+        Operator="="
+        Conjunction="AND"
+        Value="Released"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="findByWoNoSearch"
+    ViewObjectName="model.ROVO.GetWoHdrInfo_ROVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow469"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="WorkOrder"
+        ViewAttribute="WorkOrder"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Asset"
+        ViewAttribute="Asset"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="findByWoStatusClose_VC"
+    ViewObjectName="model.ROVO.GetWoHdrInfo_ROVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow375"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Status"
+        ViewAttribute="Status"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value="Closed"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="WorkOrderId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

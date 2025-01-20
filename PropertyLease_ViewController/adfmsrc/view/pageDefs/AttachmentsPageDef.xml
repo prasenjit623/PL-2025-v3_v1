@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AttachmentsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="FuncAttachment_VO1" RangeSize="25"
+              DataControl="Attachments_AMDataControl"
+              id="FuncAttachment_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="FuncAttachment_VO1Iterator" id="FuncAttachment_VO1">
+      <nodeDefinition DefName="model.VO.FuncAttachment_VO"
+                      Name="FuncAttachment_VO10">
+        <AttrNames>
+          <Item Value="FuncId"/>
+          <Item Value="FuncRefId"/>
+          <Item Value="Description"/>
+          <Item Value="FileName"/>
+          <Item Value="FileType"/>
+          <Item Value="Attachment"/>
+          <Item Value="Download"/>
+          <Item Value="FuncTableName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="FuncAttachment_VO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="FuncAttachment_VO1Iterator" id="FileName">
+      <AttrNames>
+        <Item Value="FileName"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="Attachments_AMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="Attachments_AMDataControl"/>
+    <action IterBinding="FuncAttachment_VO1Iterator" id="CreateInsert"
+            InstanceName="Attachments_AMDataControl.FuncAttachment_VO1"
+            DataControl="Attachments_AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

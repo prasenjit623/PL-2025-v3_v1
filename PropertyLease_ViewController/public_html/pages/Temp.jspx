@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" binding="#{backingBeanScope.backing_pages_Temp.d1}">
+      <af:form id="f1" binding="#{backingBeanScope.backing_pages_Temp.f1}">
+        <af:panelSplitter binding="#{backingBeanScope.backing_pages_Temp.ps1}"
+                          id="ps1">
+          <f:facet name="first">
+            <af:panelAccordion discloseMany="false"
+                               binding="#{backingBeanScope.backing_pages_Temp.pa1}"
+                               id="pa1">
+              <af:showDetailItem id="masters" text="Masters"
+                                 binding="#{backingBeanScope.backing_pages_Temp.masters}"
+                                 inlineStyle="width:400.0px;">
+                <af:commandLink text="Property"
+                                action="#{backingBeanScope.backing_pages_Temp.property_BTF}"
+                                id="cl1"
+                                binding="#{backingBeanScope.backing_pages_Temp.cl1}">
+                  <af:setPropertyListener to="#{pageFlowScope.taskId}"
+                                          from="#{'/WEB-INF/Property_BTF.xml#Property_BTF'}"
+                                          type="action"/>
+                </af:commandLink>
+                <af:commandLink text="Building"
+                                action="#{backingBeanScope.backing_pages_Temp.building_BTF}"
+                                id="cl2"
+                                binding="#{backingBeanScope.backing_pages_Temp.cl2}">
+                  <af:setPropertyListener to="#{pageFlowScope.taskId}"
+                                          from="#{'/WEB-INF/Building_BTF.xml#Building_BTF'}"
+                                          type="action"/>
+                  <af:setPropertyListener to="#{pageFlowScope.EditBuildId}"
+                                          from="#{null}" type="action"/>
+                </af:commandLink>
+                <af:commandLink text="Units"
+                                action="#{backingBeanScope.backing_pages_Temp.units_BTF}"
+                                id="cl3"
+                                binding="#{backingBeanScope.backing_pages_Temp.cl3}">
+                  <af:setPropertyListener to="#{pageFlowScope.taskId}"
+                                          from="#{'/WEB-INF/Units_BTF.xml#Units_BTF'}"
+                                          type="action"/>
+                  <af:setPropertyListener to="#{pageFlowScope.EditunitId}"
+                                          from="#{null}" type="action"/>
+                </af:commandLink>
+                <af:commandLink text="Payment Plan"
+                                binding="#{backingBeanScope.backing_pages_Temp.cl7}"
+                                id="cl7">
+                  <af:setPropertyListener from="#{'/WEB-INF/Milestones_BTF.xml#Milestones_BTF'}"
+                                          to="#{pageFlowScope.taskId}"
+                                          type="action"/>
+                </af:commandLink>
+                <af:commandLink text="Milestones"
+                                binding="#{backingBeanScope.backing_pages_Temp.cl6}"
+                                id="cl5" rendered="false">
+                  <af:setPropertyListener from="#{'/WEB-INF/Milestones_BTF.xml#Milestones_BTF'}"
+                                          to="#{pageFlowScope.taskId}" type="action"/>
+                </af:commandLink>
+                <af:commandLink text="Lead"
+                                action="#{backingBeanScope.backing_pages_Temp.units_BTF}"
+                                id="commandLink1"
+                                binding="#{backingBeanScope.backing_pages_Temp.commandLink1}">
+                  <af:setPropertyListener to="#{pageFlowScope.taskId}"
+                                          from="#{'/WEB-INF/Lead_BTF.xml#Lead_BTF'}"
+                                          type="action"/>
+                </af:commandLink>
+                <af:commandLink text="Offer"
+                                binding="#{backingBeanScope.backing_pages_Temp.cl8}"
+                                id="cl8">
+                  <af:setPropertyListener from="#{'/WEB-INF/Offer_BTF.xml#Offer_BTF'}" to="#{pageFlowScope.taskId}" type="action"/>
+                </af:commandLink>
+                <af:commandLink text="Offer1"
+                                binding="#{backingBeanScope.backing_pages_Temp.cl6}"
+                                id="cl6" rendered="false">
+                  <af:setPropertyListener from="#{'/WEB-INF/Offer_BTF.xml#Offer_BTF'}"
+                                          to="#{pageFlowScope.taskId}"
+                                          type="action"/>
+                </af:commandLink>
+                <af:commandLink text="Booking"
+                                binding="#{backingBeanScope.backing_pages_Temp.cl9}"
+                                id="cl9">
+                  <af:setPropertyListener from="#{'/WEB-INF/Booking_BTF.xml#Booking_BTF'}"
+                                          to="#{pageFlowScope.taskId}" type="action"/>
+                  <af:setPropertyListener from="#{'Booking'}"
+                                          to="#{sessionScope.TaskFlowVal}"
+                                          type="action"/>
+                </af:commandLink>
+                <af:commandLink text="PriceList"
+                                id="cl4">
+                  <af:setPropertyListener to="#{pageFlowScope.taskId}"
+                                          from="#{'/WEB-INF/PriceList_BTF.xml#PriceList_BTF'}"
+                                          type="action"/>
+                </af:commandLink>
+              </af:showDetailItem>
+              <af:showDetailItem id="transactions" text="Transactions"
+                                 binding="#{backingBeanScope.backing_pages_Temp.transactions}"/>
+            </af:panelAccordion>
+          </f:facet>
+          <f:facet name="second">
+            <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
+                       binding="#{backingBeanScope.backing_pages_Temp.r1}"/>
+          </f:facet>
+        </af:panelSplitter>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_pages_Temp-->
+</jsp:root>

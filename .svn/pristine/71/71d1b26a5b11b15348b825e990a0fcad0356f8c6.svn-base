@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+
+<JboProject
+   xmlns="http://xmlns.oracle.com/bc4j"
+   Name="PropertyLease_Model"
+   Version="11.1.1.66.73"
+   SeparateXMLFiles="true"
+   PackageName="model" >
+   <DesignTime>
+      <Attr Name="_appModuleNames12" Value="model.AM.LeaseAgreement_AM" />
+      <Attr Name="_appModuleNames11" Value="model.AM.Recommendation_AM" />
+      <Attr Name="_appModuleNames10" Value="model.AM.Receipt" />
+      <Attr Name="_appModuleNames15" Value="model.AM.CheckListResponse_AM" />
+      <Attr Name="_appModuleNames14" Value="model.AM.Attachments_AM" />
+      <Attr Name="_appModuleNames13" Value="model.AM.MoveInOut_AM" />
+      <Attr Name="_NamedConnection" Value="PL_Version2" />
+      <Attr Name="_appModuleNames7" Value="model.AM.Premium_AM" />
+      <Attr Name="_appModuleNames6" Value="model.AM.PriceList_AM" />
+      <Attr Name="_appModuleNames9" Value="model.AM.Booking_AM" />
+      <Attr Name="_appModuleNames8" Value="model.AM.Discount_AM" />
+      <Attr Name="_appModuleNames3" Value="model.AM.LeadAppModule" />
+      <Attr Name="_jprName" Value="../../PropertyLease_Model.jpr" />
+      <Attr Name="_appModuleNames2" Value="model.AM.PropertyUnits_AM" />
+      <Attr Name="_appModuleNames5" Value="model.AM.Milestones_AM" />
+      <Attr Name="_appModuleNames4" Value="model.AM.OfferAppModule" />
+      <Attr Name="_appModuleNames1" Value="model.AM.PropertyMaster_AM" />
+      <Attr Name="_appModuleNames0" Value="model.AM.PropertyBuilding_AM" />
+      <Attr Name="_jbo.TypeMapEntries" Value="Java" />
+      <Attr Name="_appModuleNames16" Value="model.AM.UserAM"/>
+      <Attr Name="_appModuleNames17" Value="model.AM.ExtensionCancellation_AM"/>
+      <Attr Name="_appModuleNames18" Value="model.AM.InvoiceSyncAM"/>
+      <Attr Name="_appModuleNames19" Value="model.AM.ArSetup"/>
+      <Attr Name="_appModuleNames20" Value="model.AM.OtherCharges_AM"/>
+      <Attr Name="_appModuleNames21" Value="model.AM.Cancellation_AM"/>
+      <Attr Name="_appModuleNames22" Value="model.AM.WoScheduler_AM"/>
+      <Attr Name="_appModuleNames23" Value="model.AM.LandLordMaster_AM"/>
+      <Attr Name="_appModuleNames24" Value="model.AM.WoInv_AM"/>
+   </DesignTime>
+   <Containee
+      Name="AM"
+      ObjectType="JboPackage"
+      PackageName="model.AM" >
+      <DesignTime>
+         <Attr Name="_AM" Value="true" />
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="ASSO"
+      ObjectType="JboPackage"
+      PackageName="model.ASSO" >
+      <DesignTime>
+         <Attr Name="_AS" Value="true" />
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="EO"
+      ObjectType="JboPackage"
+      PackageName="model.EO" >
+      <DesignTime>
+         <Attr Name="_EO" Value="true" />
+         <Attr Name="_AS" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="ROVO"
+      ObjectType="JboPackage"
+      PackageName="model.ROVO" >
+      <DesignTime>
+         <Attr Name="_VO" Value="true" />
+         <Attr Name="_VL" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="STA"
+      PackageName="model.STA"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_VO" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="VL"
+      ObjectType="JboPackage"
+      PackageName="model.VL" >
+      <DesignTime>
+         <Attr Name="_VL" Value="true" />
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="VO"
+      ObjectType="JboPackage"
+      PackageName="model.VO" >
+      <DesignTime>
+         <Attr Name="_VO" Value="true" />
+      </DesignTime>
+   </Containee>
+</JboProject>

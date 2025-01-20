@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PropertyBuilding_AM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  LoadComponentsLazily="true"
+  ComponentClass="model.AM.PropertyBuilding_AMImpl"
+  DefClass="model.AM.PropertyBuilding_AMDefImpl"
+  ComponentInterface="model.AM.common.PropertyBuilding_AM"
+  ClientProxyName="model.AM.client.PropertyBuilding_AMClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.AM.PropertyBuilding_AM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="PropertyBuildings_VO1"
+    ViewObjectName="model.VO.PropertyBuildings_VO">
+    <ViewCriteriaUsage
+      Name="findByBuildId"
+      FullName="model.VO.PropertyBuildings_VO.findByBuildId"/>
+    <ParameterMap>
+      <PIMap Variable="B_ID">
+        <TransientExpression><![CDATA[adf.context.pageFlowScope.EditBuildId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="PropertyUnits_VO1"
+    ViewObjectName="model.VO.PropertyUnits_VO"/>
+  <ViewUsage
+    Name="PropertyArea_VO1"
+    ViewObjectName="model.VO.PropertyArea_VO">
+    <ViewCriteriaUsage
+      Name="filterforPropertyBuildingArea"
+      FullName="model.VO.PropertyArea_VO.filterforPropertyBuildingArea"/>
+    <ViewCriteriaUsage
+      Name="findByArea"
+      FullName="model.VO.PropertyArea_VO.findByArea"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="SearchBuilding_ROVO1"
+    ViewObjectName="model.ROVO.SearchBuilding_ROVO"/>
+  <ViewUsage
+    Name="getFunctionCodeROVO1"
+    ViewObjectName="model.ROVO.getFunctionCodeROVO"/>
+  <ViewUsage
+    Name="OwnerDtle_VO1"
+    ViewObjectName="model.VO.OwnerDtle_VO"/>
+  <ViewLinkUsage
+    Name="PropertyBuilding_PropertyUnit_VL1"
+    ViewLinkObjectName="model.VL.PropertyBuilding_PropertyUnit_VL"
+    SrcViewUsageName="model.AM.PropertyBuilding_AM.PropertyBuildings_VO1"
+    DstViewUsageName="model.AM.PropertyBuilding_AM.PropertyUnits_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="PropertyBuildings_PropertyArea_VL1"
+    ViewLinkObjectName="model.VL.PropertyBuildings_PropertyArea_VL"
+    SrcViewUsageName="model.AM.PropertyBuilding_AM.PropertyBuildings_VO1"
+    DstViewUsageName="model.AM.PropertyBuilding_AM.PropertyArea_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="PropertyBuilding_Owner_VL1"
+    ViewLinkObjectName="model.VL.PropertyBuilding_Owner_VL"
+    SrcViewUsageName="model.AM.PropertyBuilding_AM.PropertyBuildings_VO1"
+    DstViewUsageName="model.AM.PropertyBuilding_AM.OwnerDtle_VO1"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="BuildUnitInchargeHsty">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="buildId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="unitCatg"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="unitInChrg"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

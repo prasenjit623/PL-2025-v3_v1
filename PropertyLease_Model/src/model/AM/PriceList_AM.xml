@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule xmlns="http://xmlns.oracle.com/bc4j" Name="PriceList_AM"
+           Version="11.1.1.66.73" InheritPersonalization="merge"
+           ComponentClass="model.AM.PriceList_AMImpl"
+           DefClass="model.AM.PriceList_AMDefImpl"
+           ComponentInterface="model.AM.common.PriceList_AM"
+           ClientProxyName="model.AM.client.PriceList_AMClient"
+           ClearCacheOnRollback="true"
+   LoadComponentsLazily="true">
+   <DesignTime>
+      <Attr Name="_deployType" Value="0"/>
+      <Attr Name="_isDefCodegen" Value="true"/>
+      <Attr Name="_isCodegen" Value="true"/>
+   </DesignTime>
+   <ViewUsage Name="PlHeader_VO1" ViewObjectName="model.VO.PlHeader_VO">
+      <ViewCriteriaUsage Name="findByPLId"
+                         FullName="model.VO.PlHeader_VO.findByPLId"/>
+   </ViewUsage>
+   <ViewUsage Name="PlLinesVO2" ViewObjectName="model.VO.PlLinesVO"/>
+   <ViewUsage Name="SearchPriceListROVO1"
+              ViewObjectName="model.ROVO.SearchPriceListROVO"/>
+   <ViewUsage Name="PlLinesVO1" ViewObjectName="model.VO.PlLinesVO"/>
+   <ViewUsage Name="getFunctionCodeROVO1"
+              ViewObjectName="model.ROVO.getFunctionCodeROVO"/>
+   <ViewUsage Name="RevisionVO1" ViewObjectName="model.VO.RevisionVO"/>
+   <ViewUsage Name="getLookupCode1" ViewObjectName="model.ROVO.getLookupCode"/>
+   <ViewUsage
+    Name="getID1"
+    ViewObjectName="model.ROVO.getID"/>
+  <ViewUsage
+    Name="RevisionLineVO1"
+    ViewObjectName="model.VO.RevisionLineVO"/>
+   <ViewUsage
+      Name="getUnitNameROVO1"
+      ViewObjectName="model.ROVO.getUnitNameROVO"/>
+   <ViewUsage
+      Name="PlLinesVO3"
+      ViewObjectName="model.VO.PlLinesVO"/>
+   <ViewLinkUsage Name="XxpmPlLinesFkLink1"
+                  ViewLinkObjectName="model.VL.XxpmPlLinesFkLink"
+                  SrcViewUsageName="model.AM.PriceList_AM.PlHeader_VO1"
+                  DstViewUsageName="model.AM.PriceList_AM.PlLinesVO2"
+                  Reversed="false"/>
+   <ViewLinkUsage
+      Name="Revision_LineVL1"
+      ViewLinkObjectName="model.VL.Revision_LineVL"
+      SrcViewUsageName="model.AM.PriceList_AM.RevisionVO1"
+      DstViewUsageName="model.AM.PriceList_AM.RevisionLineVO1"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="XxpmPlLinesFkLink2"
+      ViewLinkObjectName="model.VL.XxpmPlLinesFkLink"
+      SrcViewUsageName="model.AM.PriceList_AM.PlHeader_VO1"
+      DstViewUsageName="model.AM.PriceList_AM.PlLinesVO3"
+      Reversed="false"/>
+   <ClientInterface>
+      <Method Name="refreshPriceListApplication">
+         <Return Type="void"/>
+      </Method>
+   </ClientInterface>
+   <ClientInterface>
+      <Method Name="refreshPriceListApplication">
+         <Return Type="void"/>
+      </Method>
+   </ClientInterface>
+   <ClientInterface>
+      <Method
+         Name="refreshPriceListApplication">
+         <Return
+            Type="void"/>
+      </Method>
+   </ClientInterface>
+   <ClientInterface>
+      <Method
+         Name="refreshPriceListApplication">
+         <Return
+            Type="void"/>
+      </Method>
+   </ClientInterface>
+   <ClientInterface>
+      <Method
+         Name="refreshPriceListApplication">
+         <Return
+            Type="void"/>
+      </Method>
+   </ClientInterface>
+</AppModule>

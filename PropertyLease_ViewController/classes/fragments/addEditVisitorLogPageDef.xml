@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="addEditVisitorLogPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LeadVO1" RangeSize="25"
+              DataControl="LeadAppModuleDataControl" id="LeadVO1Iterator"/>
+    <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+              DataControl="LeadAppModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="LeadVO1Iterator" id="LeadId">
+      <AttrNames>
+        <Item Value="LeadId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LeadVO1Iterator" StaticList="false" Uses="LOV_OrgId"
+          id="OrgId" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LeadVO1Iterator" id="FuncId">
+      <AttrNames>
+        <Item Value="FuncId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="LeadNumber">
+      <AttrNames>
+        <Item Value="LeadNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="VisittedDate">
+      <AttrNames>
+        <Item Value="VisittedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LeadVO1Iterator" StaticList="false" Uses="LOV_Title"
+          id="Title" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LeadVO1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="LeadName">
+      <AttrNames>
+        <Item Value="LeadName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LeadVO1Iterator" StaticList="false" Uses="LOV_Status"
+          id="Status" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <button IterBinding="LeadVO1Iterator" id="Agent" DTSupportsMRU="false"
+            StaticList="true">
+      <AttrNames>
+        <Item Value="Agent"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <list IterBinding="LeadVO1Iterator" StaticList="false"
+          Uses="LOV_PrimarySource" id="PrimarySource" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LeadVO1Iterator" id="SecSource">
+      <AttrNames>
+        <Item Value="SecSource"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="EmailId">
+      <AttrNames>
+        <Item Value="EmailId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="MobileNumber">
+      <AttrNames>
+        <Item Value="MobileNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PhoneNumber">
+      <AttrNames>
+        <Item Value="PhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="Fax">
+      <AttrNames>
+        <Item Value="Fax"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurAddress1">
+      <AttrNames>
+        <Item Value="CurAddress1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurAddress2">
+      <AttrNames>
+        <Item Value="CurAddress2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurAddress3">
+      <AttrNames>
+        <Item Value="CurAddress3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurAddress4">
+      <AttrNames>
+        <Item Value="CurAddress4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurCity">
+      <AttrNames>
+        <Item Value="CurCity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurPostalCode">
+      <AttrNames>
+        <Item Value="CurPostalCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurProvince">
+      <AttrNames>
+        <Item Value="CurProvince"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurCounty">
+      <AttrNames>
+        <Item Value="CurCounty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurCountry">
+      <AttrNames>
+        <Item Value="CurCountry"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PerAddress1">
+      <AttrNames>
+        <Item Value="PerAddress1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PerAddress2">
+      <AttrNames>
+        <Item Value="PerAddress2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PerAddress3">
+      <AttrNames>
+        <Item Value="PerAddress3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PerAddress4">
+      <AttrNames>
+        <Item Value="PerAddress4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PerCity">
+      <AttrNames>
+        <Item Value="PerCity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PerPostalCode">
+      <AttrNames>
+        <Item Value="PerPostalCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PerProvince">
+      <AttrNames>
+        <Item Value="PerProvince"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PerCounty">
+      <AttrNames>
+        <Item Value="PerCounty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PerCountry">
+      <AttrNames>
+        <Item Value="PerCountry"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="Nationality">
+      <AttrNames>
+        <Item Value="Nationality"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PassportNumber">
+      <AttrNames>
+        <Item Value="PassportNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="PassportExpDate">
+      <AttrNames>
+        <Item Value="PassportExpDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LeadVO1Iterator" StaticList="false"
+          Uses="LOV_CountryOfRes" id="CountryOfRes" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LeadVO1Iterator" id="ResidentId">
+      <AttrNames>
+        <Item Value="ResidentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="ResidentIdExpDate">
+      <AttrNames>
+        <Item Value="ResidentIdExpDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="LeadAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <list IterBinding="LeadVO1Iterator" StaticList="false"
+          Uses="LOV_Nationality" id="Nationality1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="LeadVO1Iterator" StaticList="false" Uses="LOV_PerCountry"
+          id="PerCountry1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="LeadVO1Iterator" StaticList="false" Uses="LOV_CurCountry"
+          id="CurCountry1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <button IterBinding="LeadVO1Iterator" id="ActiveRp" DTSupportsMRU="false"
+            StaticList="true">
+      <AttrNames>
+        <Item Value="ActiveRp"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="LeadVO1Iterator" id="Professional">
+      <AttrNames>
+        <Item Value="Professional"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="LeadVO1Iterator"
+                  Uses="LOV_permenentCountryTrans" id="permenentCountryTrans"/>
+    <listOfValues StaticList="false" IterBinding="LeadVO1Iterator"
+                  Uses="LOV_NationalityTrans" id="NationalityTrans"/>
+    <listOfValues StaticList="false" IterBinding="LeadVO1Iterator"
+                  Uses="LOV_OrgNameTrans" id="OrgNameTrans"/>
+    <listOfValues StaticList="false" IterBinding="LeadVO1Iterator"
+                  Uses="LOV_ResidenceTrans" id="ResidenceTrans"/>
+    <attributeValues IterBinding="LeadVO1Iterator" id="CurrentDate_Trans">
+      <AttrNames>
+        <Item Value="CurrentDate_Trans"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="LeadVO1Iterator"
+                  Uses="LOV_CurCountry_Trans" id="CurCountry_Trans"/>
+    <attributeValues IterBinding="LeadVO1Iterator" id="EmiratesIdRef1">
+      <AttrNames>
+        <Item Value="EmiratesIdRef1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="EmiratesIdRef2">
+      <AttrNames>
+        <Item Value="EmiratesIdRef2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="EmiratesIdRef3">
+      <AttrNames>
+        <Item Value="EmiratesIdRef3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="EmiratesIdRef4">
+      <AttrNames>
+        <Item Value="EmiratesIdRef4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="TradeLincenseName">
+      <AttrNames>
+        <Item Value="TradeLincenseName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="TradeLincenseNo">
+      <AttrNames>
+        <Item Value="TradeLincenseNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator"
+                     id="TradeLincenseNameValidity">
+      <AttrNames>
+        <Item Value="TradeLincenseNameValidity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="TradeLincenseNoValidity">
+      <AttrNames>
+        <Item Value="TradeLincenseNoValidity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="Trn">
+      <AttrNames>
+        <Item Value="Trn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="IssuerEmirates">
+      <AttrNames>
+        <Item Value="IssuerEmirates"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="OwnerDetails">
+      <AttrNames>
+        <Item Value="OwnerDetails"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="Poa">
+      <AttrNames>
+        <Item Value="Poa"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="Numb">
+      <AttrNames>
+        <Item Value="Numb"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LeadVO1Iterator" id="NameAndDetail">
+      <AttrNames>
+        <Item Value="NameAndDetail"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="LeadAppModuleDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,1342 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1"
+                   binding="#{backingBeanScope.backing_fragments_addEditUnit.pt1}">
+    <f:facet name="pageContents">
+      <af:panelBox text="Manage Unit"
+                   binding="#{backingBeanScope.backing_fragments_addEditUnit.pb1}"
+                   id="pb1"
+                   showDisclosure="false">
+        <f:facet name="toolbar"/>
+        <af:panelGridLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl1}"
+                           id="pgl1">
+          <af:gridRow marginTop="5px" height="auto"
+                      binding="#{backingBeanScope.backing_fragments_addEditUnit.gr1}"
+                      id="gr1">
+            <af:gridCell marginStart="5px" width="50%"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.gc1}"
+                         id="gc1"/>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.gc2}"
+                         id="gc2" halign="end">
+              <af:toolbar binding="#{backingBeanScope.backing_fragments_addEditUnit.t1}"
+                          id="t1">
+                <af:commandButton text="Attachment"
+                                  binding="#{backingBeanScope.backing_fragments_addEditUnit.cb8}"
+                                  id="cb8"
+                                  actionListener="#{backingBeanScope.backing_fragments_addEditUnit.onClickAttachments}"
+                                  action="attachments"
+                                  inlineStyle="margin-right:10px;"
+                                  visible="#{sessionScope.grantMap.Unit =='F'}"/>
+                <af:commandButton text="Save"
+                                  binding="#{backingBeanScope.backing_fragments_addEditUnit.cb6}"
+                                  id="cb6"
+                                  actionListener="#{backingBeanScope.backing_fragments_addEditUnit.onClickSave}"
+                                  partialSubmit="true"
+                                  inlineStyle="margin-right:10px;"
+                                  visible="#{sessionScope.grantMap.Unit =='F'}"/>
+                <af:commandButton text="Save and Close"
+                                  binding="#{backingBeanScope.backing_fragments_addEditUnit.cb7}"
+                                  id="cb7"
+                                  actionListener="#{backingBeanScope.backing_fragments_addEditUnit.onClickSave}"
+                                  action="back" partialSubmit="true"
+                                  inlineStyle="margin-right:10px;"
+                                  visible="#{sessionScope.grantMap.Unit =='F'}"/>
+                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                text="Save"
+                                  binding="#{backingBeanScope.backing_fragments_addEditUnit.cb1}"
+                                  id="cb1" inlineStyle="margin-right:10.0px;"
+                                  partialSubmit="true" rendered="false"/>
+              <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                text="Save &amp; Close"
+                                  binding="#{backingBeanScope.backing_fragments_addEditUnit.cb2}"
+                                  id="cb2" inlineStyle="margin-right:10.0px;"
+                                  action="back" partialSubmit="true"
+                                rendered="false"/>
+              <af:commandButton
+                                text="Cancel"
+                                  binding="#{backingBeanScope.backing_fragments_addEditUnit.cb3}"
+                                  id="cb3" inlineStyle="margin-right:10.0px;"
+                                action="#{backingBeanScope.backing_fragments_addEditUnit.onClickReturn}"
+                                actionListener="#{backingBeanScope.backing_fragments_addEditUnit.onClickClose}"
+                                immediate="true"
+                                visible="#{sessionScope.grantMap.Unit =='F' || sessionScope.grantMap.Unit =='V'}">
+                <af:resetActionListener/>
+                  <af:setPropertyListener from="#{null}"
+                                          to="#{pageFlowScope.EditunitId}"
+                                          type="action"/>
+                </af:commandButton>
+              </af:toolbar>
+            </af:gridCell>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl12}"
+                             id="pgl12" layout="horizontal">
+          <af:spacer width="150" height="10"
+                     binding="#{backingBeanScope.backing_fragments_addEditUnit.s11}"
+                     id="s11"/>
+          <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl7}"
+                               id="pgl7">
+              <af:panelBox text="Unit Details"
+                           binding="#{backingBeanScope.backing_fragments_addEditUnit.pb2}"
+                           id="pb2" showDisclosure="false"
+                         inlineStyle="border-color:transparent;">
+                <f:facet name="toolbar"/>
+              <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pfl2}"
+                                  id="pfl2" rows="4" maxColumns="1"
+                                  labelWidth="107">
+                <f:facet name="footer"/>
+                <af:inputText value="#{bindings.UnitNumber.inputValue}"
+                              label="#{bindings.UnitNumber.hints.label}"
+                              required="#{bindings.UnitNumber.hints.mandatory}"
+                              columns="#{bindings.UnitNumber.hints.displayWidth}"
+                              maximumLength="#{bindings.UnitNumber.hints.precision}"
+                              shortDesc="#{bindings.UnitNumber.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it4}"
+                              id="it4"
+                              contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;"
+                              autoSubmit="true" readOnly="true"
+                              partialTriggers="cb6">
+                  <f:validator binding="#{bindings.UnitNumber.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.UnitId.inputValue}"
+                              label="#{bindings.UnitId.hints.label}"
+                              required="#{bindings.UnitId.hints.mandatory}"
+                              columns="#{bindings.UnitId.hints.displayWidth}"
+                              maximumLength="#{bindings.UnitId.hints.precision}"
+                              shortDesc="#{bindings.UnitId.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.it1}"
+                              id="it1" rendered="false">
+                  <f:validator binding="#{bindings.UnitId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.UnitId.format}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.UnitName.inputValue}"
+                              label="#{bindings.UnitName.hints.label}"
+                                    required="#{bindings.UnitName.hints.mandatory}"
+                                    columns="#{bindings.UnitName.hints.displayWidth}"
+                                    maximumLength="#{bindings.UnitName.hints.precision}"
+                                    shortDesc="#{bindings.UnitName.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.it2}"
+                              id="it2"
+                                    contentStyle="width:200px;"
+                                    autoSubmit="true">
+                        <f:validator binding="#{bindings.UnitName.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.UnitNameTl.inputValue}"
+                              label="#{bindings.UnitNameTl.hints.label}"
+                                    required="#{bindings.UnitNameTl.hints.mandatory}"
+                                    columns="#{bindings.UnitNameTl.hints.displayWidth}"
+                                    maximumLength="#{bindings.UnitNameTl.hints.precision}"
+                                    shortDesc="#{bindings.UnitNameTl.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.it3}"
+                              id="it3" contentStyle="width:200px;"
+                              autoSubmit="true">
+                        <f:validator binding="#{bindings.UnitNameTl.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.UnitShortcode.inputValue}"
+                              label="#{bindings.UnitShortcode.hints.label}"
+                                    required="#{bindings.UnitShortcode.hints.mandatory}"
+                                    columns="#{bindings.UnitShortcode.hints.displayWidth}"
+                                    maximumLength="#{bindings.UnitShortcode.hints.precision}"
+                                    shortDesc="#{bindings.UnitShortcode.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it5}"
+                              id="it5" contentStyle="width:200px;"
+                                    autoSubmit="true">
+                        <f:validator binding="#{bindings.UnitShortcode.validator}"/>
+                      </af:inputText>
+              </af:panelFormLayout>
+              </af:panelBox>
+          </af:panelGroupLayout>
+          <af:spacer width="200" height="10"
+                     binding="#{backingBeanScope.backing_fragments_addEditUnit.s12}"
+                     id="s12"/>
+          <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl8}"
+                               id="pgl8">
+              <af:panelBox text="Property Details"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb3}"
+                         id="pb3" showDisclosure="false"
+                         inlineStyle="border-color:transparent;">
+                <f:facet name="toolbar"/>
+              <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pfl3}"
+                                  id="pfl3" maxColumns="1" rows="3"
+                                  labelWidth="80">
+                <f:facet name="footer"/>
+                <af:inputComboboxListOfValues id="propertyTransId"
+                                              popupTitle="Search and Select: #{bindings.PropertyTrans.hints.label}"
+                                              value="#{bindings.PropertyTrans.inputValue}"
+                                              label="#{bindings.PropertyTrans.hints.label}"
+                                              model="#{bindings.PropertyTrans.listOfValuesModel}"
+                                              required="#{bindings.PropertyTrans.hints.mandatory}"
+                                              columns="#{bindings.PropertyTrans.hints.displayWidth}"
+                                              shortDesc="#{bindings.PropertyTrans.hints.tooltip}"
+                                              binding="#{backingBeanScope.backing_fragments_addEditUnit.propertyTransId}"
+                                              autoSubmit="true"
+                                              contentStyle="width:160px;">
+                  <f:validator binding="#{bindings.PropertyTrans.validator}"/>
+                  <af:autoSuggestBehavior suggestItems="#{bindings.PropertyTrans.suggestItems}"
+                                          maxSuggestedItems="3"/>
+                </af:inputComboboxListOfValues>
+                <af:selectOneChoice value="#{bindings.PropertyId.inputValue}"
+                                    label="#{bindings.PropertyId.label}"
+                                          required="#{bindings.PropertyId.hints.mandatory}"
+                                          shortDesc="#{bindings.PropertyId.hints.tooltip}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditUnit.soc1}"
+                                    id="soc1" contentStyle="width:200px;"
+                                    autoSubmit="true" rendered="false">
+                        <f:selectItems value="#{bindings.PropertyId.items}"
+                                       binding="#{backingBeanScope.backing_fragments_addEditUnit.si1}"
+                                       id="si1"/>
+                      </af:selectOneChoice>
+                <af:inputComboboxListOfValues id="buildingTransId"
+                                              popupTitle="Search and Select: #{bindings.BuildingTrans.hints.label}"
+                                              value="#{bindings.BuildingTrans.inputValue}"
+                                              label="#{bindings.BuildingTrans.hints.label}"
+                                              model="#{bindings.BuildingTrans.listOfValuesModel}"
+                                              required="#{bindings.BuildingTrans.hints.mandatory}"
+                                              columns="#{bindings.BuildingTrans.hints.displayWidth}"
+                                              shortDesc="#{bindings.BuildingTrans.hints.tooltip}"
+                                              binding="#{backingBeanScope.backing_fragments_addEditUnit.buildingTransId}"
+                                              autoSubmit="true"
+                                              partialTriggers="soc1 propertyTransId"
+                                              contentStyle="width:160px;">
+                  <f:validator binding="#{bindings.BuildingTrans.validator}"/>
+                  <af:autoSuggestBehavior suggestItems="#{bindings.BuildingTrans.suggestItems}"
+                                          maxSuggestedItems="3"/>
+                </af:inputComboboxListOfValues>
+                <af:selectOneChoice value="#{bindings.BuildId.inputValue}"
+                                    label="#{bindings.BuildId.label}"
+                                          required="#{bindings.BuildId.hints.mandatory}"
+                                          shortDesc="#{bindings.BuildId.hints.tooltip}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditUnit.soc2}"
+                                    id="soc2" contentStyle="width:200px;"
+                                    autoSubmit="true"
+                                          partialTriggers="soc1 propertyTransId"
+                                    rendered="false">
+                        <f:selectItems value="#{bindings.BuildId.items}"
+                                       binding="#{backingBeanScope.backing_fragments_addEditUnit.si2}"
+                                       id="si2"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                                    label="#{bindings.Status.label}"
+                                          required="#{bindings.Status.hints.mandatory}"
+                                          shortDesc="#{bindings.Status.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.soc12}"
+                                    id="soc12" contentStyle="width:200px;"
+                                    autoSubmit="true"
+                                          valueChangeListener="#{backingBeanScope.backing_fragments_addEditUnit.onchangestatus}">
+                        <f:selectItems value="#{bindings.Status.items}"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.si12}"
+                                 id="si12"/>
+                      </af:selectOneChoice>
+              </af:panelFormLayout>
+              <af:spacer width="10" height="40"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.s21}"
+                         id="s21"/>
+              </af:panelBox>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="15"
+                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s15}"
+                   id="s15"/>
+        <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl13}"
+                             id="pgl13" layout="horizontal">
+          <af:spacer width="150" height="10"
+                     binding="#{backingBeanScope.backing_fragments_addEditUnit.s13}"
+                     id="s13"/>
+          <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl10}"
+                               id="pgl10">
+            <af:panelBox text="Structure Details"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb5}"
+                         id="pb5" showDisclosure="false"
+                         inlineStyle="border-color:transparent;">
+              <f:facet name="toolbar"/>
+              <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pfl5}"
+                                  id="pfl5" rows="5" maxColumns="1">
+                <f:facet name="footer"/>
+                <af:inputComboboxListOfValues id="unitTypeTransId"
+                                              popupTitle="Search and Select: #{bindings.UnitTypeTrans.hints.label}"
+                                              value="#{bindings.UnitTypeTrans.inputValue}"
+                                              label="#{bindings.UnitTypeTrans.hints.label}"
+                                              model="#{bindings.UnitTypeTrans.listOfValuesModel}"
+                                              required="#{bindings.UnitTypeTrans.hints.mandatory}"
+                                              columns="#{bindings.UnitTypeTrans.hints.displayWidth}"
+                                              shortDesc="#{bindings.UnitTypeTrans.hints.tooltip}"
+                                              binding="#{backingBeanScope.backing_fragments_addEditUnit.unitTypeTransId}"
+                                              autoSubmit="true"
+                                              contentStyle="width:160px;">
+                  <f:validator binding="#{bindings.UnitTypeTrans.validator}"/>
+                  <af:autoSuggestBehavior suggestItems="#{bindings.UnitTypeTrans.suggestItems}"
+                                          maxSuggestedItems="3"/>
+                </af:inputComboboxListOfValues>
+                <af:selectOneChoice value="#{bindings.UnitType.inputValue}"
+                                    label="#{bindings.UnitType.label}"
+                                    required="#{bindings.UnitType.hints.mandatory}"
+                                    shortDesc="#{bindings.UnitType.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.soc4}"
+                                    id="soc4" contentStyle="width:200px;"
+                                    autoSubmit="true" rendered="false">
+                  <f:selectItems value="#{bindings.UnitType.items}"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.si4}"
+                                 id="si4"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.AreaType.inputValue}"
+                                    label="#{bindings.AreaType.label}"
+                                    required="#{bindings.AreaType.hints.mandatory}"
+                                    shortDesc="#{bindings.AreaType.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.soc5}"
+                                    id="soc5" contentStyle="width:200px;"
+                                    autoSubmit="true">
+                  <f:selectItems value="#{bindings.AreaType.items}"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.si5}"
+                                 id="si5"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.ViewType.inputValue}"
+                                    label="#{bindings.ViewType.label}"
+                                    required="#{bindings.ViewType.hints.mandatory}"
+                                    shortDesc="#{bindings.ViewType.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.soc6}"
+                                    id="soc6" contentStyle="width:200px;"
+                                    autoSubmit="true">
+                  <f:selectItems value="#{bindings.ViewType.items}"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.si6}"
+                                 id="si6"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.UnitClass.inputValue}"
+                                    label="#{bindings.UnitClass.label}"
+                                    required="#{bindings.UnitClass.hints.mandatory}"
+                                    shortDesc="#{bindings.UnitClass.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.soc13}"
+                                    id="soc13" contentStyle="width:200px;"
+                                    autoSubmit="true">
+                  <f:selectItems value="#{bindings.UnitClass.items}"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.si13}"
+                                 id="si13"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.UnitCategory.inputValue}"
+                                    label="#{bindings.UnitCategory.label}"
+                                    required="#{bindings.UnitCategory.hints.mandatory}"
+                                    shortDesc="#{bindings.UnitCategory.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.soc14}"
+                                    id="soc14" contentStyle="width:200px;"
+                                    autoSubmit="true">
+                  <f:selectItems value="#{bindings.UnitCategory.items}"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.si14}"
+                                 id="si14"/>
+                </af:selectOneChoice>
+              </af:panelFormLayout>
+            </af:panelBox>
+          </af:panelGroupLayout>
+          <af:spacer width="200" height="10"
+                     binding="#{backingBeanScope.backing_fragments_addEditUnit.s14}"
+                     id="s14"/>
+          <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl9}"
+                               id="pgl9">
+            <af:panelBox text="Others"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb4}"
+                         id="pb4" showDisclosure="false"
+                         inlineStyle="border-color:transparent;">
+              <f:facet name="toolbar"/>
+              <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pfl4}"
+                                  id="pfl4" rows="5" maxColumns="1"
+                                  labelWidth="107">
+                <f:facet name="footer"/>
+                <af:inputText value="#{bindings.DocRefNumber1.inputValue}"
+                              label="#{bindings.DocRefNumber1.hints.label}"
+                              required="#{bindings.DocRefNumber1.hints.mandatory}"
+                              columns="#{bindings.DocRefNumber1.hints.displayWidth}"
+                              maximumLength="#{bindings.DocRefNumber1.hints.precision}"
+                              shortDesc="#{bindings.DocRefNumber1.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it7}"
+                              id="it7" contentStyle="width:200px;"
+                              autoSubmit="true">
+                  <f:validator binding="#{bindings.DocRefNumber1.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.DocRefNumber2.inputValue}"
+                              label="#{bindings.DocRefNumber2.hints.label}"
+                              required="#{bindings.DocRefNumber2.hints.mandatory}"
+                              columns="#{bindings.DocRefNumber2.hints.displayWidth}"
+                              maximumLength="#{bindings.DocRefNumber2.hints.precision}"
+                              shortDesc="#{bindings.DocRefNumber2.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it8}"
+                              id="it8" contentStyle="width:200px;"
+                              autoSubmit="true">
+                  <f:validator binding="#{bindings.DocRefNumber2.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.DocRefNumber3.inputValue}"
+                              label="SEWA/DEWA Number"
+                              required="#{bindings.DocRefNumber3.hints.mandatory}"
+                              columns="#{bindings.DocRefNumber3.hints.displayWidth}"
+                              maximumLength="#{bindings.DocRefNumber3.hints.precision}"
+                              shortDesc="#{bindings.DocRefNumber3.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it9}"
+                              id="it9" autoSubmit="true"
+                              contentStyle="width:200px;">
+                  <f:validator binding="#{bindings.DocRefNumber3.validator}"/>
+                </af:inputText>
+                <af:selectOneChoice value="#{bindings.FloorNumber.inputValue}"
+                                    label="#{bindings.FloorNumber.label}"
+                                    required="#{bindings.FloorNumber.hints.mandatory}"
+                                    shortDesc="#{bindings.FloorNumber.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_fragments_addEditUnit.soc3}"
+                                    id="soc3" contentStyle="width:200px;"
+                                    autoSubmit="true">
+                  <f:selectItems value="#{bindings.FloorNumber.items}"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.si3}"
+                                 id="si3"/>
+                </af:selectOneChoice>
+                <af:inputText value="#{bindings.NoOfRooms.inputValue}"
+                              label="#{bindings.NoOfRooms.hints.label}"
+                              required="#{bindings.NoOfRooms.hints.mandatory}"
+                              columns="#{bindings.NoOfRooms.hints.displayWidth}"
+                              maximumLength="#{bindings.NoOfRooms.hints.precision}"
+                              shortDesc="#{bindings.NoOfRooms.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it10}"
+                              id="it10" contentStyle="width:200px;"
+                              autoSubmit="true">
+                  <f:validator binding="#{bindings.NoOfRooms.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.NoOfRooms.format}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+              <af:spacer width="10" height="35"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.s22}"
+                         id="s22"/>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="15"
+                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s16}"
+                   id="s16"/>
+        <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl14}"
+                             id="pgl14" layout="horizontal" rendered="false">
+          <af:spacer width="150" height="10"
+                     binding="#{backingBeanScope.backing_fragments_addEditUnit.s17}"
+                     id="s17"/>
+          <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl11}"
+                               id="pgl11">
+              <af:panelBox text="Rate Details"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb6}"
+                         id="pb6" showDisclosure="false"
+                         inlineStyle="border-color:transparent;">
+                <f:facet name="toolbar"/>
+              <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pfl6}"
+                                  id="pfl6" maxColumns="1" rows="10"
+                                  labelWidth="108">
+                <af:inputText value="#{bindings.ChargeableArea.inputValue}"
+                              label="#{bindings.ChargeableArea.hints.label}"
+                              required="#{bindings.ChargeableArea.hints.mandatory}"
+                              columns="#{bindings.ChargeableArea.hints.displayWidth}"
+                              maximumLength="#{bindings.ChargeableArea.hints.precision}"
+                              shortDesc="#{bindings.ChargeableArea.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it11}"
+                              id="it11"
+                              contentStyle="font-weight:bolder; color:#1367AE; width:200px;"
+                              autoSubmit="true"
+                              partialTriggers="pc1:t2:it24 pc1:t2"
+                              valueChangeListener="#{backingBeanScope.backing_fragments_addEditUnit.onchangeCharea}">
+                  <f:validator binding="#{bindings.ChargeableArea.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.ChargeableArea.format}"/>
+                </af:inputText>
+                      <af:inputText value="#{bindings.BaseRate.inputValue}"
+                              label="#{bindings.BaseRate.hints.label}"
+                                    required="#{bindings.BaseRate.hints.mandatory}"
+                                    columns="#{bindings.BaseRate.hints.displayWidth}"
+                                    maximumLength="#{bindings.BaseRate.hints.precision}"
+                                    shortDesc="#{bindings.BaseRate.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it13}"
+                              id="it13" contentStyle="width:200px;"
+                              autoSubmit="true"
+                                    valueChangeListener="#{backingBeanScope.backing_fragments_addEditUnit.onChangeBaseRate}">
+                        <f:validator binding="#{bindings.BaseRate.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.BaseRate.format}"/>
+                      </af:inputText>
+              </af:panelFormLayout>
+              <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pfl8}"
+                                  id="pfl8" maxColumns="1" rows="5"
+                                  labelWidth="40">
+                <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl2}"
+                                     id="pgl2" layout="horizontal">
+                      <af:inputText value="#{bindings.PremiumRate1.inputValue}"
+                                label="#{bindings.PremiumRate1.hints.label}"
+                                    required="#{bindings.PremiumRate1.hints.mandatory}"
+                                    columns="#{bindings.PremiumRate1.hints.displayWidth}"
+                                    maximumLength="#{bindings.PremiumRate1.hints.precision}"
+                                    shortDesc="#{bindings.PremiumRate1.hints.tooltip}"
+                                binding="#{backingBeanScope.backing_fragments_addEditUnit.it14}"
+                                id="it14" contentStyle="width:200px;"
+                                autoSubmit="true"
+                                    valueChangeListener="#{backingBeanScope.backing_fragments_addEditUnit.onPremium1}">
+                        <f:validator binding="#{bindings.PremiumRate1.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.PremiumRate1.format}"/>
+                      </af:inputText>
+                        <af:spacer width="10" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s1}"
+                                   id="s1"/>
+                        <af:outputText value="for"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.ot1}"
+                                 id="ot1"/>
+                  <af:spacer width="5" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s2}"
+                                   id="s2"/>
+                        <af:selectOneChoice value="#{bindings.PremiumRateType1.inputValue}"
+                                            required="#{bindings.PremiumRateType1.hints.mandatory}"
+                                            shortDesc="#{bindings.PremiumRateType1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditUnit.soc7}"
+                                      id="soc7" contentStyle="width:200px;"
+                                            autoSubmit="true">
+                          <f:selectItems value="#{bindings.PremiumRateType1.items}"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.si7}"
+                                   id="si7"/>
+                        </af:selectOneChoice>
+                      </af:panelGroupLayout>
+                <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl3}"
+                                     id="pgl3" layout="horizontal">
+                      <af:inputText value="#{bindings.PremiumRate2.inputValue}"
+                                label="#{bindings.PremiumRate2.hints.label}"
+                                    required="#{bindings.PremiumRate2.hints.mandatory}"
+                                    columns="#{bindings.PremiumRate2.hints.displayWidth}"
+                                    maximumLength="#{bindings.PremiumRate2.hints.precision}"
+                                    shortDesc="#{bindings.PremiumRate2.hints.tooltip}"
+                                binding="#{backingBeanScope.backing_fragments_addEditUnit.it15}"
+                                id="it15" contentStyle="width:200px;"
+                                autoSubmit="true"
+                                    valueChangeListener="#{backingBeanScope.backing_fragments_addEditUnit.onPremium2}">
+                        <f:validator binding="#{bindings.PremiumRate2.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.PremiumRate2.format}"/>
+                      </af:inputText>
+                        <af:spacer width="10" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s3}"
+                                   id="s3"/>
+                        <af:outputText value="for"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.ot2}"
+                                 id="ot2"/>
+                  <af:spacer width="5" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s4}"
+                                   id="s4"/>
+                        <af:selectOneChoice value="#{bindings.PremiumRateType2.inputValue}"
+                                            required="#{bindings.PremiumRateType2.hints.mandatory}"
+                                            shortDesc="#{bindings.PremiumRateType2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditUnit.soc8}"
+                                      id="soc8" contentStyle="width:200px;"
+                                            autoSubmit="true">
+                          <f:selectItems value="#{bindings.PremiumRateType2.items}"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.si8}"
+                                   id="si8"/>
+                        </af:selectOneChoice>
+                      </af:panelGroupLayout>
+                <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl4}"
+                                     id="pgl4" layout="horizontal">
+                      <af:inputText value="#{bindings.PremiumRate3.inputValue}"
+                                label="#{bindings.PremiumRate3.hints.label}"
+                                    required="#{bindings.PremiumRate3.hints.mandatory}"
+                                    columns="#{bindings.PremiumRate3.hints.displayWidth}"
+                                    maximumLength="#{bindings.PremiumRate3.hints.precision}"
+                                    shortDesc="#{bindings.PremiumRate3.hints.tooltip}"
+                                binding="#{backingBeanScope.backing_fragments_addEditUnit.it16}"
+                                id="it16" contentStyle="width:200px;"
+                                autoSubmit="true"
+                                    valueChangeListener="#{backingBeanScope.backing_fragments_addEditUnit.onPremium3}">
+                        <f:validator binding="#{bindings.PremiumRate3.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.PremiumRate3.format}"/>
+                      </af:inputText>
+                        <af:spacer width="10" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s5}"
+                                   id="s5"/>
+                        <af:outputText value="for"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.ot3}"
+                                 id="ot3"/>
+                  <af:spacer width="5" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s6}"
+                                   id="s6"/>
+                        <af:selectOneChoice value="#{bindings.PremiumRateType3.inputValue}"
+                                            required="#{bindings.PremiumRateType3.hints.mandatory}"
+                                            shortDesc="#{bindings.PremiumRateType3.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditUnit.soc9}"
+                                      id="soc9" contentStyle="width:200px;"
+                                            autoSubmit="true">
+                          <f:selectItems value="#{bindings.PremiumRateType3.items}"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.si9}"
+                                   id="si9"/>
+                        </af:selectOneChoice>
+                      </af:panelGroupLayout>
+                <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl5}"
+                                     id="pgl5" layout="horizontal">
+                  <af:inputText value="#{bindings.PremiumRate41.inputValue}"
+                                label="#{bindings.PremiumRate41.hints.label}"
+                                required="#{bindings.PremiumRate41.hints.mandatory}"
+                                columns="#{bindings.PremiumRate41.hints.displayWidth}"
+                                maximumLength="#{bindings.PremiumRate41.hints.precision}"
+                                shortDesc="#{bindings.PremiumRate41.hints.tooltip}"
+                                binding="#{backingBeanScope.backing_fragments_addEditUnit.it17}"
+                                id="it17" contentStyle="width:200px;"
+                                autoSubmit="true"
+                                valueChangeListener="#{backingBeanScope.backing_fragments_addEditUnit.onPremium4}">
+                    <f:validator binding="#{bindings.PremiumRate41.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PremiumRate41.format}"/>
+                      </af:inputText>
+                        <af:spacer width="10" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s7}"
+                                   id="s7"/>
+                        <af:outputText value="for"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.ot4}"
+                                 id="ot4"/>
+                  <af:spacer width="5" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s8}"
+                                   id="s8"/>
+                  <af:selectOneChoice value="#{bindings.PremiumRateType4.inputValue}"
+                                      required="#{bindings.PremiumRateType4.hints.mandatory}"
+                                      shortDesc="#{bindings.PremiumRateType4.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditUnit.soc10}"
+                                      id="soc10" contentStyle="width:200px;"
+                                      autoSubmit="true">
+                    <f:selectItems value="#{bindings.PremiumRateType4.items}"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.si10}"
+                                   id="si10"/>
+                        </af:selectOneChoice>
+                      </af:panelGroupLayout>
+                <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl6}"
+                                     id="pgl6" layout="horizontal">
+                      <af:inputText value="#{bindings.PremiumRate5.inputValue}"
+                                label="#{bindings.PremiumRate5.hints.label}"
+                                    required="#{bindings.PremiumRate5.hints.mandatory}"
+                                    columns="#{bindings.PremiumRate5.hints.displayWidth}"
+                                    maximumLength="#{bindings.PremiumRate5.hints.precision}"
+                                    shortDesc="#{bindings.PremiumRate5.hints.tooltip}"
+                                binding="#{backingBeanScope.backing_fragments_addEditUnit.it18}"
+                                id="it18" contentStyle="width:200px;"
+                                autoSubmit="true"
+                                    valueChangeListener="#{backingBeanScope.backing_fragments_addEditUnit.onPremium5}">
+                        <f:validator binding="#{bindings.PremiumRate5.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.PremiumRate5.format}"/>
+                      </af:inputText>
+                        <af:spacer width="10" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s9}"
+                                   id="s9"/>
+                        <af:outputText value="for"
+                                 binding="#{backingBeanScope.backing_fragments_addEditUnit.ot5}"
+                                 id="ot5"/>
+                  <af:spacer width="5" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s10}"
+                                   id="s10"/>
+                        <af:selectOneChoice value="#{bindings.PremiumRateType5.inputValue}"
+                                            required="#{bindings.PremiumRateType5.hints.mandatory}"
+                                            shortDesc="#{bindings.PremiumRateType5.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditUnit.soc11}"
+                                      id="soc11" contentStyle="width:200px;"
+                                            autoSubmit="true">
+                          <f:selectItems value="#{bindings.PremiumRateType5.items}"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.si11}"
+                                   id="si11"/>
+                        </af:selectOneChoice>
+                      </af:panelGroupLayout>
+              </af:panelFormLayout>
+              <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pfl9}"
+                                  id="pfl9"
+                                  maxColumns="1" rows="2">
+                <af:inputText value="#{bindings.TotalRate.inputValue}"
+                              label="#{bindings.TotalRate.hints.label}"
+                              required="#{bindings.TotalRate.hints.mandatory}"
+                              columns="#{bindings.TotalRate.hints.displayWidth}"
+                              maximumLength="#{bindings.TotalRate.hints.precision}"
+                              shortDesc="#{bindings.TotalRate.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it19}"
+                              id="it19" contentStyle="width:180px;"
+                              autoSubmit="true" readOnly="true"
+                              partialTriggers="it11 it13 it14 it15 it16 it17 it18">
+                  <f:validator binding="#{bindings.TotalRate.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.TotalRate.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.PurchaseAmount.inputValue}"
+                              label="#{bindings.PurchaseAmount.hints.label}"
+                              required="#{bindings.PurchaseAmount.hints.mandatory}"
+                              columns="#{bindings.PurchaseAmount.hints.displayWidth}"
+                              maximumLength="#{bindings.PurchaseAmount.hints.precision}"
+                              shortDesc="#{bindings.PurchaseAmount.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.it20}"
+                              id="it20"
+                              contentStyle="font-weight:bolder; color:#1367AE; width:180px;"
+                              autoSubmit="true" readOnly="true"
+                              inlineStyle="font-size:medium;"
+                              partialTriggers="it13 it14 it15 it16 it17 it18 it11">
+                  <f:validator binding="#{bindings.PurchaseAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.PurchaseAmount.format}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+              </af:panelBox>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10"
+                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s19}"
+                   id="s19"/>
+        <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pgl15}"
+                             id="pgl15" layout="horizontal">
+          <af:spacer width="120" height="10"
+                     binding="#{backingBeanScope.backing_fragments_addEditUnit.s18}"
+                     id="s18"/>
+          <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pfl7}"
+                              id="pfl7" maxColumns="1" rows="1"
+                              labelWidth="120">
+            <f:facet name="footer"/>
+            <af:inputText value="#{bindings.Description.inputValue}"
+                          label="#{bindings.Description.hints.label}"
+                          required="#{bindings.Description.hints.mandatory}"
+                          columns="#{bindings.Description.hints.displayWidth}"
+                          maximumLength="#{bindings.Description.hints.precision}"
+                          shortDesc="#{bindings.Description.hints.tooltip}"
+                          binding="#{backingBeanScope.backing_fragments_addEditUnit.it23}"
+                          id="it23" rows="4" contentStyle="width:500px;">
+              <f:validator binding="#{bindings.Description.validator}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10"
+                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s20}"
+                   id="s20"/>
+        <af:panelTabbed position="left"
+                        binding="#{backingBeanScope.backing_fragments_addEditUnit.pt2}"
+                        id="pt2" dimensionsFrom="auto">
+          <af:showDetailItem id="tab1" text="Area"
+                             binding="#{backingBeanScope.backing_fragments_addEditUnit.tab1}"
+                             icon="/images/fuse-page-tab-datacompleteness.png">
+            <af:panelBox text="Area"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb7}"
+                         id="pb7" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection binding="#{backingBeanScope.backing_fragments_addEditUnit.pc1}"
+                                  id="pc1"
+                                  styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar binding="#{backingBeanScope.backing_fragments_addEditUnit.t3}"
+                              id="t3">
+                    <af:commandImageLink actionListener="#{bindings.CreateInsert.execute}"
+                                         binding="#{backingBeanScope.backing_fragments_addEditUnit.cil2}"
+                                         id="cil2"
+                                         icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         depressedIcon="/images/func_add_16_act.png"
+                                         disabledIcon="/images/func_add_16_dis.png"
+                                         visible="#{sessionScope.grantMap.Unit =='F'}"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.PropertyArea_VO2.collectionModel}"
+                          var="row"
+                          rows="#{bindings.PropertyArea_VO2.rangeSize}"
+                          emptyText="#{bindings.PropertyArea_VO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="6"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.PropertyArea_VO2.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PropertyArea_VO2.collectionModel.makeCurrent}"
+                          rowSelection="single"
+                          binding="#{backingBeanScope.backing_fragments_addEditUnit.t2}"
+                          id="t2" columnStretching="column:c2" varStatus="vs"
+                          scrollPolicy="page" autoHeightRows="0">
+                  <af:column id="c5" width="80" headerText="S.No"
+                             align="center">
+                    <af:outputText value="#{vs.index+1}" id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.PropertyArea_VO2.hints.Area.name}"
+                             sortable="false"
+                             headerText="#{bindings.PropertyArea_VO2.hints.Area.label}"
+                             id="c3" width="200">
+                    <af:selectOneChoice value="#{row.bindings.Area.inputValue}"
+                                        label="#{row.bindings.Area.label}"
+                                        required="#{bindings.PropertyArea_VO2.hints.Area.mandatory}"
+                                        shortDesc="#{bindings.PropertyArea_VO2.hints.Area.tooltip}"
+                                        id="soc15" autoSubmit="true">
+                      <f:selectItems value="#{row.bindings.Area.items}"
+                                     id="si16"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.PropertyArea_VO2.hints.Value.name}"
+                             sortable="false"
+                             headerText="#{bindings.PropertyArea_VO2.hints.Value.label}"
+                             id="c1" width="150">
+                    <af:inputText value="#{row.bindings.Value.inputValue}"
+                                  label="#{bindings.PropertyArea_VO2.hints.Value.label}"
+                                  required="#{bindings.PropertyArea_VO2.hints.Value.mandatory}"
+                                  columns="#{bindings.PropertyArea_VO2.hints.Value.displayWidth}"
+                                  maximumLength="#{bindings.PropertyArea_VO2.hints.Value.precision}"
+                                  shortDesc="#{bindings.PropertyArea_VO2.hints.Value.tooltip}"
+                                  id="it24"
+                                  valueChangeListener="#{backingBeanScope.backing_fragments_addEditUnit.onChangeAreaValue}"
+                                  autoSubmit="true">
+                      <f:validator binding="#{row.bindings.Value.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.PropertyArea_VO2.hints.Uom.name}"
+                             sortable="false"
+                             headerText="#{bindings.PropertyArea_VO2.hints.Uom.label}"
+                             id="c4" width="180">
+                    <af:selectOneChoice value="#{row.bindings.Uom.inputValue}"
+                                        label="#{row.bindings.Uom.label}"
+                                        required="#{bindings.PropertyArea_VO2.hints.Uom.mandatory}"
+                                        shortDesc="#{bindings.PropertyArea_VO2.hints.Uom.tooltip}"
+                                        id="soc16">
+                      <f:selectItems value="#{row.bindings.Uom.items}"
+                                     id="si15"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.PropertyArea_VO2.hints.Description.name}"
+                             sortable="false"
+                             headerText="#{bindings.PropertyArea_VO2.hints.Description.label}"
+                             id="c2" width="200">
+                    <af:inputText value="#{row.bindings.Description.inputValue}"
+                                  label="#{bindings.PropertyArea_VO2.hints.Description.label}"
+                                  required="#{bindings.PropertyArea_VO2.hints.Description.mandatory}"
+                                  columns="#{bindings.PropertyArea_VO2.hints.Description.displayWidth}"
+                                  maximumLength="#{bindings.PropertyArea_VO2.hints.Description.precision}"
+                                  shortDesc="#{bindings.PropertyArea_VO2.hints.Description.tooltip}"
+                                  id="it25">
+                      <f:validator binding="#{row.bindings.Description.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column id="c6" headerText="Delete" align="center">
+                    <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                         id="cil1"
+                                         icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         depressedIcon="/images/func_remove_16_act.png"
+                                         immediate="true"
+                                         disabledIcon="/images/func_remove_16_dis.png"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem id="tab2" text="Car Parking"
+                             binding="#{backingBeanScope.backing_fragments_addEditUnit.tab2}"
+                             icon="/images/fuse-page-tab-automotive.png"
+                             rendered="false">
+            <af:panelBox text="Car Parking"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb8}"
+                         id="pb8" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection binding="#{backingBeanScope.backing_fragments_addEditUnit.pc2}"
+                                  id="pc2" featuresOff="detach"
+                                  styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar binding="#{backingBeanScope.backing_fragments_addEditUnit.t5}"
+                              id="t5" flex="1">
+                    <af:commandImageLink actionListener="#{backingBeanScope.backing_fragments_addEditUnit.OnCreateCarParking}"
+                                         binding="#{backingBeanScope.backing_fragments_addEditUnit.cil3}"
+                                         id="cil3"
+                                         icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         partialTriggers="t4"/>
+                    <af:spacer width="10" height="10"
+                               binding="#{backingBeanScope.backing_fragments_addEditUnit.s24}"
+                               id="s24"/>
+                    <af:commandImageLink
+                                         binding="#{backingBeanScope.backing_fragments_addEditUnit.cil4}"
+                                         id="cil4"
+                                         icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         depressedIcon="/images/func_remove_16_act.png"
+                                         actionListener="#{backingBeanScope.backing_fragments_addEditUnit.onClickRemoveCarPark}"
+                                         immediate="true" partialTriggers="t4"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.PropertyCarparks_VO1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.PropertyCarparks_VO1.rangeSize}"
+                          emptyText="#{bindings.PropertyCarparks_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="6"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.PropertyCarparks_VO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PropertyCarparks_VO1.collectionModel.makeCurrent}"
+                          rowSelection="single"
+                          binding="#{backingBeanScope.backing_fragments_addEditUnit.t4}"
+                          id="t4" varStatus="vs" scrollPolicy="page"
+                          autoHeightRows="0">
+                  <af:column id="c8" headerText="S.No" align="center"
+                             width="80">
+                    <af:outputText value="#{vs.index+1}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.PropertyCarparks_VO1.hints.CpUnitId.name}"
+                             sortable="false"
+                             headerText="#{bindings.PropertyCarparks_VO1.hints.CpUnitId.label}"
+                             id="c10" width="300">
+                    <af:selectOneChoice value="#{row.bindings.CpUnitId.inputValue}"
+                                        label="#{row.bindings.CpUnitId.label}"
+                                        required="#{bindings.PropertyCarparks_VO1.hints.CpUnitId.mandatory}"
+                                        shortDesc="#{bindings.PropertyCarparks_VO1.hints.CpUnitId.tooltip}"
+                                        id="soc18" readOnly="true">
+                      <f:selectItems value="#{row.bindings.CpUnitId.items}"
+                                     id="si18"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.PropertyCarparks_VO1.hints.CpUnitNumber.name}"
+                             sortable="false"
+                             headerText="#{bindings.PropertyCarparks_VO1.hints.CpUnitNumber.label}"
+                             id="c7" width="250">
+                    <af:inputText value="#{row.bindings.CpUnitNumber.inputValue}"
+                                  label="#{bindings.PropertyCarparks_VO1.hints.CpUnitNumber.label}"
+                                  required="#{bindings.PropertyCarparks_VO1.hints.CpUnitNumber.mandatory}"
+                                  columns="#{bindings.PropertyCarparks_VO1.hints.CpUnitNumber.displayWidth}"
+                                  maximumLength="#{bindings.PropertyCarparks_VO1.hints.CpUnitNumber.precision}"
+                                  shortDesc="#{bindings.PropertyCarparks_VO1.hints.CpUnitNumber.tooltip}"
+                                  id="it29" readOnly="true">
+                      <f:validator binding="#{row.bindings.CpUnitNumber.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.PropertyCarparks_VO1.hints.CpStatus.name}"
+                             sortable="false"
+                             headerText="#{bindings.PropertyCarparks_VO1.hints.CpStatus.label}"
+                             id="c9" width="220">
+                    <af:selectOneChoice value="#{row.bindings.CpStatus.inputValue}"
+                                        label="#{row.bindings.CpStatus.label}"
+                                        required="#{bindings.PropertyCarparks_VO1.hints.CpStatus.mandatory}"
+                                        shortDesc="#{bindings.PropertyCarparks_VO1.hints.CpStatus.tooltip}"
+                                        id="soc17" readOnly="true">
+                      <f:selectItems value="#{row.bindings.CpStatus.items}"
+                                     id="si17"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.PropertyCarparks_VO1.hints.CpType.name}"
+                             sortable="false"
+                             headerText="#{bindings.PropertyCarparks_VO1.hints.CpType.label}"
+                             id="c12" width="265">
+                    <af:inputText value="#{row.bindings.CpType.inputValue}"
+                                  label="#{bindings.PropertyCarparks_VO1.hints.CpType.label}"
+                                  required="#{bindings.PropertyCarparks_VO1.hints.CpType.mandatory}"
+                                  columns="#{bindings.PropertyCarparks_VO1.hints.CpType.displayWidth}"
+                                  maximumLength="#{bindings.PropertyCarparks_VO1.hints.CpType.precision}"
+                                  shortDesc="#{bindings.PropertyCarparks_VO1.hints.CpType.tooltip}"
+                                  id="it28" readOnly="true">
+                      <f:validator binding="#{row.bindings.CpType.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+                <af:popup binding="#{backingBeanScope.backing_fragments_addEditUnit.p1}"
+                          id="p1">
+                  <af:dialog binding="#{backingBeanScope.backing_fragments_addEditUnit.d1}"
+                             id="d1" type="none">
+                      <af:table value="#{bindings.getCarparkingForUnits_ROVO1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.getCarparkingForUnits_ROVO1.rangeSize}"
+                                emptyText="#{bindings.getCarparkingForUnits_ROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.getCarparkingForUnits_ROVO1.rangeSize}"
+                                rowBandingInterval="0"
+                                selectedRowKeys="#{bindings.getCarparkingForUnits_ROVO1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.getCarparkingForUnits_ROVO1.collectionModel.makeCurrent}"
+                                rowSelection="single"
+                              binding="#{backingBeanScope.backing_fragments_addEditUnit.t6}"
+                              id="t6">
+                        <af:column sortProperty="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitName.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitName.label}"
+                                 id="c11" width="135" displayIndex="-1">
+                          <af:inputText value="#{row.bindings.UnitName.inputValue}"
+                                        label="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitName.label}"
+                                        required="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitName.mandatory}"
+                                        columns="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitName.displayWidth}"
+                                        maximumLength="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitName.precision}"
+                                        shortDesc="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitName.tooltip}"
+                                      id="it27">
+                            <f:validator binding="#{row.bindings.UnitName.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitNumber.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitNumber.label}"
+                                 id="c14" width="85" displayIndex="-1">
+                          <af:inputText value="#{row.bindings.UnitNumber.inputValue}"
+                                        label="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitNumber.label}"
+                                        required="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitNumber.mandatory}"
+                                        columns="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitNumber.displayWidth}"
+                                        maximumLength="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitNumber.precision}"
+                                        shortDesc="#{bindings.getCarparkingForUnits_ROVO1.hints.UnitNumber.tooltip}"
+                                      id="it26">
+                            <f:validator binding="#{row.bindings.UnitNumber.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.getCarparkingForUnits_ROVO1.hints.CheckBox_TRans.name}"
+                                 sortable="false"
+                                 headerText="Choose"
+                                 id="c13" align="center">
+                          <af:selectBooleanCheckbox value="#{row.bindings.CheckBox_TRans.inputValue}"
+                                                    label="#{row.bindings.CheckBox_TRans.label}"
+                                                    shortDesc="#{bindings.getCarparkingForUnits_ROVO1.hints.CheckBox_TRans.tooltip}"
+                                                  id="sbc1" autoSubmit="true"/>
+                        </af:column>
+                      </af:table>
+                    <f:facet name="buttonBar">
+                      <af:toolbar binding="#{backingBeanScope.backing_fragments_addEditUnit.t7}"
+                                  id="t7">
+                        <af:commandButton text="Add"
+                                          binding="#{backingBeanScope.backing_fragments_addEditUnit.cb4}"
+                                          id="cb4"
+                                        actionListener="#{backingBeanScope.backing_fragments_addEditUnit.onClickCarPark}"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditUnit.s23}"
+                                   id="s23"/>
+                        <af:commandButton text="Cancel"
+                                          binding="#{backingBeanScope.backing_fragments_addEditUnit.cb5}"
+                                          id="cb5"/>
+                      </af:toolbar>
+                    </f:facet>
+                  </af:dialog>
+                </af:popup>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem id="tab3" text="Attachemnt"
+                             binding="#{backingBeanScope.backing_fragments_addEditUnit.tab3}"
+                             icon="/images/fuse-page-tab-quotes.png"
+                             rendered="false">
+            <af:panelBox text="Attachments"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb9}"
+                         id="pb9" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection binding="#{backingBeanScope.backing_fragments_addEditUnit.pc3}"
+                                  id="pc3" featuresOff="detach"
+                                  styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem id="tab4" text="Owneship Details"
+                             binding="#{backingBeanScope.backing_fragments_addEditUnit.tab4}"
+                             icon="/images/fuse-detail-tab-contactinfo.png"
+                             rendered="false">
+            <af:panelBox text="Owneship Details"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb10}"
+                         id="pb10" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection binding="#{backingBeanScope.backing_fragments_addEditUnit.pc4}"
+                                  id="pc4" featuresOff="detach"
+                                  styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem id="tab5" text="Activity Log"
+                             binding="#{backingBeanScope.backing_fragments_addEditUnit.tab5}"
+                             icon="/images/fuse-page-tab-rulesverify.png"
+                             rendered="false">
+            <af:panelBox text="Activity Log"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb11}"
+                         id="pb11" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection binding="#{backingBeanScope.backing_fragments_addEditUnit.pc5}"
+                                  id="pc5" featuresOff="detach"
+                                  styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem text="Owner"
+                             binding="#{backingBeanScope.backing_fragments_addEditUnit.sdi1}"
+                             id="sdi1"
+                             icon="/images/fuse-detail-tab-opportunities.png">
+            <af:panelBox text="Owner"
+                         binding="#{backingBeanScope.backing_fragments_addEditUnit.pb12}"
+                         id="pb12">
+              <f:facet name="toolbar"/>
+              <af:panelCollection binding="#{backingBeanScope.backing_fragments_addEditUnit.pc6}"
+                                  id="pc6" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar binding="#{backingBeanScope.backing_fragments_addEditUnit.t9}"
+                              id="t9" flex="1">
+                    <af:commandImageLink actionListener="#{bindings.CreateInsert2.execute}"
+                                         binding="#{backingBeanScope.backing_fragments_addEditUnit.cil5}"
+                                         id="cil5"
+                                         icon="/images/func_add_16_ena.png"/>
+                    <af:spacer width="10" height="10"
+                               binding="#{backingBeanScope.backing_fragments_addEditUnit.s25}"
+                               id="s25"/>
+                    <af:commandImageLink actionListener="#{bindings.Delete1.execute}"
+                                         binding="#{backingBeanScope.backing_fragments_addEditUnit.cil6}"
+                                         id="cil6"
+                                         icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/delete_ovr.png"
+                                         visible="#{sessionScope.grantMap.Unit =='F'}"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.OwnerDtle_VO11.collectionModel}"
+                          var="row" rows="#{bindings.OwnerDtle_VO11.rangeSize}"
+                          emptyText="#{bindings.OwnerDtle_VO11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.OwnerDtle_VO11.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.OwnerDtle_VO11.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.OwnerDtle_VO11.collectionModel.makeCurrent}"
+                          rowSelection="single"
+                          binding="#{backingBeanScope.backing_fragments_addEditUnit.t10}"
+                          id="t10" varStatus="vs" columnStretching="column:c27">
+                  <af:column id="c23" headerText="S.No" align="center"
+                             width="50">
+                    <af:outputText value="#{vs.index+1}" id="ot8"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO11.hints.VendId.name}"
+                             sortable="false"
+                             headerText="#{bindings.OwnerDtle_VO11.hints.VendId.label}"
+                             id="c26" width="250">
+                    <af:selectOneChoice value="#{row.bindings.VendId.inputValue}"
+                                        label="#{row.bindings.VendId.label}"
+                                        required="#{bindings.OwnerDtle_VO11.hints.VendId.mandatory}"
+                                        shortDesc="#{bindings.OwnerDtle_VO11.hints.VendId.tooltip}"
+                                        id="soc22" autoSubmit="true">
+                      <f:selectItems value="#{row.bindings.VendId.items}"
+                                     id="si21"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO11.hints.VendSiteId.name}"
+                             sortable="false"
+                             headerText="#{bindings.OwnerDtle_VO11.hints.VendSiteId.label}"
+                             id="c24" width="200">
+                    <af:selectOneChoice value="#{row.bindings.VendSiteId.inputValue}"
+                                        label="#{row.bindings.VendSiteId.label}"
+                                        required="#{bindings.OwnerDtle_VO11.hints.VendSiteId.mandatory}"
+                                        shortDesc="#{bindings.OwnerDtle_VO11.hints.VendSiteId.tooltip}"
+                                        id="soc21" partialTriggers="soc22"
+                                        autoSubmit="true">
+                      <f:selectItems value="#{row.bindings.VendSiteId.items}"
+                                     id="si22"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO11.hints.Description.name}"
+                             sortable="false"
+                             headerText="#{bindings.OwnerDtle_VO11.hints.Description.label}"
+                             id="c27">
+                    <af:inputText value="#{row.bindings.Description.inputValue}"
+                                  label="#{bindings.OwnerDtle_VO11.hints.Description.label}"
+                                  required="#{bindings.OwnerDtle_VO11.hints.Description.mandatory}"
+                                  columns="#{bindings.OwnerDtle_VO11.hints.Description.displayWidth}"
+                                  maximumLength="#{bindings.OwnerDtle_VO11.hints.Description.precision}"
+                                  shortDesc="#{bindings.OwnerDtle_VO11.hints.Description.tooltip}"
+                                  id="it33" autoSubmit="true">
+                      <f:validator binding="#{row.bindings.Description.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO11.hints.PrimaryYn.name}"
+                             sortable="false"
+                             headerText="#{bindings.OwnerDtle_VO11.hints.PrimaryYn.label}"
+                             id="c25" align="center">
+                    <af:selectBooleanCheckbox value="#{row.bindings.PrimaryYn.inputValue}"
+                                              label="#{row.bindings.PrimaryYn.label}"
+                                              shortDesc="#{bindings.OwnerDtle_VO11.hints.PrimaryYn.tooltip}"
+                                              id="sbc3"/>
+                  </af:column>
+                </af:table>
+                <af:table value="#{bindings.OwnerDtle_VO1.collectionModel}"
+                          var="row" rows="#{bindings.OwnerDtle_VO1.rangeSize}"
+                          emptyText="#{bindings.OwnerDtle_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.OwnerDtle_VO1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.OwnerDtle_VO1Query.queryDescriptor}"
+                          queryListener="#{bindings.OwnerDtle_VO1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.OwnerDtle_VO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.OwnerDtle_VO1.collectionModel.makeCurrent}"
+                          rowSelection="single"
+                          binding="#{backingBeanScope.backing_fragments_addEditUnit.t8}"
+                          id="t8" styleClass="AFStretchWidth" rendered="false">
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO1.hints.OwnerId.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.OwnerDtle_VO1.hints.OwnerId.label}"
+                             id="c18" rendered="false">
+                    <af:inputText value="#{row.bindings.OwnerId.inputValue}"
+                                  label="#{bindings.OwnerDtle_VO1.hints.OwnerId.label}"
+                                  required="#{bindings.OwnerDtle_VO1.hints.OwnerId.mandatory}"
+                                  columns="#{bindings.OwnerDtle_VO1.hints.OwnerId.displayWidth}"
+                                  maximumLength="#{bindings.OwnerDtle_VO1.hints.OwnerId.precision}"
+                                  shortDesc="#{bindings.OwnerDtle_VO1.hints.OwnerId.tooltip}"
+                                  id="it36">
+                      <f:validator binding="#{row.bindings.OwnerId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO1.hints.PropertyId.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.OwnerDtle_VO1.hints.PropertyId.label}"
+                             id="c20" width="150" rendered="false">
+                    <af:inputText value="#{row.bindings.PropertyId.inputValue}"
+                                  label="#{bindings.OwnerDtle_VO1.hints.PropertyId.label}"
+                                  required="#{bindings.OwnerDtle_VO1.hints.PropertyId.mandatory}"
+                                  columns="#{bindings.OwnerDtle_VO1.hints.PropertyId.displayWidth}"
+                                  maximumLength="#{bindings.OwnerDtle_VO1.hints.PropertyId.precision}"
+                                  shortDesc="#{bindings.OwnerDtle_VO1.hints.PropertyId.tooltip}"
+                                  id="it30">
+                      <f:validator binding="#{row.bindings.PropertyId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO1.hints.BuildId.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.OwnerDtle_VO1.hints.BuildId.label}"
+                             id="c19" width="150" rendered="false">
+                    <af:inputText value="#{row.bindings.BuildId.inputValue}"
+                                  label="#{bindings.OwnerDtle_VO1.hints.BuildId.label}"
+                                  required="#{bindings.OwnerDtle_VO1.hints.BuildId.mandatory}"
+                                  columns="#{bindings.OwnerDtle_VO1.hints.BuildId.displayWidth}"
+                                  maximumLength="#{bindings.OwnerDtle_VO1.hints.BuildId.precision}"
+                                  shortDesc="#{bindings.OwnerDtle_VO1.hints.BuildId.tooltip}"
+                                  id="it31">
+                      <f:validator binding="#{row.bindings.BuildId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO1.hints.UnitId.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.OwnerDtle_VO1.hints.UnitId.label}"
+                             id="c22" width="150" rendered="false">
+                    <af:inputText value="#{row.bindings.UnitId.inputValue}"
+                                  label="#{bindings.OwnerDtle_VO1.hints.UnitId.label}"
+                                  required="#{bindings.OwnerDtle_VO1.hints.UnitId.mandatory}"
+                                  columns="#{bindings.OwnerDtle_VO1.hints.UnitId.displayWidth}"
+                                  maximumLength="#{bindings.OwnerDtle_VO1.hints.UnitId.precision}"
+                                  shortDesc="#{bindings.OwnerDtle_VO1.hints.UnitId.tooltip}"
+                                  id="it32">
+                      <f:validator binding="#{row.bindings.UnitId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO1.hints.VendId.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.OwnerDtle_VO1.hints.VendId.label}"
+                             id="c15" width="200">
+                    <af:selectOneChoice value="#{row.bindings.VendId.inputValue}"
+                                        label="#{row.bindings.VendId.label}"
+                                        required="#{bindings.OwnerDtle_VO1.hints.VendId.mandatory}"
+                                        shortDesc="#{bindings.OwnerDtle_VO1.hints.VendId.tooltip}"
+                                        id="soc19" autoSubmit="true">
+                      <f:selectItems value="#{row.bindings.VendId.items}"
+                                     id="si19"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO1.hints.VendSiteId.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.OwnerDtle_VO1.hints.VendSiteId.label}"
+                             id="c21" width="200">
+                    <af:selectOneChoice value="#{row.bindings.VendSiteId.inputValue}"
+                                        label="#{row.bindings.VendSiteId.label}"
+                                        required="#{bindings.OwnerDtle_VO1.hints.VendSiteId.mandatory}"
+                                        shortDesc="#{bindings.OwnerDtle_VO1.hints.VendSiteId.tooltip}"
+                                        id="soc20" partialTriggers="soc19"
+                                        autoSubmit="true">
+                      <f:selectItems value="#{row.bindings.VendSiteId.items}"
+                                     id="si20"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO1.hints.Description.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.OwnerDtle_VO1.hints.Description.label}"
+                             id="c16" width="250">
+                    <af:inputText value="#{row.bindings.Description.inputValue}"
+                                  label="#{bindings.OwnerDtle_VO1.hints.Description.label}"
+                                  required="#{bindings.OwnerDtle_VO1.hints.Description.mandatory}"
+                                  columns="#{bindings.OwnerDtle_VO1.hints.Description.displayWidth}"
+                                  maximumLength="#{bindings.OwnerDtle_VO1.hints.Description.precision}"
+                                  shortDesc="#{bindings.OwnerDtle_VO1.hints.Description.tooltip}"
+                                  id="it37" autoSubmit="true">
+                      <f:validator binding="#{row.bindings.Description.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OwnerDtle_VO1.hints.PrimaryYn.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.OwnerDtle_VO1.hints.PrimaryYn.label}"
+                             id="c17" width="100" align="center">
+                    <af:inputText value="#{row.bindings.PrimaryYn.inputValue}"
+                                  label="#{bindings.OwnerDtle_VO1.hints.PrimaryYn.label}"
+                                  required="#{bindings.OwnerDtle_VO1.hints.PrimaryYn.mandatory}"
+                                  columns="#{bindings.OwnerDtle_VO1.hints.PrimaryYn.displayWidth}"
+                                  maximumLength="#{bindings.OwnerDtle_VO1.hints.PrimaryYn.precision}"
+                                  shortDesc="#{bindings.OwnerDtle_VO1.hints.PrimaryYn.tooltip}"
+                                  id="it35" rendered="false">
+                      <f:validator binding="#{row.bindings.PrimaryYn.validator}"/>
+                    </af:inputText>
+                    <af:selectBooleanCheckbox value="#{row.bindings.isActive.inputValue}"
+                                              label="#{row.bindings.isActive.label}"
+                                              shortDesc="#{bindings.OwnerDtle_VO1.hints.isActive.tooltip}"
+                                              id="sbc2" autoSubmit="true"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:showDetailItem>
+        </af:panelTabbed>
+        <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditUnit.pfl1}"
+                            id="pfl1" rendered="false">
+          <af:inputText value="#{bindings.ParentUnitId.inputValue}"
+                        label="#{bindings.ParentUnitId.hints.label}"
+                        required="#{bindings.ParentUnitId.hints.mandatory}"
+                        columns="#{bindings.ParentUnitId.hints.displayWidth}"
+                        maximumLength="#{bindings.ParentUnitId.hints.precision}"
+                        shortDesc="#{bindings.ParentUnitId.hints.tooltip}"
+                        binding="#{backingBeanScope.backing_fragments_addEditUnit.it6}"
+                        id="it6">
+            <f:validator binding="#{bindings.ParentUnitId.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.ParentUnitId.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Uom.inputValue}"
+                        label="#{bindings.Uom.hints.label}"
+                        required="#{bindings.Uom.hints.mandatory}"
+                        columns="#{bindings.Uom.hints.displayWidth}"
+                        maximumLength="#{bindings.Uom.hints.precision}"
+                        shortDesc="#{bindings.Uom.hints.tooltip}"
+                        binding="#{backingBeanScope.backing_fragments_addEditUnit.it12}"
+                        id="it12">
+            <f:validator binding="#{bindings.Uom.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.MilestoneId.inputValue}"
+                        label="#{bindings.MilestoneId.hints.label}"
+                        required="#{bindings.MilestoneId.hints.mandatory}"
+                        columns="#{bindings.MilestoneId.hints.displayWidth}"
+                        maximumLength="#{bindings.MilestoneId.hints.precision}"
+                        shortDesc="#{bindings.MilestoneId.hints.tooltip}"
+                        binding="#{backingBeanScope.backing_fragments_addEditUnit.it21}"
+                        id="it21">
+            <f:validator binding="#{bindings.MilestoneId.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.MilestoneId.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.VendId.inputValue}"
+                        label="#{bindings.VendId.hints.label}"
+                        required="#{bindings.VendId.hints.mandatory}"
+                        columns="#{bindings.VendId.hints.displayWidth}"
+                        maximumLength="#{bindings.VendId.hints.precision}"
+                        shortDesc="#{bindings.VendId.hints.tooltip}"
+                        binding="#{backingBeanScope.backing_fragments_addEditUnit.it22}"
+                        id="it22">
+            <f:validator binding="#{bindings.VendId.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.VendId.format}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_fragments_addEditUnit-->
+</jsp:root>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OfferDuplicateCheck_ROVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.OfferDuplicateCheck_ROVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[SELECT 
+  OfferHeaderVO.OFFER_HDR_ID,
+  OfferHeaderVO.LEAD_ID,
+  OfferHeaderVO.STATUS,
+  Lead.LEAD_NAME,
+  Lead.LEAD_NUMBER,
+  offerdetailVo.UNIT_ID,
+ (select UNIT_NAME from XXPL_PROPERTY_UNITS where UNIT_ID=offerdetailVo.UNIT_ID and rownum=1) as unit_name
+FROM XXPM_OFFER_HEADER OfferHeaderVO,XXPM_OFFER_DETAIL offerdetailVo,
+  xxpm_lead Lead
+WHERE lead.lead_id(+)=OfferHeaderVO.lead_id and OfferHeaderVO.OFFER_HDR_ID=offerdetailVo.OFFER_HDR_ID
+and OfferHeaderVO.OFFER_NUMBER is not null 
+order by OfferHeaderVO.OFFER_HDR_ID desc]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="OfferHdrId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="OFFER_HDR_ID"
+    Expression="OFFER_HDR_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeadId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LEAD_ID"
+    Expression="LEAD_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS"
+    Expression="STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeadName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LEAD_NAME"
+    Expression="LEAD_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeadNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LEAD_NUMBER"
+    Expression="LEAD_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="UNIT_ID"
+    Expression="UNIT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_NAME"
+    Expression="UNIT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

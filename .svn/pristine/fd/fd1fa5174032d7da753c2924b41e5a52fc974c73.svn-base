@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelCollection binding="#{backingBeanScope.backing_CheckListResponse.pc1}"
+                          id="pc1" styleClass="AFStretchWidth">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar binding="#{backingBeanScope.backing_CheckListResponse.t2}"
+                      id="t2" flex="1">
+            <af:commandImageLink
+                                 binding="#{backingBeanScope.backing_CheckListResponse.cil1}"
+                                 id="cil1" icon="/images/func_add_16_ena.png"
+                                 actionListener="#{backingBeanScope.backing_CheckListResponse.OnCLickAddCheckList}"
+                                 disabledIcon="/images/func_add_16_dis.png"
+                                 hoverIcon="/images/func_add_16_hov.png"
+                                 depressedIcon="/images/func_add_16_act.png"/>
+            <af:spacer width="10" height="10"
+                       binding="#{backingBeanScope.backing_CheckListResponse.s1}"
+                       id="s1"/>
+            <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                 disabled="#{!bindings.Delete.enabled}"
+                                 binding="#{backingBeanScope.backing_CheckListResponse.cil2}"
+                                 id="cil2"
+                                 icon="/images/func_pencil_16_ena.png"
+                                 disabledIcon="/images/func_pencil_16_dis.png"
+                                 hoverIcon="/images/func_pencil_16_hov.png"
+                                 depressedIcon="/images/func_pencil_16_act.png"/>
+            <af:spacer width="10" height="10"
+                       binding="#{backingBeanScope.backing_CheckListResponse.s2}"
+                       id="s2"/>
+            <af:commandButton actionListener="#{bindings.Commit.execute}"
+                              binding="#{backingBeanScope.backing_CheckListResponse.cb1}"
+                              id="cb1" text="Save" action="tosave"/>
+            <af:spacer width="10" height="10"
+                       binding="#{backingBeanScope.backing_CheckListResponse.s3}"
+                       id="s3"/>
+            <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                              text="Cancel"
+                              immediate="true"
+                              binding="#{backingBeanScope.backing_CheckListResponse.cb2}"
+                              id="cb2" action="tocancel">
+              <af:resetActionListener/>
+            </af:commandButton>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.ChecklistResponse_VO1.collectionModel}"
+                  var="row" rows="#{bindings.ChecklistResponse_VO1.rangeSize}"
+                  emptyText="#{bindings.ChecklistResponse_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.ChecklistResponse_VO1.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.ChecklistResponse_VO1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.ChecklistResponse_VO1.collectionModel.makeCurrent}"
+                  rowSelection="single"
+                  binding="#{backingBeanScope.backing_CheckListResponse.t1}"
+                  id="t1" varStatus="vs">
+          <af:column sortProperty="#{bindings.ChecklistResponse_VO1.hints.ClResId.name}"
+                     sortable="false"
+                     headerText="#{bindings.ChecklistResponse_VO1.hints.ClResId.label}"
+                     id="c3" rendered="false">
+            <af:inputText value="#{row.bindings.ClResId.inputValue}"
+                          label="#{bindings.ChecklistResponse_VO1.hints.ClResId.label}"
+                          required="#{bindings.ChecklistResponse_VO1.hints.ClResId.mandatory}"
+                          columns="#{bindings.ChecklistResponse_VO1.hints.ClResId.displayWidth}"
+                          maximumLength="#{bindings.ChecklistResponse_VO1.hints.ClResId.precision}"
+                          shortDesc="#{bindings.ChecklistResponse_VO1.hints.ClResId.tooltip}"
+                          id="it5">
+              <f:validator binding="#{row.bindings.ClResId.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ChecklistResponse_VO1.hints.FuncId.name}"
+                     sortable="false"
+                     headerText="#{bindings.ChecklistResponse_VO1.hints.FuncId.label}"
+                     id="c4" rendered="false">
+            <af:inputText value="#{row.bindings.FuncId.inputValue}"
+                          label="#{bindings.ChecklistResponse_VO1.hints.FuncId.label}"
+                          required="#{bindings.ChecklistResponse_VO1.hints.FuncId.mandatory}"
+                          columns="#{bindings.ChecklistResponse_VO1.hints.FuncId.displayWidth}"
+                          maximumLength="#{bindings.ChecklistResponse_VO1.hints.FuncId.precision}"
+                          shortDesc="#{bindings.ChecklistResponse_VO1.hints.FuncId.tooltip}"
+                          id="it2">
+              <f:validator binding="#{row.bindings.FuncId.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ChecklistResponse_VO1.hints.FuncRefId.name}"
+                     sortable="false"
+                     headerText="#{bindings.ChecklistResponse_VO1.hints.FuncRefId.label}"
+                     id="c5" rendered="false">
+            <af:inputText value="#{row.bindings.FuncRefId.inputValue}"
+                          label="#{bindings.ChecklistResponse_VO1.hints.FuncRefId.label}"
+                          required="#{bindings.ChecklistResponse_VO1.hints.FuncRefId.mandatory}"
+                          columns="#{bindings.ChecklistResponse_VO1.hints.FuncRefId.displayWidth}"
+                          maximumLength="#{bindings.ChecklistResponse_VO1.hints.FuncRefId.precision}"
+                          shortDesc="#{bindings.ChecklistResponse_VO1.hints.FuncRefId.tooltip}"
+                          id="it1">
+              <f:validator binding="#{row.bindings.FuncRefId.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column id="c7" headerText="S.No" width="50">
+            <af:outputText value="#{vs.index+1}" id="ot1"/>
+          </af:column>
+          <af:column headerText="Check List"
+                     id="c2" width="180">
+            <af:selectOneChoice value="#{row.bindings.FuncClId.inputValue}"
+                                label="#{row.bindings.FuncClId.label}"
+                                required="#{bindings.ChecklistResponse_VO1.hints.FuncClId.mandatory}"
+                                shortDesc="#{bindings.ChecklistResponse_VO1.hints.FuncClId.tooltip}"
+                                id="soc1" readOnly="true">
+              <f:selectItems value="#{row.bindings.FuncClId.items}" id="si1"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column sortProperty="#{bindings.ChecklistResponse_VO1.hints.ItemResponse1.name}"
+                     sortable="false"
+                     headerText="Description"
+                     id="c1" width="180">
+            <af:inputText value="#{row.bindings.ItemResponse1.inputValue}"
+                          label="#{bindings.ChecklistResponse_VO1.hints.ItemResponse1.label}"
+                          required="#{bindings.ChecklistResponse_VO1.hints.ItemResponse1.mandatory}"
+                          columns="#{bindings.ChecklistResponse_VO1.hints.ItemResponse1.displayWidth}"
+                          maximumLength="#{bindings.ChecklistResponse_VO1.hints.ItemResponse1.precision}"
+                          shortDesc="#{bindings.ChecklistResponse_VO1.hints.ItemResponse1.tooltip}"
+                          id="it3">
+              <f:validator binding="#{row.bindings.ItemResponse1.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column headerText="Status"
+                     id="c6" width="180" align="center">
+            <af:selectBooleanCheckbox value="#{row.bindings.Trns_Active.inputValue}"
+                                      label="#{row.bindings.Trns_Active.label}"
+                                      shortDesc="#{bindings.ChecklistResponse_VO1.hints.Trns_Active.tooltip}"
+                                      id="sbc1"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_CheckListResponse-->
+</jsp:root>

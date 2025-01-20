@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="CancellationExtension_BTF">
+    <template-reference>
+      <document></document>
+    </template-reference>
+    <default-activity id="__1">router1</default-activity>
+    <transaction id="__15">
+      <requires-transaction/>
+    </transaction>
+    <input-parameter-definition id="__64">
+      <name id="__63">inputParameter1</name>
+      <value>#{sessionScope.transno}</value>
+    </input-parameter-definition>
+    <managed-bean id="__24">
+      <managed-bean-name id="__22">cancellation</managed-bean-name>
+      <managed-bean-class id="__25">cancellation</managed-bean-class>
+      <managed-bean-scope id="__23">request</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchCancellationExtension">
+      <page>/fragments/SearchCancellationExtension.jsff</page>
+    </view>
+    <view id="AddEditCancellationExtension">
+      <page>/fragments/AddEditCancellationExtension.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__16">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="Receipt_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Receipt_BTF.xml</document>
+        <id>Receipt_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__30">
+        <name>InstallmentType</name>
+        <value>#{pageFlowScope.InstallmentType}</value>
+      </input-parameter>
+      <input-parameter id="__31">
+        <name>Type</name>
+        <value>#{pageFlowScope.Type}</value>
+      </input-parameter>
+      <input-parameter id="__32">
+        <name>Amount</name>
+        <value>#{pageFlowScope.Amount}</value>
+      </input-parameter>
+      <input-parameter id="__33">
+        <name>Duedate</name>
+        <value>#{pageFlowScope.DueDate}</value>
+      </input-parameter>
+      <input-parameter id="__34">
+        <name>InstallmentAmount</name>
+        <value>#{pageFlowScope.InstallmentAmount}</value>
+      </input-parameter>
+      <input-parameter id="__35">
+        <name>recid</name>
+        <value>#{pageFlowScope.recid}</value>
+      </input-parameter>
+      <input-parameter id="__36">
+        <name>TransId</name>
+        <value>#{pageFlowScope.TransId}</value>
+      </input-parameter>
+      <input-parameter id="__37">
+        <name>BookingId</name>
+        <value>#{pageFlowScope.BookingId}</value>
+      </input-parameter>
+      <input-parameter id="__38">
+        <name>CustBranchName</name>
+        <value>#{pageFlowScope.CustBranchName}</value>
+      </input-parameter>
+      <input-parameter id="__39">
+        <name>CustBankAccNumber</name>
+        <value>#{pageFlowScope.CustBankAccNumber}</value>
+      </input-parameter>
+      <input-parameter id="__40">
+        <name>CustBankName</name>
+        <value>#{pageFlowScope.CustBankName}</value>
+      </input-parameter>
+      <input-parameter id="__41">
+        <name>CustName</name>
+        <value>#{pageFlowScope.CustName}</value>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type id="__26">
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <router id="router1">
+      <case>
+        <expression>#{sessionScope.transno != null}</expression>
+        <outcome id="__56">edit</outcome>
+      </case>
+      <default-outcome>search</default-outcome>
+    </router>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome id="__65">
+        <name>taskFlowReturn1</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__42">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__46">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">SearchCancellationExtension</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">toAdd</from-outcome>
+        <to-activity-id id="__4">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome id="__9">toEdit</from-outcome>
+        <to-activity-id id="__8">AddEditCancellationExtension</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">AddEditCancellationExtension</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome id="__14">goBack</from-outcome>
+        <to-activity-id id="__13">SearchCancellationExtension</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__27">
+        <from-outcome id="__29">toReceipt</from-outcome>
+        <to-activity-id id="__28">Receipt_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__66">
+        <from-outcome id="__68">LA</from-outcome>
+        <to-activity-id id="__67">taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id id="__18">CreateInsert</from-activity-id>
+      <control-flow-case id="__21">
+        <from-outcome id="__19">CreateInsert</from-outcome>
+        <to-activity-id id="__20">AddEditCancellationExtension</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__47">
+      <from-activity-id id="__48">router1</from-activity-id>
+      <control-flow-case id="__51">
+        <from-outcome id="__50">edit</from-outcome>
+        <to-activity-id id="__49">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__54">
+        <from-outcome id="__52">search</from-outcome>
+        <to-activity-id id="__53">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__55">
+      <from-activity-id id="__57">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__58">
+        <from-outcome id="__60">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__59">AddEditCancellationExtension</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__61">
+      <from-activity-id id="__62">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__71">
+        <from-outcome id="__69">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__70">SearchCancellationExtension</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

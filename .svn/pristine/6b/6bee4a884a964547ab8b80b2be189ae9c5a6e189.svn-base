@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="ArEditPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ArSetup_VO1" RangeSize="25"
+              DataControl="ArSetupDataControl" id="ArSetup_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="ArSetupId">
+      <AttrNames>
+        <Item Value="ArSetupId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ArSetup_VO1Iterator" StaticList="false"
+          Uses="LOV_BusinessUnitId" id="BusinessUnitId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="ArSetup_VO1Iterator" StaticList="false"
+          Uses="LOV_ChargeType" id="ChargeType" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="TxnType">
+      <AttrNames>
+        <Item Value="TxnType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="TxnSource">
+      <AttrNames>
+        <Item Value="TxnSource"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="CmTxnType">
+      <AttrNames>
+        <Item Value="CmTxnType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="CmTxnSource">
+      <AttrNames>
+        <Item Value="CmTxnSource"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="TypeId">
+      <AttrNames>
+        <Item Value="TypeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="CmTxnTypeId">
+      <AttrNames>
+        <Item Value="CmTxnTypeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="CmTxnSourceId">
+      <AttrNames>
+        <Item Value="CmTxnSourceId"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="ArSetupDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="ArSetupDataControl"/>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="ConcatenatedSegment">
+      <AttrNames>
+        <Item Value="ConcatenatedSegment"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="CostCenterGlCode">
+      <AttrNames>
+        <Item Value="CostCenterGlCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="InvoicingRule">
+      <AttrNames>
+        <Item Value="InvoicingRule"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="IntercompanyGlCode">
+      <AttrNames>
+        <Item Value="IntercompanyGlCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="AccountingRuleName">
+      <AttrNames>
+        <Item Value="AccountingRuleName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="LedgerName">
+      <AttrNames>
+        <Item Value="LedgerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="CodeCombId">
+      <AttrNames>
+        <Item Value="CodeCombId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="LegalEntityId">
+      <AttrNames>
+        <Item Value="LegalEntityId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="RevAccountId">
+      <AttrNames>
+        <Item Value="RevAccountId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ArSetup_VO1Iterator" StaticList="false"
+          Uses="LOV_Environment" id="Environment" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ArSetup_VO1Iterator" id="AccountClass">
+      <AttrNames>
+        <Item Value="AccountClass"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

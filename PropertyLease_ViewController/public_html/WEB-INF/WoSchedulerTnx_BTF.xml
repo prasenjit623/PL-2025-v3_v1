@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="WoSchedulerTnx_BTF">
+    <default-activity id="__1">SearchWoSchedulerTnx</default-activity>
+    <managed-bean id="__33">
+      <managed-bean-name id="__35">addEditSchedulerWoMb</managed-bean-name>
+      <managed-bean-class id="__34">view.backing.AddEditSchedulerWoTnx</managed-bean-class>
+      <managed-bean-scope id="__36">backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__66">
+      <managed-bean-name id="__65">AddEditResourceMb</managed-bean-name>
+      <managed-bean-class id="__64">view.backing.AddEditResourceBb</managed-bean-class>
+      <managed-bean-scope id="__67">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchWoSchedulerTnx">
+      <page>/fragments/SearchWoSchedulerTnx.jsff</page>
+    </view>
+    <view id="AddEditWoSchedulerTnx">
+      <page>/fragments/AddEditWoSchedulerTnx.jsff</page>
+    </view>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__7">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__24">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert1">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__37">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert2">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__43">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert3">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__28">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__4">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="AddEditWoResource">
+      <page>/fragments/AddEditWoResource.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__58">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">SearchWoSchedulerTnx</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__27">add</from-outcome>
+        <to-activity-id id="__25">CreateInsert2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome id="__18">edit</from-outcome>
+        <to-activity-id id="__5">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id id="__9">AddEditWoSchedulerTnx</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome id="__12">back</from-outcome>
+        <to-activity-id id="__10">Execute</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__51">
+        <from-outcome id="__52">goToRsrc</from-outcome>
+        <to-activity-id id="__50">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id id="__14">Execute</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__15">Execute</from-outcome>
+        <to-activity-id id="__16">SearchWoSchedulerTnx</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__38">
+      <from-activity-id id="__39">CreateInsert1</from-activity-id>
+      <control-flow-case id="__42">
+        <from-outcome id="__41">CreateInsert</from-outcome>
+        <to-activity-id id="__40">AddEditWoSchedulerTnx</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id id="__30">CreateInsert2</from-activity-id>
+      <control-flow-case id="__32">
+        <from-outcome id="__44">CreateInsert</from-outcome>
+        <to-activity-id id="__31">CreateInsert3</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__45">
+      <from-activity-id id="__46">CreateInsert3</from-activity-id>
+      <control-flow-case id="__49">
+        <from-outcome id="__47">CreateInsert</from-outcome>
+        <to-activity-id id="__48">CreateInsert1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id id="__20">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome id="__23">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__21">AddEditWoSchedulerTnx</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__53">
+      <from-activity-id id="__54">AddEditWoResource</from-activity-id>
+      <control-flow-case id="__55">
+        <from-outcome id="__57">bckToWo</from-outcome>
+        <to-activity-id id="__56">AddEditWoSchedulerTnx</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__59">
+      <from-activity-id id="__60">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__61">
+        <from-outcome id="__63">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__62">AddEditWoResource</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,1757 @@
+# 
+model.VL.PropertyMaster_PropertyArea_VL_LABEL=Property Master Property Area Vl
+model.VL.PropertyMaster_PropertyBuildings_VL_LABEL=Property Master Property Buildings Vl
+model.VL.PropertyMaster_PropertyUnits_VL_LABEL=Property Master Property Units Vl
+model.VL.PropertyMaster_PropertyMilestone_VL_LABEL=Property Master Property Milestone Vl
+model.AM.PropertyBuilding_AM_LABEL=Property Building Am
+model.AM.PropertyMaster_AM_LABEL=Property Master Am
+model.ROVO.Organizations_ROVO_LABEL=Organizations Rovo
+model.ROVO.Projects_ROVO_LABEL=Projects Rovo
+model.ROVO.Locations_ROVO_LABEL=Locations Rovo
+model.VL.PropertyBuilding_PropertyUnit_VL_LABEL=Property Building Property Unit Vl
+model.VL.PropertyBuildings_PropertyArea_VL_LABEL=Property Buildings Property Area Vl
+model.ROVO.PropertyforBuildingPage_ROVO_LABEL=Get Propertyfor Building Page
+model.ROVO.Buildings_ROVO_LABEL=Buildings Rovo
+model.ROVO.LookupDetails_ROVO_LABEL=Lookup Details Rovo
+model.AM.PropertyUnits_AM_LABEL=Property Units Am
+model.ROVO.SearchProperty_ROVO_LABEL=Search Property Rovo
+model.ROVO.SearchBuilding_ROVO_LABEL=Search Building Rovo
+model.ROVO.Lookup_View_ROVO_LABEL=Lookup View Rovo
+model.ROVO.SearchBuilding_ROVO.BuildName_LABEL=Building Name
+model.ROVO.SearchBuilding_ROVO.BuildNumber_LABEL=Building Number
+model.ROVO.SearchBuilding_ROVO.BuildType_LABEL=Build Type
+model.ROVO.SearchBuilding_ROVO.PropertyId_LABEL=Property
+model.ROVO.SearchUnits_ROVO_LABEL=Search Units Rovo
+model.VO.PropertyCarparks_VO_LABEL=Property Carparks Vo
+model.VL.Property_Units_CarParks_VL_LABEL=Property Units Car Parks Vl
+model.ROVO.SearchUnits_ROVO.PropertyId_LABEL=Property Name
+model.ROVO.SearchUnits_ROVO.BuildId_LABEL=Building Name
+model.ROVO.SearchUnits_ROVO.UnitId_LABEL=Unit Name
+model.ROVO.SearchUnits_ROVO.UnitNumber_LABEL=Unit Number
+model.ROVO.SearchUnits_ROVO.UnitShortcode_LABEL=Unit Short code
+model.ROVO.SearchUnits_ROVO.UnitType_LABEL=Unit Type
+model.ROVO.SearchUnits_ROVO.UnitName_LABEL=Unit Name
+model.VO.LeadVO.Title_LABEL=Title
+model.VO.LeadVO.FirstName_LABEL=First Name
+model.VO.LeadVO.LastName_LABEL=Last Name
+model.VO.LeadVO.LeadName_LABEL=Lead Name
+model.VO.LeadVO.Status_LABEL=Status
+model.VO.LeadVO.Agent_LABEL=Agent
+model.VO.LeadVO.PrimarySource_LABEL=Primary Source
+model.VO.LeadVO.EmailId_LABEL=Email
+model.VO.LeadVO.MobileNumber_LABEL=Mobile Number
+model.VO.LeadVO.PhoneNumber_LABEL=Phone Number
+
+
+model.VO.LeadVO.Fax_LABEL=Fax
+model.VO.LeadVO.CurAddress1_LABEL=Present Address 1
+
+
+model.VO.LeadVO.CurAddress2_LABEL=Present Address 2
+
+
+model.VO.LeadVO.CurAddress3_LABEL=Present Address 3
+
+model.VO.LeadVO.CurAddress4_LABEL=Present Address 4
+
+model.VO.LeadVO.CurCity_LABEL=Present City
+
+model.VO.LeadVO.CurPostalCode_LABEL=Present Postal Code
+
+model.VO.LeadVO.CurProvince_LABEL=Present Province
+
+model.VO.LeadVO.CurCounty_LABEL=Present County
+
+
+model.VO.LeadVO.CurCountry_LABEL=Present Country
+
+model.VO.LeadVO.PerAddress1_LABEL=Permanent Address 1
+model.VO.LeadVO.PerAddress2_LABEL=Permanent Address 2
+model.VO.LeadVO.PerAddress3_LABEL=Permanent Address 3
+model.VO.LeadVO.PerAddress4_LABEL=Permanent Address 4
+model.VO.LeadVO.PerCity_LABEL=Permanent City
+model.VO.LeadVO.PerPostalCode_LABEL=Permanent Postal Code
+model.VO.LeadVO.PerProvince_LABEL=Permanent Province
+model.VO.LeadVO.PerCounty_LABEL=Permanent County
+model.VO.LeadVO.PerCountry_LABEL=Permanent Country
+model.VO.LeadVO.Description_LABEL=Interaction Notes
+model.VO.LeadVO.Nationality_LABEL=Nationality
+model.VO.LeadVO.PassportNumber_LABEL=Passport No.
+model.VO.LeadVO.PassportExpDate_LABEL=Passport Expiry Date
+model.VO.LeadVO.CountryOfRes_LABEL=Country of Residence
+model.VO.LeadVO.ResidentId_LABEL=Emirate ID
+
+
+
+
+model.VO.LeadVO.ResidentIdExpDate_LABEL=Emirate ID Expiry Date
+
+model.VO.LeadVO.CreatedBy_LABEL=Owner
+model.ROVO.SearchLeadROVO_LABEL=Search Lead Rovo
+model.VO.PropertyMaster_VO.PropertyName_LABEL=Name
+
+model.VO.PropertyMaster_VO.PropertyNameTl_LABEL=\u0627\u0633\u0645 \u0627\u0644\u062E\u0627\u0635\u064A\u0629
+
+model.VO.PropertyMaster_VO.PropertyShortcode_LABEL=Short Code
+model.VO.PropertyMaster_VO.OrgId_LABEL=Business Unit
+model.VO.PropertyMaster_VO.OrgId_LABEL_PLURAL=Project
+model.VO.PropertyMaster_VO.ProjectId_LABEL=Project
+model.VO.PropertyMaster_VO.CostCenterCode_LABEL=Cost Centre
+model.VO.PropertyMaster_VO.LocationId_LABEL=Location
+model.VO.PropertyMaster_VO.Trans_Address1_LABEL=Address 1
+model.VO.PropertyMaster_VO.Trans_Address2_LABEL=Address 2
+model.VO.PropertyMaster_VO.Trans_Address3_LABEL=Address 3
+model.VO.PropertyMaster_VO.Trans_Address4_LABEL=Address 4
+model.VO.PropertyMaster_VO.Trans_City_LABEL=City
+model.VO.PropertyMaster_VO.Trans_Country_LABEL=Country
+model.VO.PropertyMaster_VO.PropertyType_LABEL=Property Type
+
+model.VO.PropertyMaster_VO.NoOfUnits_LABEL=No. of Units
+model.VO.PropertyBuildings_VO.PropertyId_LABEL=Property
+model.VO.PropertyBuildings_VO.BuildType_LABEL=Type
+model.VO.PropertyBuildings_VO.BuildCategory_LABEL=Category
+model.VO.PropertyBuildings_VO.BuildNumber_LABEL=Number
+model.VO.PropertyBuildings_VO.BuildName_LABEL=Name
+model.VO.PropertyBuildings_VO.BuildNameTl_LABEL=\u0627\u0633\u0645 \u0627\u0644\u0645\u0628\u0646\u0649
+model.VO.PropertyBuildings_VO.BuildShortcode_LABEL=Short Code
+model.VO.PropertyBuildings_VO.BuildClass_LABEL=Class
+model.EO.LeadEO.EmailId_Rule_0=Not a Valid Mail Id
+model.VO.LeadVO.OrgId_LABEL=* Business Unit
+
+model.VO.LeadVO.VisittedDate_LABEL=Date
+model.ROVO.SearchLeadROVO.OrgName_LABEL=Business Unit
+model.ROVO.SearchLeadROVO.LeadNumber_LABEL=Lead Number
+model.ROVO.SearchLeadROVO.VisittedDate_LABEL=Date
+model.ROVO.SearchLeadROVO.Titledisp_LABEL=Title
+model.ROVO.SearchLeadROVO.FirstName_LABEL=First Name
+model.ROVO.SearchLeadROVO.LastName_LABEL=Last Name
+model.ROVO.SearchLeadROVO.LeadName_LABEL=Lead Name
+model.ROVO.SearchLeadROVO.Agent_LABEL=Agent
+model.ROVO.SearchLeadROVO.PrimarySourcedisp_LABEL=Primary Source
+model.ROVO.SearchLeadROVO.SecSource_LABEL=Secondary Source
+model.VO.LeadVO.SecSource_LABEL=Secondary Source
+model.ROVO.SearchLeadROVO.EmailId_LABEL=Email
+model.ROVO.SearchLeadROVO.MobileNumber_LABEL=Mobile Number
+model.VL.OfferHrd_Link_OfferDeta_LABEL=Offer Hrd Link Offer Deta
+model.VO.OfferHeaderView.OrgId_LABEL=Business Unit
+model.VO.OfferHeaderView.OfferNumber_LABEL=Offer Number
+model.VO.OfferHeaderView.OfferDate_LABEL=Offer Date
+model.VO.OfferHeaderView.OfferFromDate_LABEL=Offer From Date
+model.VO.OfferHeaderView.OfferToDate_LABEL=Offer To Date
+model.VO.OfferHeaderView.PerformedBy_LABEL=Performed By
+model.VO.OfferHeaderView.RevisionNo_LABEL=Counter offer for
+
+model.VO.OfferHeaderView.MsHdrId_LABEL=Ms Hdr Id
+model.VO.OfferHeaderView.OfferType_LABEL=Offer Type
+model.VO.OfferHeaderView.NetOfferAmount_LABEL=Net Offer Amount
+model.VO.OfferHeaderView.TaxAmount_LABEL=Tax Amount
+model.VO.OfferHeaderView.Status_LABEL=Status
+model.VO.OfferHeaderView.Description_LABEL=Description
+model.VO.OfferHeaderView.FlowStatus_LABEL=Flow Status
+model.VO.OfferHeaderView.FlowLevel_LABEL=Flow Level
+model.VO.OfferHeaderView.FlowWith_LABEL=Flow With
+model.ROVO.SearchOfferLeadNumROVO_LABEL=Search Offer Lead Num Rovo
+model.ROVO.SearchOfferLeadNumROVO.LeadName_LABEL=Lead Name
+model.ROVO.SearchOfferLeadNumROVO.LeadNumber_LABEL=Lead Number
+model.VO.OfferHeaderView.CreatedBy_LABEL=Quote prepared by
+model.ROVO.findPropertyROVO_LABEL=Find Property Rovo
+model.ROVO.findBuildingROVO_LABEL=Find Building Rovo
+model.ROVO.findUnitROVO_LABEL=Find Unit Rovo
+model.ROVO.findUnitROVO.Buildname_LABEL=Building Name
+model.ROVO.findUnitROVO.UnitName_LABEL=Unit Name
+model.ROVO.findUnitROVO.Propertyname_LABEL=Property Name
+model.VO.OfferDetail_VO.UnitType_LABEL=Model
+
+model.VO.OfferDetail_VO.Tra_UnitName_LABEL=Unit Name
+model.VO.OfferDetail_VO.AreaSq_LABEL=Area in Sq.ft
+
+
+model.VO.OfferHeaderView.Tran_CustomerName_LABEL=Customer Name
+model.VO.OfferHrd_VO_LABEL=Offer Hrd Vo
+model.VO.OfferHrd_VO.CreatedBy_LABEL=Offer Prepared by
+
+model.VO.OfferHrd_VO.Description_LABEL=Description
+model.VO.OfferHrd_VO.FlowLevel_LABEL=Flow Level
+model.VO.OfferHrd_VO.FlowStatus_LABEL=Flow Status
+model.VO.OfferHrd_VO.FlowWith_LABEL=Flow With
+model.VO.OfferHrd_VO.NetOfferAmount_LABEL=Net Offer Amount
+model.VO.OfferHrd_VO.OfferDate_LABEL=Offer Date
+model.VO.OfferHrd_VO.OfferFromDate_LABEL=Expected Lease Start Date
+
+model.VO.OfferHrd_VO.OfferNumber_LABEL=Offer Number
+model.VO.OfferHrd_VO.OfferToDate_LABEL=Expected Lease End Date
+
+model.VO.OfferHrd_VO.OfferType_LABEL=Offer Type
+model.VO.OfferHrd_VO.Trans_LeadNumber_LABEL=Lead Number
+model.AM.Milestones_AM_LABEL=Milestones Am
+model.VO.MilestonesHdr_VO.MilestoneName_LABEL=Name
+
+
+model.VO.MilestonesHdr_VO.MilestoneNameTl_LABEL=Payment Plan Name TL
+
+model.VO.MilestonesHdr_VO.MilestoneNumber_LABEL=Number
+
+
+model.VO.MilestonesHdr_VO.MilestoneShortcode_LABEL=Short Code
+model.VO.MilestonesHdr_VO.OrgId_LABEL=Buisiness Unit
+model.VO.MilestonesHdr_VO.ProjectId_LABEL=Porperty
+model.VO.MilestonesHdr_VO.MilestoneDate_LABEL=Date
+model.VO.MilestonesDtl_VO.InstallmentType_LABEL=Installment Type
+model.VO.MilestonesDtl_VO.InstallmentPct_LABEL=Installment Percentage
+model.VO.MilestonesDtl_VO.ChargeType_LABEL=Charge Type
+model.VO.MilestonesDtl_VO.PaymentTerm_LABEL=Payment Term
+model.ROVO.SearchMilestones_ROVO_LABEL=Search Milestones Rovo
+model.ROVO.SearchProperty_ROVO.OrgId_LABEL=Buisiness Unit
+model.ROVO.SearchProperty_ROVO.ProjectId_LABEL=Property
+
+model.ROVO.searchOffersInfoROVO_LABEL=Search Offers Info Rovo
+model.ROVO.searchOfferDetailROVO_LABEL=Search Offer Detail Rovo
+model.ROVO.findByPropertyName_LABEL=Find By Property Name
+model.ROVO.findByBuildName_LABEL=Find By Build Name
+model.ROVO.findByUnitName_LABEL=Find By Unit Name
+model.VO.OfferDetail_VO.PropertyId_LABEL=Property Name
+
+
+model.VO.OfferDetail_VO.BuildingId_LABEL=Building Name
+model.ROVO.searchOffersInfoROVO.CreatedBy_LABEL=Entered By
+model.ROVO.searchOffersInfoROVO.Mobilenumber_LABEL=Contact Number
+model.ROVO.searchOffersInfoROVO.Leadname_LABEL=Customer Name
+model.ROVO.searchOffersInfoROVO.Leadnumber_LABEL=Lead No
+model.ROVO.searchOffersInfoROVO.OfferNumber_LABEL=Offer No
+model.ROVO.searchOffersInfoROVO.Businessunit_LABEL=Business Unit
+model.ROVO.searchOfferDetailROVO.PropertyId_LABEL=Property Name
+model.ROVO.searchOfferDetailROVO.BuildingId_LABEL=Building Name
+model.ROVO.searchOfferDetailROVO.UnitId_LABEL=Unit Name
+model.ROVO.SearchMilestones_ROVO.OrgId_LABEL=Buisiness Unit
+model.ROVO.SearchMilestones_ROVO.ProjectId_LABEL=Property
+model.VL.OfferHrd_Link_OffMSDet_LABEL=Offer Hrd Link Off Ms Det
+model.ROVO.findByMileStoneName_LABEL=Find By Mile Stone Name
+model.ROVO.findMS_DetailsROVO_LABEL=Find Ms Details Rovo
+model.VO.OfferHrd_VO.MsHdrId_LABEL=Payment Plan
+model.ROVO.findByPaymentTermROVO_LABEL=Find By Payment Term Rovo
+model.VO.PropertyUnits_VO.UnitNumber_LABEL=Number
+model.VO.PropertyUnits_VO.UnitName_LABEL=Name
+model.VO.PropertyUnits_VO.UnitNameTl_LABEL=\u0625\u0633\u0645 \u0627\u0644\u0648\u062D\u062F\u0629
+model.VO.PropertyUnits_VO.UnitShortcode_LABEL=Short Code
+model.VO.PropertyUnits_VO.PropertyId_LABEL=Property
+model.VO.PropertyUnits_VO.BuildId_LABEL=Building
+model.VO.PropertyUnits_VO.DocRefNumber1_LABEL=DM Number
+model.VO.PropertyUnits_VO.DocRefNumber2_LABEL=DLD Number
+model.VO.PropertyUnits_VO.FloorNumber_LABEL=Level / Floor
+model.VO.PropertyUnits_VO.NoOfRooms_LABEL=No.Of Bed Space
+model.VO.PropertyUnits_VO.ChargeableArea_LABEL=Chargeable Area
+
+model.VO.PropertyUnits_VO.BaseRate_LABEL=Base Rate
+model.VO.PropertyUnits_VO.PremiumRate1_LABEL=Premium 1
+model.VO.PropertyUnits_VO.PremiumRate2_LABEL=Premium 2
+model.VO.PropertyUnits_VO.PremiumRate3_LABEL=Premium 3
+model.VO.PropertyUnits_VO.PremiumRate4_LABEL=Premium 4
+model.VO.PropertyUnits_VO.PremiumRate5_LABEL=Premium 5
+model.VO.PropertyUnits_VO.TotalRate_LABEL=Total Rate
+model.VO.PropertyUnits_VO.PurchaseAmount_LABEL=Purchase Amount
+model.VO.PropertyCarparks_VO.CpUnitId_LABEL=Car Parking Name
+model.VO.PropertyCarparks_VO.CpUnitNumber_LABEL=Car Parking Number
+model.VO.PropertyCarparks_VO.CpStatus_LABEL=Status
+model.VO.PropertyCarparks_VO.CpType_LABEL=Type
+model.AM.Discount_AM_LABEL=Discount Am
+model.VO.PlHeader_VO.PlName_LABEL=Name
+model.VO.PlHeader_VO.Description_LABEL=Description
+model.VO.PlHeader_VO.CurrCode_LABEL=Currency
+model.VO.PlHeader_VO.StartDate_LABEL=Start Date
+model.VO.PlHeader_VO.EndDate_LABEL=End Date
+model.VO.PlHeader_VO.RevisionNo_LABEL=Revision No
+model.VO.PlHeader_VO.RevisionDate_LABEL=Revision Date
+model.VO.PlHeader_VO.RevisedBy_LABEL=Revised By
+model.VO.PlHeader_VO.BasePriceYn_LABEL=Base Price List?
+model.VO.PlHeader_VO.ActiveYn_LABEL=Active?
+model.VO.PlHeader_VO.CreatedBy_LABEL=Revised By
+model.VO.PlLinesVO.PropertyId_LABEL=Property Name
+model.VO.PlLinesVO.BuildId_LABEL=Building Name
+model.VO.PlLinesVO.Trans_UnitName_LABEL=Unit Name
+model.VO.PlLinesVO.Uom_LABEL=UOM
+model.VO.PlLinesVO.BasePrice_LABEL=Base Rate
+
+model.VO.PlLinesVO.MinPrice_LABEL=Minimum Rate
+model.VO.PlLinesVO.StartDate_LABEL=Start Date
+model.VO.PlLinesVO.EndDate_LABEL=End Date
+model.VO.PlLinesVO.Premium1_LABEL=Premium 1
+model.VO.PlLinesVO.Premium2_LABEL=Premium 2
+model.VO.PlLinesVO.Premium3_LABEL=Premium 3
+model.VO.PlLinesVO.Premium4_LABEL=Premium 4
+model.VO.PlLinesVO.Premium5_LABEL=Premium 5
+model.VO.PlLinesVO.RevisionNo_LABEL=Revision No
+model.VO.PlLinesVO.RevisionDate_LABEL=Revision Date
+model.VO.PlLinesVO.RevisedBy_LABEL=Revised By
+model.VO.PlLinesVO.CreatedBy_LABEL=Revised By
+model.VO.PlPremiums_VO.PremiumName_LABEL=Premium Type
+model.VO.PlPremiums_VO.RateType_LABEL=Rate Type
+model.VO.PlPremiums_VO.RateValue_LABEL=Rate Value
+model.VO.PlPremiums_VO.StartDate_LABEL=Start Date
+model.VO.PlPremiums_VO.EndDate_LABEL=End Date
+model.VO.PlPremiums_VO.ActiveYn_LABEL=Active
+model.ROVO.DistinctOfferDetailROVO_LABEL=Distinct Offer Detail Rovo
+
+model.ROVO.SearchPriceListROVO_LABEL=Search Price List Rovo
+model.ROVO.SearchPriceListROVO.OrgId_LABEL=Buisiness Unit
+model.ROVO.SearchPriceListROVO.PlName_LABEL=PriceList Name
+model.ROVO.SearchPriceListROVO.BuildId_LABEL=Building
+model.ROVO.SearchPriceListROVO.UnitId_LABEL=Unit
+model.ROVO.SearchPriceListROVO.PropertyId_LABEL=Property
+model.VO.PlHeader_VO.OrgId_LABEL=Buisiness Unit
+model.VO.PlDiscounts_VO.DiscountName_LABEL=Discount Name
+model.VO.PlDiscounts_VO.DiscountLevel_LABEL=Discount Level
+model.VO.PlDiscounts_VO.DiscountType_LABEL=Discount Type
+model.VO.PlDiscounts_VO.DiscountValue_LABEL=Discount Value
+model.VO.PlDiscounts_VO.StartDate_LABEL=Start Date
+model.VO.PlDiscounts_VO.EndDate_LABEL=End Date
+model.VO.PlDiscounts_VO.ActiveYn_LABEL=Active
+model.VO.OfferHrd_VO.Terms_LABEL=Terms and Conditions
+model.VO.OfferHrd_VO.OfferTotal_LABEL=Approved Net Rent (Including Tax)
+
+
+
+model.VO.OfferHrd_VO.Checklist_LABEL=Check List
+model.VO.OfferHrd_VO.CustomerName_LABEL=Customer Name
+model.VO.OfferHrd_VO.CustomerPhoneNo_LABEL=Phone No
+model.VO.OfferHrd_VO.CustomerCountry_LABEL=Country
+model.VO.OfferHrd_VO.PlId_LABEL=Price List
+model.ROVO.DateRestrictionsROVO_LABEL=Date Restrictions Rovo
+model.VO.OfferHrd_VO.OrgId_LABEL=Buisiness Unit
+model.VO.OfferMilestoneDetail_VO.SeqNumber_LABEL=Seq No
+model.VO.OfferMilestoneDetail_VO.InstallmentType_LABEL=Installment Type
+model.VO.OfferMilestoneDetail_VO.InstallmentPct_LABEL=Percentage
+model.VO.OfferMilestoneDetail_VO.InstallmentAmount_LABEL=Amount
+model.VO.OfferMilestoneDetail_VO.ChargeType_LABEL=Charge Type
+model.VO.OfferMilestoneDetail_VO.PaymentTerm_LABEL=Payment Term
+model.ROVO.SearchMilestones_ROVO.MilestoneName_LABEL=Payment Plan Name
+
+model.ROVO.SearchMilestones_ROVO.MilestoneNumber_LABEL=Payment Plan Number
+
+model.ROVO.PaymentTerm_ROVO_LABEL=Payment Term Rovo
+model.VO.OfferDetail_VO.TaxAmount_LABEL=Tax Amount
+
+
+model.VO.OfferDetail_VO.BaseRate_LABEL=Rental Amount
+
+
+
+model.VO.OfferDetail_VO.OfferAmount_LABEL=Offer Amount
+model.VO.OfferDetail_VO.TotalRate_LABEL=Overall Approved Net Rent
+
+model.VO.OfferDetail_VO.DiscountAmount_LABEL=Discount Amount
+model.ROVO.searchOffersInfoROVO.OfferDate_LABEL=Offer Date
+model.ROVO.searchOffersInfoROVO.OfferFromDate_LABEL=Offer From Date
+model.ROVO.searchOffersInfoROVO.OfferToDate_LABEL=Offer To Date
+model.ROVO.searchOffersInfoROVO.NetOfferAmount_LABEL=Net Offer Amount
+model.AM.Booking_AM_LABEL=Booking Ammodel.VO.OfferHrd_VO.Trans_EmailId_LABEL=Email
+model.VL.BookingHeader_Customer_LABEL=Booking Header Customer
+model.VL.BookingHeader_Charges_LABEL=Booking Header Charges
+model.VL.BookingHeader_Detail_VL_LABEL=Booking Header Detail Vl
+model.VL.BookingHeader_Receipt_VL_LABEL=Booking Header Receipt Vl
+model.VO.BookingHeader_VO.CustReqMoveinDate_LABEL=Customer Requested Move-In date
+
+
+
+model.VO.BookingDetail_VO.PropertyId_LABEL=Property
+model.VO.BookingDetail_VO.BuildingId_LABEL=Building
+model.VO.BookingDetail_VO.UnitId_LABEL=Unit
+model.VO.BookingDetail_VO.DiscountRate_LABEL=Discount
+model.VO.BookingDetail_VO.TaxAmount_LABEL=Tax
+model.VO.BookingDetail_VO.TotalRate_LABEL=Overall Approved Net Rent
+
+
+model.VO.BookingCustomer_VO.TrnNumber_LABEL=TRN\#
+model.VO.BookingCustomer_VO.CustCategory_LABEL=Bacheloror or Family
+model.VO.BookingCustomer_VO.CustAccName_LABEL=Customer Account Name
+model.VO.BookingCustomer_VO.ShipToAddr_LABEL=Ship to address
+
+model.VO.BookingCustomer_VO.BillToAddr_LABEL=Bill to address
+
+model.VO.BookingCustomer_VO.VisaType_LABEL=Visa Type
+model.VO.BookingCustomer_VO.CustBankName_LABEL=Customer Bank Name
+model.VO.BookingCustomer_VO.CustBranchName_LABEL=Customer Branch Name
+model.VO.BookingCustomer_VO.CustBankAccNumber_LABEL=Customer Bank Account
+model.VO.BookingDetail_VO.BaseRate_LABEL=Rental Amount
+
+model.VO.BookingHeader_VO.PaymentPlan_Trans_LABEL=Payment Plan
+model.VO.BookingHeader_VO.Lease_End_Date_trans_LABEL=Expected Lease End Date
+
+model.VO.BookingHeader_VO.Lease_Start_Date_Trans_LABEL=Expected Lease Start Date
+
+model.VO.BookingHeader_VO.Customer_Mob_No_Trans_LABEL=Customer mobile No
+model.VO.BookingHeader_VO.Customer_Name_Trans_LABEL=Customer Name
+model.VO.BookingHeader_VO.OfferHdrId_LABEL=Offer No
+model.VO.BookingHeader_VO.TotalRent_LABEL=Total Rent
+model.VO.BookingHeader_VO.BookingAmount_LABEL=Booking Amount
+model.VO.BookingHeader_VO.BookingPayMethod_LABEL=Booking Payment Method
+model.VO.BookingHeader_VO.BookingDueDate_LABEL=Booking Due Date
+model.VO.BookingHeader_VO.PerformedBy_LABEL=Booked By
+model.VO.BookingHeader_VO.BookingNumber_LABEL=Booking No
+model.VO.BookingHeader_VO.BookingDate_LABEL=Booking Date
+model.VO.BookingCustomer_VO.CustName_LABEL=Legal Name of Customer
+model.VO.BookingCharges_VO.ChargeDesc_LABEL=Charge Description
+model.VO.BookingCharges_VO.ChargeType_LABEL=Charge Type
+model.VO.BookingCharges_VO.PaymentTerm_LABEL=Payment Term
+model.VO.BookingCharges_VO.DueDate_LABEL=Due Date
+model.VO.BookingCharges_VO.Remarks_LABEL=Description
+
+SearchProperty_displayName=Save Property Search
+SearchBuilding_displayName=Save Building Search
+SearchUnits_displayName=Save Unit Search
+SearchMilestones_ROVOCriteria_displayName=Save Milestone Search
+SearchPriceListROVOCriteria_displayName=Save Pricelist Search
+SearchLead_displayName=Save Lead Search
+model.VO.BookingHeader_VO.Currency1_LABEL=Currency
+model.VO.BookingHeader_VO.TotalRent1_LABEL=Total Rent
+model.VO.BookingHeader_VO.BookingNumber1_LABEL=Booking No
+model.VO.BookingDetail_VO.UnitAvlStatus_LABEL=Unit Availability Status
+model.VO.BookingDetail_VO.UnitAvlFrom_LABEL=Unit Availability From
+model.ROVO.CustomerTypeStaticROVO_LABEL=Customer Type Static Rovo
+model.ROVO.CustomerTypeStaticROVO.SL_0_0=BCHLR
+model.ROVO.CustomerTypeStaticROVO.SL_0_1=Bachelor
+model.ROVO.CustomerTypeStaticROVO.SL_1_0=FMLY
+model.ROVO.CustomerTypeStaticROVO.SL_1_1=Family
+model.ROVO.LeadFromOffersROVo_LABEL=Lead From Offers Ro Vo
+model.ROVO.SearchBookingROVO_LABEL=Search Booking Rovo
+model.VO.Receipt_VO.DrawnBy_LABEL=Onbehalf Of
+
+model.VO.Receipt_VO.PayRefNumber_LABEL=Cheque / Card / EFT Number
+model.VO.Receipt_VO.PayRefDate_LABEL=Cheque /  EFT Date
+model.VO.Receipt_VO.BankName_LABEL=Bank Name
+model.VO.Receipt_VO.BankBranchName_LABEL=Branch Name
+model.VO.Receipt_VO.ReceiptNumber_LABEL=Receipt Number
+model.VO.Receipt_VO.ReceiptDate_LABEL=Receipt Date
+model.VO.Receipt_VO.PropertyId_LABEL=Property
+model.VO.Receipt_VO.UnitId_LABEL=Unit
+model.VO.Receipt_VO.BuildId_LABEL=Building
+model.VO.Receipt_VO.LeadId_LABEL=Lead
+model.VO.Receipt_VO.CustId_LABEL=Customer
+model.VO.Receipt_VO.CustomerName_LABEL=Customer Name
+model.VO.Receipt_VO.ReceiptAmount_LABEL=Amount
+model.VO.Receipt_VO.PayMode_LABEL=Payment Mode
+model.VO.Receipt_VO.CurrencyCode_LABEL=Currency
+Search_displayName=Save Search Booking
+model.ROVO.SearchBookingROVO.OfferHdrId_LABEL=Offer No
+model.ROVO.SearchBookingROVO.BookingNumber_LABEL=Booking No
+model.VO.Receipt_VO.ReceivedAmount_LABEL=Received Amount
+
+
+model.VO.Receipt_VO.RecommendedAmount_LABEL=Recommended Amount
+
+
+model.VO.Receipt_VO.DiffInDays_LABEL=Difference In Days
+model.AM.Receipt_LABEL=Receipt
+model.VL.Booking_Milestone_VL_LABEL=Booking Milestone Vl
+model.VO.Booking_Milestone_VO.InstallmentType_LABEL=Installment Type
+model.VO.Booking_Milestone_VO.InstallmentPct_LABEL=Percentage
+model.VO.Booking_Milestone_VO.InstallmentAmount_LABEL=Amount
+model.VO.Booking_Milestone_VO.ChargeType_LABEL=Charge Type
+model.VO.Booking_Milestone_VO.PaymentTerm_LABEL=Payment Term
+model.VO.Booking_Milestone_VO.DueDate_LABEL=Due Date
+model.AM.Recommendation_AM_LABEL=Recommendation Am
+model.VO.RecommendHeader_VO_LABEL=Recommend Header Vo
+model.VO.RecommendDetail_VO_LABEL=Recommend Detail Vo
+model.VO.RecommendOtherCharges_VO_LABEL=Recommend Other Charges Vo
+model.VL.RecommendHeader_Detail_VL_LABEL=Recommend Header Detail Vl
+model.VL.RecommendHeader_OtherCharges_VL_LABEL=Recommend Header Other Charges Vl
+model.ROVO.BookingHdrRecomm_ROVO_LABEL=Booking Hdr Recomm Rovo
+RecommSearch_VC_displayName=Save Search Recommentation
+model.VO.RecommendHeader_VO.BookingId_LABEL=Booking No
+model.VO.RecommendHeader_VO.MilestoneName_Trans_LABEL=Payment Plan
+
+model.VO.RecommendHeader_VO.LeaseStartDate_Trans_LABEL=Lease Start Date
+model.VO.RecommendHeader_VO.LeaseEndDate_Trans_LABEL=Lease End Date
+model.VO.RecommendHeader_VO.Currency_Trans_LABEL=Currency
+model.VO.RecommendHeader_VO.RecommendNumber_LABEL=Payments & Documents No
+
+model.VO.RecommendHeader_VO.Status_LABEL=Status
+
+model.VO.RecommendOtherCharges_VO.AmountReceived_LABEL=Amount Received
+model.VO.RecommendOtherCharges_VO.BankName_LABEL=Bank Name
+model.VO.RecommendOtherCharges_VO.ChargeType_LABEL=Charge Type
+model.VO.RecommendOtherCharges_VO.ChequeDate_LABEL=Cheque Date
+model.VO.RecommendOtherCharges_VO.ChequeNo_LABEL=Cheque No
+model.VO.RecommendOtherCharges_VO.DueDate_LABEL=Payment Due Date
+model.VO.RecommendOtherCharges_VO.InstallmentAmount_LABEL=Charge Amount
+model.VO.RecommendOtherCharges_VO.PayeeName_LABEL=Payee Name
+model.VO.RecommendOtherCharges_VO.ReceiptId_LABEL=Receipt
+model.VO.RecommendOtherCharges_VO.SeqNumber_LABEL=Seq Number
+
+model.VO.RecommendDetail_VO.InstallmentType_LABEL=Installment Type
+model.VO.RecommendDetail_VO.InstallmentAmount_LABEL=Invoice Amount
+model.VO.RecommendDetail_VO.BankName_LABEL=Bank Name
+model.VO.RecommendDetail_VO.DueDate_LABEL=Cheque Due Date
+model.VO.RecommendDetail_VO.PayeeName_LABEL=Payee Name
+model.VO.RecommendDetail_VO.PaymentTerm_LABEL=Payment Method
+model.VO.RecommendDetail_VO.SeqNumber_LABEL=Seq Number
+model.VO.RecommendDetail_VO.AmountReceived_LABEL=Amount Received
+model.VO.RecommendDetail_VO.ReceiptId_LABEL=Receipt
+model.VO.RecommendDetail_VO.ReceivedDate_LABEL=Cheque /Cash Received Date
+model.VO.RecommendOtherCharges_VO.ReceivedDate_LABEL=Cheque /Cash Received Date
+model.VO.RecommendOtherCharges_VO.InstallmentPct_LABEL=Other Charges
+model.VO.RecommendHeader_VO.BookingAmount_trans_LABEL=Booking Amount
+model.VO.RecommendHeader_VO.InvoiceAmount_Trans_LABEL=Invoice Amount
+model.VO.RecommendHeader_VO.Payment_amount_Trans_LABEL=Payment Amount
+model.VO.Booking_Milestone_VO.SeqNumber_LABEL=Sequence No
+
+model.VO.MilestonesDtl_VO.NoOfDays_LABEL=No of Days
+model.VL.Booking_Recommendation_VL_LABEL=Booking Recommendation Vl
+model.VO.LeaseAgreement_VO_LABEL=Lease Agreement Vo
+model.VO.KeyDetails_VO_LABEL=Key Details Vo
+model.VO.MeterReading_VO_LABEL=Meter Reading Vo
+model.VO.MoveInOut_VO_LABEL=Move In Out Vo
+model.VO.ApplianceDetails_VO_LABEL=Appliance Details Vo
+model.AM.LeaseAgreement_AM_LABEL=Lease Agreement Am
+model.VL.MoveInOut_Appliance_VL_LABEL=Move In Out Appliance Vl
+model.VL.MoveInOut_Meter_VL_LABEL=Move In Out Meter Vl
+model.VL.MoveInOut_Key_VL_LABEL=Move In Out Key Vl
+model.AM.MoveInOut_AM_LABEL=Move In Out Am
+model.ROVO.PricediscountROVO_LABEL=Pricediscount Rovo
+model.VO.ReceiptDtlVO_LABEL=Receipt Dtl Vo
+model.VL.ReceiptHdr_Dtl_VL_LABEL=Receipt Hdr Dtl Vl
+model.ROVO.BookingDtlROVO_LABEL=Booking Dtl Rovo
+model.EO.Receipt_EO.PayRecDate_LABEL=Cheque Recommendation Date
+model.EO.Receipt_EO.PayRevDate_LABEL=Cheque Received Date
+model.VO.Receipt_VO.RctType_LABEL=Receipt Charge Type
+
+model.VO.Receipt_VO.RctDesc_LABEL=Receipt Description
+model.VO.ReceiptDtlVO.ReceivableApplicationId_LABEL=Receivable Application
+model.VO.ReceiptDtlVO.CustomerTrxId_LABEL=Customer Transaction
+model.VO.ReceiptDtlVO.BookingMsDtlId_LABEL=Installment Type
+
+model.VO.ReceiptDtlVO.AmountApplied_LABEL=Amount Applied
+model.VO.ReceiptDtlVO.AppliedDate_LABEL=Applied Date
+model.AM.Attachments_AM_LABEL=Attachments Am
+model.ROVO.SearchLeaseAgreement_ROVO_LABEL=Search Lease Agreement Rovo
+model.ROVO.LeaseAgree_ROVO_LABEL=Lease Agree Rovo
+model.VL.BookingMilestone_LeaseAgreement_VL_LABEL=Booking Milestone Lease Agreement Vl
+model.VO.MoveInOut_VO.BookingId_LABEL=Booking No
+model.VO.MoveInOut_VO.LeaseAgreementId_LABEL=Lease No
+model.VO.MoveInOut_VO.MoveInOutDate_LABEL=Move In Out Date
+model.VO.MoveInOut_VO.MoveInOutNumber_LABEL=Move In Out Number
+model.VO.MoveInOut_VO.Attribute8_LABEL=Resource Name
+model.VO.ApplianceDetails_VO.ItemCode_LABEL=Item
+model.VO.KeyDetails_VO.KeyCode_LABEL=Key
+model.VO.MeterReading_VO.MeterCode_LABEL=Meter Type
+model.VO.MeterReading_VO.MeterValue_LABEL=Meter Value
+model.VO.MoveInOut_VO.ResourceName_LABEL=Watchman
+
+
+model.ROVO.getFunctionCodeROVO_LABEL=Get Function Code Rovo
+model.VO.LeaseAgreement_VO.BookingId_LABEL=Booking No
+model.ROVO.DiscountsROVO_LABEL=Discounts Rovo
+model.VL.LeaseAgreement_BookingDetail_VL_LABEL=Lease Agreement Booking Detail Vl
+model.ROVO.SearchLeaseAgreement_ROVO.RecommendId_LABEL=Recommend No
+model.ROVO.SearchLeaseAgreement_ROVO.TenancyConDocNo_LABEL=Tenancy Con Doc No
+model.ROVO.SearchLeaseAgreement_ROVO.LeaseNumber_LABEL=Lease Number
+
+
+
+
+
+
+
+
+
+model.ROVO.SearchLeaseAgreement_ROVO.BookingId_LABEL=Booking No
+model.ROVO.GetOfferId_ROVO_LABEL=Get Offer Id Rovo
+model.VO.OfferHrd_VO.LeaseAgreementId_LABEL=Lease Number
+model.VO.OfferHrd_VO.OfferFromDate_FMT_FORMAT=dd/MM/yyyy
+model.VO.OfferHrd_VO.OfferToDate_FMT_FORMAT=dd/MM/yyyy
+model.AM.CheckListResponse_AM_LABEL=Check List Response Am
+model.ROVO.CheckListResponse_ROVO_LABEL=Check List Response Rovo
+model.VO.OfferDetail_VO.Uom_LABEL=UOM
+model.ROVO.getLeaseDetailsForRecomROVO_LABEL=Get Lease Details For Recom Rovo
+model.VO.LeaseAgreement_VO.RecommendId_LABEL=Payments & Docements No
+
+
+model.VL.LeaseMoveInMoveOutVL_LABEL=Lease Move In Move Out Vl
+model.ROVO.MoveInMoveOutLeaseDetailsROVO_LABEL=Move In Move Out Lease Details Rovo
+model.VO.LeaseAgreement_VO.TenancyConDocNo_LABEL=Tenancy Document No
+
+
+model.VO.LeaseAgreement_VO.LeaseNumber_LABEL=Contract No
+
+model.AM.UserAM_LABEL=User Am
+model.ROVO.getMenuAccessforMenuROVO_LABEL=Get Menu Accessfor Menu Rovo
+model.ROVO.getUserDetailsROVO_LABEL=Get User Details Rovo
+model.ROVO.getUserGroupIdROVo_LABEL=Get User Group Id Ro Vo
+model.ROVO.SearchProperty_ROVO.PropertyId_LABEL=Property Id
+model.ROVO.SearchProperty_ROVO.PropertyName_LABEL=Property Name
+model.ROVO.SearchProperty_ROVO.PropertyShortcode_LABEL=Property Short Code
+
+model.ROVO.SearchProperty_ROVO.PropertyType_LABEL=Property Type
+
+
+model.VO.PropertyUnits_VO.UnitType_LABEL=Unit Type
+
+
+model.VO.PropertyMaster_VO.PropertyNumber_LABEL=Property Number
+model.VO.PropertyUnits_VO.AreaType_LABEL=Area Type
+model.VO.PropertyUnits_VO.ViewType_LABEL=View Type
+model.VO.PropertyUnits_VO.PremiumRateType4_LABEL=Unit Class
+model.VO.PropertyUnits_VO.PremiumRateType5_LABEL=Unit Category
+model.VO.PropertyUnits_VO.UnitCategory_LABEL=Unit Category
+model.VO.PropertyUnits_VO.UnitClass_LABEL=Unit Class
+model.ROVO.SearchLeadROVO.PhoneNumber_LABEL=Phone Number
+model.VO.LeadVO.LeadNumber_LABEL=Lead Number
+model.VO.OfferHrd_VO.Attribute9_LABEL=Offer Flag
+model.VO.OfferMilestoneDetail_VO.DueDate_LABEL=Due Date
+model.VO.OfferHrd_VO.OfferFlag_LABEL=Offer Flag
+model.ROVO.getDataCombinationROVO_LABEL=Get Data Combination Rovo
+model.EO.PropertyArea_EO_Rule_0=Area Type Already Exists
+model.VO.PropertyArea_VO.Uom_LABEL=UOM
+model.VO.PropertyUnits_VO.Uom_LABEL=UOM
+model.ROVO.SearchProperty_ROVO.LocationId_LABEL=Location
+model.VO.FuncAttachment_VO.FileName_LABEL=File Name
+model.VO.FuncAttachment_VO.FileType_LABEL=File Type
+model.ROVO.PropertyPieChart_ROVO_LABEL=Property Pie Chart Rovo
+model.EO.PropertyUnits_EO_Rule_0=Short Code Already Exists..\!
+model.VO.Booking_Milestone_VO.InstallmentType1_LABEL=Other Charge Type
+model.ROVO.SearchBookingROVO.CustReqMoveinDate_LABEL=Customer Move in Date
+model.ROVO.SearchBookingROVO.AppointmentDate_LABEL=Appointment Date
+model.ROVO.SearchBookingROVO.PerformedBy_LABEL=Booked By
+model.ROVO.SearchBookingROVO.BookingDate_LABEL=Booking Date
+model.VO.MoveInOut_VO.BookingDate_LABEL=Booking Date
+model.VO.MoveInOut_VO.BookingDateTrans_LABEL=Booking Date
+
+model.EO.OfferHeader.OrgId_Rule_0=Lead and Organization is Required...\!
+model.EO.OfferHeader.MsHdrId_Rule_0=Milestone Plan is Required
+model.EO.OfferHeader.PlId_Rule_0=PriceList is Required...
+model.VO.BookingCustomer_VO.CustIdAr_LABEL=Customer AR
+model.VO.BookingCustomer_VO.Trans_CustomerNo_LABEL=Customer No
+model.VO.Receipt_VO.Trans_ReceiptAmountSum_LABEL=Receipt Amount
+model.ROVO.SearchBookingROVO.LeadId_LABEL=Lead Name
+
+model.ROVO.SearchBookingROVO.LeadId1_LABEL=Lead Number
+model.VO.RecommendHeader_VO.RecommendNumber1_LABEL=Recommend No
+model.VO.RevisionVO_LABEL=Revision Vo
+model.VO.RevisionVO.PriceListTrans_LABEL=Price List
+model.ROVO.SearchBookingROVO.CustId_LABEL=Customer
+model.VO.LeadVO.permenentCountryTrans_LABEL=Permenent Country
+model.VO.LeadVO.NationalityTrans_LABEL=Nationality
+model.VO.LeadVO.ResidenceTrans_LABEL=Country of Residence
+
+model.VO.RecommendHeader_VO.CustName_LABEL=Customer Name
+model.ROVO.getID_LABEL=Get Id
+model.ROVO.getLookupCode_LABEL=Get Lookup Codemodel.VO.RevisionLineVO_LABEL=Revision Line Vo
+model.VL.Revision_LineVL_LABEL=Revision Line Vl
+model.VO.RevisionLineVO.RevBaseCharge_LABEL=Base Rate
+model.VO.RevisionLineVO.RevElectricityCharge_LABEL=Electricity Charge
+model.VO.RevisionLineVO.RevMinCharge_LABEL=Minimum Rate
+model.VO.RevisionLineVO.RevMunicipalityCharge_LABEL=Municipality Charge
+model.VO.RevisionLineVO.RevSecuritydepositCharge_LABEL=Security Deposit
+model.VO.RevisionLineVO.UnitType_LABEL=Unit Type
+model.VO.RecommendHeader_VO.Trans_ReceiptAmount_LABEL=Receipt Amount
+model.VO.ExtCanVO_LABEL=Ext Can Vo
+model.VL.ExtBookVL_LABEL=Ext Book Vl
+model.AM.ExtensionCancellation_AM_LABEL=Extension Cancellation Am
+model.VO.ExtCanVO.LeaseAgreementId_LABEL=Lease No
+model.VO.ExtCanVO.BookingId_LABEL=Booking No
+model.EO.LeadEO_Rule_0=Emirates Id should be in 13 digit
+model.VO.PlHeader_VO.OrgNameTrans_LABEL=Business Unit
+model.VO.PlHeader_VO.CurrencyNameTrans_LABEL=Currency
+model.ROVO.Organizations_ROVO.OrgName_LABEL=Business Unit
+
+model.ROVO.Lookup_View_ROVO.LookupValueNameDisp_LABEL=Present Country
+
+model.VO.PlLinesVO.PropertyNameTrans_LABEL=Property Name
+model.VO.PlLinesVO.BuildingNameTrans_LABEL=Building Name
+model.VO.PlLinesVO.UnitNameTrans_LABEL=Unit Name
+model.ROVO.findPropertyROVO.PropertyName_LABEL=Property Name
+model.ROVO.findBuildingROVO.BuildName_LABEL=Building Name
+model.VO.PlLinesVO.MunicipalityCharges_LABEL=Municipality Charges
+model.VO.PlLinesVO.ElectricityCharges_LABEL=Electricity Charges
+model.VO.PlLinesVO.SecurityDeposite_LABEL=Security Deposite
+model.ROVO.SearchPriceListROVO.OrgName_LABEL=Business Unit
+model.ROVO.SearchPriceListROVO.Propertyname_LABEL=Property Name
+model.ROVO.SearchPriceListROVO.BuildName_LABEL=Building Name
+model.ROVO.SearchPriceListROVO.UnitName_LABEL=Unit Name
+model.ROVO.SearchBookingROVO.CustName_LABEL=Customer
+model.VO.OfferDetail_VO.MunicipalityCharges_LABEL=Municipality Deposit Charges
+model.VO.OfferDetail_VO.ElectricityCharges_LABEL=Electricity Deposit Charges
+model.VO.OfferDetail_VO.SecurityDeposite_LABEL=Security Deposit
+model.VO.BookingDetail_VO.MunicipalityCharges_LABEL=Municipality Deposit Charges
+model.VO.BookingDetail_VO.ElectricityCharges_LABEL=Electricity Deposit Charges
+model.VO.BookingDetail_VO.SecurityDeposite_LABEL=Security Deposit
+model.VO.LeadVO.OrgNameTrans_LABEL=* Business Unit
+
+model.ROVO.SearchLeadROVO.Nationalityname_LABEL=Nationality
+model.VO.PropertyMaster_VO.OrgNameTrans_LABEL=Business Unit
+model.ROVO.SearchProperty_ROVO.PropertyNumber_LABEL=Property Number
+model.ROVO.Locations_ROVO.LocationName_LABEL=Location Name
+model.VO.PropertyBuildings_VO.PropertyTrans_LABEL=Property
+model.ROVO.PropertyforBuildingPage_ROVO.PropertyName_LABEL=Property Name
+model.ROVO.LookupDetails_ROVO.LookupValueName_LABEL=Unit Type
+model.ROVO.LookupDetails_ROVO.LookupValueNameDisp_LABEL=Unit Type
+model.VO.PropertyUnits_VO.PropertyTrans_LABEL=Property
+model.VO.PropertyUnits_VO.BuildingTrans_LABEL=Building
+model.ROVO.Buildings_ROVO.BuildName_LABEL=Building Name
+model.ROVO.SearchUnits_ROVO.PropertyName_LABEL=Property Name
+model.ROVO.SearchUnits_ROVO.BuildName_LABEL=Build Name
+model.VO.PropertyUnits_VO.UnitTypeTrans_LABEL=Unit Type
+model.ROVO.SearchBuilding_ROVO.PropertyName_LABEL=Property Name
+model.VO.MilestonesHdr_VO.orgnameTrans_LABEL=Business Unit
+model.VO.PropertyMaster_VO.LocationTrans_LABEL=Location
+model.ROVO.SearchMilestones_ROVO.OrgName_LABEL=Business Unit
+model.VO.BookingCustomer_VO.NationalityTrans_LABEL=Nationality
+model.ROVO.BookingMileStoneROVO_LABEL=Booking Mile Stone Rovo
+model.ROVO.BookingDetailsROVO_LABEL=Booking Details Rovo
+model.ROVO.findCustomerROVO_LABEL=Find Customer Rovo
+model.ROVO.custSiteROVO_LABEL=Cust Site Rovo
+model.ROVO.getCustomerSiteDetailsROVO_LABEL=Get Customer Site Details Rovo
+model.VO.ExtCanVO.CustName_LABEL=Customer
+model.VO.BookingHeader_VO.OfferHdrIdTrans_LABEL=Offer No
+model.ROVO.BookingHdrRecomm_ROVO.BookingNumber_LABEL=Booking Number
+model.VO.RecommendHeader_VO.BookingNoTrans_LABEL=Booking Number
+model.ROVO.getLeaseDetailsForRecomROVO.RecommendNumber_LABEL=Payments & Documents No
+
+model.VO.MoveInOut_VO.LeaseNumberTrans_LABEL=Lease No
+model.ROVO.getLeaseNumber.LeaseNumber_LABEL=Lease Number
+model.ROVO.SearchBookingROVO.Offernumber_LABEL=Offer Number
+model.VO.LeaseAgreement_VO.RecommendationIdTrans_LABEL=Recommendation No
+model.VO.BookingCustomer_VO.CustomerNumberAr_LABEL=Customer No
+model.VL.BookingDtl_Recommendation_VL_LABEL=Booking Dtl Recommendation Vl
+model.VO.OfferMilestoneDetail_VO.InstallmentType1_LABEL=Charge Type
+model.VL.Booking_OfferVL_LABEL=Booking Offer Vl
+model.STA.UnitTypeSTA_LABEL=Unit Type Sta
+model.STA.UnitTypeSTA.SL_0_0=DEFAULT
+model.STA.UnitTypeSTA.SL_0_1=Unit
+model.STA.UnitTypeSTA.SL_1_0=CAR_PARKING
+model.STA.UnitTypeSTA.SL_1_1=Car Parking
+model.VO.MilestonesHdr_VO.ActiveYn_LABEL=Active ?
+model.VO.LeadVO.CurCountry_Trans_LABEL=Present Country
+model.VO.PropertyBuildings_VO.BondDate_LABEL=Bond Date
+model.VO.PropertyBuildings_VO.BondNumber_LABEL=Bond Number
+model.VO.PropertyBuildings_VO.BondTypeTl_LABEL=Bond Type (Arabic)
+model.VO.PropertyBuildings_VO.BondType_LABEL=Bond Type
+model.VO.PropertyBuildings_VO.PlotNumber_LABEL=Plot Number
+model.VO.PropertyUnits_VO.DocRefNumber3_LABEL=DEWA Number
+model.VO.RevisionVO.RevisedDate_LABEL=Revised Date
+LOV_BookingMsDtlId_LOVUIHints_NullValueId=<No Selection>
+model.EO.Receipt_EO.DiffInDays_Rule_0=Days Should be Equal or Less Than 30 Days...
+model.VO.Receipt_VO.TaxAmount_LABEL=Tax Amount
+model.VO.LeadVO.EmiratesIdRef1_LABEL=Emirates Id
+model.VO.LeadVO.TradeLincenseName_LABEL=Trade Lincense Name
+model.VO.LeadVO.TradeLincenseNo_LABEL=Trade Lincense No
+model.VO.LeadVO.TradeLincenseNameValidity_LABEL=Trade Lincense Name Validity
+model.VO.LeadVO.TradeLincenseNoValidity_LABEL=Trade Lincense No Validity
+model.VO.LeadVO.Trn_LABEL=TRN
+model.VO.LeadVO.IssuerEmirates_LABEL=Issuer Emirates
+model.VO.LeadVO.OwnerDetails_LABEL=Owner Details
+model.VO.LeadVO.Poa_LABEL=POA
+model.VO.LeadVO.Numb_LABEL=No.
+model.VO.LeadVO.NameAndDetail_LABEL=Name and Detail
+model.VO.PlLinesVO.MunicipalityPercentage_LABEL=Percentage for Municipality
+model.VO.PlLinesVO.ThirdPartyServCharge_LABEL=Third Party charges
+model.VO.PlLinesVO.OtherGovntChargeNew_LABEL=Other Government Charge (New)
+model.VO.PlLinesVO.OtherGovntChargeRnew_LABEL=Other Government Charge (Renew)
+model.VO.PlLinesVO.EjariPaymentCharge_LABEL=Ejari Payment Charges
+model.VO.OfferDetail_VO.MunicipalityPercentage_LABEL=Municipality Percentage
+model.VO.OfferDetail_VO.EjariPaymentCharge_LABEL=Ejari Payment Charge
+model.VO.OfferDetail_VO.ThirdPartyServCharge_LABEL=Third Party Serv Charge
+model.VO.OfferDetail_VO.OtherGovntChargeRnew_LABEL=Other Govnt Charge Rnew
+model.VO.OfferDetail_VO.OtherGovntChargeNew_LABEL=Other Govnt Charge New
+model.VO.OwnerDtle_VO_LABEL=Owner Dtle Vo
+model.VL.Property_Owner_VL_LABEL=Property Owner Assoc
+model.VL.PropertyBuilding_Owner_VL_LABEL=Property Building Owner Vl
+model.VL.PropertyBuildingUnit_Owner_VL_LABEL=Property Building Unit Owner Vl
+model.ROVO.VendorROVO_LABEL=Vendor Rovo
+model.ROVO.VendorSiteROVO_LABEL=Vendor Site Rovo
+model.VO.OwnerDtle_VO.VendSiteId_LABEL=Vendor Site
+model.VO.OwnerDtle_VO.VendId_LABEL=Vendor
+model.VO.OwnerDtle_VO.PrimaryYn_LABEL=Primary ?
+model.VL.LeaseAgreementcancelationExtension_VL_LABEL=Lease Agreementcancelation Extension Vl
+model.VL.Invoice_VL_LABEL=Invoice Vl
+model.VL.Receipt_VL_LABEL=Receipt Vl
+model.VO.LeaseAgreement_VO.LeaseStartDate_LABEL=Expected Lease Start Date\t
+model.VO.LeaseAgreement_VO.LeaseEndDate_LABEL=Expected Lease End Date\t
+model.VO.OfferHrd_VO.TaxCode_LABEL=Tax
+
+model.VO.OfferHrd_VO.LeaseType_LABEL=Lease Type
+model.VO.BookingCustomer_VO.Trans_CustIdAr_LABEL=Customer AR
+model.ROVO.GetCustomerDetailsROVO.CustomerName_LABEL=Customer Name
+model.ROVO.GetCustomerDetailsROVO.CustomerNumber_LABEL=Customer Number
+model.AM.InvoiceSyncAM_LABEL=Invoice Sync Am
+
+model.VO.BookingDetail_VO.EjariPaymentCharge_LABEL=Ejari Payment Charge
+model.VO.BookingDetail_VO.MunicipalityPercentage_LABEL=Municipality Percentage
+model.VO.BookingDetail_VO.OtherGovntChargeNew_LABEL=Other Govnt Charge New
+model.VO.BookingDetail_VO.OtherGovntChargeRnew_LABEL=Other Govnt Charge Rnew
+model.VO.BookingDetail_VO.ThirdPartyServCharge_LABEL=Third Party Serv Charge
+model.VO.OfferHrd_VO.Trans_LeadName1_LABEL=Lead Name
+model.VO.OfferHrd_VO.Trans_MobileNumber_LABEL=Mobile Number
+model.VO.OfferHrd_VO.Trans_Address1_LABEL=Residential Address 1
+model.VO.OfferHrd_VO.Trans_Address2_LABEL=Residential Address 2
+
+model.VO.OfferHrd_VO.Trans_Address3_LABEL=Residential Address 3
+model.VO.OfferHrd_VO.Trans_Address4_LABEL=Residential Address 4
+model.VO.OfferHrd_VO.Trans_city_LABEL=City
+model.VO.OfferHrd_VO.Trans_country_LABEL=Country
+model.VO.OfferHrd_VO.Trans_Email_LABEL=Email
+model.VO.LeaseAgreement_VO.NoOfYears_LABEL=No Of Years
+model.VO.LeaseAgreement_VO.ResidentialDetails_LABEL=Residential Details
+model.VO.OfferHrd_VO.CarParkLeaseAgreId_LABEL=Lease Number
+model.VO.PlLinesVO.UnitType_LABEL=Unit Type
+model.VO.ExtCanVO.LeaseStartDateTrans_LABEL=Lease Start Date
+
+model.VO.ExtCanVO.LeaseEndDateTrans_LABEL=Lease End Date
+model.VO.ExtCanVO.Offer_Total_Trans_LABEL=Lease Amount
+model.VO.RecommendHeader_VO.ReceiptAmount_LABEL=Receipt Amount
+model.ROVO.getApprovalHistoryROVo_LABEL=Get Approval History Ro Vo
+model.VL.OfferApprovalLink_LABEL=Offer Approval Link
+model.ROVO.userROVO_LABEL=User Rovo
+model.ROVO.getApprovalHistoryROVo.ApproverId_LABEL=Approver
+model.ROVO.getApprovalHistoryROVo.SubmissionDate_LABEL=Submission Date
+model.VL.BookingApprovalVL_LABEL=Booking Approval Vl
+model.VL.RecommendationApprovalVL_LABEL=Recommendation Approval Vl
+model.VL.LeaseApprovalVL_LABEL=Lease Approval Vl
+model.VL.MoveinoutApprovalVL_LABEL=Moveinout Approval Vl
+model.VL.ExtCanApprovalVL_LABEL=Ext Can Approval Vl
+model.VO.OfferHrd_VO.CarParkLeaseAgreIdTrans_LABEL=Lease Number
+
+
+model.VO.LeaseAgreement_VO.Trans_LeaseNumber_LABEL=Contract Number (Car Parking Unit)
+
+
+model.ROVO.SearchArSetup_ROVO_LABEL=Ar Setup Rovo
+model.ROVO.Organisation_ROVO_LABEL=Organisation Rovo
+model.ROVO.TxnTypeId_ROVO_LABEL=Txn Id Rovo
+model.ROVO.TxnSourceId_ROVO_LABEL=Txn Source Id
+model.ROVO.RevAccountId_ROVO_LABEL=Rev Account Id Rovo
+model.ROVO.CostCenterGlCode_ROVO_LABEL=Cost Center Gl Code
+model.ROVO.Org_ROVO_LABEL=Org Rovo
+model.ROVO.ArSetup_ROVO.BusinessUnitId_LABEL=Business Unit
+model.ROVO.ArSetup_ROVO.LegalEntityId_LABEL=Legal Entity
+model.ROVO.ArSetup_ROVO.ChargeType_LABEL=Charge Type
+model.ROVO.ArSetup_ROVO.TxnType_LABEL=Transaction Type
+
+model.ROVO.ArSetup_ROVO.TxnSource_LABEL=Transaction Source
+
+model.ROVO.ArSetup_ROVO.CmTxnType_LABEL=Cm Txn Type
+model.ROVO.ArSetup_ROVO.CmTxnSource_LABEL=Cm Txn Source
+model.ROVO.ArSetup_ROVO.TypeId_LABEL=Type
+model.ROVO.ArSetup_ROVO.TxnTypeId_LABEL=Txn Type
+model.ROVO.ArSetup_ROVO.TxnSourceId_LABEL=Txn Source
+model.ROVO.ArSetup_ROVO.CmTxnTypeId_LABEL=Cm Txn Type
+model.ROVO.ArSetup_ROVO.CmTxnSourceId_LABEL=Cm Txn Source
+model.ROVO.ArSetup_ROVO.RevAccountId_LABEL=Rev Account
+model.ROVO.ArSetup_ROVO.ConcatenatedSegment_LABEL=Concatenated Segment
+model.ROVO.ArSetup_ROVO.AccountingRuleName_LABEL=Accounting Rule Name
+model.ROVO.ArSetup_ROVO.InvoicingRule_LABEL=Invoicing Rule
+model.ROVO.ArSetup_ROVO.IntercompanyGlCode_LABEL=Intercompany Gl Code
+model.ROVO.ArSetup_ROVO.CostCenterGlCode_LABEL=Cost Center Gl Code
+model.VO.ArSetup_VO.BusinessUnitId_LABEL=Business Unit
+model.VO.ArSetup_VO.LegalEntityId_LABEL=Legal Entity
+model.VO.ArSetup_VO.ChargeType_LABEL=Charge Type
+model.VO.ArSetup_VO.TxnType_LABEL=Transaction Type
+
+model.VO.ArSetup_VO.TxnSource_LABEL=Transaction Source
+
+model.VO.ArSetup_VO.TxnTypeId_LABEL=Txn Type
+model.VO.ArSetup_VO.TxnSourceId_LABEL=Txn Source
+model.VO.ArSetup_VO.CmTxnTypeId_LABEL=Cm Txn Type
+model.VO.ArSetup_VO.CmTxnSourceId_LABEL=Cm Txn Source
+model.VO.ArSetup_VO.RevAccountId_LABEL=Rev Account
+model.VO.ArSetup_VO.ConcatenatedSegment_LABEL=Concatenated Segment
+model.VO.ArSetup_VO.InvoicingRule_LABEL=Invoicing Rule Name
+
+model.VO.ArSetup_VO.IntercompanyGlCode_LABEL=Intercompany Gl Code
+model.VO.ArSetup_VO.CostCenterGlCode_LABEL=Cost Center Gl Code
+model.VO.ArSetup_VO.AccountingRuleName_LABEL=Accounting Rule Name
+model.ROVO.offerDetailsforExtnandCancel_ROVO_LABEL=Offer Detailsfor Extnand Cancel Rovo
+model.VO.ExtCanVO.NetRefundAmount_LABEL=Net Refund Amount
+model.EO.ExtCanEO.CancellationAmount_LABEL=Cancellation Amount
+model.EO.LeaseAgreement_EO_Rule_0=This Number Already Exists..\!
+
+model.VO.ExtCanVO.TransDate_LABEL=Request Date
+model.ROVO.offerDetailsforExtnandCancel_ROVO.LeaseNumber_LABEL=Contract No
+
+
+model.ROVO.offerDetailsforExtnandCancel_ROVO.CustomerName_LABEL=Customer Name
+
+model.ROVO.GetCustomerDetailsROVO.CustAcctNumber_LABEL=Customer Number
+model.EO.PropertyMaster_EO_Rule_0=Name Already Exists...\!
+model.EO.PropertyMaster_EO_Rule_1=Short Code Already Exists...\!
+model.EO.PropertyBuildings_EO_Rule_0=Name Already Exists..\!
+model.EO.PropertyBuildings_EO_Rule_1=Short Code Already Exists..\!
+model.VO.BookingDetail_VO.LeaseId_LABEL=Lease No
+model.ROVO.getUnitNameROVO_LABEL=Get Unit Name Rovo
+model.VL.ExtCanBookVL_LABEL=Ext Can Book Vl
+model.VO.LeaseAgreement_VO.OfferHdrId_LABEL=Offer No
+model.VO.ExtCanVO.ExtensionDays_LABEL=Extension Days
+model.ROVO.getARTrxDltsForInvoice_ROVO_LABEL=Get Ar Trx Dlts For Invoice Rovo
+model.ROVO.getARTrxDltsForReceipt_ROVO_LABEL=Get Ar Trx Dlts For Receipt Rovo
+model.ROVO.canExntCarParkStatusUpdateROVO_LABEL=Can Exnt Car Park Status Update Rovo
+model.ROVO.CarPArkLeaseROVO_LABEL=Car P Ark Lease Rovo
+model.ROVO.MinPriceValidationROVO_LABEL=Min Price Validation Rovo
+model.ROVO.getCarParkingUnitDetailsforExtension_ROVO_LABEL=Get Car Parking Unit Detailsfor Extension Rovo
+model.VL.ExtensionandOffer_VL_LABEL=Extensionand Offer Vl
+model.ROVO.getCarParkingUnitDetailsforExtension_ROVO.OfferFromDate_LABEL=Lease Start Date
+model.ROVO.getCarParkingUnitDetailsforExtension_ROVO.OfferToDate_LABEL=Lease End Date
+
+model.ROVO.getCarParkingUnitDetailsforExtension_ROVO.OfferNumber_LABEL=Offer Number
+
+model.ROVO.getCarParkingUnitDetailsforExtension_ROVO.UnitName_LABEL=Unit Name
+model.ROVO.getCarParkingUnitDetailsforExtension_ROVO.UnitNumber_LABEL=Unit Number
+model.ROVO.getCarParkingUnitDetailsforExtension_ROVO.CheckBoxeYn_LABEL=\ Select / Unselect
+model.ROVO.getCarParkingUnitDetailsforExtension_ROVO.Status_LABEL=Unit Status
+model.ROVO.getCarParkingUnitDetailsforExtension_ROVO.OfferTotal_LABEL=Lease Amount
+model.VO.RevisionLineVO.EjariPaymentCharge_LABEL=Ejari Payment Charge
+model.VO.RevisionLineVO.OtherGovntChargeNew_LABEL=Other Govnt Charge New
+model.VO.RevisionLineVO.OtherGovntChargeRnew_LABEL=Other Govnt Charge Rnew
+model.VO.RevisionLineVO.ThirdPartyServCharge_LABEL=Third Party Service Charge
+model.VO.BookingMilestonesOtherChargesVO.InstallmentType_LABEL=Installment Type
+model.VO.BookingMilestonesOtherChargesVO.InstallmentAmount_LABEL=Amount
+model.VO.LeaseAgreement_VO.PurposeOfRent_LABEL=Purpose Of Rent
+model.ROVO.UserDetailsROVO_LABEL=User Details Rovo
+model.ROVO.getTaxCodeROVO_LABEL=Get Tax Code Rovo
+model.ROVO.getBookingDetailsROVO_LABEL=Get Booking Details Rovo
+model.ROVO.getInvoiceInterfacePayloadValues_ROVO_LABEL=Get Invoice Interface Payload Values Rovo
+model.ROVO.getReceiptPayloadDtls_ROVO_LABEL=Get Receipt Payload Dtls Rovo
+model.ROVO.getReceiptMethod_ROVO_LABEL=Get Receipt Method Rovo
+model.ROVO.getReceiptPayloadDtlForBooing_ROVO_LABEL=Get Receipt Payload Dtl For Booing Rovo
+model.ROVO.getUserLevels_LABEL=Get User Levels
+model.VO.ArSetup_VO.LedgerName_LABEL=Ledger Name
+model.VO.ArSetup_VO.CodeCombId_LABEL=Code Combination Id
+
+model.ROVO.getARSetupDetails_ROVO_LABEL=Get Ar Setup Details Rovo
+model.ROVO.ARReceiptMethod_ROVO_LABEL=Ar Receipt Method Rovo
+model.EO.ArSetup_EO.BusinessUnitId_LABEL=Buisiness Unit
+model.EO.ArSetup_EO.BusinessUnitId_Rule_0=Business Unit is Required..
+model.EO.ArSetup_EO.ChargeType_Rule_0=Charge Type is required..
+model.EO.ArSetup_EO.LegalEntityId_Rule_0=Legal Entity is Required..
+model.EO.ArSetup_EO.TxnType_Rule_0=Transaction Type is Required
+model.EO.ArSetup_EO.TxnSource_Rule_0=Transaction Source  is Required
+model.EO.ArSetup_EO.ConcatenatedSegment_Rule_0=Concatenated Segment is Required..
+model.EO.ArSetup_EO.InvoicingRule_Rule_0=Invoicing Rule is Required..
+model.EO.ArSetup_EO.IntercompanyGlCode_Rule_0=Intercompany GL Code is Required..
+model.EO.ArSetup_EO.AccountingRuleName_Rule_0=Accounting Rule Name is Required..
+model.EO.ArSetup_EO.LedgerName_Rule_0=Ledger Name is Required...
+ArSetup_ROVOCriteria_displayName=ArSetup Search Criteria
+model.VO.ArSetup_VO.AccountClass_LABEL=Account Class
+model.VO.OfferHrd_VO.LeaseNumber_Trans_LABEL=Lease Number
+model.VO.ExtCanVO.Trans_SmartSearchLeaseId_LABEL=Lease No
+model.VO.ExtCanVO.LeaseNumberSmartSearch_Trans_LABEL=Lease Number
+SearchVC_displayName=Save Receipt Search
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+model.VO.Receipt_VO.CustomerName_Trans_LABEL=Customer Name
+findByCustNameVC_displayName=Customer Name
+model.ROVO.SearchReceiptRoVo.ReceiptNumber_LABEL=Receipt No
+
+model.ROVO.SearchReceiptRoVo.CustomerName_LABEL=Customer Name
+model.ROVO.SearchReceiptRoVo.ReceiptDate_LABEL=Receipt Date
+LeaseAgreement_VOCriteria_displayName=Save Search Contracts
+model.ROVO.SearchReceiptRoVo.FromDate_LABEL=Receipt From Date
+
+
+
+
+
+
+
+
+
+model.ROVO.SearchReceiptRoVo.ToDate_LABEL=Receipt To Date
+
+
+
+
+
+
+
+
+SearchRecommVC_displayName=Save Search Payments & Documents
+model.ROVO.SearchRecommendationRoVo.MilestoneName_Trans_LABEL=Payment Plan
+model.ROVO.SearchRecommendationRoVo.LeaseStartDate_Trans_LABEL=Lease Start Date
+model.ROVO.SearchRecommendationRoVo.LeaseEndDate_Trans_LABEL=Lease End Date
+model.ROVO.SearchRecommendationRoVo.Currency_Trans_LABEL=Currency
+model.ROVO.SearchRecommendationRoVo.CustName_LABEL=Customer Name
+model.ROVO.SearchRecommendationRoVo.BookingNumber_Trans_LABEL=Booking Number
+model.ROVO.SearchRecommendationRoVo.RecommendNumber1_LABEL=Payments & Documents No
+
+
+
+model.ROVO.SearchRecommendationRoVo.RecommendNumber_LABEL=Recommend No
+
+model.ROVO.SearchRecommendationRoVo.BookingId_LABEL=Booking No
+
+model.ROVO.SearchRecommendationRoVo.Status_LABEL=Status
+model.VO.OfferHrd_VO.LeadName_LABEL=Lead Name
+model.VO.OfferHrd_VO.LeadNumber_LABEL=Lead Number
+searchOffersInfoROVOCriteria_displayName=Save OfferSearch
+model.ROVO.SearchBookingROVO.CustReqMoveinDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchBookingROVO.CustReqMoveinDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchBookingROVO.BookingDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchBookingROVO.BookingDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchLeadROVO.VisittedDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchLeadROVO.VisittedDate_FMT_FORMAT=dd-MM-yyyy
+model.VO.MoveInOut_VO.MoveinoutdateTrans_LABEL=Move In Out Date
+model.VO.MoveInOut_VO.MoveinoutdateTrans_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.MoveInOut_VO.MoveinoutdateTrans_FMT_FORMAT=dd-MM-yyyy
+SearchMoveInOut_displayName=Save MoveInOut Search
+model.ROVO.SearchBookingROVO.OrgId_LABEL=Business Unit
+#SearchVC_displayName=Save Receipt Search
+#model.VO.Receipt_VO.CustomerName_Trans_LABEL=Customer Name
+#findByCustNameVC_displayName=Customer Name
+#model.ROVO.SearchReceiptRoVo.ReceiptNumber_LABEL=Receipt Number
+#model.ROVO.SearchReceiptRoVo.CustomerName_LABEL=Customer Name
+#model.ROVO.SearchReceiptRoVo.ReceiptDate_LABEL=Receipt Date
+#model.ROVO.SearchReceiptRoVo.ReceiptAmount_LABEL=Receipt Amount
+#LeaseAgreement_VOCriteria_displayName=Save Search Contracts
+model.ROVO.searchOffersInfoROVO.UnitnumberDummy_LABEL=Unit Number
+model.ROVO.searchOffersInfoROVO.PropnumberTrans_LABEL=Property Number
+model.ROVO.searchOffersInfoROVO.BuildnumberTrans_LABEL=Build Number
+model.ROVO.searchOffersInfoROVO.PropnumberDummy_LABEL=Property Number
+model.ROVO.searchOffersInfoROVO.BuildnumberDummy_LABEL=Building Number
+model.ROVO.findByUnitName.UnitNumber_LABEL=Unit No
+model.ROVO.findByBuildName.BuildNumber_LABEL=Building No
+model.ROVO.findByPropertyName.PropertyNumber_LABEL=Property No
+model.ROVO.findByPropertyName.PropertyName_LABEL=Property Name
+model.ROVO.findByBuildName.BuildName_LABEL=Building Name
+model.ROVO.findByUnitName.UnitName_LABEL=Unit Name
+model.ROVO.SearchBookingROVO.Businessunit_LABEL=Business Unit
+model.ROVO.SearchBookingROVO.Propertynumber_LABEL=Property Number
+model.ROVO.SearchBookingROVO.Buildnumber_LABEL=Building Number
+model.ROVO.SearchBookingROVO.UnitnumberTrans_LABEL=Unit Number
+model.ROVO.SearchBookingROVO.UnitnumberDummy_LABEL=Unit Number
+model.ROVO.SearchRecommendationRoVo.BusiUnit_LABEL=Business Unit
+model.ROVO.SearchRecommendationRoVo.Propertynumber_LABEL=Property Number
+model.ROVO.SearchRecommendationRoVo.Buildnumber_LABEL=Building Number
+model.ROVO.SearchRecommendationRoVo.UnitnumberDummy_LABEL=Unit Number
+model.VO.LeaseAgreement_VO.BusinessUnit_LABEL=Business Unit
+model.VO.LeaseAgreement_VO.Propertynumber_LABEL=Property Number
+model.VO.LeaseAgreement_VO.Buildnumber_LABEL=Building Number
+model.VO.LeaseAgreement_VO.UnitnumberTrans_LABEL=Unit Number
+model.VO.LeaseAgreement_VO.UnitnumberDummy_LABEL=Unit Number
+model.ROVO.getApprovalHistoryROVo.SubmittedByTrans_LABEL=Submitted By
+model.VO.LeaseAgreement_VO.BookingnoTrans_LABEL=Booking No
+model.VO.LeaseAgreement_VO.RecommendnoTrans_LABEL=Payments & Documents No
+
+model.ROVO.LeaseAgree_ROVO.BookingNumber_LABEL=Booking No
+model.VO.LeaseAgreement_VO.OffernoTrans_LABEL=Offer No
+model.ROVO.SearchRecommendationRoVo.BookingnoTrans_LABEL=Booking No
+model.ROVO.SearchRecommendationRoVo.OffernoTrans_LABEL=Offer No
+model.ROVO.findByUnitName.UnitShortcode_LABEL=Unit Short Code
+model.STA.DiscountType_StaticRoVo_LABEL=Discount Type Static Ro Vo
+model.STA.DiscountType_StaticRoVo.SL_0_0=Percentage
+model.STA.DiscountType_StaticRoVo.SL_0_1=PCT
+model.STA.DiscountType_StaticRoVo.SL_1_0=Amount
+model.STA.DiscountType_StaticRoVo.SL_1_1=AMT
+model.VO.OtherChargesHeader_VO_LABEL=Other Charges Header Vo
+model.VO.OtherChargesDetail_VO_LABEL=Other Charges Detail Vo
+model.AM.OtherCharges_AM_LABEL=Other Charges Am
+model.VL.OtherCharges_VL_LABEL=Other Charges Vl
+model.ROVO.SearchOtherCharges_RoVo_LABEL=Search Other Charges Ro Vo
+SearchOtherCharges_RoVoCriteria_displayName=Search Other Charges Save
+model.ROVO.SearchOtherCharges_ROVO_LABEL=Other Charges Rovo
+model.ROVO.SearchOtherCharges_ROVO.Status_LABEL=Status
+model.ROVO.SearchOtherCharges_ROVO.BookingNumberTrans_LABEL=Booking No
+model.ROVO.SearchOtherCharges_ROVO.InstallmentAmount_LABEL=Installment Amount
+model.ROVO.SearchOtherCharges_ROVO.InstallmentType_LABEL=Installment Type
+model.VO.OtherChargesHeader_VO.BookingId_Trans_LABEL=Booking No
+model.VO.OtherChargesHeader_VO.LeaseAgreementId_Trans_LABEL=Contract No
+model.VO.OtherChargesHeader_VO.OrgId_LABEL=Business Unit
+model.VO.OtherChargesHeader_VO.PropertyId_LABEL=Property Name
+model.VO.OtherChargesHeader_VO.Status_LABEL=Status
+model.VO.OtherChargesHeader_VO.BuildingId_LABEL=Building Name
+model.VO.OtherChargesDetail_VO.InstallmentType_LABEL=Installment Type
+model.VO.OtherChargesDetail_VO.InstallmentAmount_LABEL=Installment Amount
+model.ROVO.SearchReceiptRoVo.RecommendNoTrans_LABEL=Payments and Documents No
+
+model.ROVO.SearchReceiptRoVo.BookingNoTrans_LABEL=Booking No
+model.ROVO.GetReceiptDetails_RoVo_LABEL=Get Receipt Details Ro Vo
+model.ROVO.GetReceiptDetails_RoVo.BookingNoTrans_LABEL=Booking No
+model.ROVO.GetReceiptDetails_RoVo.RecommendNoTrans_LABEL=Recommend No
+model.ROVO.SearchReceiptRoVo.CreatedBy_LABEL=Created By
+
+model.STA.Common_SVO_LABEL=Common Svo
+model.STA.Common_SVO.SL_0_0=1
+model.STA.Common_SVO.SL_0_1=Y
+model.STA.Common_SVO.SL_0_2=YN
+model.STA.Common_SVO.SL_0_3=YES
+model.STA.Common_SVO.SL_1_0=2
+model.STA.Common_SVO.SL_1_1=N
+model.STA.Common_SVO.SL_1_2=YN
+model.STA.Common_SVO.SL_1_3=NO
+model.ROVO.SearchReceiptRoVo.PayMode_LABEL=Pay Mode
+model.ROVO.SearchReceiptRoVo.RctType_LABEL=Receipt Type
+model.ROVO.SearchReceiptRoVo.AckFlag_LABEL=Cashier Acknowledged?
+
+model.ROVO.SearchReceiptRoVo.OrgName_LABEL=Business Unit
+model.ROVO.SearchReceiptRoVo.ReceiptType_LABEL=Receipt Type
+model.ROVO.SearchReceiptRoVo.PropertyNumber_LABEL=Property No
+model.ROVO.SearchReceiptRoVo.BuildNumber_LABEL=Building No
+model.ROVO.SearchReceiptRoVo.PayRefNumber_LABEL=Cheque / Card / EFT Number
+
+model.ROVO.SearchReceiptRoVo.PayRefDate_LABEL=Pay Ref Date
+model.ROVO.SearchReceiptRoVo.BankName_LABEL=Bank Name
+model.ROVO.SearchReceiptRoVo.BankBranchName_LABEL=Bank Branch Name
+model.ROVO.SearchReceiptRoVo.DrawnBy_LABEL=Drawn By
+model.ROVO.SearchReceiptRoVo.RctDesc_LABEL=Receipt Type Detail
+
+model.ROVO.SearchReceiptRoVo.AckBy_LABEL=Cashier Acknowledged By
+model.ROVO.SearchReceiptRoVo.AckDate_LABEL=Acknowledged Date
+
+
+
+model.ROVO.SearchReceiptRoVo.BookingNumber_LABEL=Booking No
+model.VO.Receipt_VO.AckFlag_LABEL=Cashier Acknowledged?
+model.ROVO.SearchRecommendationRoVo.BookingnumberTrans_LABEL=Booking No
+model.ROVO.SearchReceiptRoVo.FromDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchReceiptRoVo.FromDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchReceiptRoVo.ToDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchReceiptRoVo.ToDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchReceiptRoVo.BuildName_LABEL=Building Name
+model.ROVO.SearchReceiptRoVo.PropertyName_LABEL=Property Name
+model.ROVO.SearchReceiptRoVo.ReceivedAmount_LABEL=Receipt Amount
+model.ROVO.getLeaseDetailsForRecomROVO.CustName_LABEL=Customer Name
+model.ROVO.LeaseAgree_ROVO.CustName_LABEL=Customer Name
+model.VL.BillingMs_VL_LABEL=Billing Ms Vl
+model.VO.Billing_VO.BillingNumber_LABEL=Billing Number
+model.VO.Billing_VO.OrgId_LABEL=Business Unit
+
+model.VO.Billing_VO.BookingNumber_LABEL=Booking Number
+model.VO.Billing_VO.PropertyName_LABEL=Property Name
+model.VO.Billing_VO.BuildName_LABEL=Building Number
+model.ROVO.SearchBilling_ROVO_LABEL=Search Billing Rovo
+model.ROVO.SearchBilling_ROVO.OfferNumber_LABEL=Offer No
+
+model.ROVO.SearchBilling_ROVO.OrganizationName_LABEL=Business Unit
+
+model.ROVO.SearchBilling_ROVO.BookingNumber_LABEL=Booking No
+model.ROVO.SearchBilling_ROVO.PropertyNumber_LABEL=Property No
+model.ROVO.SearchBilling_ROVO.BuildNumber_LABEL=Building No
+model.ROVO.SearchBilling_ROVO.CreatedBy_LABEL=Created By
+model.ROVO.SearchBilling_ROVO.CreationDate_LABEL=Created Date
+model.ROVO.SearchReceiptRoVo.UnitnumberDummy_LABEL=Unit No
+model.ROVO.SearchReceiptRoVo.UnitnameListaggTrans_LABEL=Unit Name
+model.ROVO.SearchReceiptRoVo.ArPush_LABEL=Interface Status
+model.VL.MilestoneApproval_LABEL=Milestone Approval
+model.VO.OfferHrd_VO.ExtensionDays_LABEL=Extension Days
+model.ROVO.SearchOC_ROVO_LABEL=Search Oc Rovo
+model.ROVO.SearchOC_ROVO.OtherChargesNumber_LABEL=Other Charges No
+model.ROVO.SearchOC_ROVO.BookingNumberTrans_LABEL=Booking No
+model.VO.OtherChargesHeader_VO.OtherChargesNumber_LABEL=Other Charges No
+model.VL.OtherChargesApproval_Vl_LABEL=Other Charges Approval Vl
+model.VO.Billing_VO.BillingDate_LABEL=Billing Date
+model.ROVO.SearchBilling_ROVO.CreationDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchBilling_ROVO.CreationDate_FMT_FORMAT=dd-MM-yyyy
+model.VO.Booking_Milestone_VO.MilestoneType_LABEL=Milestone Type
+model.ROVO.findBuildingROVO.BuildNumber_LABEL=Building No
+model.ROVO.Org_ROVO.OrgName_LABEL=Business Unit
+model.ROVO.SearchOC_ROVO.LeaseNumber_LABEL=Contract No
+model.ROVO.SearchBilling_ROVO.BillingNumber_LABEL=Billing Number
+SearchBilling_ROVOCriteria_displayName=Billing Search
+model.ROVO.SearchOC_ROVO.PropertyNumberTrans_LABEL=Property No
+model.ROVO.SearchOC_ROVO.BuildingNumberTrans_LABEL=Building No
+model.VO.OtherChargesHeader_VO.CustomerNameTrans_LABEL=Customer Name
+model.VO.OtherChargesHeader_VO.UnitId_LABEL=Unit Name
+model.VL.OcReceipt_VL_LABEL=Oc Receipt Vl
+model.ROVO.searchOffersInfoROVO.OfferDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.searchOffersInfoROVO.OfferDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchRecommendationRoVo.CreationDate_LABEL=Creation Date
+model.ROVO.SearchRecommendationRoVo.CreateDate_LABEL=Creation Date
+model.VO.OtherChargesHeader_VO.OthersTotalRate_LABEL=Total Other Charges
+model.ROVO.SearchLeaseAgreementInfo_RoVo_LABEL=Search Lease Agreement Info Ro Vo
+model.ROVO.SearchLeaseAgreementInfo_RoVo.BusinessUnit_LABEL=Business Unit
+model.ROVO.SearchLeaseAgreementInfo_RoVo.Propertynumber_LABEL=Property No
+model.ROVO.SearchLeaseAgreementInfo_RoVo.Buildnumber_LABEL=Building No
+model.ROVO.SearchLeaseAgreementInfo_RoVo.BookingnoTrans_LABEL=Booking No
+model.ROVO.SearchLeaseAgreementInfo_RoVo.RecommendnoTrans_LABEL=Payments & Docs No
+
+model.ROVO.SearchLeaseAgreementInfo_RoVo.OffernoTrans_LABEL=Offer No
+model.ROVO.SearchLeaseAgreementInfo_RoVo.Customer_LABEL=Customer Name
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseNumber_LABEL=Contracts No
+model.ROVO.SearchLeaseAgreementInfo_RoVo.TenancyConDocNo_LABEL=Tenancy Con Doc No
+SearchLeaseAgreementInfo_RoVoCriteria_displayName=Save Search Contracts
+model.VO.OtherChargesHeader_VO.ReceiptTotal_LABEL=Total Receipt Amount
+
+
+model.ROVO.SearchOC_ROVO.UnitNumberTrans_LABEL=Unit No
+model.ROVO.SearchOC_ROVO.RecommendNumberTrans_LABEL=Payments & Documents No
+model.ROVO.SearchLeaseAgreement_ROVO.CustName_LABEL=Customer
+model.ROVO.SearchOC_ROVO.OthersTotalRate_LABEL=Total Other Charges
+
+
+model.ROVO.SearchOC_ROVO.ReceiptTotal_LABEL=Total Receipt Amount
+
+model.ROVO.SearchOC_ROVO.CustName_LABEL=Customer Name
+model.ROVO.SearchOC_ROVO.PropertyId_LABEL=Property Name
+model.ROVO.SearchOC_ROVO.BuildingId_LABEL=Building Name
+model.ROVO.SearchOC_ROVO.UnitId_LABEL=Unit Name
+model.ROVO.OC_ReceiptMethod_RoVo_LABEL=Oc Receipt Method Ro Vo
+model.ROVO.SearchOC_ROVO.CreatedBy_LABEL=Prepared By
+model.ROVO.SearchLeaseAgreementInfo_RoVo.CreateDate_LABEL=Creation Date
+model.ROVO.SearchBookingROVO.AppointmentDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchBookingROVO.AppointmentDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchLeaseAgreementInfo_RoVo.Buildname_LABEL=Building Name
+model.ROVO.SearchLeaseAgreementInfo_RoVo.Unitname_LABEL=Unit Name
+model.ROVO.SearchRecommendationRoVo.Buildname_LABEL=Building Name
+model.ROVO.SearchRecommendationRoVo.Unitname_LABEL=Unit Name
+model.ROVO.SearchRecommendationRoVo.CreateDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchRecommendationRoVo.CreateDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchBookingROVO.Propertyname_LABEL=Property Name
+model.ROVO.SearchBookingROVO.Buildname_LABEL=Building Name
+model.ROVO.SearchBookingROVO.Unitname_LABEL=Unit Name
+model.ROVO.searchOffersInfoROVO.PropertyName_LABEL=Property Name
+model.ROVO.searchOffersInfoROVO.BuildName_LABEL=Building Name
+model.ROVO.searchOffersInfoROVO.Unitname_LABEL=Unit Name
+model.AM.Cancellation_AM_LABEL=Cancellation Am
+model.VL.Cancel_BookingDetail_Vl_LABEL=Cancel Booking Detail Vl
+model.VL.Cancel_CancelDueAmtDtl_Vl_LABEL=Cancel Cancel Due Amt Dtl Vl
+model.ROVO.SrearchCancellation_RoVo_LABEL=Srearch Cancellation Ro Vo
+model.VO.Cancellation_VO.LeaseAgreementId_LABEL=Contract No
+model.VO.Cancellation_VO.BookingId_LABEL=Booking No
+model.VO.Cancellation_VO.RecommendId_LABEL=Payments & Documents No
+model.VO.Cancellation_VO.OrgId_LABEL=Business Unit
+model.VO.Cancellation_VO.CancelNumber_LABEL=Cancellation No
+model.VO.Cancellation_VO.ConStartDate_LABEL=Lease Start Date
+model.VO.Cancellation_VO.ConEndDate_LABEL=Lease End Date
+model.VO.Cancellation_VO.BaseRate_LABEL=Base Rate
+model.VO.Cancellation_VO.TotalRate_LABEL=Total Rate
+model.VO.Cancellation_VO.CustomerName_LABEL=Customer Name
+model.VO.Cancellation_VO.EmiratedId_LABEL=Emirated ID
+model.VO.Cancellation_VO.CancelDate_LABEL=Termination Date
+model.VO.Cancellation_VO.DaysConsumed_LABEL=Days Consumed
+model.VO.Cancellation_VO.DaysRemaining_LABEL=Days Remaining
+model.VO.Cancellation_VO.DailyRentalRate_LABEL=Daily Rental Rate
+model.VO.Cancellation_VO.DailyDiscountingRate_LABEL=Daily Discount Rate
+model.VO.Cancellation_VO.NocBy_LABEL=NOC By
+model.VO.Cancellation_VO.NocDateEntered_LABEL=NOC Expected Date
+
+model.VO.Cancellation_VO.NocDateActual_LABEL=NOC Date-Actual
+model.VO.Cancellation_VO.ChequeClearedAmount_LABEL=Cheque Amount Cleared
+
+model.VO.Cancellation_VO.AmountWaived_LABEL=Amount Waived
+model.VO.Cancellation_VO.LeaseAgreementNoTrans_LABEL=Contract No
+model.VO.CancelDueAmountDtl_VO.CancelationCharges_LABEL=Cancellation Charges
+model.VO.CancelDueAmountDtl_VO.TaxCode_LABEL=Tax Code
+model.VO.CancelDueAmountDtl_VO.CancelAmount_LABEL=Cancellation Amount
+model.VO.CancelDueAmountDtl_VO.TaxAmount_LABEL=Tax Amount
+model.VO.CancelDueAmountDtl_VO.TotalAmount_LABEL=Total Amount
+model.ROVO.SrearchCancellation_RoVo.OfferNumber_LABEL=Offer No
+model.ROVO.SrearchCancellation_RoVo.BookingNumber_LABEL=Booking No
+model.ROVO.SrearchCancellation_RoVo.RecommendNumber_LABEL=Payments & Documents No
+model.ROVO.SrearchCancellation_RoVo.LeaseNumber_LABEL=Contract No
+model.ROVO.SrearchCancellation_RoVo.PropertyName_LABEL=Property Name
+model.ROVO.SrearchCancellation_RoVo.BuildName_LABEL=Building Name
+model.ROVO.SrearchCancellation_RoVo.UnitName_LABEL=Unit Name
+model.ROVO.SrearchCancellation_RoVo.CancelNumber_LABEL=Cancellation No
+model.ROVO.SrearchCancellation_RoVo.ConStartDate_LABEL=Lease Start Date
+model.ROVO.SrearchCancellation_RoVo.ConEndDate_LABEL=Lease End Date
+model.ROVO.SrearchCancellation_RoVo.BaseRate_LABEL=Base Rate
+model.ROVO.SrearchCancellation_RoVo.TotalRate_LABEL=Total Rate
+model.ROVO.SrearchCancellation_RoVo.CustomerName_LABEL=Customer Name
+model.ROVO.SrearchCancellation_RoVo.CancelDate_LABEL=Termination Date
+model.ROVO.SrearchCancellation_RoVo.DaysConsumed_LABEL=Days Consumed
+model.ROVO.SrearchCancellation_RoVo.DaysRemaining_LABEL=Days Remaining
+model.ROVO.SrearchCancellation_RoVo.DailyRentalRate_LABEL=Daily Rental Rate
+model.ROVO.SrearchCancellation_RoVo.DailyDiscountingRate_LABEL=Daily Discount Rate
+model.ROVO.SrearchCancellation_RoVo.NocBy_LABEL=NOC By
+model.ROVO.SrearchCancellation_RoVo.NocDateEntered_LABEL=NOC Date-Entered
+model.ROVO.SrearchCancellation_RoVo.NocDateActual_LABEL=NOC Date-Actual
+model.ROVO.SrearchCancellation_RoVo.OrgName_LABEL=Business Unit
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseStartDate_LABEL=Lease Start Date
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseStartDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseStartDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseEndDate_LABEL=Lease End Date
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseEndDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseEndDate_FMT_FORMAT=dd-MM-yyyy
+model.VL.Cancel_BookingMilestonesVo_Vl_LABEL=Cancel Booking Milestones Vo Vl
+model.ROVO.getReceiptPayloadDtls_OtherCharges_ROVO_LABEL=Get Receipt Payload Dtls Other Charges Rovo
+model.VL.Cancel_CancelDueAr_VL_LABEL=Cancel Cancel Due Ar Vl
+model.VO.CancelDueAmountArDtl_VO.CancelationCharges_LABEL=Cancellation Charge
+model.VO.CancelDueAmountArDtl_VO.TaxCode_LABEL=Tax Code
+model.VO.CancelDueAmountArDtl_VO.TaxAmount_LABEL=Tax amount
+model.VO.CancelDueAmountArDtl_VO.CancelAmount_LABEL=Cancel Amount
+model.VO.CancelDueAmountArDtl_VO.TotalAmount_LABEL=Total Amount
+model.VO.Receipt_VO.ManualReceiptVoucherNumber_LABEL=Manual Receipt Voucher Number
+model.ROVO.SearchReceiptRoVo.ManualReceiptVoucherNumber_LABEL=Manual Receipt Voucher Number
+model.ROVO.getPayloadInformationCancellation_ROVO_LABEL=Get Payload Information Cancellation Rovo
+model.ROVO.OfferType_ROVO_LABEL=Offer Type Rovo
+model.VL.OC_BookingMilestoneForAppr_VL_LABEL=Oc Booking Milestone For Appr Vl
+model.VL.OC_ReceiptForAppr_VL_LABEL=Oc Receipt For Appr Vl
+model.VO.OtherChargesHeader_VO.DestinationBu_LABEL=Destination BU
+model.VO.Cancellation_VO.Attribute1_LABEL=Customer Txt Id
+model.VO.Cancellation_VO.Attribute2_LABEL=Transaction Number
+model.ROVO.masterdetail_ROVO_LABEL=Masterdetail Rovo
+model.VL.CancellationApproval_VL_LABEL=Cancellation Approval Vl
+model.VO.OfferHrd_VO.Offerexpireddate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.OfferHrd_VO.Offerexpireddate_FMT_FORMAT=dd-MM-yyyy
+model.VO.OfferHrd_VO.Offerexpireddate_LABEL=Expired date
+model.ROVO.getCancelLeaseDetailsForOtherCharges_RoVo_LABEL=Get Cancel Lease Details For Other Charges Ro Vo
+model.VO.OtherChargesHeader_VO.OcFlag_LABEL=Other Charges Flag
+model.VL.OC_BookingMstone_CancelId_VL_LABEL=Oc Booking Mstone Cancel Id Vl
+model.VL.OC_Receipt_CancelId_VL_LABEL=Oc Receipt Cancel Id Vl
+model.ROVO.SearchOC_ROVO.CreateDate_LABEL=Creation Date
+model.ROVO.SearchOC_ROVO.CreateDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchOC_ROVO.CreateDate_FMT_FORMAT=dd-MM-yyyy
+model.VO.Booking_Milestone_VO.InstallmentType2_LABEL=Other Charges Type
+model.ROVO.LeaseCancelNo_ROVO_LABEL=Lease Cancel No Rovo
+model.ROVO.SearchBookingROVO.Status_LABEL=Booking Status
+
+model.ROVO.SearchBookingROVO.UnitStatus_LABEL=Unit Status
+model.ROVO.searchOffersInfoROVO.Status_LABEL=Document Status
+model.ROVO.getCancelLeaseDetailsForOtherCharges_RoVo.CancelNumber_LABEL=Cancel No
+model.VO.OtherChargesHeader_VO.CancelNo_Trans_LABEL=Cancel No
+
+model.VO.Receipt_VO.ReceiptStatus_LABEL=Receipt Status
+model.ROVO.SearchReceiptRoVo.ReceiptStatus_LABEL=Receipt Status
+model.ROVO.OfferDuplicateCheck_ROVO_LABEL=Offer Duplicate Check Rovo
+model.ROVO.searchOffersInfoROVO.UnitDescription_LABEL=Unit Description
+model.ROVO.searchOffersInfoROVO.SetRent_LABEL=Rental Amount
+
+model.ROVO.searchOffersInfoROVO.NetRent_LABEL=Net Rent
+model.ROVO.SearchBookingROVO.UnitDescription_LABEL=Unit Description
+model.ROVO.SearchBookingROVO.SetRent_LABEL=Rental Amount
+
+model.ROVO.SearchBookingROVO.NetRent_LABEL=Net Rent
+model.ROVO.SearchRecommendationRoVo.UnitDescription_LABEL=Unit Description
+model.ROVO.SearchRecommendationRoVo.SetRent_LABEL=Rental Amount
+
+model.ROVO.SearchRecommendationRoVo.NetRent_LABEL=Net Rent
+model.ROVO.SearchRecommendationRoVo.TaxAmount_LABEL=Tax Amount
+model.ROVO.searchOffersInfoROVO.TaxAmountTrans_LABEL=Tax Amount
+model.ROVO.SearchLeaseAgreementInfo_RoVo.UnitDescription_LABEL=Unit Description
+model.ROVO.SearchLeaseAgreementInfo_RoVo.SetRent_LABEL=Rental Amount
+
+model.ROVO.SearchLeaseAgreementInfo_RoVo.NetRent_LABEL=Net Rent
+model.ROVO.SearchLeaseAgreementInfo_RoVo.TaxAmount_LABEL=Tax Amount
+model.ROVO.SearchBookingROVO.EmailId_LABEL=Customer Email Id
+
+model.ROVO.SearchBookingROVO.MobileNumber_LABEL=Customer Mobile No
+
+model.ROVO.SearchBookingROVO.PhoneNumber_LABEL=Customer Phone No
+
+model.ROVO.SearchBookingROVO.TaxAmount_LABEL=Tax Amount
+model.VO.BookingCustomer_VO.PhoneNoTrans_LABEL=Customer Phone No
+
+model.VO.BookingCustomer_VO.MobileNoTrans_LABEL=Customer Mobile No
+
+model.VO.BookingCustomer_VO.EmailIdTrans_LABEL=Customer Email Id
+
+model.ROVO.SearchRecommendationRoVo.EmailId_LABEL=Email Id
+model.ROVO.SearchRecommendationRoVo.MobileNumber_LABEL=Mobile No
+model.ROVO.SearchRecommendationRoVo.PhoneNumber_LABEL=Phone No
+model.ROVO.SearchLeaseAgreementInfo_RoVo.EmailId_LABEL=Email Id
+model.ROVO.SearchLeaseAgreementInfo_RoVo.MobileNumber_LABEL=Mobile No
+model.ROVO.SearchLeaseAgreementInfo_RoVo.PhoneNumber_LABEL=Phone No
+model.ROVO.SearchLeaseAgreementInfo_RoVo.UnitNumber_LABEL=Unit No
+
+model.ROVO.SearchLeaseAgreementInfo_RoVo.UnitShortcode_LABEL=Unit Short Code
+model.ROVO.RecommendationDuplicate_ROVO_LABEL=Recommendation Duplicate Rovo
+model.ROVO.LeaseDuplicateROVO_LABEL=Lease Duplicate Rovo
+model.ROVO.BookingDuplicateValidation_ROVO_LABEL=Booking Duplicate Validation Rovo
+model.ROVO.BookingMilestoneOC_Hstry_LABEL=Booking Milestone Oc Hstry
+model.VL.OcHeader_BookingMilestoneOC_Hstry_VL_LABEL=Oc Header Booking Milestone Oc Hstry Vl
+model.ROVO.LeaseOffer_detail_RoVo_LABEL=Lease Offer Detail Ro Vo
+model.ROVO.getBookingMsDtlForOC_RoVo_LABEL=Get Booking Ms Dtl For Oc Ro Vo
+model.ROVO.CancellationHeaderProposedROVO_LABEL=Cancellation Header Proposed Rovo
+model.ROVO.CancellationDetailProposed_ROVO_LABEL=Cancellation Detail Proposed Rovo
+model.VL.CancelHD_H_VL_LABEL=Cancel Hd H Vl
+model.VL.cancelHH_VL_LABEL=Cancel Hh Vl
+model.ROVO.CancellationHeaderProposedROVO.Leasenumber_LABEL=Lease Number
+
+model.ROVO.CancellationHeaderProposedROVO.Booknumber_LABEL=Booking Number
+
+model.ROVO.CancellationHeaderProposedROVO.Recno_LABEL=Recommendation No
+model.ROVO.CancellationHeaderProposedROVO.Offernumber_LABEL=Offer Number
+model.ROVO.CancellationHeaderProposedROVO.Orgname_LABEL=Business Unit
+model.ROVO.CancellationHeaderProposedROVO.CancelNumber_LABEL=Cancel Number
+model.ROVO.CancellationHeaderProposedROVO.BaseRate_LABEL=Base Rate
+model.ROVO.CancellationHeaderProposedROVO.TotalRate_LABEL=Total Rate
+model.ROVO.CancellationHeaderProposedROVO.CustomerName_LABEL=Customer
+model.ROVO.CancellationHeaderProposedROVO.EmiratedId_LABEL=Emirate Id
+model.ROVO.CancellationHeaderProposedROVO.CancelDate_LABEL=Termination Date
+model.ROVO.CancellationHeaderProposedROVO.DaysConsumed_LABEL=Days Consumed
+
+model.ROVO.CancellationHeaderProposedROVO.DaysRemaining_LABEL=Days Remaining
+model.ROVO.CancellationHeaderProposedROVO.DailyRentalRate_LABEL=Daily Rental
+
+model.ROVO.CancellationHeaderProposedROVO.DailyDiscountingRate_LABEL=Daily Discount
+
+model.ROVO.CancellationHeaderProposedROVO.NocBy_LABEL=NOC By
+model.ROVO.CancellationHeaderProposedROVO.NocDateEntered_LABEL=Noc Expected Date
+
+model.ROVO.CancellationHeaderProposedROVO.NocDateActual_LABEL=Noc Date Actual
+model.ROVO.CancellationHeaderProposedROVO.ChequeClearedAmount_LABEL=Cheque Amount Cleared
+model.ROVO.CancellationHeaderProposedROVO.AmountWaived_LABEL=Amount Waived
+model.ROVO.CancellationHeaderProposedROVO.Netdue_LABEL=Net Due
+model.ROVO.CancellationHeaderProposedROVO.ProposeFinalStatus_LABEL=Cancel Status
+model.ROVO.CancellationDetailProposed_ROVO.CancelationCharges_LABEL=Cancellation Charges
+model.ROVO.CancellationDetailProposed_ROVO.TaxCode_LABEL=Tax Code
+model.ROVO.CancellationDetailProposed_ROVO.TaxAmount_LABEL=Tax Amount
+model.ROVO.CancellationDetailProposed_ROVO.CancelAmount_LABEL=Amount
+model.ROVO.CancellationDetailProposed_ROVO.TotalAmount_LABEL=Total Amount
+model.ROVO.CancellationOtherChargeProposed_ROVO_LABEL=Cancellation Other Charge Proposed Rovo
+model.VL.CancelHO_VL_LABEL=Cancel Ho Vl
+model.ROVO.PropertyBasedPList_RoVo_LABEL=Property Based P List Ro Vo
+model.VL.Cancel_Receipt_Vl_LABEL=Cancel Receipt Vl
+model.VO.OtherChargesHeader_VO.LeaseStartDate_LABEL=Lease Start Date
+model.VO.OtherChargesHeader_VO.LeaseEndDate_LABEL=Lease End Date
+model.ROVO.getLeaseNumber.CustName_LABEL=Customer
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseStartFromDate_LABEL=Lease Start From Date
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseStartFromDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseStartFromDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseStartToDate_LABEL=Lease Start To Date
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseStartToDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseStartToDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseEndFromDate_LABEL=Lease End From Date
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseEndFromDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseEndFromDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseEndToDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseEndToDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchLeaseAgreementInfo_RoVo.LeaseEndToDate_LABEL=Lease End To Date
+model.ROVO.SearchLeaseAgreementInfo_RoVo.CreateDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchLeaseAgreementInfo_RoVo.CreateDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.searchOffersInfoROVO.OfferFlag_LABEL=Offer Flag
+model.ROVO.SearchBookingROVO.OfferFlag_LABEL=Offer Flag
+model.ROVO.SearchRecommendationRoVo.OfferFlag_LABEL=Offer Flag
+model.ROVO.SearchLeaseAgreementInfo_RoVo.OfferFlag_LABEL=Offer Flag
+model.ROVO.SearchUnits_ROVO.DocRefNumber3_LABEL=SEWA/DEWA Number
+model.ROVO.SearchRecommendationRoVo.LeaseStartFromDate_LABEL=Lease Start From Date
+model.ROVO.SearchRecommendationRoVo.LeaseStartToDate_LABEL=Lease Start To Date
+model.ROVO.SearchRecommendationRoVo.LeaseEndFromDate_LABEL=Leasse End From Date
+model.ROVO.SearchRecommendationRoVo.LeaseEndToDate_LABEL=Lease End To Date
+model.ROVO.SearchRecommendationRoVo.LeaseStartFromDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchRecommendationRoVo.LeaseStartFromDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchRecommendationRoVo.LeaseStartToDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchRecommendationRoVo.LeaseStartToDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchRecommendationRoVo.LeaseEndFromDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchRecommendationRoVo.LeaseEndFromDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchRecommendationRoVo.LeaseEndToDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchRecommendationRoVo.LeaseEndToDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchBookingROVO.LeadName_LABEL=Lead Name
+model.VO.BookingHeader_VO.OfferNumber_Trans_LABEL=Offer Number
+model.ROVO.searchOffersInfoROVO.LeaseNumber_LABEL=Contract No
+model.VO.PlDiscounts_VO.CheckBox_Trans_LABEL=Active
+model.ROVO.SrearchCancellation_RoVo.CourtCase_LABEL=Court Case
+model.VO.Cancellation_VO.CourtCaseNo_LABEL=Court Case No
+model.ROVO.SearchLeaseAgreementInfo_RoVo.TenanctStatus_LABEL=Tenancy Status
+model.ROVO.SearchLeaseAgreementInfo_RoVo.CancellationNocDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchLeaseAgreementInfo_RoVo.CancellationNocDate_FMT_FORMAT=dd-MM-yyyy
+model.VO.Cancellation_VO.CnCompleteStatus_LABEL=Complete Status
+model.VO.OfferDetail_VO.SetRentPerAnnum_LABEL=Set Rent (P/A)
+
+model.VO.BookingDetail_VO.SetRentPerAnnum_LABEL=Set Rent (PA)
+model.ROVO.SearchLeaseAgreementInfo_RoVo.SetRentPerAnnum_LABEL=Set Rent (P/A)
+model.ROVO.SearchLeaseAgreementInfo_RoVo.ExtensionDays_LABEL=Contract Days
+model.ROVO.SearchRecommendationRoVo.ExtensionDays_LABEL=Contract Days
+model.ROVO.SearchRecommendationRoVo.SetRentPerAnnum_LABEL=Set Rent (P/A)
+model.ROVO.SearchBookingROVO.ExtensionDays_LABEL=Contract Days
+model.ROVO.SearchBookingROVO.SetRentPerAnnum_LABEL=Set Rent (P/A)
+model.ROVO.searchOffersInfoROVO.ExtensionDays_LABEL=Contract Days
+model.ROVO.searchOffersInfoROVO.SetRentPerAnnum_LABEL=Set Rent (P/A)
+model.VO.Receipt_VO.PaymentType_LABEL=Payment Type
+model.VO.Receipt_VO.PayMode5_LABEL=Payment Mode
+model.VO.Receipt_VO.PayMode6_LABEL=Payment Mode
+model.AM.WoScheduler_AM_LABEL=Wo Scheduler Am
+model.VO.WoSchedulerTnxHdr_VO_LABEL=Wo Scheduler Tnx Hdr Vo
+model.VO.WoSchedulerTnxResource_VO_LABEL=Wo Scheduler Tnx Resource Vo
+model.VL.WoSchTnxHdrTnxResource_VL_LABEL=Wo Sch Tnx Hdr Tnx Resource Vl
+model.ROVO.SearchWoSchedulerTnx_RoVo_LABEL=Search Wo Scheduler Tnx Ro Vo
+model.ROVO.GetWoHdrInfo_ROVO_LABEL=Get Wo Hdr Info Rovo
+model.ROVO.GetWoHdrInfo_ROVO.WorkOrder_LABEL=WO Number
+model.VO.WoSchedulingMainHdr_VO_LABEL=Wo Scheduling Main Hdr Vo
+model.VL.WoSchMainHdr_WoSchTnxHdr_VL_LABEL=Wo Sch Main Hdr Wo Sch Tnx Hdr Vl
+model.VL.WoSchMainHdr_Approval_VL_LABEL=Wo Sch Main Hdr Approval Vl
+model.ROVO.SearchWoSchedulerTnx_RoVo.WoSchMainHdrNo_LABEL=WO Scheduling No
+model.VO.OfferDiscountFlow_VO_LABEL=Offer Discount Flow Vo
+model.VL.OffrHdr_OfrDiscFlow_VL_LABEL=Offr Hdr Ofr Disc Flow Vl
+model.VO.BookingDetail_VO.PropertyName_Trans_LABEL=Property Name
+model.VO.BookingDetail_VO.BuildingName_Trans_LABEL=Building Name
+model.VO.BookingDetail_VO.UnitName_Trans_LABEL=Unit Name
+model.VO.BookingDetail_VO.LeaseUnitMap_Transiant_LABEL=Lease Unit Map
+model.ROVO.getAllOfrBkDtl_RoVo_LABEL=Get All Ofr Bk Dtl Ro Vo
+model.ROVO.getRcptSecDepo_RoVo_LABEL=Get Rcpt Sec Depo Ro Vo
+model.VL.BkHdr_getOfrBkDtl_VL_LABEL=Bk Hdr Get Ofr Bk Dtl Vl
+model.ROVO.getAllOfrBkDtl_RoVo.PropertyName_LABEL=Property Name
+model.ROVO.getAllOfrBkDtl_RoVo.BuildName_LABEL=Build Name
+model.ROVO.getAllOfrBkDtl_RoVo.UnitName_LABEL=Unit Name
+model.ROVO.getAllOfrBkDtl_RoVo.LeaseUnitMap_LABEL=Lease Unit Mapping
+model.ROVO.getAllOfrBkDtl_RoVo.UnitTypeName_LABEL=Model
+model.ROVO.getAllOfrBkDtl_RoVo.SetRentPerAnnum_LABEL=Set Rent (PA)
+model.ROVO.getAllOfrBkDtl_RoVo.BaseRate_LABEL=Rental Amount
+model.ROVO.getAllOfrBkDtl_RoVo.Attribute3_LABEL=Total Approved Discount
+
+
+model.ROVO.getAllOfrBkDtl_RoVo.TaxAmount_LABEL=Tax
+model.ROVO.getAllOfrBkDtl_RoVo.TotalRate_LABEL=Approved Net Rent (Including Tax)
+
+
+model.ROVO.getAllOfrBkDtl_RoVo.UnitAvlStatus_LABEL=Unit Availability Status
+model.ROVO.getAllOfrBkDtl_RoVo.UnitAvlFrom_LABEL=Unit Availability From
+model.ROVO.getAllOfrBkDtl_RoVo.MunicipalityCharges_LABEL=Municipality Deposit Charges
+model.ROVO.getAllOfrBkDtl_RoVo.MunicipalityPercentage_LABEL=Municipality Percentage
+model.ROVO.getAllOfrBkDtl_RoVo.ElectricityCharges_LABEL=Electricity Deposit Charges
+model.ROVO.getAllOfrBkDtl_RoVo.SecurityDeposite_LABEL=Security Deposit
+model.ROVO.getAllOfrBkDtl_RoVo.ThirdPartyServCharge_LABEL=Third Party Serv Charges
+model.ROVO.getAllOfrBkDtl_RoVo.OtherGovntChargeNew_LABEL=Other Govt Charge New
+model.ROVO.getAllOfrBkDtl_RoVo.OtherGovntChargeRnew_LABEL=Other Govt Charge Renew
+model.ROVO.getAllOfrBkDtl_RoVo.EjariPaymentCharge_LABEL=Ejari Payment Charges
+model.VO.OfferDetail_VO.OldContractValue_Trans_LABEL=Tenancy Contract Value
+
+model.ROVO.findOldOfrDtlsWrtLease_RoVo_LABEL=Find Old Ofr Dtls Wrt Lease Ro Vo
+model.ROVO.getAllOfrBkDtl_RoVo.OldContractValue_Trans_LABEL=Tenancy Contract Value
+
+model.VO.BookingDetail_VO.OldContractValue_Trans_LABEL=Tenancy Contract Value
+
+model.VO.BookingDetail_VO.LeaseUnitTypeMap_Trans_LABEL=Model
+model.ROVO.getAllOfrBkDtl_RoVo.SecurityDepo_Trans_LABEL=Security Deposit
+model.VO.OfferHrd_VO.RequestedNetRent_LABEL=Requested Net Rent
+model.VO.OfferDetail_VO.Attribute3_LABEL=Total Approved Discount
+model.VO.BookingDetail_VO.Attribute3_LABEL=Total Approved Discount
+model.ROVO.SearchBkDtls_RoVo_LABEL=Search Bk Dtls Ro Vo
+model.VO.BookingDetail_VO.CancelStatus_LABEL=Cancel Status
+model.ROVO.WoResourceOnly_RoVo_LABEL=Wo Resource Only Ro Vo
+model.VO.RecommendHeader_VO.PaymentPlan_Trans_LABEL=Payment Plan
+model.VO.BookingDetail_VO.NetRentWithoutTax_LABEL=Approved Net Rent (Excluding Tax)
+model.VO.BookingHeader_VO.NetRentWithoutTax_LABEL=Approved Net Rent (Excluding Tax)
+model.VO.OfferDetail_VO.NetRentWithoutTax_LABEL=Approved Net Rent (Excluding Tax)
+model.VO.OfferHrd_VO.OfferTotalWithoutTax_LABEL=Approved Net Rent (Excluding Tax)
+model.VO.OfferDiscountFlow_VO.NetRentWithoutTax_LABEL=Approved Net Rent (Excluding Tax)
+model.ROVO.getAllOfrBkDtl_RoVo.NetRentWithoutTax_LABEL=Approved Net Rent (Excluding Tax)
+model.ROVO.getAllWoRscTnxDtls_RoVo_LABEL=Get All Wo Rsc Tnx Dtls Ro Vo
+model.ROVO.SearchBookingROVO.SubStatus_LABEL=Booking Sub Status
+model.ROVO.searchOffersInfoROVO.SubStatus_LABEL=Offer Sub Status
+model.ROVO.SearchRecommendationRoVo.SubStatus_LABEL=Payments & Docs Sub Status
+model.ROVO.SearchLeaseAgreementInfo_RoVo.SubStatus_LABEL=Contract Sub Status
+model.AM.LandLordMaster_AM_LABEL=Land Lord Master Am
+model.VO.LandLordMaster_VO_LABEL=Land Lord Master Vo
+model.VO.LandLordUnitDtls_VO_LABEL=Land Lord Unit Dtls Vo
+model.VO.LandLordAprvlFlow_VO_LABEL=Land Lord Aprvl Flow Vo
+model.VL.LandLordMstr_UnitDtls_VL_LABEL=Land Lord Mstr Unit Dtls Vl
+model.VL.LandLordMstr_AprvlFlow_VL_LABEL=Land Lord Mstr Aprvl Flow Vl
+model.VO.LandLordMaster_VO.VendorId_LABEL=Land Lord Name
+model.ROVO.UnitDtls_RoVo_LABEL=Unit Dtls Ro Vo
+model.VO.LandLordUnitDtls_VO.UnitName_Trans_LABEL=Unit Name
+model.VO.LandLordAprvlFlow_VO.UserId_LABEL=Approver Name
+
+model.ROVO.getFunctions_RoVo_LABEL=Get Functions Ro Vo
+model.ROVO.SearchLandLordMaster_RoVo_LABEL=Search Land Lord Master Ro Vo
+model.VO.LandLordMaster_VO.VendorName_LABEL=Land Lord Name
+model.VO.LandLordUnitDtls_VO.BuildId_LABEL=Build Name
+model.VO.LandLordUnitDtls_VO.PropertyId_LABEL=Property Name
+model.VO.LandLordMaster_VO.OrgId_LABEL=Business Unit
+model.VO.LandLordAprvlFlow_VO.UserLevel_LABEL=User Level
+model.VO.LandLordAprvlFlow_VO.Code_LABEL=Screen
+model.ROVO.SearchLandLordMaster_RoVo.OrgId_LABEL=Business Unit
+model.ROVO.UnitDtls_RoVo.BuildName_LABEL=Build Name
+model.ROVO.UnitDtls_RoVo.UnitName_LABEL=Unit Name
+model.VO.LandLordUnitDtls_VO.OrgId_LABEL=Business Unit
+model.VO.PropertyManagement_VO_LABEL=Property Management Vo
+model.VO.PropertyManagement_VO.PropertyManagement_LABEL=Property Management
+model.ROVO.PropertyManagement_RoVo_LABEL=Property Management Ro Vo
+model.ROVO.PropertyManagement_RoVo.PropertyManagement_LABEL=Property Management
+model.VO.LandLordMaster_VO.PropertyManagement_LABEL=Property Management
+model.ROVO.SearchLandLordMaster_RoVo.PropertyManagement_LABEL=Property Management
+model.ROVO.SearchLandLordMaster_RoVo.VendorName_LABEL=Land Lord Name
+model.VO.OfferMilestoneDetail_VO.Attribute2_LABEL=Tax Code
+model.VO.OfferMilestoneDetail_VO.Attribute3_LABEL=Tax Amount
+model.VO.OfferMilestoneDetail_VO.Attribute4_LABEL=Amount
+model.VO.Booking_Milestone_VO.Attribute2_LABEL=Tax Code
+model.VO.Booking_Milestone_VO.Attribute3_LABEL=Tax Amount
+model.VO.Booking_Milestone_VO.Attribute4_LABEL=Amount
+model.ROVO.BookingMilestoneOC_Hstry.Attribute2_LABEL=Tax Code
+model.ROVO.BookingMilestoneOC_Hstry.Attribute3_LABEL=Tax Amount
+model.ROVO.BookingMilestoneOC_Hstry.Attribute4_LABEL=Amount
+model.VO.BookingMilestonesOtherChargesVO.Attribute2_LABEL=Tax Code
+model.VO.BookingMilestonesOtherChargesVO.Attribute3_LABEL=Tax Amount
+model.VO.BookingMilestonesOtherChargesVO.Attribute4_LABEL=Amount
+model.ROVO.getTaxRoVo_LABEL=Get Tax Ro Vo
+model.VO.WoInvHdr_VO_LABEL=Wo Inv Hdr Vo
+model.AM.WoInv_AM_LABEL=Wo Inv Am
+model.ROVO.SearchWoInv_RoVo_LABEL=Search Wo Inv Ro Vo
+model.ROVO.SearchWoInv_RoVo.WoInvHdrNo_LABEL=Wo Inv Hdr No
+model.ROVO.SearchWoInv_RoVo.WorkOrder_LABEL=Work Order No
+
+model.VO.WoInvHdr_VO.BillableTo_LABEL=Billable To
+model.VO.WoInvHdr_VO.ClosedDate_LABEL=Close Date
+model.VO.WoInvHdr_VO.MaterialCost_LABEL=Material Cost
+model.VO.WoInvHdr_VO.ResourceCost_LABEL=Resource Cost
+model.VO.WoInvHdr_VO.TotalCost_LABEL=Total Cost
+model.VO.WoInvHdr_VO.SubType_LABEL=Sub Type
+model.VO.WoInvHdr_VO.WorkOrder_LABEL=Work Order No
+model.VO.WoInvHdr_VO.WoStatus_LABEL=WO Status
+model.VO.WoInvHdr_VO.WoInvHdrNo_LABEL=Wo Inv Hdr No
+model.ROVO.SearchWoInv_RoVo.ClosedDate_LABEL=Close Date
+model.ROVO.SearchWoInv_RoVo.BillableTo_LABEL=Billable To
+model.ROVO.SearchWoInv_RoVo.MaterialCost_LABEL=Material Cost
+model.ROVO.SearchWoInv_RoVo.ResourceCost_LABEL=Resource Cost
+model.ROVO.SearchWoInv_RoVo.TotalCost_LABEL=Total Cost
+model.ROVO.WoInvDtls_RoVo_LABEL=Wo Inv Dtls Ro Vo
+model.VL.WoInvHdr_WoInvDtl_VL_LABEL=Wo Inv Hdr Wo Inv Dtl Vl
+model.ROVO.WoInvDtls_RoVo.WorkOrder_LABEL=Work Order No
+model.ROVO.WoInvDtls_RoVo.StartDate_LABEL=Start Date
+model.ROVO.WoInvDtls_RoVo.SubType_LABEL=Sub Type
+model.ROVO.WoInvDtls_RoVo.BuildName_LABEL=Build Name
+model.ROVO.WoInvDtls_RoVo.UnitName_LABEL=Unit Name
+model.VO.WoInvDetailAr_VO_LABEL=Wo Inv Detail Ar Vo
+model.VL.WoInvHdr_WoInvDetailAr_VL_LABEL=Wo Inv Hdr Wo Inv Detail Ar Vl
+model.VO.WoInvDetailAr_VO.TotalAmount_LABEL=Total Amount
+model.VO.WoInvDetailAr_VO.TaxCode_LABEL=Tax Code
+model.VO.WoInvDetailAr_VO.TaxAmount_LABEL=Tax Amount
+model.VO.WoInvDetailAr_VO.Charges_LABEL=WO Charges
+model.VO.WoInvHdr_VO.InvStatus_LABEL=Invoice Status
+model.ROVO.SearchWoInv_RoVo.InvStatus_LABEL=Invoice Status
+model.VO.WoInvHdr_VO.TotalInvCost_LABEL=Total Invoice Cost
+model.VO.WoInvHdr_VO.LastUpdatedBy_LABEL=Last Updated By
+model.VO.WoInvHdr_VO.LastUpdateDate_LABEL=Last Updated Date
+model.VO.WoInvHdr_VO.CreationDate_LABEL=Creation Date
+model.VO.WoInvHdr_VO.CreatedBy_LABEL=Created By
+model.ROVO.SearchWoInv_RoVo.TotalInvCost_LABEL=Total Invoice Cost
+model.VO.WoInvHdr_VO.Status_Trans_LABEL=Transaction Status
+model.VO.WoInvHdr_VO.CustomerName_LABEL=Customer Name
+model.VO.WoInvHdr_VO.CustomerTrxnNum_LABEL=Invoice No
+model.VO.WoInvHdr_VO.BillToAddre_LABEL=Bill To Address
+model.VO.WoInvHdr_VO.Status_LABEL=Transaction Status
+model.ROVO.SearchWoInv_RoVo.UnitName_LABEL=Unit Name
+model.ROVO.SearchWoInv_RoVo.BuildName_LABEL=Build Name
+model.VO.PropertyBuildings_VO.Attribute1_LABEL=Unit Category
+model.VO.PropertyBuildings_VO.Attribute2_LABEL=Unit In-Charge
+model.ROVO.getRecommendRoVo_LABEL=Get Recommend Ro Vo
+model.ROVO.GetWoOperationRoVo_LABEL=Get Wo Operation Ro Vo
+model.ROVO.SearchWoSchedulerTnx_RoVo.InterfaceStatus_LABEL=Interface Status
+model.ROVO.SearchWoInv_RoVo.CreationDate_LABEL=Creation Date
+model.ROVO.SearchWoInv_RoVo.CustomerName_LABEL=Customer Name
+model.ROVO.SearchWoInv_RoVo.LandlordName_LABEL=Landlord Name
+model.ROVO.SearchWoInv_RoVo.SecondaryLandlordName_LABEL=Secondary Landlord
+model.ROVO.SearchWoInv_RoVo.ClosedDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchWoInv_RoVo.ClosedDate_FMT_FORMAT=dd-MM-yyyy
+model.VO.Cancellation_VO.CourtCaseAdjustmentAmt_LABEL=Courtcase Adjustment Amount
+model.ROVO.SrearchCancellation_RoVo.UnitCategory_LABEL=Unit Category
+model.ROVO.SrearchCancellation_RoVo.AreaValue_LABEL=Area Value
+model.VO.Cancellation_VO.NetCourtCaseAdjustmentAmt_LABEL=Net Coutcase Adj Amt
+model.VO.OcDpHdr_VO_LABEL=Oc Dp Hdr Vo
+model.VO.OcBkMilestoneDtlDp_VO_LABEL=Oc Bk Milestone Dtl Dp Vo
+model.VL.OcHdrDpVo_OcBkMilestoneDtlDpVo_VL_LABEL=Oc Hdr Dp Vo Oc Bk Milestone Dtl Dp Vo Vl
+model.VO.OcReceiptDp_VO_LABEL=Oc Receipt Dp Vo
+model.VL.OcHdrDpVo_OcReceiptDpVo_VL_LABEL=Oc Hdr Dp Vo Oc Receipt Dp Vo Vl
+model.ROVO.SearchOcDp_RoVo_LABEL=Search Oc Dp Ro Vo
+model.ROVO.SearchOcDp_RoVo.OtherChargesNumber_LABEL=OC No
+
+model.ROVO.SearchOcDp_RoVo.CustNameTrans_LABEL=Customer Name
+model.ROVO.SearchOcDp_RoVo.PropertyNameTrans_LABEL=Property Name
+model.ROVO.SearchOcDp_RoVo.BuildingNameTrans_LABEL=Build Name
+model.ROVO.SearchOcDp_RoVo.UnitNameTrans_LABEL=Unit Name
+model.ROVO.SearchOcDp_RoVo.DestinationBu_LABEL=Destination BU
+model.ROVO.getOcDpBkMsDtlInvoiceLines_RoVo_LABEL=Get Oc Dp Bk Ms Dtl Invoice Lines Ro Vo
+model.VO.OcReceiptDp_VO.AckFlag_LABEL=Cashier Acknowledged?
+model.ROVO.SearchWoInv_RoVo.FromCloseDate_LABEL=From Close Date
+model.ROVO.SearchWoInv_RoVo.ToCloseDate_LABEL=To Close Date
+model.VO.WoHeader_VO_LABEL=Wo Header Vo
+model.ROVO.SearchWoSchedulerTnx_RoVo.CreationDate_LABEL=Creation Date
+model.VO.OpResourceStg_VO_LABEL=Op Resource Stg Vo
+model.EO.WoHeader_EO.StartDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.EO.WoHeader_EO.StartDate_FMT_FORMAT=yyyy-MM-dd hh\:mm\:ss
+model.EO.WoHeader_EO.CompletionDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.EO.WoHeader_EO.CompletionDate_FMT_FORMAT=yyyy-MM-dd hh\:mm\:ss
+model.EO.WoHeader_EO.ReleasedDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.EO.WoHeader_EO.ReleasedDate_FMT_FORMAT=yyyy-MM-dd hh\:mm\:ss
+model.EO.WoHeader_EO.ClosedDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.EO.WoHeader_EO.ClosedDate_FMT_FORMAT=yyyy-MM-dd hh\:mm\:ss
+model.VO.WoHeader_VO.StartDate_FMT_FORMAT=yyyy-MM-dd hh\:mm\:ss a
+model.ROVO.GetWoOpResrcStg_RoVo_LABEL=Get Wo Op Resrc Stg Ro Vo
+model.VO.WoSchedulerTnxResource_VO.StartDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.WoSchedulerTnxResource_VO.StartDate_FMT_FORMAT=dd-MM-yyyy hh\:mm\:ss a
+model.VO.WoSchedulerTnxResource_VO.CompleteDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.WoSchedulerTnxResource_VO.CompleteDate_FMT_FORMAT=dd-MM-yyyy hh\:mm\:ss a
+model.VO.WoSchedulerTnxResource_VO.RescheduleDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.WoSchedulerTnxResource_VO.RescheduleDate_FMT_FORMAT=dd-MM-yyyy hh\:mm\:ss a
+model.VO.WoSchedulerTnxHdr_VO.StartDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.WoSchedulerTnxHdr_VO.StartDate_FMT_FORMAT=dd-MM-yyyy hh\:mm\:ss a
+model.VO.WoSchedulerTnxHdr_VO.RescheduleDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.WoSchedulerTnxHdr_VO.RescheduleDate_FMT_FORMAT=dd-MM-yyyy hh\:mm\:ss a
+model.VO.WoSchedulerTnxHdr_VO.ReleasedDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.WoSchedulerTnxHdr_VO.ReleasedDate_FMT_FORMAT=dd-MM-yyyy hh\:mm\:ss a
+model.VO.WoSchedulerTnxHdr_VO.ActualStartDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.WoSchedulerTnxHdr_VO.ActualStartDate_FMT_FORMAT=dd-MM-yyyy hh\:mm\:ss a
+model.ROVO.SearchWoSchedulerTnx_RoVo.ReleasedDate_LABEL=Released Date
+model.ROVO.SearchWoSchedulerTnx_RoVo.ReleasedDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchWoSchedulerTnx_RoVo.ReleasedDate_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.GetLandlordApprFlwDtls_RoVo_LABEL=Get Landlord Appr Flw Dtls Ro Vo
+model.ROVO.userROVO.UserName_LABEL=User Name
+model.ROVO.SearchWoInv_RoVo.OrgName_LABEL=BU Name
+model.VO.OtherChargesHeader_VO.TnxDate_Trans_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.OtherChargesHeader_VO.TnxDate_Trans_FMT_FORMAT=dd-MMM-yy
+model.ROVO.SearchWoInv_RoVo.ClosedDateStart_LABEL=Closed Date Start
+model.ROVO.SearchWoInv_RoVo.ClosedDateEnd_LABEL=Closed Date End
+model.ROVO.SearchWoInv_RoVo.InvoiceDateStart_LABEL=Invoice Start Date
+model.ROVO.SearchWoInv_RoVo.InvoiceDateEnd_LABEL=Invoice End Date
+model.ROVO.SearchWoInv_RoVo.ClosedDateStart_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchWoInv_RoVo.ClosedDateStart_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchWoInv_RoVo.ClosedDateEnd_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchWoInv_RoVo.ClosedDateEnd_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchWoInv_RoVo.InvoiceDateStart_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchWoInv_RoVo.InvoiceDateStart_FMT_FORMAT=dd-MM-yyyy
+model.ROVO.SearchWoInv_RoVo.InvoiceDateEnd_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.ROVO.SearchWoInv_RoVo.InvoiceDateEnd_FMT_FORMAT=dd-MM-yyyy
+model.VL.OcDpHdrVoGetAprvlRoVo_VL_LABEL=Oc Dp Hdr Vo Get Aprvl Ro Vo Vl
+model.ROVO.SearchWoInv_RoVo.Attribute1_LABEL=Group Name
+model.VO.PoInvHdr_VO_LABEL=Po Inv Hdr Vo
+model.ROVO.SearchPoInv_RoVo_LABEL=Search Po Inv Ro Vo
+model.ROVO.PoInvDtls_RoVo_LABEL=Po Inv Dtls Ro Vo
+model.VL.PoInvHdr_PoInvDtl_VL_LABEL=Po Inv Hdr Po Inv Dtl Vl
+model.VO.PoInvHdr_VO.BuName_LABEL=BU Name
+model.VO.PoInvHdr_VO.BuildingName_LABEL=Building Name
+model.VO.PoInvHdr_VO.ClosedDate_LABEL=Closed Date
+model.VO.PoInvHdr_VO.JobCard_LABEL=Job Card
+model.VO.PoInvHdr_VO.ItemNo_LABEL=Item No
+model.VO.PoInvHdr_VO.ItemDesc_LABEL=Item Desc
+model.VO.PoInvHdr_VO.PoNumber_LABEL=PO Number
+model.VO.PoInvHdr_VO.PoStatus_LABEL=PO Status
+model.VO.PoInvHdr_VO.PoSubType_LABEL=PO Sub Type
+model.VO.PoInvHdr_VO.PoTax_LABEL=PO Tax
+model.VO.PoInvHdr_VO.VendorName_LABEL=Vendor Name
+model.VO.PoInvHdr_VO.VendorNo_LABEL=Vendor No
+model.VO.PoInvHdr_VO.PoInvHdrNo_LABEL=PO Inv No
+model.ROVO.SearchPoInv_RoVo.PoInvHdrNo_LABEL=PO Inv No
+model.ROVO.SearchPoInv_RoVo.BuName_LABEL=BU Name
+model.ROVO.SearchPoInv_RoVo.VendorNo_LABEL=Vendor No
+model.ROVO.SearchPoInv_RoVo.VendorName_LABEL=Vendor Name
+model.ROVO.SearchPoInv_RoVo.PoNumber_LABEL=PO No
+model.ROVO.SearchPoInv_RoVo.PoType_LABEL=PO Type
+model.ROVO.SearchPoInv_RoVo.ClosedDate_LABEL=Closed Date
+model.ROVO.SearchPoInv_RoVo.UnitPrice_LABEL=Unit Price
+model.ROVO.SearchPoInv_RoVo.PoLineTotal_LABEL=PO Line Total
+model.ROVO.SearchPoInv_RoVo.PoTax_LABEL=PO Tax
+model.ROVO.SearchPoInv_RoVo.JobCard_LABEL=Job Card
+model.ROVO.SearchPoInv_RoVo.BuildingName_LABEL=Building Name
+model.ROVO.SearchPoInv_RoVo.PoStatus_LABEL=PO Status
+model.ROVO.SearchPoInv_RoVo.ItemNo_LABEL=Item No
+model.ROVO.SearchPoInv_RoVo.PoSubType_LABEL=PO Sub Type
+model.ROVO.SearchPoInv_RoVo.ItemDesc_LABEL=Item Desc
+model.VO.PoInvHdr_VO.ClosedDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.PoInvHdr_VO.ClosedDate_FMT_FORMAT=dd-MM-yyyy
+model.VO.PoInvHdr_VO.Attribute1_LABEL=Group Name
+model.ROVO.GetXxxpmUnitCnDtls_RoVo_LABEL=Get Xxxpm Unit Cn Dtls Ro Vo
+model.ROVO.SearchReceiptRoVo.RcptOrgName_LABEL=Receipt BU
+model.VO.WoSchedulerTnxResource_VO.WorkStartDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.WoSchedulerTnxResource_VO.WorkStartDate_FMT_FORMAT=dd-MM-yyyy hh\:mm\:ss a
+model.VO.WoSchedulerTnxResource_VO.WorkEndDate_FMT_FORMATTER=oracle.jbo.format.DefaultDateFormatter
+model.VO.WoSchedulerTnxResource_VO.WorkEndDate_FMT_FORMAT=dd-MM-yyyy hh\:mm\:ss a
+model.ROVO.SearchReceiptRoVo.LeaseNumber_LABEL=Contract No
+model.ROVO.SearchReceiptRoVo.OcNo_LABEL=OC No
+model.ROVO.SearchReceiptRoVo.PurposeOfRent_LABEL=Purpose of Rent

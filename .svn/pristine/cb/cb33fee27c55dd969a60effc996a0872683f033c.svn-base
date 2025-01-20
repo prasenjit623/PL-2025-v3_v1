@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ExtCancellation">
+    <template-reference>
+      <document></document>
+    </template-reference>
+    <default-activity id="__1">router1</default-activity>
+    <input-parameter-definition id="__56">
+      <name id="__57">inputParameter1</name>
+      <value>#{sessionScope.transno}</value>
+    </input-parameter-definition>
+    <managed-bean id="__5">
+      <managed-bean-name id="__3">backing_AddEditExtCan</managed-bean-name>
+      <managed-bean-class id="__2">view.backing.AddEditExtCan</managed-bean-class>
+      <managed-bean-scope id="__4">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1AddEditExtCan.jsff-->
+    </managed-bean>
+    <managed-bean id="__8">
+      <managed-bean-name id="__9">backing_SearchExtCan</managed-bean-name>
+      <managed-bean-class id="__7">view.backing.SearchExtCan</managed-bean-class>
+      <managed-bean-scope id="__6">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1SearchExtCan.jsff-->
+    </managed-bean>
+    <view id="SearchExtCan">
+      <page>/SearchExtCan.jsff</page>
+    </view>
+    <view id="AddEditExtCan">
+      <page>/AddEditExtCan.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__10">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="router1">
+      <case>
+        <expression>#{sessionScope.transno != null}</expression>
+        <outcome id="__37">edit</outcome>
+      </case>
+      <default-outcome>search</default-outcome>
+    </router>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome id="__52">
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__16">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__17">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">SearchExtCan</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome id="__15">toAdd</from-outcome>
+        <to-activity-id id="__13">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome id="__31">toEdit</from-outcome>
+        <to-activity-id id="__30">AddEditExtCan</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__24">
+      <from-activity-id id="__25">CreateInsert</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__27">CreateInsert</from-outcome>
+        <to-activity-id id="__28">AddEditExtCan</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__32">
+      <from-activity-id id="__33">AddEditExtCan</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome id="__36">back</from-outcome>
+        <to-activity-id id="__35">SearchExtCan</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__53">
+        <from-outcome id="__55">LA</from-outcome>
+        <to-activity-id id="__54">taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id id="__19">router1</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome id="__22">edit</from-outcome>
+        <to-activity-id id="__21">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__44">
+        <from-outcome id="__43">search</from-outcome>
+        <to-activity-id id="__42">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__38">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__40">
+        <from-outcome id="__41">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__39">AddEditExtCan</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__45">
+      <from-activity-id id="__46">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__47">
+        <from-outcome id="__48">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__49">SearchExtCan</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

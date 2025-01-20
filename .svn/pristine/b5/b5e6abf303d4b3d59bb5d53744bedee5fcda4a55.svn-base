@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditPoInvPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PoInvDtls_RoVo1" RangeSize="25"
+              DataControl="WoInv_AMDataControl" id="PoInvDtls_RoVo1Iterator"/>
+    <iterator Binds="PoInvHdr_VO1" RangeSize="25"
+              DataControl="WoInv_AMDataControl" id="PoInvHdr_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PoInvDtls_RoVo1Iterator" id="PoInvDtls_RoVo1">
+      <nodeDefinition DefName="model.ROVO.PoInvDtls_RoVo"
+                      Name="PoInvDtls_RoVo10">
+        <AttrNames>
+          <Item Value="PoInvHdrId"/>
+          <Item Value="PoInvHdrNo"/>
+          <Item Value="PoId"/>
+          <Item Value="PoNumber"/>
+          <Item Value="PoLineNum"/>
+          <Item Value="LineStatus"/>
+          <Item Value="UnitPrice"/>
+          <Item Value="PoTax"/>
+          <Item Value="PoLineTotal"/>
+          <Item Value="Asset"/>
+          <Item Value="BuildingName"/>
+          <Item Value="PaasBuildName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="PoInvHdrId">
+      <AttrNames>
+        <Item Value="PoInvHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="PoId">
+      <AttrNames>
+        <Item Value="PoId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="PoInvHdrNo">
+      <AttrNames>
+        <Item Value="PoInvHdrNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="PoNumber">
+      <AttrNames>
+        <Item Value="PoNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="BuName">
+      <AttrNames>
+        <Item Value="BuName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="Asset">
+      <AttrNames>
+        <Item Value="Asset"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="BuildingName">
+      <AttrNames>
+        <Item Value="BuildingName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="ClosedDate">
+      <AttrNames>
+        <Item Value="ClosedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="ItemDesc">
+      <AttrNames>
+        <Item Value="ItemDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="ItemNo">
+      <AttrNames>
+        <Item Value="ItemNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="JobCard">
+      <AttrNames>
+        <Item Value="JobCard"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="PoStatus">
+      <AttrNames>
+        <Item Value="PoStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="PoType">
+      <AttrNames>
+        <Item Value="PoType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="VendorName">
+      <AttrNames>
+        <Item Value="VendorName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="VendorNo">
+      <AttrNames>
+        <Item Value="VendorNo"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="WoInv_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="WoInv_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <list IterBinding="PoInvHdr_VO1Iterator" StaticList="false"
+          Uses="LOV_PoSubType" id="PoSubType" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PoInvHdr_VO1Iterator" id="Attribute1">
+      <AttrNames>
+        <Item Value="Attribute1"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

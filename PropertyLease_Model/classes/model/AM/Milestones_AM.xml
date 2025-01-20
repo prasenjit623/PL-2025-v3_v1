@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Milestones_AM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.AM.Milestones_AMImpl"
+  DefClass="model.AM.Milestones_AMDefImpl"
+  ComponentInterface="model.AM.common.Milestones_AM"
+  ClientProxyName="model.AM.client.Milestones_AMClient"
+  LoadComponentsLazily="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.AM.Milestones_AM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="MilestonesHdr_VO1"
+    ViewObjectName="model.VO.MilestonesHdr_VO">
+    <ViewCriteriaUsage
+      Name="findByMsid"
+      FullName="model.VO.MilestonesHdr_VO.findByMsid"/>
+    <ParameterMap>
+      <PIMap Variable="P_MS_ID">
+        <TransientExpression><![CDATA[adf.context.pageFlowScope.MsId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="MilestonesDtl_VO1"
+    ViewObjectName="model.VO.MilestonesDtl_VO"/>
+  <ViewUsage
+    Name="SearchMilestones_ROVO1"
+    ViewObjectName="model.ROVO.SearchMilestones_ROVO"/>
+  <ViewUsage
+    Name="MilestonesHdr_VO2"
+    ViewObjectName="model.VO.MilestonesHdr_VO"/>
+  <ViewUsage
+    Name="getFunctionCodeROVO1"
+    ViewObjectName="model.ROVO.getFunctionCodeROVO"/>
+  <ViewUsage
+    Name="getApprovalHistoryROVo2"
+    ViewObjectName="model.ROVO.getApprovalHistoryROVo"/>
+  <ViewLinkUsage
+    Name="Milestones_Hdr_Dtl_VL1"
+    ViewLinkObjectName="model.VL.Milestones_Hdr_Dtl_VL"
+    SrcViewUsageName="model.AM.Milestones_AM.MilestonesHdr_VO1"
+    DstViewUsageName="model.AM.Milestones_AM.MilestonesDtl_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="MilestoneApproval2"
+    ViewLinkObjectName="model.VL.MilestoneApproval"
+    SrcViewUsageName="model.AM.Milestones_AM.MilestonesHdr_VO1"
+    DstViewUsageName="model.AM.Milestones_AM.getApprovalHistoryROVo2"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="onclickRevise">
+      <Return
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+  <ClientInterface>
+    <Method
+      Name="onclickRevise">
+      <Return
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

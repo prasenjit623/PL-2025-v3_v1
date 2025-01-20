@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OC_ReceiptForAppr_VL"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  EntityAssociation="model.ASSO.OC_ReceiptForAppr_Assoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VL.OC_ReceiptForAppr_VL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="OtherChargesHeader_VO"
+    Cardinality="1"
+    Owner="model.VO.OtherChargesHeader_VO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="OtherChargesHeader_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.OtherChargesHeader_VO.BookingId"/>
+      <Item Value="model.VO.OtherChargesHeader_VO.OcHdrId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="Receipt_VO1"
+    Cardinality="-1"
+    Owner="model.VO.Receipt_VO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Receipt_VO1"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.Receipt_VO.BookingId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditMoveInOutPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MoveInOut_VO1" RangeSize="25"
+              DataControl="MoveInOut_AMDataControl" id="MoveInOut_VO1Iterator"/>
+    <iterator Binds="ApplianceDetails_VO1" RangeSize="25"
+              DataControl="MoveInOut_AMDataControl"
+              id="ApplianceDetails_VO1Iterator"/>
+    <iterator Binds="KeyDetails_VO1" RangeSize="25"
+              DataControl="MoveInOut_AMDataControl"
+              id="KeyDetails_VO1Iterator"/>
+    <iterator Binds="MeterReading_VO1" RangeSize="25"
+              DataControl="MoveInOut_AMDataControl"
+              id="MeterReading_VO1Iterator"/>
+    <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator Binds="LeaseAgreement_VO1" RangeSize="25"
+              DataControl="MoveInOut_AMDataControl"
+              id="LeaseAgreement_VO1Iterator"/>
+    <iterator id="PropertyMaster_VO1Iterator" Binds="PropertyMaster_VO1"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator id="BookingDetail_VO1Iterator" Binds="BookingDetail_VO1"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator id="MoveInOut_VO4Iterator" Binds="MoveInOut_VO4"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator id="ApplianceDetails_VO2Iterator" Binds="ApplianceDetails_VO2"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator id="KeyDetails_VO2Iterator" Binds="KeyDetails_VO2"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator id="MeterReading_VO2Iterator" Binds="MeterReading_VO2"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator id="ApplianceDetails_VO3Iterator" Binds="ApplianceDetails_VO3"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator id="KeyDetails_VO3Iterator" Binds="KeyDetails_VO3"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator id="MeterReading_VO3Iterator" Binds="MeterReading_VO3"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator id="Lookup_View_ROVO4Iterator" Binds="Lookup_View_ROVO4"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+    <iterator Binds="getApprovalHistoryROVo1" RangeSize="25"
+              DataControl="MoveInOut_AMDataControl"
+              id="getApprovalHistoryROVo1Iterator"/>
+    <iterator id="Cancellation_VO1Iterator" Binds="Cancellation_VO1"
+              DataControl="MoveInOut_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <list IterBinding="MoveInOut_VO1Iterator" StaticList="false"
+          Uses="LOV_BookingId" id="BookingId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="ResourceName">
+      <AttrNames>
+        <Item Value="ResourceName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="MoveInOutDate">
+      <AttrNames>
+        <Item Value="MoveInOutDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="MoveInOutId">
+      <AttrNames>
+        <Item Value="MoveInOutId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="MoveInOutNumber">
+      <AttrNames>
+        <Item Value="MoveInOutNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ApplianceDetails_VO1Iterator" id="ApplianceDetails_VO1">
+      <nodeDefinition DefName="model.VO.ApplianceDetails_VO"
+                      Name="ApplianceDetails_VO10">
+        <AttrNames>
+          <Item Value="ItemCode"/>
+          <Item Value="Description"/>
+          <Item Value="Status"/>
+          <Item Value="Checkbox_Trans"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="KeyDetails_VO1Iterator" id="KeyDetails_VO1">
+      <nodeDefinition DefName="model.VO.KeyDetails_VO" Name="KeyDetails_VO10">
+        <AttrNames>
+          <Item Value="KeyCode"/>
+          <Item Value="Description"/>
+          <Item Value="Status"/>
+          <Item Value="CheckBox_Trans"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="MeterReading_VO1Iterator" id="MeterReading_VO1">
+      <nodeDefinition DefName="model.VO.MeterReading_VO"
+                      Name="MeterReading_VO10">
+        <AttrNames>
+          <Item Value="MeterCode"/>
+          <Item Value="MeterValue"/>
+          <Item Value="Description"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="MoveInOut_VO1Iterator" StaticList="false"
+          Uses="LOV_LeaseAgreementId" id="LeaseAgreementId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <action id="Commit" DataControl="MoveInOut_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <list IterBinding="LeaseAgreement_VO1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <action id="Rollback" DataControl="MoveInOut_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="BookingDate">
+      <AttrNames>
+        <Item Value="BookingDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="BookingDateTrans">
+      <AttrNames>
+        <Item Value="BookingDateTrans"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="MoveInOut_VO1Iterator"
+                  Uses="LOV_LeaseNumberTrans" id="LeaseNumberTrans"/>
+    <tree IterBinding="getApprovalHistoryROVo1Iterator"
+          id="getApprovalHistoryROVo1">
+      <nodeDefinition DefName="model.ROVO.getApprovalHistoryROVo"
+                      Name="getApprovalHistoryROVo10">
+        <AttrNames>
+          <Item Value="ApproverId"/>
+          <Item Value="SubmissionDate"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="SubmittedByTrans"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="Customer">
+      <AttrNames>
+        <Item Value="Customer"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="MoveInOut_VO1Iterator" StaticList="false"
+          Uses="LOV_CancelNo_Trans" id="CancelNo_Trans" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="MoveInOut_VO1Iterator" id="Attribute1">
+      <AttrNames>
+        <Item Value="Attribute1"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditOCPageDef"
+                Package="fragments">
+   <parameters/>
+   <executables>
+      <variableIterator id="variables"/>
+      <iterator Binds="OtherChargesHeader_VO1" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="OtherChargesHeader_VO1Iterator"/>
+      <iterator Binds="getApprovalHistoryROVo1" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="getApprovalHistoryROVo1Iterator"/>
+      <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+      <iterator Binds="Receipt_VO1" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="Receipt_VO1Iterator"/>
+      <iterator id="BookingCustomer_VO1Iterator" Binds="BookingCustomer_VO1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+      <iterator Binds="Booking_Milestone_VO1" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="Booking_Milestone_VO1Iterator"/>
+      <iterator id="SearchLeaseAgreement_ROVO1Iterator"
+                Binds="SearchLeaseAgreement_ROVO1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+    <iterator Binds="Receipt_VO2" RangeSize="25"
+              DataControl="OtherCharges_AMDataControl"
+              id="Receipt_VO2Iterator"/>
+      <iterator Binds="Booking_Milestone_VO2" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="Booking_Milestone_VO2Iterator"/>
+      <iterator id="getARSetupDetails_ROVO1Iterator"
+                Binds="getARSetupDetails_ROVO1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+      <iterator id="BookingDetail_VO1Iterator" Binds="BookingDetail_VO1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+      <iterator id="getInvoiceInterfacePayloadValuesforOtherCharges1Iterator"
+                Binds="getInvoiceInterfacePayloadValuesforOtherCharges1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+      <iterator id="getReceiptPayloadDtls_OtherCharges_ROVO1Iterator"
+                Binds="getReceiptPayloadDtls_OtherCharges_ROVO1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+      <iterator id="getReceiptMethod_ROVO1Iterator"
+                Binds="getReceiptMethod_ROVO1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+      <iterator id="LeaseAgreement_VO1Iterator" Binds="LeaseAgreement_VO1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+      <iterator Binds="Booking_Milestone_VO3" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="Booking_Milestone_VO3Iterator"/>
+      <iterator Binds="Receipt_VO3" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="Receipt_VO3Iterator"/>
+      <iterator Binds="Booking_Milestone_VO4" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="Booking_Milestone_VO4Iterator"/>
+      <iterator Binds="Receipt_VO4" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="Receipt_VO4Iterator"/>
+      <iterator Binds="BookingMilestoneOC_Hstry1" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="BookingMilestoneOC_Hstry1Iterator"/>
+      <iterator id="getBookingMsDtlForOC_RoVo1Iterator"
+                Binds="getBookingMsDtlForOC_RoVo1"
+                DataControl="OtherCharges_AMDataControl" RangeSize="25"/>
+      <iterator id="Lookup_View_ROVO1Iterator" Binds="Lookup_View_ROVO1"
+                DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+      <iterator Binds="Receipt_VO6" RangeSize="25"
+                DataControl="OtherCharges_AMDataControl"
+                id="Receipt_VO6Iterator"/>
+   </executables>
+   <bindings>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="BookingId">
+         <AttrNames>
+            <Item Value="BookingId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="BuildingId">
+         <AttrNames>
+            <Item Value="BuildingId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="CreatedBy">
+         <AttrNames>
+            <Item Value="CreatedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="CreationDate">
+         <AttrNames>
+            <Item Value="CreationDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="Description">
+         <AttrNames>
+            <Item Value="Description"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="ObjectVersionNumber">
+         <AttrNames>
+            <Item Value="ObjectVersionNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="PropertyId">
+         <AttrNames>
+            <Item Value="PropertyId"/>
+         </AttrNames>
+      </attributeValues>
+      <listOfValues StaticList="false"
+                    IterBinding="OtherChargesHeader_VO1Iterator"
+                    Uses="LOV_BookingId_Trans" id="BookingId_Trans"/>
+      <listOfValues StaticList="false"
+                    IterBinding="OtherChargesHeader_VO1Iterator"
+                    Uses="LOV_LeaseAgreementId_Trans"
+                    id="LeaseAgreementId_Trans"/>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_OrgId" id="OrgId" DTSupportsMRU="false"
+            SelectItemValueMode="ListObject"/>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_PropertyId" id="PropertyId1" DTSupportsMRU="false"
+            SelectItemValueMode="ListObject"/>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_BuildingId" id="BuildingId1" DTSupportsMRU="false"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="OcHdrId">
+         <AttrNames>
+            <Item Value="OcHdrId"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_Status" id="Status1" DTSupportsMRU="false"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator" id="FuncId">
+         <AttrNames>
+            <Item Value="FuncId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="LastUpdateDate">
+         <AttrNames>
+            <Item Value="LastUpdateDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="LastUpdatedBy">
+         <AttrNames>
+            <Item Value="LastUpdatedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="getApprovalHistoryROVo1Iterator"
+            id="getApprovalHistoryROVo1">
+         <nodeDefinition DefName="model.ROVO.getApprovalHistoryROVo"
+                         Name="getApprovalHistoryROVo10">
+            <AttrNames>
+               <Item Value="ApproverId"/>
+               <Item Value="SubmissionDate"/>
+               <Item Value="SubmittedByTrans"/>
+               <Item Value="Status"/>
+               <Item Value="Description"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="OtherChargesNumber">
+         <AttrNames>
+            <Item Value="OtherChargesNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <action id="Commit" DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="true" Action="commitTransaction"/>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_UnitId" id="UnitId1" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="CustomerNameTrans">
+         <AttrNames>
+            <Item Value="CustomerNameTrans"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="Receipt_VO1Iterator" id="Receipt_VO1">
+         <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO10">
+            <AttrNames>
+               <Item Value="ReceiptNumber"/>
+               <Item Value="ReceiptDate"/>
+               <Item Value="CustomerName"/>
+               <Item Value="ReceivedAmount"/>
+               <Item Value="Description"/>
+               <Item Value="Status"/>
+               <Item Value="SourceFuncId"/>
+               <Item Value="PayMode"/>
+               <Item Value="PayRefNumber"/>
+               <Item Value="PayRefDate"/>
+               <Item Value="BankName"/>
+               <Item Value="CurrencyCode"/>
+               <Item Value="PayMode1"/>
+               <Item Value="Attribute1"/>
+               <Item Value="PaymentType"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <action IterBinding="Receipt_VO1Iterator" id="Delete1"
+              InstanceName="OtherCharges_AMDataControl.Receipt_VO1"
+              DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptId">
+         <AttrNames>
+            <Item Value="ReceiptId"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="Booking_Milestone_VO1Iterator"
+            id="Booking_Milestone_VO1">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO10">
+            <AttrNames>
+               <Item Value="InstallmentType1"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Remarks"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="InstallmentType2"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute2"/>
+               <Item Value="Attribute3"/>
+               <Item Value="Attribute5"/>
+               <Item Value="Attribute6"/>
+               <Item Value="Attribute7"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <action IterBinding="Booking_Milestone_VO1Iterator" id="Delete"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <action IterBinding="Booking_Milestone_VO1Iterator" id="CreateInsert"
+              InstanceName="OtherCharges_AMDataControl.Booking_Milestone_VO1"
+              DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="true" Action="createInsertRow"/>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="OthersTotalRate">
+         <AttrNames>
+            <Item Value="OthersTotalRate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="ReceiptTotal">
+         <AttrNames>
+            <Item Value="ReceiptTotal"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="Booking_Milestone_VO2Iterator"
+            id="Booking_Milestone_VO2">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO20">
+            <AttrNames>
+               <Item Value="InstallmentType1"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Remarks"/>
+               <Item Value="MilestoneType"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="Receipt_VO2Iterator" id="Receipt_VO2">
+         <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO20">
+            <AttrNames>
+               <Item Value="ReceiptNumber"/>
+               <Item Value="ReceiptDate"/>
+               <Item Value="CustomerName"/>
+               <Item Value="ReceivedAmount"/>
+               <Item Value="Description"/>
+               <Item Value="SourceFuncId"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="Receipt_VO3Iterator" id="ReceiptId1">
+         <AttrNames>
+            <Item Value="ReceiptId"/>
+         </AttrNames>
+      </attributeValues>
+      <action IterBinding="Receipt_VO2Iterator" id="Delete2"
+              InstanceName="OtherCharges_AMDataControl.Receipt_VO2"
+              DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <action id="Rollback" DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="false" Action="rollbackTransaction"/>
+      <methodAction id="getCodeSegmentCombination"
+                    InstanceName="OtherCharges_AMDataControl.dataProvider"
+                    DataControl="OtherCharges_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="getCodeSegmentCombination"
+                    IsViewObjectMethod="false"
+                    ReturnName="data.OtherCharges_AMDataControl.methodResults.getCodeSegmentCombination_OtherCharges_AMDataControl_dataProvider_getCodeSegmentCombination_result">
+         <NamedData NDName="pBusinessUnitId"
+                    NDValue="#{pageFlowScope.pBusinessUnitId}"
+                    NDType="java.lang.String"/>
+         <NamedData NDName="pChargeType" NDValue="#{pageFlowScope.pChargeType}"
+                    NDType="java.lang.String"/>
+         <NamedData NDName="pUnitId" NDValue="#{pageFlowScope.pUnitId}"
+                    NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="CustomerTrxnNum">
+         <AttrNames>
+            <Item Value="CustomerTrxnNum"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_CustId" id="CustId" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_BillToAddre" id="BillToAddre" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_ShipToAddre" id="ShipToAddre" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <methodAction id="getARInvoiceTrxDetailsOtherCharge"
+                    InstanceName="OtherCharges_AMDataControl.dataProvider"
+                    DataControl="OtherCharges_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="getARInvoiceTrxDetailsOtherCharge"
+                    IsViewObjectMethod="false"
+                    ReturnName="data.OtherCharges_AMDataControl.methodResults.getARInvoiceTrxDetailsOtherCharge_OtherCharges_AMDataControl_dataProvider_getARInvoiceTrxDetailsOtherCharge_result">
+         <NamedData NDName="pLeaseNo"
+                    NDValue="#{bindings.OtherChargesNumber.inputValue}"
+                    NDType="java.lang.String"/>
+         <NamedData NDName="pCustomerTrxId" NDValue=""
+                    NDType="java.lang.String"/>
+         <NamedData NDName="pCustomerTrxNo" NDType="java.lang.String"/>
+      </methodAction>
+      <tree IterBinding="Booking_Milestone_VO3Iterator"
+            id="Booking_Milestone_VO3">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO30">
+            <AttrNames>
+               <Item Value="Status"/>
+               <Item Value="InstallmentType1"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Remarks"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="OcId"/>
+               <Item Value="OcNo"/>
+               <Item Value="InstallmentType2"/>
+               <Item Value="SourceFuncId"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute2"/>
+               <Item Value="Attribute3"/>
+               <Item Value="Attribute6"/>
+               <Item Value="Attribute7"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="Receipt_VO3Iterator" id="Receipt_VO3">
+         <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO30">
+            <AttrNames>
+               <Item Value="ReceiptNumber"/>
+               <Item Value="ReceiptDate"/>
+               <Item Value="CustomerName"/>
+               <Item Value="ReceivedAmount"/>
+               <Item Value="Description"/>
+               <Item Value="SourceFuncId"/>
+               <Item Value="SourceFuncRefId"/>
+               <Item Value="OcId"/>
+               <Item Value="OcNo"/>
+               <Item Value="PayMode"/>
+               <Item Value="PayRefNumber"/>
+               <Item Value="PayRefDate"/>
+               <Item Value="BankName"/>
+               <Item Value="CurrencyCode"/>
+               <Item Value="Attribute1"/>
+               <Item Value="AckFlag" Binds="AckFlag"/>
+               <Item Value="AckBy"/>
+               <Item Value="RecHdrRowStatus_Trans"/>
+               <Item Value="AckDate"/>
+               <Item Value="PaymentType"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="FlowWith">
+         <AttrNames>
+            <Item Value="FlowWith"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_DestinationBu" id="DestinationBu" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="Receipt_VO3Iterator" id="Attribute1">
+         <AttrNames>
+            <Item Value="Attribute1"/>
+         </AttrNames>
+      </attributeValues>
+      <listOfValues StaticList="false"
+                    IterBinding="OtherChargesHeader_VO1Iterator"
+                    Uses="LOV_CancelNo_Trans" id="CancelNo_Trans"/>
+      <list IterBinding="OtherChargesHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_OcFlag" id="OcFlag" DTSupportsMRU="false"
+            SelectItemValueMode="ListObject"/>
+      <tree IterBinding="Booking_Milestone_VO4Iterator"
+            id="Booking_Milestone_VO4">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO40">
+            <AttrNames>
+               <Item Value="InstallmentType2"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Remarks"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="CancelId"/>
+               <Item Value="SourceFuncId"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute2"/>
+               <Item Value="Attribute3"/>
+               <Item Value="Attribute5"/>
+               <Item Value="Attribute6"/>
+               <Item Value="Attribute7"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="Receipt_VO4Iterator" id="Receipt_VO4">
+         <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO40">
+            <AttrNames>
+               <Item Value="ReceiptNumber"/>
+               <Item Value="ReceiptDate"/>
+               <Item Value="CustomerName"/>
+               <Item Value="CurrencyCode"/>
+               <Item Value="PayMode"/>
+               <Item Value="PayRefNumber"/>
+               <Item Value="PayRefDate"/>
+               <Item Value="BankName"/>
+               <Item Value="ReceivedAmount"/>
+               <Item Value="CancelId"/>
+               <Item Value="Description"/>
+               <Item Value="SourceFuncId"/>
+               <Item Value="PayMode1"/>
+               <Item Value="Attribute1"/>
+               <Item Value="PaymentType"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <action IterBinding="Booking_Milestone_VO4Iterator" id="CreateInsert1"
+              InstanceName="OtherCharges_AMDataControl.Booking_Milestone_VO4"
+              DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="true" Action="createInsertRow"/>
+      <action IterBinding="Booking_Milestone_VO4Iterator" id="Delete3"
+              InstanceName="OtherCharges_AMDataControl.Booking_Milestone_VO4"
+              DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <action IterBinding="Receipt_VO4Iterator" id="Delete4"
+              InstanceName="OtherCharges_AMDataControl.Receipt_VO4"
+              DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <attributeValues IterBinding="Receipt_VO4Iterator" id="ReceiptId2">
+         <AttrNames>
+            <Item Value="ReceiptId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="CreateDate">
+         <AttrNames>
+            <Item Value="CreateDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="IntegrationResponse">
+         <AttrNames>
+            <Item Value="IntegrationResponse"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="BookingMilestoneOC_Hstry1Iterator"
+            id="BookingMilestoneOC_Hstry1">
+         <nodeDefinition DefName="model.ROVO.BookingMilestoneOC_Hstry"
+                         Name="BookingMilestoneOC_Hstry10">
+            <AttrNames>
+               <Item Value="InstallmentType2"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Remarks"/>
+               <Item Value="OcNo"/>
+               <Item Value="DestOrgnameTrans"/>
+               <Item Value="OcCreatedBy"/>
+               <Item Value="OcCreateDate"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="OcStatus"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute2"/>
+               <Item Value="Attribute3"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="Receipt_VO6Iterator" id="Receipt_VO6">
+         <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO60">
+            <AttrNames>
+               <Item Value="ReceiptNumber"/>
+               <Item Value="ReceiptDate"/>
+               <Item Value="RctDesc"/>
+               <Item Value="CustomerName"/>
+               <Item Value="PayMode"/>
+               <Item Value="PayRefNumber"/>
+               <Item Value="PayRefDate"/>
+               <Item Value="BankName"/>
+               <Item Value="CurrencyCode"/>
+               <Item Value="ReceivedAmount"/>
+               <Item Value="Description"/>
+               <Item Value="FuncId"/>
+               <Item Value="SourceFuncRefId"/>
+               <Item Value="Status"/>
+               <Item Value="OcId"/>
+               <Item Value="ReceiptId"/>
+               <Item Value="SourceFuncId"/>
+               <Item Value="Attribute1"/>
+               <Item Value="PaymentType"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <action IterBinding="Receipt_VO6Iterator" id="Delete5"
+              InstanceName="OtherCharges_AMDataControl.Receipt_VO6"
+              DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="LeaseStartDate">
+         <AttrNames>
+            <Item Value="LeaseStartDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="LeaseEndDate">
+         <AttrNames>
+            <Item Value="LeaseEndDate"/>
+         </AttrNames>
+      </attributeValues>
+      <action IterBinding="Receipt_VO3Iterator" id="Delete6"
+              InstanceName="OtherCharges_AMDataControl.Receipt_VO3"
+              DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <action IterBinding="Booking_Milestone_VO3Iterator" id="Delete7"
+              InstanceName="OtherCharges_AMDataControl.Booking_Milestone_VO3"
+              DataControl="OtherCharges_AMDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <button IterBinding="Receipt_VO3Iterator" id="AckFlag"
+              DTSupportsMRU="false" StaticList="true">
+         <AttrNames>
+            <Item Value="AckFlag"/>
+         </AttrNames>
+         <ValueList>
+            <Item Value="Y"/>
+            <Item Value="N"/>
+         </ValueList>
+      </button>
+      <methodAction id="submitOcForAppr"
+                    InstanceName="OtherCharges_AMDataControl.dataProvider"
+                    DataControl="OtherCharges_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="submitOcForAppr" IsViewObjectMethod="false"
+                    ReturnName="data.OtherCharges_AMDataControl.methodResults.submitOcForAppr_OtherCharges_AMDataControl_dataProvider_submitOcForAppr_result">
+         <NamedData NDName="ocId" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="responseOcForAppr"
+                    InstanceName="OtherCharges_AMDataControl.dataProvider"
+                    DataControl="OtherCharges_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="responseOcForAppr" IsViewObjectMethod="false"
+                    ReturnName="data.OtherCharges_AMDataControl.methodResults.responseOcForAppr_OtherCharges_AMDataControl_dataProvider_responseOcForAppr_result">
+         <NamedData NDName="ocId" NDType="java.lang.String"/>
+         <NamedData NDName="reason" NDType="java.lang.String"/>
+         <NamedData NDName="apr_rej" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="CustName">
+         <AttrNames>
+            <Item Value="CustName"/>
+         </AttrNames>
+      </attributeValues>
+      <methodAction id="getCashRcptIdRspnse"
+                    InstanceName="OtherCharges_AMDataControl.dataProvider"
+                    DataControl="OtherCharges_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="getCashRcptIdRspnse" IsViewObjectMethod="false"
+                    ReturnName="data.OtherCharges_AMDataControl.methodResults.getCashRcptIdRspnse_OtherCharges_AMDataControl_dataProvider_getCashRcptIdRspnse_result">
+         <NamedData NDName="pReceiptNo" NDType="java.lang.String"/>
+         <NamedData NDName="pCshRcptId" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="chngTnxDate"
+                    InstanceName="OtherCharges_AMDataControl.dataProvider"
+                    DataControl="OtherCharges_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="chngTnxDate" IsViewObjectMethod="false"
+                    ReturnName="data.OtherCharges_AMDataControl.methodResults.chngTnxDate_OtherCharges_AMDataControl_dataProvider_chngTnxDate_result">
+         <NamedData NDName="ocId" NDType="java.lang.String"/>
+         <NamedData NDName="dateTnx" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="OtherChargesHeader_VO1Iterator"
+                       id="TnxDate_Trans">
+         <AttrNames>
+            <Item Value="TnxDate_Trans"/>
+         </AttrNames>
+      </attributeValues>
+   </bindings>
+</pageDefinition>

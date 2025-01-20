@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1"
+                   binding="#{backingBeanScope.backing_fragments_searchProperty.pt1}">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_searchProperty.pgl1}"
+                           id="pgl1" layout="vertical">
+        <af:panelGridLayout binding="#{backingBeanScope.backing_fragments_searchProperty.pgl2}"
+                            id="pgl2">
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                      binding="#{backingBeanScope.backing_fragments_searchProperty.gr1}"
+                      id="gr1">
+            <af:gridCell marginStart="5px" width="50%"
+                         binding="#{backingBeanScope.backing_fragments_searchProperty.gc1}"
+                         id="gc1">
+              <af:outputLabel
+                              binding="#{backingBeanScope.backing_fragments_searchProperty.ol1}"
+                              id="ol1"
+                              value="Property"
+                              inlineStyle="font-weight:bolder; font-size:large;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                         binding="#{backingBeanScope.backing_fragments_searchProperty.gc2}"
+                         id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:query id="qryId1" headerText="Search" disclosed="true"
+                  value="#{bindings.SearchPropertyQuery.queryDescriptor}"
+                  model="#{bindings.SearchPropertyQuery.queryModel}"
+                  queryListener="#{bindings.SearchPropertyQuery.processQuery}"
+                  queryOperationListener="#{bindings.SearchPropertyQuery.processQueryOperation}"
+                  binding="#{backingBeanScope.backing_fragments_searchProperty.qryId1}"
+                  rows="2" maxColumns="3" resultComponentId="::pc1:t1"/>
+        <af:spacer width="10" height="10"
+                   binding="#{backingBeanScope.backing_fragments_searchProperty.s1}"
+                   id="s1"/>
+        <af:panelBox text="Search Result"
+                     binding="#{backingBeanScope.backing_fragments_searchProperty.pb1}"
+                     id="pb1">
+          <f:facet name="toolbar"/>
+          <af:panelCollection binding="#{backingBeanScope.backing_fragments_searchProperty.pc1}"
+                              id="pc1"
+                              inlineStyle="width:inherit; color:#355393;">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar binding="#{backingBeanScope.backing_fragments_searchProperty.t2}"
+                          id="t2" flex="0">
+                <af:commandImageLink binding="#{backingBeanScope.backing_fragments_searchProperty.cil1}"
+                                     id="cil1"
+                                     inlineStyle="margin-right:10px;"
+                                     hoverIcon="/images/func_add_16_hov.png"
+                                     depressedIcon="/images/func_add_16_act.png"
+                                     action="toAdd" partialTriggers="t1"
+                                     disabledIcon="/images/func_add_16_dis.png"
+                                     icon="/images/func_add_16_ena.png"
+                                     visible="#{sessionScope.grantMap.Property =='F'}">
+                  <af:setPropertyListener from="#{'add'}"
+                                          to="#{pageFlowScope.SearchProp}"
+                                          type="action"/>
+                </af:commandImageLink>
+                <af:spacer width="10" height="10"
+                           binding="#{backingBeanScope.backing_fragments_searchProperty.s2}"
+                           id="s2"/>
+                <af:commandImageLink binding="#{backingBeanScope.backing_fragments_searchProperty.cil2}"
+                                     id="cil2"
+                                     hoverIcon="/images/func_pencil_16_hov.png"
+                                     inlineStyle="margin-right:10px;"
+                                     action="toEdit"
+                                     disabledIcon="/images/func_pencil_16_dis.png"
+                                     depressedIcon="/images/func_pencil_16_act.png"
+                                     icon="/images/func_pencil_16_ena.png"
+                                     visible="#{sessionScope.grantMap.Property =='F'}">
+                  <af:setPropertyListener from="#{bindings.PropertyId.inputValue}"
+                                          to="#{pageFlowScope.EditPropertyId}"
+                                          type="action"/>
+                </af:commandImageLink>
+                <af:spacer width="10" height="10"
+                           binding="#{backingBeanScope.backing_fragments_searchProperty.s3}"
+                           id="s3"/>
+                <af:commandImageLink
+                                     binding="#{backingBeanScope.backing_fragments_searchProperty.cil3}"
+                                     id="cil3" icon="/images/xl.png"
+                                     visible="#{sessionScope.grantMap.Property =='N'?'false':'true'}">
+                  <af:exportCollectionActionListener exportedId="t1"
+                                                     type="excelHTML"
+                                                     filename="Property.xls"
+                                                     title="property"/>
+                </af:commandImageLink>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.SearchProperty_ROVO1.collectionModel}"
+                      var="row"
+                      rows="#{bindings.SearchProperty_ROVO1.rangeSize}"
+                      emptyText="#{bindings.SearchProperty_ROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="6"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.SearchProperty_ROVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SearchProperty_ROVO1.collectionModel.makeCurrent}"
+                      rowSelection="single"
+                      binding="#{backingBeanScope.backing_fragments_searchProperty.t1}"
+                      id="t1" varStatus="vs" columnStretching="column:c1"
+                      scrollPolicy="page" autoHeightRows="0"
+                      columnSelection="single"
+                      filterModel="#{bindings.SearchPropertyQuery.queryDescriptor}"
+                      queryListener="#{bindings.SearchPropertyQuery.processQuery}"
+                      filterVisible="false">
+              <af:column id="c7" width="50" headerText="S. No" align="center"
+                         frozen="true">
+                <af:outputText value="#{vs.index+1}" id="ot1"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchProperty_ROVO1.hints.PropertyName.name}"
+                         sortable="true" headerText="Property Name" id="c6"
+                         width="300" frozen="true" filterable="true">
+                <af:inputText value="#{row.bindings.PropertyName.inputValue}"
+                              label="#{bindings.SearchProperty_ROVO1.hints.PropertyName.label}"
+                              required="#{bindings.SearchProperty_ROVO1.hints.PropertyName.mandatory}"
+                              columns="#{bindings.SearchProperty_ROVO1.hints.PropertyName.displayWidth}"
+                              maximumLength="#{bindings.SearchProperty_ROVO1.hints.PropertyName.precision}"
+                              shortDesc="#{bindings.SearchProperty_ROVO1.hints.PropertyName.tooltip}"
+                              id="it6" readOnly="true" rendered="false">
+                  <f:validator binding="#{row.bindings.PropertyName.validator}"/>
+                </af:inputText>
+                <af:commandLink text="#{row.bindings.PropertyName.inputValue}"
+                                id="cl1"
+                                inlineStyle="font-weight:bolder; font-size:small; color:#1367AE;"
+                                action="toEdit">
+                  <af:setPropertyListener from="#{bindings.PropertyId.inputValue}"
+                                          to="#{pageFlowScope.EditPropertyId}"
+                                          type="action"/>
+                </af:commandLink>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchProperty_ROVO1.hints.PropertyNumber.name}"
+                         sortable="true" headerText="Property Number" id="c2"
+                         width="150" frozen="true" filterable="true">
+                <af:inputText value="#{row.bindings.PropertyNumber.inputValue}"
+                              label="#{bindings.SearchProperty_ROVO1.hints.PropertyNumber.label}"
+                              required="#{bindings.SearchProperty_ROVO1.hints.PropertyNumber.mandatory}"
+                              columns="#{bindings.SearchProperty_ROVO1.hints.PropertyNumber.displayWidth}"
+                              maximumLength="#{bindings.SearchProperty_ROVO1.hints.PropertyNumber.precision}"
+                              shortDesc="#{bindings.SearchProperty_ROVO1.hints.PropertyNumber.tooltip}"
+                              id="it4" readOnly="true">
+                  <f:validator binding="#{row.bindings.PropertyNumber.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchProperty_ROVO1.hints.OrgId.name}"
+                         sortable="true" headerText="Buisiness Unit" id="c8"
+                         width="270" frozen="false" filterable="true">
+                <af:selectOneChoice value="#{row.bindings.OrgId.inputValue}"
+                                    label="#{row.bindings.OrgId.label}"
+                                    required="#{bindings.SearchProperty_ROVO1.hints.OrgId.mandatory}"
+                                    shortDesc="#{bindings.SearchProperty_ROVO1.hints.OrgId.tooltip}"
+                                    id="soc2" autoSubmit="true" readOnly="true">
+                  <f:selectItems value="#{row.bindings.OrgId.items}" id="si2"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchProperty_ROVO1.hints.PropertyShortcode.name}"
+                         sortable="true" headerText="Short code" id="c4"
+                         frozen="false" filterable="true">
+                <af:inputText value="#{row.bindings.PropertyShortcode.inputValue}"
+                              label="#{bindings.SearchProperty_ROVO1.hints.PropertyShortcode.label}"
+                              required="#{bindings.SearchProperty_ROVO1.hints.PropertyShortcode.mandatory}"
+                              columns="#{bindings.SearchProperty_ROVO1.hints.PropertyShortcode.displayWidth}"
+                              maximumLength="#{bindings.SearchProperty_ROVO1.hints.PropertyShortcode.precision}"
+                              shortDesc="#{bindings.SearchProperty_ROVO1.hints.PropertyShortcode.tooltip}"
+                              id="it2" readOnly="true">
+                  <f:validator binding="#{row.bindings.PropertyShortcode.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchProperty_ROVO1.hints.LocationId.name}"
+                         sortable="true" headerText="Location" id="c9"
+                         frozen="false" width="300" filterable="true">
+                <af:selectOneChoice value="#{row.bindings.LocationId.inputValue}"
+                                    label="#{row.bindings.LocationId.label}"
+                                    required="#{bindings.SearchProperty_ROVO1.hints.LocationId.mandatory}"
+                                    shortDesc="#{bindings.SearchProperty_ROVO1.hints.LocationId.tooltip}"
+                                    id="soc3" readOnly="true">
+                  <f:selectItems value="#{row.bindings.LocationId.items}"
+                                 id="si3"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchProperty_ROVO1.hints.PropertyType.name}"
+                         sortable="true" headerText="Type" id="c5" width="150"
+                         frozen="false">
+                <af:selectOneChoice value="#{bindings.PropertyType.inputValue}"
+                                    label="#{bindings.PropertyType.label}"
+                                    required="#{bindings.PropertyType.hints.mandatory}"
+                                    shortDesc="#{bindings.PropertyType.hints.tooltip}"
+                                    id="soc1" readOnly="true">
+                  <f:selectItems value="#{bindings.PropertyType.items}"
+                                 id="si1"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchProperty_ROVO1.hints.NoOfUnits.name}"
+                         sortable="true" headerText="No. of Units" id="c3"
+                         align="center" frozen="false" filterable="true">
+                <af:inputText value="#{row.bindings.NoOfUnits.inputValue}"
+                              label="#{bindings.SearchProperty_ROVO1.hints.NoOfUnits.label}"
+                              required="#{bindings.SearchProperty_ROVO1.hints.NoOfUnits.mandatory}"
+                              columns="#{bindings.SearchProperty_ROVO1.hints.NoOfUnits.displayWidth}"
+                              maximumLength="#{bindings.SearchProperty_ROVO1.hints.NoOfUnits.precision}"
+                              shortDesc="#{bindings.SearchProperty_ROVO1.hints.NoOfUnits.tooltip}"
+                              id="it1" readOnly="true">
+                  <f:validator binding="#{row.bindings.NoOfUnits.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SearchProperty_ROVO1.hints.NoOfUnits.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchProperty_ROVO1.hints.Description.name}"
+                         sortable="true"
+                         headerText="#{bindings.SearchProperty_ROVO1.hints.Description.label}"
+                         id="c1" width="400" frozen="false" filterable="true">
+                <af:inputText value="#{row.bindings.Description.inputValue}"
+                              label="#{bindings.SearchProperty_ROVO1.hints.Description.label}"
+                              required="#{bindings.SearchProperty_ROVO1.hints.Description.mandatory}"
+                              columns="#{bindings.SearchProperty_ROVO1.hints.Description.displayWidth}"
+                              maximumLength="#{bindings.SearchProperty_ROVO1.hints.Description.precision}"
+                              shortDesc="#{bindings.SearchProperty_ROVO1.hints.Description.tooltip}"
+                              id="it5" readOnly="true">
+                  <f:validator binding="#{row.bindings.Description.validator}"/>
+                </af:inputText>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelBox>
+        <af:panelTabbed position="above"
+                        binding="#{backingBeanScope.backing_fragments_searchProperty.pt2}"
+                        id="pt2" styleClass="AFStretchWidth"
+                        inlineStyle="height:380.0px;" rendered="false">
+          <af:showDetailItem id="tab1" text="Property Details"
+                             binding="#{backingBeanScope.backing_fragments_searchProperty.tab1}"/>
+          <af:showDetailItem id="tab2" text="Dashboard"
+                             binding="#{backingBeanScope.backing_fragments_searchProperty.tab2}"
+                             rendered="false"/>
+        </af:panelTabbed>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_fragments_searchProperty-->
+</jsp:root>

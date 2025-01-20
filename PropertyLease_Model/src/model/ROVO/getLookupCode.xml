@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="getLookupCode"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.getLookupCode_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="BV_VALUE"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery>
+    <![CDATA[SELECT  LOOKUP_VALUE_NAME 
+FROM XXFND_LOOKUP_V 
+where LOOKUP_TYPE_NAME ='UNIT_TYPE'
+and LOOKUP_VALUE_NAME_DISP =:BV_VALUE]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="LookupValueName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="LOOKUP_VALUE_NAME"
+    Expression="LOOKUP_VALUE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="LookupValueName"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

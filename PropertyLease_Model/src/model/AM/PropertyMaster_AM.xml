@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PropertyMaster_AM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.AM.PropertyMaster_AMImpl"
+  DefClass="model.AM.PropertyMaster_AMDefImpl"
+  LoadComponentsLazily="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.AM.PropertyMaster_AM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="PropertyMaster_VO1"
+    ViewObjectName="model.VO.PropertyMaster_VO">
+    <ViewCriteriaUsage
+      Name="findByPropertyId"
+      FullName="model.VO.PropertyMaster_VO.findByPropertyId"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="PropertyArea_VO1"
+    ViewObjectName="model.VO.PropertyArea_VO">
+    <ViewCriteriaUsage
+      Name="filterforPropertyArea"
+      FullName="model.VO.PropertyArea_VO.filterforPropertyArea"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="PropertyBuildings_VO1"
+    ViewObjectName="model.VO.PropertyBuildings_VO"/>
+  <ViewUsage
+    Name="PropertyMilestones_VO1"
+    ViewObjectName="model.VO.PropertyMilestones_VO"/>
+  <ViewUsage
+    Name="PropertyUnits_VO1"
+    ViewObjectName="model.VO.PropertyUnits_VO"/>
+  <ViewUsage
+    Name="SearchProperty_ROVO1"
+    ViewObjectName="model.ROVO.SearchProperty_ROVO"/>
+  <ViewUsage
+    Name="getFunctionCodeROVO1"
+    ViewObjectName="model.ROVO.getFunctionCodeROVO"/>
+  <ViewUsage
+    Name="PropertyPieChart_ROVO1"
+    ViewObjectName="model.ROVO.PropertyPieChart_ROVO"/>
+  <ViewUsage
+    Name="OwnerDtle_VO1"
+    ViewObjectName="model.VO.OwnerDtle_VO"/>
+  <ViewLinkUsage
+    Name="PropertyMaster_PropertyArea_VL1"
+    ViewLinkObjectName="model.VL.PropertyMaster_PropertyArea_VL"
+    SrcViewUsageName="model.AM.PropertyMaster_AM.PropertyMaster_VO1"
+    DstViewUsageName="model.AM.PropertyMaster_AM.PropertyArea_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="PropertyMaster_PropertyBuildings_VL1"
+    ViewLinkObjectName="model.VL.PropertyMaster_PropertyBuildings_VL"
+    SrcViewUsageName="model.AM.PropertyMaster_AM.PropertyMaster_VO1"
+    DstViewUsageName="model.AM.PropertyMaster_AM.PropertyBuildings_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="PropertyMaster_PropertyMilestone_VL1"
+    ViewLinkObjectName="model.VL.PropertyMaster_PropertyMilestone_VL"
+    SrcViewUsageName="model.AM.PropertyMaster_AM.PropertyMaster_VO1"
+    DstViewUsageName="model.AM.PropertyMaster_AM.PropertyMilestones_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="PropertyMaster_PropertyUnits_VL1"
+    ViewLinkObjectName="model.VL.PropertyMaster_PropertyUnits_VL"
+    SrcViewUsageName="model.AM.PropertyMaster_AM.PropertyMaster_VO1"
+    DstViewUsageName="model.AM.PropertyMaster_AM.PropertyUnits_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="Property_Owner_VL1"
+    ViewLinkObjectName="model.VL.Property_Owner_VL"
+    SrcViewUsageName="model.AM.PropertyMaster_AM.PropertyMaster_VO1"
+    DstViewUsageName="model.AM.PropertyMaster_AM.OwnerDtle_VO1"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</AppModule>

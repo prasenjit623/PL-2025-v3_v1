@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject xmlns="http://xmlns.oracle.com/bc4j" Name="BookingCharges_VO"
+            Version="11.1.1.66.73" InheritPersonalization="merge"
+   SelectList="BookingCharges_EO.BOOKING_CHARGE_ID, 
+       BookingCharges_EO.BOOKING_ID, 
+       BookingCharges_EO.SEQ_NUMBER, 
+       BookingCharges_EO.CHARGE_CODE, 
+       BookingCharges_EO.CHARGE_DESC, 
+       BookingCharges_EO.CHARGE_PCT, 
+       BookingCharges_EO.AMOUNT, 
+       BookingCharges_EO.CHARGE_TYPE, 
+       BookingCharges_EO.PAYMENT_TERM, 
+       BookingCharges_EO.REMARKS, 
+       BookingCharges_EO.DUE_DATE, 
+       BookingCharges_EO.ATTRIBUTE_CATEGORY, 
+       BookingCharges_EO.ATTRIBUTE1, 
+       BookingCharges_EO.ATTRIBUTE2, 
+       BookingCharges_EO.ATTRIBUTE3, 
+       BookingCharges_EO.ATTRIBUTE4, 
+       BookingCharges_EO.ATTRIBUTE5, 
+       BookingCharges_EO.ATTRIBUTE6, 
+       BookingCharges_EO.ATTRIBUTE7, 
+       BookingCharges_EO.ATTRIBUTE8, 
+       BookingCharges_EO.ATTRIBUTE9, 
+       BookingCharges_EO.ATTRIBUTE10, 
+       BookingCharges_EO.ATTRIBUTE11, 
+       BookingCharges_EO.ATTRIBUTE12, 
+       BookingCharges_EO.ATTRIBUTE13, 
+       BookingCharges_EO.ATTRIBUTE14, 
+       BookingCharges_EO.ATTRIBUTE15, 
+       BookingCharges_EO.ATTRIBUTE16, 
+       BookingCharges_EO.ATTRIBUTE17, 
+       BookingCharges_EO.ATTRIBUTE18, 
+       BookingCharges_EO.ATTRIBUTE19, 
+       BookingCharges_EO.ATTRIBUTE20, 
+       BookingCharges_EO.CREATED_BY, 
+       BookingCharges_EO.CREATION_DATE, 
+       BookingCharges_EO.LAST_UPDATED_BY, 
+       BookingCharges_EO.LAST_UPDATE_DATE, 
+       BookingCharges_EO.LAST_UPDATE_LOGIN, 
+       BookingCharges_EO.ROWID"
+            FromList="XXPM_BOOKING_CHARGES BookingCharges_EO"
+            BindingStyle="OracleName" CustomQuery="false" PageIterMode="Full"
+            UseGlueCode="false">
+   <DesignTime>
+      <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+   </DesignTime>
+   <ViewAccessor Name="PaymentTerm_LOV"
+                 ViewObjectName="model.ROVO.PaymentTerm_ROVO"
+                 RowLevelBinds="true"/>
+   <ViewAccessor
+      Name="Lookup_View_ChargeType"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      RowLevelBinds="true">
+      <ViewCriteriaUsage
+         Name="findByChargeType"
+         FullName="model.ROVO.Lookup_View_ROVO.findByChargeType"/>
+   </ViewAccessor>
+   <ListBinding Name="LOV_PaymentTerm" ListVOName="PaymentTerm_LOV"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="PaymentTerm"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="TermId"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="TermName"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding
+      Name="LOV_ChargeType"
+      ListVOName="Lookup_View_ChargeType"
+      ListRangeSize="-1"
+      NullValueFlag="start"
+      NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+      MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="ChargeType"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="LookupValueName"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="LookupValueNameDisp"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <EntityUsage Name="BookingCharges_EO" Entity="model.EO.BookingCharges_EO"/>
+   <ViewAttribute Name="BookingChargeId" PrecisionRule="true"
+                  EntityAttrName="BookingChargeId"
+                  EntityUsage="BookingCharges_EO"
+                  AliasName="BOOKING_CHARGE_ID"/>
+   <ViewAttribute Name="BookingId" PrecisionRule="true"
+                  EntityAttrName="BookingId" EntityUsage="BookingCharges_EO"
+                  AliasName="BOOKING_ID"/>
+   <ViewAttribute Name="SeqNumber" PrecisionRule="true"
+                  EntityAttrName="SeqNumber" EntityUsage="BookingCharges_EO"
+                  AliasName="SEQ_NUMBER"/>
+   <ViewAttribute Name="ChargeCode" PrecisionRule="true"
+                  EntityAttrName="ChargeCode" EntityUsage="BookingCharges_EO"
+                  AliasName="CHARGE_CODE"/>
+   <ViewAttribute Name="ChargeDesc" PrecisionRule="true"
+                  EntityAttrName="ChargeDesc" EntityUsage="BookingCharges_EO"
+                  AliasName="CHARGE_DESC">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCharges_VO.ChargeDesc_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="ChargePct" PrecisionRule="true"
+                  EntityAttrName="ChargePct" EntityUsage="BookingCharges_EO"
+                  AliasName="CHARGE_PCT"/>
+   <ViewAttribute Name="Amount" PrecisionRule="true" EntityAttrName="Amount"
+                  EntityUsage="BookingCharges_EO" AliasName="AMOUNT"/>
+   <ViewAttribute Name="ChargeType" PrecisionRule="true"
+                  EntityAttrName="ChargeType" EntityUsage="BookingCharges_EO"
+                  AliasName="CHARGE_TYPE"
+      LOVName="LOV_ChargeType">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCharges_VO.ChargeType_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+            <CONTROLTYPE
+               Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="PaymentTerm" PrecisionRule="true"
+                  EntityAttrName="PaymentTerm" EntityUsage="BookingCharges_EO"
+                  AliasName="PAYMENT_TERM" LOVName="LOV_PaymentTerm">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCharges_VO.PaymentTerm_LABEL"/>
+            <CONTROLTYPE Value="choice"/>
+            <DISPLAYWIDTH Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="Remarks" PrecisionRule="true" EntityAttrName="Remarks"
+                  EntityUsage="BookingCharges_EO" AliasName="REMARKS">
+      <Properties>
+         <SchemaBasedProperties>
+            <DISPLAYWIDTH Value="30"/>
+            <DISPLAYHEIGHT Value="30"/>
+            <LABEL
+               ResId="model.VO.BookingCharges_VO.Remarks_LABEL"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="DueDate" PrecisionRule="true" EntityAttrName="DueDate"
+                  EntityUsage="BookingCharges_EO" AliasName="DUE_DATE">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCharges_VO.DueDate_LABEL"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="AttributeCategory" PrecisionRule="true"
+                  EntityAttrName="AttributeCategory"
+                  EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE_CATEGORY"/>
+   <ViewAttribute Name="Attribute1" PrecisionRule="true"
+                  EntityAttrName="Attribute1" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE1"/>
+   <ViewAttribute Name="Attribute2" PrecisionRule="true"
+                  EntityAttrName="Attribute2" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE2"/>
+   <ViewAttribute Name="Attribute3" PrecisionRule="true"
+                  EntityAttrName="Attribute3" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE3"/>
+   <ViewAttribute Name="Attribute4" PrecisionRule="true"
+                  EntityAttrName="Attribute4" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE4"/>
+   <ViewAttribute Name="Attribute5" PrecisionRule="true"
+                  EntityAttrName="Attribute5" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE5"/>
+   <ViewAttribute Name="Attribute6" PrecisionRule="true"
+                  EntityAttrName="Attribute6" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE6"/>
+   <ViewAttribute Name="Attribute7" PrecisionRule="true"
+                  EntityAttrName="Attribute7" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE7"/>
+   <ViewAttribute Name="Attribute8" PrecisionRule="true"
+                  EntityAttrName="Attribute8" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE8"/>
+   <ViewAttribute Name="Attribute9" PrecisionRule="true"
+                  EntityAttrName="Attribute9" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE9"/>
+   <ViewAttribute Name="Attribute10" PrecisionRule="true"
+                  EntityAttrName="Attribute10" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE10"/>
+   <ViewAttribute Name="Attribute11" PrecisionRule="true"
+                  EntityAttrName="Attribute11" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE11"/>
+   <ViewAttribute Name="Attribute12" PrecisionRule="true"
+                  EntityAttrName="Attribute12" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE12"/>
+   <ViewAttribute Name="Attribute13" PrecisionRule="true"
+                  EntityAttrName="Attribute13" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE13"/>
+   <ViewAttribute Name="Attribute14" PrecisionRule="true"
+                  EntityAttrName="Attribute14" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE14"/>
+   <ViewAttribute Name="Attribute15" PrecisionRule="true"
+                  EntityAttrName="Attribute15" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE15"/>
+   <ViewAttribute Name="Attribute16" PrecisionRule="true"
+                  EntityAttrName="Attribute16" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE16"/>
+   <ViewAttribute Name="Attribute17" PrecisionRule="true"
+                  EntityAttrName="Attribute17" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE17"/>
+   <ViewAttribute Name="Attribute18" PrecisionRule="true"
+                  EntityAttrName="Attribute18" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE18"/>
+   <ViewAttribute Name="Attribute19" PrecisionRule="true"
+                  EntityAttrName="Attribute19" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE19"/>
+   <ViewAttribute Name="Attribute20" PrecisionRule="true"
+                  EntityAttrName="Attribute20" EntityUsage="BookingCharges_EO"
+                  AliasName="ATTRIBUTE20"/>
+   <ViewAttribute Name="CreatedBy" PrecisionRule="true"
+                  EntityAttrName="CreatedBy" EntityUsage="BookingCharges_EO"
+                  AliasName="CREATED_BY"/>
+   <ViewAttribute Name="CreationDate" PrecisionRule="true"
+                  EntityAttrName="CreationDate" EntityUsage="BookingCharges_EO"
+                  AliasName="CREATION_DATE"/>
+   <ViewAttribute Name="LastUpdatedBy" PrecisionRule="true"
+                  EntityAttrName="LastUpdatedBy" EntityUsage="BookingCharges_EO"
+                  AliasName="LAST_UPDATED_BY"/>
+   <ViewAttribute Name="LastUpdateDate" PrecisionRule="true"
+                  EntityAttrName="LastUpdateDate"
+                  EntityUsage="BookingCharges_EO" AliasName="LAST_UPDATE_DATE"/>
+   <ViewAttribute Name="LastUpdateLogin" PrecisionRule="true"
+                  EntityAttrName="LastUpdateLogin"
+                  EntityUsage="BookingCharges_EO"
+                  AliasName="LAST_UPDATE_LOGIN"/>
+   <ViewAttribute Name="RowID" IsUpdateable="false" PrecisionRule="true"
+                  EntityAttrName="RowID" EntityUsage="BookingCharges_EO"
+                  AliasName="ROWID"/>
+   <ResourceBundle>
+      <PropertiesBundle PropertiesFile="model.PropertyLease_ModelBundle"/>
+   </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SearchReceipt_BTF">
+    <default-activity id="__1">SearchReceipt</default-activity>
+    <managed-bean id="__40">
+      <managed-bean-name id="__39">searchReceiptMb</managed-bean-name>
+      <managed-bean-class id="__38">view.backing.SearchReceiptBb</managed-bean-class>
+      <managed-bean-scope id="__41">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchReceipt">
+      <page>/fragments/SearchReceipt.jsff</page>
+    </view>
+    <task-flow-call id="Receipt_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Receipt_BTF.xml</document>
+        <id>Receipt_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__8">
+        <name>recid</name>
+        <value>#{pageFlowScope.recid}</value>
+      </input-parameter>
+      <input-parameter id="__9">
+        <name>BookingId</name>
+        <value></value>
+      </input-parameter>
+      <input-parameter id="__10">
+        <name>TransId</name>
+        <value>#{pageFlowScope.TransId}</value>
+      </input-parameter>
+      <input-parameter id="__2">
+        <name>CusName</name>
+        <value>#{pageFlowScope.CusName}</value>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type id="__26">
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__15">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__4">SearchReceipt</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome id="__7">receipt</from-outcome>
+        <to-activity-id id="__5">Receipt_BTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id id="__17">Receipt_BTF</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome id="__20">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__18">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__33">
+      <from-activity-id id="__34">Execute</from-activity-id>
+      <control-flow-case id="__35">
+        <from-outcome id="__36">Execute</from-outcome>
+        <to-activity-id id="__37">SearchReceipt</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

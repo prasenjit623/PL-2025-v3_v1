@@ -1,0 +1,1301 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PropertyUnits_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="PropertyUnits_EO.UNIT_ID, 
+       PropertyUnits_EO.PROPERTY_ID, 
+       PropertyUnits_EO.BUILD_ID, 
+       PropertyUnits_EO.UNIT_NAME, 
+       PropertyUnits_EO.UNIT_NAME_TL, 
+       PropertyUnits_EO.UNIT_NUMBER, 
+       PropertyUnits_EO.UNIT_SHORTCODE, 
+       PropertyUnits_EO.PARENT_UNIT_ID, 
+       PropertyUnits_EO.DOC_REF_NUMBER_1, 
+       PropertyUnits_EO.DOC_REF_NUMBER_2, 
+       PropertyUnits_EO.DOC_REF_NUMBER_3, 
+       PropertyUnits_EO.FLOOR_NUMBER, 
+       PropertyUnits_EO.NO_OF_ROOMS, 
+       PropertyUnits_EO.UNIT_TYPE, 
+       PropertyUnits_EO.AREA_TYPE, 
+       PropertyUnits_EO.VIEW_TYPE, 
+       PropertyUnits_EO.CHARGEABLE_AREA, 
+       PropertyUnits_EO.UOM, 
+       PropertyUnits_EO.BASE_RATE, 
+       PropertyUnits_EO.PREMIUM_RATE_1, 
+       PropertyUnits_EO.PREMIUM_RATE_TYPE_1, 
+       PropertyUnits_EO.PREMIUM_RATE_2, 
+       PropertyUnits_EO.PREMIUM_RATE_TYPE_2, 
+       PropertyUnits_EO.PREMIUM_RATE_3, 
+       PropertyUnits_EO.PREMIUM_RATE_TYPE_3, 
+       PropertyUnits_EO.PREMIUM_RATE_4, 
+       PropertyUnits_EO.PREMIUM_RATE_TYPE_4, 
+       PropertyUnits_EO.PREMIUM_RATE_5, 
+       PropertyUnits_EO.PREMIUM_RATE_TYPE_5, 
+       PropertyUnits_EO.TOTAL_RATE, 
+       PropertyUnits_EO.PURCHASE_AMOUNT, 
+       PropertyUnits_EO.MILESTONE_ID, 
+       PropertyUnits_EO.STATUS, 
+       PropertyUnits_EO.UNIT_CLASS, 
+       PropertyUnits_EO.UNIT_CATEGORY, 
+       PropertyUnits_EO.VEND_ID, 
+       PropertyUnits_EO.DESCRIPTION, 
+       PropertyUnits_EO.ACTIVE_YN, 
+       PropertyUnits_EO.ATTRIBUTE_CATEGORY, 
+       PropertyUnits_EO.ATTRIBUTE1, 
+       PropertyUnits_EO.ATTRIBUTE2, 
+       PropertyUnits_EO.ATTRIBUTE3, 
+       PropertyUnits_EO.ATTRIBUTE4, 
+       PropertyUnits_EO.ATTRIBUTE5, 
+       PropertyUnits_EO.ATTRIBUTE6, 
+       PropertyUnits_EO.ATTRIBUTE7, 
+       PropertyUnits_EO.ATTRIBUTE8, 
+       PropertyUnits_EO.ATTRIBUTE9, 
+       PropertyUnits_EO.ATTRIBUTE10, 
+       PropertyUnits_EO.CREATED_BY, 
+       PropertyUnits_EO.CREATION_DATE, 
+       PropertyUnits_EO.LAST_UPDATED_BY, 
+       PropertyUnits_EO.LAST_UPDATE_DATE, 
+       PropertyUnits_EO.LAST_UPDATE_LOGIN, 
+       PropertyUnits_EO.FUNC_ID"
+  FromList="XXPL_PROPERTY_UNITS PropertyUnits_EO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="model.VO.PropertyUnits_VORowImpl"
+  ComponentClass="model.VO.PropertyUnits_VOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="U_ID"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="PropertyforBuildingPage_ROVO1"
+    ViewObjectName="model.ROVO.PropertyforBuildingPage_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LookupDetails_ROVO1_Floor"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findbyFloorType"
+      FullName="model.ROVO.LookupDetails_ROVO.findbyFloorType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LookupDetails_ROVO1_UnitType"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByUnitType"
+      FullName="model.ROVO.LookupDetails_ROVO.findByUnitType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LookupDetails_ROVO1_AreaType"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByUnitAreaType"
+      FullName="model.ROVO.LookupDetails_ROVO.findByUnitAreaType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LookupDetails_ROVO1_ViewType"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByViewType"
+      FullName="model.ROVO.LookupDetails_ROVO.findByViewType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LookupDetails_ROVO_Status"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByUnitStatus"
+      FullName="model.ROVO.LookupDetails_ROVO.findByUnitStatus"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LookupDetails_ROVO_Class"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findbyUnitClass"
+      FullName="model.ROVO.LookupDetails_ROVO.findbyUnitClass"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LookupDetails_ROVO_category"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByUnitCategory"
+      FullName="model.ROVO.LookupDetails_ROVO.findByUnitCategory"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LookupDetails_ROVO_pre"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByPremiumType"
+      FullName="model.ROVO.LookupDetails_ROVO.findByPremiumType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Buildings_ROVO1"
+    ViewObjectName="model.ROVO.Buildings_ROVO">
+    <ViewCriteriaUsage
+      Name="findByProperty"
+      FullName="model.ROVO.Buildings_ROVO.findByProperty"/>
+    <ParameterMap>
+      <PIMap Variable="p_property_id">
+        <TransientExpression><![CDATA[PropertyId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PropertyArea_VO_Sale"
+    ViewObjectName="model.VO.PropertyArea_VO">
+    <ViewCriteriaUsage
+      Name="findByArea"
+      FullName="model.VO.PropertyArea_VO.findByArea"/>
+    <ViewCriteriaUsage
+      Name="findByUnitId"
+      FullName="model.VO.PropertyArea_VO.findByUnitId"/>
+    <ParameterMap>
+      <PIMap Variable="BV_AREA">
+        <TransientExpression><![CDATA['SALE']]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="BV_UNIT">
+        <TransientExpression><![CDATA[UnitId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PropertyArea_VO_Charge"
+    ViewObjectName="model.VO.PropertyArea_VO">
+    <ViewCriteriaUsage
+      Name="findByArea"
+      FullName="model.VO.PropertyArea_VO.findByArea"/>
+    <ViewCriteriaUsage
+      Name="findByUnitId"
+      FullName="model.VO.PropertyArea_VO.findByUnitId"/>
+    <ParameterMap>
+      <PIMap Variable="BV_UNIT">
+        <TransientExpression><![CDATA[UnitId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="BV_AREA">
+        <TransientExpression><![CDATA['CHARGE']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_PropertyId"
+    ListVOName="PropertyforBuildingPage_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_FloorNumber"
+    ListVOName="LookupDetails_ROVO1_Floor"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="FloorNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UnitType"
+    ListVOName="LookupDetails_ROVO1_UnitType"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UnitType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_AreaType"
+    ListVOName="LookupDetails_ROVO1_AreaType"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AreaType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ViewType"
+    ListVOName="LookupDetails_ROVO1_ViewType"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ViewType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="LookupDetails_ROVO_Status"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UnitClass"
+    ListVOName="LookupDetails_ROVO_Class"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UnitClass"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UnitCategory"
+    ListVOName="LookupDetails_ROVO_category"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UnitCategory"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PremiumRateType1"
+    ListVOName="LookupDetails_ROVO_pre"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PremiumRateType1"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PremiumRateType2"
+    ListVOName="LookupDetails_ROVO_pre"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PremiumRateType2"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PremiumRateType3"
+    ListVOName="LookupDetails_ROVO_pre"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PremiumRateType3"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PremiumRateType4"
+    ListVOName="LookupDetails_ROVO_pre"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PremiumRateType4"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PremiumRateType5"
+    ListVOName="LookupDetails_ROVO_pre"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PremiumRateType5"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupTypeNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BuildId"
+    ListVOName="Buildings_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuildId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuildId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyTrans"
+    ListVOName="PropertyforBuildingPage_ROVO1"
+    ListRangeSize="4"
+    NullValueFlag="none"
+    NullValueId="LOV_PropertyTrans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyTrans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyName"/>
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SearchProperty"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UnitTypeTrans"
+    ListVOName="LookupDetails_ROVO1_UnitType"
+    ListRangeSize="4"
+    NullValueFlag="none"
+    NullValueId="LOV_UnitTypeTrans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UnitTypeTrans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="UnitType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SearchUnit"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BuildingTrans"
+    ListVOName="Buildings_ROVO1"
+    ListRangeSize="4"
+    NullValueFlag="none"
+    NullValueId="LOV_BuildingTrans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuildingTrans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="BuildId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuildName"/>
+      <Item Value="BuildId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SearchBuilding"/>
+  </ListBinding>
+  <EntityUsage
+    Name="PropertyUnits_EO"
+    Entity="model.EO.PropertyUnits_EO"/>
+  <ViewAttribute
+    Name="UnitId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UnitId"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="UNIT_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("XXPL_UNIT_ID_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PropertyId"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PROPERTY_ID"
+    LOVName="LOV_PropertyId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PropertyId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildId"
+    PrecisionRule="true"
+    EntityAttrName="BuildId"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="BUILD_ID"
+    LOVName="LOV_BuildId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.BuildId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UnitName"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="UNIT_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.UnitName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitNameTl"
+    PrecisionRule="true"
+    EntityAttrName="UnitNameTl"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="UNIT_NAME_TL">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.UnitNameTl_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitNumber"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UnitNumber"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="UNIT_NUMBER">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.UnitNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitShortcode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UnitShortcode"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="UNIT_SHORTCODE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.UnitShortcode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ParentUnitId"
+    PrecisionRule="true"
+    EntityAttrName="ParentUnitId"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PARENT_UNIT_ID"/>
+  <ViewAttribute
+    Name="DocRefNumber1"
+    PrecisionRule="true"
+    EntityAttrName="DocRefNumber1"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="DOC_REF_NUMBER_1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.DocRefNumber1_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocRefNumber2"
+    PrecisionRule="true"
+    EntityAttrName="DocRefNumber2"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="DOC_REF_NUMBER_2">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.DocRefNumber2_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocRefNumber3"
+    PrecisionRule="true"
+    EntityAttrName="DocRefNumber3"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="DOC_REF_NUMBER_3">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.DocRefNumber3_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FloorNumber"
+    PrecisionRule="true"
+    EntityAttrName="FloorNumber"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="FLOOR_NUMBER"
+    LOVName="LOV_FloorNumber">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.FloorNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NoOfRooms"
+    PrecisionRule="true"
+    EntityAttrName="NoOfRooms"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="NO_OF_ROOMS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.NoOfRooms_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitType"
+    PrecisionRule="true"
+    EntityAttrName="UnitType"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="UNIT_TYPE"
+    LOVName="LOV_UnitType">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.UnitType_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaType"
+    PrecisionRule="true"
+    EntityAttrName="AreaType"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="AREA_TYPE"
+    LOVName="LOV_AreaType">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.AreaType_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ViewType"
+    PrecisionRule="true"
+    EntityAttrName="ViewType"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="VIEW_TYPE"
+    LOVName="LOV_ViewType">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.ViewType_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ChargeableArea"
+    PrecisionRule="true"
+    EntityAttrName="ChargeableArea"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="CHARGEABLE_AREA">
+    <TransientExpression><![CDATA[if(UnitId !=null && PropertyArea_VO_Charge.first()!=null)
+{
+PropertyArea_VO_Charge.first().getAttribute("Value");
+}
+else
+{
+return null;
+}]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.ChargeableArea_LABEL"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Uom"
+    PrecisionRule="true"
+    EntityAttrName="Uom"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="UOM"
+    DefaultValue="SQFT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.Uom_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BaseRate"
+    PrecisionRule="true"
+    EntityAttrName="BaseRate"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="BASE_RATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.BaseRate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRate1"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate1"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PremiumRate1_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRateType1"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType1"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_TYPE_1"
+    LOVName="LOV_PremiumRateType1">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRate2"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate2"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_2">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PremiumRate2_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRateType2"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType2"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_TYPE_2"
+    LOVName="LOV_PremiumRateType2">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRate3"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate3"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_3">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PremiumRate3_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRateType3"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType3"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_TYPE_3"
+    LOVName="LOV_PremiumRateType3">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRate4"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate4"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_4">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PremiumRate4_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRateType4"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType4"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_TYPE_4"
+    LOVName="LOV_PremiumRateType4">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PremiumRateType4_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRate5"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate5"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_5">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PremiumRate5_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRateType5"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType5"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PREMIUM_RATE_TYPE_5"
+    LOVName="LOV_PremiumRateType5">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PremiumRateType5_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalRate"
+    PrecisionRule="true"
+    EntityAttrName="TotalRate"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="TOTAL_RATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.TotalRate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PurchaseAmount"
+    PrecisionRule="true"
+    EntityAttrName="PurchaseAmount"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="PURCHASE_AMOUNT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PurchaseAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MilestoneId"
+    PrecisionRule="true"
+    EntityAttrName="MilestoneId"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="MILESTONE_ID"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="STATUS"
+    LOVName="LOV_Status"
+    DefaultValue="AVAL">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitClass"
+    PrecisionRule="true"
+    EntityAttrName="UnitClass"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="UNIT_CLASS"
+    LOVName="LOV_UnitClass">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.UnitClass_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitCategory"
+    PrecisionRule="true"
+    EntityAttrName="UnitCategory"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="UNIT_CATEGORY"
+    LOVName="LOV_UnitCategory">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.UnitCategory_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VendId"
+    PrecisionRule="true"
+    EntityAttrName="VendId"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="VEND_ID"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="ActiveYn"
+    PrecisionRule="true"
+    EntityAttrName="ActiveYn"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ACTIVE_YN"/>
+  <ViewAttribute
+    Name="AttributeCategory"
+    PrecisionRule="true"
+    EntityAttrName="AttributeCategory"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE_CATEGORY"/>
+  <ViewAttribute
+    Name="Attribute1"
+    PrecisionRule="true"
+    EntityAttrName="Attribute1"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE1"/>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE2"/>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE3"/>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE4"/>
+  <ViewAttribute
+    Name="Attribute5"
+    PrecisionRule="true"
+    EntityAttrName="Attribute5"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE5"/>
+  <ViewAttribute
+    Name="Attribute6"
+    PrecisionRule="true"
+    EntityAttrName="Attribute6"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE6"/>
+  <ViewAttribute
+    Name="Attribute7"
+    PrecisionRule="true"
+    EntityAttrName="Attribute7"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE7"/>
+  <ViewAttribute
+    Name="Attribute8"
+    PrecisionRule="true"
+    EntityAttrName="Attribute8"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE8"/>
+  <ViewAttribute
+    Name="Attribute9"
+    PrecisionRule="true"
+    EntityAttrName="Attribute9"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE9"/>
+  <ViewAttribute
+    Name="Attribute10"
+    PrecisionRule="true"
+    EntityAttrName="Attribute10"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="ATTRIBUTE10"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="LAST_UPDATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="LAST_UPDATE_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="LAST_UPDATE_LOGIN"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="Chargeable_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(UnitId !=null && PropertyArea_VO_Charge.first()!=null)
+{
+PropertyArea_VO_Charge.first().getAttribute("Value");
+}
+else
+{
+return null;
+}]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Saleable_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(UnitId !=null && PropertyArea_VO_Sale.first()!=null)
+{
+PropertyArea_VO_Sale.first().getAttribute("Value");
+}
+else
+{
+return null;
+}]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FuncId"
+    PrecisionRule="true"
+    EntityAttrName="FuncId"
+    EntityUsage="PropertyUnits_EO"
+    AliasName="FUNC_ID"/>
+  <ViewAttribute
+    Name="UnitTypeTrans"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="UnitTypeTrans"
+    EntityUsage="PropertyUnits_EO"
+    LOVName="LOV_UnitTypeTrans"
+    IsSelected="false"
+    AliasName="UNITTYPETRANS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.UnitTypeTrans_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyTrans"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="PropertyTrans"
+    EntityUsage="PropertyUnits_EO"
+    LOVName="LOV_PropertyTrans"
+    IsSelected="false"
+    AliasName="PROPERTYTRANS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.PropertyTrans_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildingTrans"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="BuildingTrans"
+    EntityUsage="PropertyUnits_EO"
+    LOVName="LOV_BuildingTrans"
+    IsSelected="false"
+    AliasName="BUILDINGTRANS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyUnits_VO.BuildingTrans_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="findByUnit"
+    ViewObjectName="model.VO.PropertyUnits_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow232"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="UnitId"
+        ViewAttribute="UnitId"
+        Operator="="
+        Conjunction="AND"
+        Value=":U_ID"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="PropertyArea_VO"
+    ViewLink="model.VL.PropertyUnits_Area_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="PropertyCarparks_VO"
+    ViewLink="model.VL.Property_Units_CarParks_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="OwnerDtle_VO"
+    ViewLink="model.VL.PropertyBuildingUnit_Owner_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="UnitStatusLog_VO"
+    ViewLink="model.VL.UnitStatus_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

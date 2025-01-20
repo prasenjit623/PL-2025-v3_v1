@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OfferHrd_Link_OffMSDet"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  EntityAssociation="model.ASSO.OfferHrd_Asso_OffMSDet">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VL.OfferHrd_Link_OffMSDet_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="OfferHrd_VO"
+    Cardinality="1"
+    Owner="model.VO.OfferHrd_VO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="OfferHrd_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.OfferHrd_VO.OfferHdrId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="OfferMilestoneDetail_VO"
+    Cardinality="-1"
+    Owner="model.VO.OfferMilestoneDetail_VO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="OfferMilestoneDetail_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.OfferMilestoneDetail_VO.OfferHdrId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

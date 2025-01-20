@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="LandLordMaster_BTF">
+    <default-activity id="__1">SearchLandLordMaster</default-activity>
+    <managed-bean id="__12">
+      <managed-bean-name id="__36">LandLordMasterMb</managed-bean-name>
+      <managed-bean-class id="__35">view.backing.AddEditLandLordMaster</managed-bean-class>
+      <managed-bean-scope id="__34">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchLandLordMaster">
+      <page>/fragments/SearchLandLordMaster.jsff</page>
+    </view>
+    <view id="AddEditLandLordMaster">
+      <page>/fragments/AddEditLandLordMaster.jsff</page>
+    </view>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__13">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__19">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__25">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">SearchLandLordMaster</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">edit</from-outcome>
+        <to-activity-id id="__5">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome id="__28">create</from-outcome>
+        <to-activity-id id="__27">CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">AddEditLandLordMaster</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome id="__11">cancel</from-outcome>
+        <to-activity-id id="__10">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id id="__15">Execute</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__16">Execute</from-outcome>
+        <to-activity-id id="__18">SearchLandLordMaster</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id id="__21">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__23">
+        <from-outcome id="__24">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__22">AddEditLandLordMaster</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id id="__30">CreateInsert</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__33">CreateInsert</from-outcome>
+        <to-activity-id id="__32">AddEditLandLordMaster</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

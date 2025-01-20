@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert1PageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="WoSchedulerTnxResource_VO1" RangeSize="25"
+              DataControl="WoScheduler_AMDataControl"
+              id="WoSchedulerTnxResource_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="WoSchedulerTnxResource_VO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

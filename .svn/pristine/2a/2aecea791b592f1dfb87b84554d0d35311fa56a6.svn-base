@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SearchUnits_ROVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  OrderBy='"BUILD_ID" desc'>
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.SearchUnits_ROVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_GRP_ID"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression>adf.context.current.sessionScope.get('UserGrpId')</TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <ViewAccessor
+    Name="Projects_ROVO1"
+    ViewObjectName="model.ROVO.Projects_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PropertyforBuildingPage_ROVO1"
+    ViewObjectName="model.ROVO.PropertyforBuildingPage_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Buildings_ROVO1"
+    ViewObjectName="model.ROVO.Buildings_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LookupDetails_ROVO1"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByUnitType"
+      FullName="model.ROVO.LookupDetails_ROVO.findByUnitType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_AreaType"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="UnitAreaType"
+      FullName="model.ROVO.Lookup_View_ROVO.UnitAreaType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_UnitViewType"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="UnitViewType_LOV"
+      FullName="model.ROVO.Lookup_View_ROVO.UnitViewType_LOV"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_UnitStatus"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="UnitStatus_LOV"
+      FullName="model.ROVO.Lookup_View_ROVO.UnitStatus_LOV"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_PropertyId"
+    ListVOName="PropertyforBuildingPage_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BuildId"
+    ListVOName="Buildings_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuildId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuildId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UnitType"
+    ListVOName="LookupDetails_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UnitType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_AreaType"
+    ListVOName="Lookup_View_AreaType"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AreaType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ViewType"
+    ListVOName="Lookup_View_UnitViewType"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ViewType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="Lookup_View_UnitStatus"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyName"
+    ListVOName="PropertyforBuildingPage_ROVO1"
+    ListRangeSize="4"
+    NullValueFlag="none"
+    NullValueId="LOV_PropertyName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SearchProperty"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BuildName"
+    ListVOName="Buildings_ROVO1"
+    ListRangeSize="4"
+    NullValueFlag="none"
+    NullValueId="LOV_BuildName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SearchBuilding"/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT PU.UNIT_ID,
+  PM.PROPERTY_NAME,
+  PB.BUILD_NAME,
+  PU.PROPERTY_ID,
+  PU.BUILD_ID,
+  PU.UNIT_NAME,
+  PU.UNIT_NUMBER,
+  PU.UNIT_SHORTCODE,
+  PU.UNIT_TYPE,
+  (select l.LOOKUP_VALUE_NAME_DISP from XXFND_LOOKUP_V l where l.LOOKUP_VALUE_NAME=PU.UNIT_TYPE AND l.LOOKUP_TYPE_NAME='UNIT_TYPE' AND ROWNUM=1) as UNIT_TYPE_DIS,
+  PU.AREA_TYPE,
+  (select l.LOOKUP_VALUE_NAME_DISP from XXFND_LOOKUP_V l where l.LOOKUP_VALUE_NAME=PU.AREA_TYPE AND l.LOOKUP_TYPE_NAME='UNIT_AREA_TYPE' AND ROWNUM=1) as AREA_TYPE_DIS,
+  PU.VIEW_TYPE,
+  (select l.LOOKUP_VALUE_NAME_DISP from XXFND_LOOKUP_V l where l.LOOKUP_VALUE_NAME=PU.VIEW_TYPE AND l.LOOKUP_TYPE_NAME='UNIT_VIEW_TYPE' AND ROWNUM=1) as VIEW_TYPE_DIS,
+  PU.NO_OF_ROOMS,
+  PU.TOTAL_RATE,
+  PU.STATUS,
+  PU.DESCRIPTION,
+  PU.DOC_REF_NUMBER_3,
+  DECODE(PU.ACTIVE_YN,'Y','true','N','false')as ACTIVE,
+  PU.UNIT_CATEGORY,
+  area.value as area_value
+
+from XXPL_PROPERTY_UNITS PU,XXPL_PROPERTY_BUILDINGS PB,XXPL_PROPERTY_MASTER PM,XXPL_PROPERTY_AREA area
+WHERE 
+PU.BUILD_ID=PB.BUILD_ID AND
+PU.PROPERTY_ID=PM.PROPERTY_ID AND
+PU.UNIT_ID=area.UNIT_ID(+) AND
+PU.PROPERTY_ID
+IN
+(select DISTINCT segment2 from XXFND_DATA_COMBINATION where DCOMB_ID IN
+(SELECT DCOMB_ID FROM 
+XXFND_DATA_GROUP_DETAIL 
+where DATA_GROUP_ID=:P_GRP_ID))
+ORDER BY "BUILD_ID" desc]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="UnitId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="UNIT_ID"
+    Expression="UNIT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROPERTY_NAME"
+    Expression="PROPERTY_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_PropertyName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchUnits_ROVO.PropertyName_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+        <DISPLAYWIDTH
+          Value="24"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_NAME"
+    Expression="BUILD_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_BuildName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchUnits_ROVO.BuildName_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+        <DISPLAYWIDTH
+          Value="24"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PROPERTY_ID"
+    Expression="PROPERTY_ID"
+    SQLType="NUMERIC"
+    LOVName="LOV_PropertyId">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="model.ROVO.SearchUnits_ROVO.PropertyId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BUILD_ID"
+    Expression="BUILD_ID"
+    SQLType="NUMERIC"
+    LOVName="LOV_BuildId">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="model.ROVO.SearchUnits_ROVO.BuildId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_NAME"
+    Expression="UNIT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchUnits_ROVO.UnitName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="29"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_NUMBER"
+    Expression="UNIT_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchUnits_ROVO.UnitNumber_LABEL"/>
+        <DISPLAYWIDTH
+          Value="27"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitShortcode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_SHORTCODE"
+    Expression="UNIT_SHORTCODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchUnits_ROVO.UnitShortcode_LABEL"/>
+        <DISPLAYWIDTH
+          Value="27"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_TYPE"
+    Expression="UNIT_TYPE"
+    SQLType="VARCHAR"
+    LOVName="LOV_UnitType">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchUnits_ROVO.UnitType_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitTypeDis"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_TYPE_DIS"
+    Expression="UNIT_TYPE_DIS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AREA_TYPE"
+    Expression="AREA_TYPE"
+    SQLType="VARCHAR"
+    LOVName="LOV_AreaType">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaTypeDis"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AREA_TYPE_DIS"
+    Expression="AREA_TYPE_DIS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ViewType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_TYPE"
+    Expression="VIEW_TYPE"
+    SQLType="VARCHAR"
+    LOVName="LOV_ViewType">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ViewTypeDis"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_TYPE_DIS"
+    Expression="VIEW_TYPE_DIS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NoOfRooms"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="NO_OF_ROOMS"
+    Expression="NO_OF_ROOMS"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalRate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="TOTAL_RATE"
+    Expression="TOTAL_RATE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS"
+    Expression="STATUS"
+    SQLType="VARCHAR"
+    LOVName="LOV_Status">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocRefNumber3"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOC_REF_NUMBER_3"
+    Expression="DOC_REF_NUMBER_3"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchUnits_ROVO.DocRefNumber3_LABEL"/>
+        <DISPLAYWIDTH
+          Value="28"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Active"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ACTIVE"
+    Expression="ACTIVE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitCategory"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_CATEGORY"
+    Expression="UNIT_CATEGORY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaValue"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="AREA_VALUE"
+    Expression="AREA_VALUE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SearchUnits"
+    ViewObjectName="model.ROVO.SearchUnits_ROVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="displayName"
+          ResId="SearchUnits_displayName"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow229"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="PropertyName"
+        ViewAttribute="PropertyName"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="BuildName"
+        ViewAttribute="BuildName"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="UnitName"
+        ViewAttribute="UnitName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="UnitNumber"
+        ViewAttribute="UnitNumber"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="UnitShortcode"
+        ViewAttribute="UnitShortcode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="UnitType"
+        ViewAttribute="UnitType"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Status"
+        ViewAttribute="Status"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="UnitSearch"
+    ViewObjectName="model.ROVO.SearchUnits_ROVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow268"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="UnitName"
+        ViewAttribute="UnitName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="UnitId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

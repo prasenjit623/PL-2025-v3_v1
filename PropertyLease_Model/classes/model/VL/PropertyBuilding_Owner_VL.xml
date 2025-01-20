@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PropertyBuilding_Owner_VL"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  EntityAssociation="model.ASSO.PropertyBuilding_Owner_Assoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VL.PropertyBuilding_Owner_VL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="PropertyBuildings_VO"
+    Cardinality="1"
+    Owner="model.VO.PropertyBuildings_VO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="PropertyBuildings_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.PropertyBuildings_VO.PropertyId"/>
+      <Item Value="model.VO.PropertyBuildings_VO.BuildId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="OwnerDtle_VO"
+    Cardinality="-1"
+    Owner="model.VO.OwnerDtle_VO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="OwnerDtle_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.OwnerDtle_VO.PropertyId"/>
+      <Item Value="model.VO.OwnerDtle_VO.BuildId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

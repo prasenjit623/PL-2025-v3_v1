@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Premium_AM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  LoadComponentsLazily="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+  </DesignTime>
+  <ViewUsage
+    Name="PlPremiums_VO1"
+    ViewObjectName="model.VO.PlPremiums_VO"/>
+  <ViewUsage
+    Name="getFunctionCodeROVO1"
+    ViewObjectName="model.ROVO.getFunctionCodeROVO"/>
+</AppModule>

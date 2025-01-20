@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="homeBTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__5">home</default-activity>
+    <managed-bean id="__6">
+      <managed-bean-name id="__4">Home</managed-bean-name>
+      <managed-bean-class id="__3">homePage</managed-bean-class>
+      <managed-bean-scope id="__1">request</managed-bean-scope>
+    </managed-bean>
+    <view id="home">
+      <page>/pages/home.jspx</page>
+    </view>
+    <visibility id="__2">
+      <url-invoke-allowed/>
+    </visibility>
+  </task-flow-definition>
+</adfc-config>

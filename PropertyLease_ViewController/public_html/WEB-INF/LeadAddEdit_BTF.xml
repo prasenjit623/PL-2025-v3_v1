@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="LeadAddEdit_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">router1</default-activity>
+    <transaction id="__40">
+      <new-transaction/>
+    </transaction>
+    <view id="addEditVisitorLog">
+      <page>/fragments/addEditVisitorLog.jsff</page>
+    </view>
+    <router id="router1">
+      <case>
+        <expression>#{pageFlowScope.resultVal=='NewLead'}</expression>
+        <outcome id="__28">addLead</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.resultVal=='EditLead'}</expression>
+        <outcome id="__29">editLead</outcome>
+      </case>
+      <default-outcome>addLead</default-outcome>
+    </router>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__8">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="save">
+      <outcome id="__30">
+        <name>save</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="cancel">
+      <outcome id="__31">
+        <name>cancel</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__41">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">router1</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">addLead</from-outcome>
+        <to-activity-id id="__12">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome id="__17">editLead</from-outcome>
+        <to-activity-id id="__16">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id id="__19">CreateInsert</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome id="__22">CreateInsert</from-outcome>
+        <to-activity-id id="__21">addEditVisitorLog</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__32">
+      <from-activity-id id="__33">addEditVisitorLog</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome id="__36">save</from-outcome>
+        <to-activity-id id="__35">save</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__37">
+        <from-outcome id="__39">cancel</from-outcome>
+        <to-activity-id id="__38">cancel</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__42">
+      <from-activity-id id="__43">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__44">
+        <from-outcome id="__45">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__46">addEditVisitorLog</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Receipt"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.AM.ReceiptImpl"
+  DefClass="model.AM.ReceiptDefImpl"
+  ComponentInterface="model.AM.common.Receipt"
+  ClientProxyName="model.AM.client.ReceiptClient"
+  LoadComponentsLazily="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.AM.Receipt_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="Receipt_VO1"
+    ViewObjectName="model.VO.Receipt_VO">
+    <ViewCriteriaUsage
+      Name="Receipt_VOCriteria"
+      FullName="model.VO.Receipt_VO.Receipt_VOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="B_VAL">
+        <TransientExpression><![CDATA[adf.context.pageFlowScope.recid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="ReceiptDtlVO1"
+    ViewObjectName="model.VO.ReceiptDtlVO"/>
+  <ViewUsage
+    Name="getFunctionCodeROVO1"
+    ViewObjectName="model.ROVO.getFunctionCodeROVO"/>
+  <ViewUsage
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"/>
+  <ViewUsage
+    Name="ARReceiptMethod_ROVO1"
+    ViewObjectName="model.ROVO.ARReceiptMethod_ROVO"/>
+  <ViewUsage
+    Name="SearchReceiptRoVo1"
+    ViewObjectName="model.ROVO.SearchReceiptRoVo"/>
+  <ViewLinkUsage
+    Name="ReceiptHdr_Dtl_VL1"
+    ViewLinkObjectName="model.VL.ReceiptHdr_Dtl_VL"
+    SrcViewUsageName="model.AM.Receipt.Receipt_VO1"
+    DstViewUsageName="model.AM.Receipt.ReceiptDtlVO1"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="OnCreateReceipt">
+      <Return
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

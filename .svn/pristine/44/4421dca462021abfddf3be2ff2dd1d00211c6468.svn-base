@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditWoInvPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="WoInvHdr_VO1" RangeSize="25"
+              DataControl="WoInv_AMDataControl" id="WoInvHdr_VO1Iterator"/>
+    <iterator Binds="WoInvDtls_RoVo1" RangeSize="25"
+              DataControl="WoInv_AMDataControl" id="WoInvDtls_RoVo1Iterator"/>
+    <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+              DataControl="WoInv_AMDataControl" RangeSize="25"/>
+    <iterator id="getARSetupDetails_ROVO1Iterator"
+              Binds="getARSetupDetails_ROVO1" DataControl="WoInv_AMDataControl"
+              RangeSize="25"/>
+    <iterator Binds="WoInvDetailAr_VO1" RangeSize="25"
+              DataControl="WoInv_AMDataControl" id="WoInvDetailAr_VO1Iterator"/>
+    <iterator id="GetWoHdrInfo_ROVO1Iterator" Binds="GetWoHdrInfo_ROVO1"
+              DataControl="WoInv_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="WoInvHdrId">
+      <AttrNames>
+        <Item Value="WoInvHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="WoInvHdrNo">
+      <AttrNames>
+        <Item Value="WoInvHdrNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="WoOpId">
+      <AttrNames>
+        <Item Value="WoOpId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="WorkOrderId">
+      <AttrNames>
+        <Item Value="WorkOrderId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="Asset">
+      <AttrNames>
+        <Item Value="Asset"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="BillableTo">
+      <AttrNames>
+        <Item Value="BillableTo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="ClosedDate">
+      <AttrNames>
+        <Item Value="ClosedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="MaterialCost">
+      <AttrNames>
+        <Item Value="MaterialCost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="ResourceCost">
+      <AttrNames>
+        <Item Value="ResourceCost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="TotalCost">
+      <AttrNames>
+        <Item Value="TotalCost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="Type">
+      <AttrNames>
+        <Item Value="Type"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="SubType">
+      <AttrNames>
+        <Item Value="SubType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="AssetDescription">
+      <AttrNames>
+        <Item Value="AssetDescription"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="CreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="CompletionDate">
+      <AttrNames>
+        <Item Value="CompletionDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="DefaultSupplyType">
+      <AttrNames>
+        <Item Value="DefaultSupplyType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="Item">
+      <AttrNames>
+        <Item Value="Item"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="ReleasedDate">
+      <AttrNames>
+        <Item Value="ReleasedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="WoInvHdr_VO1Iterator"
+                  Uses="LOV_WorkOrder" id="WorkOrder"/>
+    <tree IterBinding="WoInvDtls_RoVo1Iterator" id="WoInvDtls_RoVo1">
+      <nodeDefinition DefName="model.ROVO.WoInvDtls_RoVo"
+                      Name="WoInvDtls_RoVo10">
+        <AttrNames>
+          <Item Value="WorkOrderId"/>
+          <Item Value="WorkOrder"/>
+          <Item Value="BuildName"/>
+          <Item Value="UnitName"/>
+          <Item Value="Asset"/>
+          <Item Value="Name"/>
+          <Item Value="Type"/>
+          <Item Value="StartDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="WoInv_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="WoInv_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="FuncId">
+      <AttrNames>
+        <Item Value="FuncId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="FlowStatus">
+      <AttrNames>
+        <Item Value="FlowStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="FlowLevel">
+      <AttrNames>
+        <Item Value="FlowLevel"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="FlowWith">
+      <AttrNames>
+        <Item Value="FlowWith"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="UserGrpId">
+      <AttrNames>
+        <Item Value="UserGrpId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="OrgId">
+      <AttrNames>
+        <Item Value="OrgId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="PropertyId">
+      <AttrNames>
+        <Item Value="PropertyId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="BuildId">
+      <AttrNames>
+        <Item Value="BuildId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="UnitId">
+      <AttrNames>
+        <Item Value="UnitId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="SerialNumber">
+      <AttrNames>
+        <Item Value="SerialNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="WoInvDetailAr_VO1Iterator" id="WoInvDetailAr_VO1">
+      <nodeDefinition DefName="model.VO.WoInvDetailAr_VO"
+                      Name="WoInvDetailAr_VO10">
+        <AttrNames>
+          <Item Value="WoInvDtlArId"/>
+          <Item Value="WoInvHdrId"/>
+          <Item Value="Charges"/>
+          <Item Value="Amount"/>
+          <Item Value="TaxCode"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="TotalAmount"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="createWoArLines"
+                  InstanceName="WoInv_AMDataControl.dataProvider"
+                  DataControl="WoInv_AMDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="createWoArLines"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.WoInv_AMDataControl.methodResults.createWoArLines_WoInv_AMDataControl_dataProvider_createWoArLines_result">
+      <NamedData NDName="wo_inv_hdr_id" NDType="java.lang.String"/>
+      <NamedData NDName="material_cost" NDType="java.lang.String"/>
+      <NamedData NDName="resource_cost" NDType="java.lang.String"/>
+      <NamedData NDName="user_name" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="InvStatus">
+      <AttrNames>
+        <Item Value="InvStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="TotalInvCost">
+      <AttrNames>
+        <Item Value="TotalInvCost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="CustomerName">
+      <AttrNames>
+        <Item Value="CustomerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="BillToAddre">
+      <AttrNames>
+        <Item Value="BillToAddre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="CustomerTrxnNum">
+      <AttrNames>
+        <Item Value="CustomerTrxnNum"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="WoInvHdr_VO1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <methodAction id="getARInvoiceTrxDetailsWoInv"
+                  InstanceName="WoInv_AMDataControl.dataProvider"
+                  DataControl="WoInv_AMDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getARInvoiceTrxDetailsWoInv"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.WoInv_AMDataControl.methodResults.getARInvoiceTrxDetailsWoInv_WoInv_AMDataControl_dataProvider_getARInvoiceTrxDetailsWoInv_result">
+      <NamedData NDName="pWoInvNum" NDType="java.lang.String"/>
+      <NamedData NDName="pCustomerTrxId" NDType="java.lang.String"/>
+      <NamedData NDName="pCustomerTrxNo" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator"
+                     id="BillableContractStatus">
+      <AttrNames>
+        <Item Value="BillableContractStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoInvHdr_VO1Iterator" id="Attribute1">
+      <AttrNames>
+        <Item Value="Attribute1"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

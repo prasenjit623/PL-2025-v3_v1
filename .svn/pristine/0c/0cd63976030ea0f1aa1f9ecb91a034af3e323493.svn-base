@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArSetup_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="ArSetup_EO.AR_SETUP_ID, 
+       ArSetup_EO.BUSINESS_UNIT_ID, 
+       ArSetup_EO.LEGAL_ENTITY_ID, 
+       ArSetup_EO.CHARGE_TYPE, 
+       ArSetup_EO.TXN_TYPE, 
+       ArSetup_EO.TXN_SOURCE, 
+       ArSetup_EO.CM_TXN_TYPE, 
+       ArSetup_EO.CM_TXN_SOURCE, 
+       ArSetup_EO.TYPE_ID, 
+       ArSetup_EO.TXN_TYPE_ID, 
+       ArSetup_EO.TXN_SOURCE_ID, 
+       ArSetup_EO.CM_TXN_TYPE_ID, 
+       ArSetup_EO.CM_TXN_SOURCE_ID, 
+       ArSetup_EO.REV_ACCOUNT_ID, 
+       ArSetup_EO.CONCATENATED_SEGMENT, 
+       ArSetup_EO.INVOICING_RULE, 
+       ArSetup_EO.INTERCOMPANY_GL_CODE, 
+       ArSetup_EO.COST_CENTER_GL_CODE, 
+       ArSetup_EO.ACCOUNTING_RULE_NAME, 
+       ArSetup_EO.LEDGER_NAME, 
+       ArSetup_EO.CODE_COMB_ID, 
+       ArSetup_EO.ENVIRONMENT, 
+       ArSetup_EO.ACCOUNT_CLASS"
+  FromList="XXPM_AR_SETUP ArSetup_EO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <Variable
+    Name="BV_setupId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="Organizations_ROVO1"
+    ViewObjectName="model.ROVO.Organizations_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByChargeType"
+      FullName="model.ROVO.Lookup_View_ROVO.findByChargeType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="TxnTypeId_ROVO1"
+    ViewObjectName="model.ROVO.TxnTypeId_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="TxnSourceId_ROVO1"
+    ViewObjectName="model.ROVO.TxnSourceId_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="RevAccountId_ROVO1"
+    ViewObjectName="model.ROVO.RevAccountId_ROVO">
+    <ViewCriteriaUsage
+      Name="RevAccountId_ROVOCriteria"
+      FullName="model.ROVO.RevAccountId_ROVO.RevAccountId_ROVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="BV_OrgId">
+        <TransientExpression><![CDATA[BusinessUnitId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="CostCenterGlCode_ROVO1"
+    ViewObjectName="model.ROVO.CostCenterGlCode_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Org_ROVO1"
+    ViewObjectName="model.ROVO.Org_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO2"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByenvironment"
+      FullName="model.ROVO.Lookup_View_ROVO.findByenvironment"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_ChargeType"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ChargeType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_TxnTypeId"
+    ListVOName="TxnTypeId_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="TxnTypeId"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="TxnType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CustTrxTypeId"/>
+      <Item Value="TxnName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TxnName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_TxnSourceId"
+    ListVOName="TxnSourceId_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="TxnSourceId"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="TxnSource"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BatchSourceId"/>
+      <Item Value="TxnName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TxnName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_RevAccountId"
+    ListVOName="RevAccountId_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="RevAccountId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ReceiptMethodId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ReceiptMethodName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_AccountingRuleName"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AccountingRuleName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_InvoicingRule"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="InvoicingRule"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_IntercompanyGlCode"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="IntercompanyGlCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BusinessUnitId"
+    ListVOName="Org_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BusinessUnitId"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="LegalEntityId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrgId"/>
+      <Item Value="LegalEntityId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrgName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CostCenterGlCode"
+    ListVOName="CostCenterGlCode_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CostCenterGlCode"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="ConcatenatedSegment"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CodeCombinationId"/>
+      <Item Value="ConcatenatedSegments"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ConcatenatedSegments"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Environment"
+    ListVOName="Lookup_View_ROVO2"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Environment"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="ArSetup_EO"
+    Entity="model.EO.ArSetup_EO"/>
+  <ViewAttribute
+    Name="ArSetupId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ArSetupId"
+    EntityUsage="ArSetup_EO"
+    AliasName="AR_SETUP_ID"/>
+  <ViewAttribute
+    Name="BusinessUnitId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BusinessUnitId"
+    EntityUsage="ArSetup_EO"
+    AliasName="BUSINESS_UNIT_ID"
+    LOVName="LOV_BusinessUnitId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.BusinessUnitId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LegalEntityId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LegalEntityId"
+    EntityUsage="ArSetup_EO"
+    AliasName="LEGAL_ENTITY_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.LegalEntityId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ChargeType"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChargeType"
+    EntityUsage="ArSetup_EO"
+    AliasName="CHARGE_TYPE"
+    LOVName="LOV_ChargeType">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.ChargeType_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TxnType"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="TxnType"
+    EntityUsage="ArSetup_EO"
+    AliasName="TXN_TYPE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.TxnType_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TxnSource"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="TxnSource"
+    EntityUsage="ArSetup_EO"
+    AliasName="TXN_SOURCE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.TxnSource_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CmTxnType"
+    PrecisionRule="true"
+    EntityAttrName="CmTxnType"
+    EntityUsage="ArSetup_EO"
+    AliasName="CM_TXN_TYPE">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CmTxnSource"
+    PrecisionRule="true"
+    EntityAttrName="CmTxnSource"
+    EntityUsage="ArSetup_EO"
+    AliasName="CM_TXN_SOURCE">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TypeId"
+    PrecisionRule="true"
+    EntityAttrName="TypeId"
+    EntityUsage="ArSetup_EO"
+    AliasName="TYPE_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TxnTypeId"
+    PrecisionRule="true"
+    EntityAttrName="TxnTypeId"
+    EntityUsage="ArSetup_EO"
+    AliasName="TXN_TYPE_ID"
+    LOVName="LOV_TxnTypeId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.TxnTypeId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TxnSourceId"
+    PrecisionRule="true"
+    EntityAttrName="TxnSourceId"
+    EntityUsage="ArSetup_EO"
+    AliasName="TXN_SOURCE_ID"
+    LOVName="LOV_TxnSourceId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.TxnSourceId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CmTxnTypeId"
+    PrecisionRule="true"
+    EntityAttrName="CmTxnTypeId"
+    EntityUsage="ArSetup_EO"
+    AliasName="CM_TXN_TYPE_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.CmTxnTypeId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CmTxnSourceId"
+    PrecisionRule="true"
+    EntityAttrName="CmTxnSourceId"
+    EntityUsage="ArSetup_EO"
+    AliasName="CM_TXN_SOURCE_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.CmTxnSourceId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevAccountId"
+    PrecisionRule="true"
+    EntityAttrName="RevAccountId"
+    EntityUsage="ArSetup_EO"
+    AliasName="REV_ACCOUNT_ID"
+    LOVName="LOV_RevAccountId">
+    <Dependencies>
+      <Item
+        Value="BusinessUnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.RevAccountId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ConcatenatedSegment"
+    PrecisionRule="true"
+    EntityAttrName="ConcatenatedSegment"
+    EntityUsage="ArSetup_EO"
+    AliasName="CONCATENATED_SEGMENT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.ConcatenatedSegment_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="InvoicingRule"
+    PrecisionRule="true"
+    EntityAttrName="InvoicingRule"
+    EntityUsage="ArSetup_EO"
+    AliasName="INVOICING_RULE"
+    LOVName="LOV_InvoicingRule">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.InvoicingRule_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IntercompanyGlCode"
+    PrecisionRule="true"
+    EntityAttrName="IntercompanyGlCode"
+    EntityUsage="ArSetup_EO"
+    AliasName="INTERCOMPANY_GL_CODE"
+    LOVName="LOV_IntercompanyGlCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.IntercompanyGlCode_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CostCenterGlCode"
+    PrecisionRule="true"
+    EntityAttrName="CostCenterGlCode"
+    EntityUsage="ArSetup_EO"
+    AliasName="COST_CENTER_GL_CODE"
+    LOVName="LOV_CostCenterGlCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.CostCenterGlCode_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AccountingRuleName"
+    PrecisionRule="true"
+    EntityAttrName="AccountingRuleName"
+    EntityUsage="ArSetup_EO"
+    AliasName="ACCOUNTING_RULE_NAME"
+    LOVName="LOV_AccountingRuleName">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.AccountingRuleName_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LedgerName"
+    PrecisionRule="true"
+    EntityAttrName="LedgerName"
+    EntityUsage="ArSetup_EO"
+    AliasName="LEDGER_NAME">
+    <Dependencies>
+      <Item
+        Value="BusinessUnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.LedgerName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CodeCombId"
+    PrecisionRule="true"
+    EntityAttrName="CodeCombId"
+    EntityUsage="ArSetup_EO"
+    AliasName="CODE_COMB_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.CodeCombId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Environment"
+    PrecisionRule="true"
+    EntityAttrName="Environment"
+    EntityUsage="ArSetup_EO"
+    AliasName="ENVIRONMENT"
+    LOVName="LOV_Environment">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AccountClass"
+    PrecisionRule="true"
+    EntityAttrName="AccountClass"
+    EntityUsage="ArSetup_EO"
+    AliasName="ACCOUNT_CLASS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.ArSetup_VO.AccountClass_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="ArSetup_VOCriteria"
+    ViewObjectName="model.VO.ArSetup_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow229"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ArSetupId"
+        ViewAttribute="ArSetupId"
+        Operator="="
+        Conjunction="AND"
+        Value=":BV_setupId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OpResourceStg_EO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXSTG_OP_RESOURCE"
+  AliasName="OpResourceStg_EO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="BuildName"
+    Precision="260"
+    ColumnName="BUILD_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="260"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="WorkOrderNumber"
+    Precision="60"
+    ColumnName="WORK_ORDER_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RequiredUsage"
+    Precision="60"
+    ColumnName="REQUIRED_USAGE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="InverseRequiredUsage"
+    Precision="60"
+    ColumnName="INVERSE_REQUIRED_USAGE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AssignedUnits"
+    Precision="60"
+    ColumnName="ASSIGNED_UNITS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ChargeType"
+    Precision="100"
+    ColumnName="CHARGE_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Scheduled"
+    Precision="100"
+    ColumnName="SCHEDULED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UomCode"
+    Precision="60"
+    ColumnName="UOM_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Code"
+    Precision="60"
+    ColumnName="CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UsageRate"
+    Precision="60"
+    ColumnName="USAGE_RATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StartDate"
+    Precision="60"
+    ColumnName="START_DATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CompletionDate"
+    Precision="60"
+    ColumnName="COMPLETION_DATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Name"
+    Precision="340"
+    ColumnName="NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="340"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    Precision="340"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="340"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DescriptionCode"
+    Precision="300"
+    ColumnName="DESCRIPTION_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="300"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ResourceType"
+    Precision="200"
+    ColumnName="RESOURCE_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActualResourceUsage"
+    Precision="100"
+    ColumnName="ACTUAL_RESOURCE_USAGE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Activity"
+    Precision="100"
+    ColumnName="ACTIVITY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Basis"
+    Precision="300"
+    ColumnName="BASIS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="300"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ResourceId"
+    Precision="60"
+    ColumnName="RESOURCE_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="WoOperationId"
+    Precision="60"
+    ColumnName="WO_OPERATION_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OperationSeqNumber"
+    Precision="60"
+    ColumnName="OPERATION_SEQ_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OperationName"
+    Precision="300"
+    ColumnName="OPERATION_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXSTG_OP_RESOURCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="300"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RowID"
+    IsUpdateable="false"
+    ColumnName="ROWID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="ROWID"
+    PrimaryKey="true"/>
+</Entity>

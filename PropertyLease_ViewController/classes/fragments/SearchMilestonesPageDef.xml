@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchMilestonesPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchMilestones_ROVO1" RangeSize="25"
+              DataControl="Milestones_AMDataControl"
+              id="SearchMilestones_ROVO1Iterator"/>
+    <searchRegion Criteria="SearchMilestones_ROVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchMilestones_ROVO1Iterator"
+                  id="SearchMilestonesROVOCriteriaQuery"/>
+    <iterator id="MilestonesHdr_VO1Iterator" Binds="MilestonesHdr_VO1"
+              DataControl="Milestones_AMDataControl" RangeSize="25"/>
+    <iterator id="MilestonesHdr_VO2Iterator" Binds="MilestonesHdr_VO2"
+              DataControl="Milestones_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchMilestones_ROVO1Iterator"
+          id="SearchMilestones_ROVO1">
+      <nodeDefinition DefName="model.ROVO.SearchMilestones_ROVO"
+                      Name="SearchMilestones_ROVO10">
+        <AttrNames>
+          <Item Value="MilestoneName"/>
+          <Item Value="MilestoneNumber"/>
+          <Item Value="OrgId"/>
+          <Item Value="ProjectId"/>
+          <Item Value="Revision"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="ActiveYn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchMilestones_ROVO1Iterator" id="MsHdrId">
+      <AttrNames>
+        <Item Value="MsHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="Milestones_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="SearchMilestones_ROVO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

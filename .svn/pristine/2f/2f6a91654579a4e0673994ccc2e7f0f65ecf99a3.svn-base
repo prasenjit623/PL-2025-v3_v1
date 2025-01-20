@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="getInvoiceInterfacePayloadValuesforOtherCharges"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.getInvoiceInterfacePayloadValuesforOtherCharges_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="BV_BOOKING_ID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="BV_OTHER_CHR_ID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="BV_LEASE_ID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery>
+    <![CDATA[SELECT BKHDR.BOOKING_ID,
+  BKHDR.BOOKING_NUMBER,
+  BKCUST.BOOK_CUST_ID,
+  BKCUST.CUST_ID_AR,
+  BKCUST.BILL_TO_ADDR,
+  BKCUST.SHIP_TO_ADDR,
+  STGCUST.CUSTOMER_NAME,
+  STGCUST.CUSTOMER_NUMBER,
+  BKDTL.BOOKING_DTL_ID,
+  BKDTL.PROPERTY_ID,
+  BKDTL.BUILDING_ID,
+  BKDTL.UNIT_ID,
+  BKDTL.BASE_RATE,
+  BKDTL.TOTAL_RATE,
+  BKDTL.DISCOUNT_RATE,
+  BKDTL.TAX_AMOUNT,
+  LEAS.LEASE_AGREEMENT_ID,
+  LEAS.LEASE_NUMBER,
+  LEAS.ORG_ID,
+  LEAS.LEASE_START_DATE,
+  LEAS.LEASE_END_DATE,
+  LEAS.TAX_CODE,
+  OFFR.OFFER_HDR_ID,
+  OFFR.OFFER_NUMBER,
+  OFFR.OFFER_TYPE,
+  OFFR.LEASE_TYPE,
+  OC.OTHER_CHARGES_NUMBER,
+  OC.OTHERS_TOTAL_RATE,
+  OC.BILL_TO_ADDRE,
+  OC.OC_HDR_ID,
+  OC.cancel_id,
+  (select cancel_number from xxpm_cancellation c where c.cancel_id = OC.cancel_id) as CANCEL_NUMBER,
+  (select cancel_date from xxpm_cancellation c where c.cancel_id = OC.cancel_id) as CANCEL_DATE,
+  UNITS.UNIT_NAME,
+  BUILDING.BUILD_NAME
+FROM XXPL_PROPERTY_UNITS UNITS,
+  XXPL_PROPERTY_BUILDINGS BUILDING,
+  XXPM_BOOKING_CUSTOMER BKCUST,
+  XXSTG_CUSTOMER STGCUST,
+  XXPM_BOOKING_DETAIL BKDTL,
+  XXPM_BOOKING_HEADER BKHDR,
+  XXPM_LEASE_AGREEMENT LEAS,
+  XXPM_OFFER_HEADER OFFR,
+  XXPM_OC_HEADER OC
+WHERE UNITS.UNIT_ID   =BKDTL.UNIT_ID
+AND BUILDING.BUILD_ID =BKDTL.BUILDING_ID
+AND BKCUST.CUST_ID_AR =STGCUST.CUST_ID
+AND OFFR.OFFER_HDR_ID =BKHDR.OFFER_HDR_ID
+AND BKCUST.BOOKING_ID =:BV_BOOKING_ID
+AND BKDTL.BOOKING_ID  =:BV_BOOKING_ID
+AND BKHDR.BOOKING_ID  =:BV_BOOKING_ID
+AND LEAS.BOOKING_ID   =:BV_BOOKING_ID
+AND OC.BOOKING_ID     = :BV_BOOKING_ID
+AND OC.OC_HDR_ID      =:BV_OTHER_CHR_ID
+AND OC.LEASE_AGREEMENT_ID =:BV_LEASE_ID
+AND OC.STATUS         ='APR'
+AND LEAS.STATUS != 'REJ']]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="BookingId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="BOOKING_ID"
+    Expression="BOOKING_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookingNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BOOKING_NUMBER"
+    Expression="BOOKING_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookCustId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BOOK_CUST_ID"
+    Expression="BOOK_CUST_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustIdAr"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="CUST_ID_AR"
+    Expression="CUST_ID_AR"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillToAddr"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="152"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BILL_TO_ADDR"
+    Expression="BILL_TO_ADDR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="152"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ShipToAddr"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="151"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SHIP_TO_ADDR"
+    Expression="SHIP_TO_ADDR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="151"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUSTOMER_NAME"
+    Expression="CUSTOMER_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUSTOMER_NUMBER"
+    Expression="CUSTOMER_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookingDtlId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BOOKING_DTL_ID"
+    Expression="BOOKING_DTL_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROPERTY_ID"
+    Expression="PROPERTY_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildingId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BUILDING_ID"
+    Expression="BUILDING_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="UNIT_ID"
+    Expression="UNIT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BaseRate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BASE_RATE"
+    Expression="BASE_RATE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalRate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="TOTAL_RATE"
+    Expression="TOTAL_RATE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DiscountRate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DISCOUNT_RATE"
+    Expression="DISCOUNT_RATE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TaxAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="TAX_AMOUNT"
+    Expression="TAX_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseAgreementId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LEASE_AGREEMENT_ID"
+    Expression="LEASE_AGREEMENT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LEASE_NUMBER"
+    Expression="LEASE_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ORG_ID"
+    Expression="ORG_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseStartDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="LEASE_START_DATE"
+    Expression="LEASE_START_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseEndDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="LEASE_END_DATE"
+    Expression="LEASE_END_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TaxCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TAX_CODE"
+    Expression="TAX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OfferHdrId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="OFFER_HDR_ID"
+    Expression="OFFER_HDR_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OfferNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="OFFER_NUMBER"
+    Expression="OFFER_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OfferType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="OFFER_TYPE"
+    Expression="OFFER_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LEASE_TYPE"
+    Expression="LEASE_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OtherChargesNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="OTHER_CHARGES_NUMBER"
+    Expression="OTHER_CHARGES_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OthersTotalRate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="OTHERS_TOTAL_RATE"
+    Expression="OTHERS_TOTAL_RATE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillToAddre"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BILL_TO_ADDRE"
+    Expression="BILL_TO_ADDRE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OcHdrId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="22"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="OC_HDR_ID"
+    Expression="OC_HDR_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="23"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CancelId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="CANCEL_ID"
+    Expression="CANCEL_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CancelNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CANCEL_NUMBER"
+    Expression="CANCEL_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CancelDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="CANCEL_DATE"
+    Expression="CANCEL_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_NAME"
+    Expression="UNIT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_NAME"
+    Expression="BUILD_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="BookingId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditBookingPageDef"
+                Package="fragments">
+   <parameters/>
+   <executables>
+      <iterator id="OfferDetail_VO1Iterator" Binds="OfferDetail_VO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferHrd_VO1Iterator" Binds="OfferHrd_VO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferDetail_VO2Iterator" Binds="OfferDetail_VO2"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <variableIterator id="variables"/>
+      <iterator Binds="BookingHeader_VO1" RangeSize="25"
+                DataControl="Booking_AMDataControl"
+                id="BookingHeader_VO1Iterator"/>
+      <iterator Binds="BookingCharges_VO1" RangeSize="25"
+                DataControl="Booking_AMDataControl"
+                id="BookingCharges_VO1Iterator"/>
+      <iterator Binds="BookingDetail_VO1" RangeSize="25"
+                DataControl="Booking_AMDataControl"
+                id="BookingDetail_VO1Iterator"/>
+      <iterator Binds="Receipt_VO1" RangeSize="25"
+                DataControl="Booking_AMDataControl" id="Receipt_VO1Iterator"/>
+      <iterator id="PropertyUnits_VO1Iterator" Binds="PropertyUnits_VO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="PropertyUnits_VO2Iterator" Binds="PropertyUnits_VO2"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator Binds="Booking_Milestone_VO1" RangeSize="25"
+                DataControl="Booking_AMDataControl"
+                id="Booking_Milestone_VO1Iterator"/>
+      <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferMilestoneDetail_VO1Iterator"
+                Binds="OfferMilestoneDetail_VO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="MilestonesDtl_VO1Iterator" Binds="MilestonesDtl_VO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="PropertyMaster_VO1Iterator" Binds="PropertyMaster_VO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferHrd_VO3Iterator" Binds="OfferHrd_VO3"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferHrd_VO4Iterator" Binds="OfferHrd_VO4"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferDetail_VO3Iterator" Binds="OfferDetail_VO3"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="PropertyUnits_VO3Iterator" Binds="PropertyUnits_VO3"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="BookingDetail_VO2Iterator" Binds="BookingDetail_VO2"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="GetCustomerDetailsROVO1Iterator"
+                Binds="GetCustomerDetailsROVO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator Binds="BookingCustomer_VO1" RangeSize="25"
+                DataControl="Booking_AMDataControl"
+                id="BookingCustomer_VO1Iterator"/>
+      <iterator id="GetCustomerDetailsROVO1Iterator1"
+                Binds="GetCustomerDetailsROVO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferDetail_VO4Iterator" Binds="OfferDetail_VO4"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferMilestoneDetail_VO4Iterator"
+                Binds="OfferMilestoneDetail_VO4"
+                DataControl="OfferAppModuleDataControl" RangeSize="25"/>
+      <iterator id="OfferMilestoneDetail_VO3Iterator"
+                Binds="OfferMilestoneDetail_VO3"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="getApprovalHistoryROVo1Iterator"
+                Binds="getApprovalHistoryROVo1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator Binds="BookingMilestonesOtherChargesVO1" RangeSize="25"
+                DataControl="Booking_AMDataControl"
+                id="BookingMilestonesOtherChargesVO1Iterator"/>
+      <iterator id="getReceiptPayloadDtls_ROVO1Iterator"
+                Binds="getReceiptPayloadDtls_ROVO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="getReceiptPayloadDtlForBooing_ROVO1Iterator"
+                Binds="getReceiptPayloadDtlForBooing_ROVO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="getReceiptMethod_ROVO1Iterator"
+                Binds="getReceiptMethod_ROVO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="getUserLevels1Iterator" Binds="getUserLevels1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="BookingDuplicateValidation_ROVO1Iterator"
+                Binds="BookingDuplicateValidation_ROVO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="Lookup_View_ROVO1Iterator" Binds="Lookup_View_ROVO1"
+                DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+      <iterator Binds="BookingMilestonesOtherChargesVO2" RangeSize="25"
+                DataControl="Booking_AMDataControl"
+                id="BookingMilestonesOtherChargesVO2Iterator"/>
+      <iterator Binds="getAllOfrBkDtl_RoVo1" RangeSize="25"
+                DataControl="Booking_AMDataControl"
+                id="getAllOfrBkDtl_RoVo1Iterator"/>
+      <iterator id="userROVO1Iterator" Binds="userROVO1"
+                DataControl="UserAMDataControl" RangeSize="25"/>
+      <iterator id="SearchBookingROVO1Iterator" Binds="SearchBookingROVO1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+      <iterator id="SearchBkDtls_RoVo1Iterator" Binds="SearchBkDtls_RoVo1"
+                DataControl="Booking_AMDataControl" RangeSize="25"/>
+   </executables>
+   <bindings>
+      <list IterBinding="BookingCustomer_VO1Iterator" StaticList="false"
+            Uses="LOV_CustCategory" id="CustCategory1" DTSupportsMRU="false"
+            SelectItemValueMode="ListObject"/>
+      <list IterBinding="BookingCustomer_VO1Iterator" StaticList="false"
+            Uses="LOV_VisaType" id="VisaType1" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <action id="Commit1" DataControl="Booking_AMDataControl"
+              RequiresUpdateModel="true" Action="commitTransaction"/>
+      <tree IterBinding="Receipt_VO1Iterator" id="Receipt_VO1">
+         <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO10">
+            <AttrNames>
+               <Item Value="ReceiptNumber"/>
+               <Item Value="ReceiptDate"/>
+               <Item Value="PropertyId"/>
+               <Item Value="UnitId"/>
+               <Item Value="BuildId"/>
+               <Item Value="LeadId"/>
+               <Item Value="CustId"/>
+               <Item Value="CustomerName"/>
+               <Item Value="ReceiptAmount"/>
+               <Item Value="Description"/>
+               <Item Value="Attribute1"/>
+               <Item Value="RecommendedAmount"/>
+                <Item Value="ReceivedAmount"/>
+               <Item Value="Attribute2"/>
+               <Item Value="Attribute3"/>
+               <Item Value="PayMode"/>
+               <Item Value="PayRefNumber"/>
+               <Item Value="PayRefDate"/>
+               <Item Value="BankName"/>
+               <Item Value="RctType"/>
+               <Item Value="RctDesc"/>
+               <Item Value="AckFlag" Binds="AckFlag"/>
+               <Item Value="AckBy"/>
+               <Item Value="AckDate"/>
+               <Item Value="RecHdrRowStatus_Trans"/>
+               <Item Value="DiffInDays"/>
+               <Item Value="PaymentType"/>
+               <Item Value="PayMode5"/>
+               <Item Value="PayMode6"/>
+               <Item Value="Attribute4"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="Customer_Name_Trans">
+         <AttrNames>
+            <Item Value="Customer_Name_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="Customer_Mob_No_Trans">
+         <AttrNames>
+            <Item Value="Customer_Mob_No_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="CustReqMoveinDate">
+         <AttrNames>
+            <Item Value="CustReqMoveinDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="Lease_Start_Date_Trans">
+         <AttrNames>
+            <Item Value="Lease_Start_Date_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="Lease_End_Date_trans">
+         <AttrNames>
+            <Item Value="Lease_End_Date_trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="BookingAmount">
+         <AttrNames>
+            <Item Value="BookingAmount"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="BookingHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_BookingPayMethod" id="BookingPayMethod"
+            DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="FuncId">
+         <AttrNames>
+            <Item Value="FuncId"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="BookingHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_PaymentPlan_Trans" id="PaymentPlan_Trans"
+            DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="BookingDate">
+         <AttrNames>
+            <Item Value="BookingDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="BookingDueDate">
+         <AttrNames>
+            <Item Value="BookingDueDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator" id="CustName">
+         <AttrNames>
+            <Item Value="CustName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator"
+                       id="CustAccName">
+         <AttrNames>
+            <Item Value="CustAccName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator"
+                       id="CustBankName">
+         <AttrNames>
+            <Item Value="CustBankName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator"
+                       id="CustBranchName">
+         <AttrNames>
+            <Item Value="CustBranchName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator"
+                       id="CustBankAccNumber">
+         <AttrNames>
+            <Item Value="CustBankAccNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCharges_VO1Iterator" id="DueDate">
+         <AttrNames>
+            <Item Value="DueDate"/>
+         </AttrNames>
+      </attributeValues>
+      <action IterBinding="BookingDetail_VO1Iterator" id="CreateInsert"
+              RequiresUpdateModel="true" Action="createInsertRow"
+              InstanceName="Booking_AMDataControl.BookingDetail_VO1"
+              DataControl="Booking_AMDataControl"/>
+      <action id="Rollback" DataControl="Booking_AMDataControl"
+              RequiresUpdateModel="false" Action="rollbackTransaction"/>
+      <action IterBinding="BookingCharges_VO1Iterator" id="CreateInsert5"
+              RequiresUpdateModel="true" Action="createInsertRow"/>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="Currency1">
+         <AttrNames>
+            <Item Value="Currency1"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="TotalRent1">
+         <AttrNames>
+            <Item Value="TotalRent1"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="BookingHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_Status1" id="Status11" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <action IterBinding="Receipt_VO1Iterator" id="CreateInsert3"
+              InstanceName="Booking_AMDataControl.Receipt_VO1"
+              DataControl="Booking_AMDataControl" RequiresUpdateModel="true"
+              Action="createInsertRow"/>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="BookingNumber1">
+         <AttrNames>
+            <Item Value="BookingNumber1"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator" id="TrnNumber">
+         <AttrNames>
+            <Item Value="TrnNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptId">
+         <AttrNames>
+            <Item Value="ReceiptId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="FuncId1">
+         <AttrNames>
+            <Item Value="FuncId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="SourceFuncId">
+         <AttrNames>
+            <Item Value="SourceFuncId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="SourceFuncRefId">
+         <AttrNames>
+            <Item Value="SourceFuncRefId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptNumber">
+         <AttrNames>
+            <Item Value="ReceiptNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptDate">
+         <AttrNames>
+            <Item Value="ReceiptDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="OrgId">
+         <AttrNames>
+            <Item Value="OrgId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptType">
+         <AttrNames>
+            <Item Value="ReceiptType"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="BuildId">
+         <AttrNames>
+            <Item Value="BuildId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="LeadId">
+         <AttrNames>
+            <Item Value="LeadId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="CustId">
+         <AttrNames>
+            <Item Value="CustId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="CustSiteId">
+         <AttrNames>
+            <Item Value="CustSiteId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="CustomerName">
+         <AttrNames>
+            <Item Value="CustomerName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="CurrencyCode">
+         <AttrNames>
+            <Item Value="CurrencyCode"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptAmount">
+         <AttrNames>
+            <Item Value="ReceiptAmount"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="PayRefNumber">
+         <AttrNames>
+            <Item Value="PayRefNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="PayRefDate">
+         <AttrNames>
+            <Item Value="PayRefDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="BankName">
+         <AttrNames>
+            <Item Value="BankName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="BankBranchName">
+         <AttrNames>
+            <Item Value="BankBranchName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="DrawnBy">
+         <AttrNames>
+            <Item Value="DrawnBy"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="Status">
+         <AttrNames>
+            <Item Value="Status"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="Description">
+         <AttrNames>
+            <Item Value="Description"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="FlowStatus">
+         <AttrNames>
+            <Item Value="FlowStatus"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="FlowLevel">
+         <AttrNames>
+            <Item Value="FlowLevel"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="FlowWith">
+         <AttrNames>
+            <Item Value="FlowWith"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="TaxAmount">
+         <AttrNames>
+            <Item Value="TaxAmount"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="TaxCode">
+         <AttrNames>
+            <Item Value="TaxCode"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="TaxRate">
+         <AttrNames>
+            <Item Value="TaxRate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="PayRecDate">
+         <AttrNames>
+            <Item Value="PayRecDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="PayRevDate">
+         <AttrNames>
+            <Item Value="PayRevDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="DiffInDays">
+         <AttrNames>
+            <Item Value="DiffInDays"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="Booking_Milestone_VO1Iterator"
+            id="Booking_Milestone_VO1">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO10">
+            <AttrNames>
+               <Item Value="SeqNumber"/>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentPct"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Criteria"/>
+               <Item Value="ChargeType"/>
+               <Item Value="PaymentTerm"/>
+               <Item Value="Remarks"/>
+               <Item Value="DueDate"/>
+               <Item Value="BookingMsDtlId"/>
+               <Item Value="Attribute1"/>
+               <Item Value="Installment_Type_Trans"/>
+               <Item Value="ChargeType_Trans"/>
+               <Item Value="PaymentTerm_Trans"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="AppointmentDate">
+         <AttrNames>
+            <Item Value="AppointmentDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="BookingId">
+         <AttrNames>
+            <Item Value="BookingId"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="BookingCustomer_VO1Iterator" StaticList="false"
+            Uses="LOV_CustIdAr" id="CustIdAr" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <listOfValues StaticList="false" IterBinding="BookingCustomer_VO1Iterator"
+                    Uses="LOV_NationalityTrans" id="NationalityTrans"/>
+      <list IterBinding="BookingCustomer_VO1Iterator" StaticList="false"
+            Uses="LOV_ShipToAddr" id="ShipToAddr1" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <list IterBinding="BookingCustomer_VO1Iterator" StaticList="false"
+            Uses="LOV_BillToAddr" id="BillToAddr1" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <listOfValues StaticList="false" IterBinding="BookingHeader_VO1Iterator"
+                    Uses="LOV_OfferHdrIdTrans" id="OfferHdrIdTrans"/>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="PerformedBy">
+         <AttrNames>
+            <Item Value="PerformedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="CreatedBy">
+         <AttrNames>
+            <Item Value="CreatedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="OfferHdrId1">
+         <AttrNames>
+            <Item Value="OfferHdrId"/>
+         </AttrNames>
+      </attributeValues>
+      <listOfValues StaticList="false" IterBinding="BookingCustomer_VO1Iterator"
+                    Uses="LOV_Trans_CustIdAr" id="Trans_CustIdAr"/>
+      <tree IterBinding="getApprovalHistoryROVo1Iterator"
+            id="getApprovalHistoryROVo1">
+         <nodeDefinition DefName="model.ROVO.getApprovalHistoryROVo"
+                         Name="getApprovalHistoryROVo10">
+            <AttrNames>
+               <Item Value="ApproverId"/>
+               <Item Value="SubmissionDate"/>
+               <Item Value="Description"/>
+               <Item Value="Status"/>
+               <Item Value="SubmittedByTrans"/>
+               <Item Value="ActionDate"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <methodAction id="InvokeLeaseNumber"
+                    InstanceName="Booking_AMDataControl.dataProvider"
+                    DataControl="Booking_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="InvokeLeaseNumber" IsViewObjectMethod="false"
+                    ReturnName="data.Booking_AMDataControl.methodResults.InvokeLeaseNumber_Booking_AMDataControl_dataProvider_InvokeLeaseNumber_result">
+         <NamedData NDName="b_unitid" NDType="java.lang.String"/>
+      </methodAction>
+      <action id="Commit" DataControl="Booking_AMDataControl"
+              RequiresUpdateModel="true" Action="commitTransaction"/>
+      <tree IterBinding="BookingMilestonesOtherChargesVO1Iterator"
+            id="BookingMilestonesOtherChargesVO1">
+         <nodeDefinition DefName="model.VO.BookingMilestonesOtherChargesVO"
+                         Name="BookingMilestonesOtherChargesVO10">
+            <AttrNames>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="InstallmentPct"/>
+               <Item Value="Remarks"/>
+               <Item Value="BookingMsDtlId"/>
+               <Item Value="InstallmentType_Trans"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute2"/>
+               <Item Value="Attribute3"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptNumber1">
+         <AttrNames>
+            <Item Value="ReceiptNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="LastUpdatedBy">
+         <AttrNames>
+            <Item Value="LastUpdatedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="FlowWith1">
+         <AttrNames>
+            <Item Value="FlowWith"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator"
+                       id="Bookingexpirydate">
+         <AttrNames>
+            <Item Value="Bookingexpirydate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="RctType">
+         <AttrNames>
+            <Item Value="RctType"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="BookingCustomer_VO1Iterator" StaticList="false"
+            Uses="LOV_BillToAddr1" id="BillToAddr11" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <list IterBinding="BookingCustomer_VO1Iterator" StaticList="false"
+            Uses="LOV_ShipToAddr1" id="ShipToAddr11" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <methodAction id="autoRecomRC"
+                    InstanceName="Booking_AMDataControl.dataProvider"
+                    DataControl="Booking_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="autoRecomRC" IsViewObjectMethod="false"
+                    ReturnName="data.Booking_AMDataControl.methodResults.autoRecomRC_Booking_AMDataControl_dataProvider_autoRecomRC_result">
+         <NamedData NDName="bookingNo" NDType="java.lang.String"/>
+         <NamedData NDName="userId" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator" id="MobileNo">
+         <AttrNames>
+            <Item Value="MobileNo"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator" id="PhoneNo">
+         <AttrNames>
+            <Item Value="PhoneNo"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator" id="EmailId">
+         <AttrNames>
+            <Item Value="EmailId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingCustomer_VO1Iterator"
+                       id="CustomerNumberAr">
+         <AttrNames>
+            <Item Value="CustomerNumberAr"/>
+         </AttrNames>
+      </attributeValues>
+      <button IterBinding="Receipt_VO1Iterator" id="AckFlag"
+              DTSupportsMRU="false" StaticList="true">
+         <AttrNames>
+            <Item Value="AckFlag"/>
+         </AttrNames>
+         <ValueList>
+            <Item Value="Y"/>
+            <Item Value="N"/>
+         </ValueList>
+      </button>
+      <attributeValues IterBinding="Receipt_VO1Iterator"
+                       id="RecHdrRowStatus_Trans">
+         <AttrNames>
+            <Item Value="RecHdrRowStatus_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="Attribute1">
+         <AttrNames>
+            <Item Value="Attribute1"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="BookingMilestonesOtherChargesVO2Iterator"
+            id="BookingMilestonesOtherChargesVO2">
+         <nodeDefinition DefName="model.VO.BookingMilestonesOtherChargesVO"
+                         Name="BookingMilestonesOtherChargesVO20">
+            <AttrNames>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Remarks"/>
+               <Item Value="BookingMsDtlId"/>
+               <Item Value="BookingHdrId"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="Attribute1"/>
+               <Item Value="InstallmentType1"/>
+               <Item Value="InstallmentTypeSecDepo_Trans"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <methodAction id="refresh_update_bk"
+                    InstanceName="Booking_AMDataControl.dataProvider"
+                    DataControl="Booking_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="refresh_update_bk" IsViewObjectMethod="false"
+                    ReturnName="data.Booking_AMDataControl.methodResults.refresh_update_bk_Booking_AMDataControl_dataProvider_refresh_update_bk_result">
+         <NamedData NDName="bookingId" NDType="java.lang.String"/>
+         <NamedData NDName="offerId" NDType="java.lang.String"/>
+         <NamedData NDName="userId" NDType="java.lang.String"/>
+      </methodAction>
+      <listOfValues StaticList="false" IterBinding="BookingHeader_VO1Iterator"
+                    Uses="LOV_OfferNumber_Trans" id="OfferNumber_Trans"/>
+      <tree IterBinding="getAllOfrBkDtl_RoVo1Iterator"
+            id="getAllOfrBkDtl_RoVo1">
+         <nodeDefinition DefName="model.ROVO.getAllOfrBkDtl_RoVo"
+                         Name="getAllOfrBkDtl_RoVo10">
+            <AttrNames>
+               <Item Value="BookingDtlId"/>
+               <Item Value="BookingId"/>
+               <Item Value="PropertyName"/>
+               <Item Value="BuildName"/>
+               <Item Value="UnitName"/>
+               <Item Value="LeaseUnitMap"/>
+               <Item Value="UnitTypeName"/>
+               <Item Value="SetRentPerAnnum"/>
+               <Item Value="BaseRate"/>
+               <Item Value="MunicipalityCharges"/>
+               <Item Value="MunicipalityPercentage"/>
+               <Item Value="ElectricityCharges"/>
+               <Item Value="SecurityDeposite"/>
+               <Item Value="ThirdPartyServCharge"/>
+               <Item Value="OtherGovntChargeNew"/>
+               <Item Value="OtherGovntChargeRnew"/>
+               <Item Value="EjariPaymentCharge"/>
+               <Item Value="Attribute3"/>
+               <Item Value="TaxAmount"/>
+               <Item Value="TotalRate"/>
+               <Item Value="UnitAvlStatus"/>
+               <Item Value="UnitAvlFrom"/>
+               <Item Value="OldContractValue_Trans"/>
+               <Item Value="SecurityDepo_Trans"/>
+               <Item Value="NetRentWithoutTax"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute5"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <methodAction id="directToDraft"
+                    InstanceName="Booking_AMDataControl.dataProvider"
+                    DataControl="Booking_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="directToDraft" IsViewObjectMethod="false"
+                    ReturnName="data.Booking_AMDataControl.methodResults.directToDraft_Booking_AMDataControl_dataProvider_directToDraft_result">
+         <NamedData NDName="rcId" NDType="java.lang.String"/>
+         <NamedData NDName="userId" NDType="java.lang.String"/>
+         <NamedData NDName="funcId" NDType="java.lang.String"/>
+         <NamedData NDName="reason" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="Attribute3">
+         <AttrNames>
+            <Item Value="Attribute3"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingHeader_VO1Iterator" id="FlowLevel1">
+         <AttrNames>
+            <Item Value="FlowLevel"/>
+         </AttrNames>
+      </attributeValues>
+      <methodAction id="submitBkForAppr"
+                    InstanceName="Booking_AMDataControl.dataProvider"
+                    DataControl="Booking_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="submitBkForAppr" IsViewObjectMethod="false"
+                    ReturnName="data.Booking_AMDataControl.methodResults.submitBkForAppr_Booking_AMDataControl_dataProvider_submitBkForAppr_result">
+         <NamedData NDName="bookingId" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="responseBkForAppr"
+                    InstanceName="Booking_AMDataControl.dataProvider"
+                    DataControl="Booking_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="responseBkForAppr" IsViewObjectMethod="false"
+                    ReturnName="data.Booking_AMDataControl.methodResults.responseBkForAppr_Booking_AMDataControl_dataProvider_responseBkForAppr_result">
+         <NamedData NDName="bookingId" NDType="java.lang.String"/>
+         <NamedData NDName="reason" NDType="java.lang.String"/>
+         <NamedData NDName="apr_rej" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="getCashRcptIdRspnse"
+                    InstanceName="Booking_AMDataControl.dataProvider"
+                    DataControl="Booking_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="getCashRcptIdRspnse" IsViewObjectMethod="false"
+                    ReturnName="data.Booking_AMDataControl.methodResults.getCashRcptIdRspnse_Booking_AMDataControl_dataProvider_getCashRcptIdRspnse_result">
+         <NamedData NDName="pReceiptNo" NDType="java.lang.String"/>
+         <NamedData NDName="pCshRcptId" NDType="java.lang.String"/>
+      </methodAction>
+   </bindings>
+</pageDefinition>

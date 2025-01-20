@@ -1,0 +1,386 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/templates/threeColumnTemplate.jspx" id="pt1"
+                   binding="#{backingBeanScope.backing_fragments_test.pt1}">
+    <f:facet name="center"/>
+    <f:facet name="header">
+      <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_test.pfl1}"
+                          id="pfl1">
+        <af:inputText value="#{bindings.PropertyId.inputValue}"
+                      label="#{bindings.PropertyId.hints.label}"
+                      required="#{bindings.PropertyId.hints.mandatory}"
+                      columns="#{bindings.PropertyId.hints.displayWidth}"
+                      maximumLength="#{bindings.PropertyId.hints.precision}"
+                      shortDesc="#{bindings.PropertyId.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it1}"
+                      id="it1">
+          <f:validator binding="#{bindings.PropertyId.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.PropertyId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.PropertyName.inputValue}"
+                      label="#{bindings.PropertyName.hints.label}"
+                      required="#{bindings.PropertyName.hints.mandatory}"
+                      columns="#{bindings.PropertyName.hints.displayWidth}"
+                      maximumLength="#{bindings.PropertyName.hints.precision}"
+                      shortDesc="#{bindings.PropertyName.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it2}"
+                      id="it2">
+          <f:validator binding="#{bindings.PropertyName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.PropertyNameTl.inputValue}"
+                      label="#{bindings.PropertyNameTl.hints.label}"
+                      required="#{bindings.PropertyNameTl.hints.mandatory}"
+                      columns="#{bindings.PropertyNameTl.hints.displayWidth}"
+                      maximumLength="#{bindings.PropertyNameTl.hints.precision}"
+                      shortDesc="#{bindings.PropertyNameTl.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it3}"
+                      id="it3">
+          <f:validator binding="#{bindings.PropertyNameTl.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.PropertyNumber.inputValue}"
+                      label="#{bindings.PropertyNumber.hints.label}"
+                      required="#{bindings.PropertyNumber.hints.mandatory}"
+                      columns="#{bindings.PropertyNumber.hints.displayWidth}"
+                      maximumLength="#{bindings.PropertyNumber.hints.precision}"
+                      shortDesc="#{bindings.PropertyNumber.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it4}"
+                      id="it4">
+          <f:validator binding="#{bindings.PropertyNumber.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.PropertyShortcode.inputValue}"
+                      label="#{bindings.PropertyShortcode.hints.label}"
+                      required="#{bindings.PropertyShortcode.hints.mandatory}"
+                      columns="#{bindings.PropertyShortcode.hints.displayWidth}"
+                      maximumLength="#{bindings.PropertyShortcode.hints.precision}"
+                      shortDesc="#{bindings.PropertyShortcode.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it5}"
+                      id="it5">
+          <f:validator binding="#{bindings.PropertyShortcode.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.OrgId.inputValue}"
+                      label="#{bindings.OrgId.hints.label}"
+                      required="#{bindings.OrgId.hints.mandatory}"
+                      columns="#{bindings.OrgId.hints.displayWidth}"
+                      maximumLength="#{bindings.OrgId.hints.precision}"
+                      shortDesc="#{bindings.OrgId.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it6}"
+                      id="it6">
+          <f:validator binding="#{bindings.OrgId.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.OrgId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.ProjectId.inputValue}"
+                      label="#{bindings.ProjectId.hints.label}"
+                      required="#{bindings.ProjectId.hints.mandatory}"
+                      columns="#{bindings.ProjectId.hints.displayWidth}"
+                      maximumLength="#{bindings.ProjectId.hints.precision}"
+                      shortDesc="#{bindings.ProjectId.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it7}"
+                      id="it7">
+          <f:validator binding="#{bindings.ProjectId.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.ProjectId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.CostCenterCode.inputValue}"
+                      label="#{bindings.CostCenterCode.hints.label}"
+                      required="#{bindings.CostCenterCode.hints.mandatory}"
+                      columns="#{bindings.CostCenterCode.hints.displayWidth}"
+                      maximumLength="#{bindings.CostCenterCode.hints.precision}"
+                      shortDesc="#{bindings.CostCenterCode.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it8}"
+                      id="it8">
+          <f:validator binding="#{bindings.CostCenterCode.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.LocationId.inputValue}"
+                      label="#{bindings.LocationId.hints.label}"
+                      required="#{bindings.LocationId.hints.mandatory}"
+                      columns="#{bindings.LocationId.hints.displayWidth}"
+                      maximumLength="#{bindings.LocationId.hints.precision}"
+                      shortDesc="#{bindings.LocationId.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it9}"
+                      id="it9">
+          <f:validator binding="#{bindings.LocationId.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.LocationId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.PropertyType.inputValue}"
+                      label="#{bindings.PropertyType.hints.label}"
+                      required="#{bindings.PropertyType.hints.mandatory}"
+                      columns="#{bindings.PropertyType.hints.displayWidth}"
+                      maximumLength="#{bindings.PropertyType.hints.precision}"
+                      shortDesc="#{bindings.PropertyType.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it10}"
+                      id="it10">
+          <f:validator binding="#{bindings.PropertyType.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.NoOfUnits.inputValue}"
+                      label="#{bindings.NoOfUnits.hints.label}"
+                      required="#{bindings.NoOfUnits.hints.mandatory}"
+                      columns="#{bindings.NoOfUnits.hints.displayWidth}"
+                      maximumLength="#{bindings.NoOfUnits.hints.precision}"
+                      shortDesc="#{bindings.NoOfUnits.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it11}"
+                      id="it11">
+          <f:validator binding="#{bindings.NoOfUnits.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.NoOfUnits.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.ParentPropertyId.inputValue}"
+                      label="#{bindings.ParentPropertyId.hints.label}"
+                      required="#{bindings.ParentPropertyId.hints.mandatory}"
+                      columns="#{bindings.ParentPropertyId.hints.displayWidth}"
+                      maximumLength="#{bindings.ParentPropertyId.hints.precision}"
+                      shortDesc="#{bindings.ParentPropertyId.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it12}"
+                      id="it12">
+          <f:validator binding="#{bindings.ParentPropertyId.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.ParentPropertyId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.MsHdrId.inputValue}"
+                      label="#{bindings.MsHdrId.hints.label}"
+                      required="#{bindings.MsHdrId.hints.mandatory}"
+                      columns="#{bindings.MsHdrId.hints.displayWidth}"
+                      maximumLength="#{bindings.MsHdrId.hints.precision}"
+                      shortDesc="#{bindings.MsHdrId.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it13}"
+                      id="it13">
+          <f:validator binding="#{bindings.MsHdrId.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.MsHdrId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.BankAcntId.inputValue}"
+                      label="#{bindings.BankAcntId.hints.label}"
+                      required="#{bindings.BankAcntId.hints.mandatory}"
+                      columns="#{bindings.BankAcntId.hints.displayWidth}"
+                      maximumLength="#{bindings.BankAcntId.hints.precision}"
+                      shortDesc="#{bindings.BankAcntId.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it14}"
+                      id="it14">
+          <f:validator binding="#{bindings.BankAcntId.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.BankAcntId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.PropertyClass.inputValue}"
+                      label="#{bindings.PropertyClass.hints.label}"
+                      required="#{bindings.PropertyClass.hints.mandatory}"
+                      columns="#{bindings.PropertyClass.hints.displayWidth}"
+                      maximumLength="#{bindings.PropertyClass.hints.precision}"
+                      shortDesc="#{bindings.PropertyClass.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it15}"
+                      id="it15">
+          <f:validator binding="#{bindings.PropertyClass.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.PropertyCategory.inputValue}"
+                      label="#{bindings.PropertyCategory.hints.label}"
+                      required="#{bindings.PropertyCategory.hints.mandatory}"
+                      columns="#{bindings.PropertyCategory.hints.displayWidth}"
+                      maximumLength="#{bindings.PropertyCategory.hints.precision}"
+                      shortDesc="#{bindings.PropertyCategory.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it16}"
+                      id="it16">
+          <f:validator binding="#{bindings.PropertyCategory.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.VendId.inputValue}"
+                      label="#{bindings.VendId.hints.label}"
+                      required="#{bindings.VendId.hints.mandatory}"
+                      columns="#{bindings.VendId.hints.displayWidth}"
+                      maximumLength="#{bindings.VendId.hints.precision}"
+                      shortDesc="#{bindings.VendId.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it17}"
+                      id="it17">
+          <f:validator binding="#{bindings.VendId.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.VendId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Description.inputValue}"
+                      label="#{bindings.Description.hints.label}"
+                      required="#{bindings.Description.hints.mandatory}"
+                      columns="#{bindings.Description.hints.displayWidth}"
+                      maximumLength="#{bindings.Description.hints.precision}"
+                      shortDesc="#{bindings.Description.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it18}"
+                      id="it18">
+          <f:validator binding="#{bindings.Description.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.ActiveYn.inputValue}"
+                      label="#{bindings.ActiveYn.hints.label}"
+                      required="#{bindings.ActiveYn.hints.mandatory}"
+                      columns="#{bindings.ActiveYn.hints.displayWidth}"
+                      maximumLength="#{bindings.ActiveYn.hints.precision}"
+                      shortDesc="#{bindings.ActiveYn.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it19}"
+                      id="it19">
+          <f:validator binding="#{bindings.ActiveYn.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.AttributeCategory.inputValue}"
+                      label="#{bindings.AttributeCategory.hints.label}"
+                      required="#{bindings.AttributeCategory.hints.mandatory}"
+                      columns="#{bindings.AttributeCategory.hints.displayWidth}"
+                      maximumLength="#{bindings.AttributeCategory.hints.precision}"
+                      shortDesc="#{bindings.AttributeCategory.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it20}"
+                      id="it20">
+          <f:validator binding="#{bindings.AttributeCategory.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute1.inputValue}"
+                      label="#{bindings.Attribute1.hints.label}"
+                      required="#{bindings.Attribute1.hints.mandatory}"
+                      columns="#{bindings.Attribute1.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute1.hints.precision}"
+                      shortDesc="#{bindings.Attribute1.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it21}"
+                      id="it21">
+          <f:validator binding="#{bindings.Attribute1.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute2.inputValue}"
+                      label="#{bindings.Attribute2.hints.label}"
+                      required="#{bindings.Attribute2.hints.mandatory}"
+                      columns="#{bindings.Attribute2.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute2.hints.precision}"
+                      shortDesc="#{bindings.Attribute2.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it22}"
+                      id="it22">
+          <f:validator binding="#{bindings.Attribute2.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute3.inputValue}"
+                      label="#{bindings.Attribute3.hints.label}"
+                      required="#{bindings.Attribute3.hints.mandatory}"
+                      columns="#{bindings.Attribute3.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute3.hints.precision}"
+                      shortDesc="#{bindings.Attribute3.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it23}"
+                      id="it23">
+          <f:validator binding="#{bindings.Attribute3.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute4.inputValue}"
+                      label="#{bindings.Attribute4.hints.label}"
+                      required="#{bindings.Attribute4.hints.mandatory}"
+                      columns="#{bindings.Attribute4.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute4.hints.precision}"
+                      shortDesc="#{bindings.Attribute4.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it24}"
+                      id="it24">
+          <f:validator binding="#{bindings.Attribute4.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute5.inputValue}"
+                      label="#{bindings.Attribute5.hints.label}"
+                      required="#{bindings.Attribute5.hints.mandatory}"
+                      columns="#{bindings.Attribute5.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute5.hints.precision}"
+                      shortDesc="#{bindings.Attribute5.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it25}"
+                      id="it25">
+          <f:validator binding="#{bindings.Attribute5.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute6.inputValue}"
+                      label="#{bindings.Attribute6.hints.label}"
+                      required="#{bindings.Attribute6.hints.mandatory}"
+                      columns="#{bindings.Attribute6.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute6.hints.precision}"
+                      shortDesc="#{bindings.Attribute6.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it26}"
+                      id="it26">
+          <f:validator binding="#{bindings.Attribute6.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute7.inputValue}"
+                      label="#{bindings.Attribute7.hints.label}"
+                      required="#{bindings.Attribute7.hints.mandatory}"
+                      columns="#{bindings.Attribute7.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute7.hints.precision}"
+                      shortDesc="#{bindings.Attribute7.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it27}"
+                      id="it27">
+          <f:validator binding="#{bindings.Attribute7.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute8.inputValue}"
+                      label="#{bindings.Attribute8.hints.label}"
+                      required="#{bindings.Attribute8.hints.mandatory}"
+                      columns="#{bindings.Attribute8.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute8.hints.precision}"
+                      shortDesc="#{bindings.Attribute8.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it28}"
+                      id="it28">
+          <f:validator binding="#{bindings.Attribute8.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute9.inputValue}"
+                      label="#{bindings.Attribute9.hints.label}"
+                      required="#{bindings.Attribute9.hints.mandatory}"
+                      columns="#{bindings.Attribute9.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute9.hints.precision}"
+                      shortDesc="#{bindings.Attribute9.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it29}"
+                      id="it29">
+          <f:validator binding="#{bindings.Attribute9.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Attribute10.inputValue}"
+                      label="#{bindings.Attribute10.hints.label}"
+                      required="#{bindings.Attribute10.hints.mandatory}"
+                      columns="#{bindings.Attribute10.hints.displayWidth}"
+                      maximumLength="#{bindings.Attribute10.hints.precision}"
+                      shortDesc="#{bindings.Attribute10.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it30}"
+                      id="it30">
+          <f:validator binding="#{bindings.Attribute10.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.CreatedBy.inputValue}"
+                      label="#{bindings.CreatedBy.hints.label}"
+                      required="#{bindings.CreatedBy.hints.mandatory}"
+                      columns="#{bindings.CreatedBy.hints.displayWidth}"
+                      maximumLength="#{bindings.CreatedBy.hints.precision}"
+                      shortDesc="#{bindings.CreatedBy.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it31}"
+                      id="it31">
+          <f:validator binding="#{bindings.CreatedBy.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.CreationDate.inputValue}"
+                      label="#{bindings.CreationDate.hints.label}"
+                      required="#{bindings.CreationDate.hints.mandatory}"
+                      shortDesc="#{bindings.CreationDate.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.id1}"
+                      id="id1">
+          <f:validator binding="#{bindings.CreationDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.CreationDate.format}"/>
+        </af:inputDate>
+        <af:inputText value="#{bindings.LastUpdatedBy.inputValue}"
+                      label="#{bindings.LastUpdatedBy.hints.label}"
+                      required="#{bindings.LastUpdatedBy.hints.mandatory}"
+                      columns="#{bindings.LastUpdatedBy.hints.displayWidth}"
+                      maximumLength="#{bindings.LastUpdatedBy.hints.precision}"
+                      shortDesc="#{bindings.LastUpdatedBy.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it32}"
+                      id="it32">
+          <f:validator binding="#{bindings.LastUpdatedBy.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.LastUpdateDate.inputValue}"
+                      label="#{bindings.LastUpdateDate.hints.label}"
+                      required="#{bindings.LastUpdateDate.hints.mandatory}"
+                      shortDesc="#{bindings.LastUpdateDate.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.id2}"
+                      id="id2">
+          <f:validator binding="#{bindings.LastUpdateDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.LastUpdateDate.format}"/>
+        </af:inputDate>
+        <af:inputText value="#{bindings.LastUpdateLogin.inputValue}"
+                      label="#{bindings.LastUpdateLogin.hints.label}"
+                      required="#{bindings.LastUpdateLogin.hints.mandatory}"
+                      columns="#{bindings.LastUpdateLogin.hints.displayWidth}"
+                      maximumLength="#{bindings.LastUpdateLogin.hints.precision}"
+                      shortDesc="#{bindings.LastUpdateLogin.hints.tooltip}"
+                      binding="#{backingBeanScope.backing_fragments_test.it33}"
+                      id="it33">
+          <f:validator binding="#{bindings.LastUpdateLogin.validator}"/>
+        </af:inputText>
+      </af:panelFormLayout>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="start"/>
+    <f:facet name="branding"/>
+    <f:facet name="copyright"/>
+    <f:facet name="status"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_fragments_test-->
+</jsp:root>

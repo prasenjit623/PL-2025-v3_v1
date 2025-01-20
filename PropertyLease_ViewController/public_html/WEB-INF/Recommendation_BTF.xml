@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Recommendation_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">SearchRecommendation</default-activity>
+    <transaction id="__15">
+      <requires-transaction/>
+    </transaction>
+    <input-parameter-definition id="__19">
+      <name id="__20">BookingId</name>
+      <value>#{pageFlowScope.BookingId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__32">
+      <name id="__33">TransId</name>
+      <value>#{pageFlowScope.TransId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__35">
+      <name id="__36">recid</name>
+      <value>#{pageFlowScope.recid}</value>
+    </input-parameter-definition>
+    <managed-bean id="__12">
+      <managed-bean-name id="__11">Recommendation</managed-bean-name>
+      <managed-bean-class id="__13">Recommendation</managed-bean-class>
+      <managed-bean-scope id="__10">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__113">
+      <managed-bean-name id="__110">ReceiptRecBean</managed-bean-name>
+      <managed-bean-class id="__111">view.backing.ReceiptRecBean</managed-bean-class>
+      <managed-bean-scope id="__112">request</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchRecommendation">
+      <page>/fragments/SearchRecommendation.jsff</page>
+    </view>
+    <view id="AddEditRecommendation">
+      <page>/fragments/AddEditRecommendation.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__16">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="Receipt_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Receipt_BTF.xml</document>
+        <id>Receipt_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__21">
+        <name>BookingId</name>
+        <value>#{pageFlowScope.BookingId}</value>
+      </input-parameter>
+      <input-parameter id="__34">
+        <name>TransId</name>
+        <value>#{pageFlowScope.TransId}</value>
+      </input-parameter>
+      <input-parameter id="__37">
+        <name>recid</name>
+        <value>#{pageFlowScope.recid}</value>
+      </input-parameter>
+      <input-parameter id="__60">
+        <name>CustName</name>
+        <value>#{pageFlowScope.CustName}</value>
+      </input-parameter>
+      <input-parameter id="__61">
+        <name>CustBankName</name>
+        <value>#{pageFlowScope.CustBankName}</value>
+      </input-parameter>
+      <input-parameter id="__62">
+        <name>CustBankAccNumber</name>
+        <value>#{pageFlowScope.CustBankAccNumber}</value>
+      </input-parameter>
+      <input-parameter id="__63">
+        <name>CustBranchName</name>
+        <value>#{pageFlowScope.CustBranchName}</value>
+      </input-parameter>
+      <input-parameter id="__64">
+        <name>InstAmount</name>
+        <value>#{pageFlowScope.instAmount}</value>
+      </input-parameter>
+      <input-parameter id="__65">
+        <name>InstallmentAmount</name>
+        <value>#{pageFlowScope.InstallmentAmount}</value>
+      </input-parameter>
+      <input-parameter id="__66">
+        <name>Duedate</name>
+        <value>#{pageFlowScope.DueDate}</value>
+      </input-parameter>
+      <input-parameter id="__67">
+        <name>Amount</name>
+        <value>#{pageFlowScope.Amount}</value>
+      </input-parameter>
+      <input-parameter id="__68">
+        <name>Type</name>
+        <value>#{pageFlowScope.Type}</value>
+      </input-parameter>
+      <input-parameter id="__69">
+        <name>inputParameter1</name>
+        <value>#{pageFlowScope.InstallmentType}</value>
+      </input-parameter>
+      <input-parameter id="__70">
+        <name>InstallmentType</name>
+        <value>#{pageFlowScope.InstallmentType}</value>
+      </input-parameter>
+      <input-parameter id="__71">
+        <name>BookingMsId</name>
+        <value>#{pageFlowScope.BookingMsId}</value>
+      </input-parameter>
+      <input-parameter id="__78">
+        <name>OrgId</name>
+        <value>#{pageFlowScope.OrgId}</value>
+      </input-parameter>
+      <input-parameter id="__85">
+        <name>Status11</name>
+        <value>#{pageFlowScope.Status11}</value>
+      </input-parameter>
+      <input-parameter id="__86">
+        <name>funcId</name>
+        <value>#{pageFlowScope.funcId}</value>
+      </input-parameter>
+      <input-parameter id="__87">
+        <name>srcFncRfId</name>
+        <value>#{pageFlowScope.srcFncRfId}</value>
+      </input-parameter>
+      <input-parameter id="__88">
+        <name>scfnId</name>
+        <value>#{pageFlowScope.scfnId}</value>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type id="__38">
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <task-flow-call id="Attachments_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Attachments_BTF.xml</document>
+        <id>Attachments_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__47">
+        <name>funcid</name>
+        <value>#{pageFlowScope.recfuncId}</value>
+      </input-parameter>
+      <input-parameter id="__48">
+        <name>funcrefid</name>
+        <value>#{pageFlowScope.recId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="CheckListResponse_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/CheckListResponse_BTF.xml</document>
+        <id>CheckListResponse_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__57">
+        <name>funcid</name>
+        <value>#{pageFlowScope.Recomfuncid}</value>
+      </input-parameter>
+      <input-parameter id="__58">
+        <name>funcrefid</name>
+        <value>#{pageFlowScope.Recomfuncrefid}</value>
+      </input-parameter>
+      <input-parameter id="__59">
+        <name>lookup</name>
+        <value>#{pageFlowScope.Recomflookup}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__79">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute1">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__95">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert1">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__72">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="Receipt">
+      <page>/fragments/ReceiptRec.jsff</page>
+    </view>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__89">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__90">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateWithParameters">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__120">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="Router">
+      <case>
+        <expression>#{pageFlowScope.Type=='INS'}</expression>
+        <outcome id="__127">line</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.Type!='INS'}</expression>
+        <outcome id="__137">header</outcome>
+      </case>
+      <default-outcome>header</default-outcome>
+    </router>
+    <method-call id="CreateWithParameters1">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__155">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateWithParameters2">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__167">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">SearchRecommendation</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">toAdd</from-outcome>
+        <to-activity-id id="__4">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome id="__9">toEdit</from-outcome>
+        <to-activity-id id="__7">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__22">
+      <from-activity-id id="__23">AddEditRecommendation</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome id="__25">backToSearch</from-outcome>
+        <to-activity-id id="__26">Execute1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome id="__18">receipt</from-outcome>
+        <to-activity-id id="__14">Router</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__39">
+        <from-outcome id="__41">attachments</from-outcome>
+        <to-activity-id id="__40">Attachments_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__50">
+        <from-outcome id="__56">Checklist</from-outcome>
+        <to-activity-id id="__49">CheckListResponse_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__91">
+        <from-outcome id="__93">Edit</from-outcome>
+        <to-activity-id id="__92">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id id="__28">CreateInsert</from-activity-id>
+      <control-flow-case id="__29">
+        <from-outcome id="__30">CreateInsert</from-outcome>
+        <to-activity-id id="__31">AddEditRecommendation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__42">
+      <from-activity-id id="__43">Attachments_BTF</from-activity-id>
+      <control-flow-case id="__44">
+        <from-outcome id="__46">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__45">AddEditRecommendation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__51">
+      <from-activity-id id="__52">CheckListResponse_BTF</from-activity-id>
+      <control-flow-case id="__53">
+        <from-outcome id="__54">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__55">AddEditRecommendation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__80">
+      <from-activity-id id="__81">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__82">
+        <from-outcome id="__84">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__83">AddEditRecommendation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__96">
+      <from-activity-id id="__97">Execute1</from-activity-id>
+      <control-flow-case id="__99">
+        <from-outcome id="__98">Execute</from-outcome>
+        <to-activity-id id="__100">SearchRecommendation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__94">
+      <from-activity-id id="__101">Receipt</from-activity-id>
+      <control-flow-case id="__103">
+        <from-outcome id="__104">toSave</from-outcome>
+        <to-activity-id id="__102">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__105">
+      <from-activity-id id="__106">Execute</from-activity-id>
+      <control-flow-case id="__107">
+        <from-outcome id="__108">Execute</from-outcome>
+        <to-activity-id id="__109">AddEditRecommendation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__114">
+      <from-activity-id id="__115">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__116">
+        <from-outcome id="__117">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__118">Receipt</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__128">
+      <from-activity-id id="__129">Router</from-activity-id>
+      <control-flow-case id="__130">
+        <from-outcome id="__132">header</from-outcome>
+        <to-activity-id id="__131">CreateWithParameters</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__158">
+        <from-outcome id="__156">line</from-outcome>
+        <to-activity-id id="__157">CreateWithParameters2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__146">
+      <from-activity-id id="__147">CreateWithParameters</from-activity-id>
+      <control-flow-case id="__149">
+        <from-outcome id="__148">CreateWithParams</from-outcome>
+        <to-activity-id id="__150">Receipt</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__159">
+      <from-activity-id id="__160">CreateWithParameters1</from-activity-id>
+      <control-flow-case id="__161">
+        <to-activity-id id="__162">Receipt</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__168">
+      <from-activity-id id="__169">CreateWithParameters2</from-activity-id>
+      <control-flow-case id="__172">
+        <to-activity-id id="__171">CreateWithParameters1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

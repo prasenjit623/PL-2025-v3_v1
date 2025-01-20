@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PropertyManagement_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="PropertyManagement_EO.PROPERTY_MANAGEMENT, 
+       PropertyManagement_EO.PROPERTY_MANAGEMENT_ID"
+  FromList="XXPL_PROPERTY_MANAGEMENT PropertyManagement_EO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VO.PropertyManagement_VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="PropertyManagement_EO"
+    Entity="model.EO.PropertyManagement_EO"/>
+  <ViewAttribute
+    Name="PropertyManagement"
+    PrecisionRule="true"
+    EntityAttrName="PropertyManagement"
+    EntityUsage="PropertyManagement_EO"
+    AliasName="PROPERTY_MANAGEMENT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.PropertyManagement_VO.PropertyManagement_LABEL"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyManagementId"
+    PrecisionRule="true"
+    EntityAttrName="PropertyManagementId"
+    EntityUsage="PropertyManagement_EO"
+    AliasName="PROPERTY_MANAGEMENT_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("PROPERTY_MANAGEMENT_ID_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

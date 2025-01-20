@@ -1,0 +1,2081 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject xmlns="http://xmlns.oracle.com/bc4j" Name="Lookup_View_ROVO"
+            Version="11.1.1.66.73" InheritPersonalization="merge"
+            BindingStyle="OracleName" CustomQuery="true" PageIterMode="Full"
+            UseGlueCode="false">
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true"/>
+   </DesignTime>
+   <Variable
+      Name="p_orgId_trans"
+      Kind="viewcriteria"
+      Type="java.lang.String"/>
+   <Variable
+      Name="p_lookupValue"
+      Kind="viewcriteria"
+      Type="java.lang.String"/>
+   <SQLQuery>
+      <![CDATA[SELECT ROWNUM as Id,XXFND_LOOKUP_V.LOOKUP_TYPE_ID, XXFND_LOOKUP_V.LOOKUP_TYPE_NAME, 
+XXFND_LOOKUP_V.LOOKUP_TYPE_NAME_DISP, XXFND_LOOKUP_V.LOOKUP_TYPE_NAME_DISP_TL, XXFND_LOOKUP_V.LT_ACCESS_LEVEL, 
+XXFND_LOOKUP_V.LT_ACTIVE_YN, XXFND_LOOKUP_V.LOOKUP_VALUE_ID, XXFND_LOOKUP_V.LOOKUP_VALUE_NAME, 
+XXFND_LOOKUP_V.LOOKUP_VALUE_NAME_DISP, XXFND_LOOKUP_V.LOOKUP_VALUE_NAME_DISP_TL, 
+XXFND_LOOKUP_V.LOOKUP_ADDL_VALUE, XXFND_LOOKUP_V.LV_ACCESS_LEVEL, XXFND_LOOKUP_V.LV_ACTIVE_YN,
+(select org_id from xxstg_organizations o where o.org_name=XXFND_LOOKUP_V.LOOKUP_VALUE_NAME_DISP_TL) as orgId
+from 
+XXFND_LOOKUP_V XXFND_LOOKUP_V 
+WHERE XXFND_LOOKUP_V.LV_ACTIVE_YN='Y']]>
+   </SQLQuery>
+   <ViewAttribute
+      Name="Id"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.math.BigDecimal"
+      ColumnType="NUMBER"
+      AliasName="ID"
+      Expression="ID"
+      SQLType="NUMERIC">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="39"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupTypeId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      PrecisionRule="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LOOKUP_TYPE_ID"
+      Expression="LOOKUP_TYPE_ID"
+      SQLType="NUMERIC">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="39"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupTypeName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      PrecisionRule="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_TYPE_NAME"
+      Expression="LOOKUP_TYPE_NAME"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30"/>
+      </DesignTime>
+      <Properties>
+         <SchemaBasedProperties>
+            <DISPLAYWIDTH
+               Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupTypeNameDisp"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      PrecisionRule="true"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_TYPE_NAME_DISP"
+      Expression="LOOKUP_TYPE_NAME_DISP"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupTypeNameDispTl"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_TYPE_NAME_DISP_TL"
+      Expression="LOOKUP_TYPE_NAME_DISP_TL"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LtAccessLevel"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LT_ACCESS_LEVEL"
+      Expression="LT_ACCESS_LEVEL"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LtActiveYn"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LT_ACTIVE_YN"
+      Expression="LT_ACTIVE_YN"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupValueId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      PrecisionRule="true"
+      Type="oracle.jbo.domain.Number"
+      ColumnType="NUMBER"
+      AliasName="LOOKUP_VALUE_ID"
+      Expression="LOOKUP_VALUE_ID"
+      SQLType="NUMERIC">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="39"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupValueName"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      PrecisionRule="true"
+      Precision="30"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_VALUE_NAME"
+      Expression="LOOKUP_VALUE_NAME"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="30"/>
+      </DesignTime>
+      <Properties>
+         <SchemaBasedProperties>
+            <DISPLAYWIDTH
+               Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupValueNameDisp"
+      IsUpdateable="false"
+      IsPersistent="false"
+      IsNotNull="true"
+      PrecisionRule="true"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_VALUE_NAME_DISP"
+      Expression="LOOKUP_VALUE_NAME_DISP"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240"/>
+      </DesignTime>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.ROVO.Lookup_View_ROVO.LookupValueNameDisp_LABEL"/>
+            <DISPLAYWIDTH
+               Value="24"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupValueNameDispTl"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_VALUE_NAME_DISP_TL"
+      Expression="LOOKUP_VALUE_NAME_DISP_TL"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LookupAddlValue"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LOOKUP_ADDL_VALUE"
+      Expression="LOOKUP_ADDL_VALUE"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LvAccessLevel"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="240"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LV_ACCESS_LEVEL"
+      Expression="LV_ACCESS_LEVEL"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="240"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LvActiveYn"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="1"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="LV_ACTIVE_YN"
+      Expression="LV_ACTIVE_YN"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="1"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Orgid"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.math.BigDecimal"
+      ColumnType="NUMBER"
+      AliasName="ORGID"
+      Expression="ORGID"
+      SQLType="NUMERIC">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="39"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewCriteria
+      Name="NationalitySearch"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow473"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueNameDisp"
+            ViewAttribute="LookupValueNameDisp"
+            Operator="STARTSWITH"
+            Conjunction="AND"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="ResidenceSearch"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow498"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueNameDisp"
+            ViewAttribute="LookupValueNameDisp"
+            Operator="STARTSWITH"
+            Conjunction="AND"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <Properties>
+      <SchemaBasedProperties>
+         <LABEL ResId="model.ROVO.Lookup_View_ROVO_LABEL"/>
+      </SchemaBasedProperties>
+   </Properties>
+   <ViewCriteria Name="PropertyType_LOV"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow18" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="PROPERTY_TYPE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="BuildingType_LOV"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow27" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="STARTSWITH" Conjunction="AND"
+                           Value="BUILDING_TYPE" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="UomType_LOV" ViewObjectName="model.ROVO.Lookup_View_ROVO"
+                 Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow14" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="AREA_UOM"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="AreaType_LOV"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow18" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="STARTSWITH" Conjunction="AND"
+                           Value="AREA_TYPE" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="UnitAreaType"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow54" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="STARTSWITH" Conjunction="AND"
+                           Value="UNIT_AREA_TYPE" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="UnitViewType_LOV"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow87" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="STARTSWITH" Conjunction="AND"
+                           Value="UNIT_VIEW_TYPE" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="UnitStatus_LOV"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow116" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="UNIT_STATUS"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByLead_Title"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow283" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="STARTSWITH" Conjunction="AND"
+                           Value="SALUTATION_TYPE" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByLead_Status"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow284" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="LEAD_STATUS"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByLead_PrimarySources"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow285" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="PRIMARY_SOURCE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByLead_CountryRes"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow293" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="STARTSWITH" Conjunction="AND"
+            Value="COUNTRY" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByOffer_OfferType"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow131" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="OFFER_TYPE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByOffer_Status"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow132" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="FLOOR_TYPE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByInstallmentType"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow204" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND"
+                           Value="MILESTONE_INSTALLMENT" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByChargeType"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow205" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="CHARGE_TYPE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByCriteria"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow206" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND"
+                           Value="MILESTONE_CRITERIA" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByRateType"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow187" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="RATE_TYPE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByDiskType"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow188" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="DISCOUNT_TYPE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByDiscLevel"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow189" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="DISCOUNT_LEVEL"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByCheckList"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow397" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="CHECK_LIST"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByTermsCondition"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow398" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND"
+                           Value="TERMS_CONDITIONS" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByPurpose"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow469" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="PURPOUSE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByCountryOfResd"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow470" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND"
+            Value="COUNTRY"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="PayMode_LOV" ViewObjectName="model.ROVO.Lookup_View_ROVO"
+                 Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow421" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="PAYMENT_MODE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="VisaType_LOV"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow97" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="STARTSWITH" Conjunction="AND"
+                           Value="VISA_TYPE" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="Religion_LOV"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow198" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="STARTSWITH" Conjunction="AND"
+                           Value="RELIGION" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByTransStatus"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow103" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND"
+                           Value="TRANSACTION_STATUS" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByrectCode"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow129" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="CHARGE_CODES"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="currency_lov"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow752" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="CURRENCY"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByOfferAddType"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow114" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="OFFER_ADD_TYPE"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByOtherChargeType"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow291" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND"
+                           Value="OTHER_CHARGE_TYPE" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByNationality"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow164" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="NATIONALITY"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByCountry"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow255" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND" Value="COUNTRY"
+                           Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria Name="findByOtherPaymentCharge"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO" Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property Name="displayOperators" Value="InAdvancedMode"/>
+            <Property Name="autoExecute" Value="false"/>
+            <Property Name="allowConjunctionOverride" Value="true"/>
+            <Property Name="showInList" Value="true"/>
+            <Property Name="mode" Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow Name="vcrow150" UpperColumns="1">
+         <ViewCriteriaItem Name="LookupTypeName" ViewAttribute="LookupTypeName"
+                           Operator="=" Conjunction="AND"
+                           Value="OTHER_PAYMENT_TYPE" Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByUnitType"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow360"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="UNIT_TYPE"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+    <ViewCriteria
+      Name="searchCountry"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow216"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueNameDisp"
+            ViewAttribute="LookupValueNameDisp"
+            Operator="STARTSWITH"
+            Conjunction="AND"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="SearchNationality"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow270"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueNameDisp"
+            ViewAttribute="LookupValueNameDisp"
+            Operator="STARTSWITH"
+            Conjunction="AND"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="CountryOfResSearch"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow475"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueNameDisp"
+            ViewAttribute="LookupValueNameDisp"
+            Operator="STARTSWITH"
+            Conjunction="AND"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="curCountrySearch"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow340"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueNameDisp"
+            ViewAttribute="LookupValueNameDisp"
+            Operator="STARTSWITH"
+            Conjunction="AND"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByMuniCharge"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow565"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="MUNICIPALITY_PERCENTAGE"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="fndbYTAX_TYPE"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow213"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="TAX_TYPE"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByRes"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow386"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="RESIDENTIAL_DETAILS"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByExtnDays"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow388"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="EXTESNION_DAYS"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByPurposeofRent"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow299"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="PURPOSE_OF_RENT"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByenvironment"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow225"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="STARTSWITH"
+            Conjunction="AND"
+            Value="ENVIRONMENT"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByNocBy"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow315"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="CANCEL_NOC_BY"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="cancellationCharge"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow313"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="CANCEL_CHARGE_TYPE"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="NOC_BY"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow603"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="NOC_BY"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByNoSecurityDepo"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow963"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueName"
+            ViewAttribute="LookupValueName"
+            Operator="&lt;>"
+            Conjunction="AND"
+            Value="SEC_DEP"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByOcAddType"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow416"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="OC_ADD_TYPE"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByOrgId"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow311"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="Orgid"
+            ViewAttribute="Orgid"
+            Operator="="
+            Conjunction="AND"
+            Value=":p_orgId_trans"
+            IsBindVarValue="true"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByAlmMngOrgId"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow680"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="Orgid"
+            ViewAttribute="Orgid"
+            Operator="="
+            Conjunction="AND"
+            Value="300000001937178"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByAllSecDepo"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow442"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueName"
+            ViewAttribute="LookupValueName"
+            Operator="STARTSWITH"
+            Conjunction="AND"
+            Value="SEC_DEP"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByNoSecDepo"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow443"
+         UpperColumns="1">
+         <ViewCriteriaItemCompound
+            ViewAttribute="LookupValueName">
+            <ViewCriteria
+               Name="findByNoSecDepo_vcrow443_LookupValueName_itemHolder"
+               ViewObjectName="model.ROVO.Lookup_View_ROVO"
+               Conjunction="OR">
+               <ViewCriteriaRow
+                  Name="vcrow3461"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="SEC_DEP_SHJ"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+               <ViewCriteriaRow
+                  Name="vcrow3462"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="findByNoSecDepo_vcrow443_LookupValueName_findByNoSecDepo_vcrow443_LookupValueName_itemHolder_vcrow3462_LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="SEC_DEP_DXB"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+               <ViewCriteriaRow
+                  Name="vcrow3463"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="findByNoSecDepo_vcrow443_LookupValueName_findByNoSecDepo_vcrow443_LookupValueName_itemHolder_vcrow3463_LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="SEC_DEP"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+               <ViewCriteriaRow
+                  Name="vcrow2647"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="findByNoSecDepo_vcrow443_LookupValueName_findByNoSecDepo_vcrow443_LookupValueName_itemHolder_vcrow2647_LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="SEC_DEP_ASMT"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+            </ViewCriteria>
+         </ViewCriteriaItemCompound>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByOfferFlag"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow263"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="OFFER_ADD_TYPE"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByDiscType"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow389"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="DISCOUNT_TYPE"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByCourtCase"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow413"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="COURT_CASE"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByTimeAmPmType"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow419"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="TIME"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByLookupValueUnitType"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow1145"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueName"
+            ViewAttribute="LookupValueName"
+            Operator="="
+            Conjunction="AND"
+            Value=":p_lookupValue"
+            IsBindVarValue="true"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByOfrStsHndleVc"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow629"
+         UpperColumns="1">
+         <ViewCriteriaItemCompound
+            ViewAttribute="LookupValueName">
+            <ViewCriteria
+               Name="Lookup_View_ROVOCriteria_vcrow629_LookupValueName_itemHolder"
+               ViewObjectName="model.ROVO.Lookup_View_ROVO"
+               Conjunction="OR">
+               <ViewCriteriaRow
+                  Name="vcrow630"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="REV"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+               <ViewCriteriaRow
+                  Name="vcrow631"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="Lookup_View_ROVOCriteria_vcrow629_LookupValueName_Lookup_View_ROVOCriteria_vcrow629_LookupValueName_itemHolder_vcrow631_LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="TERM"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+               <ViewCriteriaRow
+                  Name="vcrow632"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="Lookup_View_ROVOCriteria_vcrow629_LookupValueName_Lookup_View_ROVOCriteria_vcrow629_LookupValueName_itemHolder_vcrow632_LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="OP"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+               <ViewCriteriaRow
+                  Name="vcrow633"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="Lookup_View_ROVOCriteria_vcrow629_LookupValueName_Lookup_View_ROVOCriteria_vcrow629_LookupValueName_itemHolder_vcrow633_LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+            </ViewCriteria>
+         </ViewCriteriaItemCompound>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByNotExpiredStatusVc"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow663"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupValueName"
+            ViewAttribute="LookupValueName"
+            Operator="&lt;>"
+            Conjunction="AND"
+            Value="EXP"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByContractStausVc"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow680"
+         UpperColumns="1">
+         <ViewCriteriaItemCompound
+            ViewAttribute="LookupValueName">
+            <ViewCriteria
+               Name="Lookup_View_ROVOCriteria_vcrow680_LookupValueName_itemHolder"
+               ViewObjectName="model.ROVO.Lookup_View_ROVO"
+               Conjunction="OR">
+               <ViewCriteriaRow
+                  Name="vcrow681"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="BO"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+               <ViewCriteriaRow
+                  Name="vcrow682"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="Lookup_View_ROVOCriteria_vcrow680_LookupValueName_Lookup_View_ROVOCriteria_vcrow680_LookupValueName_itemHolder_vcrow682_LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="REV"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+               <ViewCriteriaRow
+                  Name="vcrow683"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="Lookup_View_ROVOCriteria_vcrow680_LookupValueName_Lookup_View_ROVOCriteria_vcrow680_LookupValueName_itemHolder_vcrow683_LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="EXP"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+               <ViewCriteriaRow
+                  Name="vcrow684"
+                  Conjunction="AND">
+                  <ViewCriteriaItem
+                     Name="Lookup_View_ROVOCriteria_vcrow680_LookupValueName_Lookup_View_ROVOCriteria_vcrow680_LookupValueName_itemHolder_vcrow684_LookupValueName"
+                     ViewAttribute="LookupValueName"
+                     Operator="&lt;>"
+                     Conjunction="AND"
+                     Value="OP"
+                     Required="Optional"/>
+               </ViewCriteriaRow>
+            </ViewCriteria>
+         </ViewCriteriaItemCompound>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByPoSubType"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow472"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="LookupTypeName"
+            ViewAttribute="LookupTypeName"
+            Operator="="
+            Conjunction="AND"
+            Value="PO_SUB_TYPE"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <AttrArray Name="KeyAttributes">
+      <Item Value="Id"/>
+   </AttrArray>
+   <ResourceBundle>
+      <PropertiesBundle PropertiesFile="model.PropertyLease_ModelBundle"/>
+   </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchReceiptPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchReceiptRoVo1" RangeSize="25"
+              DataControl="ReceiptDataControl" id="SearchReceiptRoVo1Iterator"/>
+    <searchRegion Criteria="SearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchReceiptRoVo1Iterator" id="SearchVCQuery"/>
+    <searchRegion Criteria="SearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchReceiptRoVo1Iterator" id="SearchVCQuery1"/>
+    <searchRegion Criteria="SearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchReceiptRoVo1Iterator" id="SearchVCQuery2"/>
+    <searchRegion Criteria="SearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchReceiptRoVo1Iterator" id="SearchVCQuery3"/>
+    <searchRegion Criteria="SearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchReceiptRoVo1Iterator" id="SearchVCQuery4"/>
+    <searchRegion Criteria="SearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchReceiptRoVo1Iterator" id="SearchVCQuery5"/>
+    <searchRegion Criteria="SearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchReceiptRoVo1Iterator" id="SearchVCQuery6"/>
+    <searchRegion Criteria="SearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchReceiptRoVo1Iterator" id="SearchVCQuery7"/>
+    <searchRegion Criteria="SearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchReceiptRoVo1Iterator" id="SearchVCQuery8"/>
+    <iterator id="RecommendHeader_VO1Iterator" Binds="RecommendHeader_VO1"
+              DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchReceiptRoVo1Iterator" id="SearchReceiptRoVo1">
+      <nodeDefinition DefName="model.ROVO.SearchReceiptRoVo"
+                      Name="SearchReceiptRoVo10">
+        <AttrNames>
+          <Item Value="ReceiptNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="ReceiptType"/>
+          <Item Value="CustomerName"/>
+          <Item Value="CurrencyCode"/>
+          <Item Value="ReceiptAmount"/>
+          <Item Value="DrawnBy"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="RecommendedAmount"/>
+          <Item Value="ReceivedAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchReceiptRoVo1Iterator" id="ReceiptId">
+      <AttrNames>
+        <Item Value="ReceiptId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SearchReceiptRoVo1Iterator" id="SearchReceiptRoVo11">
+      <nodeDefinition DefName="model.ROVO.SearchReceiptRoVo"
+                      Name="SearchReceiptRoVo110">
+        <AttrNames>
+          <Item Value="ReceiptNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="CustomerName"/>
+          <Item Value="ReceiptAmount"/>
+          <Item Value="PayRefDate"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="RecommendedAmount"/>
+          <Item Value="ReceivedAmount"/>
+          <Item Value="PayRecDate"/>
+          <Item Value="PayRevDate"/>
+          <Item Value="RctType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SearchReceiptRoVo1Iterator" id="SearchReceiptRoVo12">
+      <nodeDefinition DefName="model.ROVO.SearchReceiptRoVo"
+                      Name="SearchReceiptRoVo120">
+        <AttrNames>
+          <Item Value="ReceiptNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="CustomerName"/>
+          <Item Value="ReceiptAmount"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="RecommendedAmount"/>
+          <Item Value="ReceivedAmount"/>
+          <Item Value="PayRecDate"/>
+          <Item Value="PayRevDate"/>
+          <Item Value="RctType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SearchReceiptRoVo1Iterator" id="SearchReceiptRoVo13">
+      <nodeDefinition DefName="model.ROVO.SearchReceiptRoVo"
+                      Name="SearchReceiptRoVo130">
+        <AttrNames>
+          <Item Value="ReceiptNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="CustomerName"/>
+          <Item Value="ReceiptAmount"/>
+          <Item Value="PayRefDate"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="RecommendedAmount"/>
+          <Item Value="ReceivedAmount"/>
+          <Item Value="PayRecDate"/>
+          <Item Value="PayRevDate"/>
+          <Item Value="RctType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SearchReceiptRoVo1Iterator" id="SearchReceiptRoVo14">
+      <nodeDefinition DefName="model.ROVO.SearchReceiptRoVo"
+                      Name="SearchReceiptRoVo140">
+        <AttrNames>
+          <Item Value="ReceiptNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="CustomerName"/>
+          <Item Value="ReceiptAmount"/>
+          <Item Value="PayRefDate"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="RecommendedAmount"/>
+          <Item Value="ReceivedAmount"/>
+          <Item Value="PayRecDate"/>
+          <Item Value="PayRevDate"/>
+          <Item Value="RctType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SearchReceiptRoVo1Iterator" id="SearchReceiptRoVo15">
+      <nodeDefinition DefName="model.ROVO.SearchReceiptRoVo"
+                      Name="SearchReceiptRoVo150">
+        <AttrNames>
+          <Item Value="ReceiptNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="CustomerName"/>
+          <Item Value="ReceiptAmount"/>
+          <Item Value="PayRefDate"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="RecommendedAmount"/>
+          <Item Value="ReceivedAmount"/>
+          <Item Value="PayRecDate"/>
+          <Item Value="PayRevDate"/>
+          <Item Value="RctType"/>
+          <Item Value="RctDesc"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="SourceFuncRefId"/>
+          <Item Value="BankName"/>
+          <Item Value="PayRefNumber"/>
+          <Item Value="AckFlag" Binds="AckFlag"/>
+          <Item Value="AckBy"/>
+          <Item Value="ManualReceiptVoucherNumber"/>
+          <Item Value="ReceiptStatus"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="PayMode"/>
+          <Item Value="AckDate"/>
+          <Item Value="PurposeOfRent"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SearchReceiptRoVo1Iterator" id="SearchReceiptRoVo16">
+      <nodeDefinition DefName="model.ROVO.SearchReceiptRoVo"
+                      Name="SearchReceiptRoVo160">
+        <AttrNames>
+          <Item Value="SourceFuncId"/>
+          <Item Value="SourceFuncRefId"/>
+          <Item Value="ReceiptNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="OrgId"/>
+          <Item Value="ReceiptType"/>
+          <Item Value="PropertyId"/>
+          <Item Value="BuildId"/>
+          <Item Value="UnitId"/>
+          <Item Value="CustId"/>
+          <Item Value="CustSiteId"/>
+          <Item Value="CustomerName"/>
+          <Item Value="CurrencyCode"/>
+          <Item Value="ReceiptAmount"/>
+          <Item Value="PayMode"/>
+          <Item Value="PayRefNumber"/>
+          <Item Value="PayRefDate"/>
+          <Item Value="BankName"/>
+          <Item Value="BankBranchName"/>
+          <Item Value="DrawnBy"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="RctType"/>
+          <Item Value="RctDesc"/>
+          <Item Value="ArPush"/>
+          <Item Value="AckFlag"/>
+          <Item Value="FuncId"/>
+          <Item Value="BookingNoTrans"/>
+          <Item Value="RecommendNoTrans"/>
+          <Item Value="ReceiptId"/>
+          <Item Value="BookingId"/>
+          <Item Value="InterfaceStatus"/>
+          <Item Value="CashReceiptId"/>
+          <Item Value="AckBy"/>
+          <Item Value="AckDate"/>
+          <Item Value="OrgName"/>
+          <Item Value="PropertyNumber"/>
+          <Item Value="BuildNumber"/>
+          <Item Value="SourceFuncName"/>
+          <Item Value="BookingNumber"/>
+          <Item Value="PropertyName"/>
+          <Item Value="BuildName"/>
+          <Item Value="ReceivedAmount"/>
+          <Item Value="UnitNameTrans"/>
+          <Item Value="UnitnameListaggTrans"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="ManualReceiptVoucherNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="SearchReceiptRoVo1Iterator" StaticList="true" id="AckFlag" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="AckFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

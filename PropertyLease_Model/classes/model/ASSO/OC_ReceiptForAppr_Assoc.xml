@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OC_ReceiptForAppr_Assoc"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="OtherChargesHeader_EO1"
+    Cardinality="1"
+    Source="true"
+    Owner="model.EO.OtherChargesHeader_EO"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="OtherChargesHeader_EO1"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.OtherChargesHeader_EO.BookingId"/>
+      <Item Value="model.EO.OtherChargesHeader_EO.OcHdrId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Receipt_EO1"
+    Cardinality="-1"
+    Owner="model.EO.Receipt_EO">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Receipt_EO1"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.Receipt_EO.BookingId"/>
+      <Item Value="model.EO.Receipt_EO.OcId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

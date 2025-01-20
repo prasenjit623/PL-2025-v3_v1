@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="MoveInOut_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">router2</default-activity>
+    <transaction id="__15">
+      <requires-transaction/>
+    </transaction>
+    <input-parameter-definition id="__7">
+      <name id="__8">inputParameter1</name>
+      <value>#{pageFlowScope.EditMoveInOut}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__9">
+      <name id="__20">inputParameter2</name>
+      <value>#{pageFlowScope.Move}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__71">
+      <name id="__72">inputParameter3</name>
+      <value>#{sessionScope.moveInOut}</value>
+    </input-parameter-definition>
+    <managed-bean id="__29">
+      <managed-bean-name id="__26">MoveInMoveOut</managed-bean-name>
+      <managed-bean-class id="__27">MoveInMoveOut</managed-bean-class>
+      <managed-bean-scope id="__28">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchMoveInOut">
+      <page>/fragments/SearchMoveInOut.jsff</page>
+    </view>
+    <view id="AddEditMoveInOut">
+      <page>/fragments/AddEditMoveInOut.jsff</page>
+    </view>
+    <method-call id="onCreateMoveinMoveOut">
+      <method>#{bindings.onCreateMoveinMoveOut.execute}</method>
+      <outcome id="__17">
+        <fixed-outcome>onCreateMoveinMoveOut</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="router1">
+      <case>
+        <expression>#{pageFlowScope.Move=='MIN'}</expression>
+        <outcome id="__44">toAdd</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.Move=='MOUT'}</expression>
+        <outcome id="__45">toMout</outcome>
+      </case>
+      <default-outcome>toAdd</default-outcome>
+    </router>
+    <task-flow-call id="Attachments_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Attachments_BTF.xml</document>
+        <id>Attachments_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__42">
+        <name>funcid</name>
+        <value>#{pageFlowScope.movefunid}</value>
+      </input-parameter>
+      <input-parameter id="__43">
+        <name>funcrefid</name>
+        <value>#{pageFlowScope.moveinfunrefid}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__82">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="router2">
+      <case>
+        <expression>#{pageFlowScope.Move !=null}</expression>
+        <outcome id="__34">toEdit_Min_Mout</outcome>
+      </case>
+      <default-outcome>toMainSearch</default-outcome>
+    </router>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome id="__73">
+        <name>taskFlowReturn1</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__94">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__103">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__12">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute1">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__50">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">SearchMoveInOut</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">toEdit</from-outcome>
+        <to-activity-id id="__5">AddEditMoveInOut</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__59">
+        <from-outcome id="__60">toMap</from-outcome>
+        <to-activity-id id="__58">router1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">AddEditMoveInOut</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__33">attachments</from-outcome>
+        <to-activity-id id="__32">Attachments_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__74">
+        <from-outcome id="__76">LA</from-outcome>
+        <to-activity-id id="__75">taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__77">
+        <from-outcome id="__78">goBack</from-outcome>
+        <to-activity-id id="__61">Execute1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id id="__22">onCreateMoveinMoveOut</from-activity-id>
+      <control-flow-case id="__23">
+        <from-outcome id="__25">onCreateMoveinMoveOut</from-outcome>
+        <to-activity-id id="__24">AddEditMoveInOut</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id id="__30">router1</from-activity-id>
+      <control-flow-case id="__46">
+        <from-outcome id="__47">toAdd</from-outcome>
+        <to-activity-id id="__48">onCreateMoveinMoveOut</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__85">
+        <from-outcome id="__84">toMout</from-outcome>
+        <to-activity-id id="__83">CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__37">
+      <from-activity-id id="__38">Attachments_BTF</from-activity-id>
+      <control-flow-case id="__41">
+        <from-outcome id="__40">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__39">AddEditMoveInOut</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__86">
+      <from-activity-id id="__87">CreateInsert</from-activity-id>
+      <control-flow-case id="__89">
+        <from-outcome id="__90">CreateInsert</from-outcome>
+        <to-activity-id id="__88">AddEditMoveInOut</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id id="__19">router2</from-activity-id>
+      <control-flow-case id="__96">
+        <from-outcome id="__97">toMainSearch</from-outcome>
+        <to-activity-id id="__95">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__104">
+        <from-outcome id="__105">toEdit_Min_Mout</from-outcome>
+        <to-activity-id id="__106">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__98">
+      <from-activity-id id="__99">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__102">
+        <from-outcome id="__101">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__100">SearchMoveInOut</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__107">
+      <from-activity-id id="__108">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__109">
+        <from-outcome id="__110">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__111">AddEditMoveInOut</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__51">
+      <from-activity-id id="__52">Execute1</from-activity-id>
+      <control-flow-case id="__53">
+        <from-outcome id="__54">Execute</from-outcome>
+        <to-activity-id id="__55">SearchMoveInOut</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="WoInv_BTF">
+    <default-activity id="__1">SearchWoInv</default-activity>
+    <managed-bean id="__5">
+      <managed-bean-name id="__3">WoInvHdrMb</managed-bean-name>
+      <managed-bean-class id="__4">view.backing.AddEditWoInvHdrBb</managed-bean-class>
+      <managed-bean-scope id="__2">backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__17">
+      <managed-bean-name id="__20">WoHeaderMb</managed-bean-name>
+      <managed-bean-class id="__19">view.backing.AddEditWoHeaderStgBb</managed-bean-class>
+      <managed-bean-scope id="__18">backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__72">
+      <managed-bean-name id="__71">PoInvHdrMb</managed-bean-name>
+      <managed-bean-class id="__70">view.backing.AddEditPoInvHdrBb</managed-bean-class>
+      <managed-bean-scope id="__69">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchWoInv">
+      <page>/fragments/SearchWoInv.jsff</page>
+    </view>
+    <view id="AddEditWoInv">
+      <page>/fragments/AddEditWoInv.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__6">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__23">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__34">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="AddEditWoHeader">
+      <page>/fragments/AddEditWoHeader.jsff</page>
+    </view>
+    <view id="AddEditPoInv">
+      <page>/fragments/AddEditPoInv.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__49">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute1">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__58">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">SearchWoInv</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome id="__11">add</from-outcome>
+        <to-activity-id id="__10">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__35">
+        <from-outcome id="__37">edit</from-outcome>
+        <to-activity-id id="__36">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__51">
+        <from-outcome id="__52">poEdit</from-outcome>
+        <to-activity-id id="__50">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id id="__13">CreateInsert</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome id="__16">CreateInsert</from-outcome>
+        <to-activity-id id="__15">AddEditWoInv</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__24">
+      <from-activity-id id="__25">AddEditWoInv</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__28">back</from-outcome>
+        <to-activity-id id="__27">Execute</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__21">
+        <from-outcome id="__43">goTo</from-outcome>
+        <to-activity-id id="__22">AddEditWoHeader</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id id="__30">Execute</from-activity-id>
+      <control-flow-case id="__32">
+        <from-outcome id="__33">Execute</from-outcome>
+        <to-activity-id id="__31">SearchWoInv</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__38">
+      <from-activity-id id="__39">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__42">
+        <from-outcome id="__40">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__41">AddEditWoInv</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__44">
+      <from-activity-id id="__45">AddEditWoHeader</from-activity-id>
+      <control-flow-case id="__46">
+        <from-outcome id="__48">bcktoSrh</from-outcome>
+        <to-activity-id id="__47">SearchWoInv</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__53">
+      <from-activity-id id="__54">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__55">
+        <from-outcome id="__56">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__57">AddEditPoInv</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__59">
+      <from-activity-id id="__60">AddEditPoInv</from-activity-id>
+      <control-flow-case id="__62">
+        <from-outcome id="__63">backToPo</from-outcome>
+        <to-activity-id id="__61">Execute1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__64">
+      <from-activity-id id="__65">Execute1</from-activity-id>
+      <control-flow-case id="__66">
+        <from-outcome id="__68">Execute</from-outcome>
+        <to-activity-id id="__67">SearchWoInv</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

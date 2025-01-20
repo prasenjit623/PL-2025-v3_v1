@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="Booking_BTF_Booking_BTF_CreateBookingPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="CreateBooking" RequiresUpdateModel="true" Action="invokeMethod"
+            MethodName="CreateBooking" IsViewObjectMethod="false"
+            DataControl="Booking_AMDataControl"
+            InstanceName="Booking_AMDataControl.dataProvider"
+            ReturnName="data.Booking_AMDataControl.methodResults.CreateBooking_Booking_AMDataControl_dataProvider_CreateBooking_result"/>
+  </bindings>
+</pageDefinition>

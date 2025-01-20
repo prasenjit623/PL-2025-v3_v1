@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchVisitorLogPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchLeadROVO1" RangeSize="25"
+              DataControl="LeadAppModuleDataControl"
+              id="SearchLeadROVO1Iterator"/>
+    <searchRegion Criteria="SearchLead"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchLeadROVO1Iterator" id="SearchLeadQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchLeadROVO1Iterator" id="SearchLeadROVO1">
+      <nodeDefinition DefName="model.ROVO.SearchLeadROVO"
+                      Name="SearchLeadROVO10">
+        <AttrNames>
+          <Item Value="LeadId"/>
+          <Item Value="OrgId"/>
+          <Item Value="OrgName"/>
+          <Item Value="FuncId"/>
+          <Item Value="LeadNumber"/>
+          <Item Value="VisittedDate"/>
+          <Item Value="Title"/>
+          <Item Value="Titledisp"/>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="LeadName"/>
+          <Item Value="Status"/>
+          <Item Value="Statusdisp"/>
+          <Item Value="Agent"/>
+          <Item Value="PrimarySource"/>
+          <Item Value="PrimarySourcedisp"/>
+          <Item Value="SecSource"/>
+          <Item Value="EmailId"/>
+          <Item Value="MobileNumber"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="Fax"/>
+          <Item Value="CurAddress1"/>
+          <Item Value="CurAddress2"/>
+          <Item Value="CurAddress3"/>
+          <Item Value="CurAddress4"/>
+          <Item Value="CurCity"/>
+          <Item Value="CurPostalCode"/>
+          <Item Value="CurProvince"/>
+          <Item Value="CurCounty"/>
+          <Item Value="CurCountry"/>
+          <Item Value="PerAddress1"/>
+          <Item Value="PerAddress2"/>
+          <Item Value="PerAddress3"/>
+          <Item Value="PerAddress4"/>
+          <Item Value="PerCity"/>
+          <Item Value="PerPostalCode"/>
+          <Item Value="PerProvince"/>
+          <Item Value="PerCounty"/>
+          <Item Value="PerCountry"/>
+          <Item Value="Description"/>
+          <Item Value="Nationality"/>
+          <Item Value="PassportNumber"/>
+          <Item Value="PassportExpDate"/>
+          <Item Value="CountryOfRes"/>
+          <Item Value="CountryOfResdisp"/>
+          <Item Value="ResidentId"/>
+          <Item Value="ResidentIdExpDate"/>
+          <Item Value="AttributeCategory"/>
+          <Item Value="Attribute1"/>
+          <Item Value="Attribute2"/>
+          <Item Value="Attribute3"/>
+          <Item Value="Attribute4"/>
+          <Item Value="Attribute5"/>
+          <Item Value="Attribute6"/>
+          <Item Value="Attribute7"/>
+          <Item Value="Attribute8"/>
+          <Item Value="Attribute9"/>
+          <Item Value="Attribute10"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="LastUpdateLogin"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchLeadROVO1Iterator" id="LeadId">
+      <AttrNames>
+        <Item Value="LeadId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

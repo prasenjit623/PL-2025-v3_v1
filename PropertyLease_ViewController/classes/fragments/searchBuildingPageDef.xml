@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="searchBuildingPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchBuilding_ROVO1" RangeSize="25"
+              DataControl="PropertyBuilding_AMDataControl"
+              id="SearchBuilding_ROVO1Iterator"/>
+    <searchRegion Criteria="SearchBuilding"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchBuilding_ROVO1Iterator"
+                  id="SearchBuildingQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchBuilding_ROVO1Iterator" id="SearchBuilding_ROVO1">
+      <nodeDefinition DefName="model.ROVO.SearchBuilding_ROVO"
+                      Name="SearchBuilding_ROVO10">
+        <AttrNames>
+          <Item Value="BuildName"/>
+          <Item Value="BuildNumber"/>
+          <Item Value="PropertyName"/>
+          <Item Value="BuildShortcode"/>
+          <Item Value="BuildType"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchBuilding_ROVO1Iterator" id="BuildId">
+      <AttrNames>
+        <Item Value="BuildId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

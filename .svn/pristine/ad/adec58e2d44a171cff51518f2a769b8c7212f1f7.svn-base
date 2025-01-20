@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule xmlns="http://xmlns.oracle.com/bc4j" Name="OtherCharges_AM"
+           Version="11.1.1.66.73" InheritPersonalization="merge"
+           ComponentClass="model.AM.OtherCharges_AMImpl"
+           ClearCacheOnRollback="true"
+           ComponentInterface="model.AM.common.OtherCharges_AM"
+           ClientProxyName="model.AM.client.OtherCharges_AMClient">
+   <DesignTime>
+      <Attr Name="_deployType" Value="0"/>
+      <Attr Name="_isCodegen" Value="true"/>
+   </DesignTime>
+   <Properties>
+      <SchemaBasedProperties>
+         <LABEL ResId="model.AM.OtherCharges_AM_LABEL"/>
+      </SchemaBasedProperties>
+   </Properties>
+   <ViewUsage Name="SearchOC_ROVO1" ViewObjectName="model.ROVO.SearchOC_ROVO"/>
+   <ViewUsage Name="getFunctionCodeROVO1"
+              ViewObjectName="model.ROVO.getFunctionCodeROVO"/>
+   <ViewUsage Name="OtherChargesHeader_VO1"
+              ViewObjectName="model.VO.OtherChargesHeader_VO">
+      <ViewCriteriaUsage Name="findByOcHdrId"
+                         FullName="model.VO.OtherChargesHeader_VO.findByOcHdrId"/>
+      <ParameterMap>
+         <PIMap Variable="p_ocHdrId">
+            <TransientExpression>adf.context.pageFlowScope.addEditOcHdrId</TransientExpression>
+         </PIMap>
+      </ParameterMap>
+   </ViewUsage>
+   <ViewUsage Name="getApprovalHistoryROVo1"
+              ViewObjectName="model.ROVO.getApprovalHistoryROVo"/>
+   <ViewUsage Name="Receipt_VO1" ViewObjectName="model.VO.Receipt_VO">
+      <ViewCriteriaUsage
+         Name="findByCancelIdNull"
+         FullName="model.VO.Receipt_VO.findByCancelIdNull"/>
+      <ViewCriteriaUsage Name="findByNotApr"
+                         FullName="model.VO.Receipt_VO.findByNotApr"/>
+      <ViewCriteriaUsage Name="findReceiptForOC"
+                         FullName="model.VO.Receipt_VO.findReceiptForOC"/>
+   </ViewUsage>
+   <ViewUsage Name="BookingCustomer_VO1"
+              ViewObjectName="model.VO.BookingCustomer_VO"/>
+   <ViewUsage Name="Booking_Milestone_VO1"
+              ViewObjectName="model.VO.Booking_Milestone_VO">
+      <ViewCriteriaUsage
+         Name="findByCancelIdNull"
+         FullName="model.VO.Booking_Milestone_VO.findByCancelIdNull"/>
+      <ViewCriteriaUsage
+         Name="findByInstTypeForOC"
+         FullName="model.VO.Booking_Milestone_VO.findByInstTypeForOC"/>
+      <ViewCriteriaUsage Name="findByNotApr"
+                         FullName="model.VO.Booking_Milestone_VO.findByNotApr"/>
+      <ViewCriteriaUsage
+         Name="findBySeqNo_Null"
+         FullName="model.VO.Booking_Milestone_VO.findBySeqNo_Null"/>
+   </ViewUsage>
+   <ViewUsage Name="SearchLeaseAgreement_ROVO1"
+              ViewObjectName="model.ROVO.SearchLeaseAgreement_ROVO"/>
+   <ViewUsage Name="Booking_Milestone_VO2"
+              ViewObjectName="model.VO.Booking_Milestone_VO">
+      <ViewCriteriaUsage Name="findByApr"
+                         FullName="model.VO.Booking_Milestone_VO.findByApr"/>
+      <ViewCriteriaUsage Name="findByInstTypeForOC"
+                         FullName="model.VO.Booking_Milestone_VO.findByInstTypeForOC"/>
+      <ViewCriteriaUsage Name="findBy_OfrMsDtlId_ForOCScreen"
+                         FullName="model.VO.Booking_Milestone_VO.findBy_OfrMsDtlId_ForOCScreen"/>
+   </ViewUsage>
+   <ViewUsage Name="Receipt_VO2" ViewObjectName="model.VO.Receipt_VO">
+      <ViewCriteriaUsage Name="findByApr"
+                         FullName="model.VO.Receipt_VO.findByApr"/>
+      <ViewCriteriaUsage Name="findReceiptForOC"
+                         FullName="model.VO.Receipt_VO.findReceiptForOC"/>
+   </ViewUsage>
+   <ViewUsage Name="getARSetupDetails_ROVO1"
+              ViewObjectName="model.ROVO.getARSetupDetails_ROVO"/>
+   <ViewUsage
+      Name="BookingDetail_VO1"
+      ViewObjectName="model.VO.BookingDetail_VO"/>
+   <ViewUsage
+      Name="getInvoiceInterfacePayloadValuesforOtherCharges1"
+      ViewObjectName="model.ROVO.getInvoiceInterfacePayloadValuesforOtherCharges"/>
+   <ViewUsage
+      Name="getReceiptPayloadDtls_OtherCharges_ROVO1"
+      ViewObjectName="model.ROVO.getReceiptPayloadDtls_OtherCharges_ROVO"/>
+   <ViewUsage
+      Name="getReceiptMethod_ROVO1"
+      ViewObjectName="model.ROVO.getReceiptMethod_ROVO"/>
+   <ViewUsage
+      Name="LeaseAgreement_VO1"
+      ViewObjectName="model.VO.LeaseAgreement_VO"/>
+   <ViewUsage
+      Name="Booking_Milestone_VO3"
+      ViewObjectName="model.VO.Booking_Milestone_VO"/>
+   <ViewUsage
+      Name="Receipt_VO3"
+      ViewObjectName="model.VO.Receipt_VO"/>
+   <ViewUsage
+      Name="Booking_Milestone_VO4"
+      ViewObjectName="model.VO.Booking_Milestone_VO">
+      <ViewCriteriaUsage
+         Name="findByNotApr"
+         FullName="model.VO.Booking_Milestone_VO.findByNotApr"/>
+   </ViewUsage>
+   <ViewUsage
+      Name="Receipt_VO4"
+      ViewObjectName="model.VO.Receipt_VO">
+      <ViewCriteriaUsage
+         Name="findByNotApr"
+         FullName="model.VO.Receipt_VO.findByNotApr"/>
+   </ViewUsage>
+   <ViewUsage
+      Name="BookingMilestoneOC_Hstry1"
+      ViewObjectName="model.ROVO.BookingMilestoneOC_Hstry">
+      <ViewCriteriaUsage
+         Name="oc_statusNotDraft"
+         FullName="model.ROVO.BookingMilestoneOC_Hstry.oc_statusNotDraft"/>
+   </ViewUsage>
+   <ViewUsage
+      Name="Receipt_VO5"
+      ViewObjectName="model.VO.Receipt_VO">
+      <ViewCriteriaUsage
+         Name="Receipt_VOCriteria"
+         FullName="model.VO.Receipt_VO.Receipt_VOCriteria"/>
+      <ParameterMap>
+         <PIMap Variable="B_VAL">
+            <TransientExpression><![CDATA[adf.context.pageFlowScope.recid]]></TransientExpression>
+         </PIMap>
+      </ParameterMap>
+   </ViewUsage>
+   <ViewUsage
+      Name="ReceiptDtlVO1"
+      ViewObjectName="model.VO.ReceiptDtlVO"/>
+   <ViewUsage
+      Name="getBookingMsDtlForOC_RoVo1"
+      ViewObjectName="model.ROVO.getBookingMsDtlForOC_RoVo"/>
+   <ViewUsage
+      Name="Receipt_VO6"
+      ViewObjectName="model.VO.Receipt_VO"/>
+   <ViewUsage
+      Name="SearchOcDp_RoVo1"
+      ViewObjectName="model.ROVO.SearchOcDp_RoVo"/>
+   <ViewUsage
+      Name="OcDpHdr_VO1"
+      ViewObjectName="model.VO.OcDpHdr_VO">
+      <ViewCriteriaUsage
+         Name="findByOcHdrIdDp"
+         FullName="model.VO.OcDpHdr_VO.findByOcHdrIdDp"/>
+      <ParameterMap>
+         <PIMap Variable="p_ochdrIdDp">
+            <TransientExpression><![CDATA[adf.context.pageFlowScope.addEditOcHdrId]]></TransientExpression>
+         </PIMap>
+      </ParameterMap>
+   </ViewUsage>
+   <ViewUsage
+      Name="OcBkMilestoneDtlDp_VO1"
+      ViewObjectName="model.VO.OcBkMilestoneDtlDp_VO"/>
+   <ViewUsage
+      Name="OcReceiptDp_VO1"
+      ViewObjectName="model.VO.OcReceiptDp_VO"/>
+   <ViewUsage
+      Name="Lookup_View_ROVO1"
+      ViewObjectName="model.ROVO.Lookup_View_ROVO"/>
+   <ViewUsage
+      Name="getOcDpBkMsDtlInvoiceLines_RoVo1"
+      ViewObjectName="model.ROVO.getOcDpBkMsDtlInvoiceLines_RoVo"/>
+   <ViewUsage
+      Name="getApprovalHistoryROVo2"
+      ViewObjectName="model.ROVO.getApprovalHistoryROVo"/>
+   <ViewLinkUsage Name="OtherChargesApproval_Vl1"
+                  ViewLinkObjectName="model.VL.OtherChargesApproval_Vl"
+                  SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+                  DstViewUsageName="model.AM.OtherCharges_AM.getApprovalHistoryROVo1"
+                  Reversed="false"/>
+   <ViewLinkUsage Name="OcReceipt_VL1"
+                  ViewLinkObjectName="model.VL.OcReceipt_VL"
+                  SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+                  DstViewUsageName="model.AM.OtherCharges_AM.Receipt_VO1"
+                  Reversed="false"/>
+   <ViewLinkUsage Name="OC_BookingMilestone_VL1"
+                  ViewLinkObjectName="model.VL.OC_BookingMilestone_VL"
+                  SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+                  DstViewUsageName="model.AM.OtherCharges_AM.Booking_Milestone_VO1"
+                  Reversed="false"/>
+   <ViewLinkUsage Name="OC_BookingMilestone_VL2"
+                  ViewLinkObjectName="model.VL.OC_BookingMilestone_VL"
+                  SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+                  DstViewUsageName="model.AM.OtherCharges_AM.Booking_Milestone_VO2"
+                  Reversed="false"/>
+   <ViewLinkUsage Name="OcReceipt_VL2"
+                  ViewLinkObjectName="model.VL.OcReceipt_VL"
+                  SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+                  DstViewUsageName="model.AM.OtherCharges_AM.Receipt_VO2"
+                  Reversed="false"/>
+   <ViewLinkUsage
+      Name="OC_BookingMilestoneForAppr_VL1"
+      ViewLinkObjectName="model.VL.OC_BookingMilestoneForAppr_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+      DstViewUsageName="model.AM.OtherCharges_AM.Booking_Milestone_VO3"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="OC_ReceiptForAppr_VL1"
+      ViewLinkObjectName="model.VL.OC_ReceiptForAppr_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+      DstViewUsageName="model.AM.OtherCharges_AM.Receipt_VO3"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="OC_BookingMstone_CancelId_VL1"
+      ViewLinkObjectName="model.VL.OC_BookingMstone_CancelId_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+      DstViewUsageName="model.AM.OtherCharges_AM.Booking_Milestone_VO4"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="OC_Receipt_CancelId_VL1"
+      ViewLinkObjectName="model.VL.OC_Receipt_CancelId_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+      DstViewUsageName="model.AM.OtherCharges_AM.Receipt_VO4"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="OcHeader_BookingMilestoneOC_Hstry_VL1"
+      ViewLinkObjectName="model.VL.OcHeader_BookingMilestoneOC_Hstry_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+      DstViewUsageName="model.AM.OtherCharges_AM.BookingMilestoneOC_Hstry1"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="ReceiptHdr_Dtl_VL1"
+      ViewLinkObjectName="model.VL.ReceiptHdr_Dtl_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.Receipt_VO5"
+      DstViewUsageName="model.AM.OtherCharges_AM.ReceiptDtlVO1"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="OC_ReceiptForAppr_VL2"
+      ViewLinkObjectName="model.VL.OC_ReceiptForAppr_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.OtherChargesHeader_VO1"
+      DstViewUsageName="model.AM.OtherCharges_AM.Receipt_VO6"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="OcHdrDpVo_OcBkMilestoneDtlDpVo_VL1"
+      ViewLinkObjectName="model.VL.OcHdrDpVo_OcBkMilestoneDtlDpVo_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.OcDpHdr_VO1"
+      DstViewUsageName="model.AM.OtherCharges_AM.OcBkMilestoneDtlDp_VO1"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="OcHdrDpVo_OcReceiptDpVo_VL1"
+      ViewLinkObjectName="model.VL.OcHdrDpVo_OcReceiptDpVo_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.OcDpHdr_VO1"
+      DstViewUsageName="model.AM.OtherCharges_AM.OcReceiptDp_VO1"
+      Reversed="false"/>
+   <ViewLinkUsage
+      Name="OcDpHdrVoGetAprvlRoVo_VL1"
+      ViewLinkObjectName="model.VL.OcDpHdrVoGetAprvlRoVo_VL"
+      SrcViewUsageName="model.AM.OtherCharges_AM.OcDpHdr_VO1"
+      DstViewUsageName="model.AM.OtherCharges_AM.getApprovalHistoryROVo2"
+      Reversed="false"/>
+   <ResourceBundle>
+      <PropertiesBundle PropertiesFile="model.PropertyLease_ModelBundle"/>
+   </ResourceBundle>
+   <ClientInterface>
+      <Method
+         Name="CreateOtherCharges">
+         <Return
+            Type="java.lang.String"/>
+      </Method>
+      <Method
+         Name="getCodeSegmentCombination">
+         <Return
+            Type="java.lang.String"/>
+         <Parameter
+            Name="pBusinessUnitId"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="pChargeType"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="pUnitId"
+            Type="java.lang.String"/>
+      </Method>
+      <Method
+         Name="getARInvoiceTrxDetailsOtherCharge">
+         <Return
+            Type="java.lang.String"/>
+         <Parameter
+            Name="pOtherChargeNum"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="pCustomerTrxId"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="pCustomerTrxNo"
+            Type="java.lang.String"/>
+      </Method>
+      <Method
+         Name="submitOcForAppr">
+         <Return
+            Type="java.lang.String"/>
+         <Parameter
+            Name="ocId"
+            Type="java.lang.String"/>
+      </Method>
+      <Method
+         Name="responseOcForAppr">
+         <Return
+            Type="java.lang.String"/>
+         <Parameter
+            Name="ocId"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="reason"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="apr_rej"
+            Type="java.lang.String"/>
+      </Method>
+      <Method
+         Name="submitOcForApprDP">
+         <Return
+            Type="java.lang.String"/>
+         <Parameter
+            Name="ocId"
+            Type="java.lang.String"/>
+      </Method>
+      <Method
+         Name="responseOcForApprDP">
+         <Return
+            Type="java.lang.String"/>
+         <Parameter
+            Name="ocId"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="reason"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="apr_rej"
+            Type="java.lang.String"/>
+      </Method>
+      <Method
+         Name="getCashRcptIdRspnse">
+         <Return
+            Type="java.lang.String"/>
+         <Parameter
+            Name="pReceiptNo"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="pCshRcptId"
+            Type="java.lang.String"/>
+      </Method>
+      <Method
+         Name="chngTnxDate">
+         <Return
+            Type="java.lang.String"/>
+         <Parameter
+            Name="ocId"
+            Type="java.lang.String"/>
+         <Parameter
+            Name="dateTnx"
+            Type="java.lang.String"/>
+      </Method>
+   </ClientInterface>
+</AppModule>

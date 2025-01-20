@@ -1,0 +1,705 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+   <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                    id="pt1">
+      <f:facet name="pageContents">
+         <af:panelGroupLayout id="pgl1" layout="scroll">
+            <af:panelGroupLayout id="pgl2" layout="vertical">
+               <af:panelGridLayout id="pgl3">
+                  <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                              id="gr1">
+                     <af:gridCell marginStart="5px" width="100%" marginEnd="5px"
+                                  id="gc1" rendered="true">
+                        <af:outputText value="Manage WO Resource" id="ot1"
+                                       inlineStyle="font-size:large; font-weight:bold"/>
+                     </af:gridCell>
+                     <af:gridCell id="gc2" halign="end">
+                        <af:panelGroupLayout id="pgl4"
+                                             styleClass="AFStretchWidth"
+                                             layout="horizontal">
+                           <!--<af:commandButton text="Attachments" id="cb6"
+                                             action="attachment"
+                                             inlineStyle="margin-right:10px;"
+                                             rendered="false"/>-->
+                           <!--<af:commandButton text="CheckList" id="cb14"
+                                             action="Checklist"
+                                             inlineStyle="margin-right:10px;"
+                                             rendered="false"/>-->
+                         <!--<af:commandButton text="Push to SaaS" id="cb333"
+                                           inlineStyle="margin-right:10px;"
+                                           actionListener="#{backingBeanScope.addEditSchedulerWoMb.doPushToSaaSMainHdr}"
+                                           partialSubmit="true"
+                                           partialTriggers="it33">
+                           </af:commandButton>-->
+                           <!--<af:commandButton text="Re-Work" id="cb3"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.addEditSchedulerWoMb.doReWork}"
+                                             disabled="#{bindings.InterfaceStatus.inputValue ne null}"
+                                             partialSubmit="true">
+                           </af:commandButton>-->  
+                           <!--<af:commandButton text="Transaction Completed" id="cb30"
+                                             immediate="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.addEditSchedulerWoMb.doCompletedTrigger}"
+                                             visible="#{bindings.Status2.inputValue=='Rework'}"
+                                             action="back" partialSubmit="true">
+                           </af:commandButton>-->
+                           <!--<af:commandButton text="Approve" id="cb12"
+                                             immediate="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.addEditSchedulerWoMb.onInvokeAppOrReject}"
+                                             visible="#{sessionScope.userId eq bindings.FlowWith.inputValue ? 'true' : 'false'}"
+                                             rendered="false">
+                              <af:setPropertyListener from="#{'Approval'}"
+                                                      to="#{pageFlowScope.Action}"
+                                                      type="action"/>
+                           </af:commandButton>-->
+                           <!--<af:commandButton text="Reject" id="cb13"
+                                             immediate="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.addEditSchedulerWoMb.onInvokeAppOrReject}"
+                                             visible="#{sessionScope.userId eq bindings.FlowWith.inputValue ? 'true' : 'false'}"
+                                             rendered="false">
+                              <af:setPropertyListener from="#{'Rejection'}"
+                                                      to="#{pageFlowScope.Action}"
+                                                      type="action"/>
+                           </af:commandButton>-->
+                           <af:commandButton text="Save" id="cb7"
+                                             partialSubmit="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.AddEditResourceMb.doSave}">
+                              <!--<af:setPropertyListener from="#{sessionScope.userName}"
+                                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                                      type="action"/>-->
+                                </af:commandButton>
+                           <!--<af:commandButton text="Save and Close" id="cb1"
+                                             inlineStyle="margin-right:10px;"
+                                             partialSubmit="true"
+                                             action="#{backingBeanScope.addEditSchedulerWoMb.onSaveAndClose}">
+                              --><!--<af:setPropertyListener from="#{sessionScope.userName}"
+                                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                                      type="action"/>--><!--
+                           </af:commandButton>-->
+                           <!--<af:commandButton text="Submit" id="cb11"
+                                             inlineStyle="margin-right:10px;"
+                                             action="#{backingBeanScope.addEditSchedulerWoMb.onClickSubmit}"
+                                             visible="#{bindings.Status1.inputValue eq 'DRA'}"
+                                             rendered="false">
+                              <af:setPropertyListener from="#{sessionScope.userName}"
+                                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                                      type="action"/>
+                           </af:commandButton>-->
+                           <!--<af:commandButton text="Approval Details" id="cb19"
+                                             inlineStyle="margin-right:10px;"
+                                             visible="#{bindings.Status1.inputValue!='DRA'}"
+                                             rendered="false">
+                              <af:showPopupBehavior popupId="pc2:p2" triggerType="action"/>
+                           </af:commandButton>-->
+                           <af:commandButton text="Cancel" id="cb2"
+                                             inlineStyle="margin-right:10px;"
+                                             immediate="true" action="bckToWo"
+                                             actionListener="#{backingBeanScope.AddEditResourceMb.onDoCancel}"/>
+                        </af:panelGroupLayout>
+                     </af:gridCell>
+                  </af:gridRow>
+               </af:panelGridLayout>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s2"/>
+               <af:panelBox text="Resource Details" id="pb1">
+               <f:facet name="toolbar"/>
+               <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="detach" inlineStyle="height:14.0cm;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                     <af:toolbar id="t2" flex="100">
+                        <af:spacer width="10" height="10" id="s100"/>
+                        <af:commandImageLink icon="/images/func_add_16_ena.png"
+                                             disabledIcon="/images/func_add_16_dis.png"
+                                             hoverIcon="/images/func_add_16_hov.png"
+                                             depressedIcon="/images/func_add_16_act.png"
+                                             disabled="#{pageFlowScope.interfaceSatus ne null}"
+                                             id="cil1"
+                                             actionListener="#{backingBeanScope.AddEditResourceMb.doCreateResource}"
+                                             partialSubmit="true"/>
+                         <af:spacer width="10" height="10" id="s4"/>
+                        <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                     icon="/images/func_remove_16_ena.png"
+                                     hoverIcon="/images/func_remove_16_hov.png"
+                                     disabled="#{pageFlowScope.interfaceSatus ne null}"
+                                     id="cil2"
+                                     partialTriggers="t1" partialSubmit="true"/>
+                      <af:spacer width="10" height="10" id="s5"/>
+                   <af:commandImageLink 
+                                       id="cil3" icon="/images/xl.png"
+                                       hoverIcon="/images/filedownload_ena.png"
+                                       depressedIcon="/images/filedownload_dis.png">
+                    <af:exportCollectionActionListener type="excelHTML"
+                                                       exportedId="t1"
+                                                       filename="#{pageFlowScope.woNo} WO Resource.xls"
+                                                       title="WO Resource"/>
+                  </af:commandImageLink>
+                        <af:commandImageLink actionListener="#{bindings.Execute.execute}"
+                                             text="Refresh" id="cil4"/>
+                     </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.WoSchedulerTnxResource_VO1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.WoSchedulerTnxResource_VO1.rangeSize}"
+                            emptyText="#{bindings.WoSchedulerTnxResource_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="10" columnStretching="column:c18"
+                            rowBandingInterval="0" varStatus="vs"
+                            selectedRowKeys="#{bindings.WoSchedulerTnxResource_VO1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.WoSchedulerTnxResource_VO1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1" scrollPolicy="page"
+                            autoHeightRows="0"
+                            partialTriggers="::cil1 ::cil2 ::cil4">
+                     <af:column id="c250" headerText="S.No" align="center"
+                           width="71" frozen="true">
+                        <af:outputText value="#{vs.index+1}" id="ot25"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrId.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrId.label}"
+                                id="c3" visible="false" frozen="true">
+                        <af:inputText value="#{row.bindings.WoSchMainHdrId.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrId.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrId.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrId.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrId.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrId.tooltip}"
+                                      id="it12">
+                           <f:validator binding="#{row.bindings.WoSchMainHdrId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrNo.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrNo.label}"
+                                id="c24" visible="false">
+                        <af:inputText value="#{row.bindings.WoSchMainHdrNo.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrNo.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrNo.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrNo.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrNo.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.WoSchMainHdrNo.tooltip}"
+                                      id="it21">
+                           <f:validator binding="#{row.bindings.WoSchMainHdrNo.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxResourceId.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxResourceId.label}"
+                                id="c19" visible="false">
+                        <af:inputText value="#{row.bindings.ScTnxResourceId.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxResourceId.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxResourceId.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxResourceId.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxResourceId.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxResourceId.tooltip}"
+                                      id="it7">
+                           <f:validator binding="#{row.bindings.ScTnxResourceId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.ScWoTnxId.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.ScWoTnxId.label}"
+                                id="c29" visible="false">
+                        <af:inputText value="#{row.bindings.ScWoTnxId.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.ScWoTnxId.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.ScWoTnxId.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.ScWoTnxId.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.ScWoTnxId.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.ScWoTnxId.tooltip}"
+                                      id="it6">
+                           <f:validator binding="#{row.bindings.ScWoTnxId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxOpId.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxOpId.label}"
+                                id="c27" visible="false">
+                        <af:inputText value="#{row.bindings.ScTnxOpId.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxOpId.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxOpId.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxOpId.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxOpId.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.ScTnxOpId.tooltip}"
+                                      id="it2">
+                           <f:validator binding="#{row.bindings.ScTnxOpId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.WoId.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.WoId.label}"
+                                id="c26" visible="false">
+                        <af:inputText value="#{row.bindings.WoId.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.WoId.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.WoId.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.WoId.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.WoId.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.WoId.tooltip}"
+                                      id="it1">
+                           <f:validator binding="#{row.bindings.WoId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.WoNo.name}"
+                                sortable="false"
+                                headerText="Work Order No"
+                                id="c16" frozen="true" align="center">
+                        <af:inputText value="#{row.bindings.WoNo.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.WoNo.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.WoNo.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.WoNo.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.WoNo.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.WoNo.tooltip}"
+                                      id="it19" autoSubmit="true"
+                                      readOnly="true">
+                           <f:validator binding="#{row.bindings.WoNo.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.WoOpId.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.WoOpId.label}"
+                                id="c9" visible="false">
+                        <af:inputText value="#{row.bindings.WoOpId.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.WoOpId.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.WoOpId.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.WoOpId.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.WoOpId.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.WoOpId.tooltip}"
+                                      id="it13">
+                           <f:validator binding="#{row.bindings.WoOpId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.OpCode.name}"
+                                sortable="false"
+                                headerText="Operation Code"
+                                id="c13" frozen="true" align="center"
+                                width="140">
+                        <af:selectOneChoice value="#{row.bindings.OpCode.inputValue}"
+                                            label="#{row.bindings.OpCode.label}"
+                                            required="#{bindings.WoSchedulerTnxResource_VO1.hints.OpCode.mandatory}"
+                                            shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.OpCode.tooltip}"
+                                            id="soc3"
+                                            disabled="#{row.Attribute1=='SUCCESS' or row.Attribute3 ne null}">
+                           <f:selectItems value="#{row.bindings.OpCode.items}"
+                                          id="si2"/>
+                        </af:selectOneChoice>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.Wooperationresourceid.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.Wooperationresourceid.label}"
+                                id="c6" visible="false">
+                        <af:inputText value="#{row.bindings.Wooperationresourceid.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.Wooperationresourceid.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.Wooperationresourceid.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.Wooperationresourceid.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.Wooperationresourceid.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.Wooperationresourceid.tooltip}"
+                                      id="it15">
+                           <f:validator binding="#{row.bindings.Wooperationresourceid.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.ResourceSequenceNumber.name}"
+                                sortable="false"
+                                headerText="Resource Seq No"
+                                id="c17" frozen="true" width="130"
+                                align="center">
+                        <af:inputText value="#{row.bindings.ResourceSequenceNumber.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.ResourceSequenceNumber.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.ResourceSequenceNumber.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.ResourceSequenceNumber.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.ResourceSequenceNumber.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.ResourceSequenceNumber.tooltip}"
+                                      id="it14" partialTriggers="::cil1"
+                                      disabled="#{row.Attribute1=='SUCCESS' or row.Attribute3 ne null}">
+                           <f:validator binding="#{row.bindings.ResourceSequenceNumber.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.Resources.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.Resources.label}"
+                                id="c28" width="180" frozen="true">
+                        <af:inputListOfValues id="resourcesId"
+                                              popupTitle="Search and Select: #{bindings.WoSchedulerTnxResource_VO1.hints.Resources.label}"
+                                              value="#{row.bindings.Resources.inputValue}"
+                                              model="#{row.bindings.Resources.listOfValuesModel}"
+                                              required="#{bindings.WoSchedulerTnxResource_VO1.hints.Resources.mandatory}"
+                                              columns="#{bindings.WoSchedulerTnxResource_VO1.hints.Resources.displayWidth}"
+                                              shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.Resources.tooltip}"
+                                              autoSubmit="true"
+                                              disabled="#{row.Status eq 'Completed' ? true : false}">
+                           <f:validator binding="#{row.bindings.Resources.validator}"/>
+                        </af:inputListOfValues>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.StartDate.name}"
+                                sortable="false"
+                                headerText="Start Date"
+                                id="c10" width="180" visible="false">
+                        <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.StartDate.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.StartDate.mandatory}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.StartDate.tooltip}"
+                                      id="id6" contentStyle="width:165px;"
+                                      autoSubmit="true">
+                           <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                           <af:convertDateTime pattern="#{bindings.WoSchedulerTnxResource_VO1.hints.StartDate.format}"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column headerText="Work Start Date"
+                                id="c33" width="200">
+                        <af:inputDate value="#{row.bindings.WorkStartDate.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.WorkStartDate.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.WorkStartDate.mandatory}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.WorkStartDate.tooltip}"
+                                      id="id4" contentStyle="width:175px;" autoSubmit="true">
+                           <f:validator binding="#{row.bindings.WorkStartDate.validator}"/>
+                           <af:convertDateTime pattern="#{bindings.WoSchedulerTnxResource_VO1.hints.WorkStartDate.format}"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.FromTime.name}"
+                                sortable="false"
+                                headerText="Time From (Hours)"
+                                id="c4" align="center" visible="false">
+                        <af:inputText value="#{row.bindings.FromTime.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.FromTime.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.FromTime.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.FromTime.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.FromTime.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.FromTime.tooltip}"
+                                      id="it16">
+                           <f:validator binding="#{row.bindings.FromTime.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.FromTimeAmPm.name}"
+                                sortable="false"
+                                headerText="AM/PM"
+                                id="c2" align="center" visible="false">
+                        <af:selectOneChoice value="#{row.bindings.FromTimeAmPm.inputValue}"
+                                            label="#{row.bindings.FromTimeAmPm.label}"
+                                            required="#{bindings.WoSchedulerTnxResource_VO1.hints.FromTimeAmPm.mandatory}"
+                                            shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.FromTimeAmPm.tooltip}"
+                                            id="soc1">
+                           <f:selectItems value="#{row.bindings.FromTimeAmPm.items}"
+                                          id="si3"/>
+                        </af:selectOneChoice>
+                     </af:column>
+                    <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.CompleteDate.name}"
+                                sortable="false"
+                                headerText="Complete Date"
+                                id="c31" width="180" visible="false">
+                        <af:inputDate value="#{row.bindings.CompleteDate.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.CompleteDate.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.CompleteDate.mandatory}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.CompleteDate.tooltip}"
+                                      id="id5"
+                                      disabled="#{row.Status eq 'Completed' ? true : row.StartDate eq null ? true : false}"
+                                      contentStyle="width:165px;"
+                                      partialTriggers="id4">
+                           <f:validator binding="#{row.bindings.CompleteDate.validator}"/>
+                           <af:convertDateTime pattern="#{bindings.WoSchedulerTnxResource_VO1.hints.CompleteDate.format}"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column headerText="Work End Date"
+                                id="c34" width="200">
+                        <af:inputDate value="#{row.bindings.WorkEndDate.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.WorkEndDate.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.WorkEndDate.mandatory}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.WorkEndDate.tooltip}"
+                                      id="id7"
+                                      disabled="#{row.Status eq 'Completed' ? true : row.WorkStartDate eq null ? true : false}"
+                                      contentStyle="width:175px;"
+                                      partialTriggers="id4">
+                           <f:validator binding="#{row.bindings.WorkEndDate.validator}"/>
+                           <af:convertDateTime pattern="#{bindings.WoSchedulerTnxResource_VO1.hints.WorkEndDate.format}"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.ToTime.name}"
+                                sortable="false"
+                                headerText="Time To (Hours)"
+                                id="c23" align="center" visible="false">
+                        <af:inputText value="#{row.bindings.ToTime.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.ToTime.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.ToTime.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.ToTime.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.ToTime.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.ToTime.tooltip}"
+                                      id="it20">
+                           <f:validator binding="#{row.bindings.ToTime.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.ToTimeAmPm.name}"
+                                sortable="false"
+                                headerText="AM/PM"
+                                id="c30" align="center" visible="false">
+                        <af:selectOneChoice value="#{row.bindings.ToTimeAmPm.inputValue}"
+                                            label="#{row.bindings.ToTimeAmPm.label}"
+                                            required="#{bindings.WoSchedulerTnxResource_VO1.hints.ToTimeAmPm.mandatory}"
+                                            shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.ToTimeAmPm.tooltip}"
+                                            id="soc2">
+                           <f:selectItems value="#{row.bindings.ToTimeAmPm.items}"
+                                          id="si1"/>
+                        </af:selectOneChoice>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.TimeTaken.name}"
+                                sortable="false"
+                                headerText="Normal Time Taken (Hours)"
+                                id="c5" align="center">
+                        <af:inputText value="#{row.bindings.TimeTaken.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.TimeTaken.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.TimeTaken.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.TimeTaken.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.TimeTaken.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.TimeTaken.tooltip}"
+                                      id="it17"
+                                      disabled="#{row.Status eq 'Completed' ? true : false}"
+                                      autoSubmit="true">
+                           <f:validator binding="#{row.bindings.TimeTaken.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.OverTimeTaken.name}"
+                                sortable="false"
+                                headerText="Over Time (Hours)"
+                                id="c14" align="center">
+                        <af:inputText value="#{row.bindings.OverTimeTaken.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.OverTimeTaken.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.OverTimeTaken.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.OverTimeTaken.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.OverTimeTaken.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.OverTimeTaken.tooltip}"
+                                      id="it8"
+                                      disabled="#{row.Status eq 'Completed' ? true : false}"
+                                      autoSubmit="true">
+                           <f:validator binding="#{row.bindings.OverTimeTaken.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column id="c44" headerText="Total Time Taken" align="center">
+                        <af:outputText value="#{row.TimeTaken + row.OverTimeTaken}" id="ot6" partialTriggers="it17 it8"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.IterationDetails.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.IterationDetails.label}"
+                                id="c1" visible="false">
+                        <af:inputText value="#{row.bindings.IterationDetails.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.IterationDetails.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.IterationDetails.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.IterationDetails.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.IterationDetails.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.IterationDetails.tooltip}"
+                                      id="it5">
+                           <f:validator binding="#{row.bindings.IterationDetails.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.Status.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.Status.label}"
+                                id="c18" align="center">
+                        <af:inputText value="#{row.bindings.Status.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.Status.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.Status.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.Status.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.Status.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.Status.tooltip}"
+                                      id="it3" readOnly="true">
+                           <f:validator binding="#{row.bindings.Status.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column id="c61" headerText="Push Resource to SaaS">
+                                 <af:goImageLink id="gil251"
+                                                 destination="https://almlbprd.miskprops.com/woServices/webresources/resourcecreation/v1?resourceId=#{row.ScTnxResourceId}"
+                                                 text="#{row.Wooperationresourceid eq null ? 'Insert to SaaS' : 'Update to SaaS'}"
+                                                 partialTriggers="ot8 it8"
+                                                 targetFrame="_blank"
+                                                 disabled="#{row.Resources eq null or row.WorkStartDate eq null and row.WorkEndDate eq null}"/>
+                                 <!--<af:goImageLink id="gil251"
+                                                 destination="http://almisksoat1-wls-1.miskprops.com/woServices/webresources/resourcecreation/v1?resourceId=#{row.ScTnxResourceId}"
+                                                 text="#{row.Wooperationresourceid eq null ? 'Insert to SaaS' : 'Update to SaaS'}"
+                                                 partialTriggers="ot8 it8"
+                                                 targetFrame="_blank"
+                                                 disabled="#{row.Resources eq null or row.WorkStartDate eq null and row.WorkEndDate eq null}"/>-->
+                                 </af:column>
+                            <af:column id="c450" headerText="Complete" visible="false">
+                                <af:commandButton text="Completed" id="cb40"
+                                                  actionListener="#{backingBeanScope.AddEditResourceMb.onClickCompleteWoResLine}"
+                                                  disabled="#{row.Attribute1 ne null or row.Status ne 'Rework' ? true : false}"
+                                                  partialSubmit="true"
+                                                  partialTriggers="ot8 it3"/>
+                                 </af:column>
+                                 <af:column id="c452" headerText="Rework" visible="false">
+                                    <af:commandButton text="Rework" id="cb420"
+                                                      actionListener="#{backingBeanScope.AddEditResourceMb.doReworkForResrcLine}"
+                                                      disabled="#{row.Attribute1 ne null or row.Status eq 'Rework' ? true : false}"
+                                                      partialSubmit="true"
+                                                      partialTriggers="ot8"/>
+                                </af:column>
+                                 <af:column id="c36" headerText="Delete"
+                                            align="center">
+                                    <af:commandImageLink text="Delete" id="cil7"
+                                                         actionListener="#{backingBeanScope.AddEditResourceMb.deleteResourceLine}"
+                                                         disabled="#{row.Wooperationresourceid !=null or row.Attribute1=='SUCCESS' ? true : false}"
+                                                         partialTriggers="it17 it8"/>
+                                 </af:column>
+                                 <af:column headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.Wooperationresourceid.label}"
+                                            id="c58" visible="false">
+                                    <af:outputText value="#{row.Wooperationresourceid}"
+                                                   id="ot7"/>
+                                 </af:column>
+                                 <af:column headerText="Interface response"
+                                            id="c59"
+                                            partialTriggers="cb40 cb420">
+                                    <af:outputText value="#{row.Attribute1}"
+                                                   id="ot8"
+                                                   partialTriggers="gil251"/>
+                                 </af:column>
+                                 <af:column headerText="Error Msg"
+                                            id="c60"
+                                            width="250"
+                                            partialTriggers="gil251">
+                                    <af:outputText value="#{row.Attribute2}"
+                                                   id="ot9"
+                                                   partialTriggers="gil251"/>
+                                 </af:column>
+                     <af:column headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute3.label}"
+                                id="c32" rendered="false">
+                        <af:outputText value="#{row.Attribute3}" id="ot2"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleDate.name}"
+                                sortable="false"
+                                headerText="Reschedule Date"
+                                id="c21" align="center" visible="false">
+                        <af:inputDate value="#{row.bindings.RescheduleDate.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleDate.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleDate.mandatory}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleDate.tooltip}"
+                                      id="id1">
+                           <f:validator binding="#{row.bindings.RescheduleDate.validator}"/>
+                           <af:convertDateTime pattern="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleDate.format}"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleReason.name}"
+                                sortable="false"
+                                headerText="Reschedule Reason"
+                                id="c8" width="200" visible="false">
+                        <af:inputText value="#{row.bindings.RescheduleReason.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleReason.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleReason.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleReason.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleReason.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.RescheduleReason.tooltip}"
+                                      id="it18">
+                           <f:validator binding="#{row.bindings.RescheduleReason.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute1.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute1.label}"
+                                id="c25" visible="false">
+                        <af:inputText value="#{row.bindings.Attribute1.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute1.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute1.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute1.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute1.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute1.tooltip}"
+                                      id="it9">
+                           <f:validator binding="#{row.bindings.Attribute1.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute2.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute2.label}"
+                                id="c15" visible="false">
+                        <af:inputText value="#{row.bindings.Attribute2.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute2.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute2.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute2.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute2.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.Attribute2.tooltip}"
+                                      id="it22">
+                           <f:validator binding="#{row.bindings.Attribute2.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.CreatedBy.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.CreatedBy.label}"
+                                id="c11" visible="false">
+                        <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.CreatedBy.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.CreatedBy.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.CreatedBy.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.CreatedBy.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.CreatedBy.tooltip}"
+                                      id="it11">
+                           <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.CreationDate.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.CreationDate.label}"
+                                id="c20" visible="false">
+                        <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.CreationDate.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.CreationDate.mandatory}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.CreationDate.tooltip}"
+                                      id="id2">
+                           <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                           <af:convertDateTime pattern="#{bindings.WoSchedulerTnxResource_VO1.hints.CreationDate.format}"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateDate.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateDate.label}"
+                                id="c7" visible="false">
+                        <af:inputDate value="#{row.bindings.LastUpdateDate.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateDate.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateDate.mandatory}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateDate.tooltip}"
+                                      id="id3">
+                           <f:validator binding="#{row.bindings.LastUpdateDate.validator}"/>
+                           <af:convertDateTime pattern="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateDate.format}"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateLogin.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateLogin.label}"
+                                id="c22" visible="false">
+                        <af:inputText value="#{row.bindings.LastUpdateLogin.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateLogin.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateLogin.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateLogin.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateLogin.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdateLogin.tooltip}"
+                                      id="it4">
+                           <f:validator binding="#{row.bindings.LastUpdateLogin.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdatedBy.name}"
+                                sortable="false"
+                                headerText="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdatedBy.label}"
+                                id="c12" visible="false">
+                        <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                                      label="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdatedBy.label}"
+                                      required="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdatedBy.mandatory}"
+                                      columns="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdatedBy.displayWidth}"
+                                      maximumLength="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdatedBy.precision}"
+                                      shortDesc="#{bindings.WoSchedulerTnxResource_VO1.hints.LastUpdatedBy.tooltip}"
+                                      id="it10">
+                           <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                  </af:table>
+               </af:panelCollection>
+            </af:panelBox>   
+         </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="footerStart"/>
+      <f:facet name="footer"/>
+      <f:facet name="footerEnd"/>
+      <f:facet name="startPanel"/>
+      <f:facet name="endPanel"/>
+      <f:facet name="headerStart"/>
+      <f:facet name="header"/>
+      <f:facet name="headerEnd"/>
+   
+   </af:pageTemplate>
+</jsp:root>

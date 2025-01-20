@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArSetup"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  LoadComponentsLazily="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+  </DesignTime>
+  <ViewUsage
+    Name="ArSetup_VO1"
+    ViewObjectName="model.VO.ArSetup_VO">
+    <ViewCriteriaUsage
+      Name="ArSetup_VOCriteria"
+      FullName="model.VO.ArSetup_VO.ArSetup_VOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="BV_setupId">
+        <TransientExpression><![CDATA[adf.context.pageFlowScope.setupid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="ArSetup_ROVO1"
+    ViewObjectName="model.ROVO.ArSetup_ROVO"/>
+</AppModule>

@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth"
+                             dimensionsFrom="auto">
+        <f:facet name="center">
+          <af:panelBox text="AR Setup" id="pb1" showHeader="ifNeeded"
+                       showDisclosure="false" styleClass="AFStrechWidth">
+            <f:facet name="toolbar">
+              <af:toolbar id="t1">
+                <af:commandButton text="Save" id="cb3"
+                                  action="#{ARSetup.onValidateFields}"/>
+                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                  text="Save" id="cb1"
+                                  action="#{ARSetup.onValidateFields}"
+                                  rendered="false"/>
+                <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                  text="Cancel" immediate="true" id="cb2"
+                                  action="goBack">
+                  <af:resetActionListener/>
+                </af:commandButton>
+              </af:toolbar>
+            </f:facet>
+            <af:panelFormLayout id="pfl1"
+                                styleClass="AFStrechWidth" rows="4"
+                                maxColumns="2">
+              <af:inputText value="#{bindings.ArSetupId.inputValue}"
+                            label="#{bindings.ArSetupId.hints.label}"
+                            required="#{bindings.ArSetupId.hints.mandatory}"
+                            columns="#{bindings.ArSetupId.hints.displayWidth}"
+                            maximumLength="#{bindings.ArSetupId.hints.precision}"
+                            shortDesc="#{bindings.ArSetupId.hints.tooltip}"
+                            id="it2" rendered="false">
+                <f:validator binding="#{bindings.ArSetupId.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.BusinessUnitId.inputValue}"
+                                  label="*#{bindings.BusinessUnitId.label}"
+                                  shortDesc="#{bindings.BusinessUnitId.hints.tooltip}"
+                                  id="soc6" rendered="true" autoSubmit="true"
+                                  contentStyle="width:200px">
+                <f:selectItems value="#{bindings.BusinessUnitId.items}"
+                               id="si8"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.LegalEntityId.inputValue}"
+                            label="#{bindings.LegalEntityId.hints.label}"
+                            required="#{bindings.LegalEntityId.hints.mandatory}"
+                            columns="#{bindings.LegalEntityId.hints.displayWidth}"
+                            maximumLength="#{bindings.LegalEntityId.hints.precision}"
+                            shortDesc="#{bindings.LegalEntityId.hints.tooltip}"
+                            id="it16" partialTriggers="soc6" visible="false">
+                <f:validator binding="#{bindings.LegalEntityId.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.ChargeType.inputValue}"
+                                  label="*#{bindings.ChargeType.label}"
+                                  shortDesc="#{bindings.ChargeType.hints.tooltip}"
+                                  id="soc2" contentStyle="width:200px">
+                <f:selectItems value="#{bindings.ChargeType.items}" id="si1"/>
+              </af:selectOneChoice>
+              <af:selectOneChoice value="#{bindings.Environment.inputValue}"
+                                  label="#{bindings.Environment.label}"
+                                  shortDesc="#{bindings.Environment.hints.tooltip}"
+                                  id="soc1"
+                                  contentStyle="width:200px" rendered="false">
+                <f:selectItems value="#{bindings.Environment.items}" id="si2"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.LedgerName.inputValue}"
+                            label="*#{bindings.LedgerName.hints.label}"
+                            columns="#{bindings.LedgerName.hints.displayWidth}"
+                            maximumLength="#{bindings.LedgerName.hints.precision}"
+                            shortDesc="#{bindings.LedgerName.hints.tooltip}"
+                            id="it7" partialTriggers="soc6"
+                            contentStyle="width:200px">
+                <f:validator binding="#{bindings.LedgerName.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.TxnType.inputValue}"
+                            label="*#{bindings.TxnType.hints.label}"
+                            columns="#{bindings.TxnType.hints.displayWidth}"
+                            maximumLength="#{bindings.TxnType.hints.precision}"
+                            shortDesc="#{bindings.TxnType.hints.tooltip}"
+                            id="it6" autoSubmit="true"
+                            contentStyle="width:200px">
+                <f:validator binding="#{bindings.TxnType.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.TxnSource.inputValue}"
+                            label="*#{bindings.TxnSource.hints.label}"
+                            columns="#{bindings.TxnSource.hints.displayWidth}"
+                            maximumLength="#{bindings.TxnSource.hints.precision}"
+                            shortDesc="#{bindings.TxnSource.hints.tooltip}"
+                            id="it5" autoSubmit="true"
+                            contentStyle="width:200px">
+                <f:validator binding="#{bindings.TxnSource.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ConcatenatedSegment.inputValue}"
+                            label="*#{bindings.ConcatenatedSegment.hints.label}"
+                            columns="#{bindings.ConcatenatedSegment.hints.displayWidth}"
+                            maximumLength="#{bindings.ConcatenatedSegment.hints.precision}"
+                            shortDesc="#{bindings.ConcatenatedSegment.hints.tooltip}"
+                            id="it10" contentStyle="width:200px">
+                <f:validator binding="#{bindings.ConcatenatedSegment.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.RevAccountId.inputValue}"
+                            label="*#{bindings.CodeCombId.hints.label}"
+                            columns="#{bindings.CodeCombId.hints.displayWidth}"
+                            maximumLength="#{bindings.CodeCombId.hints.precision}"
+                            shortDesc="#{bindings.CodeCombId.hints.tooltip}"
+                            id="it15" contentStyle="width:200px">
+                <f:validator binding="#{bindings.CodeCombId.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.CostCenterGlCode.inputValue}"
+                            label="#{bindings.CostCenterGlCode.hints.label}"
+                            columns="#{bindings.CostCenterGlCode.hints.displayWidth}"
+                            maximumLength="#{bindings.CostCenterGlCode.hints.precision}"
+                            shortDesc="#{bindings.CostCenterGlCode.hints.tooltip}"
+                            id="it11" rendered="false">
+                <f:validator binding="#{bindings.CostCenterGlCode.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.TypeId.inputValue}"
+                            label="#{bindings.TypeId.hints.label}"
+                            required="#{bindings.TypeId.hints.mandatory}"
+                            columns="#{bindings.TypeId.hints.displayWidth}"
+                            maximumLength="#{bindings.TypeId.hints.precision}"
+                            shortDesc="#{bindings.TypeId.hints.tooltip}"
+                            id="it4" rendered="false">
+                <f:validator binding="#{bindings.TypeId.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.CmTxnSource.inputValue}"
+                            label="#{bindings.CmTxnSource.hints.label}"
+                            required="#{bindings.CmTxnSource.hints.mandatory}"
+                            columns="#{bindings.CmTxnSource.hints.displayWidth}"
+                            maximumLength="#{bindings.CmTxnSource.hints.precision}"
+                            shortDesc="#{bindings.CmTxnSource.hints.tooltip}"
+                            id="it9" rendered="false">
+                <f:validator binding="#{bindings.CmTxnSource.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.InvoicingRule.inputValue}"
+                            label="*#{bindings.InvoicingRule.hints.label}"
+                            columns="#{bindings.InvoicingRule.hints.displayWidth}"
+                            maximumLength="#{bindings.InvoicingRule.hints.precision}"
+                            shortDesc="#{bindings.InvoicingRule.hints.tooltip}"
+                            id="it12" contentStyle="width:200px">
+                <f:validator binding="#{bindings.InvoicingRule.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.AccountingRuleName.inputValue}"
+                            label="*#{bindings.AccountingRuleName.hints.label}"
+                            columns="#{bindings.AccountingRuleName.hints.displayWidth}"
+                            maximumLength="#{bindings.AccountingRuleName.hints.precision}"
+                            shortDesc="#{bindings.AccountingRuleName.hints.tooltip}"
+                            id="it14" contentStyle="width:200px">
+                <f:validator binding="#{bindings.AccountingRuleName.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.AccountClass.inputValue}"
+                            label="*#{bindings.AccountClass.hints.label}"
+                            required="#{bindings.AccountClass.hints.mandatory}"
+                            columns="#{bindings.AccountClass.hints.displayWidth}"
+                            maximumLength="#{bindings.AccountClass.hints.precision}"
+                            shortDesc="#{bindings.AccountClass.hints.tooltip}"
+                            id="it17" contentStyle="width:200px">
+                <f:validator binding="#{bindings.AccountClass.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.IntercompanyGlCode.inputValue}"
+                            label="*#{bindings.IntercompanyGlCode.hints.label}"
+                            columns="#{bindings.IntercompanyGlCode.hints.displayWidth}"
+                            maximumLength="#{bindings.IntercompanyGlCode.hints.precision}"
+                            shortDesc="#{bindings.IntercompanyGlCode.hints.tooltip}"
+                            id="it13" contentStyle="width:200px">
+                <f:validator binding="#{bindings.IntercompanyGlCode.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.CmTxnType.inputValue}"
+                            label="#{bindings.CmTxnType.hints.label}"
+                            required="#{bindings.CmTxnType.hints.mandatory}"
+                            columns="#{bindings.CmTxnType.hints.displayWidth}"
+                            maximumLength="#{bindings.CmTxnType.hints.precision}"
+                            shortDesc="#{bindings.CmTxnType.hints.tooltip}"
+                            id="it8" rendered="false">
+                <f:validator binding="#{bindings.CmTxnType.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.CmTxnTypeId.inputValue}"
+                            label="#{bindings.CmTxnTypeId.hints.label}"
+                            required="#{bindings.CmTxnTypeId.hints.mandatory}"
+                            columns="#{bindings.CmTxnTypeId.hints.displayWidth}"
+                            maximumLength="#{bindings.CmTxnTypeId.hints.precision}"
+                            shortDesc="#{bindings.CmTxnTypeId.hints.tooltip}"
+                            id="it1" rendered="false">
+                <f:validator binding="#{bindings.CmTxnTypeId.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.CmTxnSourceId.inputValue}"
+                            label="#{bindings.CmTxnSourceId.hints.label}"
+                            required="#{bindings.CmTxnSourceId.hints.mandatory}"
+                            columns="#{bindings.CmTxnSourceId.hints.displayWidth}"
+                            maximumLength="#{bindings.CmTxnSourceId.hints.precision}"
+                            shortDesc="#{bindings.CmTxnSourceId.hints.tooltip}"
+                            id="it3" rendered="false">
+                <f:validator binding="#{bindings.CmTxnSourceId.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:panelBox>
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

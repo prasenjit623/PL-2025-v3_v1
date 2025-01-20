@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SearchWoSchedulerTnx_RoVo"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.SearchWoSchedulerTnx_RoVo_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByTransStatus"
+      FullName="model.ROVO.Lookup_View_ROVO.findByTransStatus"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT 
+    XXPM_WO_SCHEDULING_MAIN_HDR.WO_SCH_MAIN_HDR_ID WO_SCH_MAIN_HDR_ID, 
+    XXPM_WO_SCHEDULING_MAIN_HDR.WO_SCH_MAIN_HDR_NO WO_SCH_MAIN_HDR_NO, 
+(select tnx.SC_WO_TNX_ID from xxpm_scheduler_tnx tnx where tnx.WO_SCH_MAIN_HDR_ID=XXPM_WO_SCHEDULING_MAIN_HDR.WO_SCH_MAIN_HDR_ID and rownum=1) as SC_WO_TNX_ID,
+    XXPM_WO_SCHEDULING_MAIN_HDR.STATUS STATUS, 
+    XXPM_WO_SCHEDULING_MAIN_HDR.CREATED_BY CREATED_BY, 
+    XXPM_WO_SCHEDULING_MAIN_HDR.CREATION_DATE CREATION_DATE, 
+    XXPM_WO_SCHEDULING_MAIN_HDR.LAST_UPDATED_BY LAST_UPDATED_BY, 
+    XXPM_WO_SCHEDULING_MAIN_HDR.LAST_UPDATE_DATE LAST_UPDATE_DATE,
+    XXPM_WO_SCHEDULING_MAIN_HDR.INTERFACE_STATUS INTERFACE_STATUS,
+(select tnx.RELEASED_DATE from xxpm_scheduler_tnx tnx where tnx.WO_SCH_MAIN_HDR_ID=XXPM_WO_SCHEDULING_MAIN_HDR.WO_SCH_MAIN_HDR_ID and rownum=1) as RELEASED_DATE
+FROM 
+    XXPM_WO_SCHEDULING_MAIN_HDR
+order by XXPM_WO_SCHEDULING_MAIN_HDR.WO_SCH_MAIN_HDR_ID desc]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="WoSchMainHdrId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="WO_SCH_MAIN_HDR_ID"
+    Expression="WO_SCH_MAIN_HDR_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WoSchMainHdrNo"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="WO_SCH_MAIN_HDR_NO"
+    Expression="WO_SCH_MAIN_HDR_NO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchWoSchedulerTnx_RoVo.WoSchMainHdrNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ScWoTnxId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="SC_WO_TNX_ID"
+    Expression="SC_WO_TNX_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS"
+    Expression="STATUS"
+    SQLType="VARCHAR"
+    LOVName="LOV_Status">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CREATED_BY"
+    Expression="CREATED_BY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreationDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="CREATION_DATE"
+    Expression="CREATION_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchWoSchedulerTnx_RoVo.CreationDate_LABEL"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LAST_UPDATED_BY"
+    Expression="LAST_UPDATED_BY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="LAST_UPDATE_DATE"
+    Expression="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="InterfaceStatus"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INTERFACE_STATUS"
+    Expression="INTERFACE_STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchWoSchedulerTnx_RoVo.InterfaceStatus_LABEL"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReleasedDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="RELEASED_DATE"
+    Expression="RELEASED_DATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.ROVO.SearchWoSchedulerTnx_RoVo.ReleasedDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.ROVO.SearchWoSchedulerTnx_RoVo.ReleasedDate_FMT_FORMAT"/>
+        <LABEL
+          ResId="model.ROVO.SearchWoSchedulerTnx_RoVo.ReleasedDate_LABEL"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="Search"
+    ViewObjectName="model.ROVO.SearchWoSchedulerTnx_RoVo"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow956"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="WoSchMainHdrNo"
+        ViewAttribute="WoSchMainHdrNo"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Status"
+        ViewAttribute="Status"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CreationDate"
+        ViewAttribute="CreationDate"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="InterfaceStatus"
+        ViewAttribute="InterfaceStatus"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ReleasedDate"
+        ViewAttribute="ReleasedDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="WoSchMainHdrId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

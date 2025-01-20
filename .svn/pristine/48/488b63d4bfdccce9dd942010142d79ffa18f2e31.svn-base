@@ -1,0 +1,2016 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout id="pgl1">
+        <af:panelGridLayout id="pgl3">
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+            <af:gridCell marginStart="5px" width="20%" marginEnd="5px" id="gc1"
+                         rendered="true">
+              <af:outputText value="Manage Contracts" id="ot1"
+                             inlineStyle="font-size:large; font-weight:bold;"/>
+            </af:gridCell>
+            <af:gridCell id="gc2" halign="end" width="80px" marginStart="5px"
+                         marginEnd="5px">
+              <af:panelGroupLayout id="pgl5" layout="horizontal"
+                                   styleClass="AFStretchWidth">
+                <af:menuBar id="mb1"
+                visible="#{sessionScope.grantMap.LeaseAgreement =='F' and bindings.Status.inputValue=='APR' and bindings.TenanctStatus.inputValue ne 'TERM'}">
+                <af:menu text="Cancellation" id="m2">
+           <af:commandMenuItem text="Create Cancellation" id="cmi101"
+                               disabled="#{bindings.Attribute6.inputValue eq 'Success'}">
+           <af:showPopupBehavior popupId="p3" triggerType="action"/>
+           </af:commandMenuItem>
+           </af:menu>
+                <af:menu text="Renewal/Short-Renewal Offer" id="m1">
+           <af:commandMenuItem text="Renewal Offer" id="cmi10"
+                               disabled="#{bindings.Attribute5.inputValue eq 'Success'}">
+           <af:showPopupBehavior popupId="p5" triggerType="action"/>
+           </af:commandMenuItem>
+           <af:commandMenuItem text="Short Renewal Offer" id="cmi11"
+                               disabled="#{bindings.Attribute5.inputValue eq 'Success'}">
+           <af:showPopupBehavior popupId="p6" triggerType="action"/>
+           </af:commandMenuItem>
+           </af:menu>
+           <af:popup id="p3" contentDelivery="lazyUncached">
+                <af:dialog id="d31" type="none" title="Create Cancellation" contentWidth="200">                
+                <f:facet name="buttonBar">                  
+                    <af:group id="g301">
+                      <af:commandButton text="Ok" id="cb501"
+                                        actionListener="#{LeaseAgreement.doCancellation}"
+                                        action="goBack">
+                          </af:commandButton>
+                      <af:commandButton text="Cancel" id="cb601"/>
+                    </af:group>
+                  </f:facet>
+                </af:dialog>
+              </af:popup>
+           <af:popup id="p5" contentDelivery="lazyUncached">
+                <af:dialog id="d5" type="none" title="Renewal Offer" contentWidth="200">                
+                <f:facet name="buttonBar">                  
+                    <af:group id="g30">
+                      <af:commandButton text="Ok" id="cb50"
+                                        actionListener="#{LeaseAgreement.doRenewalOffer}"
+                                        action="goBack">
+                            <af:setPropertyListener from="R" to="#{pageFlowScope.RenewalOrShort}" type="action"/>
+                          </af:commandButton>
+                      <af:commandButton text="Cancel" id="cb60"/>
+                    </af:group>
+                  </f:facet>
+                </af:dialog>
+              </af:popup>
+              <af:popup id="p6" contentDelivery="lazyUncached">
+                <af:dialog id="d6" type="none" title="Short Renewal Offer" contentWidth="200">                
+                <f:facet name="buttonBar">                  
+                    <af:group id="g31">
+                      <af:commandButton text="Ok" id="cb51"
+                                        actionListener="#{LeaseAgreement.doRenewalOffer}"
+                                        action="goBack">
+                        <af:setPropertyListener from="S" to="#{pageFlowScope.RenewalOrShort}" type="action"/>
+                        </af:commandButton>
+                      <af:commandButton text="Cancel" id="cb61"/>
+                    </af:group>
+                  </f:facet>
+                </af:dialog>
+              </af:popup>
+           </af:menuBar>
+                <af:commandButton text="Attachment" id="cb2"
+                                  actionListener="#{LeaseAgreement.onClickAttachments}"
+                                  action="attachments"
+                                  inlineStyle="margin-right:10px;"
+                                  disabled="#{bindings.LeaseNumber.inputValue ==null}"
+                                  partialTriggers="cb5 cb6 it4"/>
+                <af:commandButton text="Check List" id="cb7" action="CheckList"
+                                  actionListener="#{LeaseAgreement.onClickChecklist}"
+                                  inlineStyle="margin-right:10px;"
+                                  disabled="#{bindings.LeaseNumber.inputValue ==null}"
+                                  partialTriggers="cb5 cb6 it4"
+                                  visible="#{sessionScope.grantMap.LeaseAgreement =='F' and bindings.Status.inputValue=='DRA'}"/>
+                <af:commandButton text="Approve" id="cb12" immediate="true"
+                                  inlineStyle="margin-right:10px;"
+                                  visible="#{LeaseAgreement.approvalUser}"
+                                  actionListener="#{LeaseAgreement.onInvokeAppOrrejec}">
+                  <af:setPropertyListener from="#{'Approval'}"
+                                          to="#{pageFlowScope.Action}"
+                                          type="action"/>
+                </af:commandButton>
+                <af:commandButton text="Reject" id="cb13" immediate="true"
+                                  inlineStyle="margin-right:10px;"
+                                  actionListener="#{LeaseAgreement.onInvokeAppOrrejec}"
+                                  visible="#{LeaseAgreement.approvalUser}">
+                  <af:setPropertyListener from="#{'Rejection'}"
+                                          to="#{pageFlowScope.Action}"
+                                          type="action"/>
+                </af:commandButton>
+                <af:commandButton text="Save" id="cb5"
+                                  actionListener="#{LeaseAgreement.onClickSave}"
+                                  inlineStyle="margin-right:10px;"
+                                  visible="#{sessionScope.userId eq '15' ? 'true' : sessionScope.grantMap.LeaseAgreement =='F' and bindings.Status.inputValue=='DRA' ? 'true' : 'false'}">
+                   <af:setPropertyListener from="#{sessionScope.userName}"
+                                  to="#{bindings.LastUpdatedBy.inputValue}"
+                                  type="action"/>
+                </af:commandButton>
+                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                  text="Save" id="cb3"
+                                  inlineStyle="margin-right:10px;"
+                                  rendered="false"/>
+                <af:commandButton text="Save and Close" id="cb6" action="goBack"
+                                  actionListener="#{LeaseAgreement.onClickSave}"
+                                  inlineStyle="margin-right:10px;"
+                                  visible="#{sessionScope.grantMap.LeaseAgreement =='F' and bindings.Status.inputValue=='DRA'}">
+                    <af:setPropertyListener from="#{sessionScope.userName}"
+                                  to="#{bindings.LastUpdatedBy.inputValue}"
+                                  type="action"/>
+                </af:commandButton>
+                <af:commandButton text="Submit" id="cb11"
+                                  inlineStyle="margin-right:10px;"
+                                  action="goBack"
+                                  actionListener="#{LeaseAgreement.onClickSubmit}"
+                                  visible="#{sessionScope.grantMap.LeaseAgreement =='F' and bindings.Status.inputValue=='DRA' and bindings.LeaseNumber.inputValue ne null}">
+                     <af:setPropertyListener from="#{sessionScope.userName}"
+                                  to="#{bindings.LastUpdatedBy.inputValue}"
+                                  type="action"/>
+                </af:commandButton>
+                <af:commandButton text="Approval Details" id="cb16"
+                                  visible="#{sessionScope.grantMap.LeaseAgreement =='F' and (bindings.Status.inputValue!='DRA') }"
+                                  inlineStyle="margin-right:10px;">
+                  <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                </af:commandButton>
+                <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                  text="Cancel" immediate="true" id="cb4"
+                                  action="goBack"
+                                  inlineStyle="margin-right:10px;">
+                  <af:resetActionListener/>
+                </af:commandButton>
+                <af:goImageLink id="gil1" icon="/images/func_print_16_act.png"
+                                targetFrame="_blank"
+                                destination="#{sessionScope.LA}"
+                                visible="#{sessionScope.grantMap.LeaseAgreement =='F' || sessionScope.LeaseAgreement.Offer =='V'}"
+                                text="Print" inlineStyle="margin-right:10px;"
+                                rendered="#{bindings.OrgId.inputValue=='300000001937026'}"/>
+                <af:goImageLink text="Print" id="gil3"
+                                icon="/images/func_print_16_act.png"
+                                inlineStyle="margin-right:10px;"
+                                destination="#{sessionScope.LAD}"
+                                targetFrame="_blank"
+                                rendered="#{bindings.OrgId.inputValue=='300000001937102'}"/>
+                <af:commandButton text="Print" id="cb9"
+                                  inlineStyle="margin-right:10px;"
+                                  visible="#{sessionScope.grantMap.LeaseAgreement =='F' || sessionScope.grantMap.LeaseAgreement =='V' and bindings.Status.inputValue=='APR'}"
+                                  rendered="false">
+                  <af:fileDownloadActionListener contentType="application/pdf"
+                                                 filename="Tenancy Contract.pdf"
+                                                 method="#{LeaseAgreement.onClickPDFReport}"/>
+                </af:commandButton>
+                <af:popup id="p2" binding="#{LeaseAgreement.popup3}">
+                  <af:dialog id="d2" type="none"
+                             title="Reason for #{pageFlowScope.Action}">
+                    <f:facet name="buttonBar">
+                      <af:toolbar id="t11" flex="1">
+                        <af:spacer width="220" height="10" id="s11"/>
+                        <af:commandButton text="Save" id="commandButton1"
+                                          actionListener="#{LeaseAgreement.onclickAppOrRej}"
+                                          action="goBack"/>
+                        <af:spacer width="10" height="10" id="s10"/>
+                        <af:commandButton text="Cancel" id="cb14"/>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:inputText label="Reason" id="it16" rows="5"
+                                  binding="#{LeaseAgreement.reason}"
+                                  columns="50" autoSubmit="true"/>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="p1">
+                  <af:dialog id="d1" inlineStyle="width:80.0%;"
+                             title="Approval Work Flow History">
+                        <f:facet name="buttonBar">
+                    <!--to save to handle integr response-->
+                        <af:toolbar id="t111" flex="1" visible="#{sessionScope.userId eq '100' and bindings.IntegrationResponse.inputValue ne null}">
+                          <af:spacer width="220" height="10" id="s1101"/>
+                          <!--to save to handle integr response-->
+                  <af:commandButton text="Ok" id="cb709"
+                                             partialSubmit="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{LeaseAgreement.doHandleIntgrResponse}">
+                              </af:commandButton>
+                          <af:spacer width="10" height="10" id="s1051"/>
+                          <af:commandButton text="Cancel" id="commandButton31"/>
+                        </af:toolbar>
+                      </f:facet>
+                    <af:table value="#{bindings.getApprovalHistoryROVo1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.getApprovalHistoryROVo1.rangeSize}"
+                              emptyText="#{bindings.getApprovalHistoryROVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.getApprovalHistoryROVo1.rangeSize}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.getApprovalHistoryROVo1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.getApprovalHistoryROVo1.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t12" varStatus="vs"
+                              inlineStyle="width:inherit;">
+                      <af:column id="c80" headerText="S.No" width="50"
+                                 align="center">
+                        <af:outputText value="#{vs.index+1}" id="ot34"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.label}"
+                                 id="c78" width="200">
+                        <af:selectOneChoice value="#{row.bindings.ApproverId.inputValue}"
+                                            label="#{row.bindings.ApproverId.label}"
+                                            required="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.mandatory}"
+                                            shortDesc="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.tooltip}"
+                                            id="soc27" autoSubmit="true"
+                                            readOnly="true">
+                          <f:selectItems value="#{row.bindings.ApproverId.items}"
+                                         id="si25"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.ActionDate.name}"
+                                 sortable="false"
+                                 headerText="Approved Date"
+                                 id="c75">
+                        <af:inputDate value="#{row.bindings.ActionDate.inputValue}"
+                                      label="#{bindings.getApprovalHistoryROVo1.hints.ActionDate.label}"
+                                      required="#{bindings.getApprovalHistoryROVo1.hints.ActionDate.mandatory}"
+                                      shortDesc="#{bindings.getApprovalHistoryROVo1.hints.ActionDate.tooltip}"
+                                      id="id7" readOnly="true">
+                          <f:validator binding="#{row.bindings.ActionDate.validator}"/>
+                          <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                      </af:column>
+                      <af:column headerText="#{bindings.getApprovalHistoryROVo1.hints.SubmittedByTrans.label}"
+                                 id="c95">
+                        <af:outputText value="#{row.SubmittedByTrans}"
+                                       id="ot36"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.Status.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.getApprovalHistoryROVo1.hints.Status.label}"
+                                 id="c76">
+                        <af:inputText value="#{row.bindings.Status.inputValue}"
+                                      label="#{bindings.getApprovalHistoryROVo1.hints.Status.label}"
+                                      required="#{bindings.getApprovalHistoryROVo1.hints.Status.mandatory}"
+                                      columns="#{bindings.getApprovalHistoryROVo1.hints.Status.displayWidth}"
+                                      maximumLength="#{bindings.getApprovalHistoryROVo1.hints.Status.precision}"
+                                      shortDesc="#{bindings.getApprovalHistoryROVo1.hints.Status.tooltip}"
+                                      id="it25" readOnly="true">
+                          <f:validator binding="#{row.bindings.Status.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.Description.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.getApprovalHistoryROVo1.hints.Description.label}"
+                                 id="c77" width="200">
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      label="#{bindings.getApprovalHistoryROVo1.hints.Description.label}"
+                                      required="#{bindings.getApprovalHistoryROVo1.hints.Description.mandatory}"
+                                      columns="#{bindings.getApprovalHistoryROVo1.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.getApprovalHistoryROVo1.hints.Description.precision}"
+                                      shortDesc="#{bindings.getApprovalHistoryROVo1.hints.Description.tooltip}"
+                                      id="it23" readOnly="true">
+                          <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                    </af:table>
+                  </af:dialog>
+                </af:popup>
+                <af:commandButton text="commandButton 1" id="cb17"
+                                  action="#{LeaseAgreement.checkingMethod}"
+                                  rendered="false"/>
+              </af:panelGroupLayout>
+            </af:gridCell>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:spacer width="10" height="10" id="s2"/>
+        <af:panelGroupLayout id="pgl2" layout="vertical" rendered="false"/>
+        <af:panelTabbed position="above" id="pt2" styleClass="AFStretchWidth"
+                        inlineStyle="height:1100.0px">
+          <af:showDetailItem id="tab1" text="Contracts">
+            <af:panelGroupLayout id="pgl4" layout="scroll">
+              <af:panelBox text="Contracts" id="pb1"
+                           showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl8" layout="horizontal">
+                  <af:panelGroupLayout id="pgl6" rendered="false">
+                    <af:spacer width="10" height="10" id="s3"/>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl7" rendered="false">
+                    <af:spacer width="10" height="10" id="s4"/>
+                  </af:panelGroupLayout>
+                  <af:panelFormLayout id="pfl1" rows="2" maxColumns="3"
+                                      labelWidth="250">
+                    <f:facet name="footer"/>
+                    <af:inputText value="#{bindings.LeaseNumber.inputValue}"
+                                  label="#{bindings.LeaseNumber.hints.label}"
+                                  required="#{bindings.LeaseNumber.hints.mandatory}"
+                                  columns="#{bindings.LeaseNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.LeaseNumber.hints.precision}"
+                                  shortDesc="#{bindings.LeaseNumber.hints.tooltip}"
+                                  id="it4"
+                                  contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;"
+                                  readOnly="true" partialTriggers="cb6 cb5">
+                      <f:validator binding="#{bindings.LeaseNumber.validator}"/>
+                    </af:inputText>
+                    <af:inputComboboxListOfValues id="recommendationIdTransId"
+                                                  popupTitle="Search and Select: #{bindings.RecommendationIdTrans.hints.label}"
+                                                  value="#{bindings.RecommendationIdTrans.inputValue}"
+                                                  label="Payments &amp; Documents No"
+                                                  model="#{bindings.RecommendationIdTrans.listOfValuesModel}"
+                                                  required="#{bindings.RecommendationIdTrans.hints.mandatory}"
+                                                  columns="#{bindings.RecommendationIdTrans.hints.displayWidth}"
+                                                  shortDesc="#{bindings.RecommendationIdTrans.hints.tooltip}"
+                                                  autoSubmit="true"
+                                                  readOnly="#{bindings.Status.inputValue!='DRA'}"
+                                                  rendered="#{bindings.Status.inputValue!='APR'}"
+                                                  valueChangeListener="#{LeaseAgreement.onClickRecommendationid}"
+                                                  contentStyle="width:160px">
+                      <f:validator binding="#{bindings.RecommendationIdTrans.validator}"/>
+					  <af:autoSuggestBehavior suggestItems="#{bindings.RecommendationIdTrans.suggestItems}"
+                                              maxSuggestedItems="3"/>
+                    </af:inputComboboxListOfValues>
+                    <af:selectOneChoice value="#{bindings.RecommendId.inputValue}"
+                                        label="#{bindings.RecommendId.label}"
+                                        required="#{bindings.RecommendId.hints.mandatory}"
+                                        shortDesc="#{bindings.RecommendId.hints.tooltip}"
+                                        id="soc10"
+                                        contentStyle="width:200px"
+                                        rendered="#{bindings.Status.inputValue=='APR'}" autoSubmit="true"
+                                         disabled="true">
+                      <f:selectItems value="#{bindings.RecommendId.items}"
+                                     id="si10"/>
+                    </af:selectOneChoice>
+                    <af:selectOneChoice value="#{bindings.BookingId.inputValue}"
+                                        label="#{bindings.BookingId.label}"
+                                        required="#{bindings.BookingId.hints.mandatory}"
+                                        shortDesc="#{bindings.BookingId.hints.tooltip}"
+                                        id="soc17" contentStyle="width:200px"
+                                        partialTriggers="soc10 recommendationIdTransId"
+                                        autoSubmit="true" disabled="true">
+                      <f:selectItems value="#{bindings.BookingId.items}"
+                                     id="si1"/>
+                    </af:selectOneChoice>
+                   
+                    <af:inputText value="#{bindings.TenancyConDocNo.inputValue}"
+                                  label="#{bindings.TenancyConDocNo.hints.label}"
+                                  columns="#{bindings.TenancyConDocNo.hints.displayWidth}"
+                                  maximumLength="#{bindings.TenancyConDocNo.hints.precision}"
+                                  shortDesc="#{bindings.TenancyConDocNo.hints.tooltip}"
+                                  id="it3"
+                                  contentStyle="width:200px" required="true"
+                                  showRequired="true"
+                                  disabled="#{sessionScope.userId eq '15' ? 'false' : bindings.Status.inputValue ne 'DRA' and bindings.Status.inputValue ne 'REV' ? 'true' : 'false'}">
+                      <f:validator binding="#{bindings.TenancyConDocNo.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Customer.inputValue}"
+                                  label="#{bindings.Customer.hints.label}"
+                                  required="#{bindings.Customer.hints.mandatory}"
+                                  columns="#{bindings.Customer.hints.displayWidth}"
+                                  maximumLength="#{bindings.Customer.hints.precision}"
+                                  shortDesc="#{bindings.Customer.hints.tooltip}"
+                                  id="it5" readOnly="true"
+                                  partialTriggers="soc10 recommendationIdTransId"
+                                  rendered="true" autoSubmit="true">
+                      <f:validator binding="#{bindings.Customer.validator}"/>
+                    </af:inputText>
+                    <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                                        label="#{bindings.Status.label}"
+                                        required="#{bindings.Status.hints.mandatory}"
+                                        shortDesc="#{bindings.Status.hints.tooltip}"
+                                        id="soc11" contentStyle="width:200px"
+                                        disabled="true">
+                      <f:selectItems value="#{bindings.Status.items}"
+                                     id="si11"/>
+                    </af:selectOneChoice>
+                    <af:inputDate value="#{bindings.LeaseStartDate.inputValue}"
+                                  label="#{bindings.LeaseStartDate.hints.label}"
+                                  required="#{bindings.LeaseStartDate.hints.mandatory}"
+                                  shortDesc="#{bindings.LeaseStartDate.hints.tooltip}"
+                                  id="id1" partialTriggers="soc17"
+                                  autoSubmit="true" readOnly="true">
+                      <f:validator binding="#{bindings.LeaseStartDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.LeaseEndDate.inputValue}"
+                                  label="#{bindings.LeaseEndDate.hints.label}"
+                                  required="#{bindings.LeaseEndDate.hints.mandatory}"
+                                  shortDesc="#{bindings.LeaseEndDate.hints.tooltip}"
+                                  id="id4" partialTriggers="soc17"
+                                  autoSubmit="true" readOnly="true">
+                      <f:validator binding="#{bindings.LeaseEndDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:inputDate>
+                    <af:selectOneChoice value="#{bindings.TaxCode.inputValue}"
+                                        label="#{bindings.TaxCode.label}"
+                                        required="#{bindings.TaxCode.hints.mandatory}"
+                                        shortDesc="#{bindings.TaxCode.hints.tooltip}"
+                                        id="soc20" autoSubmit="true"
+                                        partialTriggers="soc17"
+                                        contentStyle="width:200px"
+                                        readOnly="true">
+                      <f:selectItems value="#{bindings.TaxCode.items}"
+                                     id="si21"/>
+                    </af:selectOneChoice>
+                    <af:selectOneChoice value="#{bindings.PurposeOfRent.inputValue}"
+                                        label="#{bindings.PurposeOfRent.label}"
+                                        required="#{bindings.PurposeOfRent.hints.mandatory}"
+                                        shortDesc="#{bindings.PurposeOfRent.hints.tooltip}"
+                                        id="soc29" autoSubmit="true"
+                                        contentStyle="width:200px"
+                                        disabled="#{bindings.Status.inputValue ne 'DRA' and sessionScope.userId != '15'}">
+                      <f:selectItems value="#{bindings.PurposeOfRent.items}"
+                                     id="si29"/>
+                    </af:selectOneChoice>
+                    <af:selectOneChoice value="#{bindings.ResidentialDetails.inputValue}"
+                                        label="#{bindings.ResidentialDetails.label}"
+                                        required="#{bindings.ResidentialDetails.hints.mandatory}"
+                                        shortDesc="#{bindings.ResidentialDetails.hints.tooltip}"
+                                        id="soc23" contentStyle="width:160px"
+                                        autoSubmit="true"
+                                        disabled="#{bindings.Status.inputValue ne 'DRA' and sessionScope.userId != '15'}">
+                      <f:selectItems value="#{bindings.ResidentialDetails.items}"
+                                     id="si23"/>
+                    </af:selectOneChoice>
+                    <af:inputText value="#{bindings.NoOfYears.inputValue}"
+                                  label="#{bindings.NoOfYears.hints.label}"
+                                  required="#{bindings.NoOfYears.hints.mandatory}"
+                                  columns="#{bindings.NoOfYears.hints.displayWidth}"
+                                  maximumLength="#{bindings.NoOfYears.hints.precision}"
+                                  shortDesc="#{bindings.NoOfYears.hints.tooltip}"
+                                  id="it21" autoSubmit="true"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{bindings.NoOfYears.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Trans_LeaseNumber.inputValue}"
+                                  label="#{bindings.Trans_LeaseNumber.hints.label}"
+                                  required="#{bindings.Trans_LeaseNumber.hints.mandatory}"
+                                  columns="#{bindings.Trans_LeaseNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.Trans_LeaseNumber.hints.precision}"
+                                  shortDesc="#{bindings.Trans_LeaseNumber.hints.tooltip}"
+                                  id="it26" disabled="true"
+                                  partialTriggers="soc17" autoSubmit="true">
+                      <f:validator binding="#{bindings.Trans_LeaseNumber.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.TotalInWords.inputValue}"
+                                  label="Amount in words (Arabic)"
+                                  required="#{bindings.TotalInWords.hints.mandatory}"
+                                  columns="#{bindings.TotalInWords.hints.displayWidth}"
+                                  maximumLength="#{bindings.TotalInWords.hints.precision}"
+                                  shortDesc="#{bindings.TotalInWords.hints.tooltip}"
+                                  id="it27" autoSubmit="true"
+                                  contentStyle="width:200px" rows="2"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  sessionScope.userId != '15'}">
+                      <f:validator binding="#{bindings.TotalInWords.validator}"/>
+                    </af:inputText>
+                  </af:panelFormLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:spacer width="10" height="10" id="s6"/>
+              <af:panelBox text="Booking Details" id="pb4"
+                           showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:panelCollection id="pc3" featuresOff="detach"
+                                    styleClass="AFStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.BookingDetail_VO2.collectionModel}"
+                            var="row"
+                            rows="#{bindings.BookingDetail_VO2.rangeSize}"
+                            emptyText="#{bindings.BookingDetail_VO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.BookingDetail_VO2.rangeSize}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.BookingDetail_VO2.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.BookingDetail_VO2.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t3" varStatus="vs"
+                            columnStretching="column:c35" scrollPolicy="page"
+                            autoHeightRows="0"
+                            partialTriggers=":::soc10 :::recommendationIdTransId">
+                    <af:column id="c21" headerText="S.No" align="center"
+                               width="80">
+                      <af:outputText value="#{vs.index+1}" id="ot22"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.BookingDetail_VO2.hints.PropertyName_Trans.label}"
+                               id="c14" width="150" align="center">
+                      <af:outputText value="#{row.PropertyName_Trans}"
+                                     id="ot58"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.BookingDetail_VO2.hints.BuildingName_Trans.label}"
+                               id="c18" width="150" align="center">
+                      <af:outputText value="#{row.BuildingName_Trans}"
+                                     id="ot59"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.BookingDetail_VO2.hints.UnitName_Trans.label}"
+                               id="c29" width="150" align="center">
+                      <af:outputText value="#{row.UnitName_Trans}" id="ot60"/>
+                    </af:column>
+                    <af:column headerText="Lease Unit Mapping"
+                               id="c96"
+                               rendered="#{bindings.LeaseUnitMapTrans.inputValue ne null ? 'true' : 'false'}"
+                               align="center">
+                      <af:selectOneChoice value="#{row.bindings.LeaseUnitMapTrans.inputValue}"
+                                          label="#{row.bindings.LeaseUnitMapTrans.label}"
+                                          required="#{bindings.BookingDetail_VO2.hints.LeaseUnitMapTrans.mandatory}"
+                                          shortDesc="#{bindings.BookingDetail_VO2.hints.LeaseUnitMapTrans.tooltip}"
+                                          id="soc34">
+                        <f:selectItems value="#{row.bindings.LeaseUnitMapTrans.items}"
+                                       id="si34"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="Model" id="c97" align="center">
+                      <af:selectOneChoice value="#{row.bindings.UnitTypeTrans.inputValue}"
+                                          label="#{row.bindings.UnitTypeTrans.label}"
+                                          required="#{bindings.BookingDetail_VO2.hints.UnitTypeTrans.mandatory}"
+                                          shortDesc="#{bindings.BookingDetail_VO2.hints.UnitTypeTrans.tooltip}"
+                                          id="soc35" readOnly="true">
+                        <f:selectItems value="#{row.bindings.UnitTypeTrans.items}"
+                                       id="si35"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="Tenancy Contract Value"
+                               id="c125" align="center" visible="false">
+                      <af:outputText value="#{row.OldContractValue_Trans}"  id="ot68">
+                      <af:convertNumber groupingUsed="true"
+                                          pattern="#{SessionScope.NumberFormat}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="Tenancy Contract Value"
+                               id="c128"  align="center">
+                      <af:outputText value="#{row.Attribute5}" id="ot70">
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.BookingDetail_VO2.hints.SetRentPerAnnum.label}"
+                               id="c119" align="center">
+                      <af:outputText value="#{row.SetRentPerAnnum}" id="ot52"/>
+                    </af:column>
+                    <af:column headerText="Rental Amount"
+                               id="c93" align="center">
+                      <af:outputText value="#{row.BaseRate}" id="ot50">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.BookingDetail_VO2.hints.BaseRate.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.name}"
+                               sortable="false"
+                               headerText="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.label}"
+                               id="c30" align="center">
+                      <af:outputText value="#{row.MunicipalityCharges}"
+                                     id="ot20"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.MunicipalityPercentage.name}"
+                               sortable="false"
+                               headerText="#{bindings.BookingDetail_VO2.hints.MunicipalityPercentage.label}"
+                               id="c67" align="center">
+                      <af:selectOneChoice value="#{row.bindings.MunicipalityPercentage.inputValue}"
+                                          label="#{row.bindings.MunicipalityPercentage.label}"
+                                          required="#{bindings.BookingDetail_VO2.hints.MunicipalityPercentage.mandatory}"
+                                          shortDesc="#{bindings.BookingDetail_VO2.hints.MunicipalityPercentage.tooltip}"
+                                          id="soc22" autoSubmit="true"
+                                          readOnly="true">
+                        <f:selectItems value="#{row.bindings.MunicipalityPercentage.items}"
+                                       id="si22"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.SecurityDeposite.name}"
+                               sortable="false"
+                               headerText="#{bindings.BookingDetail_VO2.hints.SecurityDeposite.label}"
+                               id="c28" align="center">
+                      <af:outputText value="#{row.SecurityDeposite}" id="ot29"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.name}"
+                               sortable="false"
+                               headerText="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.label}"
+                               id="c62" align="center">
+                      <af:inputText value="#{row.bindings.ThirdPartyServCharge.inputValue}"
+                                    label="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.label}"
+                                    required="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.mandatory}"
+                                    columns="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.displayWidth}"
+                                    maximumLength="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.precision}"
+                                    shortDesc="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.tooltip}"
+                                    id="it17" readOnly="true">
+                        <f:validator binding="#{row.bindings.ThirdPartyServCharge.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.name}"
+                               sortable="false"
+                               headerText="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.label}"
+                               id="c73" align="center">
+                      <af:inputText value="#{row.bindings.OtherGovntChargeNew.inputValue}"
+                                    label="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.label}"
+                                    required="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.mandatory}"
+                                    columns="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.displayWidth}"
+                                    maximumLength="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.precision}"
+                                    shortDesc="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.tooltip}"
+                                    id="it14" readOnly="true">
+                        <f:validator binding="#{row.bindings.OtherGovntChargeNew.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.name}"
+                               sortable="false"
+                               headerText="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.label}"
+                               id="c64" align="center">
+                      <af:inputText value="#{row.bindings.OtherGovntChargeRnew.inputValue}"
+                                    label="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.label}"
+                                    required="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.mandatory}"
+                                    columns="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.displayWidth}"
+                                    maximumLength="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.precision}"
+                                    shortDesc="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.tooltip}"
+                                    id="it19" readOnly="true">
+                        <f:validator binding="#{row.bindings.OtherGovntChargeRnew.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.name}"
+                               sortable="false"
+                               headerText="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.label}"
+                               id="c69" align="center">
+                      <af:inputText value="#{row.bindings.EjariPaymentCharge.inputValue}"
+                                    label="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.label}"
+                                    required="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.mandatory}"
+                                    columns="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.displayWidth}"
+                                    maximumLength="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.precision}"
+                                    shortDesc="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.tooltip}"
+                                    id="it18" readOnly="true">
+                        <f:validator binding="#{row.bindings.EjariPaymentCharge.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.BookingDetail_VO2.hints.DiscountRate.label}"
+                               id="c111" align="center" visible="false">
+                      <af:selectOneChoice value="#{row.bindings.DiscountRate.inputValue}"
+                                          label="#{row.bindings.DiscountRate.label}"
+                                          required="#{bindings.BookingDetail_VO2.hints.DiscountRate.mandatory}"
+                                          shortDesc="#{bindings.BookingDetail_VO2.hints.DiscountRate.tooltip}"
+                                          id="soc32" readOnly="true">
+                        <f:selectItems value="#{row.bindings.DiscountRate.items}"
+                                       id="si32"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="Total Approved Discount"
+                               id="c121">
+                      <af:outputText value="#{row.Attribute3}" id="ot53">
+                      <af:convertNumber groupingUsed="true"
+                                    pattern="#{SessionScope.NumberFormat}"/>
+                    </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.BookingDetail_VO2.hints.NetRentWithoutTax.label}"
+                               id="c127" align="center" width="120">
+                      <af:outputText value="#{row.NetRentWithoutTax}" id="ot69">
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.TaxAmount.name}"
+                               sortable="false"
+                               headerText="#{bindings.BookingDetail_VO2.hints.TaxAmount.label}"
+                               id="c23" width="80" align="center">
+                      <af:inputText value="#{row.bindings.TaxAmount.inputValue}"
+                                    label="#{bindings.BookingDetail_VO2.hints.TaxAmount.label}"
+                                    required="#{bindings.BookingDetail_VO2.hints.TaxAmount.mandatory}"
+                                    columns="#{bindings.BookingDetail_VO2.hints.TaxAmount.displayWidth}"
+                                    maximumLength="#{bindings.BookingDetail_VO2.hints.TaxAmount.precision}"
+                                    shortDesc="#{bindings.BookingDetail_VO2.hints.TaxAmount.tooltip}"
+                                    id="it10" readOnly="true">
+                        <f:validator binding="#{row.bindings.TaxAmount.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.BookingDetail_VO2.hints.TaxAmount.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.TotalRate.name}"
+                               sortable="false"
+                               headerText="Approved Net Rent (Including Tax)"
+                               id="c32" width="90" align="center">
+                      <af:inputText value="#{row.bindings.TotalRate.inputValue}"
+                                    label="#{bindings.BookingDetail_VO2.hints.TotalRate.label}"
+                                    required="#{bindings.BookingDetail_VO2.hints.TotalRate.mandatory}"
+                                    columns="#{bindings.BookingDetail_VO2.hints.TotalRate.displayWidth}"
+                                    maximumLength="#{bindings.BookingDetail_VO2.hints.TotalRate.precision}"
+                                    shortDesc="#{bindings.BookingDetail_VO2.hints.TotalRate.tooltip}"
+                                    id="it2" readOnly="true">
+                        <f:validator binding="#{row.bindings.TotalRate.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.BookingDetail_VO2.hints.TotalRate.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.UnitAvlStatus.name}"
+                               sortable="false"
+                               headerText="#{bindings.BookingDetail_VO2.hints.UnitAvlStatus.label}"
+                               id="c35" width="80" align="center">
+                      <af:selectOneChoice value="#{row.bindings.UnitAvlStatus.inputValue}"
+                                          label="#{row.bindings.UnitAvlStatus.label}"
+                                          required="#{bindings.BookingDetail_VO2.hints.UnitAvlStatus.mandatory}"
+                                          shortDesc="#{bindings.BookingDetail_VO2.hints.UnitAvlStatus.tooltip}"
+                                          id="soc5" readOnly="true">
+                        <f:selectItems value="#{row.bindings.UnitAvlStatus.items}"
+                                       id="si5"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="Security Deposit"
+                               id="c16">
+                      <af:outputText value="#{row.SecurityDepositTrans}"
+                                     id="ot12"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+              <af:spacer width="10" height="10" id="s7"/>
+              <af:panelBox text="Contract Payments" id="pb2"
+                           showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                    featuresOff="detach">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Booking_Milestone_VO1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.Booking_Milestone_VO1.rangeSize}"
+                            emptyText="#{bindings.Booking_Milestone_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="6" rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.Booking_Milestone_VO1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.Booking_Milestone_VO1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1"
+                            columnStretching="column:c8" autoHeightRows="0"
+                            scrollPolicy="page"
+                            partialTriggers=":::soc10 :::recommendationIdTransId"
+                            varStatus="vs">
+                    <af:column id="c53" headerText="S.No" align="center"
+                               width="80">
+                      <af:outputText value="#{vs.index+1}" id="ot33"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.SeqNumber.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO1.hints.SeqNumber.label}"
+                               id="c9" align="center" width="80"
+                               rendered="false">
+                      <af:outputText value="#{row.SeqNumber}" id="ot7"/>
+                    </af:column>
+                    <af:column headerText="Installment Type"
+                               id="c2">
+                      <af:outputText value="#{row.Installment_Type_Trans}"
+                                     id="ot54"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.InstallmentPct.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO1.hints.InstallmentPct.label}"
+                               id="c4">
+                      <af:outputText value="#{row.InstallmentPct}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.InstallmentAmount.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO1.hints.InstallmentAmount.label}"
+                               id="c6" width="130">
+                      <af:outputText value="#{row.InstallmentAmount}" id="ot6">
+                        <af:convertNumber groupingUsed="true"
+                                          pattern="#{SessionScope.NumberFormat}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="Charge Type"
+                               id="c1">
+                      <af:outputText value="#{row.ChargeType_Trans}" id="ot55"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.Booking_Milestone_VO1.hints.PaymentTerm_Trans.label}"
+                               id="c5">
+                      <af:outputText value="#{row.PaymentTerm_Trans}"
+                                     id="ot56"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.Remarks.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO1.hints.Remarks.label}"
+                               id="c8">
+                      <af:outputText value="#{row.Remarks}" id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.DueDate.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO1.hints.DueDate.label}"
+                               id="c3">
+                      <af:outputText value="#{row.DueDate}" id="ot11">
+                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.MilestoneType.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO1.hints.MilestoneType.label}"
+                               id="c10" rendered="false">
+                      <af:outputText value="#{row.MilestoneType}" id="ot5"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+              <af:spacer width="10" height="10" id="s8"/>
+              <af:panelBox text="Other Charges" id="pb3" showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:panelCollection id="pc2" styleClass="AFStretchWidth"
+                                    featuresOff="detach">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Booking_Milestone_VO2.collectionModel}"
+                            var="row"
+                            rows="#{bindings.Booking_Milestone_VO2.rangeSize}"
+                            emptyText="#{bindings.Booking_Milestone_VO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Booking_Milestone_VO2.rangeSize}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.Booking_Milestone_VO2.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.Booking_Milestone_VO2.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t2"
+                            columnStretching="column:c13" scrollPolicy="page"
+                            autoHeightRows="0"
+                            partialTriggers=":::soc10 :::recommendationIdTransId"
+                            varStatus="vs">
+                    <af:column id="c60" headerText="S.No" align="center"
+                               width="80">
+                      <af:outputText value="#{vs.index+1}" id="ot17"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO2.hints.SeqNumber.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO2.hints.SeqNumber.label}"
+                               id="c11" align="center" width="80"
+                               rendered="false">
+                      <af:outputText value="#{row.SeqNumber}" id="ot15"/>
+                    </af:column>
+                    <af:column headerText="Other Charges Type"
+                               id="c7">
+                      <af:outputText value="#{row.InstallmentType2_Trans}"
+                                     id="ot57"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO2.hints.InstallmentPct.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO2.hints.InstallmentPct.label}"
+                               id="c19" rendered="false">
+                      <af:outputText value="#{row.InstallmentPct}" id="ot21"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO2.hints.InstallmentAmount.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO2.hints.InstallmentAmount.label}"
+                               id="c20" width="130">
+                      <af:outputText value="#{row.InstallmentAmount}" id="ot13">
+                        <af:convertNumber pattern="#{SessionScope.NumberFormat}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO2.hints.Criteria.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO2.hints.Criteria.label}"
+                               id="c15" rendered="false">
+                      <af:outputText value="#{row.Criteria}" id="ot18"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO2.hints.Remarks.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO2.hints.Remarks.label}"
+                               id="c13">
+                      <af:outputText value="#{row.Remarks}" id="ot19"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO2.hints.DueDate.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO2.hints.DueDate.label}"
+                               id="c12" rendered="false">
+                      <af:outputText value="#{row.DueDate}" id="ot14">
+                        <af:convertDateTime pattern="#{sessionScope.DateFormat}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Booking_Milestone_VO2.hints.MilestoneType.name}"
+                               sortable="false"
+                               headerText="#{bindings.Booking_Milestone_VO2.hints.MilestoneType.label}"
+                               id="c17" rendered="false">
+                      <af:outputText value="#{row.MilestoneType}" id="ot16"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+              <af:spacer width="10" height="10" id="s12"/>
+              <af:panelBox text="Receipt" id="pb7">
+                <f:facet name="toolbar">
+                  <af:toolbar id="t14" flex="1">
+                    <af:goImageLink id="gil4"
+                                      destination="#{sessionScope.offerPrnt}"
+                                      targetFrame="_blank"
+                                      icon="/images/pdffile_dwn.png"
+                                      text="Offer Print"/>
+                    <af:goImageLink id="gil5"
+                                      destination="#{sessionScope.receiptSumryPrnt}"
+                                      targetFrame="_blank"
+                                      icon="/images/pdffile_dwn.png"
+                                      text="Receipt Summary"/>
+                    <af:goImageLink id="gil6"
+                                      destination="#{sessionScope.receiptAckPrnt}"
+                                      targetFrame="_blank"
+                                      icon="/images/pdffile_dwn.png"
+                                      text="Receipt Acknowledgement"/>
+                  </af:toolbar>
+                </f:facet>
+                <af:panelCollection id="pc10" featuresOff="detach"
+                                    styleClass="AFStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Receipt_VO5.collectionModel}"
+                            var="row" rows="#{bindings.Receipt_VO5.rangeSize}"
+                            emptyText="#{bindings.Receipt_VO5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Receipt_VO5.rangeSize}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.Receipt_VO5.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.Receipt_VO5.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t13" varStatus="vs"
+                            columnStretching="column:c93"
+                            partialTriggers=":::recommendationIdTransId">
+                    <af:column id="c94" headerText="S.No" width="30"
+                               align="center">
+                      <af:outputText value="#{vs.index+1}" id="ot35"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.ReceiptNumber.label}"
+                               id="c90" width="60">
+                      <af:outputText value="#{row.ReceiptNumber}" id="ot49"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.ReceiptDate.label}"
+                               id="c87" width="70">
+                      <af:outputText value="#{row.ReceiptDate}" id="ot48">
+                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Receipt_VO5.hints.RctType.name}"
+                               sortable="false"
+                               headerText="#{bindings.Receipt_VO5.hints.RctType.label}"
+                               id="c86">
+                      <af:selectOneChoice value="#{row.bindings.RctType.inputValue}"
+                                          label="#{row.bindings.RctType.label}"
+                                          required="#{bindings.Receipt_VO5.hints.RctType.mandatory}"
+                                          shortDesc="#{bindings.Receipt_VO5.hints.RctType.tooltip}"
+                                          id="soc33" readOnly="true">
+                        <f:selectItems value="#{row.bindings.RctType.items}"
+                                       id="si33"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.CustomerName.label}"
+                               id="c91">
+                      <af:outputText value="#{row.CustomerName}" id="ot47"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.PayMode.label}"
+                               id="c99">
+                      <af:outputText value="#{row.PayMode}" id="ot37"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.PayRefNumber.label}"
+                               id="c100" align="center">
+                      <af:outputText value="#{row.PayRefNumber}" id="ot38"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.PayRefDate.label}"
+                               id="c101" align="center">
+                      <af:outputText value="#{row.PayRefDate}" id="ot39">
+                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.BankName.label}"
+                               id="c104">
+                      <af:outputText value="#{row.BankName}" id="ot40"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.CurrencyCode.label}"
+                               id="c106" width="60" align="center">
+                      <af:outputText value="#{row.CurrencyCode}" id="ot41"/>
+                    </af:column>
+                    <af:column headerText="Amount"
+                               id="c84" width="80" align="center">
+                      <af:outputText value="#{row.RecommendedAmount}"
+                                     id="ot42"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.AckFlag.label}"
+                               id="c107" align="center">
+                      <af:outputText value="#{row.AckFlag=='N' ? 'No' : row.AckFlag=='Y' ? 'Yes' : row.AckFlag}" id="ot43"/>
+                    </af:column>
+                    <af:column headerText="Created By"
+                               id="c108">
+                      <af:outputText value="#{row.CreatedBy}" id="ot44"/>
+                    </af:column>
+                    <af:column headerText="Cashier Acknowledged By"
+                               id="c109">
+                      <af:outputText value="#{row.AckBy}" id="ot45"/>
+                    </af:column>
+                    <af:column headerText="Cashier Ack Date"
+                               id="c115">
+                      <af:outputText value="#{row.AckDate}" id="ot51">
+                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.Receipt_VO5.hints.Description.label}"
+                               id="c92">
+                      <af:outputText value="#{row.Description}" id="ot46"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:showDetailItem>
+          <af:showDetailItem id="tab2" text="Invoice / Payments">
+            <af:commandButton text="Invoice" id="cb10"
+                              actionListener="#{LeaseAgreement.onClikcInvoice}"
+                              rendered="false"/>
+            <af:panelBox text="Invoice Details" id="panelBox5"
+                         showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="panelCollection1" featuresOff="detach"
+                                  styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t10">
+                    <af:commandButton text="Generate Invoice" id="cb15"
+                                      inlineStyle="margin-right:10px;"
+                                      partialTriggers="::it1"
+                                      disabled="#{bindings.Status.inputValue ne 'APR' or bindings.CustomerTrxnNum.inputValue!=null or bindings.IntegrationResponse.inputValue eq '{&quot;result&quot;:&quot;Success&quot;}'}"
+                                      actionListener="#{LeaseAgreement.pushInvoiceInterfaceLineDlts}"
+                                      binding="#{LeaseAgreement.generate_invoice_cb15}"
+                                      visible="#{sessionScope.grantMap.LeaseAgreement =='F' and sessionScope.UR eq 'ACCOUNTS_MANAGER'}"/>
+                    <af:commandButton text="Sync Invoice" id="cb20"
+                                      partialSubmit="true"
+                                      partialTriggers="table1:it7"
+                                      actionListener="#{LeaseAgreement.syncInvoiceDtls}"
+                                      inlineStyle="margin-right:10px;"
+                                      disabled="#{bindings.Status.inputValue ne 'APR' or bindings.CustomerTrxnNum.inputValue!=null}"
+                                      visible="#{sessionScope.grantMap.LeaseAgreement =='F' and sessionScope.UR eq 'ACCOUNTS_MANAGER'}"/>
+                    <af:goImageLink text="Download Tax Invoice" id="gil2"
+                                    destination="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/tax/invoice/#{bindings.LeaseNumber.inputValue}"
+                                    targetFrame="_blank"
+                                    inlineStyle="margin-right:10px;"/>
+                    <af:inputText label="Customer Transaction No" id="it11"
+                                  autoSubmit="true"
+                                  binding="#{LeaseAgreement.customerTrxnIdTxt}"
+                                  rendered="false"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.BookingDetail_VO2.collectionModel}"
+                          var="row"
+                          rows="#{bindings.BookingDetail_VO2.rangeSize}"
+                          emptyText="#{bindings.BookingDetail_VO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="6" rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.BookingDetail_VO2.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.BookingDetail_VO2.collectionModel.makeCurrent}"
+                          rowSelection="single" id="table1" varStatus="vs"
+                          columnStretching="column:c33" scrollPolicy="page"
+                          autoHeightRows="0"
+                          partialTriggers=":::soc10 :::recommendationIdTransId"
+                          columnSelection="single"
+                          binding="#{LeaseAgreement.table1}">
+                  <af:column id="column1" headerText="S.No" align="center"
+                             width="80">
+                    <af:outputText value="#{vs.index+1}" id="outputText1"/>
+                  </af:column>
+                  <af:column headerText="#{bindings.BookingDetail_VO2.hints.PropertyName_Trans.label}"
+                             id="c33" width="150" align="center">
+                    <af:outputText value="#{row.PropertyName_Trans}" id="ot61"/>
+                  </af:column>
+                  <af:column headerText="#{bindings.BookingDetail_VO2.hints.BuildingName_Trans.label}"
+                             id="c36" width="150" align="center">
+                    <af:outputText value="#{row.BuildingName_Trans}" id="ot62"/>
+                  </af:column>
+                  <af:column headerText="#{bindings.BookingDetail_VO2.hints.UnitName_Trans.label}"
+                             id="c112" width="150" align="center">
+                    <af:outputText value="#{row.UnitName_Trans}" id="ot63"/>
+                  </af:column>
+                  <af:column id="c54" headerText="Rental Amount">
+                    <af:inputText value="#{row.bindings.BaseRate.inputValue}"
+                                  label="#{bindings.BookingDetail_VO2.hints.TaxAmount.label}"
+                                  required="#{bindings.BookingDetail_VO2.hints.TaxAmount.mandatory}"
+                                  columns="#{bindings.BookingDetail_VO2.hints.TaxAmount.displayWidth}"
+                                  maximumLength="#{bindings.BookingDetail_VO2.hints.TaxAmount.precision}"
+                                  shortDesc="#{bindings.BookingDetail_VO2.hints.TaxAmount.tooltip}"
+                                  id="inputText3" readOnly="true">
+                      <f:validator binding="#{row.bindings.TaxAmount.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.BookingDetail_VO2.hints.TaxAmount.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="Total Approved Discount"
+                             id="c81" width="150" align="center">
+                    <af:outputText value="#{row.Attribute3}" id="ot64"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.TaxAmount.name}"
+                             sortable="false"
+                             headerText="#{bindings.BookingDetail_VO2.hints.TaxAmount.label}"
+                             id="column7" width="80" align="center">
+                    <af:inputText value="#{row.bindings.TaxAmount.inputValue}"
+                                  label="#{bindings.BookingDetail_VO2.hints.TaxAmount.label}"
+                                  required="#{bindings.BookingDetail_VO2.hints.TaxAmount.mandatory}"
+                                  columns="#{bindings.BookingDetail_VO2.hints.TaxAmount.displayWidth}"
+                                  maximumLength="#{bindings.BookingDetail_VO2.hints.TaxAmount.precision}"
+                                  shortDesc="#{bindings.BookingDetail_VO2.hints.TaxAmount.tooltip}"
+                                  id="inputText1" readOnly="true">
+                      <f:validator binding="#{row.bindings.TaxAmount.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.BookingDetail_VO2.hints.TaxAmount.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.TotalRate.name}"
+                             sortable="false"
+                             headerText="#{bindings.BookingDetail_VO2.hints.TotalRate.label}"
+                             id="column8" width="130" align="center">
+                    <af:inputText value="#{row.bindings.TotalRate.inputValue}"
+                                  label="#{bindings.BookingDetail_VO2.hints.TotalRate.label}"
+                                  required="#{bindings.BookingDetail_VO2.hints.TotalRate.mandatory}"
+                                  columns="#{bindings.BookingDetail_VO2.hints.TotalRate.displayWidth}"
+                                  maximumLength="#{bindings.BookingDetail_VO2.hints.TotalRate.precision}"
+                                  shortDesc="#{bindings.BookingDetail_VO2.hints.TotalRate.tooltip}"
+                                  id="inputText2" readOnly="true">
+                      <f:validator binding="#{row.bindings.TotalRate.validator}"/>
+                      <af:convertNumber groupingUsed="true"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.name}"
+                             sortable="false"
+                             headerText="Customer Transaction No" id="column6"
+                             width="200"
+                             visible="#{bindings.Status.inputValue eq 'APR'}">
+                    <af:inputText id="it7" columns="50"
+                                  value="#{row.bindings.CustomerTrxnNum.inputValue}"
+                                  disabled="true"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+              <af:inputText value="#{bindings.CustomerTrxnNum.inputValue}"
+                            simple="true"
+                            required="#{bindings.CustomerTrxnNum.hints.mandatory}"
+                            columns="#{bindings.CustomerTrxnNum.hints.displayWidth}"
+                            maximumLength="#{bindings.CustomerTrxnNum.hints.precision}"
+                            shortDesc="#{bindings.CustomerTrxnNum.hints.tooltip}"
+                            id="it1" partialTriggers="panelCollection1:table1"
+                            rendered="false">
+                <f:validator binding="#{bindings.CustomerTrxnNum.validator}"/>
+              </af:inputText>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s1" rendered="false"/>
+            <af:panelBox text="Payment Plan" id="panelBox3"
+                         showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc8" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.Booking_Milestone_VO3.collectionModel}"
+                          var="row"
+                          rows="#{bindings.Booking_Milestone_VO3.rangeSize}"
+                          emptyText="#{bindings.Booking_Milestone_VO3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Booking_Milestone_VO3.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.Booking_Milestone_VO3.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.Booking_Milestone_VO3.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t9"
+                          columnStretching="column:c137" varStatus="vs">
+                  <af:column id="column10" headerText="S.No" align="center"
+                             width="80">
+                    <af:outputText value="#{vs.index+1}" id="outputText2"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.SeqNumber.name}"
+                             sortable="false"
+                             headerText="#{bindings.Booking_Milestone_VO3.hints.SeqNumber.label}"
+                             id="c133" width="80" align="center"
+                             rendered="false">
+                    <af:inputText value="#{row.bindings.SeqNumber.inputValue}"
+                                  label="#{bindings.Booking_Milestone_VO3.hints.SeqNumber.label}"
+                                  required="#{bindings.Booking_Milestone_VO3.hints.SeqNumber.mandatory}"
+                                  columns="#{bindings.Booking_Milestone_VO3.hints.SeqNumber.displayWidth}"
+                                  maximumLength="#{bindings.Booking_Milestone_VO3.hints.SeqNumber.precision}"
+                                  shortDesc="#{bindings.Booking_Milestone_VO3.hints.SeqNumber.tooltip}"
+                                  id="it80" readOnly="true">
+                      <f:validator binding="#{row.bindings.SeqNumber.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="Installment Type"
+                             id="c122">
+                    <af:outputText value="#{row.Installment_Type_Trans}"
+                                   id="ot65"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.InstallmentPct.name}"
+                             sortable="false"
+                             headerText="#{bindings.Booking_Milestone_VO3.hints.InstallmentPct.label}"
+                             id="c142">
+                    <af:inputText value="#{row.bindings.InstallmentPct.inputValue}"
+                                  label="#{bindings.Booking_Milestone_VO3.hints.InstallmentPct.label}"
+                                  required="#{bindings.Booking_Milestone_VO3.hints.InstallmentPct.mandatory}"
+                                  columns="#{bindings.Booking_Milestone_VO3.hints.InstallmentPct.displayWidth}"
+                                  maximumLength="#{bindings.Booking_Milestone_VO3.hints.InstallmentPct.precision}"
+                                  shortDesc="#{bindings.Booking_Milestone_VO3.hints.InstallmentPct.tooltip}"
+                                  id="it84" readOnly="true">
+                      <f:validator binding="#{row.bindings.InstallmentPct.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.InstallmentAmount.name}"
+                             sortable="false"
+                             headerText="#{bindings.Booking_Milestone_VO3.hints.InstallmentAmount.label}"
+                             id="c132">
+                    <af:inputText value="#{row.bindings.InstallmentAmount.inputValue}"
+                                  label="#{bindings.Booking_Milestone_VO3.hints.InstallmentAmount.label}"
+                                  required="#{bindings.Booking_Milestone_VO3.hints.InstallmentAmount.mandatory}"
+                                  columns="#{bindings.Booking_Milestone_VO3.hints.InstallmentAmount.displayWidth}"
+                                  maximumLength="#{bindings.Booking_Milestone_VO3.hints.InstallmentAmount.precision}"
+                                  shortDesc="#{bindings.Booking_Milestone_VO3.hints.InstallmentAmount.tooltip}"
+                                  id="it82" readOnly="true">
+                      <f:validator binding="#{row.bindings.InstallmentAmount.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="Charge Type"
+                             id="c123">
+                    <af:outputText value="#{row.ChargeType_Trans}" id="ot66"/>
+                  </af:column>
+                  <af:column headerText="Payment Term"
+                             id="c124" width="150" align="center">
+                    <af:outputText value="#{row.PaymentTerm_Trans}" id="ot67"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.Remarks.name}"
+                             sortable="false"
+                             headerText="#{bindings.Booking_Milestone_VO3.hints.Remarks.label}"
+                             id="c137">
+                    <af:inputText value="#{row.bindings.Remarks.inputValue}"
+                                  label="#{bindings.Booking_Milestone_VO3.hints.Remarks.label}"
+                                  required="#{bindings.Booking_Milestone_VO3.hints.Remarks.mandatory}"
+                                  columns="#{bindings.Booking_Milestone_VO3.hints.Remarks.displayWidth}"
+                                  maximumLength="#{bindings.Booking_Milestone_VO3.hints.Remarks.precision}"
+                                  shortDesc="#{bindings.Booking_Milestone_VO3.hints.Remarks.tooltip}"
+                                  id="it77" readOnly="true">
+                      <f:validator binding="#{row.bindings.Remarks.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.DueDate.name}"
+                             sortable="false"
+                             headerText="#{bindings.Booking_Milestone_VO3.hints.DueDate.label}"
+                             id="c134">
+                    <af:inputDate value="#{row.bindings.DueDate.inputValue}"
+                                  label="#{bindings.Booking_Milestone_VO3.hints.DueDate.label}"
+                                  required="#{bindings.Booking_Milestone_VO3.hints.DueDate.mandatory}"
+                                  shortDesc="#{bindings.Booking_Milestone_VO3.hints.DueDate.tooltip}"
+                                  id="id11" readOnly="true">
+                      <f:validator binding="#{row.bindings.DueDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.name}"
+                             sortable="false"
+                             headerText="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.label}"
+                             id="c129" rendered="false">
+                    <af:inputText value="#{row.bindings.MilestoneType.inputValue}"
+                                  label="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.label}"
+                                  required="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.mandatory}"
+                                  columns="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.displayWidth}"
+                                  maximumLength="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.precision}"
+                                  shortDesc="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.tooltip}"
+                                  id="it83" readOnly="true">
+                      <f:validator binding="#{row.bindings.MilestoneType.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:panelBox text="Receipt" id="panelBox4" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc9" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.Receipt_VO1.collectionModel}"
+                          var="row" rows="#{bindings.Receipt_VO1.rangeSize}"
+                          emptyText="#{bindings.Receipt_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Receipt_VO1.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.Receipt_VO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.Receipt_VO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t8" varStatus="vs"
+                          columnStretching="column:c116">
+                  <af:column id="c49" headerText="S.No" align="center"
+                             width="80">
+                    <af:outputText value="#{vs.index+1}" id="ot32"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.ReceiptNumber.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.ReceiptNumber.label}"
+                             id="c102">
+                    <af:inputText value="#{row.bindings.ReceiptNumber.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.ReceiptNumber.label}"
+                                  required="#{bindings.Receipt_VO1.hints.ReceiptNumber.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.ReceiptNumber.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.ReceiptNumber.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.ReceiptNumber.tooltip}"
+                                  id="it51" readOnly="true">
+                      <f:validator binding="#{row.bindings.ReceiptNumber.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.ReceiptDate.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.ReceiptDate.label}"
+                             id="c117">
+                    <af:inputDate value="#{row.bindings.ReceiptDate.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.ReceiptDate.label}"
+                                  required="#{bindings.Receipt_VO1.hints.ReceiptDate.mandatory}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.ReceiptDate.tooltip}"
+                                  id="id8" readOnly="true">
+                      <f:validator binding="#{row.bindings.ReceiptDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.CustomerName.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.CustomerName.label}"
+                             id="c103" width="150">
+                    <af:inputText value="#{row.bindings.CustomerName.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.CustomerName.label}"
+                                  required="#{bindings.Receipt_VO1.hints.CustomerName.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.CustomerName.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.CustomerName.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.CustomerName.tooltip}"
+                                  id="it66" readOnly="true">
+                      <f:validator binding="#{row.bindings.CustomerName.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.ReceiptAmount.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.ReceiptAmount.label}"
+                             id="c89">
+                    <af:inputText value="#{row.bindings.RecommendedAmount.inputValue}"
+                                  simple="true"
+                                  required="#{bindings.Receipt_VO1.hints.RecommendedAmount.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.RecommendedAmount.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.RecommendedAmount.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.RecommendedAmount.tooltip}"
+                                  id="it22" readOnly="true">
+                      <f:validator binding="#{row.bindings.RecommendedAmount.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.OrgId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.OrgId.label}"
+                             id="c110" rendered="false">
+                    <af:inputText value="#{row.bindings.OrgId.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.OrgId.label}"
+                                  required="#{bindings.Receipt_VO1.hints.OrgId.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.OrgId.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.OrgId.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.OrgId.tooltip}"
+                                  id="it54" readOnly="true">
+                      <f:validator binding="#{row.bindings.OrgId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.ReceiptType.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.ReceiptType.label}"
+                             id="c105" rendered="false">
+                    <af:inputText value="#{row.bindings.ReceiptType.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.ReceiptType.label}"
+                                  required="#{bindings.Receipt_VO1.hints.ReceiptType.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.ReceiptType.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.ReceiptType.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.ReceiptType.tooltip}"
+                                  id="it57" readOnly="true">
+                      <f:validator binding="#{row.bindings.ReceiptType.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.PropertyId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.PropertyId.label}"
+                             id="c114" rendered="false">
+                    <af:inputText value="#{row.bindings.PropertyId.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.PropertyId.label}"
+                                  required="#{bindings.Receipt_VO1.hints.PropertyId.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.PropertyId.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.PropertyId.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.PropertyId.tooltip}"
+                                  id="it55" readOnly="true">
+                      <f:validator binding="#{row.bindings.PropertyId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.UnitId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.UnitId.label}"
+                             id="c98" rendered="false">
+                    <af:inputText value="#{row.bindings.UnitId.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.UnitId.label}"
+                                  required="#{bindings.Receipt_VO1.hints.UnitId.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.UnitId.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.UnitId.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.UnitId.tooltip}"
+                                  id="it59" readOnly="true">
+                      <f:validator binding="#{row.bindings.UnitId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.BuildId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.BuildId.label}"
+                             id="c120" rendered="false">
+                    <af:inputText value="#{row.bindings.BuildId.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.BuildId.label}"
+                                  required="#{bindings.Receipt_VO1.hints.BuildId.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.BuildId.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.BuildId.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.BuildId.tooltip}"
+                                  id="it73" readOnly="true">
+                      <f:validator binding="#{row.bindings.BuildId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.LeadId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.LeadId.label}"
+                             id="c113" rendered="false">
+                    <af:inputText value="#{row.bindings.LeadId.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.LeadId.label}"
+                                  required="#{bindings.Receipt_VO1.hints.LeadId.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.LeadId.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.LeadId.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.LeadId.tooltip}"
+                                  id="it64" readOnly="true">
+                      <f:validator binding="#{row.bindings.LeadId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.CustId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.CustId.label}"
+                             id="c118" rendered="false">
+                    <af:inputText value="#{row.bindings.CustId.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.CustId.label}"
+                                  required="#{bindings.Receipt_VO1.hints.CustId.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.CustId.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.CustId.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.CustId.tooltip}"
+                                  id="it72" readOnly="true">
+                      <f:validator binding="#{row.bindings.CustId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.Receipt_VO1.hints.RctType.label}"
+                             id="c82">
+                    <af:selectOneChoice value="#{row.bindings.RctType.inputValue}"
+                                        label="#{row.bindings.RctType.label}"
+                                        required="#{bindings.Receipt_VO1.hints.RctType.mandatory}"
+                                        shortDesc="#{bindings.Receipt_VO1.hints.RctType.tooltip}"
+                                        id="soc31" readOnly="true">
+                      <f:selectItems value="#{row.bindings.RctType.items}"
+                                     id="si31"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Receipt_VO1.hints.Description.name}"
+                             sortable="false"
+                             headerText="#{bindings.Receipt_VO1.hints.Description.label}"
+                             id="c116">
+                    <af:inputText value="#{row.bindings.Description.inputValue}"
+                                  label="#{bindings.Receipt_VO1.hints.Description.label}"
+                                  required="#{bindings.Receipt_VO1.hints.Description.mandatory}"
+                                  columns="#{bindings.Receipt_VO1.hints.Description.displayWidth}"
+                                  maximumLength="#{bindings.Receipt_VO1.hints.Description.precision}"
+                                  shortDesc="#{bindings.Receipt_VO1.hints.Description.tooltip}"
+                                  id="it65" readOnly="true">
+                      <f:validator binding="#{row.bindings.Description.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column id="c59" headerText="Generate Receipt" width="250"
+                                      visible="#{sessionScope.grantMap.LeaseAgreement =='F' and sessionScope.UR eq 'ACCOUNTS_MANAGER'}">
+                    <af:panelGroupLayout id="pgl9" layout="horizontal">
+                    <af:commandButton text="Generate Receipt" id="cb18"
+                                      actionListener="#{LeaseAgreement.arReceiptCreatePayload}"
+                                      disabled="#{bindings.Status.inputValue eq 'REJ' or bindings.Status.inputValue eq 'CAN' or row.Attribute1  !=null}"/>
+                 <af:spacer width="10" height="10" id="s14"/>
+                    <af:commandImageLink id="cil79"
+                                         icon="/images/refersh_en.png"
+                                         actionListener="#{LeaseAgreement.responseCashRcptId}"
+                                         partialSubmit="true">
+                        <af:setPropertyListener from="#{row.ReceiptNumber}" to="#{pageFlowScope.rcptNos}" type="action"/>
+                      </af:commandImageLink>
+                  </af:panelGroupLayout>
+                  </af:column>
+                  <af:column id="c58" headerText="Receipt Response">
+                    <af:inputText id="it13"
+                                  value="#{row.bindings.Attribute1.inputValue}"
+                                  binding="#{LeaseAgreement.attributResponse}"
+                                  autoSubmit="true" disabled="true"
+                                  partialTriggers="cil79"/>
+                  </af:column>
+                  <af:column id="c57" headerText="Apply Receipt" width="250"
+                                      visible="#{sessionScope.grantMap.LeaseAgreement =='F' and sessionScope.UR eq 'ACCOUNTS_MANAGER'}">
+                    <af:commandButton text="Apply Receipt" id="cb19"
+                                      actionListener="#{LeaseAgreement.arReceiptApplyPayload}"
+                                      disabled="#{row.Attribute1  eq null or bindings.CustomerTrxnNum.inputValue eq null}"/>
+                  </af:column>
+                  <af:column id="c55" headerText="Apply Receipt Response"
+                             rendered="false"/>
+                  <af:column id="c126" visible="false" align="center">
+                  <af:commandImageLink id="cil75"
+                                       icon="/images/refersh_en.png"
+                                       actionListener="#{LeaseAgreement.doRemoveMultipleError}"
+                                       partialSubmit="true"
+                                       visible="#{row.Attribute1 ne null}"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem id="tab3" text="Move In / Move Out"
+                             rendered="false">
+            <af:panelBox text="Move In" id="pb5" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc5" styleClass="AFStretchWidth"
+                                  featuresOff="detach">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.MoveInOut_VO1.collectionModel}"
+                          var="row" rows="#{bindings.MoveInOut_VO1.rangeSize}"
+                          emptyText="#{bindings.MoveInOut_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.MoveInOut_VO1.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.MoveInOut_VO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.MoveInOut_VO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t4" varStatus="vs"
+                          columnStretching="column:c34">
+                  <af:column id="c27" headerText="S.No" width="80"
+                             align="center">
+                    <af:outputText value="#{vs.index+1}" id="ot23"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO1.hints.MoveInOutNumber.name}"
+                             sortable="false" headerText="Move In Number"
+                             id="c25" width="150">
+                    <af:outputText value="#{row.MoveInOutNumber}" id="ot3"
+                                   rendered="false"/>
+                    <af:commandImageLink text="#{row.MoveInOutNumber}" id="cil1"
+                                         rendered="true" action="toMoveInOut">
+                      <af:setPropertyListener from="#{'MIN'}"
+                                              to="#{pageFlowScope.Move}"
+                                              type="action"/>
+                      <af:setPropertyListener from="#{bindings.MoveInOutId.inputValue}"
+                                              to="#{sessionScope.EditMoveInOut}"
+                                              type="action"/>
+                      <af:setPropertyListener from="#{'I'}"
+                                              to="#{sessionScope.moveInOut}"
+                                              type="action"/>
+                    </af:commandImageLink>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO1.hints.BookingId.name}"
+                             sortable="false"
+                             headerText="#{bindings.MoveInOut_VO1.hints.BookingId.label}"
+                             id="c22">
+                    <af:selectOneChoice value="#{row.bindings.BookingId.inputValue}"
+                                        label="#{row.bindings.BookingId.label}"
+                                        required="#{bindings.MoveInOut_VO1.hints.BookingId.mandatory}"
+                                        shortDesc="#{bindings.MoveInOut_VO1.hints.BookingId.tooltip}"
+                                        id="soc12" readOnly="true">
+                      <f:selectItems value="#{row.bindings.BookingId.items}"
+                                     id="si12"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO1.hints.MoveInOutDate.name}"
+                             sortable="false" headerText="Move In Date" id="c26"
+                             width="120">
+                    <af:outputText value="#{row.MoveInOutDate}" id="ot2">
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO1.hints.Description.name}"
+                             sortable="false"
+                             headerText="#{bindings.MoveInOut_VO1.hints.Description.label}"
+                             id="c34">
+                    <af:outputText value="#{row.Description}" id="ot9"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO1.hints.ResourceName.name}"
+                             sortable="false"
+                             headerText="#{bindings.MoveInOut_VO1.hints.ResourceName.label}"
+                             id="c24">
+                    <af:outputText value="#{row.ResourceName}" id="ot10"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s9"/>
+            <af:panelBox text="Move Out" id="pb6" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc4" styleClass="AFStretchWidth"
+                                  featuresOff="detach">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.MoveInOut_VO2.collectionModel}"
+                          var="row" rows="#{bindings.MoveInOut_VO2.rangeSize}"
+                          emptyText="#{bindings.MoveInOut_VO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.MoveInOut_VO2.rangeSize}"
+                          rowBandingInterval="0" id="t5"
+                          selectedRowKeys="#{bindings.MoveInOut_VO2.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.MoveInOut_VO2.collectionModel.makeCurrent}"
+                          rowSelection="single" varStatus="vs"
+                          columnStretching="column:c37">
+                  <af:column id="c41" headerText="S.No" width="80"
+                             align="center">
+                    <af:outputText value="#{vs.index+1}" id="ot28"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO2.hints.MoveInOutNumber.name}"
+                             sortable="false" headerText="Move Out Number"
+                             id="c38" width="150">
+                    <af:commandImageLink text="#{row.MoveInOutNumber}" id="cil2"
+                                         action="toMoveInOut" rendered="false">
+                      <af:setPropertyListener from="#{'MOUT'}"
+                                              to="#{pageFlowScope.Move}"
+                                              type="action"/>
+                      <af:setPropertyListener from="#{bindings.MoveInOutId1.inputValue}"
+                                              to="#{sessionScope.EditMoveInOut}"
+                                              type="action"/>
+                      <af:setPropertyListener from="#{'O'}"
+                                              to="#{sessionScope.moveInOut}"
+                                              type="action"/>
+                    </af:commandImageLink>
+                    <af:outputText value="#{row.MoveInOutNumber}" id="ot25"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO2.hints.BookingId.name}"
+                             sortable="false"
+                             headerText="#{bindings.MoveInOut_VO2.hints.BookingId.label}"
+                             id="c31">
+                    <af:selectOneChoice value="#{row.bindings.BookingId.inputValue}"
+                                        label="#{row.bindings.BookingId.label}"
+                                        required="#{bindings.MoveInOut_VO2.hints.BookingId.mandatory}"
+                                        shortDesc="#{bindings.MoveInOut_VO2.hints.BookingId.tooltip}"
+                                        id="soc13" readOnly="true">
+                      <f:selectItems value="#{row.bindings.BookingId.items}"
+                                     id="si13"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO2.hints.MoveInOutDate.name}"
+                             sortable="false" headerText="Move Out Date"
+                             id="c39" width="120">
+                    <af:outputText value="#{row.MoveInOutDate}" id="ot27">
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO2.hints.Description.name}"
+                             sortable="false"
+                             headerText="#{bindings.MoveInOut_VO2.hints.Description.label}"
+                             id="c37">
+                    <af:outputText value="#{row.Description}" id="ot26"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.MoveInOut_VO2.hints.ResourceName.name}"
+                             sortable="false"
+                             headerText="#{bindings.MoveInOut_VO2.hints.ResourceName.label}"
+                             id="c40">
+                    <af:outputText value="#{row.ResourceName}" id="ot24"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem id="tab5" text="Cancellation / Extension"
+                             rendered="false">
+            <af:panelBox text="Cancellation" id="panelBox1"
+                         showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc6" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.Cancel_VO.collectionModel}"
+                          var="row" rows="#{bindings.Cancel_VO.rangeSize}"
+                          emptyText="#{bindings.Cancel_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Cancel_VO.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.Cancel_VO.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.Cancel_VO.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t6" varStatus="vs">
+                  <af:column id="c45" headerText="S.No" align="center"
+                             width="80">
+                    <af:outputText value="#{vs.index+1}" id="ot30"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.TransNumber.name}"
+                             sortable="false" headerText="Cancellation Number"
+                             id="c50">
+                    <af:inputText value="#{row.bindings.TransNumber.inputValue}"
+                                  label="#{bindings.Cancel_VO.hints.TransNumber.label}"
+                                  required="#{bindings.Cancel_VO.hints.TransNumber.mandatory}"
+                                  columns="#{bindings.Cancel_VO.hints.TransNumber.displayWidth}"
+                                  maximumLength="#{bindings.Cancel_VO.hints.TransNumber.precision}"
+                                  shortDesc="#{bindings.Cancel_VO.hints.TransNumber.tooltip}"
+                                  id="it24" readOnly="true" rendered="false">
+                      <f:validator binding="#{row.bindings.TransNumber.validator}"/>
+                    </af:inputText>
+                    <af:commandLink text="#{row.bindings.TransNumber.inputValue}"
+                                    id="cl1" action="can">
+                      <af:setPropertyListener from="#{bindings.TransNumber.inputValue}"
+                                              to="#{sessionScope.transno}"
+                                              type="action"/>
+                    </af:commandLink>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.TransDate.name}"
+                             sortable="false" headerText="Cancellation Date"
+                             id="c61">
+                    <af:inputDate value="#{row.bindings.TransDate.inputValue}"
+                                  label="#{bindings.Cancel_VO.hints.TransDate.label}"
+                                  required="#{bindings.Cancel_VO.hints.TransDate.mandatory}"
+                                  shortDesc="#{bindings.Cancel_VO.hints.TransDate.tooltip}"
+                                  id="id2" readOnly="true">
+                      <f:validator binding="#{row.bindings.TransDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.Amount.name}"
+                             sortable="false"
+                             headerText="#{bindings.Cancel_VO.hints.Amount.label}"
+                             id="c43">
+                    <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                  label="#{bindings.Cancel_VO.hints.Amount.label}"
+                                  required="#{bindings.Cancel_VO.hints.Amount.mandatory}"
+                                  columns="#{bindings.Cancel_VO.hints.Amount.displayWidth}"
+                                  maximumLength="#{bindings.Cancel_VO.hints.Amount.precision}"
+                                  shortDesc="#{bindings.Cancel_VO.hints.Amount.tooltip}"
+                                  id="it12" readOnly="true">
+                      <f:validator binding="#{row.bindings.Amount.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.Currency.name}"
+                             sortable="false"
+                             headerText="#{bindings.Cancel_VO.hints.Currency.label}"
+                             id="c48">
+                    <af:inputText value="#{row.bindings.Currency.inputValue}"
+                                  label="#{bindings.Cancel_VO.hints.Currency.label}"
+                                  required="#{bindings.Cancel_VO.hints.Currency.mandatory}"
+                                  columns="#{bindings.Cancel_VO.hints.Currency.displayWidth}"
+                                  maximumLength="#{bindings.Cancel_VO.hints.Currency.precision}"
+                                  shortDesc="#{bindings.Cancel_VO.hints.Currency.tooltip}"
+                                  id="it6" readOnly="true">
+                      <f:validator binding="#{row.bindings.Currency.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.Status.name}"
+                             sortable="false"
+                             headerText="#{bindings.Cancel_VO.hints.Status.label}"
+                             id="c47" width="150">
+                    <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                        label="#{row.bindings.Status.label}"
+                                        required="#{bindings.Cancel_VO.hints.Status.mandatory}"
+                                        shortDesc="#{bindings.Cancel_VO.hints.Status.tooltip}"
+                                        id="soc18" readOnly="true">
+                      <f:selectItems value="#{row.bindings.Status.items}"
+                                     id="si17"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.DueDate.name}"
+                             sortable="false"
+                             headerText="#{bindings.Cancel_VO.hints.DueDate.label}"
+                             id="c42" width="100">
+                    <af:inputDate value="#{row.bindings.DueDate.inputValue}"
+                                  label="#{bindings.Cancel_VO.hints.DueDate.label}"
+                                  required="#{bindings.Cancel_VO.hints.DueDate.mandatory}"
+                                  shortDesc="#{bindings.Cancel_VO.hints.DueDate.tooltip}"
+                                  id="id3" readOnly="true">
+                      <f:validator binding="#{row.bindings.DueDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.CustName.name}"
+                             sortable="false"
+                             headerText="#{bindings.Cancel_VO.hints.CustName.label}"
+                             id="c56" width="180">
+                    <af:inputText value="#{row.bindings.CustName.inputValue}"
+                                  label="#{bindings.Cancel_VO.hints.CustName.label}"
+                                  required="#{bindings.Cancel_VO.hints.CustName.mandatory}"
+                                  columns="#{bindings.Cancel_VO.hints.CustName.displayWidth}"
+                                  maximumLength="#{bindings.Cancel_VO.hints.CustName.precision}"
+                                  shortDesc="#{bindings.Cancel_VO.hints.CustName.tooltip}"
+                                  id="it15" readOnly="true">
+                      <f:validator binding="#{row.bindings.CustName.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.LeaseAgreementId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Cancel_VO.hints.LeaseAgreementId.label}"
+                             id="c52" width="150" rendered="false">
+                    <af:selectOneChoice value="#{row.bindings.LeaseAgreementId.inputValue}"
+                                        label="#{row.bindings.LeaseAgreementId.label}"
+                                        required="#{bindings.Cancel_VO.hints.LeaseAgreementId.mandatory}"
+                                        shortDesc="#{bindings.Cancel_VO.hints.LeaseAgreementId.tooltip}"
+                                        id="soc1" readOnly="true">
+                      <f:selectItems value="#{row.bindings.LeaseAgreementId.items}"
+                                     id="si18"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.OrgId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Cancel_VO.hints.OrgId.label}"
+                             id="c63" rendered="false">
+                    <af:inputText value="#{row.bindings.OrgId.inputValue}"
+                                  label="#{bindings.Cancel_VO.hints.OrgId.label}"
+                                  required="#{bindings.Cancel_VO.hints.OrgId.mandatory}"
+                                  columns="#{bindings.Cancel_VO.hints.OrgId.displayWidth}"
+                                  maximumLength="#{bindings.Cancel_VO.hints.OrgId.precision}"
+                                  shortDesc="#{bindings.Cancel_VO.hints.OrgId.tooltip}"
+                                  id="it8" readOnly="true">
+                      <f:validator binding="#{row.bindings.OrgId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.PropertyId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Cancel_VO.hints.PropertyId.label}"
+                             id="c44" rendered="false">
+                    <af:inputText value="#{row.bindings.PropertyId.inputValue}"
+                                  label="#{bindings.Cancel_VO.hints.PropertyId.label}"
+                                  required="#{bindings.Cancel_VO.hints.PropertyId.mandatory}"
+                                  columns="#{bindings.Cancel_VO.hints.PropertyId.displayWidth}"
+                                  maximumLength="#{bindings.Cancel_VO.hints.PropertyId.precision}"
+                                  shortDesc="#{bindings.Cancel_VO.hints.PropertyId.tooltip}"
+                                  id="it9" readOnly="true">
+                      <f:validator binding="#{row.bindings.PropertyId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Cancel_VO.hints.BuildId.name}"
+                             sortable="false"
+                             headerText="#{bindings.Cancel_VO.hints.BuildId.label}"
+                             id="c51" rendered="false">
+                    <af:inputText value="#{row.bindings.BuildId.inputValue}"
+                                  label="#{bindings.Cancel_VO.hints.BuildId.label}"
+                                  required="#{bindings.Cancel_VO.hints.BuildId.mandatory}"
+                                  columns="#{bindings.Cancel_VO.hints.BuildId.displayWidth}"
+                                  maximumLength="#{bindings.Cancel_VO.hints.BuildId.precision}"
+                                  shortDesc="#{bindings.Cancel_VO.hints.BuildId.tooltip}"
+                                  id="it20" readOnly="true">
+                      <f:validator binding="#{row.bindings.BuildId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="spacer1"/>
+            <af:panelBox text="Extension" id="panelBox2" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc7" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.ExtVO.collectionModel}" var="row"
+                          rows="#{bindings.ExtVO.rangeSize}"
+                          emptyText="#{bindings.ExtVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.ExtVO.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.ExtVO.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ExtVO.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t7" varStatus="vs">
+                  <af:column id="c46" headerText="S.No" align="center"
+                             width="80">
+                    <af:outputText value="#{vs.index+1}" id="ot31"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.TransNumber.name}"
+                             sortable="false" headerText="Extension Number"
+                             id="c85">
+                    <af:inputText value="#{row.bindings.TransNumber.inputValue}"
+                                  label="#{bindings.ExtVO.hints.TransNumber.label}"
+                                  required="#{bindings.ExtVO.hints.TransNumber.mandatory}"
+                                  columns="#{bindings.ExtVO.hints.TransNumber.displayWidth}"
+                                  maximumLength="#{bindings.ExtVO.hints.TransNumber.precision}"
+                                  shortDesc="#{bindings.ExtVO.hints.TransNumber.tooltip}"
+                                  id="it33" readOnly="true" rendered="false">
+                      <f:validator binding="#{row.bindings.TransNumber.validator}"/>
+                    </af:inputText>
+                    <af:commandLink text="#{row.bindings.TransNumber.inputValue}"
+                                    id="cl2" action="ext">
+                      <af:setPropertyListener from="#{bindings.TransNumber1.inputValue}"
+                                              to="#{sessionScope.transno}"
+                                              type="action"/>
+                    </af:commandLink>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.TransDate.name}"
+                             sortable="false" headerText="Extension Date"
+                             id="c72">
+                    <af:inputDate value="#{row.bindings.TransDate.inputValue}"
+                                  label="#{bindings.ExtVO.hints.TransDate.label}"
+                                  required="#{bindings.ExtVO.hints.TransDate.mandatory}"
+                                  shortDesc="#{bindings.ExtVO.hints.TransDate.tooltip}"
+                                  id="id5" readOnly="true">
+                      <f:validator binding="#{row.bindings.TransDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.Amount.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtVO.hints.Amount.label}"
+                             id="c70">
+                    <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                  label="#{bindings.ExtVO.hints.Amount.label}"
+                                  required="#{bindings.ExtVO.hints.Amount.mandatory}"
+                                  columns="#{bindings.ExtVO.hints.Amount.displayWidth}"
+                                  maximumLength="#{bindings.ExtVO.hints.Amount.precision}"
+                                  shortDesc="#{bindings.ExtVO.hints.Amount.tooltip}"
+                                  id="it28" readOnly="true">
+                      <f:validator binding="#{row.bindings.Amount.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.Currency.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtVO.hints.Currency.label}"
+                             id="c68">
+                    <af:inputText value="#{row.bindings.Currency.inputValue}"
+                                  label="#{bindings.ExtVO.hints.Currency.label}"
+                                  required="#{bindings.ExtVO.hints.Currency.mandatory}"
+                                  columns="#{bindings.ExtVO.hints.Currency.displayWidth}"
+                                  maximumLength="#{bindings.ExtVO.hints.Currency.precision}"
+                                  shortDesc="#{bindings.ExtVO.hints.Currency.tooltip}"
+                                  id="it36" readOnly="true">
+                      <f:validator binding="#{row.bindings.Currency.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.Status.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtVO.hints.Status.label}"
+                             id="c83" width="150">
+                    <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                        label="#{row.bindings.Status.label}"
+                                        required="#{bindings.ExtVO.hints.Status.mandatory}"
+                                        shortDesc="#{bindings.ExtVO.hints.Status.tooltip}"
+                                        id="soc21" readOnly="true">
+                      <f:selectItems value="#{row.bindings.Status.items}"
+                                     id="si20"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.DueDate.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtVO.hints.DueDate.label}"
+                             id="c79">
+                    <af:inputDate value="#{row.bindings.DueDate.inputValue}"
+                                  label="#{bindings.ExtVO.hints.DueDate.label}"
+                                  required="#{bindings.ExtVO.hints.DueDate.mandatory}"
+                                  shortDesc="#{bindings.ExtVO.hints.DueDate.tooltip}"
+                                  id="id6" readOnly="true">
+                      <f:validator binding="#{row.bindings.DueDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.CustName.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtVO.hints.CustName.label}"
+                             id="c71" width="180">
+                    <af:inputText value="#{row.bindings.CustName.inputValue}"
+                                  label="#{bindings.ExtVO.hints.CustName.label}"
+                                  required="#{bindings.ExtVO.hints.CustName.mandatory}"
+                                  columns="#{bindings.ExtVO.hints.CustName.displayWidth}"
+                                  maximumLength="#{bindings.ExtVO.hints.CustName.precision}"
+                                  shortDesc="#{bindings.ExtVO.hints.CustName.tooltip}"
+                                  id="it41" readOnly="true">
+                      <f:validator binding="#{row.bindings.CustName.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.LeaseAgreementId.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtVO.hints.LeaseAgreementId.label}"
+                             id="c65" rendered="false">
+                    <af:selectOneChoice value="#{row.bindings.LeaseAgreementId.inputValue}"
+                                        label="#{row.bindings.LeaseAgreementId.label}"
+                                        required="#{bindings.ExtVO.hints.LeaseAgreementId.mandatory}"
+                                        shortDesc="#{bindings.ExtVO.hints.LeaseAgreementId.tooltip}"
+                                        id="soc19" readOnly="true">
+                      <f:selectItems value="#{row.bindings.LeaseAgreementId.items}"
+                                     id="si19"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.OrgId.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtVO.hints.OrgId.label}"
+                             id="c74" rendered="false">
+                    <af:inputText value="#{row.bindings.OrgId.inputValue}"
+                                  label="#{bindings.ExtVO.hints.OrgId.label}"
+                                  required="#{bindings.ExtVO.hints.OrgId.mandatory}"
+                                  columns="#{bindings.ExtVO.hints.OrgId.displayWidth}"
+                                  maximumLength="#{bindings.ExtVO.hints.OrgId.precision}"
+                                  shortDesc="#{bindings.ExtVO.hints.OrgId.tooltip}"
+                                  id="it40" readOnly="true">
+                      <f:validator binding="#{row.bindings.OrgId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.PropertyId.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtVO.hints.PropertyId.label}"
+                             id="c88" rendered="false">
+                    <af:inputText value="#{row.bindings.PropertyId.inputValue}"
+                                  label="#{bindings.ExtVO.hints.PropertyId.label}"
+                                  required="#{bindings.ExtVO.hints.PropertyId.mandatory}"
+                                  columns="#{bindings.ExtVO.hints.PropertyId.displayWidth}"
+                                  maximumLength="#{bindings.ExtVO.hints.PropertyId.precision}"
+                                  shortDesc="#{bindings.ExtVO.hints.PropertyId.tooltip}"
+                                  id="it39" readOnly="true">
+                      <f:validator binding="#{row.bindings.PropertyId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtVO.hints.BuildId.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtVO.hints.BuildId.label}"
+                             id="c66" rendered="false">
+                    <af:inputText value="#{row.bindings.BuildId.inputValue}"
+                                  label="#{bindings.ExtVO.hints.BuildId.label}"
+                                  required="#{bindings.ExtVO.hints.BuildId.mandatory}"
+                                  columns="#{bindings.ExtVO.hints.BuildId.displayWidth}"
+                                  maximumLength="#{bindings.ExtVO.hints.BuildId.precision}"
+                                  shortDesc="#{bindings.ExtVO.hints.BuildId.tooltip}"
+                                  id="it31" readOnly="true">
+                      <f:validator binding="#{row.bindings.BuildId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:showDetailItem>
+        </af:panelTabbed>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+</jsp:root>

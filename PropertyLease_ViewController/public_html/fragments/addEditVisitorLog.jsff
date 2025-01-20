@@ -1,0 +1,1126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+   <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                    id="pt1"
+                    binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pt1}">
+      <f:facet name="pageContents">
+         <af:panelStretchLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.psl1}"
+                                id="psl1"
+                                styleClass="page-container AFStretchWidth"
+                                inlineStyle="border-color:transparent; height:1000.0px;">
+            <f:facet name="center">
+               <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pgl1}"
+                                    id="pgl1" layout="scroll">
+                  <af:panelGridLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pgl5}"
+                                      id="pgl5">
+                     <af:gridRow marginTop="5px" height="auto"
+                                 binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gr2}"
+                                 id="gr2">
+                        <af:gridCell marginStart="5px" width="50%"
+                                     binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc3}"
+                                     id="gc3">
+                           <af:panelGroupLayout id="pgl2" layout="horizontal">
+                              <af:spacer width="10" height="10" id="s4"/>
+                              <af:outputText id="ot1"
+                                             inlineStyle="font-size:large; font-weight:bold;"
+                                             value="Manage Lead"/>
+                              <af:spacer width="10" height="10" id="spacer2"
+                                         rendered="true"/>
+                              <af:outputText value="#{bindings.LeadNumber.inputValue}"
+                                             id="ot3"
+                                             inlineStyle="font-size:large; font-weight:bold;color:#1367ae;"
+                                             rendered="false"/>
+                              <af:spacer width="515" height="10" id="s2"/>
+                           </af:panelGroupLayout>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="50%"
+                                     marginEnd="5px"
+                                     binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc4}"
+                                     id="gc4"/>
+                     </af:gridRow>
+                  </af:panelGridLayout>
+                  <af:panelGridLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pgl3}"
+                                      id="pgl3">
+                     <af:gridRow marginTop="5px" height="auto"
+                                 binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gr1}"
+                                 id="gr1">
+                        <af:gridCell marginStart="5px" width="50%"
+                                     binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc1}"
+                                     id="gc1"/>
+                        <af:gridCell marginStart="5px" width="50%"
+                                     marginEnd="5px"
+                                     binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc2}"
+                                     id="gc2" valign="middle" halign="end">
+                           <af:toolbar binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.t1}"
+                                       id="t1" flex="1">
+                              <af:panelGroupLayout id="panelGroupLayout2"
+                                                   layout="horizontal"
+                                                   styleClass="AFStretchWidth">
+                                 <af:commandButton text="Submit for Approval"
+                                                   id="cb5" action="save"
+                                                   rendered="false"
+                                                   inlineStyle="margin-right:10.0px;"/>
+                                 <af:commandButton text="Submit" id="cb4"
+                                                   action="save"
+                                                   rendered="false"
+                                                   inlineStyle="margin-right:10.0px;"/>
+                                 <af:commandButton text="Save" id="cb1"
+                                                   partialSubmit="true"
+                                                   immediate="true"
+                                                   actionListener="#{backingBeanScope.backing_fragments_addEditVisitorLog.onClickSaveLead}"
+                                                   inlineStyle="margin-right:10.0px;"
+                                                   visible="#{sessionScope.grantMap.VisitorsLog =='F'}"/>
+                                 <af:commandButton text="Save and Close"
+                                                   binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.cb3}"
+                                                   id="cb3"
+                                                   inlineStyle="margin-right:10.0px;"
+                                                   actionListener="#{backingBeanScope.backing_fragments_addEditVisitorLog.onClickSaveLead}"
+                                                   action="#{backingBeanScope.backing_fragments_addEditVisitorLog.OnClickPageClose}"
+                                                   partialSubmit="true"
+                                                   immediate="true"
+                                                   visible="#{sessionScope.grantMap.VisitorsLog =='F'}"/>
+                                 <af:commandButton text="Cancel" id="cb2"
+                                                   immediate="true"
+                                                   inlineStyle="margin-right:10.0px;"
+                                                   visible="#{sessionScope.grantMap.VisitorsLog =='F' || sessionScope.grantMap.VisitorsLog =='V'}">
+                                    <af:showPopupBehavior popupId="p1"
+                                                          triggerType="action"/>
+                                 </af:commandButton>
+                                 <af:popup id="p1"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.p1}">
+                                    <af:dialog id="d1" type="none"
+                                               inlineStyle="width:350.0px; height:108px;"
+                                               title="Warning"
+                                               titleIconSource="/images/warning.png">
+                                       <af:outputText value="Are you sure want to Cancel this Information ?"
+                                                      id="ot7"
+                                                      inlineStyle="font-weight:bold;"/>
+                                       <f:facet name="buttonBar">
+                                          <af:toolbar id="t3">
+                                             <af:spacer width="210" height="10"
+                                                        id="s25"/>
+                                             <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                                               text="OK"
+                                                               immediate="true"
+                                                               binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.cb6}"
+                                                               id="cb6"
+                                                               action="goBack">
+                                                <af:resetActionListener/>
+                                             </af:commandButton>
+                                             <af:commandButton text="Ok"
+                                                               immediate="true"
+                                                               id="cb8"
+                                                               action="goBack"
+                                                               rendered="false"/>
+                                             <af:spacer width="10" height="10"
+                                                        id="s26"/>
+                                             <af:commandButton text="Cancel"
+                                                               id="cb7"
+                                                               actionListener="#{backingBeanScope.backing_fragments_addEditVisitorLog.onClickLeadPopCancel}"/>
+                                          </af:toolbar>
+                                       </f:facet>
+                                    </af:dialog>
+                                 </af:popup>
+                              </af:panelGroupLayout>
+                           </af:toolbar>
+                        </af:gridCell>
+                     </af:gridRow>
+                  </af:panelGridLayout>
+                  <af:spacer width="10" height="10" id="s5"/>
+                  <af:separator id="s6" inlineStyle="border-color:#C1C1C1;"
+                                rendered="false"/>
+                  <af:spacer width="10" height="10" id="s7" rendered="false"/>
+                  <af:panelBox text="Account Information"
+                               binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pb1}"
+                               id="pb1" showDisclosure="false">
+                     <f:facet name="toolbar"/>
+                     <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pfl1}"
+                                         id="pfl1" maxColumns="3" rows="4"
+                                         labelWidth="150">
+                        <af:inputText value="#{bindings.LeadId.inputValue}"
+                                      label="LeadId"
+                                      required="#{bindings.LeadId.hints.mandatory}"
+                                      columns="#{bindings.LeadId.hints.displayWidth}"
+                                      maximumLength="#{bindings.LeadId.hints.precision}"
+                                      shortDesc="#{bindings.LeadId.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it1}"
+                                      id="it1" autoSubmit="true"
+                                      rendered="false">
+                           <f:validator binding="#{bindings.LeadId.validator}"/>
+                           <af:convertNumber groupingUsed="false"
+                                             pattern="#{bindings.LeadId.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.FuncId.inputValue}"
+                                      label="FuncId"
+                                      required="#{bindings.FuncId.hints.mandatory}"
+                                      columns="#{bindings.FuncId.hints.displayWidth}"
+                                      maximumLength="#{bindings.FuncId.hints.precision}"
+                                      shortDesc="#{bindings.FuncId.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it2}"
+                                      id="it2" autoSubmit="true"
+                                      rendered="false">
+                           <f:validator binding="#{bindings.FuncId.validator}"/>
+                           <af:convertNumber groupingUsed="false"
+                                             pattern="#{bindings.FuncId.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.LeadNumber.inputValue}"
+                                      label="#{bindings.LeadNumber.hints.label}"
+                                      required="#{bindings.LeadNumber.hints.mandatory}"
+                                      columns="#{bindings.LeadNumber.hints.displayWidth}"
+                                      maximumLength="#{bindings.LeadNumber.hints.precision}"
+                                      shortDesc="#{bindings.LeadNumber.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it3}"
+                                      id="it3"
+                                      contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;"
+                                      readOnly="true" partialTriggers="cb1">
+                           <f:validator binding="#{bindings.LeadNumber.validator}"/>
+                        </af:inputText>
+                        <af:selectOneChoice value="#{bindings.OrgId.inputValue}"
+                                            label="#{bindings.OrgId.label}"
+                                            required="#{bindings.OrgId.hints.mandatory}"
+                                            shortDesc="#{bindings.OrgId.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.soc1}"
+                                            id="soc1" contentStyle="width:200px"
+                                            autoSubmit="true" rendered="false">
+                           <f:selectItems value="#{bindings.OrgId.items}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.si1}"
+                                          id="si1"/>
+                        </af:selectOneChoice>
+                        <af:inputComboboxListOfValues id="orgNameTransId"
+                                                      popupTitle="Search and Select: Business Unit"
+                                                      value="#{bindings.OrgNameTrans.inputValue}"
+                                                      label="#{bindings.OrgNameTrans.hints.label}"
+                                                      model="#{bindings.OrgNameTrans.listOfValuesModel}"
+                                                      required="#{bindings.OrgNameTrans.hints.mandatory}"
+                                                      columns="#{bindings.OrgNameTrans.hints.displayWidth}"
+                                                      shortDesc="#{bindings.OrgNameTrans.hints.tooltip}"
+                                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.orgNameTransId}"
+                                                      autoSubmit="true"
+                                                      contentStyle="width:160px;">
+                           <f:validator binding="#{bindings.OrgNameTrans.validator}"/>
+                           <af:autoSuggestBehavior suggestItems="#{bindings.OrgNameTrans.suggestItems}"
+                                                   maxSuggestedItems="3"/>
+                        </af:inputComboboxListOfValues>
+                        <af:inputDate value="#{bindings.VisittedDate.inputValue}"
+                                      label="#{bindings.VisittedDate.hints.label}"
+                                      required="#{bindings.VisittedDate.hints.mandatory}"
+                                      shortDesc="#{bindings.VisittedDate.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.id1}"
+                                      id="id1" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.VisittedDate.validator}"/>
+                           <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                        <af:inputText value="#{bindings.CreatedBy.inputValue}"
+                                      label="#{bindings.CreatedBy.hints.label}"
+                                      required="#{bindings.CreatedBy.hints.mandatory}"
+                                      columns="#{bindings.CreatedBy.hints.displayWidth}"
+                                      maximumLength="#{bindings.CreatedBy.hints.precision}"
+                                      shortDesc="#{bindings.CreatedBy.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it45}"
+                                      id="it45" contentStyle="width:200px"
+                                      autoSubmit="true" disabled="true">
+                           <f:validator binding="#{bindings.CreatedBy.validator}"/>
+                        </af:inputText>
+                        <af:selectBooleanCheckbox value="#{bindings.Agent.inputValue}"
+                                                  label="#{bindings.Agent.label}"
+                                                  shortDesc="#{bindings.Agent.hints.tooltip}"
+                                                  binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.sbc1}"
+                                                  id="sbc1" autoSubmit="true"
+                                                  rendered="false"/>
+                        <af:selectOneChoice value="#{bindings.Title.inputValue}"
+                                            label="#{bindings.Title.label}"
+                                            required="#{bindings.Title.hints.mandatory}"
+                                            shortDesc="#{bindings.Title.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.soc2}"
+                                            id="soc2" contentStyle="width:50px"
+                                            autoSubmit="true">
+                           <f:selectItems value="#{bindings.Title.items}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.si2}"
+                                          id="si2"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.FirstName.inputValue}"
+                                      label="#{bindings.FirstName.hints.label}"
+                                      required="#{bindings.FirstName.hints.mandatory}"
+                                      columns="#{bindings.FirstName.hints.displayWidth}"
+                                      maximumLength="#{bindings.FirstName.hints.precision}"
+                                      shortDesc="#{bindings.FirstName.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it4}"
+                                      id="it4" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      valueChangeListener="#{backingBeanScope.backing_fragments_addEditVisitorLog.onChangeFname}">
+                           <f:validator binding="#{bindings.FirstName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.LastName.inputValue}"
+                                      label="#{bindings.LastName.hints.label}"
+                                      required="#{bindings.LastName.hints.mandatory}"
+                                      columns="#{bindings.LastName.hints.displayWidth}"
+                                      maximumLength="#{bindings.LastName.hints.precision}"
+                                      shortDesc="#{bindings.LastName.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it5}"
+                                      id="it5" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      valueChangeListener="#{backingBeanScope.backing_fragments_addEditVisitorLog.onChangeLname}">
+                           <f:validator binding="#{bindings.LastName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.LeadName.inputValue}"
+                                      label="#{bindings.LeadName.hints.label}"
+                                      columns="#{bindings.LeadName.hints.displayWidth}"
+                                      maximumLength="#{bindings.LeadName.hints.precision}"
+                                      shortDesc="#{bindings.LeadName.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it6}"
+                                      id="it6" contentStyle="width:200px"
+                                      partialTriggers="it4 it5"
+                                      autoSubmit="true" showRequired="true">
+                           <f:validator binding="#{bindings.LeadName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Professional.inputValue}"
+                                      label="#{bindings.Professional.hints.label}"
+                                      required="#{bindings.Professional.hints.mandatory}"
+                                      columns="#{bindings.Professional.hints.displayWidth}"
+                                      maximumLength="#{bindings.Professional.hints.precision}"
+                                      shortDesc="#{bindings.Professional.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it34}"
+                                      id="it34" autoSubmit="true"
+                                      contentStyle="width:200px;">
+                           <f:validator binding="#{bindings.Professional.validator}"/>
+                        </af:inputText>
+                        <af:selectOneChoice value="#{bindings.PrimarySource.inputValue}"
+                                            label="#{bindings.PrimarySource.label}"
+                                            required="#{bindings.PrimarySource.hints.mandatory}"
+                                            shortDesc="#{bindings.PrimarySource.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.soc4}"
+                                            id="soc4" contentStyle="width:200px"
+                                            autoSubmit="true">
+                           <f:selectItems value="#{bindings.PrimarySource.items}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.si4}"
+                                          id="si4"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.SecSource.inputValue}"
+                                      label="#{bindings.SecSource.hints.label}"
+                                      required="#{bindings.SecSource.hints.mandatory}"
+                                      columns="#{bindings.SecSource.hints.displayWidth}"
+                                      maximumLength="#{bindings.SecSource.hints.precision}"
+                                      shortDesc="#{bindings.SecSource.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it7}"
+                                      id="it7" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.SecSource.validator}"/>
+                        </af:inputText>
+                        <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                                            label="#{bindings.Status.label}"
+                                            required="#{bindings.Status.hints.mandatory}"
+                                            shortDesc="#{bindings.Status.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.soc3}"
+                                            id="soc3" contentStyle="width:200px"
+                                            autoSubmit="true" rendered="false">
+                           <f:selectItems value="#{bindings.Status.items}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.si3}"
+                                          id="si3"/>
+                        </af:selectOneChoice>
+                     </af:panelFormLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Contact Information"
+                               binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pb2}"
+                               id="pb2" showDisclosure="false">
+                     <f:facet name="toolbar"/>
+                     <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pfl5}"
+                                         id="pfl5" maxColumns="2" rows="2"
+                                         labelWidth="250">
+                        <af:inputText value="#{bindings.EmailId.inputValue}"
+                                      label="#{bindings.EmailId.hints.label}"
+                                      columns="#{bindings.EmailId.hints.displayWidth}"
+                                      maximumLength="#{bindings.EmailId.hints.precision}"
+                                      shortDesc="#{bindings.EmailId.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it8}"
+                                      id="it8" contentStyle="width:200px"
+                                      autoSubmit="true" required="true"
+                                      showRequired="true">
+                           <f:validator binding="#{bindings.EmailId.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.MobileNumber.inputValue}"
+                                      label="#{bindings.MobileNumber.hints.label}"
+                                      columns="#{bindings.MobileNumber.hints.displayWidth}"
+                                      maximumLength="#{bindings.MobileNumber.hints.precision}"
+                                      shortDesc="#{bindings.MobileNumber.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it9}"
+                                      id="it9" contentStyle="width:200px"
+                                      autoSubmit="true" showRequired="true"
+                                      required="true">
+                           <f:validator binding="#{bindings.MobileNumber.validator}"/>
+                           <af:validateLongRange minimum="0"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PhoneNumber.inputValue}"
+                                      label="#{bindings.PhoneNumber.hints.label}"
+                                      columns="#{bindings.PhoneNumber.hints.displayWidth}"
+                                      maximumLength="#{bindings.PhoneNumber.hints.precision}"
+                                      shortDesc="#{bindings.PhoneNumber.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it10}"
+                                      id="it10" contentStyle="width:200px"
+                                      autoSubmit="true" showRequired="false">
+                           <f:validator binding="#{bindings.PhoneNumber.validator}"/>
+                           <af:validateLongRange minimum="0"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Fax.inputValue}"
+                                      label="#{bindings.Fax.hints.label}"
+                                      columns="#{bindings.Fax.hints.displayWidth}"
+                                      maximumLength="#{bindings.Fax.hints.precision}"
+                                      shortDesc="#{bindings.Fax.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it11}"
+                                      id="it11" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.Fax.validator}"/>
+                           <af:validateLongRange minimum="0"/>
+                        </af:inputText>
+                     </af:panelFormLayout>
+                     <af:spacer width="10" height="10" id="s9"
+                                rendered="false"/>
+                     <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pfl6}"
+                                         id="pfl6" labelWidth="700"
+                                         rendered="false">
+                        <f:facet name="footer"/>
+                     </af:panelFormLayout>
+                     <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pfl2}"
+                                         id="pfl2" maxColumns="2" rows="6"
+                                         labelWidth="250">
+                        <f:facet name="footer"/>
+                        <af:inputText value="#{bindings.PerAddress1.inputValue}"
+                                      label="#{bindings.PerAddress1.hints.label}"
+                                      required="#{bindings.PerAddress1.hints.mandatory}"
+                                      columns="#{bindings.PerAddress1.hints.displayWidth}"
+                                      maximumLength="#{bindings.PerAddress1.hints.precision}"
+                                      shortDesc="#{bindings.PerAddress1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it21}"
+                                      id="it21" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.PerAddress1.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PerAddress2.inputValue}"
+                                      label="#{bindings.PerAddress2.hints.label}"
+                                      required="#{bindings.PerAddress2.hints.mandatory}"
+                                      columns="#{bindings.PerAddress2.hints.displayWidth}"
+                                      maximumLength="#{bindings.PerAddress2.hints.precision}"
+                                      shortDesc="#{bindings.PerAddress2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it22}"
+                                      id="it22" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.PerAddress2.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PerAddress3.inputValue}"
+                                      label="#{bindings.PerAddress3.hints.label}"
+                                      required="#{bindings.PerAddress3.hints.mandatory}"
+                                      columns="#{bindings.PerAddress3.hints.displayWidth}"
+                                      maximumLength="#{bindings.PerAddress3.hints.precision}"
+                                      shortDesc="#{bindings.PerAddress3.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it23}"
+                                      id="it23" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.PerAddress3.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PerAddress4.inputValue}"
+                                      label="#{bindings.PerAddress4.hints.label}"
+                                      required="#{bindings.PerAddress4.hints.mandatory}"
+                                      columns="#{bindings.PerAddress4.hints.displayWidth}"
+                                      maximumLength="#{bindings.PerAddress4.hints.precision}"
+                                      shortDesc="#{bindings.PerAddress4.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it24}"
+                                      id="it24" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.PerAddress4.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PerCity.inputValue}"
+                                      label="#{bindings.PerCity.hints.label}"
+                                      required="#{bindings.PerCity.hints.mandatory}"
+                                      columns="#{bindings.PerCity.hints.displayWidth}"
+                                      maximumLength="#{bindings.PerCity.hints.precision}"
+                                      shortDesc="#{bindings.PerCity.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it25}"
+                                      id="it25" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.PerCity.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PerPostalCode.inputValue}"
+                                      label="#{bindings.PerPostalCode.hints.label}"
+                                      required="#{bindings.PerPostalCode.hints.mandatory}"
+                                      columns="#{bindings.PerPostalCode.hints.displayWidth}"
+                                      maximumLength="#{bindings.PerPostalCode.hints.precision}"
+                                      shortDesc="#{bindings.PerPostalCode.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it26}"
+                                      id="it26" contentStyle="width:200px"
+                                      autoSubmit="true" rendered="false">
+                           <f:validator binding="#{bindings.PerPostalCode.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PerProvince.inputValue}"
+                                      label="#{bindings.PerProvince.hints.label}"
+                                      required="#{bindings.PerProvince.hints.mandatory}"
+                                      columns="#{bindings.PerProvince.hints.displayWidth}"
+                                      maximumLength="#{bindings.PerProvince.hints.precision}"
+                                      shortDesc="#{bindings.PerProvince.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it27}"
+                                      id="it27" contentStyle="width:200px"
+                                      autoSubmit="true" rendered="false">
+                           <f:validator binding="#{bindings.PerProvince.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PerCounty.inputValue}"
+                                      label="#{bindings.PerCounty.hints.label}"
+                                      required="#{bindings.PerCounty.hints.mandatory}"
+                                      columns="#{bindings.PerCounty.hints.displayWidth}"
+                                      maximumLength="#{bindings.PerCounty.hints.precision}"
+                                      shortDesc="#{bindings.PerCounty.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it28}"
+                                      id="it28" contentStyle="width:200px"
+                                      autoSubmit="true" rendered="false">
+                           <f:validator binding="#{bindings.PerCounty.validator}"/>
+                        </af:inputText>
+                        <af:inputComboboxListOfValues id="permenentCountryTransId"
+                                                      popupTitle="Search and Select: #{bindings.permenentCountryTrans.hints.label}"
+                                                      value="#{bindings.permenentCountryTrans.inputValue}"
+                                                      label="#{bindings.permenentCountryTrans.hints.label}"
+                                                      model="#{bindings.permenentCountryTrans.listOfValuesModel}"
+                                                      required="#{bindings.permenentCountryTrans.hints.mandatory}"
+                                                      columns="#{bindings.permenentCountryTrans.hints.displayWidth}"
+                                                      shortDesc="#{bindings.permenentCountryTrans.hints.tooltip}"
+                                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.permenentCountryTransId}"
+                                                      autoSubmit="true"
+                                                      contentStyle="width:160px;">
+                           <f:validator binding="#{bindings.permenentCountryTrans.validator}"/>
+                           <af:autoSuggestBehavior suggestItems="#{bindings.permenentCountryTrans.suggestItems}"/>
+                        </af:inputComboboxListOfValues>
+                        <af:selectOneChoice value="#{bindings.PerCountry1.inputValue}"
+                                            label="#{bindings.PerCountry1.label}"
+                                            required="#{bindings.PerCountry1.hints.mandatory}"
+                                            shortDesc="#{bindings.PerCountry1.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.soc7}"
+                                            id="soc7" contentStyle="width:200px"
+                                            autoSubmit="true" rendered="false"
+                                            partialTriggers="permenentCountryTransId">
+                           <f:selectItems value="#{bindings.PerCountry1.items}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.si9}"
+                                          id="si9"/>
+                        </af:selectOneChoice>
+                        <af:selectBooleanCheckbox value="#{bindings.ActiveRp.inputValue}"
+                                                  label=" Permanent address as Present address ?"
+                                                  shortDesc="#{bindings.ActiveRp.hints.tooltip}"
+                                                  binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.sbc2}"
+                                                  id="sbc2" autoSubmit="true"
+                                                  valueChangeListener="#{backingBeanScope.backing_fragments_addEditVisitorLog.onChangeActivePR}"/>
+                        <af:inputText value="#{bindings.PerCountry.inputValue}"
+                                      label="#{bindings.PerCountry.hints.label}"
+                                      required="#{bindings.PerCountry.hints.mandatory}"
+                                      columns="#{bindings.PerCountry.hints.displayWidth}"
+                                      maximumLength="#{bindings.PerCountry.hints.precision}"
+                                      shortDesc="#{bindings.PerCountry.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it29}"
+                                      id="it29" contentStyle="width:200px"
+                                      autoSubmit="true" rendered="false">
+                           <f:validator binding="#{bindings.PerCountry.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.CurAddress1.inputValue}"
+                                      label="#{bindings.CurAddress1.hints.label}"
+                                      required="#{bindings.CurAddress1.hints.mandatory}"
+                                      columns="#{bindings.CurAddress1.hints.displayWidth}"
+                                      maximumLength="#{bindings.CurAddress1.hints.precision}"
+                                      shortDesc="#{bindings.CurAddress1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it12}"
+                                      id="it12" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      disabled="#{bindings.ActiveRp.inputValue == 'true' ? 'true' : 'false'}"
+                                      partialTriggers="sbc2">
+                           <f:validator binding="#{bindings.CurAddress1.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.CurAddress2.inputValue}"
+                                      label="#{bindings.CurAddress2.hints.label}"
+                                      required="#{bindings.CurAddress2.hints.mandatory}"
+                                      columns="#{bindings.CurAddress2.hints.displayWidth}"
+                                      maximumLength="#{bindings.CurAddress2.hints.precision}"
+                                      shortDesc="#{bindings.CurAddress2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it13}"
+                                      id="it13" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      disabled="#{bindings.ActiveRp.inputValue == 'true' ? 'true' : 'false'}">
+                           <f:validator binding="#{bindings.CurAddress2.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.CurAddress3.inputValue}"
+                                      label="#{bindings.CurAddress3.hints.label}"
+                                      required="#{bindings.CurAddress3.hints.mandatory}"
+                                      columns="#{bindings.CurAddress3.hints.displayWidth}"
+                                      maximumLength="#{bindings.CurAddress3.hints.precision}"
+                                      shortDesc="#{bindings.CurAddress3.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it14}"
+                                      id="it14" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      disabled="#{bindings.ActiveRp.inputValue == 'true' ? 'true' : 'false'}">
+                           <f:validator binding="#{bindings.CurAddress3.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.CurAddress4.inputValue}"
+                                      label="#{bindings.CurAddress4.hints.label}"
+                                      required="#{bindings.CurAddress4.hints.mandatory}"
+                                      columns="#{bindings.CurAddress4.hints.displayWidth}"
+                                      maximumLength="#{bindings.CurAddress4.hints.precision}"
+                                      shortDesc="#{bindings.CurAddress4.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it15}"
+                                      id="it15" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      disabled="#{bindings.ActiveRp.inputValue == 'true' ? 'true' : 'false'}">
+                           <f:validator binding="#{bindings.CurAddress4.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.CurCity.inputValue}"
+                                      label="#{bindings.CurCity.hints.label}"
+                                      required="#{bindings.CurCity.hints.mandatory}"
+                                      columns="#{bindings.CurCity.hints.displayWidth}"
+                                      maximumLength="#{bindings.CurCity.hints.precision}"
+                                      shortDesc="#{bindings.CurCity.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it16}"
+                                      id="it16" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      disabled="#{bindings.ActiveRp.inputValue == 'true' ? 'true' : 'false'}">
+                           <f:validator binding="#{bindings.CurCity.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.CurPostalCode.inputValue}"
+                                      label="#{bindings.CurPostalCode.hints.label}"
+                                      required="#{bindings.CurPostalCode.hints.mandatory}"
+                                      columns="#{bindings.CurPostalCode.hints.displayWidth}"
+                                      maximumLength="#{bindings.CurPostalCode.hints.precision}"
+                                      shortDesc="#{bindings.CurPostalCode.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it17}"
+                                      id="it17" contentStyle="width:200px"
+                                      autoSubmit="true" rendered="false">
+                           <f:validator binding="#{bindings.CurPostalCode.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.CurProvince.inputValue}"
+                                      label="#{bindings.CurProvince.hints.label}"
+                                      required="#{bindings.CurProvince.hints.mandatory}"
+                                      columns="#{bindings.CurProvince.hints.displayWidth}"
+                                      maximumLength="#{bindings.CurProvince.hints.precision}"
+                                      shortDesc="#{bindings.CurProvince.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it18}"
+                                      id="it18" contentStyle="width:200px"
+                                      autoSubmit="true" rendered="false">
+                           <f:validator binding="#{bindings.CurProvince.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.CurCounty.inputValue}"
+                                      label="#{bindings.CurCounty.hints.label}"
+                                      required="#{bindings.CurCounty.hints.mandatory}"
+                                      columns="#{bindings.CurCounty.hints.displayWidth}"
+                                      maximumLength="#{bindings.CurCounty.hints.precision}"
+                                      shortDesc="#{bindings.CurCounty.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it19}"
+                                      id="it19" contentStyle="width:200px"
+                                      autoSubmit="true" rendered="false">
+                           <f:validator binding="#{bindings.CurCounty.validator}"/>
+                        </af:inputText>
+                        <af:selectOneChoice value="#{bindings.CurCountry1.inputValue}"
+                                            label="#{bindings.CurCountry1.label}"
+                                            required="#{bindings.CurCountry1.hints.mandatory}"
+                                            shortDesc="#{bindings.CurCountry1.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.soc8}"
+                                            id="soc8"
+                                            contentStyle="width:200px"
+                                            autoSubmit="true"
+                                            disabled="#{bindings.ActiveRp.inputValue == 'true' ? 'true' : 'false'}"
+                                            partialTriggers="sbc2"
+                                            rendered="false">
+                           <f:selectItems value="#{bindings.CurCountry1.items}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.si8}"
+                                          id="si8"/>
+                        </af:selectOneChoice>
+                        <af:inputComboboxListOfValues id="curCountry_TransId"
+                                                      popupTitle="Search and Select: #{bindings.CurCountry_Trans.hints.label}"
+                                                      value="#{bindings.CurCountry_Trans.inputValue}"
+                                                      label="#{bindings.CurCountry_Trans.hints.label}"
+                                                      model="#{bindings.CurCountry_Trans.listOfValuesModel}"
+                                                      required="#{bindings.CurCountry_Trans.hints.mandatory}"
+                                                      columns="#{bindings.CurCountry_Trans.hints.displayWidth}"
+                                                      shortDesc="#{bindings.CurCountry_Trans.hints.tooltip}"
+                                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.curCountry_TransId}"
+                                                      autoSubmit="true"
+                                                      disabled="#{bindings.ActiveRp.inputValue == 'true' ? 'true' : 'false'}"
+                                                      partialTriggers="sbc2"
+                                                      contentStyle="width:160px;">
+                           <f:validator binding="#{bindings.CurCountry_Trans.validator}"/>
+                        </af:inputComboboxListOfValues>
+                        <af:inputText value="#{bindings.CurCountry.inputValue}"
+                                      label="#{bindings.CurCountry.hints.label}"
+                                      required="#{bindings.CurCountry.hints.mandatory}"
+                                      columns="#{bindings.CurCountry.hints.displayWidth}"
+                                      maximumLength="#{bindings.CurCountry.hints.precision}"
+                                      shortDesc="#{bindings.CurCountry.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it20}"
+                                      id="it20" contentStyle="width:200px"
+                                      autoSubmit="true" rendered="false">
+                           <f:validator binding="#{bindings.CurCountry.validator}"/>
+                        </af:inputText>
+                     </af:panelFormLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Additional Information"
+                               binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pb3}"
+                               id="pb3" showDisclosure="false">
+                     <f:facet name="toolbar"/>
+                     <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pgl8}"
+                                          id="pgl8" layout="horizontal"
+                                          rendered="false">
+                        <af:spacer width="100" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.s3}"
+                                   id="s3"/>
+                        <af:panelGridLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pgl6}"
+                                            id="pgl6"
+                                            inlineStyle="margin-left:50px;">
+                           <af:gridRow marginTop="5px" height="auto"
+                                       binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gr3}"
+                                       id="gr3">
+                              <af:gridCell marginStart="5px" width="50%"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc5}"
+                                           id="gc5" halign="end"
+                                           valign="middle">
+                                 <af:inputText label="Emirates Id"
+                                               binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it39}"
+                                               id="it39" readOnly="true"/>
+                                 <af:outputText value="Emirates Id"
+                                                binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.ot6}"
+                                                id="ot6"
+                                                inlineStyle="font-weight:bolder;"
+                                                rendered="false"/>
+                              </af:gridCell>
+                              <af:gridCell marginStart="5px" width="50%"
+                                           marginEnd="5px"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc6}"
+                                           id="gc6" valign="middle"/>
+                           </af:gridRow>
+                           <af:gridRow marginTop="5px" height="auto"
+                                       binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gr4}"
+                                       id="gr4">
+                              <af:gridCell marginStart="5px" width="50%"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc7}"
+                                           id="gc7" valign="middle"
+                                           halign="end">
+                                 <af:outputText value="#{bindings.ResidentIdExpDate.hints.label}"
+                                                binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.ot8}"
+                                                id="ot8"
+                                                inlineStyle="font-weight:bolder;"/>
+                              </af:gridCell>
+                              <af:gridCell marginStart="5px" width="50%"
+                                           marginEnd="5px"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc8}"
+                                           id="gc8" valign="middle"/>
+                           </af:gridRow>
+                           <af:gridRow marginTop="5px" height="auto"
+                                       marginBottom="5px"
+                                       binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gr5}"
+                                       id="gr5">
+                              <af:gridCell marginStart="5px" width="50%"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc9}"
+                                           id="gc9" valign="middle"
+                                           halign="end">
+                                 <af:outputText value="#{bindings.NationalityTrans.hints.label}"
+                                                binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.ot9}"
+                                                id="ot9"
+                                                inlineStyle="font-weight:bolder;"/>
+                              </af:gridCell>
+                              <af:gridCell marginStart="5px" width="50%"
+                                           marginEnd="5px"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc10}"
+                                           id="gc10" valign="middle"/>
+                           </af:gridRow>
+                        </af:panelGridLayout>
+                        <af:spacer width="200" height="10"
+                                   binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.s1}"
+                                   id="s1"/>
+                        <af:panelGridLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pgl7}"
+                                            id="pgl7"
+                                            inlineStyle="margin-left:250px;">
+                           <af:gridRow marginTop="5px" height="auto"
+                                       binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gr6}"
+                                       id="gr6">
+                              <af:gridCell marginStart="5px" width="50%"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc11}"
+                                           id="gc11" valign="middle"
+                                           halign="end">
+                                 <af:outputText
+                                                binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.ot10}"
+                                                id="ot10"
+                                                value="#{bindings.PassportNumber.hints.label}"
+                                                inlineStyle="font-weight:bolder;"/>
+                              </af:gridCell>
+                              <af:gridCell marginStart="5px" width="50%"
+                                           marginEnd="5px"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc12}"
+                                           id="gc12" valign="middle"/>
+                           </af:gridRow>
+                           <af:gridRow marginTop="5px" height="auto"
+                                       binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gr7}"
+                                       id="gr7">
+                              <af:gridCell marginStart="5px" width="50%"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc13}"
+                                           id="gc13" valign="middle"
+                                           halign="end">
+                                 <af:outputText
+                                                binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.ot11}"
+                                                id="ot11"
+                                                inlineStyle="font-weight:bolder;"
+                                                value="#{bindings.PassportExpDate.inputValue}"/>
+                              </af:gridCell>
+                              <af:gridCell marginStart="5px" width="50%"
+                                           marginEnd="5px"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc14}"
+                                           id="gc14" valign="middle"/>
+                           </af:gridRow>
+                           <af:gridRow marginTop="5px" height="auto"
+                                       marginBottom="5px"
+                                       binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gr8}"
+                                       id="gr8">
+                              <af:gridCell marginStart="5px" width="50%"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc15}"
+                                           id="gc15" valign="middle"
+                                           halign="end">
+                                 <af:outputText
+                                                binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.ot12}"
+                                                id="ot12"
+                                                inlineStyle="font-weight:bolder;"
+                                                value="#{bindings.ResidenceTrans.hints.label}"/>
+                              </af:gridCell>
+                              <af:gridCell marginStart="5px" width="50%"
+                                           marginEnd="5px"
+                                           binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.gc16}"
+                                           id="gc16" valign="middle"/>
+                           </af:gridRow>
+                        </af:panelGridLayout>
+                     </af:panelGroupLayout>
+                     <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pfl4}"
+                                         id="pfl4" rows="3" maxColumns="2"
+                                         labelWidth="250">
+                        <f:facet name="footer"/>
+                        <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pgl4}"
+                                             id="pgl4" layout="horizontal">
+                           <af:inputText value="#{bindings.EmiratesIdRef1.inputValue}"
+                                         label="#{bindings.EmiratesIdRef1.hints.label}"
+                                         required="#{bindings.EmiratesIdRef1.hints.mandatory}"
+                                         columns="#{bindings.EmiratesIdRef1.hints.displayWidth}"
+                                         maximumLength="3"
+                                         shortDesc="#{bindings.EmiratesIdRef1.hints.tooltip}"
+                                         binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it40}"
+                                         id="it40"
+                                         requiredMessageDetail="Enter the valid Emirate ID with 3 digit"
+                                         autoSubmit="true">
+                              <f:validator binding="#{bindings.EmiratesIdRef1.validator}"/>
+                           </af:inputText>
+                           <af:inputText value="#{bindings.EmiratesIdRef1.inputValue}"
+                                         simple="true"
+                                         required="#{bindings.EmiratesIdRef1.hints.mandatory}"
+                                         columns="#{bindings.EmiratesIdRef1.hints.displayWidth}"
+                                         maximumLength="3"
+                                         shortDesc="#{bindings.EmiratesIdRef1.hints.tooltip}"
+                                         binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it35}"
+                                         id="it35" autoSubmit="true"
+                                         requiredMessageDetail="Enter the valid Emirate ID with 3 digit"
+                                         label="Emirates Id" rendered="false">
+                              <f:validator binding="#{bindings.EmiratesIdRef1.validator}"/>
+                           </af:inputText>
+                           <af:outputText value="-"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.ot2}"
+                                          id="ot2" inlineStyle="padding:2px;"/>
+                           <af:inputText value="#{bindings.EmiratesIdRef2.inputValue}"
+                                         simple="true"
+                                         required="#{bindings.EmiratesIdRef2.hints.mandatory}"
+                                         columns="#{bindings.EmiratesIdRef2.hints.displayWidth}"
+                                         maximumLength="4"
+                                         shortDesc="#{bindings.EmiratesIdRef2.hints.tooltip}"
+                                         binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it36}"
+                                         id="it36" autoSubmit="true"
+                                         requiredMessageDetail="Enter the valid Emirate ID with 4 digit">
+                              <f:validator binding="#{bindings.EmiratesIdRef2.validator}"/>
+                           </af:inputText>
+                           <af:outputText value="-"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.ot4}"
+                                          id="ot4" inlineStyle="padding:2px;"/>
+                           <af:inputText value="#{bindings.EmiratesIdRef3.inputValue}"
+                                         simple="true"
+                                         required="#{bindings.EmiratesIdRef3.hints.mandatory}"
+                                         columns="#{bindings.EmiratesIdRef3.hints.displayWidth}"
+                                         maximumLength="7"
+                                         shortDesc="#{bindings.EmiratesIdRef3.hints.tooltip}"
+                                         binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it37}"
+                                         id="it37" autoSubmit="true"
+                                         requiredMessageDetail="Enter the valid Emirate ID with 7 digit">
+                              <f:validator binding="#{bindings.EmiratesIdRef3.validator}"/>
+                           </af:inputText>
+                           <af:outputText value="-"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.ot5}"
+                                          id="ot5" inlineStyle="padding:2px;"/>
+                           <af:inputText value="#{bindings.EmiratesIdRef4.inputValue}"
+                                         simple="true"
+                                         required="#{bindings.EmiratesIdRef4.hints.mandatory}"
+                                         columns="#{bindings.EmiratesIdRef4.hints.displayWidth}"
+                                         maximumLength="1"
+                                         shortDesc="#{bindings.EmiratesIdRef4.hints.tooltip}"
+                                         binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it38}"
+                                         id="it38" autoSubmit="true"
+                                         requiredMessageDetail="Enter the valid Emirate ID with 1 digit">
+                              <f:validator binding="#{bindings.EmiratesIdRef4.validator}"/>
+                           </af:inputText>
+                        </af:panelGroupLayout>
+                        <af:inputDate value="#{bindings.ResidentIdExpDate.inputValue}"
+                                      required="#{bindings.ResidentIdExpDate.hints.mandatory}"
+                                      shortDesc="#{bindings.ResidentIdExpDate.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.id3}"
+                                      id="id3" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      minValue="#{bindings.CurrentDate_Trans.inputValue}"
+                                      label="#{bindings.ResidentIdExpDate.hints.label}">
+                           <f:validator binding="#{bindings.ResidentIdExpDate.validator}"/>
+                           <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                        <af:inputComboboxListOfValues id="nationalityTransId"
+                                                      popupTitle="Search and Select: #{bindings.NationalityTrans.hints.label}"
+                                                      value="#{bindings.NationalityTrans.inputValue}"
+                                                      model="#{bindings.NationalityTrans.listOfValuesModel}"
+                                                      required="#{bindings.NationalityTrans.hints.mandatory}"
+                                                      columns="#{bindings.NationalityTrans.hints.displayWidth}"
+                                                      shortDesc="#{bindings.NationalityTrans.hints.tooltip}"
+                                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.nationalityTransId}"
+                                                      autoSubmit="true"
+                                                      label="#{bindings.NationalityTrans.hints.label}"
+                                                      contentStyle="width:160px;">
+                           <f:validator binding="#{bindings.NationalityTrans.validator}"/>
+                           <af:autoSuggestBehavior suggestItems="#{bindings.NationalityTrans.suggestItems}"
+                                                   maxSuggestedItems="3"/>
+                        </af:inputComboboxListOfValues>
+                        <af:inputText value="#{bindings.PassportNumber.inputValue}"
+                                      required="#{bindings.PassportNumber.hints.mandatory}"
+                                      columns="#{bindings.PassportNumber.hints.displayWidth}"
+                                      maximumLength="#{bindings.PassportNumber.hints.precision}"
+                                      shortDesc="#{bindings.PassportNumber.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it32}"
+                                      id="it32" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      label="#{bindings.PassportNumber.hints.label}">
+                           <f:validator binding="#{bindings.PassportNumber.validator}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.PassportExpDate.inputValue}"
+                                      required="#{bindings.PassportExpDate.hints.mandatory}"
+                                      shortDesc="#{bindings.PassportExpDate.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.id2}"
+                                      id="id2" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      minValue="#{bindings.CurrentDate_Trans.inputValue}"
+                                      label="#{bindings.PassportExpDate.inputValue}"
+                                      rendered="false">
+                           <f:validator binding="#{bindings.PassportExpDate.validator}"/>
+                           <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                        <af:inputDate value="#{bindings.PassportExpDate.inputValue}"
+                                      label="#{bindings.PassportExpDate.hints.label}"
+                                      required="#{bindings.PassportExpDate.hints.mandatory}"
+                                      shortDesc="#{bindings.PassportExpDate.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.id4}"
+                                      id="id4"
+                                      minValue="#{bindings.CurrentDate_Trans.inputValue}" autoSubmit="true"
+                                      contentStyle="width:200px">
+                           <f:validator binding="#{bindings.PassportExpDate.validator}"/>
+                           <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                        <af:inputComboboxListOfValues id="residenceTransId"
+                                                      popupTitle="Search and Select: #{bindings.ResidenceTrans.hints.label}"
+                                                      value="#{bindings.ResidenceTrans.inputValue}"
+                                                      model="#{bindings.ResidenceTrans.listOfValuesModel}"
+                                                      required="#{bindings.ResidenceTrans.hints.mandatory}"
+                                                      columns="#{bindings.ResidenceTrans.hints.displayWidth}"
+                                                      shortDesc="#{bindings.ResidenceTrans.hints.tooltip}"
+                                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.residenceTransId}"
+                                                      label="#{bindings.ResidenceTrans.hints.label}"
+                                                      contentStyle="width:160px;">
+                           <f:validator binding="#{bindings.ResidenceTrans.validator}"/>
+                        </af:inputComboboxListOfValues>
+                        <af:selectOneChoice value="#{bindings.CountryOfRes.inputValue}"
+                                            label="#{bindings.CountryOfRes.label}"
+                                            required="#{bindings.CountryOfRes.hints.mandatory}"
+                                            shortDesc="#{bindings.CountryOfRes.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.soc5}"
+                                            id="soc5" contentStyle="width:200px"
+                                            autoSubmit="true" rendered="false">
+                           <f:selectItems value="#{bindings.CountryOfRes.items}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.si5}"
+                                          id="si5"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.ResidentId.inputValue}"
+                                      label="#{bindings.ResidentId.hints.label}"
+                                      columns="#{bindings.ResidentId.hints.displayWidth}"
+                                      maximumLength="18"
+                                      shortDesc="#{bindings.ResidentId.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it33}"
+                                      id="it33" contentStyle="width:200px"
+                                      autoSubmit="true"
+                                      requiredMessageDetail="Enter the valid Emirate ID"
+                                      rendered="false">
+                           <f:validator binding="#{bindings.ResidentId.validator}"/>
+                           <af:validateLength minimum="18" maximum="18"
+                                              messageDetailMinimum="Enter the valid Emirates Id"
+                                              messageDetailNotInRange="Enter the valid Emirates Id"
+                                              messageDetailMaximum="Enter the valid Emirates Id"/>
+                        </af:inputText>
+                        <af:selectOneChoice value="#{bindings.Nationality1.inputValue}"
+                                            label="#{bindings.Nationality1.label}"
+                                            required="#{bindings.Nationality1.hints.mandatory}"
+                                            shortDesc="#{bindings.Nationality1.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.soc6}"
+                                            id="soc6" autoSubmit="true"
+                                            rendered="false">
+                           <f:selectItems value="#{bindings.Nationality1.items}"
+                                          binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.si6}"
+                                          id="si6"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.Nationality.inputValue}"
+                                      label="#{bindings.Nationality.hints.label}"
+                                      required="#{bindings.Nationality.hints.mandatory}"
+                                      columns="#{bindings.Nationality.hints.displayWidth}"
+                                      maximumLength="#{bindings.Nationality.hints.precision}"
+                                      shortDesc="#{bindings.Nationality.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it31}"
+                                      id="it31" contentStyle="width:200px"
+                                      autoSubmit="true" rendered="false">
+                           <f:validator binding="#{bindings.Nationality.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.TradeLincenseName.inputValue}"
+                                      label="#{bindings.TradeLincenseName.hints.label}"
+                                      required="#{bindings.TradeLincenseName.hints.mandatory}"
+                                      columns="#{bindings.TradeLincenseName.hints.displayWidth}"
+                                      maximumLength="#{bindings.TradeLincenseName.hints.precision}"
+                                      shortDesc="#{bindings.TradeLincenseName.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it41}"
+                                      id="it41" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.TradeLincenseName.validator}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.TradeLincenseNameValidity.inputValue}"
+                                      label="#{bindings.TradeLincenseNameValidity.hints.label}"
+                                      required="#{bindings.TradeLincenseNameValidity.hints.mandatory}"
+                                      shortDesc="#{bindings.TradeLincenseNameValidity.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.id5}"
+                                      id="id5" autoSubmit="true"
+                                      minValue="#{bindings.CurrentDate_Trans.inputValue}"
+                                      contentStyle="width:200px;">
+                           <f:validator binding="#{bindings.TradeLincenseNameValidity.validator}"/>
+                           <af:convertDateTime pattern="#{sessionScope.DateFormat}"/>
+                        </af:inputDate>
+                        <af:inputText value="#{bindings.TradeLincenseNo.inputValue}"
+                                      label="#{bindings.TradeLincenseNo.hints.label}"
+                                      required="#{bindings.TradeLincenseNo.hints.mandatory}"
+                                      columns="#{bindings.TradeLincenseNo.hints.displayWidth}"
+                                      maximumLength="#{bindings.TradeLincenseNo.hints.precision}"
+                                      shortDesc="#{bindings.TradeLincenseNo.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it42}"
+                                      id="it42" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.TradeLincenseNo.validator}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.TradeLincenseNoValidity.inputValue}"
+                                      label="#{bindings.TradeLincenseNoValidity.hints.label}"
+                                      required="#{bindings.TradeLincenseNoValidity.hints.mandatory}"
+                                      shortDesc="#{bindings.TradeLincenseNoValidity.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.id6}"
+                                      id="id6" autoSubmit="true"
+                                      minValue="#{bindings.CurrentDate_Trans.inputValue}"
+                                      contentStyle="width:200px;">
+                           <f:validator binding="#{bindings.TradeLincenseNoValidity.validator}"/>
+                           <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                        <af:inputText value="#{bindings.Trn.inputValue}"
+                                      label="#{bindings.Trn.hints.label}"
+                                      required="#{bindings.Trn.hints.mandatory}"
+                                      columns="#{bindings.Trn.hints.displayWidth}"
+                                      maximumLength="#{bindings.Trn.hints.precision}"
+                                      shortDesc="#{bindings.Trn.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it43}"
+                                      id="it43" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.Trn.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.IssuerEmirates.inputValue}"
+                                      label="#{bindings.IssuerEmirates.hints.label}"
+                                      required="#{bindings.IssuerEmirates.hints.mandatory}"
+                                      columns="#{bindings.IssuerEmirates.hints.displayWidth}"
+                                      maximumLength="#{bindings.IssuerEmirates.hints.precision}"
+                                      shortDesc="#{bindings.IssuerEmirates.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it44}"
+                                      id="it44" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.IssuerEmirates.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.OwnerDetails.inputValue}"
+                                      label="#{bindings.OwnerDetails.hints.label}"
+                                      required="#{bindings.OwnerDetails.hints.mandatory}"
+                                      columns="#{bindings.OwnerDetails.hints.displayWidth}"
+                                      maximumLength="#{bindings.OwnerDetails.hints.precision}"
+                                      shortDesc="#{bindings.OwnerDetails.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it46}"
+                                      id="it46" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.OwnerDetails.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Poa.inputValue}"
+                                      label="#{bindings.Poa.hints.label}"
+                                      required="#{bindings.Poa.hints.mandatory}"
+                                      columns="#{bindings.Poa.hints.displayWidth}"
+                                      maximumLength="#{bindings.Poa.hints.precision}"
+                                      shortDesc="#{bindings.Poa.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it47}"
+                                      id="it47" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.Poa.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Numb.inputValue}"
+                                      label="#{bindings.Numb.hints.label}"
+                                      required="#{bindings.Numb.hints.mandatory}"
+                                      columns="#{bindings.Numb.hints.displayWidth}"
+                                      maximumLength="#{bindings.Numb.hints.precision}"
+                                      shortDesc="#{bindings.Numb.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it48}"
+                                      id="it48" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.Numb.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.NameAndDetail.inputValue}"
+                                      label="#{bindings.NameAndDetail.hints.label}"
+                                      required="#{bindings.NameAndDetail.hints.mandatory}"
+                                      columns="#{bindings.NameAndDetail.hints.displayWidth}"
+                                      maximumLength="#{bindings.NameAndDetail.hints.precision}"
+                                      shortDesc="#{bindings.NameAndDetail.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it49}"
+                                      id="it49" contentStyle="width:200px"
+                                      autoSubmit="true">
+                           <f:validator binding="#{bindings.NameAndDetail.validator}"/>
+                        </af:inputText>
+                     </af:panelFormLayout>
+                     <af:spacer width="10" height="10"
+                                binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.s8}"
+                                id="s8"/>
+                     <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pfl7}"
+                                         id="pfl7" rows="6" maxColumns="2"/>
+                     <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.pfl3}"
+                                  id="pfl3" labelWidth="250">
+                <f:facet name="footer"/>
+                <af:inputText value="#{bindings.Description.inputValue}"
+                              label="#{bindings.Description.hints.label}"
+                              required="#{bindings.Description.hints.mandatory}"
+                              columns="#{bindings.Description.hints.displayWidth}"
+                              maximumLength="#{bindings.Description.hints.precision}"
+                              shortDesc="#{bindings.Description.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_fragments_addEditVisitorLog.it30}"
+                              id="it30" contentStyle="width:450px" rows="6"
+                              autoSubmit="true">
+                  <f:validator binding="#{bindings.Description.validator}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+                  </af:panelBox>
+               </af:panelGroupLayout>
+            </f:facet>
+         </af:panelStretchLayout>
+      </f:facet>
+   </af:pageTemplate>
+   <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_fragments_addEditVisitorLog
+
+
+
+-->
+</jsp:root>

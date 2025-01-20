@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="testPageDef" Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PropertyMaster_VO1" RangeSize="25"
+              DataControl="PropertyMaster_AMDataControl"
+              id="PropertyMaster_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="PropertyId">
+      <AttrNames>
+        <Item Value="PropertyId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="PropertyName">
+      <AttrNames>
+        <Item Value="PropertyName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="PropertyNameTl">
+      <AttrNames>
+        <Item Value="PropertyNameTl"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="PropertyNumber">
+      <AttrNames>
+        <Item Value="PropertyNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="PropertyShortcode">
+      <AttrNames>
+        <Item Value="PropertyShortcode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="OrgId">
+      <AttrNames>
+        <Item Value="OrgId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="ProjectId">
+      <AttrNames>
+        <Item Value="ProjectId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="CostCenterCode">
+      <AttrNames>
+        <Item Value="CostCenterCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="LocationId">
+      <AttrNames>
+        <Item Value="LocationId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="PropertyType">
+      <AttrNames>
+        <Item Value="PropertyType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="NoOfUnits">
+      <AttrNames>
+        <Item Value="NoOfUnits"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="ParentPropertyId">
+      <AttrNames>
+        <Item Value="ParentPropertyId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="MsHdrId">
+      <AttrNames>
+        <Item Value="MsHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="BankAcntId">
+      <AttrNames>
+        <Item Value="BankAcntId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="PropertyClass">
+      <AttrNames>
+        <Item Value="PropertyClass"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="PropertyCategory">
+      <AttrNames>
+        <Item Value="PropertyCategory"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="VendId">
+      <AttrNames>
+        <Item Value="VendId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="ActiveYn">
+      <AttrNames>
+        <Item Value="ActiveYn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="AttributeCategory">
+      <AttrNames>
+        <Item Value="AttributeCategory"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute1">
+      <AttrNames>
+        <Item Value="Attribute1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute2">
+      <AttrNames>
+        <Item Value="Attribute2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute3">
+      <AttrNames>
+        <Item Value="Attribute3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute4">
+      <AttrNames>
+        <Item Value="Attribute4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute5">
+      <AttrNames>
+        <Item Value="Attribute5"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute6">
+      <AttrNames>
+        <Item Value="Attribute6"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute7">
+      <AttrNames>
+        <Item Value="Attribute7"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute8">
+      <AttrNames>
+        <Item Value="Attribute8"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute9">
+      <AttrNames>
+        <Item Value="Attribute9"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="Attribute10">
+      <AttrNames>
+        <Item Value="Attribute10"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator" id="CreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="LastUpdatedBy">
+      <AttrNames>
+        <Item Value="LastUpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="LastUpdateDate">
+      <AttrNames>
+        <Item Value="LastUpdateDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyMaster_VO1Iterator"
+                     id="LastUpdateLogin">
+      <AttrNames>
+        <Item Value="LastUpdateLogin"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

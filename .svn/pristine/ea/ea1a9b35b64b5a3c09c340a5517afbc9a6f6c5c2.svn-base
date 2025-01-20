@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout binding="#{backingBeanScope.backing_SearchExtCan.pgl1}"
+                           id="pgl1" layout="scroll">
+        <af:panelGroupLayout binding="#{backingBeanScope.backing_SearchExtCan.pgl2}"
+                             id="pgl2" layout="vertical">
+          <af:panelGridLayout id="panelGridLayout1"
+                              binding="#{backingBeanScope.backing_SearchExtCan.panelGridLayout1}">
+            <af:gridRow marginTop="5px" height="auto" id="gr1"
+                        binding="#{backingBeanScope.backing_SearchExtCan.gr1}">
+              <af:gridCell marginStart="5px" width="50%" id="gc1"
+                           binding="#{backingBeanScope.backing_SearchExtCan.gc1}">
+                <af:outputLabel value="Extension" id="ol1"
+                                inlineStyle="font-weight:bolder; font-size:large;"
+                                binding="#{backingBeanScope.backing_SearchExtCan.ol1}"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                           id="gc2"
+                           binding="#{backingBeanScope.backing_SearchExtCan.gc2}"/>
+            </af:gridRow>
+          </af:panelGridLayout>
+          <af:spacer width="10" height="10" id="spacer1"
+                     binding="#{backingBeanScope.backing_SearchExtCan.spacer1}"/>
+          <af:panelGroupLayout layout="vertical"
+                               binding="#{backingBeanScope.backing_SearchExtCan.pgl3}"
+                               id="pgl3">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.SearchCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.SearchCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.SearchCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.SearchCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1:resId1"
+                      binding="#{backingBeanScope.backing_SearchExtCan.qryId1}"
+                      rows="3"/>
+            <af:spacer width="10" height="10"
+                       binding="#{backingBeanScope.backing_SearchExtCan.s1}"
+                       id="s1"/>
+            <af:panelBox text="Search Result"
+                         binding="#{backingBeanScope.backing_SearchExtCan.pb1}"
+                         id="pb1">
+              <f:facet name="toolbar"/>
+              <af:panelCollection binding="#{backingBeanScope.backing_SearchExtCan.pc1}"
+                                  id="pc1" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar binding="#{backingBeanScope.backing_SearchExtCan.t1}"
+                              id="t1" flex="1">
+                    <af:commandImageLink binding="#{backingBeanScope.backing_SearchExtCan.cil1}"
+                                         id="cil1"
+                                         icon="/images/func_add_16_ena.png"
+                                         action="toAdd"
+                                         visible="#{sessionScope.grantMap.LeaseAgreement =='F'}"/>
+                    <af:spacer width="10" height="10"
+                               binding="#{backingBeanScope.backing_SearchExtCan.s2}"
+                               id="s2"/>
+                    <af:commandImageLink binding="#{backingBeanScope.backing_SearchExtCan.cil2}"
+                                         id="cil2"
+                                         icon="/images/func_pencil_16_ena.png"
+                                         action="toEdit"
+                                         visible="#{sessionScope.grantMap.LeaseAgreement =='F'}"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.ExtCanVO1.collectionModel}"
+                          var="row" rows="#{bindings.ExtCanVO1.rangeSize}"
+                          emptyText="#{bindings.ExtCanVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.ExtCanVO1.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.ExtCanVO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ExtCanVO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="resId1"
+                          binding="#{backingBeanScope.backing_SearchExtCan.resId1}"
+                          varStatus="vs">
+                  <af:column id="c1" headerText="S.No" align="center"
+                             width="80">
+                    <af:outputText value="#{vs.index+1}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtCanVO1.hints.TransNumber.name}"
+                             sortable="false" headerText="Extension No"
+                             id="resId1c1">
+                    <af:commandLink id="ot6" text="#{row.TransNumber}"
+                                    action="toEdit"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtCanVO1.hints.LeaseAgreementId.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtCanVO1.hints.LeaseAgreementId.label}"
+                             id="resId1c2">
+                    <af:selectOneChoice value="#{row.bindings.LeaseAgreementId.inputValue}"
+                                        label="#{row.bindings.LeaseAgreementId.label}"
+                                        required="#{bindings.ExtCanVO1.hints.LeaseAgreementId.mandatory}"
+                                        shortDesc="#{bindings.ExtCanVO1.hints.LeaseAgreementId.tooltip}"
+                                        id="soc1" readOnly="true">
+                      <f:selectItems value="#{row.bindings.LeaseAgreementId.items}"
+                                     id="si2"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtCanVO1.hints.BookingId.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtCanVO1.hints.BookingId.label}"
+                             id="resId1c4">
+                    <af:selectOneChoice value="#{row.bindings.BookingId.inputValue}"
+                                        label="#{row.bindings.BookingId.label}"
+                                        required="#{bindings.ExtCanVO1.hints.BookingId.mandatory}"
+                                        shortDesc="#{bindings.ExtCanVO1.hints.BookingId.tooltip}"
+                                        id="soc2" readOnly="true">
+                      <f:selectItems value="#{row.bindings.BookingId.items}"
+                                     id="si1"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtCanVO1.hints.CustName.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtCanVO1.hints.CustName.label}"
+                             id="resId1c5" width="150">
+                    <af:outputText value="#{row.CustName}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtCanVO1.hints.Status.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtCanVO1.hints.Status.label}"
+                             id="resId1c6">
+                    <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                        label="#{row.bindings.Status.label}"
+                                        required="#{bindings.ExtCanVO1.hints.Status.mandatory}"
+                                        shortDesc="#{bindings.ExtCanVO1.hints.Status.tooltip}"
+                                        id="soc3" readOnly="true">
+                      <f:selectItems value="#{row.bindings.Status.items}"
+                                     id="si3"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtCanVO1.hints.DueDate.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtCanVO1.hints.DueDate.label}"
+                             id="c4">
+                    <af:outputText value="#{row.DueDate}" id="ot2">
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtCanVO1.hints.Amount.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtCanVO1.hints.Amount.label}"
+                             id="c2">
+                    <af:outputText value="#{row.Amount}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtCanVO1.hints.Currency.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtCanVO1.hints.Currency.label}"
+                             id="c5">
+                    <af:outputText value="#{row.Currency}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ExtCanVO1.hints.Description.name}"
+                             sortable="false"
+                             headerText="#{bindings.ExtCanVO1.hints.Description.label}"
+                             id="c3" width="250">
+                    <af:outputText value="#{row.Description}" id="ot4"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_SearchExtCan-->
+</jsp:root>

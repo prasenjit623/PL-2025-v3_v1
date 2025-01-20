@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="WoSchMainHdr_Approval_VL"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VL.WoSchMainHdr_Approval_VL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="WoSchedulingMainHdr_VO"
+    Cardinality="1"
+    Owner="model.VO.WoSchedulingMainHdr_VO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="WoSchedulingMainHdr_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.WoSchedulingMainHdr_VO.WoSchMainHdrId"/>
+      <Item Value="model.VO.WoSchedulingMainHdr_VO.FuncId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="getApprovalHistoryROVo"
+    Cardinality="-1"
+    Owner="model.ROVO.getApprovalHistoryROVo">
+    <DesignTime>
+      <Attr Name="_finderName" Value="getApprovalHistoryROVo"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.ROVO.getApprovalHistoryROVo.FuncRefId"/>
+      <Item Value="model.ROVO.getApprovalHistoryROVo.FuncId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

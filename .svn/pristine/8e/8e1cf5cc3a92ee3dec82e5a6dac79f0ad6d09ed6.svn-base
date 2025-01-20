@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditWoResourcePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="WoSchedulerTnxResource_VO1" RangeSize="25"
+              DataControl="WoScheduler_AMDataControl"
+              id="WoSchedulerTnxResource_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="WoSchedulerTnxResource_VO1Iterator"
+          id="WoSchedulerTnxResource_VO1">
+      <nodeDefinition DefName="model.VO.WoSchedulerTnxResource_VO"
+                      Name="WoSchedulerTnxResource_VO10">
+        <AttrNames>
+          <Item Value="WoSchMainHdrId"/>
+          <Item Value="WoSchMainHdrNo"/>
+          <Item Value="ScTnxResourceId"/>
+          <Item Value="ScWoTnxId"/>
+          <Item Value="ScTnxOpId"/>
+          <Item Value="WoId"/>
+          <Item Value="WoNo"/>
+          <Item Value="WoOpId"/>
+          <Item Value="OpCode"/>
+          <Item Value="Wooperationresourceid"/>
+          <Item Value="ResourceSequenceNumber"/>
+          <Item Value="Resources"/>
+          <Item Value="StartDate"/>
+          <Item Value="FromTime"/>
+          <Item Value="FromTimeAmPm"/>
+          <Item Value="ToTime"/>
+          <Item Value="ToTimeAmPm"/>
+          <Item Value="TimeTaken"/>
+          <Item Value="OverTimeTaken"/>
+          <Item Value="IterationDetails"/>
+          <Item Value="CompleteDate"/>
+          <Item Value="Status"/>
+          <Item Value="RescheduleDate"/>
+          <Item Value="RescheduleReason"/>
+          <Item Value="Attribute1"/>
+          <Item Value="Attribute2"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="LastUpdateLogin"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="Attribute3"/>
+          <Item Value="WorkStartDate"/>
+          <Item Value="WorkEndDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="WoSchedulerTnxResource_VO1Iterator" id="Delete"
+            InstanceName="WoScheduler_AMDataControl.WoSchedulerTnxResource_VO1"
+            DataControl="WoScheduler_AMDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="WoSchedulerTnxResource_VO1Iterator" id="CreateInsert"
+            InstanceName="WoScheduler_AMDataControl.WoSchedulerTnxResource_VO1"
+            DataControl="WoScheduler_AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" DataControl="WoScheduler_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="WoScheduler_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="WoSchedulerTnxResource_VO1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

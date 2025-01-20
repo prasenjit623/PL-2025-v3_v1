@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="Booking_BTF_Booking_BTF_CreateWithParametersPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ReceiptDtlVO1" RangeSize="25"
+              DataControl="Booking_AMDataControl" id="ReceiptDtlVO1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ReceiptDtlVO1Iterator" id="CreateWithParams"
+            RequiresUpdateModel="true" Action="createWithParams">
+      <NamedData NDName="BookingMsDtlId"
+                 NDValue="#{pageFlowScope.BookingMsId}"
+                 NDType="java.math.BigDecimal"/>
+      <NamedData NDName="AppliedDate" NDValue="#{pageFlowScope.DueDate}"
+                 NDType="oracle.jbo.domain.Date"/>
+      <NamedData NDName="AmountApplied" NDValue="#{pageFlowScope.Amount}"
+                 NDType="java.math.BigDecimal"/>
+    </action>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PropertyCarParks_EO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXPL_PROPERTY_CARPARKS"
+  AliasName="PropertyCarParks_EO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="CarparkId"
+    ColumnName="CARPARK_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XXPL_PROPERTY_CARPARKS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UnitId"
+    ColumnName="UNIT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CpUnitId"
+    ColumnName="CP_UNIT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AttributeCategory"
+    Precision="240"
+    ColumnName="ATTRIBUTE_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute1"
+    Precision="240"
+    ColumnName="ATTRIBUTE1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute2"
+    Precision="240"
+    ColumnName="ATTRIBUTE2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute3"
+    Precision="240"
+    ColumnName="ATTRIBUTE3"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute4"
+    Precision="240"
+    ColumnName="ATTRIBUTE4"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute5"
+    Precision="240"
+    ColumnName="ATTRIBUTE5"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute6"
+    Precision="240"
+    ColumnName="ATTRIBUTE6"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute7"
+    Precision="240"
+    ColumnName="ATTRIBUTE7"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute8"
+    Precision="240"
+    ColumnName="ATTRIBUTE8"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute9"
+    Precision="240"
+    ColumnName="ATTRIBUTE9"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute10"
+    Precision="240"
+    ColumnName="ATTRIBUTE10"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    Precision="60"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    Precision="60"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateLogin"
+    Precision="150"
+    ColumnName="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AllotType"
+    Precision="1"
+    ColumnName="ALLOT_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CpUnitNumber"
+    Precision="200"
+    ColumnName="CP_UNIT_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CpStatus"
+    Precision="200"
+    ColumnName="CP_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CpType"
+    Precision="200"
+    ColumnName="CP_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPL_PROPERTY_CARPARKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="PropertyUnits_EO"
+    Association="model.ASSO.Property_Units_CarParks_Assoc"
+    AssociationEnd="model.ASSO.Property_Units_CarParks_Assoc.PropertyUnits_EO"
+    AssociationOtherEnd="model.ASSO.Property_Units_CarParks_Assoc.PropertyCarParks_EO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="PropertycarparksEoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PROPERTYCARPARKS_EO_PRIMARY_KE"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.PropertyCarParks_EO.CarparkId"/>
+    </AttrArray>
+  </Key>
+</Entity>

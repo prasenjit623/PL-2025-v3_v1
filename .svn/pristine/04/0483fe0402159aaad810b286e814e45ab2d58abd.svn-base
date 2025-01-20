@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:group id="g1">
+        <af:panelGroupLayout id="pgl1" rendered="false"/>
+        <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth"
+                               inlineStyle="width:auto; height:510.0px;">
+          <f:facet name="bottom"/>
+          <f:facet name="center">
+            <af:panelGroupLayout layout="scroll"
+                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                 id="pgl4">
+              <af:panelGridLayout id="pgl2">
+                <af:gridRow marginTop="5px" height="auto" id="gr1">
+                  <af:gridCell marginStart="5px" width="50%" id="gc1">
+                    <af:outputLabel value="Payments &amp; Documents" id="ol1"
+                                    inlineStyle="font-weight:bolder; font-size:large;"/>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                               id="gc2"/>
+                </af:gridRow>
+              </af:panelGridLayout>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:panelGroupLayout layout="vertical" id="pgl3">
+    
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.SearchRecommVCQuery.queryDescriptor}"
+                              model="#{bindings.SearchRecommVCQuery.queryModel}"
+                              queryListener="#{Recommendation.customRecommendSearch_QL}"
+                              queryOperationListener="#{bindings.SearchRecommVCQuery.processQueryOperation}"
+                              resultComponentId="::pc2:resId1" maxColumns="3"
+                              rows="2"/>
+             <af:spacer width="10" height="10" id="s2"/>
+              <af:panelBox text="Search Result" id="pb1">
+                  <f:facet name="toolbar"/>
+                  <af:panelCollection id="pc2" styleClass="AFStretchWidth"
+                                      featuresOff="detach">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t1" flex="1">
+                      <af:commandImageLink id="cil1" action="toAdd"
+                                             icon="/images/func_add_16_ena.png"
+                                             hoverIcon="/images/func_add_16_hov.png"
+                                             depressedIcon="/images/func_add_16_act.png"
+                                             inlineStyle="margin-right:10px;"
+                                             visible="#{sessionScope.grantMap.Recommendation =='F'}"/>
+                        <af:commandImageLink id="cil2" action="toEdit"
+                                             icon="/images/func_pencil_16_ena.png"
+                                             hoverIcon="/images/func_pencil_16_hov.png"
+                                             depressedIcon="/images/func_pencil_16_act.png"
+                                             inlineStyle="margin-right:10px;"
+                                             visible="#{sessionScope.grantMap.Recommendation =='F'}">
+                          <af:setPropertyListener to="#{sessionScope.recommendationPrint}"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/recomendation/#{bindings.RecommendNumber.inputValue}"
+                                                  type="action"/>
+                        </af:commandImageLink>
+                        <af:commandImageLink id="cil3" icon="/images/xl.png"
+                                             hoverIcon="/images/filedownload_ena.png"
+                                             depressedIcon="/images/filedownload_dis.png"
+                                             rendered="true"
+                                             visible="#{sessionScope.grantMap.Recommendation =='N'?'false':'true'}">
+                          <af:fileDownloadActionListener contentType="application/xls"
+                                    filename="Payments &amp; Documents.xls"
+                                                         method="#{Recommendation.exportToExcel}"/>
+                        </af:commandImageLink>
+                        <af:commandImageLink
+                                             id="cil5"
+                                             icon="/images/refersh.png"
+                                             actionListener="#{Recommendation.onClickRevise}"
+                                             action="toEdit" rendered="false"/>
+                      </af:toolbar>
+                    </f:facet>
+                  <af:table value="#{bindings.SearchRecommendationRoVo1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.SearchRecommendationRoVo1.rangeSize}"
+                            emptyText="#{bindings.SearchRecommendationRoVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="6"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.SearchRecommVCQuery.queryDescriptor}"
+                            queryListener="#{bindings.SearchRecommVCQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            scrollPolicy="page"
+                            selectedRowKeys="#{bindings.SearchRecommendationRoVo1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.SearchRecommendationRoVo1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="resId1"
+                            columnStretching="column:resId1c4"
+                            autoHeightRows="0" columnSelection="single">
+                      <af:column id="c2" headerText="S.No" align="center"
+                                 width="50" filterable="true">
+                        <af:outputText value="#{vs.index+1}" id="ot15"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.SearchRecommendationRoVo1.hints.RecommendId.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.SearchRecommendationRoVo1.hints.RecommendId.label}"
+                               id="resId1c1" rendered="false">
+                      <af:outputText value="#{row.RecommendId}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchRecommendationRoVo1.hints.RecommendNumber.name}"
+                                 sortable="true"
+                                 headerText="Payments &amp; Documents No"
+                                 id="resId1c2" filterable="true" align="center"
+                               frozen="true">
+                     <af:commandImageLink text="#{row.bindings.RecommendNumber.inputValue}"
+                                             id="cil4" action="toEdit"
+                                             inlineStyle="font-weight:bolder; font-size:small; color:#1367AE;">
+                          <af:setPropertyListener to="#{sessionScope.recommendationPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/recomendation/#{row.bindings.RecommendNumber.inputValue}"/>
+                          <af:setPropertyListener to="#{sessionScope.recommendationReceiptPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/recomendation/receipt/#{row.bindings.RecommendNumber.inputValue}"/>
+                          <af:setPropertyListener to="#{sessionScope.recommendationReceiptAckPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/recomendation/receiptack/#{row.bindings.RecommendNumber.inputValue}"/>
+                          <af:setPropertyListener from="#{bindings.RecommendId.inputValue}" 
+                                                  to="#{pageFlowScope.recomndId}"
+                                                  type="action"/>
+                        </af:commandImageLink>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.BookingnumberTrans.label}"
+                                 id="c3" frozen="true">
+                        <af:outputText value="#{row.BookingnumberTrans}"
+                                       id="ot8"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.Buildname.label}"
+                                 id="c7" width="150" frozen="true">
+                        <af:outputText value="#{row.Buildname}" id="ot9"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.Unitname.label}"
+                                 id="c8" frozen="true">
+                        <af:outputText value="#{row.Unitname}" id="ot12"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.SearchRecommendationRoVo1.hints.CustName.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.SearchRecommendationRoVo1.hints.CustName.label}"
+                               id="resId1c4" width="200">
+                      <af:outputText value="#{row.CustName}" id="ot11"/>
+                    </af:column>
+                      <af:column headerText="Payment &amp; Document Status"
+                                 id="c4" align="center">
+                        <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                            label="#{row.bindings.Status.label}"
+                                            required="#{bindings.SearchRecommendationRoVo1.hints.Status.mandatory}"
+                                            shortDesc="#{bindings.SearchRecommendationRoVo1.hints.Status.tooltip}"
+                                            id="soc1">
+                          <f:selectItems value="#{row.bindings.Status.items}"
+                                         id="si1"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column headerText="Payment &amp; Document Sub Status"
+                                 id="c13">
+                        <af:outputText value="#{row.SubStatus}" id="ot17"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.UnitStatus.label}"
+                                 id="c10">
+                        <af:selectOneChoice value="#{row.bindings.UnitStatus.inputValue}"
+                                            label="#{row.bindings.UnitStatus.label}"
+                                            required="#{bindings.SearchRecommendationRoVo1.hints.UnitStatus.mandatory}"
+                                            shortDesc="#{bindings.SearchRecommendationRoVo1.hints.UnitStatus.tooltip}"
+                                            id="soc2" readOnly="true">
+                          <f:selectItems value="#{row.bindings.UnitStatus.items}"
+                                         id="si2"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <!--<af:decorativeBox id="db1">
+                          <f:facet name="center"/>
+                          <f:facet name="top"/>
+                        </af:decorativeBox>-->
+                  
+                      <af:column sortProperty="#{bindings.SearchRecommendationRoVo1.hints.MilestoneName_Trans.name}"
+                               filterable="false" sortable="true"
+                               headerText="#{bindings.SearchRecommendationRoVo1.hints.MilestoneName_Trans.label}"
+                               id="resId1c6" width="200" align="center">
+                        <af:outputText value="#{row.MilestonenameTrans}"
+                                       id="ot1"/>
+                      </af:column>
+                                        <af:column sortProperty="#{bindings.SearchRecommendationRoVo1.hints.Description.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.SearchRecommendationRoVo1.hints.Description.label}"
+                               id="resId1c7" rendered="false">
+                      <af:outputText value="#{row.Description}" id="ot10"/>
+                    </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.LeaseStartDate_Trans.label}"
+                                 id="c5" partialTriggers="c3" align="center">
+                        <af:outputText value="#{row.LeasestartdateTrans}"
+                                       id="ot4">
+                          <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.LeaseEndDate_Trans.label}"
+                                 id="c6" partialTriggers="c3" align="center">
+                        <af:outputText value="#{row.LeaseenddateTrans}"
+                                       id="ot5">
+                          <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="Contract Days"
+                                 id="c21">
+                        <af:outputText value="#{row.ExtensionDays}" id="ot25"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.CreateDate.label}"
+                                 id="c9" align="center">
+                        <af:outputText value="#{row.CreateDate}" id="ot13">
+                          <af:convertDateTime pattern="#{bindings.SearchRecommendationRoVo1.hints.CreateDate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.Currency_Trans.label}"
+                               sortProperty="#{bindings.SearchRecommendationRoVo1.hints.Currency_Trans.name}"
+                               filterable="true" sortable="true"
+                               id="c1" align="center">
+                        <af:outputText value="#{row.CurrencyTrans}" id="ot7"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.SetRentPerAnnum.label}"
+                                 id="c22">
+                        <af:outputText value="#{row.SetRentPerAnnum}"
+                                       id="ot26"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.SetRent.label}"
+                                 id="c11" align="center">
+                        <af:outputText value="#{row.SetRent}" id="ot14"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.NetRent.label}"
+                                 id="c12" align="center">
+                        <af:outputText value="#{row.NetRent}" id="ot16"/>
+                      </af:column>
+                      <af:column headerText="Discount"
+                                 id="c23" align="center">
+                        <af:outputText value="#{row.DiscAmt}" id="ot27"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.TaxAmount.label}"
+                                 id="c16" align="center">
+                        <af:outputText value="#{row.TaxAmount}" id="ot20"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.UnitDescription.label}"
+                                 id="c15" width="180">
+                        <af:outputText value="#{row.UnitDescription}"
+                                       id="ot19"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.MobileNumber.label}"
+                                 id="c17">
+                        <af:outputText value="#{row.MobileNumber}" id="ot21"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.PhoneNumber.label}"
+                                 id="c18">
+                        <af:outputText value="#{row.PhoneNumber}" id="ot22"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.EmailId.label}"
+                                 id="c19" width="180">
+                        <af:outputText value="#{row.EmailId}" id="ot23"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.SearchRecommendationRoVo1.hints.RecommendDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.SearchRecommendationRoVo1.hints.RecommendDate.label}"
+                               id="resId1c10" rendered="false">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.RecommendDate}"
+                                      id="id1"/>
+                      </f:facet>
+                      <af:outputText value="#{row.RecommendDate}" id="ot2">
+                        <af:convertDateTime pattern="#{bindings.SearchRecommendationRoVo1.hints.RecommendDate.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchRecommendationRoVo1.hints.ReceiptAmount.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.SearchRecommendationRoVo1.hints.ReceiptAmount.label}"
+                               id="resId1c11" rendered="false">
+                      <af:outputText value="#{row.ReceiptAmount}" id="ot3"/>
+                    </af:column>
+                      <af:column headerText="Offer Flag"
+                                 id="c20">
+                        <af:outputText value="#{row.OfferFlag =='N' ? 'New' :row.OfferFlag =='R' ? 'Renewal' :row.OfferFlag =='S' ? 'Short Renewal' : ''}" id="ot24"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.UnitIncharge.label}"
+                                 id="c14">
+                        <af:outputText value="#{row.UnitIncharge}" id="ot18"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.SearchRecommendationRoVo1.hints.UnitOwner.label}"
+                                 id="c24">
+                        <af:outputText value="#{row.UnitOwner}" id="ot28"/>
+                      </af:column>
+                    </af:table>
+               </af:panelCollection>
+               </af:panelBox>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="start"/>
+          <f:facet name="end"/>
+          <f:facet name="top"/>
+        </af:panelStretchLayout>
+      </af:group>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

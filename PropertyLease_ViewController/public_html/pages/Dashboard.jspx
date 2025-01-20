@@ -1,0 +1,599 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+   <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+   <f:view>
+      <af:document id="d1" title="Al Misk Properties">
+         <f:facet name="metaContainer">
+            <af:outputText escape="false"
+                           value='&lt;link href="#{facesContext.externalContext.requestContextPath}/favicon.ico" rel="shortcut icon">'
+                           id="o1"/>
+         </f:facet>
+         <af:messages id="m1"/>
+         <af:form id="f1" usesUpload="true">
+            <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                             id="pt1">
+               <f:facet name="pageContents">
+                  <af:panelStretchLayout id="psl1"
+                                         inlineStyle="height:620.0px;background-color:rgb(159, 219, 249)"
+                                         startWidth="80px" endWidth="10px"
+                                         topHeight="130px" bottomHeight="10px"
+                                         styleClass="AFStretchWidth">
+                     <f:facet name="center">
+                        <af:panelGroupLayout id="pgl11"
+                                             inlineStyle="height:auto;"
+                                             valign="middle" layout="vertical">
+                           <af:panelGroupLayout id="pgl2" layout="horizontal"
+                                                halign="start"
+                                                inlineStyle="width:auto; height:auto;">
+                              <af:spacer width="270" height="10" id="s2"/>
+                              <af:panelGroupLayout id="pgl3" layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="#{sessionScope.grantMap.Property =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="pgl4"
+                                                      layout="vertical"
+                                                      halign="center"
+                                                      rendered="#{sessionScope.grantMap.Property =='N'?'false':'true'}">
+                                    <af:commandImageLink id="cil1"
+                                                         icon="/images/property-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/Property_BTF.xml#Property_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Property" id="ot1"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="125" height="10" id="s3"/>
+                              <af:panelGroupLayout id="pgl5" layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="#{sessionScope.grantMap.Building =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="pgl6"
+                                                      layout="vertical"
+                                                      halign="center">
+                                    <af:commandImageLink id="cil2"
+                                                         icon="/images/build-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/Building_BTF.xml#Building_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Building" id="ot2"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="125" height="10" id="spacer1"/>
+                              <af:panelGroupLayout id="pgl7" layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="#{sessionScope.grantMap.Unit =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="pgl8"
+                                                      layout="vertical"
+                                                      halign="center">
+                                    <af:commandImageLink id="cil3"
+                                                         icon="/images/units-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/Units_BTF.xml#Units_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Unit" id="ot3"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="108" height="10" id="spacer2"/>
+                              <af:panelGroupLayout id="pgl9" layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="#{sessionScope.grantMap.Milestone =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="pgl10"
+                                                      layout="vertical"
+                                                      halign="center">
+                                    <af:commandImageLink id="cil4"
+                                                         icon="/images/payment schedule-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/Milestones_BTF.xml#Milestones_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Payment Schedule"
+                                                   id="ot4"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <!--<Land lord/>-->
+                              <af:spacer width="108" height="10" id="spacer202"/>
+                              <af:panelGroupLayout id="pgl96" layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="#{sessionScope.grantMap.Milestone =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="pgl106"
+                                                      layout="vertical"
+                                                      halign="center">
+                                    <af:commandImageLink id="cil46"
+                                                         icon="/images/payment schedule-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/LandLordMaster_BTF.xml#LandLordMaster_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Land Lord Master"
+                                                   id="ot466"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                           </af:panelGroupLayout>
+                           <af:spacer width="10" height="20" id="s4"/>
+                           <af:panelGroupLayout id="pgl12" layout="horizontal"
+                                                inlineStyle="width:auto; height:auto;">
+                              <af:spacer width="260" height="10" id="spacer3"/>
+                              <af:panelGroupLayout id="pgl13" layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="#{sessionScope.grantMap.VisitorsLog =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="pgl14"
+                                                      layout="vertical"
+                                                      halign="center">
+                                    <af:commandImageLink id="cil5"
+                                                         icon="/images/visitors log-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/Lead_BTF.xml#Lead_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Visitors Log" id="ot5"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="115" height="10" id="spacer4"/>
+                              <af:panelGroupLayout id="panelGroupLayout1"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   layout="vertical"
+                                                   rendered="#{sessionScope.grantMap.Offer =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="panelGroupLayout2"
+                                                      halign="center"
+                                                      layout="vertical">
+                                    <af:commandImageLink id="commandImageLink1"
+                                                         icon="/images/offer-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/Offer_BTF.xml#Offer_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Offer"
+                                                   id="outputText1"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="125" height="10" id="spacer5"/>
+                              <af:panelGroupLayout id="panelGroupLayout3"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   layout="vertical"
+                                                   rendered="#{sessionScope.grantMap.Booking =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="panelGroupLayout4"
+                                                      halign="center"
+                                                      layout="vertical">
+                                    <af:commandImageLink id="commandImageLink2"
+                                                         icon="/images/booking-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/Booking_BTF.xml#Booking_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                       <af:setPropertyListener from="#{'Booking'}"
+                                                               to="#{sessionScope.TaskFlowVal}"
+                                                               type="action"/>
+                                       <af:setPropertyListener from="#{'userRole'}"
+                                                               to="#{sessionScope.userRole}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Booking"
+                                                   id="outputText2"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="135" height="10" id="spacer6"/>
+                              <af:panelGroupLayout id="panelGroupLayout5"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   layout="vertical"
+                                                   rendered="#{sessionScope.grantMap.PriceList =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="panelGroupLayout6"
+                                                      halign="center"
+                                                      layout="vertical">
+                                    <af:commandImageLink id="commandImageLink3"
+                                                         icon="/images/price list-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/PriceList_BTF.xml#PriceList_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Price List"
+                                                   id="outputText3"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                           </af:panelGroupLayout>
+                           <af:spacer width="10" height="20" id="spacer12"/>
+                           <af:panelGroupLayout id="panelGroupLayout7"
+                                                layout="horizontal"
+                                                halign="start"
+                                                inlineStyle="width:auto; height:auto;">
+                              <af:spacer width="225" height="10" id="spacer7"/>
+                              <af:panelGroupLayout id="panelGroupLayout9"
+                                                   halign="center"
+                                                   layout="vertical">
+                                 <af:commandImageLink id="commandImageLink4"
+                                                      icon="/images/payments and documents-sq.png"
+                                                      action="goToHome">
+                                    <af:setPropertyListener from="#{'/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF'}"
+                                                            to="#{pageFlowScope.taskId}"
+                                                            type="action"/>
+                                 </af:commandImageLink>
+                                 <af:outputText value="Payments &amp; Documents"
+                                                id="outputText4"
+                                                inlineStyle="color:Black; font-weight:bold;"/>
+                              </af:panelGroupLayout>
+                              <af:spacer width="80" height="10" id="spacer8"
+                                         rendered="true"/>
+                              <af:panelGroupLayout id="panelGroupLayout10"
+                                                   layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="#{sessionScope.grantMap.LeaseAgreement =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="panelGroupLayout11"
+                                                      layout="vertical"
+                                                      halign="center">
+                                    <af:commandImageLink id="commandImageLink5"
+                                                         icon="/images/contract-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/LeaseAgreement_BTF.xml#LeaseAgreement_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Contracts"
+                                                   id="outputText5"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="90" height="10" id="spacer9"
+                                         rendered="true"/>
+                              <af:panelGroupLayout id="panelGroupLayout12"
+                                                   layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="#{sessionScope.grantMap.MoveInMoveOut =='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="panelGroupLayout13"
+                                                      layout="vertical"
+                                                      halign="center">
+                                    <af:commandImageLink id="commandImageLink6"
+                                                         icon="/images/mov-in-out-sq.png"
+                                                         action="goToHome">
+                                       <af:showPopupBehavior triggerType="action"
+                                                             popupId="popup1"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Move In &amp; Move Out"
+                                                   id="outputText6"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="93" height="10" id="s8"/>
+                              <af:panelGroupLayout id="panelGroupLayout27"
+                                                   rendered="true">
+                                 <af:popup id="popup1">
+                                    <af:dialog id="dialog1" type="none"
+                                               inlineStyle="background-color:rgb(29,74,104);">
+                                       <af:panelGroupLayout id="panelGroupLayout28"
+                                                            layout="horizontal"
+                                                            halign="center">
+                                          <af:spacer width="30" height="5"
+                                                     id="spacer13"/>
+                                          <af:panelGroupLayout id="panelGroupLayout45"
+                                                               layout="vertical"
+                                                               halign="center"
+                                                               visible="#{sessionScope.grantMap.Booking =='N'?'false':'true'}">
+                                             <af:commandLink id="commandLink20"
+                                                             action="goToHome"
+                                                             immediate="true"
+                                                             partialSubmit="true">
+                                                <af:activeImage source="/images/grid_dot_download.png"
+                                                                id="activeImage20"/>
+                                                <af:setPropertyListener from="#{'I'}"
+                                                                        to="#{sessionScope.moveInOut}"
+                                                                        type="action"/>
+                                                <af:setPropertyListener to="#{pageFlowScope.taskId}"
+                                                                        from="#{'/WEB-INF/MoveInOut_BTF.xml#MoveInOut_BTF'}"
+                                                                        type="action"/>
+                                                <af:setPropertyListener from="#{null}"
+                                                                        to="#{sessionScope.EditMoveInOut}"
+                                                                        type="action"/>
+                                             </af:commandLink>
+                                             <af:outputText value="Move In"
+                                                            id="outputText20"
+                                                            inlineStyle="color:Background; font-weight:bold;"/>
+                                          </af:panelGroupLayout>
+                                          <af:spacer width="30" height="10"
+                                                     id="spacer16"/>
+                                          <af:panelGroupLayout id="panelGroupLayout30"
+                                                               layout="vertical"
+                                                               halign="center"
+                                                               visible="#{sessionScope.grantMap.Block_Unit =='N'?'false':'true'}">
+                                             <af:commandLink id="commandLink9"
+                                                             action="goToHome"
+                                                             immediate="true"
+                                                             partialSubmit="true">
+                                                <af:activeImage source="/images/grid_dot_upload.png"
+                                                                id="activeImage9"/>
+                                                <af:setPropertyListener to="#{pageFlowScope.taskId}"
+                                                                        from="#{'/WEB-INF/MoveInOut_BTF.xml#MoveInOut_BTF'}"
+                                                                        type="action"/>
+                                                <af:setPropertyListener from="#{'O'}"
+                                                                        to="#{sessionScope.moveInOut}"
+                                                                        type="action"/>
+                                                <af:setPropertyListener from="#{null}"
+                                                                        to="#{sessionScope.EditMoveInOut}"
+                                                                        type="action"/>
+                                             </af:commandLink>
+                                             <af:outputText value="Move Out"
+                                                            id="outputText9"
+                                                            inlineStyle="color:Background; font-weight:bold;"/>
+                                          </af:panelGroupLayout>
+                                          <af:spacer width="30" height="10"
+                                                     id="s10"/>
+                                       </af:panelGroupLayout>
+                                    </af:dialog>
+                                 </af:popup>
+                              </af:panelGroupLayout>
+                              <af:panelGroupLayout id="pg130" layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="#{sessionScope.grantMap.OtherCharges=='N'?'false':'true'}">
+                                 <af:panelGroupLayout id="pgl31"
+                                                      layout="vertical"
+                                                      halign="center">
+                                    <af:commandImageLink id="ci25"
+                                                         icon="/images/oc-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Other Charges"
+                                                   id="ot15"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="60" height="10" id="spacer10"
+                                         rendered="false"/>
+                              <af:panelGroupLayout id="panelGroupLayout14"
+                                                   layout="vertical"
+                                                   inlineStyle="width:auto; height:auto;"
+                                                   rendered="false">
+                                 <af:panelGroupLayout id="panelGroupLayout15"
+                                                      layout="vertical"
+                                                      halign="center">
+                                    <af:commandImageLink id="commandImageLink7"
+                                                         icon="/images/ext-can-sq.png"
+                                                         action="goToHome">
+                                       <af:setPropertyListener from="#{'/WEB-INF/CancellationExtension_BTF.xml#CancellationExtension_BTF'}"
+                                                               to="#{pageFlowScope.taskId}"
+                                                               type="action"/>
+                                       <af:showPopupBehavior popupId="p1"
+                                                             triggerType="action"/>
+                                    </af:commandImageLink>
+                                    <af:outputText value="Cancellation"
+                                                   id="outputText7"
+                                                   inlineStyle="color:Black; font-weight:bold;"/>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="10" height="10" id="s5"/>
+                              <af:panelGroupLayout id="pgl15">
+                                 <af:popup id="p1">
+                                    <af:dialog id="d2" type="none">
+                                       <af:panelGroupLayout id="pgl16"
+                                                            layout="horizontal">
+                                          <af:spacer width="30" height="10"
+                                                     id="s6"/>
+                                          <af:panelGroupLayout id="pgl18"
+                                                               layout="vertical">
+                                             <af:commandLink id="cl2"
+                                                             action="goToHome">
+                                                <af:activeImage source="/images/grid_dot_match.png"
+                                                                id="ai2"/>
+                                                <af:setPropertyListener from="#{'CAN'}"
+                                                                        to="#{sessionScope.Flag}"
+                                                                        type="action"/>
+                                                <af:setPropertyListener from="#{'/WEB-INF/CancellationExtension_BTF.xml#CancellationExtension_BTF'}"
+                                                                        to="#{pageFlowScope.taskId}"
+                                                                        type="action"/>
+                                                <af:setPropertyListener from="#{null}"
+                                                                        to="#{sessionScope.transno}"
+                                                                        type="action"/>
+                                             </af:commandLink>
+                                             <af:outputText value="Cancellation"
+                                                            id="ot7"
+                                                            inlineStyle="color:Background; font-weight:bold;"/>
+                                          </af:panelGroupLayout>
+                                          <af:spacer width="30" height="10"
+                                                     id="s7"/>
+                                          <af:panelGroupLayout id="pgl17"
+                                                               layout="vertical">
+                                             <af:commandLink id="cl1"
+                                                             action="goToHome">
+                                                <af:activeImage source="/images/grid_dot_thumbsup.png"
+                                                                id="ai1"/>
+                                                <af:setPropertyListener from="#{'EXT'}"
+                                                                        to="#{sessionScope.Flag}"
+                                                                        type="action"/>
+                                                <af:setPropertyListener from="#{'/WEB-INF/ExtCancellation.xml#ExtCancellation'}"
+                                                                        to="#{pageFlowScope.taskId}"
+                                                                        type="action"/>
+                                                <af:setPropertyListener from="#{null}"
+                                                                        to="#{sessionScope.transno}"
+                                                                        type="action"/>
+                                             </af:commandLink>
+                                             <af:outputText value="Extension"
+                                                            id="ot6"
+                                                            inlineStyle="color:Background; font-weight:bold;"/>
+                                          </af:panelGroupLayout>
+                                          <af:spacer width="30" height="10"
+                                                     id="spacer14"
+                                                     rendered="false"/>
+                                       </af:panelGroupLayout>
+                                    </af:dialog>
+                                 </af:popup>
+                              </af:panelGroupLayout>
+                           </af:panelGroupLayout>
+                           <af:spacer width="10" height="20" id="spacer11"/>
+                           <af:panelGroupLayout id="pgl21" layout="horizontal"
+                                                halign="start"
+                                                inlineStyle="width:auto; height:auto;">
+                              <af:panelGroupLayout id="panelGroupLayout16"
+                                                   layout="horizontal"
+                                                   halign="center"
+                                                   inlineStyle="width:auto; height:auto;">
+                                 <af:spacer width="265" height="10"
+                                            id="spacer15"/>
+                                 <af:panelGroupLayout id="panelGroupLayout17"
+                                                      layout="vertical"
+                                                      inlineStyle="width:auto; height:auto;"
+                                                      rendered="#{sessionScope.grantMap.ArSetup=='N'?'false':'true'}">
+                                    <af:panelGroupLayout id="panelGroupLayout18"
+                                                         layout="vertical"
+                                                         halign="center">
+                                       <af:commandImageLink id="commandImageLink8"
+                                                            icon="/images/ar setup-sq.png"
+                                                            action="goToHome">
+                                          <af:setPropertyListener from="#{'/WEB-INF/ArSetup_BTF.xml#ArSetup_BTF'}"
+                                                                  to="#{pageFlowScope.taskId}"
+                                                                  type="action"/>
+                                       </af:commandImageLink>
+                                       <af:outputText value="AR Setup"
+                                                      id="outputText8"
+                                                      inlineStyle="color:Black; font-weight:bold;"/>
+                                    </af:panelGroupLayout>
+                                 </af:panelGroupLayout>
+                                 <af:spacer width="125" height="10"
+                                            id="spacer24"/>
+                                 <af:panelGroupLayout id="pgl19"
+                                                      layout="vertical"
+                                                      inlineStyle="width:auto; height:auto;"
+                                                      rendered="#{sessionScope.grantMap.Receipt=='N'?'false':'true'}">
+                                    <af:panelGroupLayout id="pgl20"
+                                                         layout="vertical"
+                                                         halign="center">
+                                       <af:commandImageLink id="cil6"
+                                                            icon="/images/rcpt-sq.png"
+                                                            action="goToHome">
+                                          <af:setPropertyListener from="#{'/WEB-INF/SearchReceipt_BTF.xml#SearchReceipt_BTF'}"
+                                                                  to="#{pageFlowScope.taskId}"
+                                                                  type="action"/>
+                                       </af:commandImageLink>
+                                       <af:outputText value="Receipt" id="ot8"
+                                                      inlineStyle="color:Black; font-weight:bold;"/>
+                                    </af:panelGroupLayout>
+                                 </af:panelGroupLayout>
+                                 <af:spacer width="110" height="10" id="s9"/>
+                                 <af:spacer width="0" height="10"
+                                            id="spacer25"/>
+                                 <!--cancellation -->
+                                 <af:panelGroupLayout id="pg131"
+                                                      layout="vertical"
+                                                      inlineStyle="width:auto; height:auto;"
+                                                      rendered="#{sessionScope.grantMap.Cancellation =='N'?'false':'true'}">
+                                    <af:panelGroupLayout id="pgl32"
+                                                         layout="vertical"
+                                                         halign="center">
+                                       <af:commandImageLink id="ci26"
+                                                            icon="/images/1.png"
+                                                            action="goToHome">
+                                          <af:setPropertyListener from="#{'/WEB-INF/Cancelllation_BTF.xml#Cancelllation_BTF'}"
+                                                                  to="#{pageFlowScope.taskId}"
+                                                                  type="action"/>
+                                       </af:commandImageLink>
+                                       <af:outputText value="Cancellation"
+                                                      id="ot16"
+                                                      inlineStyle="color:Black; font-weight:bold;"/>
+                                    </af:panelGroupLayout>
+                                 </af:panelGroupLayout>
+                                 <af:spacer width="100" height="10" id="s11"/>
+                                 <!--WO Scheduding Process -->
+                                 <af:panelGroupLayout id="pg1310"
+                                                      layout="vertical"
+                                                      inlineStyle="width:auto; height:auto;">
+                                    <af:panelGroupLayout id="pgl320"
+                                                         layout="vertical"
+                                                         halign="center">
+                                       <af:commandImageLink id="ci260"
+                                                            icon="/images/grid_matte_clipboardcheckmark.png"
+                                                            action="goToHome">
+                                          <af:setPropertyListener from="#{'/WEB-INF/WoSchedulerTnx_BTF.xml#WoSchedulerTnx_BTF'}"
+                                                                  to="#{pageFlowScope.taskId}"
+                                                                  type="action"/>
+                                       </af:commandImageLink>
+                                       <af:outputText value="WO Scheduling Window"
+                                                      id="ot160"
+                                                      inlineStyle="color:Black; font-weight:bold;"/>
+                                    </af:panelGroupLayout>
+                                 </af:panelGroupLayout>
+                                 <!--< WO Invoice Window/>-->
+                                 <af:spacer width="120" height="10" id="spacer2621"/>
+                                    <af:panelGroupLayout id="pgl2321"
+                                                      layout="vertical"
+                                                      inlineStyle="width:auto; height:auto;">
+                                    <af:panelGroupLayout id="pgl2421"
+                                                         layout="vertical"
+                                                         halign="center">
+                                       <af:commandImageLink id="cil721"
+                                                            icon="/images/billing-sq.png"
+                                                            action="goToHome">
+                                          <af:setPropertyListener from="#{'/WEB-INF/WoInv_BTF.xml#WoInv_BTF'}"
+                                                                  to="#{pageFlowScope.taskId}"
+                                                                  type="action"/>
+                                       </af:commandImageLink>
+                                       <af:outputText value="WO Invoice Window" id="ot9021"
+                                                      inlineStyle="color:Black; font-weight:bold;"/>
+                                    </af:panelGroupLayout>
+                                 </af:panelGroupLayout>
+                                 <af:spacer width="120" height="10"
+                                            id="spacer26"/>
+                                 <af:panelGroupLayout id="pgl23"
+                                                      layout="vertical"
+                                                      inlineStyle="width:auto; height:auto;"
+                                                      rendered="false">
+                                    <af:panelGroupLayout id="pgl24"
+                                                         layout="vertical"
+                                                         halign="center">
+                                       <af:commandImageLink id="cil7"
+                                                            icon="/images/billing-sq.png"
+                                                            action="goToHome">
+                                          <af:setPropertyListener from="#{'/WEB-INF/searchBilling_BTF.xml#searchBilling_BTF'}"
+                                                                  to="#{pageFlowScope.taskId}"
+                                                                  type="action"/>
+                                       </af:commandImageLink>
+                                       <af:outputText value="Billing" id="ot90"
+                                                      inlineStyle="color:Black; font-weight:bold;"/>
+                                    </af:panelGroupLayout>
+                                 </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                           </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                     </f:facet>
+                     <f:facet name="end"/>
+                     <f:facet name="bottom"/>
+                     <f:facet name="start">
+                        <af:spacer height="10" id="s1"/>
+                     </f:facet>
+                     <f:facet name="top">
+                        <af:panelGroupLayout id="pgl22"
+                                             inlineStyle="width:auto;">
+                           <af:outputText value="#{sessionScope.userName}"
+                                          id="ot9"
+                                          inlineStyle="float:left; color:Black; font-weight:bold; margin-left:5px; margin-top:5px;"/>
+                           <af:goImageLink text="Logout" id="gil1"
+                                           inlineStyle="float:right; color:Black; font-weight:bold; margin-top:5px;margin-right:5px;"
+                                           icon="/images/logout.png"
+                                           destination="/adfAuthentication?logout=true&amp;end_url=https://idcs-634083f3ee8045a094cdb71a7fb21883.identity.oraclecloud.com/oauth2/v1/userlogout?post_logout_redirect_uri=https://idcs-634083f3ee8045a094cdb71a7fb21883.identity.oraclecloud.com/ui/v1/signin"/>
+                        </af:panelGroupLayout>
+                     </f:facet>
+                  </af:panelStretchLayout>
+               </f:facet>
+            </af:pageTemplate>
+         </af:form>
+      </af:document>
+   </f:view>
+</jsp:root>

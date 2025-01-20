@@ -1,0 +1,1118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+   <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                    id="pt1">
+      <f:facet name="pageContents">
+         <af:panelGroupLayout id="pgl1" layout="scroll">
+            <af:panelGroupLayout id="pgl2" layout="vertical">
+               <af:panelGridLayout id="pgl3">
+                  <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                              id="gr1">
+                     <af:gridCell marginStart="5px" width="100%" marginEnd="5px"
+                                  id="gc1" rendered="true">
+                        <af:outputText value="Manage Direct Payment OC" id="ot1"
+                                       inlineStyle="font-size:large; font-weight:bold"/>
+                     </af:gridCell>
+                     <af:gridCell id="gc2" halign="end">
+                        <af:panelGroupLayout id="pgl4"
+                                             styleClass="AFStretchWidth"
+                                             layout="horizontal">
+                           <af:commandButton text="Attachments" id="cb6"
+                                             action="attachment"
+                                             inlineStyle="margin-right:10px;"
+                                             rendered="false"/>
+                           <af:commandButton text="CheckList" id="cb14"
+                                             action="Checklist"
+                                             inlineStyle="margin-right:10px;"
+                                             rendered="false"/>
+                           <af:commandButton text="Approve" id="cb12"
+                                             immediate="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.AddEditOcDpMb.onInvokeAppOrReject}"
+                                             visible="#{sessionScope.userId eq bindings.FlowWith.inputValue ? 'true' : 'false'}">
+                              <af:setPropertyListener from="#{'Approval'}"
+                                                      to="#{pageFlowScope.Action}"
+                                                      type="action"/>
+                           </af:commandButton>
+                           <af:commandButton text="Reject" id="cb13"
+                                             immediate="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.AddEditOcDpMb.onInvokeAppOrReject}"
+                                             visible="#{sessionScope.userId eq bindings.FlowWith.inputValue ? 'true' : 'false'}">
+                              <af:setPropertyListener from="#{'Rejection'}"
+                                                      to="#{pageFlowScope.Action}"
+                                                      type="action"/>
+                           </af:commandButton>
+                           <af:commandButton text="Save" id="cb7"
+                                             partialSubmit="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.AddEditOcDpMb.doSave}"
+                                             visible="#{sessionScope.userId eq '15' or sessionScope.UR eq 'ACCCOUNTS' or bindings.Status.inputValue=='DRA' }">
+                              <af:setPropertyListener from="#{sessionScope.userName}"
+                                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                                      type="action"/>
+                                </af:commandButton>
+                           <af:commandButton text="Save and Close" id="cb1"
+                                             inlineStyle="margin-right:10px;"
+                                             partialSubmit="true"
+                                             action="#{backingBeanScope.AddEditOcDpMb.onSaveAndClose}"
+                                             visible="#{bindings.Status.inputValue=='DRA'}">
+                              <af:setPropertyListener from="#{sessionScope.userName}"
+                                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                                      type="action"/>
+                           </af:commandButton>
+                           <af:commandButton text="Approve" id="cb10"
+                                             actionListener="#{backingBeanScope.AddEditOcDpMb.globalAppr}"
+                                             inlineStyle="margin-right:10px;"
+                                             visible="#{bindings.Status.inputValue eq 'DRA'}"
+                                             action="backToSrch"
+                                             rendered="false"/>
+                           <af:commandButton text="Submit" id="cb11"
+                                             inlineStyle="margin-right:10px;"
+                                             action="#{backingBeanScope.AddEditOcDpMb.onClickSubmit}"
+                                             visible="#{bindings.Status.inputValue eq 'DRA'}">
+                              <af:setPropertyListener from="#{sessionScope.userName}"
+                                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                                      type="action"/>
+                           </af:commandButton>
+                           <af:commandButton text="Approval Details" id="cb19"
+                                             inlineStyle="margin-right:10px;"
+                                             visible="#{bindings.Status.inputValue!='DRA'}"
+                                             partialSubmit="true">
+                              <af:showPopupBehavior popupId="pc1:p2" triggerType="action"/>
+                           </af:commandButton>
+                           <af:commandButton text="Cancel" id="cb2"
+                                             inlineStyle="margin-right:10px;"
+                                             immediate="true"
+                                             action="backToSrch"
+                                             actionListener="#{backingBeanScope.AddEditOcDpMb.onDoCancel}"/>
+                        </af:panelGroupLayout>
+                     </af:gridCell>
+                  </af:gridRow>
+               </af:panelGridLayout>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s2"/>
+            <af:panelBox text="Other Charges" id="pb1">
+               <f:facet name="toolbar">
+                  <af:toolbar id="t6" flex="100">
+                     <af:commandButton text="Transfer Invoice to AR" id="cb3"
+                                       inlineStyle="margin-right:10px;"
+                                       rendered="#{bindings.Status.inputValue=='APR'}"
+                                       actionListener="#{backingBeanScope.AddEditOcDpMb.pushInvoiceInterfaceLineDltsofOtherCharges}"
+                                       disabled="#{bindings.CustomerTrxnNum.inputValue!=null or bindings.IntegrationResponse.inputValue eq '{&quot;result&quot;:&quot;Success&quot;}'}"
+                                       binding="#{backingBeanScope.AddEditOcDpMb.generate_invoice_cb3}"
+                                       partialTriggers="cb4"/>
+                     <af:commandButton text="AR Response" id="cb4"
+                                       inlineStyle="margin-right:10px;"
+                                       rendered="#{bindings.Status.inputValue=='APR'}"
+                                       actionListener="#{backingBeanScope.AddEditOcDpMb.getInvoiceRes}"
+                                       disabled="#{bindings.CustomerTrxnNum.inputValue ne null}"
+                                       partialSubmit="true"/>
+                  </af:toolbar>
+               </f:facet>
+               <af:panelGroupLayout id="pgl5">
+                  <af:panelFormLayout id="pfl1" rows="4" maxColumns="3">
+                     <af:inputText value="#{bindings.OtherChargesNumber.inputValue}"
+                                   label="OC No"
+                                   required="#{bindings.OtherChargesNumber.hints.mandatory}"
+                                   columns="#{bindings.OtherChargesNumber.hints.displayWidth}"
+                                   maximumLength="#{bindings.OtherChargesNumber.hints.precision}"
+                                   shortDesc="#{bindings.OtherChargesNumber.hints.tooltip}"
+                                   id="it10" readOnly="true" autoSubmit="true"
+                                   partialTriggers="cb7"
+                                   contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;">
+                        <f:validator binding="#{bindings.OtherChargesNumber.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.OcFlag.inputValue}"
+                                   label="#{bindings.OcFlag.hints.label}"
+                                   required="#{bindings.OcFlag.hints.mandatory}"
+                                   columns="#{bindings.OcFlag.hints.displayWidth}"
+                                   maximumLength="#{bindings.OcFlag.hints.precision}"
+                                   shortDesc="#{bindings.OcFlag.hints.tooltip}"
+                                   id="it8" rendered="false">
+                        <f:validator binding="#{bindings.OcFlag.validator}"/>
+                     </af:inputText>
+                     <af:selectOneChoice value="#{bindings.DestinationBu.inputValue}"
+                                         label="Destination BU"
+                                         required="#{bindings.DestinationBu.hints.mandatory}"
+                                         shortDesc="#{bindings.DestinationBu.hints.tooltip}"
+                                         id="soc1" autoSubmit="true"
+                                         disabled="#{bindings.OcBkMilestoneDtlDp_VO1Iterator.estimatedRowCount > 0}"
+                                         partialTriggers="pc1:t1">
+                        <f:selectItems value="#{bindings.DestinationBu.items}"
+                                       id="si1"/>
+                     </af:selectOneChoice>
+                     <af:inputListOfValues id="cust_Name_TransId"
+                                           popupTitle="Search and Select: #{bindings.Cust_Name_Trans.hints.label}"
+                                           value="#{bindings.Cust_Name_Trans.inputValue}"
+                                           label="Customer Name"
+                                           model="#{bindings.Cust_Name_Trans.listOfValuesModel}"
+                                           required="#{bindings.Cust_Name_Trans.hints.mandatory}"
+                                           columns="#{bindings.Cust_Name_Trans.hints.displayWidth}"
+                                           shortDesc="#{bindings.Cust_Name_Trans.hints.tooltip}"
+                                           autoSubmit="true"
+                                           disabled="#{bindings.Status.inputValue!='DRA'}">
+                        <f:validator binding="#{bindings.Cust_Name_Trans.validator}"/>
+                     </af:inputListOfValues>
+                     <af:inputText value="#{bindings.BillToAddre.inputValue}"
+                                   label="Bill To"
+                                   required="#{bindings.BillToAddre.hints.mandatory}"
+                                   columns="#{bindings.BillToAddre.hints.displayWidth}"
+                                   maximumLength="#{bindings.BillToAddre.hints.precision}"
+                                   shortDesc="#{bindings.BillToAddre.hints.tooltip}"
+                                   id="it14" contentStyle="width:200px;"
+                                   partialTriggers="cust_Name_TransId"
+                                   disabled="#{sessionScope.userId ne '100'}">
+                        <f:validator binding="#{bindings.BillToAddre.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.ShipToAddre.inputValue}"
+                                   label="#{bindings.ShipToAddre.hints.label}"
+                                   required="#{bindings.ShipToAddre.hints.mandatory}"
+                                   columns="#{bindings.ShipToAddre.hints.displayWidth}"
+                                   maximumLength="#{bindings.ShipToAddre.hints.precision}"
+                                   shortDesc="#{bindings.ShipToAddre.hints.tooltip}"
+                                   id="it13"
+                                   partialTriggers="cust_Name_TransId"
+                                   disabled="true" rendered="false">
+                        <f:validator binding="#{bindings.ShipToAddre.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.OthersTotalRate.inputValue}"
+                                   label="Total OC Amount"
+                                   required="#{bindings.OthersTotalRate.hints.mandatory}"
+                                   columns="#{bindings.OthersTotalRate.hints.displayWidth}"
+                                   maximumLength="#{bindings.OthersTotalRate.hints.precision}"
+                                   shortDesc="#{bindings.OthersTotalRate.hints.tooltip}"
+                                   id="it5" readOnly="true"
+                                   partialTriggers="cb7"
+                                   binding="#{backingBeanScope.AddEditOcDpMb.othersTotalRate}">
+                        <f:validator binding="#{bindings.OthersTotalRate.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.ReceiptTotal.inputValue}"
+                                   label="Total Receipt Amount"
+                                   required="#{bindings.ReceiptTotal.hints.mandatory}"
+                                   columns="#{bindings.ReceiptTotal.hints.displayWidth}"
+                                   maximumLength="#{bindings.ReceiptTotal.hints.precision}"
+                                   shortDesc="#{bindings.ReceiptTotal.hints.tooltip}"
+                                   id="it9" readOnly="true"
+                                   partialTriggers="cb7"
+                                   binding="#{backingBeanScope.AddEditOcDpMb.receiptTotal}">
+                        <f:validator binding="#{bindings.ReceiptTotal.validator}"/>
+                     </af:inputText>
+                     <af:selectOneChoice value="#{bindings.Status1.inputValue}"
+                                         label="#{bindings.Status1.label}"
+                                         required="#{bindings.Status1.hints.mandatory}"
+                                         shortDesc="#{bindings.Status1.hints.tooltip}"
+                                         id="soc2" readOnly="true">
+                        <f:selectItems value="#{bindings.Status1.items}"
+                                       id="si2"/>
+                     </af:selectOneChoice>
+                     <af:inputText value="#{bindings.CustomerTrxnNum.inputValue}"
+                                   label="#{bindings.CustomerTrxnNum.hints.label}"
+                                   required="#{bindings.CustomerTrxnNum.hints.mandatory}"
+                                   columns="#{bindings.CustomerTrxnNum.hints.displayWidth}"
+                                   maximumLength="#{bindings.CustomerTrxnNum.hints.precision}"
+                                   shortDesc="#{bindings.CustomerTrxnNum.hints.tooltip}"
+                                   id="it6" readOnly="true">
+                        <f:validator binding="#{bindings.CustomerTrxnNum.validator}"/>
+                     </af:inputText>
+                     <af:inputDate value="#{bindings.CreationDate.inputValue}"
+                                   label="Create Date"
+                                   required="#{bindings.CreationDate.hints.mandatory}"
+                                   shortDesc="#{bindings.CreationDate.hints.tooltip}"
+                                   id="id1">
+                        <f:validator binding="#{bindings.CreationDate.validator}"/>
+                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                     </af:inputDate>
+                     <af:inputText value="#{bindings.FuncId.inputValue}"
+                                   label="#{bindings.FuncId.hints.label}"
+                                   required="#{bindings.FuncId.hints.mandatory}"
+                                   columns="#{bindings.FuncId.hints.displayWidth}"
+                                   maximumLength="#{bindings.FuncId.hints.precision}"
+                                   shortDesc="#{bindings.FuncId.hints.tooltip}"
+                                   id="it4" rendered="false">
+                        <f:validator binding="#{bindings.FuncId.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.FlowWith.inputValue}"
+                                   label="#{bindings.FlowWith.hints.label}"
+                                   required="#{bindings.FlowWith.hints.mandatory}"
+                                   columns="#{bindings.FlowWith.hints.displayWidth}"
+                                   maximumLength="#{bindings.FlowWith.hints.precision}"
+                                   shortDesc="#{bindings.FlowWith.hints.tooltip}"
+                                   id="it7" rendered="false">
+                        <f:validator binding="#{bindings.FlowWith.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.FlowLevel.inputValue}"
+                                   label="#{bindings.FlowLevel.hints.label}"
+                                   required="#{bindings.FlowLevel.hints.mandatory}"
+                                   columns="#{bindings.FlowLevel.hints.displayWidth}"
+                                   maximumLength="#{bindings.FlowLevel.hints.precision}"
+                                   shortDesc="#{bindings.FlowLevel.hints.tooltip}"
+                                   id="it15" rendered="false">
+                        <f:validator binding="#{bindings.FlowLevel.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.CustomerTrxnId.inputValue}"
+                                   label="#{bindings.CustomerTrxnId.hints.label}"
+                                   required="#{bindings.CustomerTrxnId.hints.mandatory}"
+                                   columns="#{bindings.CustomerTrxnId.hints.displayWidth}"
+                                   maximumLength="#{bindings.CustomerTrxnId.hints.precision}"
+                                   shortDesc="#{bindings.CustomerTrxnId.hints.tooltip}"
+                                   id="it3" rendered="false">
+                        <f:validator binding="#{bindings.CustomerTrxnId.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.CreatedBy.inputValue}"
+                                   label="Created By"
+                                   required="#{bindings.CreatedBy.hints.mandatory}"
+                                   columns="#{bindings.CreatedBy.hints.displayWidth}"
+                                   maximumLength="#{bindings.CreatedBy.hints.precision}"
+                                   shortDesc="#{bindings.CreatedBy.hints.tooltip}"
+                                   id="it2" contentStyle="width:200px;" readOnly="true">
+                        <f:validator binding="#{bindings.CreatedBy.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.IntegrationResponse.inputValue}"
+                                   label="#{bindings.IntegrationResponse.hints.label}"
+                                   required="#{bindings.IntegrationResponse.hints.mandatory}"
+                                   columns="#{bindings.IntegrationResponse.hints.displayWidth}"
+                                   maximumLength="#{bindings.IntegrationResponse.hints.precision}"
+                                   shortDesc="#{bindings.IntegrationResponse.hints.tooltip}"
+                                   id="it17" rendered="false">
+                        <f:validator binding="#{bindings.IntegrationResponse.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.LastUpdatedBy.inputValue}"
+                                   label="#{bindings.LastUpdatedBy.hints.label}"
+                                   required="#{bindings.LastUpdatedBy.hints.mandatory}"
+                                   columns="#{bindings.LastUpdatedBy.hints.displayWidth}"
+                                   maximumLength="#{bindings.LastUpdatedBy.hints.precision}"
+                                   shortDesc="#{bindings.LastUpdatedBy.hints.tooltip}"
+                                   id="it18" rendered="false">
+                        <f:validator binding="#{bindings.LastUpdatedBy.validator}"/>
+                     </af:inputText>
+                  </af:panelFormLayout>
+               </af:panelGroupLayout>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s3"/>
+            <af:panelBox text="Other Charges Details" id="pb2">
+               <f:facet name="toolbar"/>
+               <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="detach">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                     <af:toolbar id="t2" flex="100">
+                        <af:spacer width="10" height="10" id="s100"/>
+                        <af:commandImageLink icon="/images/func_add_16_ena.png"
+                                             disabledIcon="/images/func_add_16_dis.png"
+                                             hoverIcon="/images/func_add_16_hov.png"
+                                             depressedIcon="/images/func_add_16_act.png"
+                                             id="cil1"
+                                             actionListener="#{backingBeanScope.AddEditOcDpMb.doCreateOCdetail}"
+                                             rendered="#{bindings.Status.inputValue eq 'DRA'}"
+                                             partialSubmit="true"
+                                             disabled="#{bindings.Status.inputValue !='DRA'}"/>
+                        <af:spacer width="10" height="10" id="s4"/>
+                        <af:goImageLink id="gil200"
+                                      destination="#{sessionScope.oc_tax_invoice}"
+                                      targetFrame="_blank"
+                                      icon="/images/pdffile_dwn.png"
+                                      text="OC Tax Invoice"/>
+                     </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.OcBkMilestoneDtlDp_VO1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.OcBkMilestoneDtlDp_VO1.rangeSize}"
+                            emptyText="#{bindings.OcBkMilestoneDtlDp_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.OcBkMilestoneDtlDp_VO1.rangeSize}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.OcBkMilestoneDtlDp_VO1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.OcBkMilestoneDtlDp_VO1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1" columnStretching="column:c2" varStatus="vs"
+                            partialTriggers="::cil1">
+                    <af:column id="c251" headerText="S.No" align="center" width="60">
+                        <af:outputText value="#{vs.index+1}" id="ot25"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.BookingMsDtlId.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.BookingMsDtlId.label}"
+                                id="c11" rendered="false">
+                        <af:inputText value="#{row.bindings.BookingMsDtlId.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.BookingMsDtlId.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.BookingMsDtlId.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.BookingMsDtlId.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.BookingMsDtlId.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.BookingMsDtlId.tooltip}"
+                                      id="it25">
+                           <f:validator binding="#{row.bindings.BookingMsDtlId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.InstallmentType.name}"
+                                sortable="false"
+                                headerText="OC Type"
+                                id="c8" width="200" align="center">
+                        <af:selectOneChoice value="#{row.bindings.InstallmentType.inputValue}"
+                                            label="#{row.bindings.InstallmentType.label}"
+                                            required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.InstallmentType.mandatory}"
+                                            shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.InstallmentType.tooltip}"
+                                            id="soc3" autoSubmit="true"
+                                            partialTriggers=":::soc1"
+                                            disabled="#{bindings.Status.inputValue=='DRA' ? false : (sessionScope.userId eq '15' or sessionScope.userId eq '100')  ? false : true}">
+                           <f:selectItems value="#{row.bindings.InstallmentType.items}"
+                                          id="si3"/>
+                        </af:selectOneChoice>
+                     </af:column>
+                      <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute4.name}"
+                                sortable="false"
+                                headerText="Amount"
+                                id="c1" align="center">
+                        <af:inputText value="#{row.bindings.Attribute4.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute4.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute4.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute4.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute4.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute4.tooltip}"
+                                      id="it24" autoSubmit="true"
+                                      valueChangeListener="#{backingBeanScope.AddEditOcDpMb.onEntrAmtOcLineVO1}"
+                                      disabled="#{bindings.Status.inputValue=='DRA' ? false : (sessionScope.userId eq '15' or sessionScope.userId eq '100')  ? false : true}">
+                           <f:validator binding="#{row.bindings.Attribute4.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column headerText="Tax Code"
+                                id="c13">
+                        <af:selectOneChoice value="#{row.bindings.Attribute2.inputValue}"
+                                            label="#{row.bindings.Attribute2.label}"
+                                            required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute2.mandatory}"
+                                            shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute2.tooltip}"
+                                            id="soc4" autoSubmit="true"
+                                            valueChangeListener="#{backingBeanScope.AddEditOcDpMb.onSlctTaxCodeLineVO1}"
+                                            disabled="#{bindings.Status.inputValue=='DRA' ? false : (sessionScope.userId eq '15' or sessionScope.userId eq '100')  ? false : true}">
+                           <f:selectItems value="#{row.bindings.Attribute2.items}"
+                                          id="si4"/>
+                        </af:selectOneChoice>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute3.name}"
+                                sortable="false"
+                                headerText="Tax Amount"
+                                id="c9" align="center">
+                        <af:inputText value="#{row.bindings.Attribute3.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute3.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute3.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute3.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute3.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Attribute3.tooltip}"
+                                      id="it21" autoSubmit="true"
+                                      partialTriggers="soc4 it24"
+                                      readOnly="true">
+                           <f:validator binding="#{row.bindings.Attribute3.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.InstallmentAmount.name}"
+                                sortable="false"
+                                headerText="Total Amount"
+                                id="c5">
+                        <af:inputText value="#{row.bindings.InstallmentAmount.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.InstallmentAmount.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.InstallmentAmount.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.InstallmentAmount.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.InstallmentAmount.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.InstallmentAmount.tooltip}"
+                                      id="it27" partialTriggers="soc4 it24"
+                                      disabled="#{bindings.Status.inputValue=='DRA' ? false : (sessionScope.userId eq '15' or sessionScope.userId eq '100')  ? false : true}">
+                           <f:validator binding="#{row.bindings.InstallmentAmount.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.ChargeType.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.ChargeType.label}"
+                                id="c12" rendered="false">
+                        <af:inputText value="#{row.bindings.ChargeType.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.ChargeType.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.ChargeType.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.ChargeType.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.ChargeType.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.ChargeType.tooltip}"
+                                      id="it1">
+                           <f:validator binding="#{row.bindings.ChargeType.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.MilestoneType.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.MilestoneType.label}"
+                                id="c6" rendered="false">
+                        <af:inputText value="#{row.bindings.MilestoneType.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.MilestoneType.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.MilestoneType.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.MilestoneType.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.MilestoneType.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.MilestoneType.tooltip}"
+                                      id="it12">
+                           <f:validator binding="#{row.bindings.MilestoneType.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcId.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcId.label}"
+                                id="c7" rendered="false">
+                        <af:inputText value="#{row.bindings.OcId.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcId.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcId.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcId.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcId.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcId.tooltip}"
+                                      id="it28">
+                           <f:validator binding="#{row.bindings.OcId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcNo.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcNo.label}"
+                                id="c14" rendered="false">
+                        <af:inputText value="#{row.bindings.OcNo.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcNo.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcNo.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcNo.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcNo.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OcNo.tooltip}"
+                                      id="it11">
+                           <f:validator binding="#{row.bindings.OcNo.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OrgId.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OrgId.label}"
+                                id="c3" rendered="false">
+                        <af:inputText value="#{row.bindings.OrgId.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OrgId.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OrgId.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OrgId.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OrgId.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.OrgId.tooltip}"
+                                      id="it29">
+                           <f:validator binding="#{row.bindings.OrgId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Remarks.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Remarks.label}"
+                                id="c2">
+                        <af:inputText value="#{row.bindings.Remarks.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Remarks.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Remarks.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Remarks.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Remarks.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Remarks.tooltip}"
+                                      id="it26">
+                           <f:validator binding="#{row.bindings.Remarks.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column id="c76" headerText="Create Receipt"
+                                align="center" width="120">
+                        <af:commandButton text="Create Receipt" id="cb8"
+                                          useWindow="true" windowHeight="600"
+                                          windowWidth="1200"
+                                          action="#{backingBeanScope.AddEditOcDpMb.onCreateInstallReceipt}"
+                                          disabled="#{bindings.Status.inputValue=='DRA' ? false : true}">
+                           <af:setPropertyListener from="#{'CR'}"
+                                                   to="#{pageFlowScope.TransId}"
+                                                   type="action"/>
+                           <af:setPropertyListener from="#{''}"
+                                                   to="#{pageFlowScope.Type}"
+                                                   type="action"/>
+                           <!--<af:setPropertyListener from="OT"
+                                                   to="#{pageFlowScope.chrgTyp}"
+                                                   type="action"/>-->
+                           <af:setPropertyListener to="#{pageFlowScope.funcId}"
+                                                   from="#{bindings.FuncId.inputValue}"
+                                                   type="action"/>
+                           <af:setPropertyListener to="#{pageFlowScope.scfnId}"
+                                                   from="#{bindings.OcHdrId.inputValue}"
+                                                   type="action"/>
+                           <af:setPropertyListener to="#{pageFlowScope.Status11}"
+                                                   from="#{bindings.Status.inputValue}"
+                                                   type="action"/>
+                        </af:commandButton>
+                     </af:column>
+                     <af:column id="c591" headerText="Delete" align="center">
+                        <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                             icon="/images/delete_ovr.png"
+                                             hoverIcon="/images/func_remove_16_hov.png"
+                                             id="cil3"
+                                             disabledIcon="/images/func_remove_16_ena.png"
+                                             disabled="#{bindings.Status.inputValue=='DRA' ? false : true}"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncId.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncId.label}"
+                                id="c4" rendered="false">
+                        <af:inputText value="#{row.bindings.SourceFuncId.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncId.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncId.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncId.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncId.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncId.tooltip}"
+                                      id="it19">
+                           <f:validator binding="#{row.bindings.SourceFuncId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncRefId.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncRefId.label}"
+                                id="c10" rendered="false">
+                        <af:inputText value="#{row.bindings.SourceFuncRefId.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncRefId.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncRefId.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncRefId.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncRefId.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.SourceFuncRefId.tooltip}"
+                                      id="it20">
+                           <f:validator binding="#{row.bindings.SourceFuncRefId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Status.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Status.label}"
+                                id="c15" rendered="false">
+                        <af:inputText value="#{row.bindings.Status.inputValue}"
+                                      label="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Status.label}"
+                                      required="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Status.mandatory}"
+                                      columns="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Status.displayWidth}"
+                                      maximumLength="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Status.precision}"
+                                      shortDesc="#{bindings.OcBkMilestoneDtlDp_VO1.hints.Status.tooltip}"
+                                      id="it22">
+                           <f:validator binding="#{row.bindings.Status.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                  </af:table>
+                  <af:popup id="p1"
+                            binding="#{backingBeanScope.AddEditOcDpMb.popUp1}">
+                     <af:dialog id="d2" type="none"
+                                title="Reason for #{pageFlowScope.Action}">
+                        <f:facet name="buttonBar">
+                           <af:toolbar id="t7" flex="1">
+                              <af:spacer width="220" height="10" id="s12"/>
+                              <af:commandButton text="Save" id="cb20"
+                                                action="backToSrch"
+                                                actionListener="#{backingBeanScope.AddEditOcDpMb.onclickAppOrRej}"/>
+                              <af:spacer width="10" height="10" id="s11"/>
+                              <af:commandButton text="Cancel" id="cb21"/>
+                           </af:toolbar>
+                        </f:facet>
+                        <af:inputText label="Reason" id="it16" rows="5"
+                                      columns="50"
+                                      binding="#{backingBeanScope.AddEditOcDpMb.reason}"/>
+                     </af:dialog>
+                  </af:popup>
+                  <af:popup id="p2">
+                     <af:dialog id="d3" inlineStyle="width:80.0%;"
+                                title="Approval Work Flow History">
+                            <f:facet name="buttonBar">
+                    <!--to save to handle global site-->
+                        <af:toolbar id="t111" flex="1" visible="#{sessionScope.userId eq '100'}"
+                                    rendered="false">
+                          <af:spacer width="220" height="10" id="s111"/>
+                          <!--only for erp_user to hande global site-->
+                            <af:commandButton text="OK" id="cb700"
+                                             partialSubmit="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.AddEditOcDpMb.doSaveHandleGlobalSite}">
+                              </af:commandButton>
+                          <af:spacer width="10" height="10" id="s10"/>
+                          <af:commandButton text="Cancel" id="commandButton2"/>
+                        </af:toolbar>
+                      </f:facet>
+                        <af:table value="#{bindings.getApprovalHistoryROVo2.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.getApprovalHistoryROVo2.rangeSize}"
+                                  emptyText="#{bindings.getApprovalHistoryROVo2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.getApprovalHistoryROVo2.rangeSize}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.getApprovalHistoryROVo2.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.getApprovalHistoryROVo2.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t4" varStatus="vs"
+                                  inlineStyle="width:inherit;">
+                           <af:column id="c48" headerText="S.No" width="50"
+                                      align="center">
+                              <af:outputText value="#{vs.index+1}" id="ot121"/>
+                           </af:column>
+                           <af:column headerText="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.label}"
+                                      id="c39" width="200">
+                              <af:selectOneChoice value="#{row.bindings.ApproverId.inputValue}"
+                                                  label="#{row.bindings.ApproverId.label}"
+                                                  required="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.mandatory}"
+                                                  shortDesc="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.tooltip}"
+                                                  id="soc5" readOnly="true">
+                                 <f:selectItems value="#{row.bindings.ApproverId.items}"
+                                                id="si5"/>
+                              </af:selectOneChoice>
+                           </af:column>
+                           <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.name}"
+                                      sortable="false"
+                                      headerText="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.label}"
+                                      id="c42">
+                              <af:outputText value="#{row.SubmissionDate}"
+                                             id="ot9">
+                                 <af:convertDateTime pattern="dd-MM-yyyy"/>
+                              </af:outputText>
+                           </af:column>
+                           <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.SubmittedByTrans.name}"
+                                      sortable="false"
+                                      headerText="#{bindings.getApprovalHistoryROVo2.hints.SubmittedByTrans.label}"
+                                      id="c44">
+                              <af:outputText value="#{row.SubmittedByTrans}"
+                                             id="ot2"/>
+                           </af:column>
+                           <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.Status.name}"
+                                      sortable="false"
+                                      headerText="#{bindings.getApprovalHistoryROVo2.hints.Status.label}"
+                                      id="c45" align="center">
+                              <af:outputText value="#{row.Status}" id="ot5"/>
+                           </af:column>
+                           <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.Description.name}"
+                                      sortable="false"
+                                      headerText="#{bindings.getApprovalHistoryROVo2.hints.Description.label}"
+                                      id="c40">
+                              <af:outputText value="#{row.Description}"
+                                             id="ot8"/>
+                           </af:column>
+                           <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.ApprHistId.name}"
+                                      sortable="false"
+                                      headerText="#{bindings.getApprovalHistoryROVo2.hints.ApprHistId.label}"
+                                      id="c46" visible="false">
+                              <af:outputText value="#{row.ApprHistId}"
+                                             id="ot4"/>
+                           </af:column>
+                           <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.FuncId.name}"
+                                      sortable="false"
+                                      headerText="#{bindings.getApprovalHistoryROVo2.hints.FuncId.label}"
+                                      id="c38" visible="false">
+                              <af:outputText value="#{row.FuncId}" id="ot11"/>
+                           </af:column>
+                           <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.FuncRefId.name}"
+                                      sortable="false"
+                                      headerText="#{bindings.getApprovalHistoryROVo2.hints.FuncRefId.label}"
+                                      id="c41" visible="false">
+                              <af:outputText value="#{row.FuncRefId}" id="ot7"/>
+                           </af:column>
+                           <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.SeqNumber.name}"
+                                      sortable="false"
+                                      headerText="#{bindings.getApprovalHistoryROVo2.hints.SeqNumber.label}"
+                                      id="c47" visible="false">
+                              <af:outputText value="#{row.SeqNumber}"
+                                             id="ot10"/>
+                           </af:column>
+                           <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.ActionDate.name}"
+                                      sortable="false"
+                                      headerText="#{bindings.getApprovalHistoryROVo2.hints.ActionDate.label}"
+                                      id="c43" visible="false">
+                              <af:outputText value="#{row.ActionDate}" id="ot6">
+                                 <af:convertDateTime pattern="#{bindings.getApprovalHistoryROVo2.hints.ActionDate.format}"/>
+                              </af:outputText>
+                           </af:column>
+                        </af:table>
+                     </af:dialog>
+                  </af:popup>
+               </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s1"/>
+            <af:panelBox text="Other Charges History" id="pb4" rendered="false">
+               <f:facet name="toolbar"/>
+               <af:panelCollection id="pc3" styleClass="AFStretchWidth" featuresOff="detach">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                 
+               </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:panelBox text="Receipt" id="pb3">
+               <f:facet name="toolbar"/>
+               <af:panelCollection id="pc2" styleClass="AFStretchWidth" featuresOff="detach">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                     <af:toolbar id="t5" flex="1">                       
+                        <af:goImageLink id="gil2"
+                                      destination="#{sessionScope.OC_SmryReceiptPrint}"
+                                      targetFrame="_blank"
+                                      icon="/images/pdffile_dwn.png"
+                                      text="OC Receipt Summary"/>
+                      <af:goImageLink id="gil5"
+                                      destination="#{sessionScope.OC_ReceiptAckPrint}"
+                                      targetFrame="_blank"
+                                      icon="/images/pdffile_dwn.png"
+                                      text="OC Cashier Ack Report"/>
+                     </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.OcReceiptDp_VO1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.OcReceiptDp_VO1.rangeSize}"
+                            emptyText="#{bindings.OcReceiptDp_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.OcReceiptDp_VO1.rangeSize}"
+                            rowBandingInterval="0" varStatus="vs"
+                            selectedRowKeys="#{bindings.OcReceiptDp_VO1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.OcReceiptDp_VO1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t3">
+                     <af:column id="c2511" headerText="S.No" align="center" width="60">
+                        <af:outputText value="#{vs.index+1}" id="ot215"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.ReceiptId.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.ReceiptId.label}"
+                                id="c17" rendered="false">
+                        <af:inputText value="#{row.bindings.ReceiptId.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.ReceiptId.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.ReceiptId.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.ReceiptId.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.ReceiptId.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.ReceiptId.tooltip}"
+                                      id="it36">
+                           <f:validator binding="#{row.bindings.ReceiptId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.ReceiptNumber.name}"
+                                sortable="false"
+                                headerText="Receipt Number"
+                                id="c26">
+                        <af:inputText value="#{row.bindings.ReceiptNumber.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.ReceiptNumber.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.ReceiptNumber.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.ReceiptNumber.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.ReceiptNumber.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.ReceiptNumber.tooltip}"
+                                      id="it37" readOnly="true">
+                           <f:validator binding="#{row.bindings.ReceiptNumber.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.ReceiptDate.name}"
+                                sortable="false"
+                                headerText="Receipt Date"
+                                id="c18">
+                        <af:inputDate value="#{row.bindings.ReceiptDate.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.ReceiptDate.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.ReceiptDate.mandatory}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.ReceiptDate.tooltip}"
+                                      id="id4" readOnly="true">
+                           <f:validator binding="#{row.bindings.ReceiptDate.validator}"/>
+                           <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                     </af:column>                     
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.CustomerName.name}"
+                                sortable="false"
+                                headerText="Customer Name"
+                                id="c23">
+                        <af:inputText value="#{row.bindings.CustomerName.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.CustomerName.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.CustomerName.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.CustomerName.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.CustomerName.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.CustomerName.tooltip}"
+                                      id="it43" readOnly="true">
+                           <f:validator binding="#{row.bindings.CustomerName.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.PayMode.name}"
+                                sortable="false"
+                                headerText="Pay Mode"
+                                id="c24">
+                        <af:inputText value="#{row.bindings.PayMode.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.PayMode.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.PayMode.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.PayMode.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.PayMode.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.PayMode.tooltip}"
+                                      id="it44" readOnly="true">
+                           <f:validator binding="#{row.bindings.PayMode.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.PayRefDate.name}"
+                                sortable="false"
+                                headerText="Maturity Date"
+                                id="c28">
+                        <af:inputDate value="#{row.bindings.PayRefDate.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.PayRefDate.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.PayRefDate.mandatory}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.PayRefDate.tooltip}"
+                                      id="id3" readOnly="true">
+                           <f:validator binding="#{row.bindings.PayRefDate.validator}"/>
+                           <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.PayRefNumber.name}"
+                                sortable="false"
+                                headerText="Cheque No"
+                                id="c33">
+                        <af:inputText value="#{row.bindings.PayRefNumber.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.PayRefNumber.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.PayRefNumber.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.PayRefNumber.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.PayRefNumber.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.PayRefNumber.tooltip}"
+                                      id="it38" readOnly="true">
+                           <f:validator binding="#{row.bindings.PayRefNumber.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.Description.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.Description.label}"
+                                id="c34">
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.Description.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.Description.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.Description.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.Description.tooltip}"
+                                      id="it35" readOnly="true">
+                           <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.RctDesc.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.RctDesc.label}"
+                                id="c21" visible="false">
+                        <af:inputText value="#{row.bindings.RctDesc.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.RctDesc.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.RctDesc.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.RctDesc.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.RctDesc.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.RctDesc.tooltip}"
+                                      id="it42" readOnly="true">
+                           <f:validator binding="#{row.bindings.RctDesc.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.ReceivedAmount.name}"
+                                sortable="false"
+                                headerText="Amount"
+                                id="c30" align="center">
+                        <af:inputText value="#{row.bindings.ReceivedAmount.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.ReceivedAmount.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.ReceivedAmount.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.ReceivedAmount.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.ReceivedAmount.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.ReceivedAmount.tooltip}"
+                                      id="it40" readOnly="true">
+                           <f:validator binding="#{row.bindings.ReceivedAmount.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.RecommendedAmount.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.RecommendedAmount.label}"
+                                id="c20" rendered="false">
+                        <af:inputText value="#{row.bindings.RecommendedAmount.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.RecommendedAmount.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.RecommendedAmount.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.RecommendedAmount.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.RecommendedAmount.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.RecommendedAmount.tooltip}"
+                                      id="it39">
+                           <f:validator binding="#{row.bindings.RecommendedAmount.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column headerText="#{bindings.OcReceiptDp_VO1.hints.AckFlag.label}"
+                                id="c36" align="center">
+                        <af:selectBooleanCheckbox value="#{row.bindings.AckFlag.inputValue}"
+                                                  label="#{row.bindings.AckFlag.label}"
+                                                  shortDesc="#{bindings.OcReceiptDp_VO1.hints.AckFlag.tooltip}"
+                                                  id="sbc1" autoSubmit="true"
+                                                  valueChangeListener="#{backingBeanScope.AddEditOcDpMb.onCheckCashierFlag}"
+                                                  binding="#{backingBeanScope.AddEditOcDpMb.sbc1}"
+                                                  partialTriggers="it33"
+                                                  disabled="#{(row.RecHdrRowStatus_Trans eq '1' and row.AckFlag == 'Y') ? 'true' : (sessionScope.UR ne 'ACCCOUNTS') ? 'true' : 'false'}"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.AckBy.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.AckBy.label}"
+                                id="c25" align="center">
+                        <af:inputText value="#{row.bindings.AckBy.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.AckBy.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.AckBy.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.AckBy.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.AckBy.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.AckBy.tooltip}"
+                                      id="it70" readOnly="true"
+                                      partialTriggers="sbc1 it33"
+                                      binding="#{backingBeanScope.AddEditOcDpMb.it70}">
+                           <f:validator binding="#{row.bindings.AckBy.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column headerText="#{bindings.OcReceiptDp_VO1.hints.AckDate.label}"
+                                id="c35">
+                        <af:inputDate value="#{row.bindings.AckDate.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.AckDate.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.AckDate.mandatory}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.AckDate.tooltip}"
+                                      id="id5" readOnly="true"
+                                      partialTriggers="sbc1 it33"
+                                      binding="#{backingBeanScope.AddEditOcDpMb.id5}">
+                           <f:validator binding="#{row.bindings.AckDate.validator}"/>
+                           <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column headerText="#{bindings.OcReceiptDp_VO1.hints.RecHdrRowStatus_Trans.label}"
+                                id="c37" rendered="false">
+                        <af:inputText value="#{row.bindings.RecHdrRowStatus_Trans.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.RecHdrRowStatus_Trans.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.RecHdrRowStatus_Trans.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.RecHdrRowStatus_Trans.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.RecHdrRowStatus_Trans.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.RecHdrRowStatus_Trans.tooltip}"
+                                      id="it33">
+                           <f:validator binding="#{row.bindings.RecHdrRowStatus_Trans.validator}"/>
+                           <af:convertNumber groupingUsed="false"
+                                             pattern="#{bindings.OcReceiptDp_VO1.hints.RecHdrRowStatus_Trans.format}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column id="c515" headerText="Details" align="center">
+                        <af:commandImageLink id="cil26" icon="/images/detail.png"
+                                             useWindow="true" windowHeight="600"
+                                             windowWidth="1200"
+                                             action="#{backingBeanScope.AddEditOcDpMb.doEditReceipt}">
+                           <af:setPropertyListener from="#{bindings.ReceiptId.inputValue}"
+                                                   to="#{pageFlowScope.recid}"
+                                                   type="action"/>
+                            <af:setPropertyListener from="#{bindings.OcFlag.inputValue}"
+                                                   to="#{pageFlowScope.ocFlag}"
+                                                   type="action"/>
+                           <af:setPropertyListener to="#{pageFlowScope.chrgTyp}"
+                                                   from="OT" type="action"/>
+                           <af:setPropertyListener to="#{pageFlowScope.funcId}"
+                                                   from="#{row.SourceFuncId}"
+                                                   type="action"/>
+                           <af:setPropertyListener to="#{pageFlowScope.oc_rt_dis}"
+                                                   from="DIS" type="action"/>
+                           <af:setPropertyListener to="#{pageFlowScope.Status11}"
+                                                   from="#{bindings.Status1.inputValue}"
+                                                   type="action"/>
+                        </af:commandImageLink>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.AckDate.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.AckDate.label}"
+                                id="c29" rendered="false">
+                        <af:inputDate value="#{row.bindings.AckDate.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.AckDate.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.AckDate.mandatory}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.AckDate.tooltip}"
+                                      id="id2">
+                           <f:validator binding="#{row.bindings.AckDate.validator}"/>
+                           <af:convertDateTime pattern="#{bindings.OcReceiptDp_VO1.hints.AckDate.format}"/>
+                        </af:inputDate>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.AckFlag.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.AckFlag.label}"
+                                id="c19" rendered="false">
+                        <af:inputText value="#{row.bindings.AckFlag.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.AckFlag.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.AckFlag.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.AckFlag.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.AckFlag.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.AckFlag.tooltip}"
+                                      id="it32">
+                           <f:validator binding="#{row.bindings.AckFlag.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.Attribute1.name}"
+                                sortable="false"
+                                headerText="Response"
+                                id="c27">
+                        <af:inputText value="#{row.bindings.Attribute1.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.Attribute1.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.Attribute1.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.Attribute1.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.Attribute1.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.Attribute1.tooltip}"
+                                      id="it34"
+                                      binding="#{backingBeanScope.AddEditOcDpMb.receiptResponse}"
+                                      partialTriggers="cb5"
+                                      disabled="#{sessionScope.userId eq '100' ? false : true}">
+                           <f:validator binding="#{row.bindings.Attribute1.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column id="c311" headerText="Transfer Receipt"
+                                align="center" width="120"
+                                rendered="#{bindings.Status.inputValue eq 'APR'}"
+                                visible="#{sessionScope.UR eq 'ACCOUNTS_MANAGER'}">
+                        <af:commandButton text="Transfer Receipt" id="cb5"
+                                          actionListener="#{backingBeanScope.AddEditOcDpMb.receiptCreationAR}"
+                                          disabled="#{row.Attribute1 ne null}"
+                                          partialTriggers="c32"
+                                          partialSubmit="true"/>
+                     </af:column>
+                     <af:column id="c313" headerText="Apply Receipt"
+                                align="center"
+                                rendered="#{bindings.Status.inputValue eq 'APR'}"
+                                visible="#{sessionScope.UR eq 'ACCOUNTS_MANAGER'}">
+                        <af:commandButton text="Apply Receipt" id="cb9"
+                                          actionListener="#{backingBeanScope.AddEditOcDpMb.arReceiptApply}"
+                                          disabled="#{row.Attribute1 eq null}"
+                                          partialTriggers="c32"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.RctType.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.RctType.label}"
+                                id="c32" rendered="false">
+                        <af:inputText value="#{row.bindings.RctType.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.RctType.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.RctType.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.RctType.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.RctType.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.RctType.tooltip}"
+                                      id="it41">
+                           <f:validator binding="#{row.bindings.RctType.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.SourceFuncId.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.SourceFuncId.label}"
+                                id="c31" rendered="false">
+                        <af:inputText value="#{row.bindings.SourceFuncId.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.SourceFuncId.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.SourceFuncId.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.SourceFuncId.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.SourceFuncId.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.SourceFuncId.tooltip}"
+                                      id="it30">
+                           <f:validator binding="#{row.bindings.SourceFuncId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.SourceFuncRefId.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.SourceFuncRefId.label}"
+                                id="c22" rendered="false">
+                        <af:inputText value="#{row.bindings.SourceFuncRefId.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.SourceFuncRefId.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.SourceFuncRefId.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.SourceFuncRefId.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.SourceFuncRefId.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.SourceFuncRefId.tooltip}"
+                                      id="it31">
+                           <f:validator binding="#{row.bindings.SourceFuncRefId.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.OcReceiptDp_VO1.hints.Status.name}"
+                                sortable="false"
+                                headerText="#{bindings.OcReceiptDp_VO1.hints.Status.label}"
+                                id="c16" rendered="false">
+                        <af:inputText value="#{row.bindings.Status.inputValue}"
+                                      label="#{bindings.OcReceiptDp_VO1.hints.Status.label}"
+                                      required="#{bindings.OcReceiptDp_VO1.hints.Status.mandatory}"
+                                      columns="#{bindings.OcReceiptDp_VO1.hints.Status.displayWidth}"
+                                      maximumLength="#{bindings.OcReceiptDp_VO1.hints.Status.precision}"
+                                      shortDesc="#{bindings.OcReceiptDp_VO1.hints.Status.tooltip}"
+                                      id="it23">
+                           <f:validator binding="#{row.bindings.Status.validator}"/>
+                        </af:inputText>
+                     </af:column>
+                  </af:table>
+               </af:panelCollection>
+            </af:panelBox>
+         </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="footerStart"/>
+      <f:facet name="footer"/>
+      <f:facet name="footerEnd"/>
+      <f:facet name="startPanel"/>
+      <f:facet name="endPanel"/>
+      <f:facet name="headerStart"/>
+      <f:facet name="header"/>
+      <f:facet name="headerEnd"/>
+   </af:pageTemplate>
+</jsp:root>

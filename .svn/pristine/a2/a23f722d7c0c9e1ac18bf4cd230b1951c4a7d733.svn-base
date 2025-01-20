@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditCancellationPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Cancellation_VO1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="Cancellation_VO1Iterator" CacheResults="true"/>
+    <iterator Binds="BookingDetail_VO1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="BookingDetail_VO1Iterator"/>
+    <iterator Binds="CancelDueAmountDtl_VO1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="CancelDueAmountDtl_VO1Iterator" CacheResults="false"/>
+    <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator Binds="Booking_Milestone_VO1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="Booking_Milestone_VO1Iterator"/>
+    <iterator id="SrearchCancellation_RoVo2Iterator"
+              Binds="SrearchCancellation_RoVo2"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator Binds="CancelDueAmountArDtl_VO2" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="CancelDueAmountArDtl_VO2Iterator" CacheResults="false"/>
+    <iterator id="Org_ROVO1Iterator" Binds="Org_ROVO1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="OfferType_ROVO1Iterator" Binds="OfferType_ROVO1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="getPayloadInformationCancellation_ROVO1Iterator"
+              Binds="getPayloadInformationCancellation_ROVO1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="getTaxCodeROVO1Iterator" Binds="getTaxCodeROVO1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="getARSetupDetails_ROVO1Iterator"
+              Binds="getARSetupDetails_ROVO1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="Lookup_View_chargename" Binds="Lookup_View_ROVO3"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="findByUnitName1Iterator" Binds="findByUnitName1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="masterdetail_ROVO1Iterator" Binds="masterdetail_ROVO1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator Binds="getApprovalHistoryROVo1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="getApprovalHistoryROVo1Iterator"/>
+    <iterator Binds="CancellationHeaderProposedROVO1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="CancellationHeaderProposedROVO1Iterator"/>
+    <iterator Binds="CancellationDetailProposed_ROVO1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="CancellationDetailProposed_ROVO1Iterator"/>
+    <iterator Binds="CancellationOtherChargeProposed_ROVO1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="CancellationOtherChargeProposed_ROVO1Iterator"/>
+    <iterator Binds="Receipt_VO1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="Receipt_VO1Iterator"/>
+    <iterator id="LeaseAgreement_VO1Iterator" Binds="LeaseAgreement_VO1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="OfferDetail_VO1Iterator" Binds="OfferDetail_VO1"
+              DataControl="OfferAppModuleDataControl" RangeSize="25"/>
+    <iterator id="PropertyUnits_VO1Iterator" Binds="PropertyUnits_VO1"
+              DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="CancelNumber">
+      <AttrNames>
+        <Item Value="CancelNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="ConStartDate">
+      <AttrNames>
+        <Item Value="ConStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="ConEndDate">
+      <AttrNames>
+        <Item Value="ConEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="BaseRate">
+      <AttrNames>
+        <Item Value="BaseRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="CustomerName">
+      <AttrNames>
+        <Item Value="CustomerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="EmiratedId">
+      <AttrNames>
+        <Item Value="EmiratedId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Nationality">
+      <AttrNames>
+        <Item Value="Nationality"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="CancelDate">
+      <AttrNames>
+        <Item Value="CancelDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="DaysConsumed">
+      <AttrNames>
+        <Item Value="DaysConsumed"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="DaysRemaining">
+      <AttrNames>
+        <Item Value="DaysRemaining"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator"
+                     id="DailyRentalRate">
+      <AttrNames>
+        <Item Value="DailyRentalRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator"
+                     id="DailyDiscountingRate">
+      <AttrNames>
+        <Item Value="DailyDiscountingRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="NocDateEntered">
+      <AttrNames>
+        <Item Value="NocDateEntered"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="NocDateActual">
+      <AttrNames>
+        <Item Value="NocDateActual"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator"
+                     id="ChequeClearedAmount">
+      <AttrNames>
+        <Item Value="ChequeClearedAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="AmountWaived">
+      <AttrNames>
+        <Item Value="AmountWaived"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="BookingDetail_VO1Iterator" id="BookingDetail_VO1">
+      <nodeDefinition DefName="model.VO.BookingDetail_VO"
+                      Name="BookingDetail_VO10">
+        <AttrNames>
+          <Item Value="PropertyId"/>
+          <Item Value="BuildingId"/>
+          <Item Value="UnitId"/>
+          <Item Value="BaseRate"/>
+          <Item Value="DiscountRate"/>
+          <Item Value="TotalRate"/>
+          <Item Value="TaxRate"/>
+          <Item Value="TaxCode"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="SecurityDeposite"/>
+          <Item Value="ElectricityCharges"/>
+          <Item Value="MunicipalityCharges"/>
+          <Item Value="MunicipalityPercentage"/>
+          <Item Value="ThirdPartyServCharge"/>
+          <Item Value="OtherGovntChargeNew"/>
+          <Item Value="OtherGovntChargeRnew"/>
+          <Item Value="EjariPaymentCharge"/>
+          <Item Value="Attribute3"/>
+          <Item Value="CancelStatus" Binds="CancelStatus"/>
+          <Item Value="PrimaryUnit" Binds="PrimaryUnit"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CancelDueAmountDtl_VO1Iterator"
+          id="CancelDueAmountDtl_VO1">
+      <nodeDefinition DefName="model.VO.CancelDueAmountDtl_VO"
+                      Name="CancelDueAmountDtl_VO10">
+        <AttrNames>
+          <Item Value="CancelationCharges"/>
+          <Item Value="TaxCode"/>
+          <Item Value="CancelAmount"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="TotalAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="LastUpdatedBy">
+      <AttrNames>
+        <Item Value="LastUpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" DataControl="Cancellation_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <list IterBinding="Cancellation_VO1Iterator" StaticList="false"
+          Uses="LOV_LeaseAgreementId" id="LeaseAgreementId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="Cancellation_VO1Iterator" StaticList="false"
+          Uses="LOV_BookingId" id="BookingId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Cancellation_VO1Iterator" StaticList="false"
+          Uses="LOV_RecommendId" id="RecommendId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Cancellation_VO1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Cancellation_VO1Iterator" StaticList="false"
+          Uses="LOV_OrgId" id="OrgId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <listOfValues StaticList="false" IterBinding="Cancellation_VO1Iterator"
+                  Uses="LOV_LeaseAgreementNoTrans" id="LeaseAgreementNoTrans"/>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="TotalRate">
+      <AttrNames>
+        <Item Value="TotalRate"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="Cancellation_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="Booking_Milestone_VO1Iterator"
+          id="Booking_Milestone_VO1">
+      <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                      Name="Booking_Milestone_VO10">
+        <AttrNames>
+          <Item Value="InstallmentType1"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="Remarks"/>
+          <Item Value="InstallmentType2"/>
+          <Item Value="CancelId"/>
+          <Item Value="SourceFuncId"/>
+          <Item Value="InstallmentType3"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="Cancellation_VO1Iterator" StaticList="false"
+          Uses="LOV_NocBy" id="NocBy" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <methodAction id="getdetails"
+                  InstanceName="Cancellation_AMDataControl.dataProvider"
+                  DataControl="Cancellation_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getdetails" IsViewObjectMethod="false"
+                  ReturnName="data.Cancellation_AMDataControl.methodResults.getdetails_Cancellation_AMDataControl_dataProvider_getdetails_result">
+      <NamedData NDName="p_lease_id" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="p_org_id" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="p_termination_date" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Netdue">
+      <AttrNames>
+        <Item Value="Netdue"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CancelDueAmountArDtl_VO2Iterator"
+          id="CancelDueAmountArDtl_VO2">
+      <nodeDefinition DefName="model.VO.CancelDueAmountArDtl_VO"
+                      Name="CancelDueAmountArDtl_VO20">
+        <AttrNames>
+          <Item Value="DueAmtArDtlId"/>
+          <Item Value="CancelId"/>
+          <Item Value="CancelationCharges"/>
+          <Item Value="TaxCode"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="CancelAmount"/>
+          <Item Value="TotalAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="BookingDetail_VO1Iterator" StaticList="false"
+          Uses="LOV_DiscountRate" id="DiscountRate" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <methodAction id="getCodeSegmentCombination"
+                  InstanceName="Cancellation_AMDataControl.dataProvider"
+                  DataControl="Cancellation_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getCodeSegmentCombination"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.Cancellation_AMDataControl.methodResults.getCodeSegmentCombination_Cancellation_AMDataControl_dataProvider_getCodeSegmentCombination_result">
+      <NamedData NDName="pBusinessUnitId" NDType="java.lang.String"/>
+      <NamedData NDName="pChargeType" NDType="java.lang.String"/>
+      <NamedData NDName="pUnitId" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getcancellation"
+                  InstanceName="Cancellation_AMDataControl.dataProvider"
+                  DataControl="Cancellation_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getcancellation" IsViewObjectMethod="false">
+      <NamedData NDName="leaseid" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="DaysConsumed" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="DaysRemaining" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="DailyRentalRate" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="DailyDiscountingRate" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <methodAction id="getStatusChange"
+                  InstanceName="Cancellation_AMDataControl.dataProvider"
+                  DataControl="Cancellation_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getStatusChange" IsViewObjectMethod="false">
+      <NamedData NDName="cancelid" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="leaseid" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="unitid" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Attribute1">
+      <AttrNames>
+        <Item Value="Attribute1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Attribute2">
+      <AttrNames>
+        <Item Value="Attribute2"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="getApprovalHistoryROVo1Iterator"
+          id="getApprovalHistoryROVo1">
+      <nodeDefinition DefName="model.ROVO.getApprovalHistoryROVo"
+                      Name="getApprovalHistoryROVo10">
+        <AttrNames>
+          <Item Value="ApproverId"/>
+          <Item Value="SubmissionDate"/>
+          <Item Value="SubmittedByTrans"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Booking_Milestone_VO1Iterator" id="CreateInsert"
+            InstanceName="Cancellation_AMDataControl.Booking_Milestone_VO1"
+            DataControl="Cancellation_AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="Booking_Milestone_VO1Iterator" id="Delete"
+            InstanceName="Cancellation_AMDataControl.Booking_Milestone_VO1"
+            DataControl="Cancellation_AMDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Attribute10">
+      <AttrNames>
+        <Item Value="Attribute10"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator"
+                     id="ProposeFinalStatus">
+      <AttrNames>
+        <Item Value="ProposeFinalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="CancelId">
+      <AttrNames>
+        <Item Value="CancelId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="CancelNumber1">
+      <AttrNames>
+        <Item Value="CancelNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="Leasenumber">
+      <AttrNames>
+        <Item Value="Leasenumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="Booknumber">
+      <AttrNames>
+        <Item Value="Booknumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="Recno">
+      <AttrNames>
+        <Item Value="Recno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="Offernumber">
+      <AttrNames>
+        <Item Value="Offernumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="Orgname">
+      <AttrNames>
+        <Item Value="Orgname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="ConStartDate1">
+      <AttrNames>
+        <Item Value="ConStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="ConEndDate1">
+      <AttrNames>
+        <Item Value="ConEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="BaseRate1">
+      <AttrNames>
+        <Item Value="BaseRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="TotalRate1">
+      <AttrNames>
+        <Item Value="TotalRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="CustomerName1">
+      <AttrNames>
+        <Item Value="CustomerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="EmiratedId1">
+      <AttrNames>
+        <Item Value="EmiratedId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="Nationality1">
+      <AttrNames>
+        <Item Value="Nationality"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="CancelDate1">
+      <AttrNames>
+        <Item Value="CancelDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="DaysConsumed1">
+      <AttrNames>
+        <Item Value="DaysConsumed"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="DaysRemaining1">
+      <AttrNames>
+        <Item Value="DaysRemaining"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="DailyRentalRate1">
+      <AttrNames>
+        <Item Value="DailyRentalRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="DailyDiscountingRate1">
+      <AttrNames>
+        <Item Value="DailyDiscountingRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="NocDateEntered1">
+      <AttrNames>
+        <Item Value="NocDateEntered"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="NocDateActual1">
+      <AttrNames>
+        <Item Value="NocDateActual"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="ChequeClearedAmount1">
+      <AttrNames>
+        <Item Value="ChequeClearedAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="AmountWaived1">
+      <AttrNames>
+        <Item Value="AmountWaived"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="Currency">
+      <AttrNames>
+        <Item Value="Currency"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="Description1">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="Netdue1">
+      <AttrNames>
+        <Item Value="Netdue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CancellationHeaderProposedROVO1Iterator"
+                     id="ProposeFinalStatus1">
+      <AttrNames>
+        <Item Value="ProposeFinalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CancellationDetailProposed_ROVO1Iterator"
+          id="CancellationDetailProposed_ROVO1">
+      <nodeDefinition DefName="model.ROVO.CancellationDetailProposed_ROVO"
+                      Name="CancellationDetailProposed_ROVO10">
+        <AttrNames>
+          <Item Value="DueAmtDtlId"/>
+          <Item Value="CancelId"/>
+          <Item Value="CancelationCharges"/>
+          <Item Value="TaxCode"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="CancelAmount"/>
+          <Item Value="TotalAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="cancellation_proposal"
+                  InstanceName="Cancellation_AMDataControl.dataProvider"
+                  DataControl="Cancellation_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="cancellation_proposal" IsViewObjectMethod="false">
+      <NamedData NDName="P_cancellationId" NDType="java.lang.Long"/>
+    </methodAction>
+    <tree IterBinding="CancellationOtherChargeProposed_ROVO1Iterator"
+          id="CancellationOtherChargeProposed_ROVO1">
+      <nodeDefinition DefName="model.ROVO.CancellationOtherChargeProposed_ROVO"
+                      Name="CancellationOtherChargeProposed_ROVO10">
+        <AttrNames>
+          <Item Value="InstallmentType"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="Remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="BookingDetail_VO1Iterator"
+                     id="SecurityDeposite">
+      <AttrNames>
+        <Item Value="SecurityDeposite"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="Receipt_VO1Iterator" id="Receipt_VO1">
+      <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO10">
+        <AttrNames>
+          <Item Value="ReceiptId"/>
+          <Item Value="ReceiptNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="CustomerName"/>
+          <Item Value="PayMode"/>
+          <Item Value="PayRefNumber"/>
+          <Item Value="PayRefDate"/>
+          <Item Value="BankName"/>
+          <Item Value="CurrencyCode"/>
+          <Item Value="RecommendedAmount"/>
+          <Item Value="Description"/>
+          <Item Value="RctDesc"/>
+          <Item Value="AckFlag" Binds="AckFlag"/>
+          <Item Value="AckBy"/>
+          <Item Value="SourceFuncId"/>
+          <Item Value="SourceFuncRefId"/>
+          <Item Value="OrgId"/>
+          <Item Value="RctType"/>
+          <Item Value="AckDate"/>
+          <Item Value="BookingId"/>
+          <Item Value="RecHdrRowStatus_Trans"/>
+          <Item Value="OcId"/>
+          <Item Value="OcNo"/>
+          <Item Value="CancelId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="Receipt_VO1Iterator" id="AckFlag"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="AckFlag"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Attribute9">
+      <AttrNames>
+        <Item Value="Attribute9"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BookingDetail_VO1Iterator" id="TaxPercentage">
+      <AttrNames>
+        <Item Value="TaxPercentage"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BookingDetail_VO1Iterator"
+                     id="SecurityDepositTrans">
+      <AttrNames>
+        <Item Value="SecurityDepositTrans"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Attribute6">
+      <AttrNames>
+        <Item Value="Attribute6"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Cancellation_VO1Iterator" StaticList="false"
+          Uses="LOV_CourtCase" id="CourtCase" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="CourtCaseNo">
+      <AttrNames>
+        <Item Value="CourtCaseNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator"
+                     id="Trans_Discount_Val">
+      <AttrNames>
+        <Item Value="Trans_Discount_Val"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator" id="Attribute7">
+      <AttrNames>
+        <Item Value="Attribute7"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator"
+                     id="SecurityDepoCleared">
+      <AttrNames>
+        <Item Value="SecurityDepoCleared"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator"
+                     id="MaintenanceDeduction">
+      <AttrNames>
+        <Item Value="MaintenanceDeduction"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Cancellation_VO1Iterator" StaticList="false"
+          Uses="LOV_CnCompleteStatus" id="CnCompleteStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <listOfValues StaticList="false" IterBinding="Cancellation_VO1Iterator"
+                  Uses="LOV_Attribute3" id="Attribute3"/>
+    <button IterBinding="BookingDetail_VO1Iterator" id="CancelStatus"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="CancelStatus"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="BookingDetail_VO1Iterator" id="CancelledTag">
+      <AttrNames>
+        <Item Value="CancelledTag"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OfferDetail_VO1Iterator" id="CancelStatus1">
+      <AttrNames>
+        <Item Value="CancelStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OfferDetail_VO1Iterator" id="CancelledTag1">
+      <AttrNames>
+        <Item Value="CancelledTag"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="directRejectionFromDraft"
+                  InstanceName="Cancellation_AMDataControl.dataProvider"
+                  DataControl="Cancellation_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="directRejectionFromDraft"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.Cancellation_AMDataControl.methodResults.directRejectionFromDraft_Cancellation_AMDataControl_dataProvider_directRejectionFromDraft_result">
+      <NamedData NDName="cnId" NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDType="java.lang.String"/>
+      <NamedData NDName="funcId" NDType="java.lang.String"/>
+      <NamedData NDName="reasonCN" NDType="java.lang.String"/>
+    </methodAction>
+    <button IterBinding="BookingDetail_VO1Iterator" id="PrimaryUnit"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="PrimaryUnit"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <methodAction id="updateCancelledTagOnApproved"
+                  InstanceName="Cancellation_AMDataControl.dataProvider"
+                  DataControl="Cancellation_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="updateCancelledTagOnApproved"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.Cancellation_AMDataControl.methodResults.updateCancelledTagOnApproved_Cancellation_AMDataControl_dataProvider_updateCancelledTagOnApproved_result">
+      <NamedData NDName="cnId" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="Cancellation_VO1Iterator"
+                     id="CourtCaseAdjustmentAmt">
+      <AttrNames>
+        <Item Value="CourtCaseAdjustmentAmt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cancellation_VO1Iterator"
+                     id="NetCourtCaseAdjustmentAmt">
+      <AttrNames>
+        <Item Value="NetCourtCaseAdjustmentAmt"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

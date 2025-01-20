@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelGridLayout id="pgl2">
+          <af:gridRow marginTop="5px" height="auto" id="gr1">
+            <af:gridCell marginStart="5px" width="50%" id="gc1">
+              <af:outputLabel value="Cancellation" id="ol1"
+                              inlineStyle="font-weight:bolder; font-size:large;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                         id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:panelGroupLayout layout="vertical" id="pgl3">
+        
+              <af:query id="qryId1" headerText="Search" disclosed="true"
+                        value="#{bindings.SrearchCancellationRoVoCriteriaQuery.queryDescriptor}"
+                        model="#{bindings.SrearchCancellationRoVoCriteriaQuery.queryModel}"
+                        queryListener="#{bindings.SrearchCancellationRoVoCriteriaQuery.processQuery}"
+                        queryOperationListener="#{bindings.SrearchCancellationRoVoCriteriaQuery.processQueryOperation}"
+                        maxColumns="3" rows="2"/>
+          
+          <af:spacer width="10" height="10" id="s2"/>
+          <af:panelBox text="Search Result" id="pb1">
+            <f:facet name="toolbar"/>
+               <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="detach">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+            <af:toolbar id="t1" flex="1">
+                  <af:commandImageLink actionListener="#{bindings.CreateInsert.execute}"
+                                       disabled="#{!bindings.CreateInsert.enabled}"
+                                       id="cil1"
+                                       icon="/images/func_add_16_ena.png"
+                                       hoverIcon="/images/func_add_16_hov.png"
+                                       depressedIcon="/images/func_add_16_act.png"
+                                       partialSubmit="true" useWindow="true"
+                                       windowHeight="600" windowWidth="1200"
+                                       inlineStyle="margin-right:10.0px;"
+                                       disabledIcon="/images/func_add_16_dis.png"
+                                       action="add"/>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:commandImageLink id="cil2"
+                                       icon="/images/func_pencil_16_ena.png"
+                                       shortDesc="Edit" action="edit">
+                    <af:setPropertyListener from="#{bindings.CancelId.inputValue}"
+                                            to="#{pageFlowScope.cancelId}"
+                                            type="action"/>
+                 </af:commandImageLink>
+                  <af:spacer width="10" height="10" id="s4"/>
+                  <af:commandImageLink 
+                                       id="cil3" icon="/images/xl.png"
+                                       hoverIcon="/images/filedownload_ena.png"
+                                       depressedIcon="/images/filedownload_dis.png"
+                                       visible="#{sessionScope.grantMap.Booking =='N'?'false':'true'}">
+                    <af:exportCollectionActionListener type="excelHTML"
+                                                       exportedId="t2"
+                                                       filename="Cancellation.xls"
+                                                       title="Cancellation"/>
+                  </af:commandImageLink>
+                </af:toolbar>
+              </f:facet>
+            <f:facet name="statusbar"/>
+              <af:table value="#{bindings.SrearchCancellation_RoVo1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.SrearchCancellation_RoVo1.rangeSize}"
+                        emptyText="#{bindings.SrearchCancellation_RoVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="6"
+                        rowBandingInterval="0"
+                        filterModel="#{bindings.SrearchCancellationRoVoCriteriaQuery.queryDescriptor}"
+                        queryListener="#{bindings.SrearchCancellationRoVoCriteriaQuery.processQuery}"
+                        filterVisible="true" varStatus="vs"
+                        selectedRowKeys="#{bindings.SrearchCancellation_RoVo1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.SrearchCancellation_RoVo1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t2" partialTriggers=":::qryId1"
+                        scrollPolicy="page" autoHeightRows="0">
+                        
+                <af:column id="c25" headerText="S.No" width="50" align="center">
+                  <af:outputText value="#{vs.index+1}" id="ot25"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.CancelNumber.label}"
+                           id="c8" align="center">
+                  <af:outputText value="#{row.CancelNumber}" id="ot3" rendered="false"/>
+                   <af:commandLink text="#{row.CancelNumber}" id="cl1"
+                                  action="edit"
+                                  inlineStyle="font-weight:bolder;">
+                    <af:setPropertyListener from="#{bindings.CancelId.inputValue}"
+                                            to="#{pageFlowScope.cancelId}"
+                                            type="action"/>
+        <!--prod -->
+                    <af:setPropertyListener to="#{sessionScope.CN_P_ProposedFormPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/Cancellation/proposedAndFinal/#{row.CancelNumber}"/>
+                          <af:setPropertyListener to="#{sessionScope.CN_F_ProposedFormPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/Cancellation/proposedAndFinal_H/#{row.CancelNumber}"/>
+                    <af:setPropertyListener to="#{sessionScope.CN_FinalFormPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/Cancellation/proposedAndFinal/#{row.CancelNumber}"/>
+         <!--test -->            
+                    <!--<af:setPropertyListener to="#{sessionScope.CN_P_ProposedFormPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServicesDemo1/webresources/rest/Cancellation/proposedAndFinal/#{row.CancelNumber}"/>-->
+                          <!--<af:setPropertyListener to="#{sessionScope.CN_F_ProposedFormPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServicesDemo1/webresources/rest/Cancellation/proposedAndFinal_H/#{row.CancelNumber}"/>-->
+                    <!--<af:setPropertyListener to="#{sessionScope.CN_FinalFormPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServicesDemo1/webresources/rest/Cancellation/proposedAndFinal/#{row.CancelNumber}"/>-->
+                  </af:commandLink>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.LeaseNumber.label}"
+                           id="c18" align="center">
+                  <af:outputText value="#{row.LeaseNumber}" id="ot18"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.RecommendNumber.label}"
+                           id="c10" align="center">
+                  <af:outputText value="#{row.RecommendNumber}" id="ot1"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.BookingNumber.label}"
+                           id="c12" align="center">
+                  <af:outputText value="#{row.BookingNumber}" id="ot7"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.OfferNumber.label}"
+                           id="c3" align="center">
+                  <af:outputText value="#{row.OfferNumber}" id="ot13"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.OrgName.label}"
+                           id="c11">
+                  <af:outputText value="#{row.OrgName}" id="ot14"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.PropertyName.label}"
+                           id="c13">
+                  <af:outputText value="#{row.PropertyName}" id="ot15"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.BuildName.label}"
+                           id="c19">
+                  <af:outputText value="#{row.BuildName}" id="ot19"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.UnitName.label}"
+                           id="c20">
+                  <af:outputText value="#{row.UnitName}" id="ot20"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SrearchCancellation_RoVo1.hints.CustomerName.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.SrearchCancellation_RoVo1.hints.CustomerName.label}"
+                           id="c17">
+                  <af:outputText value="#{row.CustomerName}" id="ot10"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.Status.label}"
+                           id="c15" align="center">
+                  <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                      label="#{row.bindings.Status.label}"
+                                      required="#{bindings.SrearchCancellation_RoVo1.hints.Status.mandatory}"
+                                      shortDesc="#{bindings.SrearchCancellation_RoVo1.hints.Status.tooltip}"
+                                      id="soc1" readOnly="true">
+                    <f:selectItems value="#{row.bindings.Status.items}"
+                                   id="si1"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="Proposed/Final Staus"
+                           id="c22" align="center">
+                  <af:outputText value="#{row.ProposeFinalStatus}" id="ot21"/>
+                </af:column>
+                <af:column headerText="Court Case"
+                           id="c24" align="center">
+                  <af:outputText value="#{row.CourtCase}" id="ot23"/>
+                </af:column>
+                <af:column headerText="Court Case No"
+                           id="c26">
+                  <af:outputText value="#{row.CourtCaseNo}" id="ot24"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.CourtCaseAdjustmentAmt.label}"
+                           id="c28">
+                  <af:outputText value="#{row.CourtCaseAdjustmentAmt}"
+                                 id="ot27"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.ConStartDate.label}"
+                           id="c1" align="center">
+                  <af:outputText value="#{row.ConStartDate}" id="ot2">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.ConEndDate.label}"
+                           id="c2" align="center">
+                  <af:outputText value="#{row.ConEndDate}" id="ot9">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.SrearchCancellation_RoVo1.hints.BaseRate.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.SrearchCancellation_RoVo1.hints.BaseRate.label}"
+                           id="c16" align="center">
+                  <af:outputText value="#{row.BaseRate}" id="ot4"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SrearchCancellation_RoVo1.hints.TotalRate.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.SrearchCancellation_RoVo1.hints.TotalRate.label}"
+                           id="c9" align="center">
+                  <af:outputText value="#{row.TotalRate}" id="ot5"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.CancelDate.label}"
+                           id="c6" align="center">
+                  <af:outputText value="#{row.CancelDate}" id="ot8">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.SrearchCancellation_RoVo1.hints.DaysConsumed.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.SrearchCancellation_RoVo1.hints.DaysConsumed.label}"
+                           id="c7" align="center">
+                  <af:outputText value="#{row.DaysConsumed}" id="ot11"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SrearchCancellation_RoVo1.hints.DaysRemaining.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.SrearchCancellation_RoVo1.hints.DaysRemaining.label}"
+                           id="c4" align="center">
+                  <af:outputText value="#{row.DaysRemaining}" id="ot6"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SrearchCancellation_RoVo1.hints.DailyRentalRate.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.SrearchCancellation_RoVo1.hints.DailyRentalRate.label}"
+                           id="c5" align="center">
+                  <af:outputText value="#{row.DailyRentalRate}" id="ot12"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SrearchCancellation_RoVo1.hints.DailyDiscountingRate.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.SrearchCancellation_RoVo1.hints.DailyDiscountingRate.label}"
+                           id="c14" align="center">
+                  <af:outputText value="#{row.DailyDiscountingRate}" id="ot16"/>
+                </af:column>
+                <af:column headerText="Net Due"
+                           id="c21">
+                  <af:outputText value="#{row.Netdue}" id="ot17">
+                    <af:convertNumber minFractionDigits="2"
+                                      maxFractionDigits="2"/>
+                  </af:outputText>
+                </af:column>
+                <af:column headerText="NOC Date Actual"
+                           id="c23">
+                  <af:outputText value="#{row.NocDateActual}" id="ot22">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column headerText="Amount Waived"
+                           id="c27">
+                  <af:outputText value="#{row.AmountWaived}" id="ot26">
+                  <af:convertNumber minFractionDigits="2"
+                                    maxFractionDigits="2"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.UnitCategory.label}"
+                           id="c29">
+                  <af:outputText value="#{row.UnitCategory}" id="ot28"/>
+                </af:column>
+                <af:column headerText="#{bindings.SrearchCancellation_RoVo1.hints.AreaValue.label}"
+                           id="c30">
+                  <af:outputText value="#{row.AreaValue}" id="ot29"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+</jsp:root>
+

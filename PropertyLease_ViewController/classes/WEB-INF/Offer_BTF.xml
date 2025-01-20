@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Offer_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">SearchOffers</default-activity>
+    <managed-bean id="__8">
+      <managed-bean-name id="__10">SearchOffers</managed-bean-name>
+      <managed-bean-class id="__9">SearchOffers</managed-bean-class>
+      <managed-bean-scope id="__7">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchOffers">
+      <page>/fragments/SearchOffers.jsff</page>
+    </view>
+    <task-flow-call id="OfferAddEdit_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/OfferAddEdit_BTF.xml</document>
+        <id>OfferAddEdit_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__25">
+        <name>leaseid</name>
+        <value>#{pageFlowScope.leaseid}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__11">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">SearchOffers</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">offer</from-outcome>
+        <to-activity-id id="__4">OfferAddEdit_BTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id id="__13">OfferAddEdit_BTF</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome id="__14">cancel</from-outcome>
+        <to-activity-id id="__15">Execute</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome id="__17">save</from-outcome>
+        <to-activity-id id="__19">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id id="__21">Execute</from-activity-id>
+      <control-flow-case id="__23">
+        <from-outcome id="__24">Execute</from-outcome>
+        <to-activity-id id="__22">SearchOffers</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

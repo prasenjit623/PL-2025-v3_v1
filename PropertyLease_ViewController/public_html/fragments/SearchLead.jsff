@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+   <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                    id="pt1">
+      <f:facet name="pageContents">
+         <af:group id="g1">
+            <af:panelGroupLayout id="pgl1" layout="vertical">
+               <af:panelGridLayout id="pgl2">
+                  <af:gridRow marginTop="5px" height="auto" id="gr1">
+                     <af:gridCell marginStart="5px" width="50%" id="gc2">
+                        <af:outputLabel value="Lead" id="ol1"
+                                        inlineStyle="font-weight:bolder; font-size:large;"/>
+                     </af:gridCell>
+                     <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                                  id="gc3"/>
+                  </af:gridRow>
+               </af:panelGridLayout>
+               <af:spacer width="10" height="10" id="s1"/>
+               <af:query id="qryId2" headerText="Search" disclosed="true"
+                         value="#{bindings.SearchLeadQuery1.queryDescriptor}"
+                         model="#{bindings.SearchLeadQuery1.queryModel}"
+                         queryListener="#{bindings.SearchLeadQuery1.processQuery}"
+                         queryOperationListener="#{bindings.SearchLeadQuery1.processQueryOperation}"
+                         resultComponentId="::pc2:t2" rows="2" maxColumns="3"/>
+               <af:spacer width="10" height="10" id="s2"/>
+               <af:panelBox text="Search Lead" id="pb3">
+                  <f:facet name="toolbar"/>
+                  <af:panelCollection id="pc2" featuresOff="detach"
+                                      styleClass="AFStretchWidth">
+                     <f:facet name="menus"/>
+                     <f:facet name="toolbar">
+                        <af:toolbar id="t1" flex="1">
+                           <af:commandImageLink actionListener="#{bindings.CreateInsert.execute}"
+                                                id="cil1" action="toAdd"
+                                                icon="/images/func_add_16_ena.png"
+                                                hoverIcon="/images/func_add_16_hov.png"
+                                                depressedIcon="/images/func_add_16_act.png "
+                                                disabledIcon="/images/func_add_16_dis.png"
+                                                visible="#{sessionScope.grantMap.VisitorsLog =='F'}">
+                              <af:setPropertyListener type="action"
+                                                      to="#{sessionScope.resultVal}"
+                                                      from="#{'NewLead'}"/>
+                              <af:setPropertyListener from="#{'NewLead'}"
+                                                      to="#{sessionScope.resultVal}"
+                                                      type="action"/>
+                           </af:commandImageLink>
+                           <af:spacer width="10" height="10" id="s3"/>
+                           <af:commandImageLink id="cil2" action="toEdit"
+                                                icon="/images/func_pencil_16_ena.png"
+                                                hoverIcon="/images/func_pencil_16_hov.png"
+                                                depressedIcon="/images/func_pencil_16_act.png"
+                                                disabledIcon="/images/func_pencil_16_dis.png"
+                                                visible="#{sessionScope.grantMap.VisitorsLog =='F'}">
+                              <af:setPropertyListener from="#{'EditLead'}"
+                                                      to="#{sessionScope.resultVal}"
+                                                      type="action"/>
+                              <af:setPropertyListener from="#{bindings.LeadId.inputValue}"
+                                                      to="#{sessionScope.Leadid}"
+                                                      type="action"/>
+                           </af:commandImageLink>
+                           <af:spacer width="10" height="10" id="s4"/>
+                           <af:commandImageLink binding="#{backingBeanScope.backing_fragments_searchProperty.cil3}"
+                                                id="cil3" icon="/images/xl.png"
+                                                visible="#{sessionScope.grantMap.VisitorsLog =='N'?'false':'true'}">
+                              <af:exportCollectionActionListener exportedId="t2"
+                                                                 type="excelHTML"
+                                                                 filename="Lead.xls"
+                                                                 title="Lead"/>
+                           </af:commandImageLink>
+                        </af:toolbar>
+                     </f:facet>
+                     <f:facet name="statusbar"/>
+                     <af:table value="#{bindings.SearchLeadROVO11.collectionModel}"
+                               var="row"
+                               rows="#{bindings.SearchLeadROVO11.rangeSize}"
+                               emptyText="#{bindings.SearchLeadROVO11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                               fetchSize="6"
+                               rowBandingInterval="0"
+                               selectedRowKeys="#{bindings.SearchLeadROVO11.collectionModel.selectedRow}"
+                               selectionListener="#{bindings.SearchLeadROVO11.collectionModel.makeCurrent}"
+                               rowSelection="single" id="t2"
+                               columnStretching="column:c21" varStatus="vs"
+                               scrollPolicy="page" autoHeightRows="0"
+                               columnSelection="single"
+                               filterModel="#{bindings.SearchLeadQuery1.queryDescriptor}"
+                               queryListener="#{bindings.SearchLeadQuery1.processQuery}"
+                               filterVisible="false">
+                        <af:column id="c1" headerText="S.No" align="center"
+                                   width="50" frozen="true">
+                           <af:outputText value="#{vs.index+1}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.LeadNumber.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.LeadNumber.label}"
+                                   id="c25" frozen="true" width="160"
+                                   filterable="true">
+                           <af:inputText value="#{row.bindings.LeadNumber.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.LeadNumber.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.LeadNumber.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.LeadNumber.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.LeadNumber.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.LeadNumber.tooltip}"
+                                         id="it14" readOnly="true"
+                                         rendered="false">
+                              <f:validator binding="#{row.bindings.LeadNumber.validator}"/>
+                           </af:inputText>
+                           <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.FuncId.name}"
+                                      sortable="true"
+                                      headerText="#{bindings.SearchLeadROVO11.hints.FuncId.label}"
+                                      id="c41" rendered="false">
+                              <af:inputText value="#{row.bindings.FuncId.inputValue}"
+                                            label="#{bindings.SearchLeadROVO11.hints.FuncId.label}"
+                                            required="#{bindings.SearchLeadROVO11.hints.FuncId.mandatory}"
+                                            columns="#{bindings.SearchLeadROVO11.hints.FuncId.displayWidth}"
+                                            maximumLength="#{bindings.SearchLeadROVO11.hints.FuncId.precision}"
+                                            shortDesc="#{bindings.SearchLeadROVO11.hints.FuncId.tooltip}"
+                                            id="it10" readOnly="true">
+                                 <f:validator binding="#{row.bindings.FuncId.validator}"/>
+                                 <af:convertNumber groupingUsed="false"
+                                                   pattern="#{bindings.SearchLeadROVO11.hints.FuncId.format}"/>
+                              </af:inputText>
+                           </af:column>
+                           <af:commandLink text=" #{row.bindings.LeadNumber.inputValue}"
+                                           id="cl1"
+                                           inlineStyle="font-weight:bolder; font-size:small; color:#1367AE;"
+                                           action="toEdit">
+                              <af:setPropertyListener from="#{'EditLead'}"
+                                                      to="#{sessionScope.resultVal}"
+                                                      type="action"/>
+                              <af:setPropertyListener from="#{bindings.LeadId.inputValue}"
+                                                      to="#{sessionScope.Leadid}"
+                                                      type="action"/>
+                           </af:commandLink>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.LeadName.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.LeadName.label}"
+                                   id="c13" frozen="true" width="160"
+                                   filterable="true">
+                           <af:inputText value="#{row.bindings.LeadName.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.LeadName.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.LeadName.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.LeadName.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.LeadName.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.LeadName.tooltip}"
+                                         id="it21" readOnly="true">
+                              <f:validator binding="#{row.bindings.LeadName.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.OrgName.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.OrgName.label}"
+                                   id="c45" width="180" filterable="true">
+                           <af:inputText value="#{row.bindings.OrgName.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.OrgName.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.OrgName.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.OrgName.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.OrgName.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.OrgName.tooltip}"
+                                         id="it23" readOnly="true">
+                              <f:validator binding="#{row.bindings.OrgName.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.Status.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.Status.label}"
+                                   id="c38" filterable="true">
+                           <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                               label="#{row.bindings.Status.label}"
+                                               required="#{bindings.SearchLeadROVO11.hints.Status.mandatory}"
+                                               shortDesc="#{bindings.SearchLeadROVO11.hints.Status.tooltip}"
+                                               id="soc1" readOnly="true">
+                              <f:selectItems value="#{row.bindings.Status.items}"
+                                             id="si1"/>
+                           </af:selectOneChoice>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.Statusdisp.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.Statusdisp.label}"
+                                   id="c14" rendered="false" filterable="true">
+                           <af:inputText value="#{row.bindings.Statusdisp.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.Statusdisp.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.Statusdisp.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.Statusdisp.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.Statusdisp.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.Statusdisp.tooltip}"
+                                         id="it45" readOnly="true">
+                              <f:validator binding="#{row.bindings.Statusdisp.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.VisittedDate.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.VisittedDate.label}"
+                                   id="c29" filterable="true">
+                           <af:inputDate value="#{row.bindings.VisittedDate.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.VisittedDate.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.VisittedDate.mandatory}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.VisittedDate.tooltip}"
+                                         id="id1" readOnly="true">
+                              <f:validator binding="#{row.bindings.VisittedDate.validator}"/>
+                              <af:convertDateTime pattern="dd-MM-yyyy"/>
+                           </af:inputDate>
+                           <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.VisittedDate}"
+                                            id="id2"/>
+                           </f:facet>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.Agent.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.Agent.label}"
+                                   id="c30" rendered="false" filterable="true">
+                           <af:inputText value="#{row.bindings.Agent.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.Agent.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.Agent.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.Agent.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.Agent.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.Agent.tooltip}"
+                                         id="it7" readOnly="true">
+                              <f:validator binding="#{row.bindings.Agent.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.EmailId.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.EmailId.label}"
+                                   id="c2" width="120" filterable="true">
+                           <af:inputText value="#{row.bindings.EmailId.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.EmailId.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.EmailId.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.EmailId.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.EmailId.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.EmailId.tooltip}"
+                                         id="it34" readOnly="true">
+                              <f:validator binding="#{row.bindings.EmailId.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.MobileNumber.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.MobileNumber.label}"
+                                   id="c26" filterable="true">
+                           <af:inputText value="#{row.bindings.MobileNumber.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.MobileNumber.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.MobileNumber.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.MobileNumber.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.MobileNumber.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.MobileNumber.tooltip}"
+                                         id="it11" readOnly="true">
+                              <f:validator binding="#{row.bindings.MobileNumber.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.PhoneNumber.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.PhoneNumber.label}"
+                                   id="c18" filterable="true">
+                           <af:inputText value="#{row.bindings.PhoneNumber.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.PhoneNumber.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.PhoneNumber.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.PhoneNumber.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.PhoneNumber.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.PhoneNumber.tooltip}"
+                                         id="it8" readOnly="true">
+                              <f:validator binding="#{row.bindings.PhoneNumber.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.Fax.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.Fax.label}"
+                                   id="c40" rendered="false" filterable="true">
+                           <af:inputText value="#{row.bindings.Fax.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.Fax.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.Fax.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.Fax.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.Fax.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.Fax.tooltip}"
+                                         id="it31">
+                              <f:validator binding="#{row.bindings.Fax.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.Description.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.Description.label}"
+                                   id="c21" width="180" filterable="true">
+                           <af:inputText value="#{row.bindings.Description.inputValue}"
+                                         label="#{bindings.SearchLeadROVO11.hints.Description.label}"
+                                         required="#{bindings.SearchLeadROVO11.hints.Description.mandatory}"
+                                         columns="#{bindings.SearchLeadROVO11.hints.Description.displayWidth}"
+                                         maximumLength="#{bindings.SearchLeadROVO11.hints.Description.precision}"
+                                         shortDesc="#{bindings.SearchLeadROVO11.hints.Description.tooltip}"
+                                         id="it42" readOnly="true">
+                              <f:validator binding="#{row.bindings.Description.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeadROVO11.hints.Nationality.name}"
+                                   sortable="true"
+                                   headerText="#{bindings.SearchLeadROVO11.hints.Nationality.label}"
+                                   id="c8" filterable="true">
+                           <af:selectOneChoice value="#{row.bindings.Nationality.inputValue}"
+                                               label="#{row.bindings.Nationality.label}"
+                                               required="#{bindings.SearchLeadROVO11.hints.Nationality.mandatory}"
+                                               shortDesc="#{bindings.SearchLeadROVO11.hints.Nationality.tooltip}"
+                                               id="soc2" readOnly="true">
+                              <f:selectItems value="#{row.bindings.Nationality.items}"
+                                             id="si2"/>
+                           </af:selectOneChoice>
+                        </af:column>
+                     </af:table>
+                  </af:panelCollection>
+               </af:panelBox>
+            </af:panelGroupLayout>
+         </af:group>
+      </f:facet>
+   </af:pageTemplate>
+</jsp:root>

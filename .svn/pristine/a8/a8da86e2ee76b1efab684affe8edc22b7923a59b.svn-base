@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="getRcptSecDepo_RoVo"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.getRcptSecDepo_RoVo_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_bkId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <SQLQuery>
+    <![CDATA[SELECT BookingDetail_EO.BOOKING_DTL_ID, 
+       BookingDetail_EO.BOOKING_ID, 
+       BookingDetail_EO.unit_id,
+       (select nvl(sum(r.recommended_amount),0) from xxpm_receipt r where r.booking_id=(
+nvl((select b.booking_id from XXPM_BOOKING_DETAIL d,xxpm_BOOKING_header b,xxpm_offer_header o
+where 
+b.BOOKING_ID=d.BOOKING_ID and b.offer_hdr_id=o.offer_hdr_id and
+d.unit_id=BookingDetail_EO.unit_id and d.building_id=BookingDetail_EO.building_id 
+and o.lead_id=(select oh.lead_id from xxpm_offer_header oh where oh.offer_hdr_id=(select bbh.offer_hdr_id from xxpm_booking_header bbh where 
+bbh.booking_id=BookingDetail_EO.booking_id and rownum=1) ) and
+d.SECURITY_DEPOSITE is not null and rownum=1),'0')
+) and r.pay_mode like 'SD%'
+and r.SOURCE_FUNC_ID !=15)as Sec_Depo_Trans,
+BookingDetail_EO.SET_RENT_PER_ANNUM as SET_RENT_PER_ANNUM
+FROM XXPM_BOOKING_DETAIL BookingDetail_EO]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="BookingDtlId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BOOKING_DTL_ID"
+    Expression="BOOKING_DTL_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookingId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="22"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BOOKING_ID"
+    Expression="BOOKING_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="23"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="UNIT_ID"
+    Expression="UNIT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecDepoTrans"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="SEC_DEPO_TRANS"
+    Expression="SEC_DEPO_TRANS"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SetRentPerAnnum"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="SET_RENT_PER_ANNUM"
+    Expression="SET_RENT_PER_ANNUM"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="findBySecDepoBk"
+    ViewObjectName="model.ROVO.getRcptSecDepo_RoVo"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow427"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="getRcptSecDepo_RoVoCriteria_vcrow427_BookingId"
+        ViewAttribute="BookingId"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_bkId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

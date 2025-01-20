@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="addEditBuildingPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PropertyBuildings_VO1" RangeSize="25"
+              DataControl="PropertyBuilding_AMDataControl"
+              id="PropertyBuildings_VO1Iterator"/>
+    <iterator Binds="PropertyArea_VO1" RangeSize="25"
+              DataControl="PropertyBuilding_AMDataControl"
+              id="PropertyArea_VO1Iterator"/>
+    <iterator Binds="PropertyUnits_VO1" RangeSize="25"
+              DataControl="PropertyBuilding_AMDataControl"
+              id="PropertyUnits_VO1Iterator"/>
+    <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+              DataControl="PropertyBuilding_AMDataControl" RangeSize="25"/>
+    <iterator Binds="OwnerDtle_VO1" RangeSize="25"
+              DataControl="PropertyBuilding_AMDataControl"
+              id="OwnerDtle_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator" id="BuildId">
+      <AttrNames>
+        <Item Value="BuildId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PropertyBuildings_VO1Iterator" StaticList="false"
+          Uses="LOV_PropertyId" id="PropertyId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator" id="BuildName">
+      <AttrNames>
+        <Item Value="BuildName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="BuildNameTl">
+      <AttrNames>
+        <Item Value="BuildNameTl"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="BuildNumber">
+      <AttrNames>
+        <Item Value="BuildNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="BuildShortcode">
+      <AttrNames>
+        <Item Value="BuildShortcode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="ParentUnitId">
+      <AttrNames>
+        <Item Value="ParentUnitId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PropertyBuildings_VO1Iterator" StaticList="false"
+          Uses="LOV_BuildType" id="BuildType" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="BuildClass">
+      <AttrNames>
+        <Item Value="BuildClass"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PropertyBuildings_VO1Iterator" StaticList="false"
+          Uses="LOV_BuildCategory" id="BuildCategory" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator" id="VendId">
+      <AttrNames>
+        <Item Value="VendId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator" id="ActiveYn">
+      <AttrNames>
+        <Item Value="ActiveYn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="AttributeCategory">
+      <AttrNames>
+        <Item Value="AttributeCategory"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute1">
+      <AttrNames>
+        <Item Value="Attribute1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute2">
+      <AttrNames>
+        <Item Value="Attribute2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute3">
+      <AttrNames>
+        <Item Value="Attribute3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute4">
+      <AttrNames>
+        <Item Value="Attribute4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute5">
+      <AttrNames>
+        <Item Value="Attribute5"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute6">
+      <AttrNames>
+        <Item Value="Attribute6"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute7">
+      <AttrNames>
+        <Item Value="Attribute7"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute8">
+      <AttrNames>
+        <Item Value="Attribute8"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute9">
+      <AttrNames>
+        <Item Value="Attribute9"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="Attribute10">
+      <AttrNames>
+        <Item Value="Attribute10"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="CreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="LastUpdatedBy">
+      <AttrNames>
+        <Item Value="LastUpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="LastUpdateDate">
+      <AttrNames>
+        <Item Value="LastUpdateDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="LastUpdateLogin">
+      <AttrNames>
+        <Item Value="LastUpdateLogin"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="PropertyArea_VO1Iterator" id="PropertyArea_VO1">
+      <nodeDefinition DefName="model.VO.PropertyArea_VO"
+                      Name="PropertyArea_VO10">
+        <AttrNames>
+          <Item Value="Area"/>
+          <Item Value="Value"/>
+          <Item Value="Uom"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PropertyArea_VO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="PropertyUnits_VO1Iterator" id="PropertyUnits_VO1">
+      <nodeDefinition DefName="model.VO.PropertyUnits_VO"
+                      Name="PropertyUnits_VO10">
+        <AttrNames>
+          <Item Value="UnitName"/>
+          <Item Value="UnitNumber"/>
+          <Item Value="UnitType"/>
+          <Item Value="Uom"/>
+          <Item Value="Status"/>
+          <Item Value="TotalRate"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PropertyArea_VO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="PropertyBuilding_AMDataControl"/>
+    <attributeValues IterBinding="PropertyUnits_VO1Iterator" id="UnitId">
+      <AttrNames>
+        <Item Value="UnitId"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" DataControl="Booking_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <listOfValues StaticList="false" IterBinding="PropertyBuildings_VO1Iterator"
+                  Uses="LOV_PropertyTrans" id="PropertyTrans"/>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator" id="BondType">
+      <AttrNames>
+        <Item Value="BondType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="BondTypeTl">
+      <AttrNames>
+        <Item Value="BondTypeTl"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="BondNumber">
+      <AttrNames>
+        <Item Value="BondNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator" id="BondDate">
+      <AttrNames>
+        <Item Value="BondDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyBuildings_VO1Iterator"
+                     id="PlotNumber">
+      <AttrNames>
+        <Item Value="PlotNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="OwnerDtle_VO1Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="OwnerDtle_VO1Iterator" id="Delete1"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <button IterBinding="OwnerDtle_VO1Iterator" id="isActive"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="isActive"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="OwnerDtle_VO1Iterator" id="OwnerDtle_VO11">
+      <nodeDefinition DefName="model.VO.OwnerDtle_VO" Name="OwnerDtle_VO110">
+        <AttrNames>
+          <Item Value="VendId"/>
+          <Item Value="VendSiteId"/>
+          <Item Value="Description"/>
+          <Item Value="PrimaryYn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="PropertyBuildings_VO1Iterator" StaticList="false"
+          Uses="LOV_Attribute1" id="Attribute11" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="PropertyBuildings_VO1Iterator" StaticList="false"
+          Uses="LOV_Attribute2" id="Attribute21" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <methodAction id="BuildUnitInchargeHsty"
+                  InstanceName="PropertyBuilding_AMDataControl.dataProvider"
+                  DataControl="PropertyBuilding_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="BuildUnitInchargeHsty" IsViewObjectMethod="false"
+                  ReturnName="data.PropertyBuilding_AMDataControl.methodResults.BuildUnitInchargeHsty_PropertyBuilding_AMDataControl_dataProvider_BuildUnitInchargeHsty_result">
+      <NamedData NDName="buildId" NDType="java.lang.String"/>
+      <NamedData NDName="userName" NDType="java.lang.String"/>
+      <NamedData NDName="unitCatg" NDType="java.lang.String"/>
+      <NamedData NDName="unitInChrg" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

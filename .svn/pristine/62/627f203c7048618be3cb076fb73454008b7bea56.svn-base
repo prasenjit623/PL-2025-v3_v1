@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchCancellationPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SrearchCancellation_RoVo1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="SrearchCancellation_RoVo1Iterator"/>
+    <searchRegion Criteria="SrearchCancellation_RoVoCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrearchCancellation_RoVo1Iterator"
+                  id="SrearchCancellationRoVoCriteriaQuery"/>
+    <iterator Binds="Cancellation_VO1" RangeSize="25"
+              DataControl="Cancellation_AMDataControl"
+              id="Cancellation_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SrearchCancellation_RoVo1Iterator"
+          id="SrearchCancellation_RoVo1">
+      <nodeDefinition DefName="model.ROVO.SrearchCancellation_RoVo"
+                      Name="SrearchCancellation_RoVo10">
+        <AttrNames>
+          <Item Value="LeaseAgreementId"/>
+          <Item Value="BookingId"/>
+          <Item Value="RecommendId"/>
+          <Item Value="OfferId"/>
+          <Item Value="OrgId"/>
+          <Item Value="CancelNumber"/>
+          <Item Value="ConStartDate"/>
+          <Item Value="ConEndDate"/>
+          <Item Value="BaseRate"/>
+          <Item Value="TotalRate"/>
+          <Item Value="CustomerName"/>
+          <Item Value="Status"/>
+          <Item Value="CancelDate"/>
+          <Item Value="DaysConsumed"/>
+          <Item Value="DaysRemaining"/>
+          <Item Value="DailyRentalRate"/>
+          <Item Value="DailyDiscountingRate"/>
+          <Item Value="LeaseNumber"/>
+          <Item Value="RecommendNumber"/>
+          <Item Value="BookingNumber"/>
+          <Item Value="OfferNumber"/>
+          <Item Value="OrgName"/>
+          <Item Value="PropertyName"/>
+          <Item Value="BuildName"/>
+          <Item Value="UnitName"/>
+          <Item Value="Netdue"/>
+          <Item Value="ProposeFinalStatus"/>
+          <Item Value="NocDateActual"/>
+          <Item Value="CourtCase"/>
+          <Item Value="CourtCaseNo"/>
+          <Item Value="AmountWaived"/>
+          <Item Value="CourtCaseAdjustmentAmt"/>
+          <Item Value="UnitCategory"/>
+          <Item Value="AreaValue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Cancellation_VO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="SrearchCancellation_RoVo1Iterator"
+                     id="CancelId">
+      <AttrNames>
+        <Item Value="CancelId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

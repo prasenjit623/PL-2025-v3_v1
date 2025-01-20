@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditExtCanPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ExtCanVO1" RangeSize="25"
+              DataControl="ExtensionCancellation_AMDataControl"
+              id="ExtCanVO1Iterator"/>
+    <iterator Binds="Booking_Milestone_VO1" RangeSize="25"
+              DataControl="ExtensionCancellation_AMDataControl"
+              id="Booking_Milestone_VO1Iterator"/>
+    <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+              DataControl="ExtensionCancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="BookingDetail_VO1Iterator" Binds="BookingDetail_VO1"
+              DataControl="ExtensionCancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="BookingHeader_VO2Iterator" Binds="BookingHeader_VO2"
+              DataControl="ExtensionCancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="OfferHrd_VO1Iterator" Binds="OfferHrd_VO1"
+              DataControl="ExtensionCancellation_AMDataControl" RangeSize="25"/>
+    <iterator Binds="getApprovalHistoryROVo1" RangeSize="25"
+              DataControl="ExtensionCancellation_AMDataControl"
+              id="getApprovalHistoryROVo1Iterator"/>
+    <iterator id="LeaseAgreement_VO1Iterator" Binds="LeaseAgreement_VO1"
+              DataControl="ExtensionCancellation_AMDataControl" RangeSize="25"/>
+    <iterator id="offerDetailsforExtnandCancel_ROVO1Iterator"
+              Binds="offerDetailsforExtnandCancel_ROVO1"
+              DataControl="ExtensionCancellation_AMDataControl" RangeSize="25"/>
+    <iterator Binds="BookingDetail_VO2" RangeSize="25"
+              DataControl="ExtensionCancellation_AMDataControl"
+              id="BookingDetail_VO2Iterator"/>
+    <iterator Binds="getCarParkingUnitDetailsforExtension_ROVO3" RangeSize="25"
+              DataControl="ExtensionCancellation_AMDataControl"
+              id="getCarParkingUnitDetailsforExtension_ROVO3Iterator"/>
+    <iterator Binds="getCarParkingUnitDetailsforExtension_ROVO2" RangeSize="25"
+              DataControl="ExtensionCancellation_AMDataControl"
+              id="getCarParkingUnitDetailsforExtension_ROVO2Iterator"/>
+    <iterator id="OfferDetail_VO1Iterator" Binds="OfferDetail_VO1"
+              DataControl="ExtensionCancellation_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="TransNumber">
+      <AttrNames>
+        <Item Value="TransNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="TransDate">
+      <AttrNames>
+        <Item Value="TransDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ExtCanVO1Iterator" StaticList="false"
+          Uses="LOV_LeaseAgreementId" id="LeaseAgreementId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ExtCanVO1Iterator" StaticList="false"
+          Uses="LOV_BookingId" id="BookingId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="CustName">
+      <AttrNames>
+        <Item Value="CustName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="DueDate">
+      <AttrNames>
+        <Item Value="DueDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="Amount">
+      <AttrNames>
+        <Item Value="Amount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="Currency">
+      <AttrNames>
+        <Item Value="Currency"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ExtCanVO1Iterator" StaticList="false" Uses="LOV_Status"
+          id="Status" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="Booking_Milestone_VO1Iterator"
+          id="Booking_Milestone_VO1">
+      <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                      Name="Booking_Milestone_VO10">
+        <AttrNames>
+          <Item Value="SeqNumber"/>
+          <Item Value="InstallmentType"/>
+          <Item Value="InstallmentPct"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="Criteria"/>
+          <Item Value="ChargeType"/>
+          <Item Value="PaymentTerm"/>
+          <Item Value="DueDate"/>
+          <Item Value="Remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="ExtensionCancellation_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="ExtensionCancellation_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="LeaseStartDateTrans">
+      <AttrNames>
+        <Item Value="LeaseStartDateTrans"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="LeaseEndDateTrans">
+      <AttrNames>
+        <Item Value="LeaseEndDateTrans"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="UpdateOfferAndLeaseDate"
+                  InstanceName="ExtensionCancellation_AMDataControl.dataProvider"
+                  DataControl="ExtensionCancellation_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="UpdateOfferAndLeaseDate"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.ExtensionCancellation_AMDataControl.methodResults.UpdateOfferAndLeaseDate_ExtensionCancellation_AMDataControl_dataProvider_UpdateOfferAndLeaseDate_result">
+      <NamedData NDName="bookingid" NDType="java.lang.String"/>
+      <NamedData NDName="extnid" NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="getApprovalHistoryROVo1Iterator"
+          id="getApprovalHistoryROVo1">
+      <nodeDefinition DefName="model.ROVO.getApprovalHistoryROVo"
+                      Name="getApprovalHistoryROVo10">
+        <AttrNames>
+          <Item Value="ApproverId"/>
+          <Item Value="SubmissionDate"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="SubmittedByTrans"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="ExtensionDays">
+      <AttrNames>
+        <Item Value="ExtensionDays"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="BookingDetail_VO2Iterator" id="BookingDetail_VO2">
+      <nodeDefinition DefName="model.VO.BookingDetail_VO"
+                      Name="BookingDetail_VO20">
+        <AttrNames>
+          <Item Value="PropertyId"/>
+          <Item Value="BuildingId"/>
+          <Item Value="UnitId"/>
+          <Item Value="BaseRate"/>
+          <Item Value="MunicipalityCharges"/>
+          <Item Value="ElectricityCharges"/>
+          <Item Value="SecurityDeposite"/>
+          <Item Value="ThirdPartyServCharge"/>
+          <Item Value="OtherGovntChargeNew"/>
+          <Item Value="OtherGovntChargeRnew"/>
+          <Item Value="EjariPaymentCharge"/>
+          <Item Value="DiscountRate"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="TotalRate"/>
+          <Item Value="UnitAvlStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="ExtCanVO1Iterator" StaticList="false"
+          Uses="LOV_ExtensionDays" id="ExtensionDays1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <tree IterBinding="getCarParkingUnitDetailsforExtension_ROVO3Iterator"
+          id="getCarParkingUnitDetailsforExtension_ROVO3">
+      <nodeDefinition DefName="model.ROVO.getCarParkingUnitDetailsforExtension_ROVO"
+                      Name="getCarParkingUnitDetailsforExtension_ROVO30">
+        <AttrNames>
+          <Item Value="UnitId"/>
+          <Item Value="OfferDate"/>
+          <Item Value="OfferFromDate"/>
+          <Item Value="OfferToDate"/>
+          <Item Value="CarParkLeaseAgreId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="getCarParkingUnitDetailsforExtension_ROVO3Iterator"
+          id="getCarParkingUnitDetailsforExtension_ROVO31">
+      <nodeDefinition DefName="model.ROVO.getCarParkingUnitDetailsforExtension_ROVO"
+                      Name="getCarParkingUnitDetailsforExtension_ROVO310">
+        <AttrNames>
+          <Item Value="UnitName"/>
+          <Item Value="UnitNumber"/>
+          <Item Value="Status"/>
+          <Item Value="OfferNumber"/>
+          <Item Value="OfferFromDate"/>
+          <Item Value="OfferToDate"/>
+          <Item Value="CheckBoxeYn" Binds="CheckBoxeYn"/>
+          <Item Value="CheckBox_Trans"/>
+          <Item Value="OfferTotal"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="getCarParkingUnitDetailsforExtension_ROVO3Iterator"
+            id="CheckBox_Trans" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="CheckBox_Trans"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <button IterBinding="getCarParkingUnitDetailsforExtension_ROVO3Iterator"
+            id="CheckBoxeYn" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="CheckBoxeYn"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <listOfValues StaticList="false" IterBinding="ExtCanVO1Iterator"
+                  Uses="LOV_LeaseNumberSmartSearch_Trans"
+                  id="LeaseNumberSmartSearch_Trans"/>
+    <attributeValues IterBinding="ExtCanVO1Iterator" id="DiscountValue">
+      <AttrNames>
+        <Item Value="DiscountValue"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ExtCanVO1Iterator" StaticList="false"
+          Uses="LOV_DiscountType" id="DiscountType" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

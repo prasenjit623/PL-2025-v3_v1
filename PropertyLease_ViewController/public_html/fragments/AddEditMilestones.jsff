@@ -1,0 +1,548 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+   <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                    id="pt1"
+                    binding="#{backingBeanScope.backing_fragments_AddEditMilestones.pt1}">
+      <f:facet name="pageContents">
+         <af:group binding="#{backingBeanScope.backing_fragments_AddEditMilestones.g1}"
+                   id="g1">
+            <af:panelGroupLayout binding="#{backingBeanScope.backing_fragments_AddEditMilestones.pgl2}"
+                                 id="pgl2" layout="vertical">
+               <af:panelGridLayout binding="#{backingBeanScope.backing_fragments_AddEditMilestones.pgl1}"
+                                   id="pgl1">
+                  <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                              binding="#{backingBeanScope.backing_fragments_AddEditMilestones.gr1}"
+                              id="gr1">
+                     <af:gridCell marginStart="5px" width="50%"
+                                  binding="#{backingBeanScope.backing_fragments_AddEditMilestones.gc1}"
+                                  id="gc1"/>
+                     <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                                  binding="#{backingBeanScope.backing_fragments_AddEditMilestones.gc2}"
+                                  id="gc2" halign="end">
+                        <af:commandButton text="Save"
+                                          binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cb5}"
+                                          id="cb5"
+                                          actionListener="#{backingBeanScope.backing_fragments_AddEditMilestones.onClockSave}"
+                                          partialSubmit="true"
+                                          inlineStyle="margin-right:10px;"
+                                          rendered="#{bindings.Status.inputValue != 'PEN' and bindings.Status.inputValue != 'APR' }"
+                                          visible="#{sessionScope.grantMap.Milestone =='F'}"/>
+                        <af:commandButton text="Save and Close"
+                                          binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cb3}"
+                                          id="cb3" partialSubmit="true"
+                                          actionListener="#{backingBeanScope.backing_fragments_AddEditMilestones.onClockSave}"
+                                          inlineStyle="margin-right:10px;"
+                                          action="#{backingBeanScope.backing_fragments_AddEditMilestones.OnClickPageClose}"
+                                          visible="#{sessionScope.grantMap.Milestone =='F'}"/>
+                        <af:commandButton text="Submit"
+                                          binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cb4}"
+                                          id="cb4"
+                                          action="#{backingBeanScope.backing_fragments_AddEditMilestones.onClickSubmit}"
+                                          inlineStyle="margin-right:10px;"
+                                          rendered="#{bindings.Status.inputValue != 'PEN' and bindings.Status.inputValue != 'APR' }"
+                                          visible="#{sessionScope.grantMap.Milestone =='F'}"/>
+                        <af:commandButton text="Approval Details"
+                                          binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cb1}"
+                                          id="cb1"
+                                          inlineStyle="margin-right:10px;">
+                           <af:showPopupBehavior triggerType="action"
+                                                 popupId="p5"/>
+                        </af:commandButton>
+                        <af:commandButton text="Approve"
+                                          binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cb6}"
+                                          id="cb6"
+                                          inlineStyle="margin-right:10px;"
+                                          actionListener="#{backingBeanScope.backing_fragments_AddEditMilestones.onInvokeAppOrrejec}"
+                                          visible="#{backingBeanScope.backing_fragments_AddEditMilestones.approvalUser}">
+                           <af:setPropertyListener from="#{'Approval'}"
+                                                   to="#{pageFlowScope.Action}"
+                                                   type="action"/>
+                        </af:commandButton>
+                        <af:commandButton text="Reject"
+                                          binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cb7}"
+                                          id="cb7"
+                                          inlineStyle="margin-right:10px;"
+                                          visible="#{backingBeanScope.backing_fragments_AddEditMilestones.approvalUser}"
+                                          actionListener="#{backingBeanScope.backing_fragments_AddEditMilestones.onInvokeAppOrrejec}">
+                           <af:setPropertyListener from="#{'Rejection'}"
+                                                   to="#{pageFlowScope.Action}"
+                                                   type="action"/>
+                        </af:commandButton>   
+                        <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                          text="Cancel" immediate="true"
+                                          binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cb2}"
+                                          id="cb2" action="back"
+                                          inlineStyle="margin-right:10px;"
+                                          visible="#{sessionScope.grantMap.Milestone =='F' || sessionScope.grantMap.Milestone =='V'}">
+                           <af:resetActionListener/>
+                        </af:commandButton>
+                        <af:popup id="p5"
+                                  binding="#{backingBeanScope.backing_fragments_AddEditMilestones.p5}">
+                           <af:dialog id="d3" title="Approval Work Flow History"
+                                      binding="#{backingBeanScope.backing_fragments_AddEditMilestones.d3}"
+                                      inlineStyle="width:80%;">
+                              <af:table value="#{bindings.getApprovalHistoryROVo2.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.getApprovalHistoryROVo2.rangeSize}"
+                                        emptyText="#{bindings.getApprovalHistoryROVo2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.getApprovalHistoryROVo2.rangeSize}"
+                                        rowBandingInterval="0"
+                                        selectedRowKeys="#{bindings.getApprovalHistoryROVo2.collectionModel.selectedRow}"
+                                        selectionListener="#{bindings.getApprovalHistoryROVo2.collectionModel.makeCurrent}"
+                                        rowSelection="single"
+                                        binding="#{backingBeanScope.backing_fragments_AddEditMilestones.t3}"
+                                        id="t3" varStatus="vs"
+                                        columnStretching="column:c13">
+                                 <af:column id="c16" width="50" align="center"
+                                            headerText="S.No">
+                                    <af:outputText value="#{vs.index+1}"
+                                                   id="ot7"/>
+                                 </af:column>
+                                 <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.name}"
+                                            sortable="false"
+                                            headerText="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.label}"
+                                            id="c12" width="200">
+                                    <af:selectOneChoice value="#{row.bindings.ApproverId.inputValue}"
+                                                        label="#{row.bindings.ApproverId.label}"
+                                                        required="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.mandatory}"
+                                                        shortDesc="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.tooltip}"
+                                                        id="soc8"
+                                                        readOnly="true">
+                                       <f:selectItems value="#{row.bindings.ApproverId.items}"
+                                                      id="si8"/>
+                                    </af:selectOneChoice>
+                                 </af:column>
+                                 <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.name}"
+                                            sortable="false"
+                                            headerText="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.label}"
+                                            id="c15" width="80">
+                                    <af:outputText value="#{row.SubmissionDate}"
+                                                   id="ot5">
+                                       <af:convertDateTime pattern="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.format}"/>
+                                    </af:outputText>
+                                 </af:column>
+                                 <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.SubmittedByTrans.name}"
+                                            sortable="false"
+                                            headerText="#{bindings.getApprovalHistoryROVo2.hints.SubmittedByTrans.label}"
+                                            id="c11">
+                                    <af:outputText value="#{row.SubmittedByTrans}"
+                                                   id="ot2"/>
+                                 </af:column>
+                                 <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.Status.name}"
+                                            sortable="false"
+                                            headerText="#{bindings.getApprovalHistoryROVo2.hints.Status.label}"
+                                            id="c14" width="80">
+                                    <af:outputText value="#{row.Status}"
+                                                   id="ot4"/>
+                                 </af:column>
+                                 <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.Description.name}"
+                                            sortable="false"
+                                            headerText="#{bindings.getApprovalHistoryROVo2.hints.Description.label}"
+                                            id="c13" width="200">
+                                    <af:outputText value="#{row.Description}"
+                                                   id="ot3"/>
+                                 </af:column>
+                              </af:table>
+                           </af:dialog>
+                        </af:popup>
+                        <af:popup id="p4"
+                         binding="#{backingBeanScope.backing_fragments_AddEditMilestones.popup3}">
+                  <af:dialog id="d2" type="none"
+                             title="Reason for #{pageFlowScope.Action}"
+                             >
+                    <f:facet name="buttonBar">
+                      <af:group id="g2">
+                        <af:commandButton text="Save" id="cb13"
+                                          action="back"
+                                          actionListener="#{backingBeanScope.backing_fragments_AddEditMilestones.onClickApproveOrREej}"/>
+                        <af:commandButton text="Cancel" id="cb14"
+                                          action="back"
+                                          actionListener="#{backingBeanScope.backing_fragments_AddEditMilestones.onclickAppOrRej}"/>
+                      </af:group>
+                    </f:facet>
+                    <af:inputText label="Reason" id="it16" rows="7"
+                                 binding="#{backingBeanScope.backing_fragments_AddEditMilestones.it16}"/>
+                  </af:dialog>
+                </af:popup>
+                     </af:gridCell>
+                  </af:gridRow>
+               </af:panelGridLayout>
+               <af:spacer width="10" height="10"
+                          binding="#{backingBeanScope.backing_fragments_AddEditMilestones.s4}"
+                          id="s4"/>
+               <af:panelBox text="Payment Plan"
+                            binding="#{backingBeanScope.backing_fragments_AddEditMilestones.pb1}"
+                            id="pb1" showDisclosure="false">
+                  <f:facet name="toolbar"/>
+                  <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_AddEditMilestones.pfl2}"
+                                      id="pfl2" rows="3" maxColumns="2"
+                                      labelWidth="280">
+                     <af:inputText value="#{bindings.MilestoneNumber.inputValue}"
+                                   label="#{bindings.MilestoneNumber.hints.label}"
+                                   required="#{bindings.MilestoneNumber.hints.mandatory}"
+                                   columns="#{bindings.MilestoneNumber.hints.displayWidth}"
+                                   maximumLength="#{bindings.MilestoneNumber.hints.precision}"
+                                   shortDesc="#{bindings.MilestoneNumber.hints.tooltip}"
+                                   binding="#{backingBeanScope.backing_fragments_AddEditMilestones.it11}"
+                                   id="it11" autoSubmit="true" readOnly="true"
+                                   contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;"
+                                   partialTriggers="cb5">
+                        <f:validator binding="#{bindings.MilestoneNumber.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.MsHdrId.inputValue}"
+                                   label="#{bindings.MsHdrId.hints.label}"
+                                   required="#{bindings.MsHdrId.hints.mandatory}"
+                                   columns="#{bindings.MsHdrId.hints.displayWidth}"
+                                   maximumLength="#{bindings.MsHdrId.hints.precision}"
+                                   shortDesc="#{bindings.MsHdrId.hints.tooltip}"
+                                   binding="#{backingBeanScope.backing_fragments_AddEditMilestones.it8}"
+                                   id="it8" rendered="false">
+                        <f:validator binding="#{bindings.MsHdrId.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.MsHdrId.format}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.MilestoneName.inputValue}"
+                                   label="#{bindings.MilestoneName.hints.label}"
+                                   required="#{bindings.MilestoneName.hints.mandatory}"
+                                   columns="#{bindings.MilestoneName.hints.displayWidth}"
+                                   maximumLength="#{bindings.MilestoneName.hints.precision}"
+                                   shortDesc="#{bindings.MilestoneName.hints.tooltip}"
+                                   binding="#{backingBeanScope.backing_fragments_AddEditMilestones.it9}"
+                                   id="it9" autoSubmit="true"
+                                   disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}"
+                                   requiredMessageDetail="You must enter the Payment Plan Name">
+                        <f:validator binding="#{bindings.MilestoneName.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.MilestoneNameTl.inputValue}"
+                                   label="#{bindings.MilestoneNameTl.hints.label}"
+                                   required="#{bindings.MilestoneNameTl.hints.mandatory}"
+                                   columns="#{bindings.MilestoneNameTl.hints.displayWidth}"
+                                   maximumLength="#{bindings.MilestoneNameTl.hints.precision}"
+                                   shortDesc="#{bindings.MilestoneNameTl.hints.tooltip}"
+                                   binding="#{backingBeanScope.backing_fragments_AddEditMilestones.it10}"
+                                   id="it10" autoSubmit="true" rendered="false">
+                        <f:validator binding="#{bindings.MilestoneNameTl.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.MilestoneShortcode.inputValue}"
+                                   label="#{bindings.MilestoneShortcode.hints.label}"
+                                   required="#{bindings.MilestoneShortcode.hints.mandatory}"
+                                   columns="#{bindings.MilestoneShortcode.hints.displayWidth}"
+                                   maximumLength="#{bindings.MilestoneShortcode.hints.precision}"
+                                   shortDesc="#{bindings.MilestoneShortcode.hints.tooltip}"
+                                   binding="#{backingBeanScope.backing_fragments_AddEditMilestones.it12}"
+                                   id="it12" autoSubmit="true"
+                                   disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}"
+                                   requiredMessageDetail="You must enter the short code">
+                        <f:validator binding="#{bindings.MilestoneShortcode.validator}"/>
+                     </af:inputText>
+                     <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                                         label="Status"
+                                         required="#{bindings.Status.hints.mandatory}"
+                                         shortDesc="#{bindings.Status.hints.tooltip}"
+                                         binding="#{backingBeanScope.backing_fragments_AddEditMilestones.soc6}"
+                                         id="soc6" autoSubmit="true"
+                                         readOnly="true">
+                        <f:selectItems value="#{bindings.Status.items}"
+                                       binding="#{backingBeanScope.backing_fragments_AddEditMilestones.si6}"
+                                       id="si6"/>
+                     </af:selectOneChoice>
+                     <af:selectOneChoice value="#{bindings.OrgId.inputValue}"
+                                         label="#{bindings.OrgId.label}"
+                                         required="#{bindings.OrgId.hints.mandatory}"
+                                         shortDesc="#{bindings.OrgId.hints.tooltip}"
+                                         binding="#{backingBeanScope.backing_fragments_AddEditMilestones.soc4}"
+                                         id="soc4" autoSubmit="true"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}"
+                                         contentStyle="width:200px"
+                                         rendered="false">
+                        <f:selectItems value="#{bindings.OrgId.items}"
+                                       binding="#{backingBeanScope.backing_fragments_AddEditMilestones.si4}"
+                                       id="si4"/>
+                     </af:selectOneChoice>
+                     <af:inputComboboxListOfValues id="orgnameTransId"
+                                                   popupTitle="Search and Select: #{bindings.orgnameTrans.hints.label}"
+                                                   value="#{bindings.orgnameTrans.inputValue}"
+                                                   label="#{bindings.orgnameTrans.hints.label}"
+                                                   model="#{bindings.orgnameTrans.listOfValuesModel}"
+                                                   required="#{bindings.orgnameTrans.hints.mandatory}"
+                                                   columns="#{bindings.orgnameTrans.hints.displayWidth}"
+                                                   shortDesc="#{bindings.orgnameTrans.hints.tooltip}"
+                                                   binding="#{backingBeanScope.backing_fragments_AddEditMilestones.orgnameTransId}"
+                                                   autoSubmit="true"
+                                                   disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}"
+                                                   showRequired="true"
+                                                   contentStyle="width:160px;">
+                        <f:validator binding="#{bindings.orgnameTrans.validator}"/>
+                        <af:autoSuggestBehavior suggestItems="#{bindings.orgnameTrans.suggestItems}"
+                                                maxSuggestedItems="3"/>
+                     </af:inputComboboxListOfValues>
+                     <af:inputDate value="#{bindings.MilestoneDate.inputValue}"
+                                   label="#{bindings.MilestoneDate.hints.label}#{SessionScope.DateFormat}"
+                                   required="#{bindings.MilestoneDate.hints.mandatory}"
+                                   shortDesc="#{bindings.MilestoneDate.hints.tooltip}"
+                                   binding="#{backingBeanScope.backing_fragments_AddEditMilestones.id2}"
+                                   id="id2"
+                                   disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}"
+                                   autoSubmit="true" showRequired="true"
+                                   contentStyle="width:200px;">
+                        <f:validator binding="#{bindings.MilestoneDate.validator}"/>
+                        <af:convertDateTime
+                                            pattern="#{sessionScope.DateFormat}"/>
+                     </af:inputDate>
+                     <af:selectBooleanCheckbox value="#{bindings.ActiveYn.inputValue}"
+                                               label="#{bindings.ActiveYn.label}"
+                                               shortDesc="#{bindings.ActiveYn.hints.tooltip}"
+                                               binding="#{backingBeanScope.backing_fragments_AddEditMilestones.sbc1}"
+                                               id="sbc1"/>
+                     <af:selectOneChoice value="#{bindings.ProjectId.inputValue}"
+                                         label="#{bindings.ProjectId.label}"
+                                         required="#{bindings.ProjectId.hints.mandatory}"
+                                         shortDesc="#{bindings.ProjectId.hints.tooltip}"
+                                         binding="#{backingBeanScope.backing_fragments_AddEditMilestones.soc5}"
+                                         id="soc5" autoSubmit="true"
+                                         rendered="false">
+                        <f:selectItems value="#{bindings.ProjectId.items}"
+                                       binding="#{backingBeanScope.backing_fragments_AddEditMilestones.si5}"
+                                       id="si5"/>
+                     </af:selectOneChoice>
+                     <af:inputText value="#{bindings.Revision.inputValue}"
+                                   label="#{bindings.Revision.hints.label}"
+                                   required="#{bindings.Revision.hints.mandatory}"
+                                   columns="#{bindings.Revision.hints.displayWidth}"
+                                   maximumLength="#{bindings.Revision.hints.precision}"
+                                   shortDesc="#{bindings.Revision.hints.tooltip}"
+                                   binding="#{backingBeanScope.backing_fragments_AddEditMilestones.it14}"
+                                   id="it14" readOnly="true" rendered="false">
+                        <f:validator binding="#{bindings.Revision.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.Revision.format}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.Description.inputValue}"
+                                   label="#{bindings.Description.hints.label}"
+                                   required="#{bindings.Description.hints.mandatory}"
+                                   columns="#{bindings.Description.hints.displayWidth}"
+                                   maximumLength="#{bindings.Description.hints.precision}"
+                                   shortDesc="#{bindings.Description.hints.tooltip}"
+                                   binding="#{backingBeanScope.backing_fragments_AddEditMilestones.it13}"
+                                   id="it13" autoSubmit="true"
+                                   contentStyle="width:400px;" rows="4"
+                                   disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                        <f:validator binding="#{bindings.Description.validator}"/>
+                     </af:inputText>
+                  </af:panelFormLayout>
+                  
+            <af:spacer width="10" height="0"
+                       binding="#{backingBeanScope.backing_fragments_AddEditMilestones.s3}"
+                       id="s3" rendered="false"/><af:spacer width="10" height="2"
+                             binding="#{backingBeanScope.backing_fragments_AddEditMilestones.s3}"
+                             id="s10" rendered="false"/>
+                  <af:panelFormLayout binding="#{backingBeanScope.backing_fragments_AddEditMilestones.pfl1}"
+                                      id="pfl1" rows="1" maxColumns="1"
+                                      labelWidth="280" rendered="false">
+                     <f:facet name="footer"/>
+                  </af:panelFormLayout>
+               </af:panelBox>
+               <af:spacer width="10" height="10"
+                          binding="#{backingBeanScope.backing_fragments_AddEditMilestones.s5}"
+                          id="s5"/>
+               <af:panelBox text="Installment Details"
+                            binding="#{backingBeanScope.backing_fragments_AddEditMilestones.pb2}"
+                            id="pb2" showDisclosure="false">
+                  <f:facet name="toolbar"/>
+                  <af:panelCollection binding="#{backingBeanScope.backing_fragments_AddEditMilestones.pc1}"
+                                      id="pc1" styleClass="AFStretchWidth"
+                                      featuresOff="detach">
+                     <f:facet name="menus"/>
+                     <f:facet name="toolbar">
+                        <af:toolbar binding="#{backingBeanScope.backing_fragments_AddEditMilestones.t2}"
+                                    flex="1" id="t2">
+                           <af:commandImageLink actionListener="#{bindings.CreateInsert.execute}"
+                                                binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cil1}"
+                                                id="cil1"
+                                                icon="/images/func_add_16_ena.png"
+                                                partialSubmit="true"
+                                                rendered="false"/>
+                           <af:commandImageLink actionListener="#{bindings.CreateInsert.execute}"
+                                                binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cil2}"
+                                                id="cil2" partialSubmit="true"
+                                                icon="/images/func_add_16_ena.png"
+                                                inlineStyle="margin-right:10px;"
+                                                visible="#{bindings.Status.inputValue=='DRA' || bindings.Status.inputValue=='REJ' || bindings.Status.inputValue=='REJ'}"
+                                                rendered="#{sessionScope.grantMap.Milestone =='F'}"/>
+                           <af:commandImageLink actionListener="#{bindings.Delete1.execute}"
+                                                binding="#{backingBeanScope.backing_fragments_AddEditMilestones.cil3}"
+                                                id="cil3"
+                                                icon="/images/func_remove_16_ena.png"
+                                                visible="#{bindings.Status.inputValue=='DRA' || bindings.Status.inputValue=='REJ' || bindings.Status.inputValue=='REJ'}"
+                                                rendered="#{sessionScope.grantMap.Milestone =='F'}"/>
+                        </af:toolbar>
+                     </f:facet>
+                     <f:facet name="statusbar"/>
+                     <af:table value="#{bindings.MilestonesDtl_VO1.collectionModel}"
+                               var="row"
+                               rows="#{bindings.MilestonesDtl_VO1.rangeSize}"
+                               emptyText="#{bindings.MilestonesDtl_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                               fetchSize="6"
+                               rowBandingInterval="0"
+                               selectedRowKeys="#{bindings.MilestonesDtl_VO1.collectionModel.selectedRow}"
+                               selectionListener="#{bindings.MilestonesDtl_VO1.collectionModel.makeCurrent}"
+                               rowSelection="single"
+                               binding="#{backingBeanScope.backing_fragments_AddEditMilestones.t1}"
+                               id="t1" varStatus="vs"
+                               partialTriggers="::cil2 ::cil1"
+                               columnStretching="column:c7" scrollPolicy="page"
+                               autoHeightRows="0">
+                        <af:column id="c9" headerText="S.No" align="center"
+                                   rendered="true" width="80">
+                           <af:outputText value="#{vs.index+1}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.MilestonesDtl_VO1.hints.SeqNumber.name}"
+                                   sortable="false" headerText="Sequence Number"
+                                   id="c3" align="center" rendered="false">
+                           <af:inputText value="#{row.bindings.SeqNumber.inputValue}"
+                                         label="#{bindings.MilestonesDtl_VO1.hints.SeqNumber.label}"
+                                         required="#{bindings.MilestonesDtl_VO1.hints.SeqNumber.mandatory}"
+                                         columns="#{bindings.MilestonesDtl_VO1.hints.SeqNumber.displayWidth}"
+                                         maximumLength="#{bindings.MilestonesDtl_VO1.hints.SeqNumber.precision}"
+                                         shortDesc="#{bindings.MilestonesDtl_VO1.hints.SeqNumber.tooltip}"
+                                         id="it2"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                              <f:validator binding="#{row.bindings.SeqNumber.validator}"/>
+                              <af:convertNumber groupingUsed="true"
+                                                pattern="#{SessionScope.NumberFormat}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.MilestonesDtl_VO1.hints.InstallmentType.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.MilestonesDtl_VO1.hints.InstallmentType.label}"
+                                   id="c5" width="150">
+                           <af:selectOneChoice value="#{row.bindings.InstallmentType.inputValue}"
+                                               label="#{row.bindings.InstallmentType.label}"
+                                               required="#{bindings.MilestonesDtl_VO1.hints.InstallmentType.mandatory}"
+                                               shortDesc="#{bindings.MilestonesDtl_VO1.hints.InstallmentType.tooltip}"
+                                               id="soc1" autoSubmit="true"
+                                               disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                              <f:selectItems value="#{row.bindings.InstallmentType.items}"
+                                             id="si1"/>
+                           </af:selectOneChoice>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.MilestonesDtl_VO1.hints.InstallmentPct.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.MilestonesDtl_VO1.hints.InstallmentPct.label}"
+                                   id="c6">
+                           <af:inputText value="#{row.bindings.InstallmentPct.inputValue}"
+                                         label="#{bindings.MilestonesDtl_VO1.hints.InstallmentPct.label}"
+                                         required="#{bindings.MilestonesDtl_VO1.hints.InstallmentPct.mandatory}"
+                                         columns="#{bindings.MilestonesDtl_VO1.hints.InstallmentPct.displayWidth}"
+                                         maximumLength="#{bindings.MilestonesDtl_VO1.hints.InstallmentPct.precision}"
+                                         shortDesc="#{bindings.MilestonesDtl_VO1.hints.InstallmentPct.tooltip}"
+                                         id="it6"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                              <f:validator binding="#{row.bindings.InstallmentPct.validator}"/>
+                              <af:convertNumber groupingUsed="true"
+                                                pattern="#{SessionScope.NumberFormat}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.MilestonesDtl_VO1.hints.Criteria.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.MilestonesDtl_VO1.hints.Criteria.label}"
+                                   id="c8" rendered="false" width="150">
+                           <af:selectOneChoice value="#{row.bindings.Criteria.inputValue}"
+                                               label="#{row.bindings.Criteria.label}"
+                                               required="#{bindings.MilestonesDtl_VO1.hints.Criteria.mandatory}"
+                                               shortDesc="#{bindings.MilestonesDtl_VO1.hints.Criteria.tooltip}"
+                                               id="soc2" autoSubmit="true"
+                                               disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                              <f:selectItems value="#{row.bindings.Criteria.items}"
+                                             id="si2"/>
+                           </af:selectOneChoice>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.MilestonesDtl_VO1.hints.ChargeType.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.MilestonesDtl_VO1.hints.ChargeType.label}"
+                                   id="c4" width="140">
+                           <af:selectOneChoice value="#{row.bindings.ChargeType.inputValue}"
+                                               label="#{row.bindings.ChargeType.label}"
+                                               required="#{bindings.MilestonesDtl_VO1.hints.ChargeType.mandatory}"
+                                               shortDesc="#{bindings.MilestonesDtl_VO1.hints.ChargeType.tooltip}"
+                                               id="soc3" autoSubmit="true"
+                                               disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                              <f:selectItems value="#{row.bindings.ChargeType.items}"
+                                             id="si3"/>
+                           </af:selectOneChoice>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.MilestonesDtl_VO1.hints.PaymentTerm.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.MilestonesDtl_VO1.hints.PaymentTerm.label}"
+                                   id="c1">
+                           <af:selectOneChoice value="#{row.bindings.PaymentTerm.inputValue}"
+                                               label="#{row.bindings.PaymentTerm.label}"
+                                               required="#{bindings.MilestonesDtl_VO1.hints.PaymentTerm.mandatory}"
+                                               shortDesc="#{bindings.MilestonesDtl_VO1.hints.PaymentTerm.tooltip}"
+                                               id="soc7" autoSubmit="true"
+                                               disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                              <f:selectItems value="#{row.bindings.PaymentTerm.items}"
+                                             id="si7"/>
+                           </af:selectOneChoice>
+                        </af:column>
+                        <af:column headerText="#{bindings.MilestonesDtl_VO1.hints.NoOfDays.label}"
+                                   id="c10" width="80" align="center">
+                           <af:inputText value="#{row.bindings.NoOfDays.inputValue}"
+                                         label="#{bindings.MilestonesDtl_VO1.hints.NoOfDays.label}"
+                                         required="#{bindings.MilestonesDtl_VO1.hints.NoOfDays.mandatory}"
+                                         columns="#{bindings.MilestonesDtl_VO1.hints.NoOfDays.displayWidth}"
+                                         maximumLength="#{bindings.MilestonesDtl_VO1.hints.NoOfDays.precision}"
+                                         shortDesc="#{bindings.MilestonesDtl_VO1.hints.NoOfDays.tooltip}"
+                                         id="it3"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                              <f:validator binding="#{row.bindings.NoOfDays.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.MilestonesDtl_VO1.hints.DueDate.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.MilestonesDtl_VO1.hints.DueDate.label}"
+                                   id="c2" rendered="false">
+                           <af:inputDate value="#{row.bindings.DueDate.inputValue}"
+                                         label="#{bindings.MilestonesDtl_VO1.hints.DueDate.label}"
+                                         required="#{bindings.MilestonesDtl_VO1.hints.DueDate.mandatory}"
+                                         shortDesc="#{bindings.MilestonesDtl_VO1.hints.DueDate.tooltip}"
+                                         id="id1" autoSubmit="true"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                              <f:validator binding="#{row.bindings.DueDate.validator}"/>
+                              <af:convertDateTime pattern="#{bindings.MilestonesDtl_VO1.hints.DueDate.format}"/>
+                           </af:inputDate>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.MilestonesDtl_VO1.hints.Remarks.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.MilestonesDtl_VO1.hints.Remarks.label}"
+                                   id="c7" width="200" displayIndex="-1">
+                           <af:inputText value="#{row.bindings.Remarks.inputValue}"
+                                         label="#{bindings.MilestonesDtl_VO1.hints.Remarks.label}"
+                                         required="#{bindings.MilestonesDtl_VO1.hints.Remarks.mandatory}"
+                                         columns="#{bindings.MilestonesDtl_VO1.hints.Remarks.displayWidth}"
+                                         maximumLength="#{bindings.MilestonesDtl_VO1.hints.Remarks.precision}"
+                                         shortDesc="#{bindings.MilestonesDtl_VO1.hints.Remarks.tooltip}"
+                                         id="it1" autoSubmit="true"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV'}">
+                              <f:validator binding="#{row.bindings.Remarks.validator}"/>
+                           </af:inputText>
+                        </af:column>
+                     </af:table>
+                  </af:panelCollection>
+               </af:panelBox>
+            </af:panelGroupLayout>
+         </af:group>
+      </f:facet>
+      <f:facet name="footerStart"/>
+      <f:facet name="footer"/>
+      <f:facet name="footerEnd"/>
+      <f:facet name="startPanel"/>
+      <f:facet name="endPanel"/>
+      <f:facet name="headerStart"/>
+      <f:facet name="header"/>
+      <f:facet name="headerEnd"/>
+   </af:pageTemplate>
+   <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_fragments_AddEditMilestones-->
+</jsp:root>

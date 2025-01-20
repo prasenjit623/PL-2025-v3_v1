@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditRecommendationPageDef"
+                Package="fragments">
+   <parameters/>
+   <executables>
+      <variableIterator id="variables"/>
+      <iterator Binds="Booking_Milestone_VO2" RangeSize="6"
+                DataControl="Recommendation_AMDataControl"
+                id="Booking_Milestone_VO1Iterator"/>
+      <iterator Binds="RecommendHeader_VO1" RangeSize="25"
+                DataControl="Recommendation_AMDataControl"
+                id="RecommendHeader_VO1Iterator"/>
+      <iterator Binds="RecommendDetail_VO1" RangeSize="25"
+                DataControl="Recommendation_AMDataControl"
+                id="RecommendDetail_VO1Iterator"/>
+      <iterator Binds="Receipt_VO1" RangeSize="25"
+                DataControl="Recommendation_AMDataControl"
+                id="Receipt_VO1Iterator"/>
+      <iterator id="Booking_Milestone_VO2Iterator" Binds="Booking_Milestone_VO3"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator id="PropertyMaster_VO1Iterator" Binds="PropertyMaster_VO1"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator id="BookingCustomer_VO1Iterator" Binds="BookingCustomer_VO1"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator Binds="BookingDetail_VO2" RangeSize="25"
+                DataControl="Recommendation_AMDataControl"
+                id="BookingDetail_VO2Iterator"/>
+      <iterator id="RecommendHeader_VO3Iterator" Binds="RecommendHeader_VO3"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator id="Receipt_VO2Iterator" Binds="Receipt_VO2"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator Binds="getApprovalHistoryROVo1" RangeSize="25"
+                DataControl="Recommendation_AMDataControl"
+                id="getApprovalHistoryROVo1Iterator"/>
+      <iterator id="BookingHeader_VO1Iterator" Binds="BookingHeader_VO1"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator id="RecommendationDuplicate_ROVO1Iterator"
+                Binds="RecommendationDuplicate_ROVO1"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator id="Lookup_View_ROVO1Iterator" Binds="Lookup_View_ROVO1"
+                DataControl="Cancellation_AMDataControl" RangeSize="25"/>
+      <iterator id="LeaseAgreement_VO1Iterator" Binds="LeaseAgreement_VO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferHrd_VO1Iterator" Binds="OfferHrd_VO1"
+                DataControl="OfferAppModuleDataControl" RangeSize="25"/>
+      <iterator Binds="Booking_Milestone_VO4" RangeSize="25"
+                DataControl="Recommendation_AMDataControl"
+                id="Booking_Milestone_VO4Iterator"/>
+      <iterator id="PropertyUnits_VO1Iterator" Binds="PropertyUnits_VO1"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator id="SearchBkDtls_RoVo1Iterator" Binds="SearchBkDtls_RoVo1"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator id="userROVO1Iterator" Binds="userROVO1"
+                DataControl="UserAMDataControl" RangeSize="25"/>
+      <iterator id="OfferMilestoneDetail_VO1Iterator"
+                Binds="OfferMilestoneDetail_VO1"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+      <iterator id="findMS_DetailsROVO1Iterator" Binds="findMS_DetailsROVO1"
+                DataControl="OfferAppModuleDataControl" RangeSize="25"/>
+      <iterator id="getRecommendRoVo1Iterator" Binds="getRecommendRoVo1"
+                DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+   </executables>
+   <bindings>
+      <methodAction id="InvokeReceiptAmnValidate"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="InvokeReceiptAmnValidate"
+                    IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.InvokeReceiptAmnValidate_Recommendation_AMDataControl_dataProvider_InvokeReceiptAmnValidate_result">
+         <NamedData NDName="bookid" NDType="java.lang.String"/>
+         <NamedData NDName="milesid" NDType="java.lang.String"/>
+      </methodAction>
+      <action IterBinding="Booking_Milestone_VO2Iterator" id="Delete"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <tree IterBinding="Booking_Milestone_VO1Iterator"
+            id="Booking_Milestone_VO1">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO10">
+            <AttrNames>
+               <Item Value="SeqNumber"/>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentPct"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Criteria"/>
+               <Item Value="ChargeType"/>
+               <Item Value="PaymentTerm"/>
+               <Item Value="DueDate"/>
+               <Item Value="Remarks"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="BookingMsDtlId"/>
+               <Item Value="Attribute1"/>
+               <Item Value="Installment_Type_Trans"/>
+               <Item Value="ChargeType_Trans"/>
+               <Item Value="PaymentTerm_Trans"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="RecommendNumber">
+         <AttrNames>
+            <Item Value="RecommendNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="RecommendHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_BookingId" id="BookingId" DTSupportsMRU="false"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="Description">
+         <AttrNames>
+            <Item Value="Description"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator" id="Status">
+         <AttrNames>
+            <Item Value="Status"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="BookingNo_Trans">
+         <AttrNames>
+            <Item Value="BookingNo_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="MilestoneName_Trans">
+         <AttrNames>
+            <Item Value="MilestoneName_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="LeaseStartDate_Trans">
+         <AttrNames>
+            <Item Value="LeaseStartDate_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="LeaseEndDate_Trans">
+         <AttrNames>
+            <Item Value="LeaseEndDate_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="Currency_Trans">
+         <AttrNames>
+            <Item Value="Currency_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="RecommendDetail_VO1Iterator" id="RecommendDetail_VO1">
+         <nodeDefinition DefName="model.VO.RecommendDetail_VO"
+                         Name="RecommendDetail_VO10">
+            <AttrNames>
+               <Item Value="SeqNumber"/>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="PaymentTerm"/>
+               <Item Value="DueDate"/>
+               <Item Value="ChequeNo"/>
+               <Item Value="AmountReceived"/>
+               <Item Value="ReceivedDate"/>
+               <Item Value="ChequeDate"/>
+               <Item Value="BankName"/>
+               <Item Value="PayeeName"/>
+               <Item Value="Status"/>
+               <Item Value="ReceiptId"/>
+               <Item Value="Remarks"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="Attribute1">
+         <AttrNames>
+            <Item Value="Attribute1"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="Attribute10">
+         <AttrNames>
+            <Item Value="Attribute10"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="Attribute11">
+         <AttrNames>
+            <Item Value="Attribute11"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="BookingAmount_trans">
+         <AttrNames>
+            <Item Value="BookingAmount_trans"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="RecommendHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_Status" id="Status1" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="InvoiceAmount_Trans">
+         <AttrNames>
+            <Item Value="InvoiceAmount_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="Payment_amount_Trans">
+         <AttrNames>
+            <Item Value="Payment_amount_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <action id="Rollback" DataControl="Recommendation_AMDataControl"
+              RequiresUpdateModel="false" Action="rollbackTransaction"/>
+      <tree IterBinding="Receipt_VO1Iterator" id="Receipt_VO1">
+         <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO10">
+            <AttrNames>
+               <Item Value="ReceiptId"/>
+               <Item Value="ReceiptNumber"/>
+               <Item Value="CustomerName"/>
+               <Item Value="ReceiptDate"/>
+               <Item Value="ReceiptAmount"/>
+               <Item Value="Description"/>
+               <Item Value="Trans_ReceiptAmountSum"/>
+               <Item Value="RecommendedAmount"/>
+               <Item Value="ReceivedAmount"/>
+               <Item Value="RctType"/>
+               <Item Value="Attribute1"/>
+               <Item Value="PayMode"/>
+               <Item Value="PayRefNumber"/>
+               <Item Value="PayRefDate"/>
+               <Item Value="BankName"/>
+               <Item Value="CurrencyCode"/>
+               <Item Value="AckFlag" Binds="AckFlag"/>
+               <Item Value="AckBy"/>
+               <Item Value="RecHdrRowStatus_Trans"/>
+               <Item Value="AckDate"/>
+               <Item Value="DiffInDays"/>
+               <Item Value="PaymentType"/>
+               <Item Value="PayMode5"/>
+               <Item Value="PayMode6"/>
+               <Item Value="Attribute2"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="Booking_Milestone_VO2Iterator"
+            id="Booking_Milestone_VO2">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO20">
+            <AttrNames>
+               <Item Value="SeqNumber"/>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentPct"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Criteria"/>
+               <Item Value="ChargeType"/>
+               <Item Value="PaymentTerm"/>
+               <Item Value="DueDate"/>
+               <Item Value="Remarks"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="InstallmentType1"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute2"/>
+               <Item Value="Attribute3"/>
+               <Item Value="Attribute5"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="Booking_Milestone_VO2Iterator"
+                       id="BookingMsDtlId">
+         <AttrNames>
+            <Item Value="BookingMsDtlId"/>
+         </AttrNames>
+      </attributeValues>
+      <action IterBinding="Booking_Milestone_VO2Iterator" id="CreateInsert1"
+              InstanceName="Recommendation_AMDataControl.Booking_Milestone_VO2"
+              DataControl="Recommendation_AMDataControl"
+              RequiresUpdateModel="true" Action="createInsertRow"/>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="BankAccNumber">
+         <AttrNames>
+            <Item Value="BankAccNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="CustBranchName">
+         <AttrNames>
+            <Item Value="CustBranchName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="CustomerBankName_Trans">
+         <AttrNames>
+            <Item Value="CustomerBankName_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="CustomerName_Trans">
+         <AttrNames>
+            <Item Value="CustomerName_Trans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="Trans_ReceiptAmountSum">
+         <AttrNames>
+            <Item Value="Trans_ReceiptAmount"/>
+         </AttrNames>
+      </attributeValues>
+      <listOfValues StaticList="false" IterBinding="RecommendHeader_VO1Iterator"
+                    Uses="LOV_BookingNoTrans" id="BookingNoTrans"/>
+      <action IterBinding="Receipt_VO1Iterator" id="Delete1"
+              InstanceName="Recommendation_AMDataControl.Receipt_VO1"
+              DataControl="Recommendation_AMDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <tree IterBinding="BookingDetail_VO2Iterator" id="BookingDetail_VO2">
+         <nodeDefinition DefName="model.VO.BookingDetail_VO"
+                         Name="BookingDetail_VO20">
+            <AttrNames>
+               <Item Value="PropertyId"/>
+               <Item Value="BuildingId"/>
+               <Item Value="UnitId"/>
+               <Item Value="Purpose"/>
+               <Item Value="Uom"/>
+               <Item Value="Quantity"/>
+               <Item Value="BaseRate"/>
+               <Item Value="MunicipalityCharges"/>
+               <Item Value="ElectricityCharges"/>
+               <Item Value="SecurityDeposite"/>
+               <Item Value="DiscountRate"/>
+               <Item Value="TaxAmount"/>
+               <Item Value="TotalRate"/>
+               <Item Value="UnitAvlStatus"/>
+               <Item Value="UnitAvlFrom"/>
+               <Item Value="MunicipalityPercentage"/>
+               <Item Value="ThirdPartyServCharge"/>
+               <Item Value="OtherGovntChargeNew"/>
+               <Item Value="OtherGovntChargeRnew"/>
+               <Item Value="EjariPaymentCharge"/>
+               <Item Value="LeaseUnitMapTrans"/>
+               <Item Value="UnitTypeTrans"/>
+               <Item Value="SecurityDepositTrans"/>
+               <Item Value="SetRentPerAnnum"/>
+               <Item Value="Attribute3"/>
+               <Item Value="PropertyName_Trans"/>
+               <Item Value="BuildingName_Trans"/>
+               <Item Value="UnitName_Trans"/>
+               <Item Value="OldContractValue_Trans"/>
+               <Item Value="NetRentWithoutTax"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute5"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator" id="CustName">
+         <AttrNames>
+            <Item Value="CustName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="RecommendedAmount">
+         <AttrNames>
+            <Item Value="RecommendedAmount"/>
+         </AttrNames>
+      </attributeValues>
+      <methodAction id="InvokeReceiptStatus"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="InvokeReceiptStatus" IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.InvokeReceiptStatus_Recommendation_AMDataControl_dataProvider_InvokeReceiptStatus_result">
+         <NamedData NDName="bookid" NDType="java.lang.String"/>
+         <NamedData NDName="milesid" NDType="java.lang.String"/>
+      </methodAction>
+      <action id="Commit" DataControl="Recommendation_AMDataControl"
+              RequiresUpdateModel="true" Action="commitTransaction"/>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="RevisionNo">
+         <AttrNames>
+            <Item Value="RevisionNo"/>
+         </AttrNames>
+      </attributeValues>
+      <methodAction id="ReviseRecommendation"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="ReviseRecommendation" IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.ReviseRecommendation_Recommendation_AMDataControl_dataProvider_ReviseRecommendation_result">
+         <NamedData NDName="recomNo" NDType="java.lang.String"/>
+         <NamedData NDName="userId" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="ReceiptAmount">
+         <AttrNames>
+            <Item Value="ReceiptAmount"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="getApprovalHistoryROVo1Iterator"
+            id="getApprovalHistoryROVo1">
+         <nodeDefinition DefName="model.ROVO.getApprovalHistoryROVo"
+                         Name="getApprovalHistoryROVo10">
+            <AttrNames>
+               <Item Value="SeqNumber"/>
+               <Item Value="ApproverId"/>
+               <Item Value="ActionDate"/>
+               <Item Value="Description"/>
+               <Item Value="Status"/>
+               <Item Value="SubmissionDate"/>
+               <Item Value="SubmittedByTrans"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <methodAction id="InvokeSumofRceiptAmount"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="InvokeSumofRceiptAmount"
+                    IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.InvokeSumofRceiptAmount_Recommendation_AMDataControl_dataProvider_InvokeSumofRceiptAmount_result">
+         <NamedData NDName="bookid" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptNumber">
+         <AttrNames>
+            <Item Value="ReceiptNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <action IterBinding="Booking_Milestone_VO2Iterator" id="Delete2"
+              InstanceName="Recommendation_AMDataControl.Booking_Milestone_VO3"
+              DataControl="Recommendation_AMDataControl"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator" id="FuncId">
+         <AttrNames>
+            <Item Value="FuncId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="RecommendId">
+         <AttrNames>
+            <Item Value="RecommendId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="LastUpdatedBy">
+         <AttrNames>
+            <Item Value="LastUpdatedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingDetail_VO2Iterator"
+                       id="LeaseUnitMapTrans">
+         <AttrNames>
+            <Item Value="LeaseUnitMapTrans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator" id="FlowWith">
+         <AttrNames>
+            <Item Value="FlowWith"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="Attribute2">
+         <AttrNames>
+            <Item Value="Attribute2"/>
+         </AttrNames>
+      </attributeValues>
+      <methodAction id="autoLeaseLA"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="autoLeaseLA" IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.autoLeaseLA_Recommendation_AMDataControl_dataProvider_autoLeaseLA_result">
+         <NamedData NDName="recomNo" NDType="java.lang.String"/>
+         <NamedData NDName="userId" NDType="java.lang.String"/>
+      </methodAction>
+      <button IterBinding="Receipt_VO1Iterator" id="AckFlag"
+              DTSupportsMRU="false" StaticList="true">
+         <AttrNames>
+            <Item Value="AckFlag"/>
+         </AttrNames>
+         <ValueList>
+            <Item Value="Y"/>
+            <Item Value="N"/>
+         </ValueList>
+      </button>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="AckDate">
+         <AttrNames>
+            <Item Value="AckDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="Receipt_VO1Iterator" id="RctType">
+         <AttrNames>
+            <Item Value="RctType"/>
+         </AttrNames>
+      </attributeValues>
+      <methodAction id="autoCreateOC"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="autoCreateOC" IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.autoCreateOC_Recommendation_AMDataControl_dataProvider_autoCreateOC_result">
+         <NamedData NDName="leaseNo" NDType="java.lang.String"/>
+         <NamedData NDName="userId" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="TktRnwlLaFlag">
+         <AttrNames>
+            <Item Value="TktRnwlLaFlag"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="Booking_Milestone_VO4Iterator"
+            id="Booking_Milestone_VO4">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO40">
+            <AttrNames>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Remarks"/>
+               <Item Value="InstallmentType4"/>
+               <Item Value="BookingMsDtlId"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute2"/>
+               <Item Value="Attribute3"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <action IterBinding="Booking_Milestone_VO4Iterator" id="CreateInsert2"
+              InstanceName="Recommendation_AMDataControl.Booking_Milestone_VO4"
+              DataControl="Recommendation_AMDataControl"
+              RequiresUpdateModel="true" Action="createInsertRow"/>
+      <attributeValues IterBinding="Booking_Milestone_VO4Iterator"
+                       id="BookingMsDtlId1">
+         <AttrNames>
+            <Item Value="BookingMsDtlId"/>
+         </AttrNames>
+      </attributeValues>
+      <action IterBinding="Booking_Milestone_VO4Iterator" id="Delete3"
+              RequiresUpdateModel="false" Action="removeCurrentRow"/>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="TktMovInFlag">
+         <AttrNames>
+            <Item Value="TktMovInFlag"/>
+         </AttrNames>
+      </attributeValues>
+      <methodAction id="directRejectionFromDraft"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="directRejectionFromDraft"
+                    IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.directRejectionFromDraft_Recommendation_AMDataControl_dataProvider_directRejectionFromDraft_result">
+         <NamedData NDName="rcId" NDType="java.lang.String"/>
+         <NamedData NDName="userId" NDType="java.lang.String"/>
+         <NamedData NDName="funcId" NDType="java.lang.String"/>
+         <NamedData NDName="reason" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="directToDraft"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="directToDraft" IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.directToDraft_Recommendation_AMDataControl_dataProvider_directToDraft_result">
+         <NamedData NDName="rcId" NDType="java.lang.String"/>
+         <NamedData NDName="userId" NDType="java.lang.String"/>
+         <NamedData NDName="funcId" NDType="java.lang.String"/>
+         <NamedData NDName="reason" NDType="java.lang.String"/>
+      </methodAction>
+      <list IterBinding="RecommendHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_PaymentPlan_Trans" id="PaymentPlan_Trans"
+            DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+      <methodAction id="paymentPlanChange"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="paymentPlanChange" IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.paymentPlanChange_Recommendation_AMDataControl_dataProvider_paymentPlanChange_result">
+         <NamedData NDName="bkId" NDType="java.lang.String"/>
+         <NamedData NDName="mileHrdId" NDType="java.lang.String"/>
+         <NamedData NDName="userName" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                       id="Attribute3">
+         <AttrNames>
+            <Item Value="Attribute3"/>
+         </AttrNames>
+      </attributeValues>
+      <methodAction id="submitRcForAppr"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="submitRcForAppr" IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.submitRcForAppr_Recommendation_AMDataControl_dataProvider_submitRcForAppr_result">
+         <NamedData NDName="rcId" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="responseRcForAppr"
+                    InstanceName="Recommendation_AMDataControl.dataProvider"
+                    DataControl="Recommendation_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="responseRcForAppr" IsViewObjectMethod="false"
+                    ReturnName="data.Recommendation_AMDataControl.methodResults.responseRcForAppr_Recommendation_AMDataControl_dataProvider_responseRcForAppr_result">
+         <NamedData NDName="rcId" NDType="java.lang.String"/>
+         <NamedData NDName="reason" NDType="java.lang.String"/>
+         <NamedData NDName="apr_rej" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="RecommendHeader_VO1Iterator" id="OrgId">
+         <AttrNames>
+            <Item Value="OrgId"/>
+         </AttrNames>
+      </attributeValues>
+   </bindings>
+</pageDefinition>

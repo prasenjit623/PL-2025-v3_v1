@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Cancelllation_BTF">
+    <default-activity id="__2">SearchCancellation</default-activity>
+    <managed-bean id="__1">
+      <managed-bean-name id="__30">cancellationMb</managed-bean-name>
+      <managed-bean-class id="__29">view.backing.AddEditCancellationBb</managed-bean-class>
+      <managed-bean-scope id="__28">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchCancellation">
+      <page>/fragments/SearchCancellation.jsff</page>
+    </view>
+    <view id="AddEditCancellation">
+      <page>/fragments/AddEditCancellation.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__8">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__17">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__4">SearchCancellation</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome id="__7">add</from-outcome>
+        <to-activity-id id="__5">AddEditCancellation</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome id="__11">edit</from-outcome>
+        <to-activity-id id="__9">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id id="__13">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome id="__14">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__16">AddEditCancellation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id id="__19">AddEditCancellation</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome id="__22">cancel</from-outcome>
+        <to-activity-id id="__21">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__24">Execute</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__27">Execute</from-outcome>
+        <to-activity-id id="__25">SearchCancellation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

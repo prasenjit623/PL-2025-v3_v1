@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchOCPageDef" Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchOtherCharges_RoVo1" RangeSize="25"
+              DataControl="OtherCharges_AMDataControl"
+              id="SearchOtherCharges_RoVo1Iterator"/>
+    <searchRegion Criteria="SearchOtherCharges_RoVoCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchOtherCharges_RoVo1Iterator"
+                  id="SearchOtherChargesRoVoCriteriaQuery"/>
+    <iterator Binds="SearchOtherCharges_ROVO1" RangeSize="25"
+              DataControl="OtherCharges_AMDataControl"
+              id="SearchOtherCharges_ROVO1Iterator"/>
+    <searchRegion Binds="SearchOtherCharges_ROVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SearchOtherCharges_ROVO1Query"/>
+    <searchRegion Criteria="Search"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchOtherCharges_ROVO1Iterator" id="SearchQuery"/>
+    <iterator Binds="SearchOC_ROVO1" RangeSize="25"
+              DataControl="OtherCharges_AMDataControl"
+              id="SearchOC_ROVO1Iterator"/>
+    <searchRegion Criteria="Search"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchOC_ROVO1Iterator" id="SearchQuery1"/>
+    <iterator Binds="SearchOcDp_RoVo1" RangeSize="25"
+              DataControl="OtherCharges_AMDataControl"
+              id="SearchOcDp_RoVo1Iterator"/>
+    <searchRegion Criteria="Search"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchOcDp_RoVo1Iterator" id="SearchQuery2"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchOtherCharges_RoVo1Iterator"
+          id="SearchOtherCharges_RoVo1">
+      <nodeDefinition DefName="model.ROVO.SearchOtherCharges_RoVo"
+                      Name="SearchOtherCharges_RoVo10">
+        <AttrNames>
+          <Item Value="BookingId"/>
+          <Item Value="BuildingId"/>
+          <Item Value="CreationDate"/>
+          <Item Value="Description"/>
+          <Item Value="FuncId"/>
+          <Item Value="LeaseAgreementId"/>
+          <Item Value="ObjectVersionNumber"/>
+          <Item Value="OcHdrId"/>
+          <Item Value="OrgId"/>
+          <Item Value="PropertyId"/>
+          <Item Value="Status"/>
+          <Item Value="UnitId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SearchOtherCharges_RoVo1Iterator"
+          id="SearchOtherCharges_RoVo11">
+      <nodeDefinition DefName="model.ROVO.SearchOtherCharges_RoVo"
+                      Name="SearchOtherCharges_RoVo110">
+        <AttrNames>
+          <Item Value="InvoiceId"/>
+          <Item Value="OcDtlId"/>
+          <Item Value="OcHdrId"/>
+          <Item Value="BillingId"/>
+          <Item Value="BookingId"/>
+          <Item Value="BookingMsDtlId"/>
+          <Item Value="InstallmentPct"/>
+          <Item Value="InstallmentType"/>
+          <Item Value="PaymentTerm"/>
+          <Item Value="ChargeType"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="Remarks"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="CustomerTrxnId"/>
+          <Item Value="CustomerTrxnNum"/>
+          <Item Value="DueDate"/>
+          <Item Value="MilestoneType"/>
+          <Item Value="SourceFuncRefId"/>
+          <Item Value="Status"/>
+          <Item Value="TrxnDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SearchOtherCharges_RoVo1Iterator"
+          id="SearchOtherCharges_RoVo12">
+      <nodeDefinition DefName="model.ROVO.SearchOtherCharges_RoVo"
+                      Name="SearchOtherCharges_RoVo120">
+        <AttrNames>
+          <Item Value="BookingId"/>
+          <Item Value="ChargeType"/>
+          <Item Value="CustomerTrxnNum"/>
+          <Item Value="DueDate"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="InstallmentPct"/>
+          <Item Value="InstallmentType"/>
+          <Item Value="InvoiceId"/>
+          <Item Value="MilestoneType"/>
+          <Item Value="OcHdrId"/>
+          <Item Value="PaymentTerm"/>
+          <Item Value="Remarks"/>
+          <Item Value="Status"/>
+          <Item Value="TrxnDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SearchOtherCharges_ROVO1Iterator"
+          id="SearchOtherCharges_ROVO1">
+      <nodeDefinition DefName="model.ROVO.SearchOtherCharges_ROVO"
+                      Name="SearchOtherCharges_ROVO10">
+        <AttrNames>
+          <Item Value="BookingId"/>
+          <Item Value="InstallmentPct"/>
+          <Item Value="InstallmentType"/>
+          <Item Value="PaymentTerm"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="Status"/>
+          <Item Value="ChargeType"/>
+          <Item Value="Remarks"/>
+          <Item Value="CreationDate"/>
+          <Item Value="DueDate"/>
+          <Item Value="MilestoneType"/>
+          <Item Value="OcHdrId"/>
+          <Item Value="TrxnDate"/>
+          <Item Value="BookingNumberTrans"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchOC_ROVO1Iterator" id="OcHdrId">
+      <AttrNames>
+        <Item Value="OcHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SearchOC_ROVO1Iterator" id="SearchOC_ROVO1">
+      <nodeDefinition DefName="model.ROVO.SearchOC_ROVO" Name="SearchOC_ROVO10">
+        <AttrNames>
+          <Item Value="OtherChargesNumber"/>
+          <Item Value="LeaseNumber"/>
+          <Item Value="BookingNumberTrans"/>
+          <Item Value="RecommendNumberTrans"/>
+          <Item Value="CustName"/>
+          <Item Value="Status"/>
+          <Item Value="OthersTotalRate"/>
+          <Item Value="ReceiptTotal"/>
+          <Item Value="PropertyId"/>
+          <Item Value="BuildingId"/>
+          <Item Value="UnitId"/>
+          <Item Value="CreateDate"/>
+          <Item Value="CancelNo"/>
+          <Item Value="DestinationBu"/>
+          <Item Value="LeaseStartDate"/>
+          <Item Value="LeaseEndDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SearchOcDp_RoVo1Iterator" id="SearchOcDp_RoVo1">
+      <nodeDefinition DefName="model.ROVO.SearchOcDp_RoVo"
+                      Name="SearchOcDp_RoVo10">
+        <AttrNames>
+          <Item Value="OcHdrId"/>
+          <Item Value="OtherChargesNumber"/>
+          <Item Value="CustNameTrans"/>
+          <Item Value="PropertyNameTrans"/>
+          <Item Value="BuildingNameTrans"/>
+          <Item Value="UnitNameTrans"/>
+          <Item Value="Status"/>
+          <Item Value="OthersTotalRate"/>
+          <Item Value="ReceiptTotal"/>
+          <Item Value="DOrgName"/>
+          <Item Value="CreateDate"/>
+          <Item Value="CreatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="LandLordMaster_BTF_LandLordMaster_BTF_ExecuteWithParamsPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="LandLordMaster_VO1" RangeSize="25"
+              DataControl="LandLordMaster_AMDataControl"
+              id="LandLordMaster_VO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="LandLordMaster_VO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="p_landlordTnxId"
+                 NDValue="#{pageFlowScope.landlordTnxId}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

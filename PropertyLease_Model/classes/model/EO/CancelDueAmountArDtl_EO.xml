@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CancelDueAmountArDtl_EO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL"
+  AliasName="XxpmCancelDueAmountArDtl_EO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="DueAmtArDtlId"
+    IsNotNull="true"
+    ColumnName="DUE_AMT_AR_DTL_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL"
+    PrimaryKey="true"
+    ChangeIndicator="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CancelId"
+    ColumnName="CANCEL_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CancelationCharges"
+    Precision="240"
+    ColumnName="CANCELATION_CHARGES"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TaxCode"
+    Precision="60"
+    ColumnName="TAX_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TaxAmount"
+    ColumnName="TAX_AMOUNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CancelAmount"
+    ColumnName="CANCEL_AMOUNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TotalAmount"
+    ColumnName="TOTAL_AMOUNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AttributeCategory"
+    Precision="240"
+    ColumnName="ATTRIBUTE_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute1"
+    Precision="240"
+    ColumnName="ATTRIBUTE1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute2"
+    Precision="240"
+    ColumnName="ATTRIBUTE2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute3"
+    Precision="240"
+    ColumnName="ATTRIBUTE3"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute4"
+    Precision="240"
+    ColumnName="ATTRIBUTE4"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute5"
+    Precision="240"
+    ColumnName="ATTRIBUTE5"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute6"
+    Precision="240"
+    ColumnName="ATTRIBUTE6"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute7"
+    Precision="240"
+    ColumnName="ATTRIBUTE7"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute8"
+    Precision="240"
+    ColumnName="ATTRIBUTE8"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute9"
+    Precision="240"
+    ColumnName="ATTRIBUTE9"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute10"
+    Precision="240"
+    ColumnName="ATTRIBUTE10"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    Precision="60"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    Precision="60"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateLogin"
+    Precision="150"
+    ColumnName="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_CANCEL_DUE_AMOUNT_AR_DTL"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Cancellation_EO"
+    Association="model.ASSO.Cancel_CancelDueAR_Assoc"
+    AssociationEnd="model.ASSO.Cancel_CancelDueAR_Assoc.Cancellation_EO"
+    AssociationOtherEnd="model.ASSO.Cancel_CancelDueAR_Assoc.CancelDueAmountArDtl_EO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="XxpmCanDueAmtArDtlPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="XXPM_CAN_DUE_AMT_AR_DTL_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.CancelDueAmountArDtl_EO.DueAmtArDtlId"/>
+    </AttrArray>
+  </Key>
+</Entity>

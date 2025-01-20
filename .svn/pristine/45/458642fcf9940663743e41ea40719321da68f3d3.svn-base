@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <TaskFlowCall
+      id="TaskFlowCall2">
+      <property
+         name="taskFlowId">PriceListAddEdit</property>
+      <property
+         name="activityId">PriceListAddEdit</property>
+      <property
+         name="documentReference">/WEB-INF/PriceListAddEdit.xml</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>PriceListAddEdit&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">132.82031</property>
+      <property
+         name="x">451.02148</property>
+   </TaskFlowCall>
+   <View
+      id="View3">
+      <property
+         name="activityId">SearchPrice</property>
+      <property
+         name="page">/fragments/SearchPrice.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SearchPrice&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">132.01074</property>
+      <property
+         name="x">155.68066</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View3"
+      to="TaskFlowCall2">
+      <property
+         name="fromOutcome">PriceList</property>
+      <property
+         name="sdm:polyPoints">R50,196.68066,131.66016,410.02148,132.46973,L50</property>
+   </ControlFlowCase>
+</SDM>

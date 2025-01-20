@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SearchLandLordMaster_RoVo"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.SearchLandLordMaster_RoVo_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="VendorROVO1"
+    ViewObjectName="model.ROVO.VendorROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Org_ROVO1"
+    ViewObjectName="model.ROVO.Org_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PropertyManagement_RoVo1"
+    ViewObjectName="model.ROVO.PropertyManagement_RoVo"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_VendorName"
+    ListVOName="VendorROVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_VendorName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="VendorName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="VendorName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="VendorName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="hide"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_OrgId"
+    ListVOName="Org_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrgName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyManagement"
+    ListVOName="PropertyManagement_RoVo1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyManagement"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyManagement"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyManagement"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[select LANDLORD_TNX_ID,VENDOR_ID,VENDOR_NAME,ORG_ID,property_management from XXPL_LANDLORD_MASTER order by LANDLORD_TNX_ID]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="LandlordTnxId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LANDLORD_TNX_ID"
+    Expression="LANDLORD_TNX_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VendorId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VENDOR_ID"
+    Expression="VENDOR_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VendorName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VENDOR_NAME"
+    Expression="VENDOR_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_VendorName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchLandLordMaster_RoVo.VendorName_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ORG_ID"
+    Expression="ORG_ID"
+    SQLType="NUMERIC"
+    LOVName="LOV_OrgId">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchLandLordMaster_RoVo.OrgId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyManagement"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="250"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROPERTY_MANAGEMENT"
+    Expression="PROPERTY_MANAGEMENT"
+    SQLType="VARCHAR"
+    LOVName="LOV_PropertyManagement">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchLandLordMaster_RoVo.PropertyManagement_LABEL"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SearchLandLordMaster_RoVoCriteria"
+    ViewObjectName="model.ROVO.SearchLandLordMaster_RoVo"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow676"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="VendorName"
+        ViewAttribute="VendorName"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="OrgId"
+        ViewAttribute="OrgId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="PropertyManagement"
+        ViewAttribute="PropertyManagement"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="LandlordTnxId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

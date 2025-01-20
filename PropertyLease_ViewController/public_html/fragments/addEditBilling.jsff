@@ -1,0 +1,428 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+    
+      <af:panelStretchLayout id="psl1" dimensionsFrom="children"
+                             startWidth="49px" topHeight="52px">
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+          <af:panelGroupLayout layout="scroll"
+                               xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                               id="pgl1">
+            <af:spacer width="10" height="10" id="s4"/>
+            <af:panelBox text="Billing" id="pb1">
+              <f:facet name="toolbar"/>      
+            <af:panelFormLayout id="pfl1" maxColumns="2" rows="3">
+              <af:inputText value="#{bindings.BillingId.inputValue}"
+                            label="#{bindings.BillingId.hints.label}"
+                            required="#{bindings.BillingId.hints.mandatory}"
+                            columns="#{bindings.BillingId.hints.displayWidth}"
+                            maximumLength="#{bindings.BillingId.hints.precision}"
+                            shortDesc="#{bindings.BillingId.hints.tooltip}"
+                            id="it3" rendered="false">
+                <f:validator binding="#{bindings.BillingId.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.BillingNumber.inputValue}"
+                            label="#{bindings.BillingNumber.hints.label}"
+                            columns="#{bindings.BillingNumber.hints.displayWidth}"
+                            maximumLength="#{bindings.BillingNumber.hints.precision}"
+                            shortDesc="#{bindings.BillingNumber.hints.tooltip}"
+                            id="it5" 
+                            partialTriggers="cb1" readOnly="true"
+                            contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;">
+                <f:validator binding="#{bindings.BillingNumber.validator}"/>
+              </af:inputText>
+                <af:inputListOfValues id="bookingNumber1Id"
+                                      popupTitle="Search and Select: #{bindings.BookingNumber1.hints.label}"
+                                      value="#{bindings.BookingNumber1.inputValue}"
+                                      label="#{bindings.BookingNumber1.hints.label}"
+                                      model="#{bindings.BookingNumber1.listOfValuesModel}"
+                                      required="true"
+                                      columns="#{bindings.BookingNumber1.hints.displayWidth}"
+                                      shortDesc="#{bindings.BookingNumber1.hints.tooltip}"
+                                      contentStyle="width:180px;"
+                                      requiredMessageDetail="Choose Booking No !!!"
+                                      autoSubmit="true">
+                  <f:validator binding="#{bindings.BookingNumber1.validator}"/>
+                </af:inputListOfValues>
+                <af:selectOneChoice value="#{bindings.OrgId.inputValue}"
+                                  label="#{bindings.OrgId.label}"
+                                  required="#{bindings.OrgId.hints.mandatory}"
+                                  shortDesc="#{bindings.OrgId.hints.tooltip}"
+                                  id="soc1"
+                                  partialTriggers="bookingNumber1Id"
+                                  contentStyle="width:200px;" disabled="true">
+                <f:selectItems value="#{bindings.OrgId.items}" id="si1"/>
+              </af:selectOneChoice>
+              <af:selectOneChoice value="#{bindings.PropertyName.inputValue}"
+                                  label="Property Number"
+                                  required="#{bindings.PropertyName.hints.mandatory}"
+                                  shortDesc="#{bindings.PropertyName.hints.tooltip}"
+                                  id="soc2"
+                                  partialTriggers="bookingNumber1Id"
+                                  contentStyle="width:200px;" disabled="true">
+                <f:selectItems value="#{bindings.PropertyName.items}" id="si2"/>
+              </af:selectOneChoice>
+                  
+              <af:selectOneChoice value="#{bindings.BuildName.inputValue}"
+                                  label="#{bindings.BuildName.label}"
+                                  required="#{bindings.BuildName.hints.mandatory}"
+                                  shortDesc="#{bindings.BuildName.hints.tooltip}"
+                                  id="soc3"
+                                  partialTriggers="bookingNumber1Id"
+                                  contentStyle="width:200px;" disabled="true">
+                <f:selectItems value="#{bindings.BuildName.items}" id="si3"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.BillingId.inputValue}"
+                            label="#{bindings.BillingId.hints.label}"
+                            required="#{bindings.BillingId.hints.mandatory}"
+                            columns="#{bindings.BillingId.hints.displayWidth}"
+                            maximumLength="#{bindings.BillingId.hints.precision}"
+                            shortDesc="#{bindings.BillingId.hints.tooltip}"
+                            id="it6" rendered="false">
+                <f:validator binding="#{bindings.BillingId.validator}"/>
+              </af:inputText>
+              <af:inputDate value="#{bindings.BillingDate.inputValue}"
+                            label="#{bindings.BillingDate.hints.label}"
+                            required="#{bindings.BillingDate.hints.mandatory}"
+                            shortDesc="#{bindings.BillingDate.hints.tooltip}"
+                            id="id1" contentStyle="width:200px;">
+                <f:validator binding="#{bindings.BillingDate.validator}"/>
+                <af:convertDateTime pattern="dd-MM-yyyy"/>
+              </af:inputDate>
+              <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                                  label="#{bindings.Status.label}"
+                                  required="#{bindings.Status.hints.mandatory}"
+                                  shortDesc="#{bindings.Status.hints.tooltip}"
+                                  id="soc9" contentStyle="width:200px;"
+                                  disabled="true">
+                <f:selectItems value="#{bindings.Status.items}" id="si9"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.Description.inputValue}"
+                            label="#{bindings.Description.hints.label}"
+                            required="#{bindings.Description.hints.mandatory}"
+                            columns="#{bindings.Description.hints.displayWidth}"
+                            maximumLength="#{bindings.Description.hints.precision}"
+                            shortDesc="#{bindings.Description.hints.tooltip}"
+                            id="it1" rows="3" contentStyle="width:200px;"
+                            autoSubmit="true">
+                <f:validator binding="#{bindings.Description.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.BookingId.inputValue}"
+                            label="#{bindings.BookingId.hints.label}"
+                            required="#{bindings.BookingId.hints.mandatory}"
+                            columns="#{bindings.BookingId.hints.displayWidth}"
+                            maximumLength="#{bindings.BookingId.hints.precision}"
+                            shortDesc="#{bindings.BookingId.hints.tooltip}"
+                            id="it2" rendered="false">
+                <f:validator binding="#{bindings.BookingId.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:panelBox text="Billing Details" id="pb2">
+              <f:facet name="toolbar"/>
+            
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                featuresOff="detach">
+            
+              <f:facet name="toolbar">
+                <af:toolbar id="t2">
+                  <af:commandImageLink icon="/images/func_add_16_ena.png"
+                                           id="ctb1"
+                                           actionListener="#{backingBeanScope.billing_Bb.showMspopUp_AL}"
+                                       immediate="true"/>
+                  <af:commandImageLink icon="/images/func_remove_16_ena.png" id="cil1"
+                                       actionListener="#{backingBeanScope.billing_Bb.delete_AL}"/>
+                </af:toolbar>
+              </f:facet>
+              <af:table value="#{bindings.Booking_Milestone_VO3.collectionModel}"
+                        var="row"
+                        rows="#{bindings.Booking_Milestone_VO3.rangeSize}"
+                        emptyText="#{bindings.Booking_Milestone_VO3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.Booking_Milestone_VO3.rangeSize}"
+                        rowBandingInterval="0" id="t1"
+                        binding="#{backingBeanScope.billing_Bb.msparent_table_binding}"
+                        columnBandingInterval="0" rowSelection="single" varStatus="vs">
+                <af:column id="c20" headerText="S.No" width="62" align="center">
+                      <af:outputText value="#{vs.index+1}" id="ot15"/>
+              </af:column>
+                <af:column id="c3" headerText="Installment Type" width="210">
+                  <af:selectOneChoice value="#{row.bindings.InstallmentType.inputValue}"
+                                      label="#{row.bindings.InstallmentType.label}"
+                                      required="#{bindings.Booking_Milestone_VO3.hints.InstallmentType.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO3.hints.InstallmentType.tooltip}"
+                                      id="soc4"
+                                      visible="#{row.MilestoneType eq 'BK'}"
+                                      contentStyle="width:200px;"
+                                      readOnly="true">
+                    <f:selectItems value="#{row.bindings.InstallmentType.items}"
+                                   id="si4"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{row.bindings.InstallmentType1.inputValue}"
+                                      label="#{row.bindings.InstallmentType1.label}"
+                                      required="#{bindings.Booking_Milestone_VO3.hints.InstallmentType1.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO3.hints.InstallmentType1.tooltip}"
+                                      id="soc5"
+                                      visible="#{row.MilestoneType eq 'OC'}"
+                                      contentStyle="width:200px;"
+                                      readOnly="true">
+                    <f:selectItems value="#{row.bindings.InstallmentType1.items}"
+                                   id="si5"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.InstallmentPct.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO3.hints.InstallmentPct.label}"
+                           id="c4" width="111">
+                  <af:outputText value="#{row.InstallmentPct}" id="ot9"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.InstallmentAmount.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO3.hints.InstallmentAmount.label}"
+                           id="c7" width="111">
+                  <af:outputText value="#{row.InstallmentAmount}" id="ot8"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.label}"
+                           id="c8" width="136">
+                  <af:outputText value="#{row.MilestoneType}" id="ot4"
+                                 rendered="false"/>
+                  <af:selectOneChoice value="#{row.bindings.MilestoneType.inputValue}"
+                                      label="#{row.bindings.MilestoneType.label}"
+                                      required="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO3.hints.MilestoneType.tooltip}"
+                                      id="soc6" readOnly="true">
+                    <f:selectItems value="#{row.bindings.MilestoneType.items}"
+                                   id="si6"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.ChargeType.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO3.hints.ChargeType.label}"
+                           id="c2" width="90">
+                  <af:outputText value="#{row.ChargeType}" id="ot3"
+                                 rendered="false"/>
+                  <af:selectOneChoice value="#{row.bindings.ChargeType.inputValue}"
+                                      label="#{row.bindings.ChargeType.label}"
+                                      required="#{bindings.Booking_Milestone_VO3.hints.ChargeType.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO3.hints.ChargeType.tooltip}"
+                                      id="soc7" readOnly="true">
+                    <f:selectItems value="#{row.bindings.ChargeType.items}"
+                                   id="si7"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.PaymentTerm.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO3.hints.PaymentTerm.label}"
+                           id="c6" width="125">
+                  <af:outputText value="#{row.PaymentTerm}" id="ot5"
+                                 rendered="false"/>
+                  <af:selectOneChoice value="#{row.bindings.PaymentTerm.inputValue}"
+                                      label="#{row.bindings.PaymentTerm.label}"
+                                      required="#{bindings.Booking_Milestone_VO3.hints.PaymentTerm.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO3.hints.PaymentTerm.tooltip}"
+                                      id="soc8" readOnly="true">
+                    <f:selectItems value="#{row.bindings.PaymentTerm.items}"
+                                   id="si8"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.Remarks.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO3.hints.Remarks.label}"
+                           id="c9">
+                  <af:outputText value="#{row.Remarks}" id="ot7"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO3.hints.BillingId.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO3.hints.BillingId.label}"
+                           id="c5" rendered="false">
+                  <af:outputText value="#{row.BillingId}" id="ot1"/>
+                </af:column>
+                  <af:column headerText="#{bindings.Booking_Milestone_VO3.hints.Status.label}"
+                             id="c1">
+                    <af:outputText value="#{row.Status}" id="ot2"/>
+                  </af:column>
+                </af:table>
+            </af:panelCollection>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="start">
+          <f:verbatim>
+                
+          </f:verbatim>
+        </f:facet>
+        <f:facet name="end">
+          <af:popup id="p1" binding="#{backingBeanScope.billing_Bb.msPopup}">
+            <af:dialog id="d1"
+                       dialogListener="#{backingBeanScope.billing_Bb.msDetailDialogueListerner}"
+                       title="Choose Milestones" contentWidth="700"
+                       contentHeight="500">
+              <af:table value="#{bindings.Booking_Milestone_VO4.collectionModel}"
+                        var="row"
+                        rows="#{bindings.Booking_Milestone_VO4.rangeSize}"
+                        emptyText="#{bindings.Booking_Milestone_VO4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.Booking_Milestone_VO4.rangeSize}"
+                        rowBandingInterval="0" id="t3"
+                        binding="#{backingBeanScope.billing_Bb.msTable_Binding}"
+                        styleClass="AFStretchWidth" rowSelection="single">
+                <af:column headerText="Select Row"
+                           id="c12" align="center">
+                  <af:selectBooleanCheckbox value="#{row.bindings.SelectRow.inputValue}"
+                                            label="#{row.bindings.SelectRow.label}"
+                                            shortDesc="#{bindings.Booking_Milestone_VO4.hints.SelectRow.tooltip}"
+                                            id="sbc1" autoSubmit="true"
+                                            valueChangeListener="#{backingBeanScope.billing_Bb.selectRow_VCL}">
+                <af:setPropertyListener from="#{bindings.BillingId.inputValue}"
+                                            to="#{row.BillingId}"
+                                            type="valueChange"/>
+                  </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO4.hints.InstallmentType.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO4.hints.InstallmentType.label}"
+                           id="c16" width="200">
+                  <af:outputText value="#{row.InstallmentType}" id="ot13"
+                                 rendered="false"/>
+                  <af:selectOneChoice value="#{row.bindings.InstallmentType.inputValue}"
+                                      label="#{row.bindings.InstallmentType.label}"
+                                      required="#{bindings.Booking_Milestone_VO4.hints.InstallmentType.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO4.hints.InstallmentType.tooltip}"
+                                      id="soc10"
+                                      visible="#{row.MilestoneType eq 'BK'}"
+                                      contentStyle="width:200px"
+                                      readOnly="true">
+                    <f:selectItems value="#{row.bindings.InstallmentType.items}"
+                                   id="si10"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{row.bindings.InstallmentType1.inputValue}"
+                                      label="#{row.bindings.InstallmentType1.label}"
+                                      required="#{bindings.Booking_Milestone_VO4.hints.InstallmentType1.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO4.hints.InstallmentType1.tooltip}"
+                                      id="soc11" visible="#{row.MilestoneType eq 'OC'}"
+                                      contentStyle="width:200px">
+                    <f:selectItems value="#{row.bindings.InstallmentType1.items}"
+                                   id="si11"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO4.hints.InstallmentPct.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO4.hints.InstallmentPct.label}"
+                           id="c11">
+                  <af:outputText value="#{row.InstallmentPct}" id="ot11"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO4.hints.InstallmentAmount.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO4.hints.InstallmentAmount.label}"
+                           id="c15">
+                  <af:outputText value="#{row.InstallmentAmount}" id="ot16"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO4.hints.MilestoneType.name}"
+                           sortable="false"
+                           headerText="Milestone Type"
+                           id="c13" width="120">
+                  <af:outputText value="#{row.MilestoneType}" id="ot10"
+                                 rendered="false"/>
+                  <af:selectOneChoice value="#{row.bindings.MilestoneType.inputValue}"
+                                      label="#{row.bindings.MilestoneType.label}"
+                                      required="#{bindings.Booking_Milestone_VO4.hints.MilestoneType.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO4.hints.MilestoneType.tooltip}"
+                                      id="soc12" readOnly="true"
+                                      contentStyle="width:200px">
+                    <f:selectItems value="#{row.bindings.MilestoneType.items}"
+                                   id="si12"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO4.hints.ChargeType.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO4.hints.ChargeType.label}"
+                           id="c18" width="120">
+                  <af:outputText value="#{row.ChargeType}" id="ot12"
+                                 rendered="false"/>
+                  <af:selectOneChoice value="#{row.bindings.ChargeType.inputValue}"
+                                      label="#{row.bindings.ChargeType.label}"
+                                      required="#{bindings.Booking_Milestone_VO4.hints.ChargeType.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO4.hints.ChargeType.tooltip}"
+                                      id="soc13" readOnly="true"
+                                      contentStyle="width:200px">
+                    <f:selectItems value="#{row.bindings.ChargeType.items}"
+                                   id="si13"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO4.hints.PaymentTerm.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO4.hints.PaymentTerm.label}"
+                           id="c17" width="120">
+                  <af:outputText value="#{row.PaymentTerm}" id="ot18"
+                                 rendered="false"/>
+                  <af:selectOneChoice value="#{row.bindings.PaymentTerm.inputValue}"
+                                      label="#{row.bindings.PaymentTerm.label}"
+                                      required="#{bindings.Booking_Milestone_VO4.hints.PaymentTerm.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO4.hints.PaymentTerm.tooltip}"
+                                      id="soc14" readOnly="true"
+                                      contentStyle="width:200px">
+                    <f:selectItems value="#{row.bindings.PaymentTerm.items}"
+                                   id="si14"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO4.hints.Remarks.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO4.hints.Remarks.label}"
+                           id="c14">
+                  <af:outputText value="#{row.Remarks}" id="ot19"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO4.hints.BillingId.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO4.hints.BillingId.label}"
+                           id="c10" rendered="false">
+                  <af:outputText value="#{row.BillingId}" id="ot14"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO4.hints.Status.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO4.hints.Status.label}"
+                           id="c19" width="120">
+                  <af:outputText value="#{row.Status}" id="ot17"/>
+                </af:column>
+              </af:table>
+            </af:dialog>
+          </af:popup>
+        </f:facet>
+        <f:facet name="top">
+            <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end">
+            <af:outputText value="Manage Billing" id="ot6"
+                               inlineStyle="font-size:large; font-weight:bold" noWrap="true"/>
+            <af:spacer width="900" height="10" id="s7"/>
+            <af:commandButton text="Save" id="cb1"
+                              actionListener="#{backingBeanScope.billing_Bb.save_AL}"
+                              partialSubmit="true"/>
+            <af:spacer width="10" height="10" id="s1"/>
+            <af:commandButton text="Save and Cancel" id="cb2"
+                              action="#{backingBeanScope.billing_Bb.saveandcancel_AC}"
+                              partialSubmit="true"/>
+            <af:spacer width="10" height="10" id="s2"/>
+            <af:commandButton text="Cancel" id="cb4" action="cancel"
+                              immediate="true"
+                              actionListener="#{backingBeanScope.billing_Bb.doRefreshSearchTable}"/>
+            <af:spacer width="10" height="10" id="s3"/>
+            <af:commandButton text="Generate Invoice" id="cb3"/>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:billing_Bb-->
+</jsp:root>

@@ -1,0 +1,1136 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Cancellation_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="XxpmCancellation_EO.CANCEL_ID, 
+       XxpmCancellation_EO.FUNC_ID, 
+       XxpmCancellation_EO.LEASE_AGREEMENT_ID, 
+       XxpmCancellation_EO.BOOKING_ID, 
+       XxpmCancellation_EO.RECOMMEND_ID, 
+       XxpmCancellation_EO.OFFER_ID, 
+       XxpmCancellation_EO.ORG_ID, 
+       XxpmCancellation_EO.CANCEL_NUMBER, 
+       XxpmCancellation_EO.CON_START_DATE, 
+       XxpmCancellation_EO.CON_END_DATE, 
+       XxpmCancellation_EO.BASE_RATE, 
+       XxpmCancellation_EO.TOTAL_RATE, 
+       XxpmCancellation_EO.CUSTOMER_NAME, 
+       XxpmCancellation_EO.EMIRATED_ID, 
+       XxpmCancellation_EO.NATIONALITY, 
+       XxpmCancellation_EO.STATUS, 
+       XxpmCancellation_EO.CANCEL_DATE, 
+       XxpmCancellation_EO.DAYS_CONSUMED, 
+       XxpmCancellation_EO.DAYS_REMAINING, 
+       XxpmCancellation_EO.DAILY_RENTAL_RATE, 
+       XxpmCancellation_EO.DAILY_DISCOUNTING_RATE, 
+       XxpmCancellation_EO.NOC_BY, 
+       XxpmCancellation_EO.NOC_DATE_ENTERED, 
+       XxpmCancellation_EO.NOC_DATE_ACTUAL, 
+       XxpmCancellation_EO.CHEQUE_CLEARED_AMOUNT, 
+       XxpmCancellation_EO.AMOUNT_WAIVED, 
+       XxpmCancellation_EO.CURRENCY, 
+       XxpmCancellation_EO.OBJECT_VERSION_NUMBER, 
+       XxpmCancellation_EO.DESCRIPTION, 
+       XxpmCancellation_EO.USER_GRP_ID, 
+       XxpmCancellation_EO.FLOW_STATUS, 
+       XxpmCancellation_EO.FLOW_LEVEL, 
+       XxpmCancellation_EO.FLOW_WITH, 
+       XxpmCancellation_EO.USAGE, 
+       XxpmCancellation_EO.ATTRIBUTE_CATEGORY, 
+       XxpmCancellation_EO.ATTRIBUTE1, 
+       XxpmCancellation_EO.ATTRIBUTE2, 
+       XxpmCancellation_EO.ATTRIBUTE3, 
+       XxpmCancellation_EO.ATTRIBUTE4, 
+       XxpmCancellation_EO.ATTRIBUTE5, 
+       XxpmCancellation_EO.ATTRIBUTE6, 
+       XxpmCancellation_EO.ATTRIBUTE7, 
+       XxpmCancellation_EO.ATTRIBUTE8, 
+       XxpmCancellation_EO.ATTRIBUTE9, 
+       XxpmCancellation_EO.ATTRIBUTE10, 
+       XxpmCancellation_EO.CREATED_BY, 
+       XxpmCancellation_EO.CREATION_DATE, 
+       XxpmCancellation_EO.LAST_UPDATED_BY, 
+       XxpmCancellation_EO.LAST_UPDATE_DATE, 
+       XxpmCancellation_EO.LAST_UPDATE_LOGIN, 
+       XxpmCancellation_EO.NETDUE, 
+       XxpmCancellation_EO.PROPOSE_FINAL_STATUS, 
+       XxpmCancellation_EO.COURT_CASE, 
+       XxpmCancellation_EO.COURT_CASE_NO, 
+       XxpmCancellation_EO.SECURITY_DEPO_CLEARED, 
+       XxpmCancellation_EO.MAINTENANCE_DEDUCTION, 
+       XxpmCancellation_EO.CN_COMPLETE_STATUS, 
+       XxpmCancellation_EO.COURT_CASE_ADJUSTMENT_AMT, 
+       XxpmCancellation_EO.NET_COURT_CASE_ADJUSTMENT_AMT"
+  FromList="XXPM_CANCELLATION XxpmCancellation_EO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="model.VO.Cancellation_VORowImpl"
+  ComponentClass="model.VO.Cancellation_VOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="p_cancelId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="getLeaseNumber1"
+    ViewObjectName="model.ROVO.getLeaseNumber"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="LeaseApproved"
+      FullName="model.ROVO.getLeaseNumber.LeaseApproved"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="BookingHdrRecomm_ROVO1"
+    ViewObjectName="model.ROVO.BookingHdrRecomm_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SearchRecommendationRoVo1"
+    ViewObjectName="model.ROVO.SearchRecommendationRoVo"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="searchOffersInfoROVO1"
+    ViewObjectName="model.ROVO.searchOffersInfoROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Org_ROVO1"
+    ViewObjectName="model.ROVO.Org_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByTransStatus"
+      FullName="model.ROVO.Lookup_View_ROVO.findByTransStatus"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SearchLeaseAgreement_ROVO1"
+    ViewObjectName="model.ROVO.SearchLeaseAgreement_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO2"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="NOC_BY"
+      FullName="model.ROVO.Lookup_View_ROVO.NOC_BY"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_ROVO3"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByCourtCase"
+      FullName="model.ROVO.Lookup_View_ROVO.findByCourtCase"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SearchBookingROVO1"
+    ViewObjectName="model.ROVO.SearchBookingROVO">
+    <ViewCriteriaUsage
+      Name="findByBkId"
+      FullName="model.ROVO.SearchBookingROVO.findByBkId"/>
+    <ParameterMap>
+      <PIMap Variable="p_bkId">
+        <TransientExpression><![CDATA[BookingId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_ROVO4"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByCourtCase"
+      FullName="model.ROVO.Lookup_View_ROVO.findByCourtCase"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_LeaseAgreementId"
+    ListVOName="getLeaseNumber1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LeaseAgreementId"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="OrgId"/>
+      <Item Value="BookingId"/>
+      <Item Value="OfferId"/>
+      <Item Value="RecommendId"/>
+      <Item Value="TotalRate"/>
+      <Item Value="ConStartDate"/>
+      <Item Value="ConEndDate"/>
+      <Item Value="BaseRate"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LeaseAgreementId"/>
+      <Item Value="OrgId"/>
+      <Item Value="BookingId"/>
+      <Item Value="OfferHdrId"/>
+      <Item Value="RecommendId"/>
+      <Item Value="TotalRate"/>
+      <Item Value="LeaseStartDate"/>
+      <Item Value="LeaseEndDate"/>
+      <Item Value="BaseRate"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LeaseNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BookingId"
+    ListVOName="BookingHdrRecomm_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BookingId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BookingId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BookingNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_RecommendId"
+    ListVOName="SearchRecommendationRoVo1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="RecommendId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="RecommendId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RecommendNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_OfferId"
+    ListVOName="searchOffersInfoROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OfferId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OfferHdrId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OfferNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_OrgId"
+    ListVOName="Org_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrgName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_LeaseAgreementNoTrans"
+    ListVOName="getLeaseNumber1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_LeaseAgreementNoTrans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LeaseAgreementNoTrans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="LeaseAgreementId"/>
+      <Item Value="OrgId"/>
+      <Item Value="BookingId"/>
+      <Item Value="OfferId"/>
+      <Item Value="RecommendId"/>
+      <Item Value="ConStartDate"/>
+      <Item Value="ConEndDate"/>
+      <Item Value="CustomerName"/>
+      <Item Value="BaseRate"/>
+      <Item Value="TotalRate"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LeaseNumber"/>
+      <Item Value="LeaseAgreementId"/>
+      <Item Value="OrgId"/>
+      <Item Value="BookingId"/>
+      <Item Value="OfferHdrId"/>
+      <Item Value="RecommendId"/>
+      <Item Value="LeaseStartDate"/>
+      <Item Value="LeaseEndDate"/>
+      <Item Value="CustName"/>
+      <Item Value="BaseRate"/>
+      <Item Value="TotalRate"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LeaseNumber"/>
+      <Item Value="CustName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="LeaseNumberSearch"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_NocBy"
+    ListVOName="Lookup_View_ROVO2"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="NocBy"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CourtCase"
+    ListVOName="Lookup_View_ROVO3"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_CourtCase_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CourtCase"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CnCompleteStatus"
+    ListVOName="Lookup_View_ROVO3"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CnCompleteStatus"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Attribute3"
+    ListVOName="Lookup_View_ROVO4"
+    ListRangeSize="4"
+    NullValueFlag="none"
+    NullValueId="LOV_Attribute3_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Attribute3"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="hide"/>
+  </ListBinding>
+  <EntityUsage
+    Name="XxpmCancellation_EO"
+    Entity="model.EO.Cancellation_EO"/>
+  <ViewAttribute
+    Name="CancelId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CancelId"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CANCEL_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("XXPM_EXTEN_CANCEL_ID_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FuncId"
+    PrecisionRule="true"
+    EntityAttrName="FuncId"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="FUNC_ID"/>
+  <ViewAttribute
+    Name="LeaseAgreementId"
+    PrecisionRule="true"
+    EntityAttrName="LeaseAgreementId"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="LEASE_AGREEMENT_ID"
+    LOVName="LOV_LeaseAgreementId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.LeaseAgreementId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookingId"
+    PrecisionRule="true"
+    EntityAttrName="BookingId"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="BOOKING_ID"
+    LOVName="LOV_BookingId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.BookingId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RecommendId"
+    PrecisionRule="true"
+    EntityAttrName="RecommendId"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="RECOMMEND_ID"
+    LOVName="LOV_RecommendId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.RecommendId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OfferId"
+    PrecisionRule="true"
+    EntityAttrName="OfferId"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="OFFER_ID"
+    LOVName="LOV_OfferId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgId"
+    PrecisionRule="true"
+    EntityAttrName="OrgId"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ORG_ID"
+    LOVName="LOV_OrgId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.OrgId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CancelNumber"
+    PrecisionRule="true"
+    EntityAttrName="CancelNumber"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CANCEL_NUMBER">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.CancelNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ConStartDate"
+    PrecisionRule="true"
+    EntityAttrName="ConStartDate"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CON_START_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.ConStartDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ConEndDate"
+    PrecisionRule="true"
+    EntityAttrName="ConEndDate"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CON_END_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.ConEndDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BaseRate"
+    PrecisionRule="true"
+    EntityAttrName="BaseRate"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="BASE_RATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.BaseRate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalRate"
+    PrecisionRule="true"
+    EntityAttrName="TotalRate"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="TOTAL_RATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.TotalRate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerName"
+    PrecisionRule="true"
+    EntityAttrName="CustomerName"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CUSTOMER_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.CustomerName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmiratedId"
+    PrecisionRule="true"
+    EntityAttrName="EmiratedId"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="EMIRATED_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.EmiratedId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Nationality"
+    PrecisionRule="true"
+    EntityAttrName="Nationality"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="NATIONALITY"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="STATUS"
+    LOVName="LOV_Status"
+    DefaultValue="DRA">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CancelDate"
+    PrecisionRule="true"
+    EntityAttrName="CancelDate"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CANCEL_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.CancelDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DaysConsumed"
+    PrecisionRule="true"
+    EntityAttrName="DaysConsumed"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="DAYS_CONSUMED">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.DaysConsumed_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DaysRemaining"
+    PrecisionRule="true"
+    EntityAttrName="DaysRemaining"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="DAYS_REMAINING">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.DaysRemaining_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DailyRentalRate"
+    PrecisionRule="true"
+    EntityAttrName="DailyRentalRate"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="DAILY_RENTAL_RATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.DailyRentalRate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DailyDiscountingRate"
+    PrecisionRule="true"
+    EntityAttrName="DailyDiscountingRate"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="DAILY_DISCOUNTING_RATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.DailyDiscountingRate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NocBy"
+    PrecisionRule="true"
+    EntityAttrName="NocBy"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="NOC_BY"
+    LOVName="LOV_NocBy">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.NocBy_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NocDateEntered"
+    PrecisionRule="true"
+    EntityAttrName="NocDateEntered"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="NOC_DATE_ENTERED">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.NocDateEntered_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NocDateActual"
+    PrecisionRule="true"
+    EntityAttrName="NocDateActual"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="NOC_DATE_ACTUAL">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.NocDateActual_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ChequeClearedAmount"
+    PrecisionRule="true"
+    EntityAttrName="ChequeClearedAmount"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CHEQUE_CLEARED_AMOUNT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.ChequeClearedAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AmountWaived"
+    PrecisionRule="true"
+    EntityAttrName="AmountWaived"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="AMOUNT_WAIVED">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.AmountWaived_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Currency"
+    PrecisionRule="true"
+    EntityAttrName="Currency"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CURRENCY"/>
+  <ViewAttribute
+    Name="ObjectVersionNumber"
+    PrecisionRule="true"
+    EntityAttrName="ObjectVersionNumber"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="OBJECT_VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="UserGrpId"
+    PrecisionRule="true"
+    EntityAttrName="UserGrpId"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="USER_GRP_ID"/>
+  <ViewAttribute
+    Name="FlowStatus"
+    PrecisionRule="true"
+    EntityAttrName="FlowStatus"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="FLOW_STATUS"/>
+  <ViewAttribute
+    Name="FlowLevel"
+    PrecisionRule="true"
+    EntityAttrName="FlowLevel"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="FLOW_LEVEL"/>
+  <ViewAttribute
+    Name="FlowWith"
+    PrecisionRule="true"
+    EntityAttrName="FlowWith"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="FLOW_WITH"/>
+  <ViewAttribute
+    Name="Usage"
+    PrecisionRule="true"
+    EntityAttrName="Usage"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="USAGE"/>
+  <ViewAttribute
+    Name="AttributeCategory"
+    PrecisionRule="true"
+    EntityAttrName="AttributeCategory"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE_CATEGORY"/>
+  <ViewAttribute
+    Name="Attribute1"
+    PrecisionRule="true"
+    EntityAttrName="Attribute1"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.Attribute1_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE2">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.Attribute2_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE3"
+    LOVName="LOV_Attribute3"
+    DefaultValue="NO">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE4"/>
+  <ViewAttribute
+    Name="Attribute5"
+    PrecisionRule="true"
+    EntityAttrName="Attribute5"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE5"/>
+  <ViewAttribute
+    Name="Attribute6"
+    PrecisionRule="true"
+    EntityAttrName="Attribute6"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE6"/>
+  <ViewAttribute
+    Name="Attribute7"
+    PrecisionRule="true"
+    EntityAttrName="Attribute7"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE7"/>
+  <ViewAttribute
+    Name="Attribute8"
+    PrecisionRule="true"
+    EntityAttrName="Attribute8"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE8"/>
+  <ViewAttribute
+    Name="Attribute9"
+    PrecisionRule="true"
+    EntityAttrName="Attribute9"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE9"/>
+  <ViewAttribute
+    Name="Attribute10"
+    PrecisionRule="true"
+    EntityAttrName="Attribute10"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="ATTRIBUTE10"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="LAST_UPDATE_LOGIN"/>
+  <ViewAttribute
+    Name="LeaseAgreementNoTrans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_LeaseAgreementNoTrans">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.LeaseAgreementNoTrans_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Netdue"
+    PrecisionRule="true"
+    EntityAttrName="Netdue"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="NETDUE">
+    <Properties>
+      <SchemaBasedProperties>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CurrentDate_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProposeFinalStatus"
+    PrecisionRule="true"
+    EntityAttrName="ProposeFinalStatus"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="PROPOSE_FINAL_STATUS"
+    DefaultValue="Proposed">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CourtCase"
+    PrecisionRule="true"
+    EntityAttrName="CourtCase"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="COURT_CASE"
+    DefaultValue="NO"
+    LOVName="LOV_CourtCase">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CourtCaseNo"
+    PrecisionRule="true"
+    EntityAttrName="CourtCaseNo"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="COURT_CASE_NO">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.CourtCaseNo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Trans_Discount_Val"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[SearchBookingROVO1.sum("DiscAmt")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityDepoCleared"
+    PrecisionRule="true"
+    EntityAttrName="SecurityDepoCleared"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="SECURITY_DEPO_CLEARED"/>
+  <ViewAttribute
+    Name="MaintenanceDeduction"
+    PrecisionRule="true"
+    EntityAttrName="MaintenanceDeduction"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="MAINTENANCE_DEDUCTION"/>
+  <ViewAttribute
+    Name="CnCompleteStatus"
+    PrecisionRule="true"
+    EntityAttrName="CnCompleteStatus"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="CN_COMPLETE_STATUS"
+    LOVName="LOV_CnCompleteStatus"
+    DefaultValue="NO">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.CnCompleteStatus_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CourtCaseAdjustmentAmt"
+    PrecisionRule="true"
+    EntityAttrName="CourtCaseAdjustmentAmt"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="COURT_CASE_ADJUSTMENT_AMT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.CourtCaseAdjustmentAmt_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NetCourtCaseAdjustmentAmt"
+    PrecisionRule="true"
+    EntityAttrName="NetCourtCaseAdjustmentAmt"
+    EntityUsage="XxpmCancellation_EO"
+    AliasName="NET_COURT_CASE_ADJUSTMENT_AMT"
+    DefaultValue="0">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Cancellation_VO.NetCourtCaseAdjustmentAmt_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="findByCancelId"
+    ViewObjectName="model.VO.Cancellation_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow985"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CancelId"
+        ViewAttribute="CancelId"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_cancelId"
+        Required="Optional"
+        IsBindVarValue="true"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="BookingDetail_VO"
+    ViewLink="model.VL.Cancel_BookingDetail_Vl"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CancelDueAmountDtl_VO"
+    ViewLink="model.VL.Cancel_CancelDueAmtDtl_Vl"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Booking_Milestone_VO"
+    ViewLink="model.VL.Cancel_BookingMilestonesVo_Vl"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CancelDueAmountArDtl_VO"
+    ViewLink="model.VL.Cancel_CancelDueAr_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="getApprovalHistoryROVo"
+    ViewLink="model.VL.CancellationApproval_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CancellationHeaderProposedROVO"
+    ViewLink="model.VL.cancelHH_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Receipt_VO"
+    ViewLink="model.VL.Cancel_Receipt_Vl"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+   <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                    id="pt1">
+      <f:facet name="pageContents">
+         <af:panelGroupLayout id="pgl1" layout="vertical">
+            <af:panelGridLayout id="pgl2">
+               <af:gridRow marginTop="5px" height="auto" id="gr1">
+                  <af:gridCell marginStart="5px" width="50%" id="gc1">
+                     <af:outputLabel value="Contracts" id="ol1"
+                                     inlineStyle="font-weight:bolder; font-size:large;"/>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                               id="gc2"/>
+               </af:gridRow>
+            </af:panelGridLayout>
+            <af:spacer width="10" height="10" id="s4"/>
+            <af:separator id="s2"/>
+            <af:spacer width="10" height="10" id="s5"/>
+                  <af:query id="qryId1" headerText="Search" disclosed="true"
+                            value="#{bindings.SearchLeaseAgreementInfoRoVoCriteriaQuery.queryDescriptor}"
+                            model="#{bindings.SearchLeaseAgreementInfoRoVoCriteriaQuery.queryModel}"
+                            queryListener="#{backingBeanScope.backing_fragments_SearchMilestones.customSearchLeaseAgmt_QL}"
+                            queryOperationListener="#{bindings.SearchLeaseAgreementInfoRoVoCriteriaQuery.processQueryOperation}"
+                            resultComponentId="::pc2:t2" rows="5" maxColumns="4"/>
+            <af:panelGroupLayout layout="vertical" id="pgl4" rendered="false"/>
+            <af:spacer width="10" height="10" id="s1"/>
+            <af:inputText value="#{bindings.LeaseNumber.inputValue}"
+                          simple="true"
+                          required="#{bindings.LeaseNumber.hints.mandatory}"
+                          columns="#{bindings.LeaseNumber.hints.displayWidth}"
+                          maximumLength="#{bindings.LeaseNumber.hints.precision}"
+                          shortDesc="#{bindings.LeaseNumber.hints.tooltip}"
+                          id="it10" partialTriggers="pc2:t2"
+                          rendered="false">
+               <f:validator binding="#{bindings.LeaseNumber.validator}"/>
+            </af:inputText>
+            <af:panelGroupLayout layout="vertical" id="pgl3">
+               <af:panelBox text="Search Result" id="pb1">
+                  <f:facet name="toolbar"/>
+                  <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                     <f:facet name="menus"/>
+                     <f:facet name="toolbar">
+                        <af:toolbar binding="#{backingBeanScope.backing_fragments_SearchMilestones.t1}"
+                                    id="t1" flex="100">
+                           <af:commandImageLink binding="#{backingBeanScope.backing_fragments_SearchMilestones.cil1}"
+                                                id="cil1"
+                                                icon="/images/func_add_16_ena.png"
+                                                action="toAdd"
+                                                visible="#{sessionScope.grantMap.LeaseAgreement =='F'}"/>
+                           <af:spacer width="10" height="10"
+                                      binding="#{backingBeanScope.backing_fragments_SearchMilestones.s3}"
+                                      id="s3"/>
+                           <af:commandImageLink binding="#{backingBeanScope.backing_fragments_SearchMilestones.cil2}"
+                                                id="cil2"
+                                                icon="/images/func_pencil_16_ena.png"
+                                                action="toEdit"
+                                                visible="#{sessionScope.grantMap.LeaseAgreement =='F'}">
+                              <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/lease/dubai/#{bindings.LeaseNumber.inputValue}"
+                                                      type="action"
+                                                      to="#{sessionScope.LAD}"/>
+                              <af:setPropertyListener to="#{pageFlowScope.LeaseId}"
+                                                      type="action"
+                                                      from="#{0}"/>
+                              <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/lease/sharjah/#{bindings.LeaseNumber.inputValue}"
+                                                      type="action"
+                                                      to="#{sessionScope.LA}"/>
+                              <af:setPropertyListener from="#{bindings.LeaseAgreementId.inputValue}"
+                                                      type="action"
+                                                    to="#{pageFlowScope.leaseId}"/>
+                           </af:commandImageLink>
+                           <af:spacer width="10" height="10" id="s6"/>
+                           <af:commandImageLink binding="#{backingBeanScope.backing_fragments_searchBuilding.cil3}"
+                                                id="commandImageLink1"
+                                                icon="/images/xl.png"
+                                                hoverIcon="/images/filedownload_ena.png"
+                                                depressedIcon="/images/filedownload_dis.png"
+                                                visible="#{sessionScope.grantMap.LeaseAgreement =='N'?'false':'true'}">
+                              <af:fileDownloadActionListener contentType="application/xls"
+                                                             filename="Contracts.xls"
+                                                             method="#{LeaseAgreement.exportToExcel}"/>
+                           </af:commandImageLink>
+                           <af:goImageLink id="gil2"
+                                      destination="https://almlbprd.miskprops.com/AlmiskLeaseReports/webresources/lease/salesReport/?P_UNIT_NO=59&amp;P_FILE_TYPE=excel"
+                                      targetFrame="_blank"
+                                      icon="/images/pdffile_dwn.png"
+                                      text="Leasing Report"/>
+                        </af:toolbar>
+                     </f:facet>
+                     <f:facet name="statusbar"/>
+                     <af:table value="#{bindings.SearchLeaseAgreementInfo_RoVo1.collectionModel}"
+                               var="row"
+                               rows="#{bindings.SearchLeaseAgreementInfo_RoVo1.rangeSize}"
+                               emptyText="#{bindings.SearchLeaseAgreementInfo_RoVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                               fetchSize="6"
+                               rowBandingInterval="0" varStatus="vs"
+                               selectedRowKeys="#{bindings.SearchLeaseAgreementInfo_RoVo1.collectionModel.selectedRow}"
+                               selectionListener="#{bindings.SearchLeaseAgreementInfo_RoVo1.collectionModel.makeCurrent}"
+                               rowSelection="single" id="t2"
+                               scrollPolicy="page" autoHeightRows="0"
+                               columnStretching="column:c6">
+                        <af:column id="c15" headerText="S.No" align="center"
+                                   width="50">
+                           <af:outputText id="ot15" value="#{vs.index+1}"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.LeaseNumber.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.LeaseNumber.label}"
+                                   id="c7" align="center" frozen="true">
+                           <af:commandLink text="#{row.bindings.LeaseNumber.inputValue}"
+                                           id="cl1"
+                                           inlineStyle="font-weight:bolder; font-size:small ;color:#1367ae;"
+                                           action="toEdit">
+                                <af:setPropertyListener from="#{bindings.LeaseAgreementId.inputValue}"
+                                                        type="action"
+                                                        to="#{pageFlowScope.leaseId}"/>
+                            <!--<prod report/>-->
+                              <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/lease/sharjah/#{row.bindings.LeaseNumber.inputValue}"
+                                                      to="#{sessionScope.LA}"
+                                                      type="action"/>
+                              <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/lease/dubai/#{bindings.LeaseNumber.inputValue}"
+                                                      type="action"
+                                                      to="#{sessionScope.LAD}"/>
+                            <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/offer/#{row.OffernoTrans}"
+                                                      type="action"
+                                                    to="#{sessionScope.offerPrnt}"/>
+                             <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/recomendation/receiptack/#{row.RecommendnoTrans}"
+                                                      type="action"
+                                                    to="#{sessionScope.receiptSumryPrnt}"/>
+                             <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/recomendation/receipt/#{row.RecommendnoTrans}"
+                                                      type="action"
+                                                    to="#{sessionScope.receiptAckPrnt}"/>
+                            <!--<test report/>-->
+                             <!--<af:setPropertyListener from="https://almsoatst.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/lease/sharjah/#{row.bindings.LeaseNumber.inputValue}"
+                                                      to="#{sessionScope.LA}"
+                                                      type="action"/>-->
+                              <!--<af:setPropertyListener from="https://almsoatst.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/lease/dubai/#{bindings.LeaseNumber.inputValue}"
+                                                      type="action"
+                                                      to="#{sessionScope.LAD}"/>-->
+                             <!--<af:setPropertyListener from="https://almsoatst.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/offer/#{row.OffernoTrans}"
+                                                      type="action"
+                                                    to="#{sessionScope.offerPrnt}"/>-->
+                             <!--<af:setPropertyListener from="https://almsoatst.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/recomendation/receiptack/#{row.RecommendnoTrans}"
+                                                      type="action"
+                                                    to="#{sessionScope.receiptSumryPrnt}"/>-->
+                             <!--<af:setPropertyListener from="https://almsoatst.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/recomendation/receipt/#{row.RecommendnoTrans}"
+                                                      type="action"
+                                                    to="#{sessionScope.receiptAckPrnt}"/>-->
+                           </af:commandLink>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.RecommendnoTrans.name}"
+                                   sortable="false"
+                                   headerText="Payments &amp; Documents No"
+                                   id="c8" align="center" frozen="true">
+                           <af:outputText value="#{row.RecommendnoTrans}"
+                                          id="ot3"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.Buildname.label}"
+                                   id="c9" width="150" frozen="true">
+                           <af:outputText value="#{row.Buildname}" id="ot1"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.Unitname.label}"
+                                   id="c10" frozen="true">
+                           <af:outputText value="#{row.Unitname}" id="ot4"/>
+                        </af:column>
+                        <af:column headerText="Contract Status" id="c3">
+                           <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                               label="#{row.bindings.Status.label}"
+                                               required="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.Status.mandatory}"
+                                               shortDesc="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.Status.tooltip}"
+                                               id="soc1" readOnly="true">
+                              <f:selectItems value="#{row.bindings.Status.items}"
+                                             id="si1"/>
+                           </af:selectOneChoice>
+                        </af:column>
+                        <af:column headerText="Contract Sub Status"
+                                   id="c18">
+                           <af:outputText value="#{row.SubStatus}" id="ot14"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.OffernoTrans.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.OffernoTrans.label}"
+                                   id="c1" align="center">
+                           <af:outputText value="#{row.OffernoTrans}" id="ot5"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.BookingnoTrans.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.BookingnoTrans.label}"
+                                   id="c2" align="center">
+                           <af:outputText value="#{row.BookingnoTrans}"
+                                          id="ot6"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.Customer.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.Customer.label}"
+                                   id="c5" width="180">
+                           <af:outputText value="#{row.Customer}" id="ot7"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.TenancyConDocNo.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.TenancyConDocNo.label}"
+                                   id="c4" align="center">
+                           <af:outputText value="#{row.TenancyConDocNo}"
+                                          id="ot8"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.LeaseStartDate.label}"
+                                   id="c12">
+                           <af:outputText value="#{row.LeaseStartDate}"
+                                          id="ot10">
+                              <af:convertDateTime pattern="dd-MM-yyyy"/>
+                           </af:outputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.LeaseEndDate.label}"
+                                   id="c13">
+                           <af:outputText value="#{row.LeaseEndDate}" id="ot11">
+                              <af:convertDateTime pattern="dd-MM-yyyy"/>
+                           </af:outputText>
+                        </af:column>
+                        <af:column headerText="Contract Days" id="c30">
+                           <af:outputText value="#{row.ExtensionDays}"
+                                          id="ot26"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.UnitStatus.label}"
+                                   id="c14">
+                           <af:selectOneChoice value="#{row.bindings.UnitStatus.inputValue}"
+                                               label="#{row.bindings.UnitStatus.label}"
+                                               required="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.UnitStatus.mandatory}"
+                                               shortDesc="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.UnitStatus.tooltip}"
+                                               id="soc2" readOnly="true">
+                              <f:selectItems value="#{row.bindings.UnitStatus.items}"
+                                             id="si2"/>
+                           </af:selectOneChoice>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.UnitShortcode.label}"
+                                   id="c25" align="center">
+                           <af:outputText value="#{row.UnitShortcode}"
+                                          id="ot22"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.CreateDate.label}"
+                                   id="c11">
+                           <af:outputText value="#{row.CreateDate}" id="ot9">
+                              <af:convertDateTime pattern="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.CreateDate.format}"/>
+                           </af:outputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.SetRentPerAnnum.label}"
+                                   id="c31">
+                           <af:outputText value="#{row.SetRentPerAnnum}"
+                                          id="ot27"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.SetRent.label}"
+                                   id="c16" align="center">
+                           <af:outputText value="#{row.SetRent}" id="ot12"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.NetRent.label}"
+                                   id="c17" align="center">
+                           <af:outputText value="#{row.NetRent}" id="ot13"/>
+                        </af:column>
+                        <af:column headerText="Discount"
+                                   id="c32" align="center">
+                           <af:outputText value="#{row.DiscAmt}" id="ot28"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.TaxAmount.label}"
+                                   id="c20" align="center">
+                           <af:outputText value="#{row.TaxAmount}" id="ot17"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.UnitDescription.label}"
+                                   id="c21" width="180">
+                           <af:outputText value="#{row.UnitDescription}"
+                                          id="ot18"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.MobileNumber.label}"
+                                   id="c22">
+                           <af:outputText value="#{row.MobileNumber}"
+                                          id="ot19"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.PhoneNumber.label}"
+                                   id="c23">
+                           <af:outputText value="#{row.PhoneNumber}" id="ot20"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.EmailId.label}"
+                                   id="c24" width="180">
+                           <af:outputText value="#{row.EmailId}" id="ot21"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.Description.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.Description.label}"
+                                   id="c6">
+                           <af:outputText value="#{row.Description}" id="ot2"/>
+                        </af:column>
+                        <af:column headerText="Offer Flag"
+                                   id="c26">
+                           <af:outputText value="#{row.OfferFlag =='N' ? 'New' :row.OfferFlag =='R' ? 'Renewal' :row.OfferFlag =='S' ? 'Short Renewal' : ''}" id="ot23"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.TenanctStatus.label}"
+                                   id="c27">
+                           <af:selectOneChoice value="#{row.bindings.TenanctStatus.inputValue}"
+                                               label="#{row.bindings.TenanctStatus.label}"
+                                               required="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.TenanctStatus.mandatory}"
+                                               shortDesc="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.TenanctStatus.tooltip}"
+                                               id="soc3" readOnly="true">
+                              <f:selectItems value="#{row.bindings.TenanctStatus.items}"
+                                             id="si3"/>
+                           </af:selectOneChoice>
+                        </af:column>
+                        <af:column headerText="Noc Date"
+                                   id="c29">
+                           <af:outputText value="#{row.CancellationNocDate}"
+                                          id="ot24">
+                              <af:convertDateTime pattern="dd-MM-yyyy"/>
+                           </af:outputText>
+                        </af:column>
+                        <af:column headerText="Noc Date Actual"
+                                   id="c28" visible="true" rendered="false">
+                           <af:outputText value="#{row.NocDateActual}"
+                                          id="ot25">
+                              <af:convertDateTime pattern="dd-MM-yyyy"/>
+                           </af:outputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.UnitIncharge.label}"
+                                   id="c19">
+                           <af:outputText value="#{row.UnitIncharge}"
+                                          id="ot16"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.UnitOwner.label}"
+                                   id="c33">
+                           <af:outputText value="#{row.UnitOwner}" id="ot29"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.UnitCategory.label}"
+                                   id="c34">
+                           <af:outputText value="#{row.UnitCategory}"
+                                          id="ot30"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.SearchLeaseAgreementInfo_RoVo1.hints.AreaValue.label}"
+                                   id="c35">
+                           <af:outputText value="#{row.AreaValue}" id="ot31"/>
+                        </af:column>
+                     </af:table>
+                  </af:panelCollection>
+               </af:panelBox>
+            </af:panelGroupLayout>
+         </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="footerStart"/>
+      <f:facet name="footer"/>
+      <f:facet name="footerEnd"/>
+      <f:facet name="startPanel"/>
+      <f:facet name="endPanel"/>
+      <f:facet name="headerStart"/>
+      <f:facet name="header"/>
+      <f:facet name="headerEnd"/>
+   </af:pageTemplate>
+</jsp:root>

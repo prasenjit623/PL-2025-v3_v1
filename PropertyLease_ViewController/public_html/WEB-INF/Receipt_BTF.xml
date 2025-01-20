@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Receipt_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__11">router1</default-activity>
+    <transaction id="__1">
+      <requires-transaction/>
+    </transaction>
+    <input-parameter-definition id="__24">
+      <name id="__23">CustName</name>
+      <value>#{pageFlowScope.CustName}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__26">
+      <name id="__25">CustBankName</name>
+      <value>#{pageFlowScope.CustBankName}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__27">
+      <name id="__28">CustBankAccNumber</name>
+      <value>#{pageFlowScope.CustBankAccNumber}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__29">
+      <name id="__30">CustBranchName</name>
+      <value>#{pageFlowScope.CustBranchName}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__32">
+      <name id="__31">BookingId</name>
+      <value>#{pageFlowScope.BookingId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__43">
+      <name id="__42">TransId</name>
+      <value>#{pageFlowScope.TransId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__45">
+      <name id="__44">recid</name>
+      <value>#{pageFlowScope.recid}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__34">
+      <name id="__10">InstallmentAmount</name>
+      <value>#{pageFlowScope.InstallmentAmount}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__37">
+      <name id="__35">Duedate</name>
+      <value>#{pageFlowScope.DueDate}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__39">
+      <name id="__38">Amount</name>
+      <value>#{pageFlowScope.Amount}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__40">
+      <name id="__63">Type</name>
+      <value>#{pageFlowScope.Type}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__64">
+      <name id="__65">InstallmentType</name>
+      <value>#{pageFlowScope.InstallmentType}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__66">
+      <name id="__67">RecType</name>
+      <value>#{pageFlowScope.receiptType}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__68">
+      <name id="__69">BookingMsId</name>
+      <value>#{pageFlowScope.BookingMsId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__71">
+      <name id="__70">OrgId</name>
+      <value>#{pageFlowScope.OrgId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__74">
+      <name id="__75">CusName</name>
+      <value>#{pageFlowScope.CusName}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__72">
+      <name id="__73">Status11</name>
+      <value>#{pageFlowScope.Status11}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__76">
+      <name id="__77">funcId</name>
+      <value>#{pageFlowScope.funcId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__79">
+      <name id="__78">scfnId</name>
+      <value>#{pageFlowScope.scfnId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__81">
+      <name id="__80">chrgTyp</name>
+      <value>#{pageFlowScope.chrgTyp}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__83">
+      <name id="__82">oc_rt_dis</name>
+      <value>#{pageFlowScope.oc_rt_dis}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__84">
+      <name id="__85">CancelId</name>
+      <value>#{pageFlowScope.CancelId}</value>
+    </input-parameter-definition>
+    <return-value-definition id="__9">
+      <name id="__8">ReceiptAmount</name>
+      <value>#{pageFlowScope.ReceiptAmnt}</value>
+    </return-value-definition>
+    <managed-bean id="__4">
+      <managed-bean-name id="__3">backing_Receipt</managed-bean-name>
+      <managed-bean-class id="__5">view.backing.Receipt</managed-bean-class>
+      <managed-bean-scope id="__2">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1Receipt.jsff-->
+    </managed-bean>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__6">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="router1">
+      <case>
+        <expression>#{pageFlowScope.TransId=='CR'|| pageFlowScope.TransId=='BP'}</expression>
+        <outcome id="__46">add</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.TransId=='ER'}</expression>
+        <outcome id="__47">edit</outcome>
+      </case>
+      <default-outcome>add</default-outcome>
+    </router>
+    <view id="Receipt">
+      <page>/Receipt.jspx</page>
+    </view>
+    <method-call id="OnCreateReceipt">
+      <method>#{bindings.OnCreateReceipt.execute}</method>
+      <outcome id="__12">
+        <fixed-outcome>OnCreateReceipt</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__33">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome id="__7">
+        <name>taskFlowReturn1</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="taskFlowReturn2">
+      <outcome id="__36">
+        <name>taskFlowReturn2</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__17">
+      <from-activity-id id="__18">router1</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome id="__21">add</from-outcome>
+        <to-activity-id id="__20">OnCreateReceipt</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__50">
+        <from-outcome id="__49">edit</from-outcome>
+        <to-activity-id id="__48">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id id="__14">OnCreateReceipt</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome id="__22">OnCreateReceipt</from-outcome>
+        <to-activity-id id="__15">Receipt</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__51">
+      <from-activity-id id="__52">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__53">
+        <from-outcome id="__55">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__54">Receipt</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__41">
+      <from-activity-id id="__56">Receipt</from-activity-id>
+      <control-flow-case id="__57">
+        <from-outcome id="__59">toSave</from-outcome>
+        <to-activity-id id="__58">taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__61">
+        <from-outcome id="__62">toCancel</from-outcome>
+        <to-activity-id id="__60">taskFlowReturn2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

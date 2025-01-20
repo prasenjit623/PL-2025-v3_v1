@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchMoveInOutPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MoveInOut_VO1" RangeSize="25"
+              DataControl="MoveInOut_AMDataControl" id="MoveInOut_VO1Iterator"/>
+    <searchRegion Criteria="SearchMoveInOut"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="MoveInOut_VO1Iterator" id="SearchMoveInOutQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="MoveInOut_VO1Iterator" id="MoveInOut_VO1">
+      <nodeDefinition DefName="model.VO.MoveInOut_VO" Name="MoveInOut_VO10">
+        <AttrNames>
+          <Item Value="MoveInOutNumber"/>
+          <Item Value="BookingId"/>
+          <Item Value="LeaseAgreementId"/>
+          <Item Value="Customer"/>
+          <Item Value="ResourceName"/>
+          <Item Value="MoveInOutDate"/>
+          <Item Value="Description"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

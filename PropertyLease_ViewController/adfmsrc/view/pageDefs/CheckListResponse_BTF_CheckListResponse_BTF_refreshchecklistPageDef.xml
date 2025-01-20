@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="CheckListResponse_BTF_CheckListResponse_BTF_refreshchecklistPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="refreshchecklist" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="refreshchecklist"
+                  IsViewObjectMethod="false"
+                  DataControl="CheckListResponse_AMDataControl"
+                  InstanceName="CheckListResponse_AMDataControl.dataProvider">
+      <NamedData NDName="funcid" NDValue="#{pageFlowScope.Funcid}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="funcrefid" NDValue="#{pageFlowScope.FuncreFid}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="Lookup" NDValue="#{pageFlowScope.Lookup}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

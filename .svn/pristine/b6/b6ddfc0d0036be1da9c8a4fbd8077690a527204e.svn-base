@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+     <af:panelTabbed position="above" id="pt2"
+                      styleClass="AFStretchWidth" inlineStyle="height:750.0px;">
+        <af:showDetailItem id="tab1" text="Other Charges" flex="0" styleClass="AFStretchWidth">
+      <af:panelGroupLayout id="pgl1" layout="default">
+        <af:panelGridLayout id="pgl2">
+          <af:gridRow marginTop="5px" height="auto" id="gr1">
+            <af:gridCell marginStart="5px" width="50%" id="gc1">
+              <af:outputLabel value="Other Charges" id="ol1"
+                              inlineStyle="font-weight:bolder; font-size:large;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:panelGroupLayout layout="vertical" id="pgl3">
+          <af:panelGroupLayout layout="vertical" id="pgl6">
+            <af:panelGroupLayout layout="vertical" id="pgl7"/>
+            
+                <af:query id="qryId1" headerText="Search" disclosed="true"
+                          value="#{bindings.SearchQuery1.queryDescriptor}"
+                          model="#{bindings.SearchQuery1.queryModel}"
+                          queryListener="#{bindings.SearchQuery1.processQuery}"
+                          queryOperationListener="#{bindings.SearchQuery1.processQueryOperation}"
+                          rows="3" maxColumns="3"/>
+              
+          </af:panelGroupLayout>
+          <af:spacer width="10" height="10" id="s5"/>
+          <af:panelBox text="Search Result" id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelCollection  id="pc2" styleClass="AFStretchWidth"
+                                featuresOff="detach">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar  id="t1" flex="1">
+                  <af:commandImageLink
+                                       id="cil1"
+                                       icon="/images/func_add_16_ena.png"
+                                       action="addEdit"
+                                       disabledIcon="/images/func_add_16_dis.png"
+                                       hoverIcon="/images/func_add_16_hov.png"
+                                       depressedIcon="/images/func_add_16_act.png">
+                   
+                  </af:commandImageLink>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:commandImageLink 
+                                       id="cil2" action="edit"
+                                       icon="/images/func_pencil_16_ena.png"
+                                       disabledIcon="/images/func_pencil_16_dis.png"
+                                       hoverIcon="/images/func_pencil_16_hov.png"
+                                       depressedIcon="/images/func_pencil_16_act.png"
+                                       rendered="false">
+                    <af:setPropertyListener from="#{bindings.OcHdrId.inputValue}"
+                                            to="#{pageFlowScope.addEditOcHdrId}"
+                                            type="action"/>
+                    </af:commandImageLink>
+                    <af:spacer width="10" height="10" id="s4"/>
+                  <af:commandImageLink id="cil3"
+                                       icon="/images/xl.png"
+                                       hoverIcon="/images/filedownload_ena.png"
+                                       depressedIcon="/images/filedownload_dis.png">
+                    <af:fileDownloadActionListener contentType="application/xls"
+                                    filename="Other Charges.xls"
+                                                   method="#{backingBeanScope.SearchOC_Mb.exportToExcel}"/>
+                  </af:commandImageLink>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.SearchOC_ROVO1.collectionModel}"
+                        var="row" rows="#{bindings.SearchOC_ROVO1.rangeSize}"
+                        emptyText="#{bindings.SearchOC_ROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="6"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.SearchOC_ROVO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.SearchOC_ROVO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t2" varStatus="vs" scrollPolicy="page"
+                        autoHeightRows="0"
+                        partialTriggers=":::qryId1">
+                <af:column id="c26" headerText="S.No" align="center" width="60"
+                           frozen="true">
+                  <af:outputText value="#{vs.index+1}" id="ot50"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchOC_ROVO1.hints.OtherChargesNumber.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchOC_ROVO1.hints.OtherChargesNumber.label}"
+                           id="c4" align="center" width="100" frozen="true">
+                 <af:commandLink  id="cl2" action="edit">
+                   <af:outputText value="#{row.OtherChargesNumber}" id="ot17" inlineStyle="font-weight:bolder;"/>
+                    <af:setPropertyListener from="#{bindings.OcHdrId.inputValue}"
+                                            to="#{pageFlowScope.addEditOcHdrId}"
+                                            type="action"/>
+                    <af:setPropertyListener from="displayLDate"
+                                            to="#{pageFlowScope.displayLDate}"
+                                            type="action"/>
+                    <af:setPropertyListener to="#{sessionScope.OC_SmryReceiptPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/OC_Recommendation_Receipt/receipt/#{row.bindings.OtherChargesNumber.inputValue}"/>
+                    <af:setPropertyListener to="#{sessionScope.OC_ReceiptAckPrint}"
+                                            type="action"
+                                            from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/OC_Recommendation_Receipt_Ack/receiptack/#{row.bindings.OtherChargesNumber.inputValue}"/>
+                   <af:setPropertyListener to="#{sessionScope.oc_tax_invoice}"
+                                            type="action"
+                                            from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/oc/tax/invoice/#{row.bindings.OtherChargesNumber.inputValue}"/>
+                    <!--<af:setPropertyListener to="#{sessionScope.OC_SmryReceiptPrint}"
+                                                  type="action"
+                                                  from="https://almisksoat1-wls-1.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/OC_Recommendation_Receipt/receipt/#{row.bindings.OtherChargesNumber.inputValue}"/>-->
+                    <!--<af:setPropertyListener to="#{sessionScope.OC_ReceiptAckPrint}"
+                                                  type="action"
+                                                  from="https://almisksoat1-wls-1.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/OC_Recommendation_Receipt_Ack/receiptack/#{row.bindings.OtherChargesNumber.inputValue}"/>-->
+                   <!--<af:setPropertyListener to="#{sessionScope.oc_tax_invoice}"
+                                          type="action"
+                                          from="https://almisksoat1-wls-1.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/oc/tax/invoice/#{row.bindings.OtherChargesNumber.inputValue}"/>-->
+                  </af:commandLink>
+                </af:column>
+                <af:column headerText="Cancellation No"
+                           id="c13" align="center" width="100" frozen="true">
+                  <af:outputText value="#{row.CancelNo}" id="ot6"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchOC_ROVO1.hints.LeaseNumber.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchOC_ROVO1.hints.LeaseNumber.label}"
+                           id="c7" align="center" frozen="true">
+                  <af:outputText value="#{row.LeaseNumber}" id="ot1"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchOC_ROVO1.hints.BookingNumberTrans.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchOC_ROVO1.hints.BookingNumberTrans.label}"
+                           id="c5" align="center" frozen="true">
+                  <af:outputText value="#{row.BookingNumberTrans}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchOC_ROVO1.hints.RecommendNumberTrans.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchOC_ROVO1.hints.RecommendNumberTrans.label}"
+                           id="c3" align="center" frozen="true">
+                  <af:outputText value="#{row.RecommendNumberTrans}" id="ot8"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchOC_ROVO1.hints.PropertyId.label}"
+                           id="c9" width="150">
+                  <af:selectOneChoice value="#{row.bindings.PropertyId.inputValue}"
+                                      label="#{row.bindings.PropertyId.label}"
+                                      required="#{bindings.SearchOC_ROVO1.hints.PropertyId.mandatory}"
+                                      shortDesc="#{bindings.SearchOC_ROVO1.hints.PropertyId.tooltip}"
+                                      id="soc2" readOnly="true">
+                    <f:selectItems value="#{row.bindings.PropertyId.items}"
+                                   id="si2"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.SearchOC_ROVO1.hints.BuildingId.label}"
+                           id="c10" width="150">
+                  <af:selectOneChoice value="#{row.bindings.BuildingId.inputValue}"
+                                      label="#{row.bindings.BuildingId.label}"
+                                      required="#{bindings.SearchOC_ROVO1.hints.BuildingId.mandatory}"
+                                      shortDesc="#{bindings.SearchOC_ROVO1.hints.BuildingId.tooltip}"
+                                      id="soc3" readOnly="true">
+                    <f:selectItems value="#{row.bindings.BuildingId.items}"
+                                   id="si3"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.SearchOC_ROVO1.hints.UnitId.label}"
+                           id="c11">
+                  <af:selectOneChoice value="#{row.bindings.UnitId.inputValue}"
+                                      label="#{row.bindings.UnitId.label}"
+                                      required="#{bindings.SearchOC_ROVO1.hints.UnitId.mandatory}"
+                                      shortDesc="#{bindings.SearchOC_ROVO1.hints.UnitId.tooltip}"
+                                      id="soc4" readOnly="true">
+                    <f:selectItems value="#{row.bindings.UnitId.items}"
+                                   id="si4"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchOC_ROVO1.hints.CustName.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchOC_ROVO1.hints.CustName.label}"
+                           id="c1" width="150">
+                  <af:outputText value="#{row.CustName}" id="ot3"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchOC_ROVO1.hints.Status.label}"
+                           id="c6" align="center">
+                  <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                      label="#{row.bindings.Status.label}"
+                                      required="#{bindings.SearchOC_ROVO1.hints.Status.mandatory}"
+                                      shortDesc="#{bindings.SearchOC_ROVO1.hints.Status.tooltip}"
+                                      id="soc1" readOnly="true">
+                    <f:selectItems value="#{row.bindings.Status.items}"
+                                   id="si1"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.SearchOC_ROVO1.hints.DestinationBu.label}"
+                           id="c14" width="150">
+                  <af:selectOneChoice value="#{row.bindings.DestinationBu.inputValue}"
+                                      label="#{row.bindings.DestinationBu.label}"
+                                      required="#{bindings.SearchOC_ROVO1.hints.DestinationBu.mandatory}"
+                                      shortDesc="#{bindings.SearchOC_ROVO1.hints.DestinationBu.tooltip}"
+                                      id="soc5" readOnly="true">
+                    <f:selectItems value="#{row.bindings.DestinationBu.items}"
+                                   id="si5"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="Lease Start Date"
+                           id="c15">
+                  <af:outputText value="#{row.LeaseStartDate}" id="ot10">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column headerText="Lease End Date"
+                           id="c16">
+                  <af:outputText value="#{row.LeaseEndDate}" id="ot11">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchOC_ROVO1.hints.OthersTotalRate.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchOC_ROVO1.hints.OthersTotalRate.label}"
+                           id="c8" align="center">
+                  <af:outputText value="#{row.OthersTotalRate}" id="ot7"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchOC_ROVO1.hints.ReceiptTotal.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchOC_ROVO1.hints.ReceiptTotal.label}"
+                           id="c2" align="center">
+                  <af:outputText value="#{row.ReceiptTotal}" id="ot5"/>
+                </af:column>
+                <af:column headerText="Creation Date"
+                           id="c12">
+                  <af:outputText value="#{row.CreateDate}" id="ot4">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+   </af:showDetailItem>
+  <af:showDetailItem id="tab2" text="Direct Payment OC" flex="0" styleClass="AFStretchWidth">
+  <af:panelGroupLayout id="pgl23" layout="default">
+        <af:panelGridLayout id="pgl33">
+          <af:gridRow marginTop="5px" height="auto" id="gr123">
+            <af:gridCell marginStart="5px" width="50%" id="gc123">
+              <af:outputLabel value="" id="ol123"
+                              inlineStyle="font-weight:bolder; font-size:large;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc124"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:panelGroupLayout layout="vertical" id="pgl32">
+          <af:panelGroupLayout layout="vertical" id="pgl65">
+            <af:panelGroupLayout layout="vertical" id="pgl75"/>            
+                <af:panelGroupLayout layout="vertical" id="pgl56">
+                <af:panelHeader text="Search Direct Payment OC" id="ph1">
+                        <af:query id="qryId2" headerText="Search"
+                                  disclosed="true"
+                                  value="#{bindings.SearchQuery2.queryDescriptor}"
+                                  model="#{bindings.SearchQuery2.queryModel}"
+                                  queryListener="#{bindings.SearchQuery2.processQuery}"
+                                  queryOperationListener="#{bindings.SearchQuery2.processQueryOperation}"
+                                  rows="3" maxColumns="2"/>
+                </af:panelHeader>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+          <af:spacer width="10" height="10" id="s532"/>
+          <af:panelBox text="Search Result" id="pb142">
+            <f:facet name="toolbar"/>
+            <af:panelCollection  id="pc223" styleClass="AFStretchWidth" featuresOff="detach">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar  id="t121" flex="1">
+                  <af:commandImageLink
+                                       id="cil152"
+                                       icon="/images/func_add_16_ena.png"
+                                       action="addOcDp"
+                                       disabledIcon="/images/func_add_16_dis.png"
+                                       hoverIcon="/images/func_add_16_hov.png"
+                                       depressedIcon="/images/func_add_16_act.png">
+                   
+                  </af:commandImageLink>
+                  <af:spacer width="10" height="10" id="s351"/>
+                   <af:commandImageLink 
+                                       id="cil351" icon="/images/xl.png"
+                                       hoverIcon="/images/filedownload_ena.png"
+                                       depressedIcon="/images/filedownload_dis.png">
+                    <af:exportCollectionActionListener type="excelHTML"
+                                                       exportedId="t3"
+                                                       filename="Direct Payment OC.xls"
+                                                       title="Direct Payment OC"/>
+                  </af:commandImageLink>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.SearchOcDp_RoVo1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.SearchOcDp_RoVo1.rangeSize}"
+                            emptyText="#{bindings.SearchOcDp_RoVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.SearchOcDp_RoVo1.rangeSize}"
+                            rowBandingInterval="0" columnStretching="column:c18"
+                            selectedRowKeys="#{bindings.SearchOcDp_RoVo1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.SearchOcDp_RoVo1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t3" varStatus="vs" scrollPolicy="page"
+                            autoHeightRows="0" partialTriggers=":::qryId2">
+                    <af:column id="c261" headerText="S.No" align="center" width="60" frozen="true">
+                  <af:outputText value="#{vs.index+1}" id="ot510"/>
+                </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.OcHdrId.name}"
+                               sortable="false"
+                               headerText="#{bindings.SearchOcDp_RoVo1.hints.OcHdrId.label}"
+                               id="c20" rendered="false">
+                      <af:outputText value="#{row.OcHdrId}" id="ot13"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.OtherChargesNumber.name}"
+                               sortable="false"
+                               headerText="#{bindings.SearchOcDp_RoVo1.hints.OtherChargesNumber.label}"
+                               id="c23" align="center" width="100" frozen="true">
+                    <af:commandLink  id="cl231" action="editOcDp">
+                   <af:outputText value="#{row.OtherChargesNumber}" id="ot1732" inlineStyle="font-weight:bolder;"/>
+                    <af:setPropertyListener from="#{row.OcHdrId}"
+                                            to="#{pageFlowScope.addEditOcHdrId}"
+                                            type="action"/>
+                    <!--<af:setPropertyListener from="displayLDate"
+                                            to="#{pageFlowScope.displayLDate}"
+                                            type="action"/>-->
+                    <af:setPropertyListener to="#{sessionScope.OC_SmryReceiptPrint}"
+                                                  type="action"
+                                                  from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/OC_Recommendation_Receipt/receipt/#{row.bindings.OtherChargesNumber.inputValue}"/>
+                    <af:setPropertyListener to="#{sessionScope.OC_ReceiptAckPrint}"
+                                            type="action"
+                                            from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/OC_Recommendation_Receipt_Ack/receiptack/#{row.bindings.OtherChargesNumber.inputValue}"/>
+                   <af:setPropertyListener to="#{sessionScope.oc_tax_invoice}"
+                                            type="action"
+                                            from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/oc/tax/invoice/#{row.bindings.OtherChargesNumber.inputValue}"/>
+                    <!--<af:setPropertyListener to="#{sessionScope.OC_SmryReceiptPrint}"
+                                                  type="action"
+                                                  from="https://almisksoat1-wls-1.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/OC_Recommendation_Receipt/receipt/#{row.bindings.OtherChargesNumber.inputValue}"/>-->
+                    <!--<af:setPropertyListener to="#{sessionScope.OC_ReceiptAckPrint}"
+                                                  type="action"
+                                                  from="https://almisksoat1-wls-1.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/OC_Recommendation_Receipt_Ack/receiptack/#{row.bindings.OtherChargesNumber.inputValue}"/>-->
+                   <!--<af:setPropertyListener to="#{sessionScope.oc_tax_invoice}"
+                                          type="action"
+                                          from="https://almisksoat1-wls-1.miskprops.com:8002/Al-MuskRtfServicesDemo1/webresources/rest/oc/tax/invoice/#{row.bindings.OtherChargesNumber.inputValue}"/>-->
+                  </af:commandLink>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.CustNameTrans.name}"
+                               sortable="false"
+                               headerText="#{bindings.SearchOcDp_RoVo1.hints.CustNameTrans.label}"
+                               id="c24" width="230">
+                      <af:outputText value="#{row.CustNameTrans}" id="ot14"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.PropertyNameTrans.name}"
+                               sortable="false"
+                               headerText="#{bindings.SearchOcDp_RoVo1.hints.PropertyNameTrans.label}"
+                               id="c27" rendered="false">
+                      <af:outputText value="#{row.PropertyNameTrans}"
+                                     id="ot20"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.BuildingNameTrans.name}"
+                               sortable="false"
+                               headerText="#{bindings.SearchOcDp_RoVo1.hints.BuildingNameTrans.label}"
+                               id="c21" rendered="false">
+                      <af:outputText value="#{row.BuildingNameTrans}"
+                                     id="ot23"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.UnitNameTrans.name}"
+                               sortable="false"
+                               headerText="#{bindings.SearchOcDp_RoVo1.hints.UnitNameTrans.label}"
+                               id="c22" rendered="false">
+                      <af:outputText value="#{row.UnitNameTrans}" id="ot19"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.Status.name}"
+                               sortable="false"
+                               headerText="#{bindings.SearchOcDp_RoVo1.hints.Status.label}"
+                               id="c19">
+                      <af:outputText value="#{row.Status}" id="ot21"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.OthersTotalRate.name}"
+                               sortable="false"
+                               headerText="Total OC Amount"
+                               id="c17">
+                      <af:outputText value="#{row.OthersTotalRate}" id="ot18"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.ReceiptTotal.name}"
+                               sortable="false"
+                               headerText="Total Receipt Amount"
+                               id="c28">
+                      <af:outputText value="#{row.ReceiptTotal}" id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.DOrgName.name}"
+                               sortable="false"
+                               headerText="Destination BU"
+                               id="c29">
+                      <af:outputText value="#{row.DOrgName}" id="ot22"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.CreateDate.name}"
+                               sortable="false"
+                               headerText="Create Date"
+                               id="c25">
+                      <af:outputText value="#{row.CreateDate}" id="ot15">
+                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.SearchOcDp_RoVo1.hints.CreatedBy.name}"
+                               sortable="false"
+                               headerText="Created by"
+                               id="c18">
+                      <af:outputText value="#{row.CreatedBy}" id="ot12"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+  </af:showDetailItem>
+   </af:panelTabbed>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+</jsp:root>

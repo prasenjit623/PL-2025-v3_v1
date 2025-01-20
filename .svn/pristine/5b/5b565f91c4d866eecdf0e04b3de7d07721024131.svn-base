@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="PriceListAddEdit">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">router1</default-activity>
+    <transaction id="__32">
+      <requires-transaction/>
+    </transaction>
+    <managed-bean id="__44">
+      <managed-bean-name id="__42">addEditPrice</managed-bean-name>
+      <managed-bean-class id="__41">addEditPrice</managed-bean-class>
+      <managed-bean-scope id="__43">backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="refreshPriceListApplication">
+      <method>#{bindings.refreshPriceListApplication.execute}</method>
+      <outcome id="__2">
+        <fixed-outcome>refreshPriceListApplication</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="router1">
+      <case>
+        <expression>#{sessionScope.addEditPriceList=='Add'}</expression>
+        <outcome id="__18">addPL</outcome>
+      </case>
+      <case>
+        <expression>#{sessionScope.addEditPriceList=='Edit'}</expression>
+        <outcome id="__19">editPL</outcome>
+      </case>
+      <default-outcome>addPL</default-outcome>
+    </router>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__8">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__9">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="addEditPrice">
+      <page>/fragments/addEditPrice.jsff</page>
+    </view>
+    <task-flow-return id="save">
+      <outcome id="__30">
+        <name>save</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="cancel">
+      <outcome id="__31">
+        <name>cancel</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__4">refreshPriceListApplication</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__7">refreshPriceListApplication</from-outcome>
+        <to-activity-id id="__6">router1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">router1</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">addPL</from-outcome>
+        <to-activity-id id="__12">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome id="__17">editPL</from-outcome>
+        <to-activity-id id="__15">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id id="__21">CreateInsert</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome id="__23">CreateInsert</from-outcome>
+        <to-activity-id id="__22">addEditPrice</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__25">
+      <from-activity-id id="__26">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__27">
+        <from-outcome id="__29">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__28">addEditPrice</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__33">
+      <from-activity-id id="__34">addEditPrice</from-activity-id>
+      <control-flow-case id="__36">
+        <from-outcome id="__37">save</from-outcome>
+        <to-activity-id id="__35">save</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__38">
+        <from-outcome id="__40">cancel</from-outcome>
+        <to-activity-id id="__39">cancel</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

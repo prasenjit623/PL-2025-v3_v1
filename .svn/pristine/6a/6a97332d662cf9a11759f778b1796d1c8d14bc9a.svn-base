@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SearchBuilding_ROVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  OrderBy='"BUILD_ID" desc'>
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.SearchBuilding_ROVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_GRP_ID"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression>adf.context.current.sessionScope.get('UserGrpId')</TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+    
+  </Variable>
+  <ViewAccessor
+    Name="LookupDetails_ROVO1"
+    ViewObjectName="model.ROVO.LookupDetails_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="BuildingType_LOV"
+      FullName="model.ROVO.Lookup_View_ROVO.BuildingType_LOV"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Projects_ROVO1"
+    ViewObjectName="model.ROVO.Projects_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PropertyforBuildingPage_ROVO1"
+    ViewObjectName="model.ROVO.PropertyforBuildingPage_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="filteredByPropertyType"
+      FullName="model.ROVO.PropertyforBuildingPage_ROVO.filteredByPropertyType"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_BuildType"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuildType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyId"
+    ListVOName="PropertyforBuildingPage_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyName"
+    ListVOName="PropertyforBuildingPage_ROVO1"
+    ListRangeSize="4"
+    NullValueFlag="none"
+    NullValueId="LOV_PropertyName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SearchProperty"/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT 
+    XXPL_PROPERTY_BUILDINGS.BUILD_ID BUILD_ID,
+(select PROPERTY_NAME from XXPL_PROPERTY_MASTER where PROPERTY_ID=XXPL_PROPERTY_BUILDINGS.PROPERTY_ID)as PROPERTY_NAME, 
+    XXPL_PROPERTY_BUILDINGS.PROPERTY_ID PROPERTY_ID, 
+    XXPL_PROPERTY_BUILDINGS.BUILD_NAME BUILD_NAME, 
+    XXPL_PROPERTY_BUILDINGS.BUILD_NAME_TL BUILD_NAME_TL, 
+    XXPL_PROPERTY_BUILDINGS.BUILD_NUMBER BUILD_NUMBER, 
+    XXPL_PROPERTY_BUILDINGS.BUILD_SHORTCODE BUILD_SHORTCODE, 
+    XXPL_PROPERTY_BUILDINGS.PARENT_UNIT_ID PARENT_UNIT_ID, 
+    XXPL_PROPERTY_BUILDINGS.BUILD_TYPE BUILD_TYPE, 
+    XXPL_PROPERTY_BUILDINGS.BUILD_CLASS BUILD_CLASS, 
+    XXPL_PROPERTY_BUILDINGS.BUILD_CATEGORY BUILD_CATEGORY, 
+    XXPL_PROPERTY_BUILDINGS.VEND_ID VEND_ID, 
+    XXPL_PROPERTY_BUILDINGS.DESCRIPTION DESCRIPTION
+FROM 
+    XXPL_PROPERTY_BUILDINGS
+WHERE XXPL_PROPERTY_BUILDINGS.PROPERTY_ID
+IN 
+(select DISTINCT segment2 from XXFND_DATA_COMBINATION where DCOMB_ID IN
+(SELECT DCOMB_ID FROM 
+XXFND_DATA_GROUP_DETAIL 
+where DATA_GROUP_ID=:P_GRP_ID))]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="BuildId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BUILD_ID"
+    Expression="BUILD_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROPERTY_NAME"
+    Expression="PROPERTY_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_PropertyName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchBuilding_ROVO.PropertyName_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+        <DISPLAYWIDTH
+          Value="25"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PROPERTY_ID"
+    Expression="PROPERTY_ID"
+    SQLType="NUMERIC"
+    LOVName="LOV_PropertyId">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchBuilding_ROVO.PropertyId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_NAME"
+    Expression="BUILD_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchBuilding_ROVO.BuildName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildNameTl"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_NAME_TL"
+    Expression="BUILD_NAME_TL"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_NUMBER"
+    Expression="BUILD_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchBuilding_ROVO.BuildNumber_LABEL"/>
+        <DISPLAYWIDTH
+          Value="27"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildShortcode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_SHORTCODE"
+    Expression="BUILD_SHORTCODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ParentUnitId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PARENT_UNIT_ID"
+    Expression="PARENT_UNIT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_TYPE"
+    Expression="BUILD_TYPE"
+    SQLType="VARCHAR"
+    LOVName="LOV_BuildType">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.ROVO.SearchBuilding_ROVO.BuildType_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildClass"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_CLASS"
+    Expression="BUILD_CLASS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildCategory"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BUILD_CATEGORY"
+    Expression="BUILD_CATEGORY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VendId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VEND_ID"
+    Expression="VEND_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SearchBuilding"
+    ViewObjectName="model.ROVO.SearchBuilding_ROVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="displayName"
+          ResId="SearchBuilding_displayName"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow3"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="PropertyName"
+        ViewAttribute="PropertyName"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="BuildName"
+        ViewAttribute="BuildName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="BuildNumber"
+        ViewAttribute="BuildNumber"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="BuildType"
+        ViewAttribute="BuildType"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

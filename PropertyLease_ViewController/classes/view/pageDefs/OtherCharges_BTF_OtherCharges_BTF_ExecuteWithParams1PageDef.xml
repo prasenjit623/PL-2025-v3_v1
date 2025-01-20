@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParams1PageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="Receipt_VO5" RangeSize="25"
+              DataControl="OtherCharges_AMDataControl"
+              id="Receipt_VO5Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="Receipt_VO5Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="B_VAL" NDValue="#{pageFlowScope.recid}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="REFID" NDType="java.lang.String"/>
+      <NamedData NDName="p_sorcFuncId" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1"
+                   binding="#{backingBeanScope.backing_fragments_SearchMilestones.pt1}">
+    <f:facet name="pageContents">
+      <af:group binding="#{backingBeanScope.backing_fragments_SearchMilestones.g1}"
+                id="g1">
+        <af:panelGridLayout binding="#{backingBeanScope.backing_fragments_SearchMilestones.pgl2}"
+                            id="pgl2">
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                      binding="#{backingBeanScope.backing_fragments_SearchMilestones.gr1}"
+                      id="gr1">
+            <af:gridCell marginStart="5px" width="50%"
+                         binding="#{backingBeanScope.backing_fragments_SearchMilestones.gc1}"
+                         id="gc1" halign="start">
+              <af:outputText value="Payment Plan"
+                             binding="#{backingBeanScope.backing_fragments_SearchMilestones.ot1}"
+                             id="ot1"
+                             inlineStyle="font-weight:bolder; font-size:medium;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                         binding="#{backingBeanScope.backing_fragments_SearchMilestones.gc2}"
+                         id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:spacer width="10" height="10"
+                   binding="#{backingBeanScope.backing_fragments_SearchMilestones.s1}"
+                   id="s1"/>
+        <af:panelGroupLayout layout="vertical"
+                             binding="#{backingBeanScope.backing_fragments_SearchMilestones.pgl3}"
+                             id="pgl3">
+          <af:query id="qryId1" headerText="Search" disclosed="true"
+                    value="#{bindings.SearchMilestonesROVOCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.SearchMilestonesROVOCriteriaQuery.queryModel}"
+                    queryListener="#{bindings.SearchMilestonesROVOCriteriaQuery.processQuery}"
+                    queryOperationListener="#{bindings.SearchMilestonesROVOCriteriaQuery.processQueryOperation}"
+                    resultComponentId="::pc1:resId1"
+                    binding="#{backingBeanScope.backing_fragments_SearchMilestones.qryId1}"
+                    rows="2" maxColumns="2"/>
+          <af:spacer width="10" height="10"
+                     binding="#{backingBeanScope.backing_fragments_SearchMilestones.s2}"
+                     id="s2"/>
+          <af:panelBox text="Search Result"
+                       binding="#{backingBeanScope.backing_fragments_SearchMilestones.pb2}"
+                       id="pb2">
+            <f:facet name="toolbar"/>
+            <af:panelCollection binding="#{backingBeanScope.backing_fragments_SearchMilestones.pc1}"
+                                id="pc1" styleClass="AFStretchWidth">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar binding="#{backingBeanScope.backing_fragments_SearchMilestones.t1}"
+                            id="t1" flex="1">
+                  <af:commandImageLink binding="#{backingBeanScope.backing_fragments_SearchMilestones.cil1}"
+                                       id="cil1"
+                                       icon="/images/func_add_16_ena.png"
+                                       action="add"
+                                       disabledIcon="/images/func_add_16_dis.png"
+                                       hoverIcon="/images/func_add_16_hov.png"
+                                       depressedIcon="/images/func_add_16_act.png"
+                                       shortDesc="Add"
+                                       visible="#{sessionScope.grantMap.Milestone =='F'}"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{backingBeanScope.backing_fragments_SearchMilestones.s3}"
+                             id="s3"/>
+                  <af:commandImageLink binding="#{backingBeanScope.backing_fragments_SearchMilestones.cil2}"
+                                       id="cil2"
+                                       icon="/images/func_pencil_16_ena.png"
+                                       action="edit"
+                                       disabledIcon="/images/func_pencil_16_dis.png"
+                                       hoverIcon="/images/func_pencil_16_hov.png"
+                                       depressedIcon="/images/func_pencil_16_act.png"
+                                       shortDesc="Edit"
+                                       visible="#{sessionScope.grantMap.Milestone =='F'}">
+                    <af:setPropertyListener to="#{pageFlowScope.MsId}"
+                                            type="action"
+                                            from="#{bindings.MsHdrId.inputValue}"/>
+                  </af:commandImageLink>
+                  <af:spacer width="10" height="10"
+                             binding="#{backingBeanScope.backing_fragments_SearchMilestones.s4}"
+                             id="s4"/>
+                  <af:commandImageLink binding="#{backingBeanScope.backing_fragments_SearchMilestones.cil3}"
+                                       id="cil3" icon="/images/refersh.png"
+                                       action="#{backingBeanScope.backing_fragments_SearchMilestones.Revise}"
+                                       partialTriggers="resId1"
+                                       partialSubmit="true"
+                                       visible="#{bindings.Status.inputValue=='APR'}"
+                                       shortDesc="Revesion"
+                                       rendered="#{sessionScope.grantMap.Milestone =='F'}">
+                    <af:setPropertyListener from="#{bindings.MsHdrId.inputValue}"
+                                            to="#{pageFlowScope.MsId}"
+                                            type="action"/>
+                  </af:commandImageLink>
+                  <af:spacer width="10" height="10"
+                             binding="#{backingBeanScope.backing_fragments_SearchMilestones.s5}"
+                             id="s5"/>
+                  <af:commandImageLink binding="#{backingBeanScope.backing_fragments_SearchMilestones.commandImageLink1}"
+                                       id="commandImageLink1"
+                                       icon="/images/xl.png"
+                                       visible="#{sessionScope.grantMap.Milestone =='N'?'false':'true'}">
+                    <af:exportCollectionActionListener exportedId="resId1"
+                                                       type="excelHTML"
+                                                       filename="Payment.xls"
+                                                       title="Payment"/>
+                  </af:commandImageLink>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.SearchMilestones_ROVO1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.SearchMilestones_ROVO1.rangeSize}"
+                        emptyText="#{bindings.SearchMilestones_ROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="6" rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.SearchMilestones_ROVO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.SearchMilestones_ROVO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="resId1"
+                        binding="#{backingBeanScope.backing_fragments_SearchMilestones.resId1}"
+                        varStatus="vs" columnStretching="column:resId1c6"
+                        scrollPolicy="page" autoHeightRows="0"
+                        columnSelection="single"
+                        filterModel="#{bindings.SearchMilestonesROVOCriteriaQuery.queryDescriptor}"
+                        queryListener="#{bindings.SearchMilestonesROVOCriteriaQuery.processQuery}"
+                        filterVisible="false">
+                <af:column id="c1" headerText="S.No" align="center" width="50"
+                           frozen="true">
+                  <af:outputText value="#{vs.index+1}" id="ot3"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchMilestones_ROVO1.hints.MilestoneName.name}"
+                           sortable="true" headerText="Payment Plan"
+                           id="resId1c1" width="250" frozen="true"
+                           filterable="true">
+                  <af:outputText value="#{row.MilestoneName}" id="ot8"
+                                 rendered="false"/>
+                  <af:commandLink text="#{row.MilestoneName}" id="cl1"
+                                  action="edit"
+                                  inlineStyle="font-weight:bolder; font-size:small; color:#1367AE;">
+                    <af:setPropertyListener to="#{pageFlowScope.MsId}"
+                                            type="action"
+                                            from="#{bindings.MsHdrId.inputValue}"/>
+                  </af:commandLink>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchMilestones_ROVO1.hints.MilestoneNumber.name}"
+                           sortable="true" headerText="Payment Plan Number"
+                           id="resId1c2" width="180" frozen="true"
+                           filterable="true">
+                  <af:outputText value="#{row.MilestoneNumber}" id="ot6"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchMilestones_ROVO1.hints.OrgId.name}"
+                           sortable="true" headerText="Buisiness Unit"
+                           id="resId1c3" width="350" filterable="true">
+                  <af:selectOneChoice value="#{row.bindings.OrgId.inputValue}"
+                                      label="#{row.bindings.OrgId.label}"
+                                      required="#{bindings.SearchMilestones_ROVO1.hints.OrgId.mandatory}"
+                                      shortDesc="#{bindings.SearchMilestones_ROVO1.hints.OrgId.tooltip}"
+                                      id="soc1" readOnly="true">
+                    <f:selectItems value="#{row.bindings.OrgId.items}"
+                                   id="si1"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchMilestones_ROVO1.hints.ProjectId.name}"
+                           sortable="true" headerText="Property" id="resId1c4"
+                           width="150" rendered="false" filterable="true">
+                  <af:selectOneChoice value="#{row.bindings.ProjectId.inputValue}"
+                                      label="#{row.bindings.ProjectId.label}"
+                                      required="#{bindings.SearchMilestones_ROVO1.hints.ProjectId.mandatory}"
+                                      shortDesc="#{bindings.SearchMilestones_ROVO1.hints.ProjectId.tooltip}"
+                                      id="soc2" readOnly="true">
+                    <f:selectItems value="#{row.bindings.ProjectId.items}"
+                                   id="si2"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchMilestones_ROVO1.hints.Revision.name}"
+                           sortable="true"
+                           headerText="#{bindings.SearchMilestones_ROVO1.hints.Revision.label}"
+                           id="resId1c5" align="center" filterable="true">
+                  <af:outputText value="#{row.Revision}" id="ot5">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.SearchMilestones_ROVO1.hints.Revision.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchMilestones_ROVO1.hints.Status.name}"
+                           sortable="true"
+                           headerText="#{bindings.SearchMilestones_ROVO1.hints.Status.label}"
+                           id="resId1c8" width="150" filterable="true">
+                  <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                      label="#{row.bindings.Status.label}"
+                                      required="#{bindings.SearchMilestones_ROVO1.hints.Status.mandatory}"
+                                      shortDesc="#{bindings.SearchMilestones_ROVO1.hints.Status.tooltip}"
+                                      id="soc3" readOnly="true">
+                    <f:selectItems value="#{row.bindings.Status.items}"
+                                   id="si3"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchMilestones_ROVO1.hints.Description.name}"
+                           sortable="true"
+                           headerText="#{bindings.SearchMilestones_ROVO1.hints.Description.label}"
+                           id="resId1c6" width="400" filterable="true">
+                  <af:outputText value="#{row.Description}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchMilestones_ROVO1.hints.ActiveYn.name}"
+                           sortable="true"
+                           headerText="#{bindings.SearchMilestones_ROVO1.hints.ActiveYn.label}"
+                           id="resId1c7" rendered="false" filterable="true">
+                  <af:outputText value="#{row.ActiveYn}" id="ot7"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:group>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_fragments_SearchMilestones-->
+</jsp:root>

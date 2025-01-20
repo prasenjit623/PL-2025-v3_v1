@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OcDpHdr_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="model.VO.OcDpHdr_VORowImpl"
+  ComponentClass="model.VO.OcDpHdr_VOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VO.OcDpHdr_VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_ochdrIdDp"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="GetCustomerDetailsROVO1"
+    ViewObjectName="model.ROVO.GetCustomerDetailsROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Org_ROVO1"
+    ViewObjectName="model.ROVO.Org_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByTransStatus"
+      FullName="model.ROVO.Lookup_View_ROVO.findByTransStatus"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_Cust_Name_Trans"
+    ListVOName="GetCustomerDetailsROVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_Cust_Name_Trans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Cust_Name_Trans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="CustId"/>
+      <Item Value="ShipToAddre"/>
+      <Item Value="BillToAddre"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CustomerName"/>
+      <Item Value="CustId"/>
+      <Item Value="BillToSite"/>
+      <Item Value="BillToSite"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CustomerName"/>
+      <Item Value="CustomerNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SearchARCustomerDetails"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DestinationBu"
+    ListVOName="Org_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DestinationBu"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrgName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT OtherCharges_EO.OC_HDR_ID, 
+       OtherCharges_EO.OTHER_CHARGES_NUMBER, 
+       OtherCharges_EO.OC_FLAG, 
+       OtherCharges_EO.DESTINATION_BU, 
+       OtherCharges_EO.CUST_ID, 
+       OtherCharges_EO.BILL_TO_ADDRE, 
+       OtherCharges_EO.SHIP_TO_ADDRE, 
+       OtherCharges_EO.PROPERTY_ID, 
+       OtherCharges_EO.BUILDING_ID, 
+       OtherCharges_EO.UNIT_ID, 
+       OtherCharges_EO.OTHERS_TOTAL_RATE, 
+       OtherCharges_EO.RECEIPT_TOTAL, 
+       OtherCharges_EO.GL_DATE, 
+       OtherCharges_EO.FUNC_ID, 
+       OtherCharges_EO.FLOW_WITH, 
+       OtherCharges_EO.FLOW_STATUS, 
+       OtherCharges_EO.FLOW_LEVEL, 
+       OtherCharges_EO.CUSTOMER_TRXN_ID, 
+       OtherCharges_EO.CUSTOMER_TRXN_NUM, 
+       OtherCharges_EO.CREATION_DATE, 
+       OtherCharges_EO.CREATED_BY, 
+       OtherCharges_EO.LAST_UPDATE_DATE, 
+       OtherCharges_EO.LAST_UPDATED_BY, 
+       OtherCharges_EO.LAST_UPDATE_LOGIN, 
+       OtherCharges_EO.STATUS, 
+       OtherCharges_EO.INTEGRATION_RESPONSE,
+to_date(to_char(OtherCharges_EO.CREATION_DATE,'dd-mm-yyyy'),'dd-mm-yyyy') as create_date
+
+FROM XXPM_OC_HEADER OtherCharges_EO]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="OtherCharges_EO"
+    Entity="model.EO.OtherChargesHeader_EO"/>
+  <ViewAttribute
+    Name="OcHdrId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OcHdrId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="OC_HDR_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("xxpm_oc_hdr_id_s",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OtherChargesNumber"
+    PrecisionRule="true"
+    EntityAttrName="OtherChargesNumber"
+    EntityUsage="OtherCharges_EO"
+    AliasName="OTHER_CHARGES_NUMBER"/>
+  <ViewAttribute
+    Name="OcFlag"
+    PrecisionRule="true"
+    EntityAttrName="OcFlag"
+    EntityUsage="OtherCharges_EO"
+    AliasName="OC_FLAG"
+    DefaultValue="DP"/>
+  <ViewAttribute
+    Name="DestinationBu"
+    PrecisionRule="true"
+    EntityAttrName="DestinationBu"
+    EntityUsage="OtherCharges_EO"
+    AliasName="DESTINATION_BU"
+    DefaultValue="300000001937178"
+    LOVName="LOV_DestinationBu">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustId"
+    PrecisionRule="true"
+    EntityAttrName="CustId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CUST_ID"/>
+  <ViewAttribute
+    Name="BillToAddre"
+    PrecisionRule="true"
+    EntityAttrName="BillToAddre"
+    EntityUsage="OtherCharges_EO"
+    AliasName="BILL_TO_ADDRE"/>
+  <ViewAttribute
+    Name="ShipToAddre"
+    PrecisionRule="true"
+    EntityAttrName="ShipToAddre"
+    EntityUsage="OtherCharges_EO"
+    AliasName="SHIP_TO_ADDRE"/>
+  <ViewAttribute
+    Name="PropertyId"
+    PrecisionRule="true"
+    EntityAttrName="PropertyId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="PROPERTY_ID"/>
+  <ViewAttribute
+    Name="BuildingId"
+    PrecisionRule="true"
+    EntityAttrName="BuildingId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="BUILDING_ID"/>
+  <ViewAttribute
+    Name="UnitId"
+    PrecisionRule="true"
+    EntityAttrName="UnitId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="UNIT_ID"/>
+  <ViewAttribute
+    Name="OthersTotalRate"
+    PrecisionRule="true"
+    EntityAttrName="OthersTotalRate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="OTHERS_TOTAL_RATE"
+    DefaultValue="0"/>
+  <ViewAttribute
+    Name="ReceiptTotal"
+    PrecisionRule="true"
+    EntityAttrName="ReceiptTotal"
+    EntityUsage="OtherCharges_EO"
+    AliasName="RECEIPT_TOTAL"
+    DefaultValue="0"/>
+  <ViewAttribute
+    Name="GlDate"
+    PrecisionRule="true"
+    EntityAttrName="GlDate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="GL_DATE"/>
+  <ViewAttribute
+    Name="FuncId"
+    PrecisionRule="true"
+    EntityAttrName="FuncId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="FUNC_ID"/>
+  <ViewAttribute
+    Name="FlowWith"
+    PrecisionRule="true"
+    EntityAttrName="FlowWith"
+    EntityUsage="OtherCharges_EO"
+    AliasName="FLOW_WITH"/>
+  <ViewAttribute
+    Name="FlowStatus"
+    PrecisionRule="true"
+    EntityAttrName="FlowStatus"
+    EntityUsage="OtherCharges_EO"
+    AliasName="FLOW_STATUS"/>
+  <ViewAttribute
+    Name="FlowLevel"
+    PrecisionRule="true"
+    EntityAttrName="FlowLevel"
+    EntityUsage="OtherCharges_EO"
+    AliasName="FLOW_LEVEL"/>
+  <ViewAttribute
+    Name="CustomerTrxnId"
+    PrecisionRule="true"
+    EntityAttrName="CustomerTrxnId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CUSTOMER_TRXN_ID"/>
+  <ViewAttribute
+    Name="CustomerTrxnNum"
+    PrecisionRule="true"
+    EntityAttrName="CustomerTrxnNum"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CUSTOMER_TRXN_NUM"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="OtherCharges_EO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="OtherCharges_EO"
+    AliasName="LAST_UPDATE_LOGIN"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="OtherCharges_EO"
+    AliasName="STATUS"
+    DefaultValue="DRA"
+    LOVName="LOV_Status">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IntegrationResponse"
+    PrecisionRule="true"
+    EntityAttrName="IntegrationResponse"
+    EntityUsage="OtherCharges_EO"
+    AliasName="INTEGRATION_RESPONSE"/>
+  <ViewAttribute
+    Name="CreateDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="CREATE_DATE"
+    Expression="CREATE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Cust_Name_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_Cust_Name_Trans">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="findByOcHdrIdDp"
+    ViewObjectName="model.VO.OcDpHdr_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow437"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="OcHdrId"
+        ViewAttribute="OcHdrId"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_ochdrIdDp"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="OcBkMilestoneDtlDp_VO"
+    ViewLink="model.VL.OcHdrDpVo_OcBkMilestoneDtlDpVo_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="OcReceiptDp_VO"
+    ViewLink="model.VL.OcHdrDpVo_OcReceiptDpVo_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="getApprovalHistoryROVo"
+    ViewLink="model.VL.OcDpHdrVoGetAprvlRoVo_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

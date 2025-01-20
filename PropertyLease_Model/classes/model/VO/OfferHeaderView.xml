@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OfferHeaderView"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="OfferHeader.ORG_ID, 
+       OfferHeader.FUNC_ID, 
+       OfferHeader.OFFER_NUMBER, 
+       OfferHeader.OFFER_DATE, 
+       OfferHeader.OFFER_FROM_DATE, 
+       OfferHeader.OFFER_TO_DATE, 
+       OfferHeader.PERFORMED_BY, 
+       OfferHeader.REVISION_NO, 
+       OfferHeader.MS_HDR_ID, 
+       OfferHeader.LEAD_ID, 
+       OfferHeader.CUSTOMER_ID, 
+       OfferHeader.CUST_SITE_ID, 
+       OfferHeader.SALESMAN_ID, 
+       OfferHeader.NET_OFFER_AMOUNT, 
+       OfferHeader.TAX_AMOUNT, 
+       OfferHeader.DESCRIPTION, 
+       OfferHeader.FLOW_STATUS, 
+       OfferHeader.FLOW_LEVEL, 
+       OfferHeader.FLOW_WITH, 
+       OfferHeader.ATTRIBUTE_CATEGORY, 
+       OfferHeader.ATTRIBUTE1, 
+       OfferHeader.ATTRIBUTE2, 
+       OfferHeader.ATTRIBUTE3, 
+       OfferHeader.ATTRIBUTE4, 
+       OfferHeader.ATTRIBUTE5, 
+       OfferHeader.ATTRIBUTE6, 
+       OfferHeader.ATTRIBUTE7, 
+       OfferHeader.ATTRIBUTE8, 
+       OfferHeader.ATTRIBUTE9, 
+       OfferHeader.ATTRIBUTE10, 
+       OfferHeader.CREATED_BY, 
+       OfferHeader.CREATION_DATE, 
+       OfferHeader.LAST_UPDATED_BY, 
+       OfferHeader.LAST_UPDATE_DATE, 
+       OfferHeader.LAST_UPDATE_LOGIN"
+  FromList="XXPM_OFFER_HEADER OfferHeader"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="VarAccess"/>
+  </DesignTime>
+  <ViewAttribute
+    Name="Tran_CustomerName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[if(LeadId!=null&&LeadVA_E!=null){
+return LeadVA_E.first().getAttribute('LeadName');
+}
+else{
+return null;
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="LeadId"/>
+      <Item
+        Value="Tra_LeadNumber"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferHeaderView.Tran_CustomerName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="OfferDetail_VO"
+    ViewLink="model.VL.OfferHrd_Link_OfferDeta"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

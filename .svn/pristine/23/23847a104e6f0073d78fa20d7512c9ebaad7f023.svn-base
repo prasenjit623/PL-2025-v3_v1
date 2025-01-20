@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="OfferAddEdit_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">refreshOfferApplication</default-activity>
+    <transaction id="__57">
+      <requires-transaction/>
+    </transaction>
+    <input-parameter-definition id="__48">
+      <name id="__47">OfferId</name>
+      <value>#{pageFlowScope.OfferId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__50">
+      <name id="__49">TaskFlowVal</name>
+      <value>#{pageFlowScope.OfferId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__53">
+      <name id="__67">leaseid</name>
+      <value>#{pageFlowScope.leaseid}</value>
+    </input-parameter-definition>
+    <managed-bean id="__40">
+      <managed-bean-name id="__42">OfferBean</managed-bean-name>
+      <managed-bean-class id="__41">addEditOffers</managed-bean-class>
+      <managed-bean-scope id="__43">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="addEditOffers">
+      <page>/fragments/addEditOffers.jsff</page>
+    </view>
+    <task-flow-return id="save">
+      <outcome id="__2">
+        <name>save</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="cancel">
+      <outcome id="__3">
+        <name>cancel</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <method-call id="refreshOfferApplication">
+      <method>#{bindings.refreshOfferApplication.execute}</method>
+      <outcome id="__12">
+        <fixed-outcome>refreshOfferApplication</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="router1">
+      <case>
+        <expression>#{pageFlowScope.resultVal=='NewOffer'}</expression>
+        <outcome id="__38">addOffer</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.resultVal=='EditOffer'}</expression>
+        <outcome id="__39">editOffer</outcome>
+      </case>
+      <default-outcome>addOffer</default-outcome>
+    </router>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__19">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__18">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="Booking_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Booking_BTF.xml</document>
+        <id>Booking_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__51">
+        <name>OfferId</name>
+        <value>#{pageFlowScope.OfferId}</value>
+      </input-parameter>
+      <input-parameter id="__52">
+        <name>TaskFlowVal</name>
+        <value>#{pageFlowScope.TaskFlowVal}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="CheckListResponse_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/CheckListResponse_BTF.xml</document>
+        <id>CheckListResponse_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__64">
+        <name>lookup</name>
+        <value>#{pageFlowScope.offlookup}</value>
+      </input-parameter>
+      <input-parameter id="__65">
+        <name>funcrefid</name>
+        <value>#{pageFlowScope.offfuncrefid}</value>
+      </input-parameter>
+      <input-parameter id="__66">
+        <name>funcid</name>
+        <value>#{pageFlowScope.offfuncid}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="Attachments_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Attachments_BTF.xml</document>
+        <id>Attachments_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__75">
+        <name>funcid</name>
+        <value>#{pageFlowScope.bookfuncId}</value>
+      </input-parameter>
+      <input-parameter id="__76">
+        <name>funcrefid</name>
+        <value>#{pageFlowScope.bookId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__4">
+      <from-activity-id id="__5">addEditOffers</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome id="__8">save</from-outcome>
+        <to-activity-id id="__6">save</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome id="__11">cancel</from-outcome>
+        <to-activity-id id="__10">cancel</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__44">
+        <from-outcome id="__46">toBooking</from-outcome>
+        <to-activity-id id="__45">Booking_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__56">
+        <from-outcome id="__63">Checklist</from-outcome>
+        <to-activity-id id="__55">CheckListResponse_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__68">
+        <from-outcome id="__69">attachment</from-outcome>
+        <to-activity-id id="__54">Attachments_BTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id id="__14">refreshOfferApplication</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__16">refreshOfferApplication</from-outcome>
+        <to-activity-id id="__15">router1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id id="__21">router1</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__27">editOffer</from-outcome>
+        <to-activity-id id="__25">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__22">
+        <from-outcome id="__24">addOffer</from-outcome>
+        <to-activity-id id="__23">CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__33">
+      <from-activity-id id="__34">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__37">
+        <from-outcome id="__36">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__35">addEditOffers</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__28">
+      <from-activity-id id="__29">CreateInsert</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__30">CreateInsert</from-outcome>
+        <to-activity-id id="__32">addEditOffers</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__58">
+      <from-activity-id id="__59">CheckListResponse_BTF</from-activity-id>
+      <control-flow-case id="__61">
+        <from-outcome id="__62">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__60">addEditOffers</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__70">
+      <from-activity-id id="__71">Attachments_BTF</from-activity-id>
+      <control-flow-case id="__72">
+        <from-outcome id="__74">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__73">addEditOffers</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

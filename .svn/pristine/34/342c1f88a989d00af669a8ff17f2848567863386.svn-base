@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Billing_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="model.VO.Billing_VORowImpl"
+  ComponentClass="model.VO.Billing_VOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="b_billingId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="Org_ROVO1"
+    ViewObjectName="model.ROVO.Org_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SearchBookingROVO1"
+    ViewObjectName="model.ROVO.SearchBookingROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="findPropertyROVO1"
+    ViewObjectName="model.ROVO.findPropertyROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="findBuildingROVO1"
+    ViewObjectName="model.ROVO.findBuildingROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByTransStatus"
+      FullName="model.ROVO.Lookup_View_ROVO.findByTransStatus"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="findByBuildName1"
+    ViewObjectName="model.ROVO.findByBuildName"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_OrgId"
+    ListVOName="Org_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrgName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BookingNumber"
+    ListVOName="SearchBookingROVO1"
+    ListRangeSize="6"
+    NullValueFlag="none"
+    NullValueId="LOV_BookingNumber_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BookingNumber"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="BookingId"/>
+      <Item Value="OrgId"/>
+      <Item Value="PropertyName"/>
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BookingNumber"/>
+      <Item Value="BookingId"/>
+      <Item Value="OrgId"/>
+      <Item Value="PropertyId"/>
+      <Item Value="BuildingId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BookingNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="findByBookingNo"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyName"
+    ListVOName="findPropertyROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BuildName"
+    ListVOName="findByBuildName1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuildId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuildNumber"/>
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT Billing_EO.BILLING_ID, 
+       Billing_EO.BILLING_NUMBER, 
+       Billing_EO.BILLING_DATE, 
+       Billing_EO.ORG_ID, 
+       (SELECT ORG_NAME FROM XXSTG_ORGANIZATIONS WHERE ORG_ID = Billing_EO.ORG_ID) AS ORGANIZATION_NAME,
+       Billing_EO.BOOKING_ID, 
+       (SELECT BOOKING_NUMBER FROM XXPM_BOOKING_HEADER WHERE BOOKING_ID = Billing_EO.BOOKING_ID) AS BOOKING_NUMBER,
+       (SELECT PROPERTY_ID FROM XXPM_BOOKING_HEADER WHERE BOOKING_ID = Billing_EO.BOOKING_ID) AS PROPERTY_NAME,
+       (SELECT BUILDING_ID FROM XXPM_BOOKING_HEADER WHERE BOOKING_ID = Billing_EO.BOOKING_ID) AS BUILD_NAME,
+       Billing_EO.STATUS, 
+       Billing_EO.DESCRIPTION, 
+       Billing_EO.FUNC_ID, 
+       Billing_EO.FLOW_STATUS, 
+       Billing_EO.FLOW_LEVEL, 
+       Billing_EO.FLOW_WITH, 
+       Billing_EO.USER_GRP_ID, 
+       Billing_EO.CREATED_BY, 
+       Billing_EO.CREATION_DATE, 
+       Billing_EO.LAST_UPDATED_BY, 
+       Billing_EO.LAST_UPDATE_DATE, 
+       Billing_EO.LAST_UPDATE_LOGIN
+FROM XXPM_BILLING Billing_EO
+order by Billing_EO.BILLING_ID desc]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="Billing_EO"
+    Entity="model.EO.Billing_EO"/>
+  <ViewAttribute
+    Name="BillingId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BillingId"
+    EntityUsage="Billing_EO"
+    AliasName="BILLING_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("xxpm_billing_id_s",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillingNumber"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BillingNumber"
+    EntityUsage="Billing_EO"
+    AliasName="BILLING_NUMBER">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Billing_VO.BillingNumber_LABEL"/>
+        <DISPLAYWIDTH
+          Value="23"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillingDate"
+    PrecisionRule="true"
+    EntityAttrName="BillingDate"
+    EntityUsage="Billing_EO"
+    AliasName="BILLING_DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Billing_VO.BillingDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgId"
+    PrecisionRule="true"
+    EntityAttrName="OrgId"
+    EntityUsage="Billing_EO"
+    AliasName="ORG_ID"
+    LOVName="LOV_OrgId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Billing_VO.OrgId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="23"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrganizationName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ORGANIZATION_NAME"
+    Expression="ORGANIZATION_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookingId"
+    PrecisionRule="true"
+    EntityAttrName="BookingId"
+    EntityUsage="Billing_EO"
+    AliasName="BOOKING_ID"/>
+  <ViewAttribute
+    Name="BookingNumber"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BOOKING_NUMBER"
+    Expression="BOOKING_NUMBER"
+    SQLType="VARCHAR"
+    LOVName="LOV_BookingNumber">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Billing_VO.BookingNumber_LABEL"/>
+        <DISPLAYWIDTH
+          Value="23"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PROPERTY_NAME"
+    Expression="PROPERTY_NAME"
+    SQLType="NUMERIC"
+    LOVName="LOV_PropertyName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Billing_VO.PropertyName_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="23"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BUILD_NAME"
+    Expression="BUILD_NAME"
+    SQLType="NUMERIC"
+    LOVName="LOV_BuildName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.Billing_VO.BuildName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="23"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="Billing_EO"
+    AliasName="STATUS"
+    LOVName="LOV_Status"
+    DefaultValue="DRA">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="23"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="Billing_EO"
+    AliasName="DESCRIPTION">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="23"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FuncId"
+    PrecisionRule="true"
+    EntityAttrName="FuncId"
+    EntityUsage="Billing_EO"
+    AliasName="FUNC_ID"/>
+  <ViewAttribute
+    Name="FlowStatus"
+    PrecisionRule="true"
+    EntityAttrName="FlowStatus"
+    EntityUsage="Billing_EO"
+    AliasName="FLOW_STATUS"/>
+  <ViewAttribute
+    Name="FlowLevel"
+    PrecisionRule="true"
+    EntityAttrName="FlowLevel"
+    EntityUsage="Billing_EO"
+    AliasName="FLOW_LEVEL"/>
+  <ViewAttribute
+    Name="FlowWith"
+    PrecisionRule="true"
+    EntityAttrName="FlowWith"
+    EntityUsage="Billing_EO"
+    AliasName="FLOW_WITH"/>
+  <ViewAttribute
+    Name="UserGrpId"
+    PrecisionRule="true"
+    EntityAttrName="UserGrpId"
+    EntityUsage="Billing_EO"
+    AliasName="USER_GRP_ID"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="Billing_EO"
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="Billing_EO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="Billing_EO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="Billing_EO"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="Billing_EO"
+    AliasName="LAST_UPDATE_LOGIN"/>
+  <ViewCriteria
+    Name="Billing_VOCriteria"
+    ViewObjectName="model.VO.Billing_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow191"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="BillingId"
+        ViewAttribute="BillingId"
+        Operator="="
+        Conjunction="AND"
+        Value=":b_billingId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="findByBillingNo"
+    ViewObjectName="model.VO.Billing_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow484"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="BillingNumber"
+        ViewAttribute="BillingNumber"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="Booking_Milestone_VO"
+    ViewLink="model.VL.BillingMs_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

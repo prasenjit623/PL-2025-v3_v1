@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="CancellationExtension_BTF_CancellationExtension_BTF_ExecuteWithParamsPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ExtCanVO1" RangeSize="25"
+              DataControl="ExtensionCancellation_AMDataControl"
+              id="ExtCanVO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ExtCanVO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="P_FLAG" NDType="java.lang.String"/>
+      <NamedData NDName="Trans_Flag" NDValue="" NDType="java.lang.String"/>
+      <NamedData NDName="BV_TransNumber" NDValue="#{sessionScope.transno}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="BV_TransType" NDValue="" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

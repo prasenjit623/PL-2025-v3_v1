@@ -1,0 +1,596 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout id="pgl1" layout="horizontal"
+                           styleClass="AFStretchWidth">
+        <af:panelBox text="Manage Receipt" id="pb1" showDisclosure="false">
+          <f:facet name="toolbar">
+            <af:toolbar id="t3">
+              <af:commandButton text="Save" id="cb1"
+                                action="#{ReceiptRecBean.onClickSave}"
+                                actionListener="#{ReceiptRecBean.onClickOKRec}"
+                                visible="#{sessionScope.grantMap.Recommendation =='F'}"/>
+              <af:spacer width="10" height="10" id="s2"/>
+              <af:commandButton text="Cancel" id="cb2"
+                                actionListener="#{ReceiptRecBean.onClickCancel}"
+                                action="toSave" immediate="true"/>
+            </af:toolbar>
+          </f:facet>
+          <af:panelFormLayout id="pfl1" maxColumns="3" rows="5"
+                              labelWidth="180">
+            <af:inputText value="#{bindings.ReceiptId.inputValue}"
+                          label="#{bindings.ReceiptId.hints.label}"
+                          required="#{bindings.ReceiptId.hints.mandatory}"
+                          columns="#{bindings.ReceiptId.hints.displayWidth}"
+                          maximumLength="#{bindings.ReceiptId.hints.precision}"
+                          shortDesc="#{bindings.ReceiptId.hints.tooltip}"
+                          id="it34" contentStyle="width:200px" rendered="false">
+              <f:validator binding="#{bindings.ReceiptId.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.FuncId.inputValue}"
+                          label="#{bindings.FuncId.hints.label}"
+                          required="#{bindings.FuncId.hints.mandatory}"
+                          columns="#{bindings.FuncId.hints.displayWidth}"
+                          maximumLength="#{bindings.FuncId.hints.precision}"
+                          shortDesc="#{bindings.FuncId.hints.tooltip}"
+                          id="it11" rendered="false">
+              <f:validator binding="#{bindings.FuncId.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.SourceFuncId.inputValue}"
+                          label="#{bindings.SourceFuncId.hints.label}"
+                          required="#{bindings.SourceFuncId.hints.mandatory}"
+                          columns="#{bindings.SourceFuncId.hints.displayWidth}"
+                          maximumLength="#{bindings.SourceFuncId.hints.precision}"
+                          shortDesc="#{bindings.SourceFuncId.hints.tooltip}"
+                          id="it19" rendered="false">
+              <f:validator binding="#{bindings.SourceFuncId.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.SourceFuncRefId.inputValue}"
+                          label="#{bindings.SourceFuncRefId.hints.label}"
+                          required="#{bindings.SourceFuncRefId.hints.mandatory}"
+                          columns="#{bindings.SourceFuncRefId.hints.displayWidth}"
+                          maximumLength="#{bindings.SourceFuncRefId.hints.precision}"
+                          shortDesc="#{bindings.SourceFuncRefId.hints.tooltip}"
+                          id="it23" rendered="false">
+              <f:validator binding="#{bindings.SourceFuncRefId.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.ReceiptNumber.inputValue}"
+                          label="#{bindings.ReceiptNumber.hints.label}"
+                          required="#{bindings.ReceiptNumber.hints.mandatory}"
+                          columns="#{bindings.ReceiptNumber.hints.displayWidth}"
+                          maximumLength="#{bindings.ReceiptNumber.hints.precision}"
+                          shortDesc="#{bindings.ReceiptNumber.hints.tooltip}"
+                          id="it1" readOnly="true"
+                          partialTriggers="cb1"
+                          contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;">
+              <f:validator binding="#{bindings.ReceiptNumber.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.ReceiptDate.inputValue}"
+                          label="#{bindings.ReceiptDate.hints.label}"
+                          required="#{bindings.ReceiptDate.hints.mandatory}"
+                          shortDesc="#{bindings.ReceiptDate.hints.tooltip}"
+                          autoSubmit="true" contentStyle="width:200px"
+                          disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15' ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                          id="id4" >
+              <f:validator binding="#{bindings.ReceiptDate.validator}"/>
+              <af:convertDateTime pattern="dd-MM-yyyy"/>
+            </af:inputDate>
+            <af:inputText value="#{bindings.CustomerName.inputValue}"
+                          label="#{bindings.CustomerName.hints.label}"
+                          rendered="#{pageFlowScope.CusName!='CusNameLov'}"
+                          columns="#{bindings.CustomerName.hints.displayWidth}"
+                          maximumLength="#{bindings.CustomerName.hints.precision}"
+                          shortDesc="#{bindings.CustomerName.hints.tooltip}"
+                          id="it45"
+                          autoSubmit="true" contentStyle="width:200px"
+                          disabled="#{pageFlowScope.Status11 != 'DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                          required="true"
+                          requiredMessageDetail="You must enter Customer Name"
+                          readOnly="true">
+              <f:validator binding="#{bindings.CustomerName.validator}"/>
+            </af:inputText>
+            <!--<af:inputComboboxListOfValues id="customerName_TransId"
+                                          popupTitle="Search and Select: #{bindings.CustomerName_Trans.hints.label}"
+                                          value="#{bindings.CustomerName_Trans.inputValue}"
+                                          label="#{bindings.CustomerName_Trans.hints.label}"
+                                          model="#{bindings.CustomerName_Trans.listOfValuesModel}"
+                                          columns="#{bindings.CustomerName_Trans.hints.displayWidth}"
+                                          shortDesc="#{bindings.CustomerName_Trans.hints.tooltip}"
+                                          contentStyle="width:200px"
+                                          binding="#{ReceiptRecBean.ilov1}"
+                                          required="true"
+                                          disabled="true" rendered="false">
+              <f:validator binding="#{bindings.CustomerName_Trans.validator}"/>
+            </af:inputComboboxListOfValues>-->
+            <af:inputText value="#{bindings.CurrencyCode.inputValue}"
+                          label="#{bindings.CurrencyCode.hints.label}"
+                          required="#{bindings.CurrencyCode.hints.mandatory}"
+                          columns="#{bindings.CurrencyCode.hints.displayWidth}"
+                          maximumLength="#{bindings.CurrencyCode.hints.precision}"
+                          shortDesc="#{bindings.CurrencyCode.hints.tooltip}"
+                          id="it38" 
+                          binding="#{ReceiptRecBean.it3}"
+                          autoSubmit="true"
+                          contentStyle="width:200px"
+                          disabled="true">
+              <f:validator binding="#{bindings.CurrencyCode.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.DrawnBy.inputValue}"
+                          label="#{bindings.DrawnBy.hints.label}"
+                          required="#{bindings.DrawnBy.hints.mandatory}"
+                          columns="#{bindings.DrawnBy.hints.displayWidth}"
+                          maximumLength="#{bindings.DrawnBy.hints.precision}"
+                          shortDesc="#{bindings.DrawnBy.hints.tooltip}"
+                          id="it17" contentStyle="width:200px"
+                          autoSubmit="true"
+                          disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}">
+              <f:validator binding="#{bindings.DrawnBy.validator}"/>
+            </af:inputText>
+            <af:selectOneChoice value="#{bindings.PaymentType.inputValue}"
+                                label="#{bindings.PaymentType.label}"
+                                shortDesc="#{bindings.PaymentType.hints.tooltip}"
+                                id="soc6"
+                                disabled="#{(sessionScope.userId == '15') ? false : (pageFlowScope.Status11=='DRA') ? false : (sessionScope.UR eq 'ACCCOUNTS' and pageFlowScope.Status11=='PEN') ? false : (sessionScope.UR eq 'ACCOUNTS_MANAGER' and pageFlowScope.Status11=='PEN') ? false : true}"
+                                valueChangeListener="#{ReceiptRecBean.onSlctPaymentType}"
+                                required="true" autoSubmit="true"
+                                contentStyle="width:200px">
+              <f:selectItems value="#{bindings.PaymentType.items}" id="si6"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.PayMode.inputValue}"
+                                label="#{bindings.PayMode.label}"
+                                shortDesc="#{bindings.PayMode.hints.tooltip}"
+                                id="soc3" contentStyle="width:200px"
+                                autoSubmit="true"
+                                disabled="#{(sessionScope.UR ne 'ACCCOUNTS' and sessionScope.UR ne 'ACCOUNTS_MANAGER') ? true : false}"
+                                valueChangeListener="#{ReceiptRecBean.onChangePayMode}"
+                                required="true"
+                                requiredMessageDetail="You must select the Payment Mode"
+                                rendered="#{pageFlowScope.Status11 == 'DRA' and pageFlowScope.SDPayMode != 'SD'}"
+                                partialTriggers="soc6"
+                                binding="#{ReceiptRecBean.soc3}">
+              <f:selectItems value="#{bindings.PayMode.items}" id="si2"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.PayMode2.inputValue}"
+                                label="Payment Mode"
+                                shortDesc="#{bindings.PayMode2.hints.tooltip}"
+                                id="soc1" contentStyle="width:200px"
+                                autoSubmit="true"
+                                disabled="#{(sessionScope.userId == '15') ? false : (sessionScope.UR eq 'ACCCOUNTS' and pageFlowScope.Status11=='PEN') ? false : (sessionScope.UR eq 'ACCOUNTS_MANAGER' and pageFlowScope.Status11=='PEN') ? false : true}"
+                                valueChangeListener="#{ReceiptRecBean.onChangePayMode}"
+                                required="false" partialTriggers="soc6"
+                                requiredMessageDetail="You must select the Payment Mode"
+                                rendered="#{pageFlowScope.Status11 != 'DRA'}"
+                                binding="#{ReceiptRecBean.soc1}">
+              <f:selectItems value="#{bindings.PayMode2.items}" id="si3"/>
+            </af:selectOneChoice>
+            <!-- For security deposit from RC -->
+            <af:selectOneChoice value="#{bindings.PayMode3.inputValue}"
+                                label="Payment Mode"
+                                shortDesc="#{bindings.PayMode3.hints.tooltip}"
+                                id="soc5" autoSubmit="true" contentStyle="width:200px"
+                                requiredMessageDetail="You must select the Payment Mode"
+                                valueChangeListener="#{ReceiptRecBean.onChangePayMode}"
+                                rendered="#{pageFlowScope.Status11 == 'DRA' and pageFlowScope.SDPayMode == 'SD'}"
+                                required="false" partialTriggers="soc6"
+                                disabled="#{(sessionScope.UR ne 'ACCCOUNTS' and sessionScope.UR ne 'ACCOUNTS_MANAGER') ? true : false}"
+                                binding="#{ReceiptRecBean.soc5}">
+              <f:selectItems value="#{bindings.PayMode3.items}" id="si5"/>
+            </af:selectOneChoice>
+            <!--<af:selectOneChoice value="#{bindings.PayMode_Trans.inputValue}"
+                                label="Payment Mode"
+                                shortDesc="#{bindings.PayMode_Trans.hints.tooltip}"
+                                id="soc1" contentStyle="width:200px"
+                                valueChangeListener="#{ReceiptRecBean.onChangePayMode}"
+                                autoSubmit="true"
+                                disabled="#{pageFlowScope.CusName=='CusNameLov' ? 'true' : pageFlowScope.Status11!='DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                                requiredMessageDetail="You must select the Payment Mode"
+                                rendered="false">
+              <f:selectItems value="#{bindings.PayMode_Trans.items}" id="si3"/>
+            </af:selectOneChoice>-->
+            <af:selectOneChoice value="#{bindings.RctType.inputValue}"
+                                label="#{bindings.RctType.label}"
+                                shortDesc="#{bindings.RctType.hints.tooltip}"
+                                autoSubmit="true"
+                                requiredMessageDetail="You must select the Receipt Charge Type"
+                                id="soc2" contentStyle="width:200px"
+                                valueChangeListener="#{ReceiptRecBean.onChangeRecCharge}"
+                                required="true" disabled="true">
+              <f:selectItems value="#{bindings.RctType.items}" id="si1"/>
+            </af:selectOneChoice>
+            <af:inputText value="#{bindings.PayRefNumber.inputValue}"
+                          label="#{bindings.PayRefNumber.hints.label}"
+                          required="#{bindings.PayRefNumber.hints.mandatory}"
+                          columns="#{bindings.PayRefNumber.hints.displayWidth}"
+                          maximumLength="#{bindings.PayRefNumber.hints.precision}"
+                          shortDesc="#{bindings.PayRefNumber.hints.tooltip}"
+                          id="it2"
+                          contentStyle="width:200px"
+                          disabled="#{ReceiptRecBean.changePayMode =='true' ? true :(sessionScope.userId == '15') ? false : (pageFlowScope.Status11=='DRA') ? false : (sessionScope.UR eq 'ACCCOUNTS' and pageFlowScope.Status11=='PEN') ? false : (sessionScope.UR eq 'ACCOUNTS_MANAGER' and pageFlowScope.Status11=='PEN') ? false : true}"
+                          requiredMessageDetail="You must enter the Cheque / Card / EFT Number"
+                          autoSubmit="true" binding="#{ReceiptRecBean.it2}">
+              <f:validator binding="#{bindings.PayRefNumber.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.PayRefDate.inputValue}"
+                          label="#{bindings.PayRefDate.hints.label}"
+                          required="#{bindings.PayRefDate.hints.mandatory}"
+                          shortDesc="#{bindings.PayRefDate.hints.tooltip}"
+                          id="id2" contentStyle="width:200px"
+                          disabled="#{ReceiptRecBean.changePayMode =='true' ? true :(sessionScope.userId == '15') ? false : (pageFlowScope.Status11=='DRA') ? false : (sessionScope.UR eq 'ACCCOUNTS' and pageFlowScope.Status11=='PEN') ? false : (sessionScope.UR eq 'ACCOUNTS_MANAGER' and pageFlowScope.Status11=='PEN') ? false : true}"
+                          requiredMessageDetail="You must enter Cheque/EFT Date"
+                          autoSubmit="true"
+                          valueChangeListener="#{ReceiptRecBean.onChangeChequeDate}"
+                          binding="#{ReceiptRecBean.id2}">
+              <f:validator binding="#{bindings.PayRefDate.validator}"/>
+              <af:convertDateTime pattern="dd-MM-yyyy"/>
+            </af:inputDate>
+            <af:selectBooleanCheckbox value="#{bindings.AckFlag.inputValue}"
+                                      label="#{bindings.AckFlag.label}"
+                                      shortDesc="#{bindings.AckFlag.hints.tooltip}"
+                                      id="sbc1"
+                                      disabled="#{(bindings.RecHdrRowStatus_Trans eq '1' and bindings.AckFlag.inputValue == 'true') ? 'true' : (sessionScope.UR ne 'ACCCOUNTS' and sessionScope.UR ne 'ACCOUNTS_MANAGER') ? 'true' : 'false'}"
+                                      valueChangeListener="#{ReceiptRecBean.onCheckCashierFlag}"
+                                      autoSubmit="true"
+                                      binding="#{ReceiptRecBean.sbc1}"/>
+            <af:inputText value="#{bindings.AckBy.inputValue}"
+                          label="Cashier Ack By"
+                          required="#{bindings.AckBy.hints.mandatory}"
+                          columns="#{bindings.AckBy.hints.displayWidth}"
+                          maximumLength="#{bindings.AckBy.hints.precision}"
+                          shortDesc="#{bindings.AckBy.hints.tooltip}" id="it29"
+                          contentStyle="width:200px"
+                          disabled="true" partialTriggers="sbc1"
+                          binding="#{ReceiptRecBean.it29}">
+              <f:validator binding="#{bindings.AckBy.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.CreatedBy.inputValue}"
+                          label="Created By"
+                          required="#{bindings.CreatedBy.hints.mandatory}"
+                          columns="#{bindings.CreatedBy.hints.displayWidth}"
+                          maximumLength="#{bindings.CreatedBy.hints.precision}"
+                          shortDesc="#{bindings.CreatedBy.hints.tooltip}"
+                          id="it55" contentStyle="width:200px" disabled="true">
+              <f:validator binding="#{bindings.CreatedBy.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.ManualReceiptVoucherNumber.inputValue}"
+                          label="#{bindings.ManualReceiptVoucherNumber.hints.label}"
+                          required="#{bindings.ManualReceiptVoucherNumber.hints.mandatory}"
+                          columns="#{bindings.ManualReceiptVoucherNumber.hints.displayWidth}"
+                          maximumLength="#{bindings.ManualReceiptVoucherNumber.hints.precision}"
+                          shortDesc="#{bindings.ManualReceiptVoucherNumber.hints.tooltip}"
+                          id="it8" contentStyle="width:200px"
+                          disabled="#{(bindings.RecHdrRowStatus_Trans eq '1' and bindings.AckFlag.inputValue == 'true') ? 'true' : sessionScope.userName eq bindings.AckBy.inputValue ? 'false' : 'true'}"
+                          partialTriggers="it29">
+              <f:validator binding="#{bindings.ManualReceiptVoucherNumber.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Attribute6.inputValue}"
+                          label="Is VAT"
+                          required="#{bindings.Attribute6.hints.mandatory}"
+                          columns="#{bindings.Attribute6.hints.displayWidth}"
+                          maximumLength="#{bindings.Attribute6.hints.precision}"
+                          shortDesc="#{bindings.Attribute6.hints.tooltip}"
+                          id="it3" contentStyle="width:200px"
+                          disabled="#{pageFlowScope.Status11=='DRA' ? false : true}">
+              <f:validator binding="#{bindings.Attribute6.validator}"/>
+            </af:inputText>
+            <af:selectBooleanCheckbox value="#{bindings.Attribute7.inputValue}"
+                                      label="Vat Description"
+                                      shortDesc="#{bindings.Attribute7.hints.tooltip}"
+                                      id="sbc2" autoSubmit="true"
+                                      valueChangeListener="#{ReceiptRecBean.onChkVatDesc}"/>
+          </af:panelFormLayout>
+          <af:spacer width="10" height="10" id="s1"/>
+          <af:panelFormLayout id="pfl2" maxColumns="2" rows="5"
+                              labelWidth="180">
+            <af:inputDate value="#{bindings.PayRecDate.inputValue}"
+                          label="#{bindings.PayRecDate.hints.label}"
+                          required="#{bindings.PayRecDate.hints.mandatory}"
+                          shortDesc="#{bindings.PayRecDate.hints.tooltip}"
+                          id="id3" contentStyle="width:200px"
+                          autoSubmit="true" partialTriggers="soc3"
+                          valueChangeListener="#{ReceiptRecBean.onCalcDateDiff}"
+                          disabled="true">
+              <f:validator binding="#{bindings.PayRecDate.validator}"/>
+              <af:convertDateTime pattern="dd-MM-yyyy"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.PayRevDate.inputValue}"
+                          label="#{bindings.PayRevDate.hints.label}"
+                          required="#{bindings.PayRevDate.hints.mandatory}"
+                          shortDesc="#{bindings.PayRevDate.hints.tooltip}"
+                          id="id5" contentStyle="width:200px"
+                          autoSubmit="true" 
+                          disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                          visible="#{bindings.PayRefDate.inputValue!=null}"
+                          partialTriggers="soc3 id2">
+              <f:validator binding="#{bindings.PayRevDate.validator}"/>
+              <af:convertDateTime pattern="dd-MM-yyyy"/>
+            </af:inputDate>
+            <af:inputText value="#{bindings.DiffInDays.inputValue}"
+                          label="#{bindings.DiffInDays.hints.label}"
+                          required="#{bindings.DiffInDays.hints.mandatory}"
+                          columns="#{bindings.DiffInDays.hints.displayWidth}"
+                          maximumLength="#{bindings.DiffInDays.hints.precision}"
+                          shortDesc="#{bindings.DiffInDays.hints.tooltip}"
+                          id="it26" contentStyle="width:200px"
+                          autoSubmit="true" partialTriggers="soc3 id5 id2"
+                          disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                          valueChangeListener="#{ReceiptRecBean.onValidate30Days}"
+                          binding="#{ReceiptRecBean.it26}">
+              <f:validator binding="#{bindings.DiffInDays.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.BankName.inputValue}"
+                          label="#{bindings.BankName.hints.label}"
+                          required="#{bindings.BankName.hints.mandatory}"
+                          columns="#{bindings.BankName.hints.displayWidth}"
+                          maximumLength="#{bindings.BankName.hints.precision}"
+                          shortDesc="#{bindings.BankName.hints.tooltip}"
+                          id="it39" contentStyle="width:200px"
+                          autoSubmit="true" 
+                          disabled="#{bindings.PayMode.inputValue=='ET' ? 'true' : pageFlowScope.Status11!='DRA' and sessionScope.userId != '15' ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                          partialTriggers="soc3">
+              <f:validator binding="#{bindings.BankName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.BankBranchName.inputValue}"
+                          label="#{bindings.BankBranchName.hints.label}"
+                          required="#{bindings.BankBranchName.hints.mandatory}"
+                          columns="#{bindings.BankBranchName.hints.displayWidth}"
+                          maximumLength="#{bindings.BankBranchName.hints.precision}"
+                          shortDesc="#{bindings.BankBranchName.hints.tooltip}"
+                          id="it6" contentStyle="width:200px"
+                          autoSubmit="true"
+                          disabled="#{bindings.PayMode.inputValue=='ET' ? 'true' : pageFlowScope.Status11!='DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                          partialTriggers="soc3">
+              <f:validator binding="#{bindings.BankBranchName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Description.inputValue}"
+                          label="#{bindings.Description.hints.label}"
+                          required="#{bindings.Description.hints.mandatory}"
+                          columns="#{bindings.Description.hints.displayWidth}"
+                          maximumLength="#{bindings.Description.hints.precision}"
+                          shortDesc="#{bindings.Description.hints.tooltip}"
+                          id="it37" contentStyle="width:190px"
+                          autoSubmit="true" disabled="true"
+                          partialTriggers="sbc2">   
+              <f:validator binding="#{bindings.Description.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TaxAmount.inputValue}"
+                          label="#{bindings.TaxAmount.hints.label}"
+                          required="#{bindings.TaxAmount.hints.mandatory}"
+                          columns="#{bindings.TaxAmount.hints.displayWidth}"
+                          maximumLength="#{bindings.TaxAmount.hints.precision}"
+                          shortDesc="#{bindings.TaxAmount.hints.tooltip}"
+                          id="it33" 
+                          autoSubmit="true"
+                          contentStyle="width:190px"
+                          disabled="#{pageFlowScope.Status11!='DRA'  and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}">  
+              <f:validator binding="#{bindings.TaxAmount.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.RecommendedAmount.inputValue}"
+                          label="Recommended Amount"
+                          columns="#{bindings.RecommendedAmount.hints.displayWidth}"
+                          maximumLength="#{bindings.RecommendedAmount.hints.precision}"
+                          shortDesc="#{bindings.RecommendedAmount.hints.tooltip}"
+                          id="it4" partialTriggers="it28"
+                          autoSubmit="true"
+                          contentStyle="width:190px"
+                          disabled="true" required="true"
+                          requiredMessageDetail="You must enter the Recommended Amount"
+                          binding="#{ReceiptRecBean.it4}">
+              <f:validator binding="#{bindings.RecommendedAmount.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.ReceivedAmount.inputValue}"
+                          label="Received Amount"
+                          columns="#{bindings.ReceivedAmount.hints.displayWidth}"
+                          maximumLength="#{bindings.ReceivedAmount.hints.precision}"
+                          shortDesc="#{bindings.ReceivedAmount.hints.tooltip}"
+                          id="it28" contentStyle="width:190px"
+                          autoSubmit="true"
+                          disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15' ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                          required="true"
+                          valueChangeListener="#{ReceiptRecBean.onChangeReceivedAmnt}"
+                          requiredMessageDetail="You must enter the Received Amount"
+                          binding="#{ReceiptRecBean.it28}">
+              <f:validator binding="#{bindings.ReceivedAmount.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.AckDate.inputValue}"
+                          label="#{bindings.AckDate.hints.label}"
+                          required="#{bindings.AckDate.hints.mandatory}"
+                          shortDesc="#{bindings.AckDate.hints.tooltip}"
+                          id="id1" visible="false" partialTriggers="sbc1"
+                          binding="#{ReceiptRecBean.id1}">
+              <f:validator binding="#{bindings.AckDate.validator}"/>
+              <af:convertDateTime pattern="dd/MM/yyyy"/>
+            </af:inputDate>
+          </af:panelFormLayout>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:commandImageLink actionListener="#{bindings.CreateInsert.execute}"
+                                     disabled="#{pageFlowScope.Status11!='DRA'  ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                                     id="cil1"
+                                     icon="/images/func_add_16_ena.png"/>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.ReceiptDtlVO1.collectionModel}"
+                      var="row" rows="#{bindings.ReceiptDtlVO1.rangeSize}"
+                      emptyText="#{bindings.ReceiptDtlVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.ReceiptDtlVO1.rangeSize}"
+                      rowBandingInterval="0" id="t1" varStatus="vs" columnStretching="column:c13">
+              <af:column id="c12" headerText="S.No" width="50" align="center">
+                <af:outputText value="#{vs.index+1}" id="ot1"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.BookingMsDtlId.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.BookingMsDtlId.label}"
+                         id="c9" width="200" align="center">
+                <af:selectOneChoice value="#{row.bindings.BookingMsDtlId.inputValue}"
+                                    label="#{row.bindings.BookingMsDtlId.label}"
+                                    required="#{bindings.ReceiptDtlVO1.hints.BookingMsDtlId.mandatory}"
+                                    shortDesc="#{bindings.ReceiptDtlVO1.hints.BookingMsDtlId.tooltip}"
+                                    id="soc4"
+                                    disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}">
+                  <f:selectItems value="#{row.bindings.BookingMsDtlId.items}"
+                                 id="si4"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.AmountApplied.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.AmountApplied.label}"
+                         id="c4" width="180" align="center">
+                <af:inputText value="#{row.bindings.AmountApplied.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.AmountApplied.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.AmountApplied.mandatory}"
+                              columns="#{bindings.ReceiptDtlVO1.hints.AmountApplied.displayWidth}"
+                              maximumLength="#{bindings.ReceiptDtlVO1.hints.AmountApplied.precision}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.AmountApplied.tooltip}"
+                              id="it50"
+                              disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15' ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}">
+                  <f:validator binding="#{row.bindings.AmountApplied.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.AppliedDate.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.AppliedDate.label}"
+                         id="c7" width="150" align="center">
+                <af:inputDate value="#{row.bindings.AppliedDate.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.AppliedDate.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.AppliedDate.mandatory}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.AppliedDate.tooltip}"
+                              id="id7"
+                              disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}">
+                  <f:validator binding="#{row.bindings.AppliedDate.validator}"/>
+                  <af:convertDateTime pattern="dd-MM-yyyy"/>
+                </af:inputDate>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.CustomerTrxId.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.CustomerTrxId.label}"
+                         id="c8" width="200">
+                <af:inputText value="#{row.bindings.CustomerTrxId.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.CustomerTrxId.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.CustomerTrxId.mandatory}"
+                              columns="#{bindings.ReceiptDtlVO1.hints.CustomerTrxId.displayWidth}"
+                              maximumLength="#{bindings.ReceiptDtlVO1.hints.CustomerTrxId.precision}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.CustomerTrxId.tooltip}"
+                              id="it52"
+                              disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}">
+                  <f:validator binding="#{row.bindings.CustomerTrxId.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.ReceivableApplicationId.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.ReceivableApplicationId.label}"
+                         id="c2" width="200">
+                <af:inputText value="#{row.bindings.ReceivableApplicationId.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.ReceivableApplicationId.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.ReceivableApplicationId.mandatory}"
+                              columns="#{bindings.ReceiptDtlVO1.hints.ReceivableApplicationId.displayWidth}"
+                              maximumLength="#{bindings.ReceiptDtlVO1.hints.ReceivableApplicationId.precision}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.ReceivableApplicationId.tooltip}"
+                              id="it48"
+                              disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15' ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}">
+                  <f:validator binding="#{row.bindings.ReceivableApplicationId.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column id="c13" headerText="Delete" align="center"
+                         width="100">
+                <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                     disabled="#{pageFlowScope.Status11!='DRA' and sessionScope.userId != '15'  ? 'true' :  bindings.Attribute1.inputValue ne null ? 'true' : pageFlowScope.funcId !='15' and pageFlowScope.oc_rt_dis=='DIS' ? 'true' : 'false'}"
+                                     id="cil2"
+                                     icon="/images/func_remove_16_ena.png"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.CreatedBy.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.CreatedBy.label}"
+                         id="c6" rendered="false">
+                <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.CreatedBy.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.CreatedBy.mandatory}"
+                              columns="#{bindings.ReceiptDtlVO1.hints.CreatedBy.displayWidth}"
+                              maximumLength="#{bindings.ReceiptDtlVO1.hints.CreatedBy.precision}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.CreatedBy.tooltip}"
+                              id="it54">
+                  <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.CreationDate.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.CreationDate.label}"
+                         id="c10" rendered="false">
+                <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.CreationDate.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.CreationDate.mandatory}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.CreationDate.tooltip}"
+                              id="id6">
+                  <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.ReceiptDtlVO1.hints.CreationDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.ReceiptDtlId.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.ReceiptDtlId.label}"
+                         id="c3" rendered="false">
+                <af:inputText value="#{row.bindings.ReceiptDtlId.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.ReceiptDtlId.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.ReceiptDtlId.mandatory}"
+                              columns="#{bindings.ReceiptDtlVO1.hints.ReceiptDtlId.displayWidth}"
+                              maximumLength="#{bindings.ReceiptDtlVO1.hints.ReceiptDtlId.precision}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.ReceiptDtlId.tooltip}"
+                              id="it49">
+                  <f:validator binding="#{row.bindings.ReceiptDtlId.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.ReceiptId.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.ReceiptId.label}"
+                         id="c11" rendered="false">
+                <af:inputText value="#{row.bindings.ReceiptId.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.ReceiptId.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.ReceiptId.mandatory}"
+                              columns="#{bindings.ReceiptDtlVO1.hints.ReceiptId.displayWidth}"
+                              maximumLength="#{bindings.ReceiptDtlVO1.hints.ReceiptId.precision}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.ReceiptId.tooltip}"
+                              id="it53">
+                  <f:validator binding="#{row.bindings.ReceiptId.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.InterfaceStatus.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.InterfaceStatus.label}"
+                         id="c5" rendered="false">
+                <af:inputText value="#{row.bindings.InterfaceStatus.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.InterfaceStatus.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.InterfaceStatus.mandatory}"
+                              columns="#{bindings.ReceiptDtlVO1.hints.InterfaceStatus.displayWidth}"
+                              maximumLength="#{bindings.ReceiptDtlVO1.hints.InterfaceStatus.precision}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.InterfaceStatus.tooltip}"
+                              id="it51">
+                  <f:validator binding="#{row.bindings.InterfaceStatus.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.ReceiptDtlVO1.hints.InvoiceId.name}"
+                         sortable="false"
+                         headerText="#{bindings.ReceiptDtlVO1.hints.InvoiceId.label}"
+                         id="c1" rendered="false">
+                <af:inputText value="#{row.bindings.InvoiceId.inputValue}"
+                              label="#{bindings.ReceiptDtlVO1.hints.InvoiceId.label}"
+                              required="#{bindings.ReceiptDtlVO1.hints.InvoiceId.mandatory}"
+                              columns="#{bindings.ReceiptDtlVO1.hints.InvoiceId.displayWidth}"
+                              maximumLength="#{bindings.ReceiptDtlVO1.hints.InvoiceId.precision}"
+                              shortDesc="#{bindings.ReceiptDtlVO1.hints.InvoiceId.tooltip}"
+                              id="it47">
+                  <f:validator binding="#{row.bindings.InvoiceId.validator}"/>
+                </af:inputText>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelBox>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditWoSchedulerTnxPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="WoSchedulerTnxHdr_VO1" RangeSize="25"
+              DataControl="WoScheduler_AMDataControl"
+              id="WoSchedulerTnxHdr_VO1Iterator"/>
+    <iterator Binds="getApprovalHistoryROVo1" RangeSize="25"
+              DataControl="WoScheduler_AMDataControl"
+              id="getApprovalHistoryROVo1Iterator"/>
+    <iterator Binds="WoSchedulerTnxResource_VO1" RangeSize="25"
+              DataControl="WoScheduler_AMDataControl"
+              id="WoSchedulerTnxResource_VO1Iterator"/>
+    <iterator Binds="WoSchedulingMainHdr_VO1" RangeSize="25"
+              DataControl="WoScheduler_AMDataControl"
+              id="WoSchedulingMainHdr_VO1Iterator"/>
+    <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+              DataControl="WoScheduler_AMDataControl" RangeSize="25"/>
+    <iterator id="getAllWoRscTnxDtls_RoVo1Iterator"
+              Binds="getAllWoRscTnxDtls_RoVo1"
+              DataControl="WoScheduler_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="WoSchedulerTnxHdr_VO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="getApprovalHistoryROVo1Iterator"
+          id="getApprovalHistoryROVo1">
+      <nodeDefinition DefName="model.ROVO.getApprovalHistoryROVo"
+                      Name="getApprovalHistoryROVo10">
+        <AttrNames>
+          <Item Value="SubmissionDate"/>
+          <Item Value="SubmittedByTrans"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="ApproverId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="WoScheduler_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="WoScheduler_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <tree IterBinding="WoSchedulerTnxHdr_VO1Iterator"
+          id="WoSchedulerTnxHdr_VO1">
+      <nodeDefinition DefName="model.VO.WoSchedulerTnxHdr_VO"
+                      Name="WoSchedulerTnxHdr_VO10">
+        <AttrNames>
+          <Item Value="ScWoTnxId"/>
+          <Item Value="ScWoTnxNo"/>
+          <Item Value="WoNo"/>
+          <Item Value="WoDescription"/>
+          <Item Value="Status"/>
+          <Item Value="AssignedForman"/>
+          <Item Value="ActualStartDate"/>
+          <Item Value="FromTime"/>
+          <Item Value="ToTime"/>
+          <Item Value="Asset"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ReleasedDate"/>
+          <Item Value="RescheduleDate"/>
+          <Item Value="RescheduleReason"/>
+          <Item Value="StartDate"/>
+          <Item Value="FromTimeAmPm"/>
+          <Item Value="ToTimeAmPm"/>
+          <Item Value="WoSchMainHdrId"/>
+          <Item Value="WoType"/>
+          <Item Value="WoSubType"/>
+          <Item Value="BuildingName"/>
+          <Item Value="UnitName"/>
+          <Item Value="WoId"/>
+          <Item Value="StartDateTrans"/>
+          <Item Value="CompleteDateTrans"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="WoSchedulerTnxHdr_VO1Iterator" id="CreateInsert"
+            InstanceName="WoScheduler_AMDataControl.WoSchedulerTnxHdr_VO1"
+            DataControl="WoScheduler_AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="WoSchedulerTnxResource_VO1Iterator"
+          id="WoSchedulerTnxResource_VO1">
+      <nodeDefinition DefName="model.VO.WoSchedulerTnxResource_VO"
+                      Name="WoSchedulerTnxResource_VO10">
+        <AttrNames>
+          <Item Value="ScTnxResourceId"/>
+          <Item Value="ScWoTnxId"/>
+          <Item Value="WoId"/>
+          <Item Value="Resources"/>
+          <Item Value="RescheduleDate"/>
+          <Item Value="RescheduleReason"/>
+          <Item Value="StartDate"/>
+          <Item Value="FromTime"/>
+          <Item Value="CompleteDate"/>
+          <Item Value="ToTime"/>
+          <Item Value="IterationDetails"/>
+          <Item Value="TimeTaken"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="ToTimeAmPm"/>
+          <Item Value="FromTimeAmPm"/>
+          <Item Value="OverTimeTaken"/>
+          <Item Value="Status"/>
+          <Item Value="ResourceSequenceNumber"/>
+          <Item Value="OpCode"/>
+          <Item Value="Wooperationresourceid"/>
+          <Item Value="Attribute1"/>
+          <Item Value="Attribute2"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="WoSchedulerTnxResource_VO1Iterator" id="CreateInsert1"
+            InstanceName="WoScheduler_AMDataControl.WoSchedulerTnxResource_VO1"
+            DataControl="WoScheduler_AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="WoSchedulerTnxHdr_VO1Iterator" id="Delete"
+            InstanceName="WoScheduler_AMDataControl.WoSchedulerTnxHdr_VO1"
+            DataControl="WoScheduler_AMDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="WoSchedulerTnxResource_VO1Iterator" id="Delete1"
+            InstanceName="WoScheduler_AMDataControl.WoSchedulerTnxResource_VO1"
+            DataControl="WoScheduler_AMDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator" id="FuncId">
+      <AttrNames>
+        <Item Value="FuncId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator" id="FlowWith">
+      <AttrNames>
+        <Item Value="FlowWith"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator" id="FlowLevel">
+      <AttrNames>
+        <Item Value="FlowLevel"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator"
+                     id="WoSchMainHdrId">
+      <AttrNames>
+        <Item Value="WoSchMainHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator"
+                     id="WoSchMainHdrNo">
+      <AttrNames>
+        <Item Value="WoSchMainHdrNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator"
+                     id="LastUpdatedBy">
+      <AttrNames>
+        <Item Value="LastUpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator"
+                     id="CreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator"
+                     id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="WoSchedulingMainHdr_VO1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator"
+                     id="UserGrpId">
+      <AttrNames>
+        <Item Value="UserGrpId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator"
+                     id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="reWorkForHistRecord"
+                  InstanceName="WoScheduler_AMDataControl.dataProvider"
+                  DataControl="WoScheduler_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="reWorkForHistRecord" IsViewObjectMethod="false"
+                  ReturnName="data.WoScheduler_AMDataControl.methodResults.reWorkForHistRecord_WoScheduler_AMDataControl_dataProvider_reWorkForHistRecord_result">
+      <NamedData NDName="mainId" NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDType="java.lang.String"/>
+      <NamedData NDName="reason" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator"
+                     id="InterfaceStatus">
+      <AttrNames>
+        <Item Value="InterfaceStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WoSchedulingMainHdr_VO1Iterator" id="Status2">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

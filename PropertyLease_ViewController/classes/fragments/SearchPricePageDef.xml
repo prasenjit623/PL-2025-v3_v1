@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchPricePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PlPremiums_VO1" RangeSize="25"
+              DataControl="Premium_AMDataControl" id="PlPremiums_VO1Iterator"/>
+    <iterator Binds="PlDiscounts_VO1" RangeSize="25"
+              DataControl="Discount_AMDataControl"
+              id="PlDiscounts_VO1Iterator"/>
+    <iterator Binds="SearchPriceListROVO1" RangeSize="25"
+              DataControl="PriceList_AMDataControl"
+              id="SearchPriceListROVO1Iterator"/>
+    <searchRegion Criteria="SearchPriceListROVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchPriceListROVO1Iterator"
+                  id="SearchPriceListROVOCriteriaQuery"/>
+    <iterator Binds="RevisionVO1" RangeSize="25"
+              DataControl="PriceList_AMDataControl" id="RevisionVO1Iterator"/>
+    <iterator Binds="RevisionLineVO1" RangeSize="25"
+              DataControl="PriceList_AMDataControl"
+              id="RevisionLineVO1Iterator"/>
+    <searchRegion Criteria="searchDiscount"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PlDiscounts_VO1Iterator" id="searchDiscountQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PlPremiums_VO1Iterator" id="PlPremiums_VO1">
+      <nodeDefinition DefName="model.VO.PlPremiums_VO" Name="PlPremiums_VO10">
+        <AttrNames>
+          <Item Value="PremiumId"/>
+          <Item Value="PremiumName"/>
+          <Item Value="RateType"/>
+          <Item Value="RateValue"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="ActiveYn"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="LastUpdateLogin"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="Premium_AMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="Premium_AMDataControl"/>
+    <action IterBinding="PlPremiums_VO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PlPremiums_VO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="PlDiscounts_VO1Iterator" id="PlDiscounts_VO1">
+      <nodeDefinition DefName="model.VO.PlDiscounts_VO" Name="PlDiscounts_VO10">
+        <AttrNames>
+          <Item Value="DiscountId"/>
+          <Item Value="DiscountName"/>
+          <Item Value="DiscountType"/>
+          <Item Value="DiscountLevel"/>
+          <Item Value="DiscountValue"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="ActiveYn"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="LastUpdateLogin"/>
+          <Item Value="CheckBox_Trans"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit1" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="Discount_AMDataControl"/>
+    <action id="Rollback1" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="Discount_AMDataControl"/>
+    <action IterBinding="PlDiscounts_VO1Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PlDiscounts_VO1Iterator" id="Delete1"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="SearchPriceListROVO1Iterator" id="SearchPriceListROVO1">
+      <nodeDefinition DefName="model.ROVO.SearchPriceListROVO"
+                      Name="SearchPriceListROVO10">
+        <AttrNames>
+          <Item Value="PlName"/>
+          <Item Value="OrgId"/>
+          <Item Value="PropertyId"/>
+          <Item Value="BuildId"/>
+          <Item Value="UnitId"/>
+          <Item Value="RevisionNo"/>
+          <Item Value="RevisionDate"/>
+          <Item Value="RevisedBy"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchPriceListROVO1Iterator" id="PlId">
+      <AttrNames>
+        <Item Value="PlId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="RevisionVO1Iterator"
+                  Uses="LOV_PriceListTrans" id="PriceListTrans"/>
+    <attributeValues IterBinding="RevisionVO1Iterator" id="RevisonNo">
+      <AttrNames>
+        <Item Value="RevisonNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RevisionVO1Iterator" id="RevisedDate">
+      <AttrNames>
+        <Item Value="RevisedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RevisionVO1Iterator" id="RevisionValue">
+      <AttrNames>
+        <Item Value="RevisionValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RevisionVO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="RevisionLineVO1Iterator" id="RevisionLineVO1">
+      <nodeDefinition DefName="model.VO.RevisionLineVO" Name="RevisionLineVO10">
+        <AttrNames>
+          <Item Value="UnitType"/>
+          <Item Value="RevBaseCharge"/>
+          <Item Value="RevElectricityCharge"/>
+          <Item Value="RevMinCharge"/>
+          <Item Value="RevMunicipalityCharge"/>
+          <Item Value="RevSecuritydepositCharge"/>
+          <Item Value="EjariPaymentCharge"/>
+          <Item Value="OtherGovntChargeNew"/>
+          <Item Value="OtherGovntChargeRnew"/>
+          <Item Value="ThirdPartyServCharge"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="RevisionVO1Iterator" id="CreateInsert3"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="RevisionLineVO1Iterator" id="CreateInsert4"
+            InstanceName="PriceList_AMDataControl.RevisionLineVO1"
+            DataControl="PriceList_AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit2" DataControl="PriceList_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="RevisionVO1Iterator" id="PlId1">
+      <AttrNames>
+        <Item Value="PlId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

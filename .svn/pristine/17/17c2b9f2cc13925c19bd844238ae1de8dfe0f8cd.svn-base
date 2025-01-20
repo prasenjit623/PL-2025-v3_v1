@@ -1,0 +1,551 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelGridLayout id="pgl2">
+          <af:gridRow marginTop="5px" height="auto" id="gr1">
+            <af:gridCell marginStart="5px" width="50%" id="gc1">
+              <af:outputLabel value="Receipt" id="ol1"
+                              inlineStyle="font-weight:bolder; font-size:large;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                         id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:panelGroupLayout layout="vertical" id="pgl3">
+              <af:query id="qryId1" headerText="Search" disclosed="true"
+                        value="#{bindings.SearchVCQuery8.queryDescriptor}"
+                        model="#{bindings.SearchVCQuery8.queryModel}"
+                        queryListener="#{backingBeanScope.searchReceiptMb.customReceiptSearch_QL}"
+                        queryOperationListener="#{bindings.SearchVCQuery8.processQueryOperation}"
+                        resultComponentId="::pc1:resId1" maxColumns="3" rows="3"/>
+           <af:spacer width="10" height="10" id="s2"/>
+          <af:panelBox text="Search Result" id="pb1">
+            <f:facet name="toolbar"/>
+               <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="detach">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+            <af:toolbar id="t1" flex="1">
+                  <af:commandImageLink id="cil2"
+                                       icon="/images/func_add_16_ena.png"
+                                       hoverIcon="/images/func_add_16_hov.png"
+                                       depressedIcon="/images/func_add_16_act.png"
+                                       partialSubmit="true" useWindow="true"
+                                       windowHeight="600" windowWidth="1200"
+                                       inlineStyle="margin-right:10.0px;"
+                                       disabledIcon="/images/func_add_16_dis.png"
+                                       action="receipt"
+                                       returnListener="#{backingBeanScope.searchReceiptMb.returnSearchOnClickAdd}"
+                                       actionListener="#{backingBeanScope.searchReceiptMb.onClickAdd}"
+                                       rendered="false">
+                    <af:setPropertyListener from="#{'CR'}"
+                                            to="#{pageFlowScope.TransId}"
+                                            type="action"/>
+                    <af:setPropertyListener from="#{'CusNameLov'}"
+                                            to="#{pageFlowScope.CusName}"
+                                            type="action"/>
+                  </af:commandImageLink>
+                  <!--<af:commandImageLink 
+                                       id="cil3" icon="/images/xl.png"
+                                       hoverIcon="/images/filedownload_ena.png"
+                                       depressedIcon="/images/filedownload_dis.png">
+                    <af:exportCollectionActionListener type="excelHTML"
+                                                       exportedId="t2"
+                                                       filename="Receipt.xls"
+                                                       title="receipt"/>
+                  </af:commandImageLink>-->
+                  <af:commandImageLink 
+                                                id="commandImageLink1"
+                                                icon="/images/xl.png"
+                                                hoverIcon="/images/filedownload_ena.png"
+                                                depressedIcon="/images/filedownload_dis.png">
+                              <af:fileDownloadActionListener contentType="application/xls"
+                                                             filename="Receipt.xls"
+                                                             method="#{backingBeanScope.searchReceiptMb.exportToExcel}"/>
+                           </af:commandImageLink>
+                  <af:goImageLink id="gil2"
+                                icon="/images/pdffile_dwn.png"
+                                targetFrame="_blank"
+                                destination="#{sessionScope.bookingReceiptPrint}"
+                                  rendered="false"/>
+                </af:toolbar>
+              </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.SearchReceiptRoVo15.collectionModel}"
+                      var="row" rows="#{bindings.SearchReceiptRoVo15.rangeSize}"
+                      emptyText="#{bindings.SearchReceiptRoVo15.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="6"
+                      rowBandingInterval="0"
+                      filterModel="#{bindings.SearchVCQuery8.queryDescriptor}"
+                      queryListener="#{bindings.SearchVCQuery8.processQuery}"
+                      filterVisible="true" varStatus="vs"
+                      selectedRowKeys="#{bindings.SearchReceiptRoVo15.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SearchReceiptRoVo15.collectionModel.makeCurrent}"
+                      rowSelection="single" id="resId1"
+                      columnStretching="column:resId1c7" scrollPolicy="page"
+                      autoHeightRows="0"
+                      binding="#{backingBeanScope.searchReceiptMb.table_resId1}"
+                      partialTriggers=":::qryId1">
+             <af:column id="c1" headerText="S.No" width="50" align="center">
+                  <af:outputText value="#{vs.index+1}" id="ot12"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.ReceiptNumber.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.ReceiptNumber.label}"
+                         id="resId1c1" width="90" align="center">
+                  <af:commandLink id="cl1" inlineStyle="font-weight:bolder;" action="receipt" useWindow="true"
+                                  windowHeight="600" windowWidth="1200">
+                  <af:outputText value="#{row.ReceiptNumber}" id="ot11"/>
+                    <af:setPropertyListener from="#{'ER'}"
+                                            to="#{pageFlowScope.TransId}"
+                                            type="action"/>
+                    <af:setPropertyListener from="#{bindings.ReceiptId.inputValue}"
+                                            to="#{pageFlowScope.recid}"
+                                            type="action"/>
+                    <af:setPropertyListener from="#{'CusNameLov'}"
+                                            to="#{pageFlowScope.CusName}"
+                                            type="action"/>
+                  </af:commandLink>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.ReceiptDate.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.ReceiptDate.label}"
+                         id="resId1c2" align="center" width="90">
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.ReceiptDate}"
+                                id="id2"/>
+                </f:facet>
+                <af:outputText value="#{row.ReceiptDate}" id="ot8">
+                  <af:convertDateTime pattern="dd-MM-yyyy"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.CustomerName.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.CustomerName.label}"
+                         id="resId1c3" width="220">
+                <af:outputText value="#{row.CustomerName}" id="ot9"/>
+              </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo15.hints.ReceiptStatus.label}"
+                           id="c57" align="center">
+                  <af:selectOneChoice value="#{row.bindings.ReceiptStatus.inputValue}"
+                                      label="#{row.bindings.ReceiptStatus.label}"
+                                      required="#{bindings.SearchReceiptRoVo15.hints.ReceiptStatus.mandatory}"
+                                      shortDesc="#{bindings.SearchReceiptRoVo15.hints.ReceiptStatus.tooltip}"
+                                      id="soc1" readOnly="true">
+                    <f:selectItems value="#{row.bindings.ReceiptStatus.items}"
+                                   id="si1"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.ReceivedAmount.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.SearchReceiptRoVo15.hints.ReceivedAmount.label}"
+                           id="resId1c9" align="center">
+                  <af:outputText value="#{row.ReceivedAmount}" id="ot13"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo15.hints.BankName.label}"
+                           id="c46">
+                  <af:outputText value="#{row.BankName}" id="ot57"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo15.hints.PayMode.label}"
+                           id="c11" width="150">
+                  <af:selectOneChoice value="#{row.bindings.PayMode.inputValue}"
+                                      label="#{row.bindings.PayMode.label}"
+                                      required="#{bindings.SearchReceiptRoVo15.hints.PayMode.mandatory}"
+                                      shortDesc="#{bindings.SearchReceiptRoVo15.hints.PayMode.tooltip}"
+                                      id="soc2" readOnly="true">
+                    <f:selectItems value="#{row.bindings.PayMode.items}"
+                                   id="si2"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo15.hints.PayRefNumber.label}"
+                           id="c47">
+                  <af:outputText value="#{row.PayRefNumber}" id="ot58"/>
+                </af:column>
+                <af:column headerText="Cheque Date"
+                           id="c58" sortable="true" filterable="true"
+                           sortProperty="#{bindings.SearchReceiptRoVo15.hints.PayRefDate.name}"
+                           align="center" rendered="false">
+                  <af:outputText value="#{row.PayRefDate}" id="ot67">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.PayRefDate.name}"
+                         filterable="true" sortable="true"
+                         headerText="Cheque Maturity Date"
+                         id="resId1c5">
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.PayRefDate}"
+                                id="id1"/>
+                </f:facet>
+                <af:outputText value="#{row.PayRefDate}" id="ot5">
+                  <af:convertDateTime pattern="dd-MM-yyyy"/>
+                </af:outputText>
+              </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo15.hints.AckFlag.label}"
+                           id="c48" align="center">
+                  <af:selectBooleanCheckbox value="#{row.bindings.AckFlag.inputValue}"
+                                            label="#{row.bindings.AckFlag.label}"
+                                            shortDesc="#{bindings.SearchReceiptRoVo15.hints.AckFlag.tooltip}"
+                                            id="sbc1"/>
+                </af:column>
+                <af:column headerText="Cashier Ack By"
+                           id="c21">
+                  <af:outputText value="#{row.AckBy}" id="ot22"/>
+                </af:column>
+                <af:column headerText="Cashier Ack Date"
+                           id="c26">
+                  <af:outputText value="#{row.AckDate}" id="ot26">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.Status.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.Status.label}"
+                         id="resId1c6" rendered="false">
+                <af:outputText value="#{row.Status}" id="ot7"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.Description.name}"
+                         filterable="true" sortable="true" width="200"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.Description.label}"
+                         id="resId1c7">
+                <af:outputText value="#{row.Description}" id="ot10"/>
+              </af:column>
+              <af:column id="c2" headerText="Details" align="center"
+                         rendered="false">
+                  <af:commandImageLink id="cil1" icon="/images/detail.png"
+                                       partialSubmit="true" useWindow="true"
+                                       windowHeight="600" windowWidth="1200"
+                                       action="receipt"
+                                       returnListener="#{backingBeanScope.searchReceiptMb.returnOnClickEdit}">
+                    <af:setPropertyListener from="#{'ER'}"
+                                            to="#{pageFlowScope.TransId}"
+                                            type="action"/>
+                    <af:setPropertyListener from="#{bindings.ReceiptId.inputValue}"
+                                            to="#{pageFlowScope.recid}"
+                                            type="action"/>
+                    <af:setPropertyListener from="#{'CusNameLov'}"
+                                            to="#{pageFlowScope.CusName}"
+                                            type="action"/>
+                  </af:commandImageLink>
+                </af:column>
+                <af:column id="c3" headerText="Individual Receipt"
+                         align="center" width="70">
+                  <af:goImageLink id="gil1"
+                                  destination="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/bookingline/receipt/#{row.bindings.ReceiptNumber}"
+                                targetFrame="_blank"
+                                icon="/images/func_download_16_act.png"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo15.hints.CreatedBy.label}"
+                           id="c4">
+                  <af:outputText value="#{row.CreatedBy}" id="ot14"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo15.hints.AckBy.label}"
+                           id="c53">
+                  <af:outputText value="#{row.AckBy}" id="ot63"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo15.hints.ManualReceiptVoucherNumber.label}"
+                           id="c56">
+                  <af:outputText value="#{row.ManualReceiptVoucherNumber}"
+                                 id="ot66"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.RecommendedAmount.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.RecommendedAmount.label}"
+                         id="resId1c8" rendered="false">
+                <af:outputText value="#{row.RecommendedAmount}" id="ot2"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.PayRecDate.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.PayRecDate.label}"
+                         id="resId1c10" rendered="false">
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.PayRecDate}"
+                                id="id3"/>
+                </f:facet>
+                <af:outputText value="#{row.PayRecDate}" id="ot1">
+                  <af:convertDateTime pattern="#{bindings.SearchReceiptRoVo15.hints.PayRecDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.PayRevDate.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.PayRevDate.label}"
+                         id="resId1c11" rendered="false">
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.PayRevDate}"
+                                id="id4"/>
+                </f:facet>
+                <af:outputText value="#{row.PayRevDate}" id="ot3">
+                  <af:convertDateTime pattern="#{bindings.SearchReceiptRoVo15.hints.PayRevDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.RctType.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.RctType.label}"
+                         id="resId1c12" rendered="false">
+                <af:outputText value="#{row.RctType}" id="ot15"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchReceiptRoVo15.hints.RctDesc.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SearchReceiptRoVo15.hints.RctDesc.label}"
+                         id="resId1c13" rendered="false">
+                <af:outputText value="#{row.RctDesc}" id="ot4"/>
+              </af:column>
+                <af:column headerText="Phone No"
+                           id="c7">
+                  <af:outputText value="#{row.PhoneNumber}" id="ot6"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo15.hints.PurposeOfRent.label}"
+                           id="c37">
+                  <af:outputText value="#{row.PurposeOfRent}" id="ot45"/>
+                </af:column>
+              </af:table>
+              <af:table value="#{bindings.SearchReceiptRoVo16.collectionModel}"
+                        var="row"
+                        rows="#{bindings.SearchReceiptRoVo16.rangeSize}"
+                        emptyText="#{bindings.SearchReceiptRoVo16.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.SearchReceiptRoVo16.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.SearchReceiptRoVo16.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.SearchReceiptRoVo16.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t2" varStatus="vs" rendered="false">
+                <af:column id="c36" headerText="S.No" width="80" align="center">
+                  <af:outputText value="#{vs.index+1}" id="ot47"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.SourceFuncName.label}"
+                           id="c44" rendered="false">
+                  <af:outputText value="#{row.SourceFuncName}" id="ot55"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.SourceFuncId.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.SourceFuncId.label}"
+                           id="c20" rendered="false">
+                  <af:outputText value="#{row.SourceFuncId}" id="ot20"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.SourceFuncRefId.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.SourceFuncRefId.label}"
+                           id="c35" rendered="false">
+                  <af:outputText value="#{row.SourceFuncRefId}" id="ot34"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.ReceiptNumber.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.ReceiptNumber.label}"
+                           id="c14">
+                  <af:outputText value="#{row.ReceiptNumber}" id="ot36"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.ReceiptDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.ReceiptDate.label}"
+                           id="c28">
+                  <af:outputText value="#{row.ReceiptDate}" id="ot42">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.OrgName.label}"
+                           id="c40">
+                  <af:outputText value="#{row.OrgName}" id="ot51"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.OrgId.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.OrgId.label}"
+                           id="c30" rendered="false">
+                  <af:outputText value="#{row.OrgId}" id="ot29"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.ReceiptType.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.ReceiptType.label}"
+                           id="c16" rendered="false">
+                  <af:outputText value="#{row.ReceiptType}" id="ot21"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.PropertyNumber.label}"
+                           id="c41" rendered="false">
+                  <af:outputText value="#{row.PropertyNumber}" id="ot52"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.PropertyName.label}"
+                           id="c49">
+                  <af:outputText value="#{row.PropertyName}" id="ot59"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.PropertyId.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.PropertyId.label}"
+                           id="c8" rendered="false">
+                  <af:outputText value="#{row.PropertyId}" id="ot24"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.BuildNumber.label}"
+                           id="c42" rendered="false">
+                  <af:outputText value="#{row.BuildNumber}" id="ot53"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.BuildName.label}"
+                           id="c50">
+                  <af:outputText value="#{row.BuildName}" id="ot60"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.BuildId.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.BuildId.label}"
+                           id="c6" rendered="false">
+                  <af:outputText value="#{row.BuildId}" id="ot40"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.UnitnameListaggTrans.label}"
+                           id="c31">
+                  <af:outputText value="#{row.UnitnameListaggTrans}" id="ot30"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.CustomerName.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.CustomerName.label}"
+                           id="c24">
+                  <af:outputText value="#{row.CustomerName}" id="ot28"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.CurrencyCode.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.CurrencyCode.label}"
+                           id="c29">
+                  <af:outputText value="#{row.CurrencyCode}" id="ot25"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.ReceivedAmount.label}"
+                           id="c52">
+                  <af:outputText value="#{row.ReceivedAmount}" id="ot62"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.PayMode.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.PayMode.label}"
+                           id="c23">
+                  <af:outputText value="#{row.PayMode}" id="ot41"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.PayRefNumber.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.PayRefNumber.label}"
+                           id="c12">
+                  <af:outputText value="#{row.PayRefNumber}" id="ot43"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.PayRefDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.PayRefDate.label}"
+                           id="c22">
+                  <af:outputText value="#{row.PayRefDate}" id="ot23">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.BankName.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.BankName.label}"
+                           id="c18">
+                  <af:outputText value="#{row.BankName}" id="ot31"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.BankBranchName.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.BankBranchName.label}"
+                           id="c15">
+                  <af:outputText value="#{row.BankBranchName}" id="ot19"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.DrawnBy.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.DrawnBy.label}"
+                           id="c33">
+                  <af:outputText value="#{row.DrawnBy}" id="ot39"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.Status.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.Status.label}"
+                           id="c34" rendered="false">
+                  <af:outputText value="#{row.Status}" id="ot37"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.Description.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.Description.label}"
+                           id="c19">
+                  <af:outputText value="#{row.Description}" id="ot17"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.RctType.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.RctType.label}"
+                           id="c32" rendered="false">
+                  <af:outputText value="#{row.RctType}" id="ot35"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.RctDesc.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.RctDesc.label}"
+                           id="c27">
+                  <af:outputText value="#{row.RctDesc}" id="ot33"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.BookingNumber.label}"
+                           id="c45">
+                  <af:outputText value="#{row.BookingNumber}" id="ot56"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.RecommendNoTrans.label}"
+                           id="c51" rendered="false">
+                  <af:outputText value="#{row.RecommendNoTrans}" id="ot61"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.BookingId.label}"
+                           id="c5" rendered="false">
+                  <af:outputText value="#{row.BookingId}" id="ot16"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.AckFlag.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.AckFlag.label}"
+                           id="c9">
+                  <af:outputText value="#{row.AckFlag}" id="ot38"/>
+                </af:column>
+                <af:column headerText="Cashier Acknowledged by"
+                           id="c38">
+                  <af:outputText value="#{row.AckBy}" id="ot49"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.AckDate.label}"
+                           id="c39">
+                  <af:outputText value="#{row.AckDate}" id="ot50">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column headerText="#{bindings.SearchReceiptRoVo16.hints.ManualReceiptVoucherNumber.label}"
+                           id="c55">
+                  <af:outputText value="#{row.ManualReceiptVoucherNumber}"
+                                 id="ot65"/>
+                </af:column>
+                <af:column headerText="Created By"
+                           id="c54">
+                  <af:outputText value="#{row.CreatedBy}" id="ot64"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.FuncId.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.FuncId.label}"
+                           id="c10" rendered="false">
+                  <af:outputText value="#{row.FuncId}" id="ot27"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.BookingNoTrans.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.BookingNoTrans.label}"
+                           id="c13" rendered="false">
+                  <af:outputText value="#{row.BookingNoTrans}" id="ot32"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.RecommendNoTrans.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.RecommendNoTrans.label}"
+                           id="c17" rendered="false">
+                  <af:outputText value="#{row.RecommendNoTrans}" id="ot44"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchReceiptRoVo16.hints.ReceiptId.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchReceiptRoVo16.hints.ReceiptId.label}"
+                           id="c25" rendered="false">
+                  <af:outputText value="#{row.ReceiptId}" id="ot18"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </af:panelGroupLayout>
+        </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+</jsp:root>

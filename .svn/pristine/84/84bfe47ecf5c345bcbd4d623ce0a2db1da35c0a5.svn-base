@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OcBkMilestoneDtlDp_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="BookingMilestonesDetail_EO.BOOKING_MS_DTL_ID, 
+       BookingMilestonesDetail_EO.CHARGE_TYPE, 
+       BookingMilestonesDetail_EO.INSTALLMENT_AMOUNT, 
+       BookingMilestonesDetail_EO.INSTALLMENT_TYPE, 
+       BookingMilestonesDetail_EO.MILESTONE_TYPE, 
+       BookingMilestonesDetail_EO.OC_ID, 
+       BookingMilestonesDetail_EO.OC_NO, 
+       BookingMilestonesDetail_EO.ORG_ID, 
+       BookingMilestonesDetail_EO.REMARKS, 
+       BookingMilestonesDetail_EO.SOURCE_FUNC_ID, 
+       BookingMilestonesDetail_EO.SOURCE_FUNC_REF_ID, 
+       BookingMilestonesDetail_EO.STATUS, 
+       BookingMilestonesDetail_EO.CREATION_DATE, 
+       BookingMilestonesDetail_EO.CREATED_BY, 
+       BookingMilestonesDetail_EO.LAST_UPDATE_DATE, 
+       BookingMilestonesDetail_EO.LAST_UPDATED_BY, 
+       BookingMilestonesDetail_EO.LAST_UPDATE_LOGIN, 
+       BookingMilestonesDetail_EO.ATTRIBUTE2, 
+       BookingMilestonesDetail_EO.ATTRIBUTE3, 
+       BookingMilestonesDetail_EO.ATTRIBUTE4"
+  FromList="XXPM_BOOKING_MILESTONE_DETAIL BookingMilestonesDetail_EO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VO.OcBkMilestoneDtlDp_VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO">
+    <ViewCriteriaUsage
+      Name="findByOtherPaymentCharge"
+      FullName="model.ROVO.Lookup_View_ROVO.findByOtherPaymentCharge"/>
+    <ParameterMap>
+      <PIMap Variable="p_orgId_trans">
+        <TransientExpression><![CDATA[OrgId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_ROVO2"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="fndbYTAX_TYPE"
+      FullName="model.ROVO.Lookup_View_ROVO.fndbYTAX_TYPE"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_InstallmentType"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="InstallmentType"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="InstallmentAmount"/>
+      <Item Value="Attribute4"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+      <Item Value="LookupAddlValue"/>
+      <Item Value="LookupAddlValue"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Attribute2"
+    ListVOName="Lookup_View_ROVO2"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Attribute2"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="BookingMilestonesDetail_EO"
+    Entity="model.EO.BookingMilestonesDetail_EO"/>
+  <ViewAttribute
+    Name="BookingMsDtlId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BookingMsDtlId"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="BOOKING_MS_DTL_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("BOOKING_MS_DTL_ID_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ChargeType"
+    PrecisionRule="true"
+    EntityAttrName="ChargeType"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="CHARGE_TYPE"/>
+  <ViewAttribute
+    Name="InstallmentAmount"
+    PrecisionRule="true"
+    EntityAttrName="InstallmentAmount"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="INSTALLMENT_AMOUNT"/>
+  <ViewAttribute
+    Name="InstallmentType"
+    PrecisionRule="true"
+    EntityAttrName="InstallmentType"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="INSTALLMENT_TYPE"
+    LOVName="LOV_InstallmentType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MilestoneType"
+    PrecisionRule="true"
+    EntityAttrName="MilestoneType"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="MILESTONE_TYPE"
+    DefaultValue="OC"/>
+  <ViewAttribute
+    Name="OcId"
+    PrecisionRule="true"
+    EntityAttrName="OcId"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="OC_ID"/>
+  <ViewAttribute
+    Name="OcNo"
+    PrecisionRule="true"
+    EntityAttrName="OcNo"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="OC_NO"/>
+  <ViewAttribute
+    Name="OrgId"
+    PrecisionRule="true"
+    EntityAttrName="OrgId"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="ORG_ID"
+    DefaultValue="300000001937178"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="SourceFuncId"
+    PrecisionRule="true"
+    EntityAttrName="SourceFuncId"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="SOURCE_FUNC_ID"/>
+  <ViewAttribute
+    Name="SourceFuncRefId"
+    PrecisionRule="true"
+    EntityAttrName="SourceFuncRefId"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="SOURCE_FUNC_REF_ID"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="STATUS"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="while_insert"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="LAST_UPDATE_LOGIN"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="ATTRIBUTE2"
+    DefaultValue="0"
+    LOVName="LOV_Attribute2">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="ATTRIBUTE3"
+    DefaultValue="0"/>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="BookingMilestonesDetail_EO"
+    AliasName="ATTRIBUTE4"
+    DefaultValue="0"/>
+</ViewObject>

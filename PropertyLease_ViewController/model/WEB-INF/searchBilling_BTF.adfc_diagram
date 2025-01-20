@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">searchBilling</property>
+      <property
+         name="page">/fragments/searchBilling.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>searchBilling&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">178.09766</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">221.0166</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall3">
+      <property
+         name="taskFlowId">addEditBilling_BTF</property>
+      <property
+         name="activityId">addEditBilling_BTF</property>
+      <property
+         name="documentReference">/WEB-INF/addEditBilling_BTF.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>addEditBilling_BTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">182.09766</property>
+      <property
+         name="x">557.02637</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="TaskFlowCall3">
+      <property
+         name="fromOutcome">go</property>
+      <property
+         name="sdm:polyPoints">R50,262.0166,177.74707,516.02637,181.74707,L50</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout binding="#{backingBeanScope.backing_SearchBooking.pgl1}"
+                           id="pgl1" layout="vertical">
+        <af:panelGridLayout binding="#{backingBeanScope.backing_SearchBooking.pgl2}"
+                            id="pgl2">
+          <af:gridRow marginTop="5px" height="auto"
+                      binding="#{backingBeanScope.backing_SearchBooking.gr1}"
+                      id="gr1">
+            <af:gridCell marginStart="5px" width="50%"
+                         binding="#{backingBeanScope.backing_SearchBooking.gc1}"
+                         id="gc1">
+              <af:outputLabel value="Booking"
+                              binding="#{backingBeanScope.backing_SearchBooking.ol1}"
+                              id="ol1"
+                              inlineStyle="font-weight:bolder; font-size:large;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                         binding="#{backingBeanScope.backing_SearchBooking.gc2}"
+                         id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:spacer width="10" height="10"
+                   binding="#{backingBeanScope.backing_SearchBooking.s1}"
+                   id="s1"/>
+        <af:panelGroupLayout layout="vertical"
+                             binding="#{backingBeanScope.backing_SearchBooking.pgl3}"
+                             id="pgl3">
+          <af:query id="qryId1" headerText="Search" disclosed="true"
+                    value="#{bindings.SearchQuery.queryDescriptor}"
+                    model="#{bindings.SearchQuery.queryModel}"
+                    queryListener="#{backingBeanScope.backing_SearchBooking.customBookingSearch_QL}"
+                    queryOperationListener="#{bindings.SearchQuery.processQueryOperation}"
+                    resultComponentId="::pc2:resId1"
+                    binding="#{backingBeanScope.backing_SearchBooking.qryId1}"
+                    rows="2" maxColumns="3"/>
+          <af:spacer width="10" height="10"
+                     binding="#{backingBeanScope.backing_SearchBooking.s2}"
+                     id="s2"/>
+          <af:inputText value="#{bindings.BookingNumber.inputValue}"
+                        simple="true"
+                        required="#{bindings.BookingNumber.hints.mandatory}"
+                        columns="#{bindings.BookingNumber.hints.displayWidth}"
+                        maximumLength="#{bindings.BookingNumber.hints.precision}"
+                        shortDesc="#{bindings.BookingNumber.hints.tooltip}"
+                        binding="#{backingBeanScope.backing_SearchBooking.it1}"
+                        id="it1" partialTriggers="pc2:resId1" rendered="false">
+            <f:validator binding="#{bindings.BookingNumber.validator}"/>
+          </af:inputText>
+          <af:panelBox text="Search Result"
+                       binding="#{backingBeanScope.backing_SearchBooking.pb1}"
+                       id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelCollection binding="#{backingBeanScope.backing_SearchBooking.pc2}"
+                                id="pc2" styleClass="AFStretchWidth"
+                                featuresOff="detach">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar binding="#{backingBeanScope.backing_SearchBooking.t1}"
+                            id="t1" flex="1">
+                  <af:commandImageLink
+                                       binding="#{backingBeanScope.backing_SearchBooking.cil1}"
+                                       id="cil1"
+                                       icon="/images/func_add_16_ena.png"
+                                       action="toadd"
+                                       disabledIcon="/images/func_add_16_dis.png"
+                                       hoverIcon="/images/func_add_16_hov.png"
+                                       depressedIcon="/images/func_add_16_act.png"
+                                       visible="#{sessionScope.grantMap.Booking=='F'}">
+                    <af:setPropertyListener from="LOV_OfferHdrId"
+                                            to="#{sessionScope.lovName}"
+                                            type="action"/>
+                  </af:commandImageLink>
+                  <af:spacer width="10" height="10"
+                             binding="#{backingBeanScope.backing_SearchBooking.s3}"
+                             id="s3"/>
+                  <af:commandImageLink binding="#{backingBeanScope.backing_SearchBooking.cil2}"
+                                       id="cil2" action="edit"
+                                       icon="/images/func_pencil_16_ena.png"
+                                       disabledIcon="/images/func_pencil_16_dis.png"
+                                       hoverIcon="/images/func_pencil_16_hov.png"
+                                       depressedIcon="/images/func_pencil_16_act.png"
+                                       visible="#{sessionScope.grantMap.Booking =='F'}">
+                    <af:setPropertyListener from="#{bindings.BookingId.inputValue}"
+                                            to="#{pageFlowScope.addEditBook}"
+                                            type="action"/>
+                    <af:setPropertyListener from="LOV_OfferHdrId1"
+                                            to="#{sessionScope.lovName}"
+                                            type="action"/>
+                    <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/booking/#{bindings.BookingNumber.inputValue}"
+                                            to="#{sessionScope.bookingPrint}"
+                                            type="action"/>
+                    <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/booking/receipt/#{bindings.BookingNumber.inputValue}"
+                                            to="#{sessionScope.bookingReceiptPrint}"
+                                            type="action"/>
+                  </af:commandImageLink>
+                  <af:spacer width="10" height="10"
+                             binding="#{backingBeanScope.backing_SearchBooking.s4}"
+                             id="s4"/>
+                  <af:commandImageLink binding="#{backingBeanScope.backing_SearchBooking.cil3}"
+                                       id="cil3" icon="/images/xl.png"
+                                       hoverIcon="/images/filedownload_ena.png"
+                                       depressedIcon="/images/filedownload_dis.png"
+                                       visible="#{sessionScope.grantMap.Booking =='N'?'false':'true'}">
+                    <!--<af:exportCollectionActionListener type="excelHTML"
+                                                       exportedId="resId1"
+                                                       filename="Booking.xls"
+                                                       title="booking"/>-->
+                    <af:fileDownloadActionListener contentType="application/xls" filename="Booking.xls"
+                                                   method="#{backingBeanScope.backing_SearchBooking.exportToExcel}"/>
+                  </af:commandImageLink>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.SearchBookingROVO1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.SearchBookingROVO1.rangeSize}"
+                        emptyText="#{bindings.SearchBookingROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="6"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.SearchBookingROVO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.SearchBookingROVO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="resId1"
+                        binding="#{backingBeanScope.backing_SearchBooking.resId1}"
+                        varStatus="vs" columnStretching="column:resId1c4"
+                        autoHeightRows="0" scrollPolicy="page"
+                        columnSelection="single"
+                        filterModel="#{bindings.SearchQuery.queryDescriptor}"
+                        queryListener="#{bindings.SearchQuery.processQuery}"
+                        filterVisible="false">
+                <af:column id="c1" headerText="S.No" align="center" width="70">
+                  <af:outputText value="#{vs.index+1}" id="ot5"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchBookingROVO1.hints.BookingNumber.name}"
+                           sortable="true"
+                           headerText="#{bindings.SearchBookingROVO1.hints.BookingNumber.label}"
+                           id="resId1c1" align="center" width="100"
+                           filterable="true" frozen="true">
+                  <af:outputText value="#{row.BookingNumber}" id="ot1"
+                                 rendered="false"/>
+                  <af:commandLink text="#{row.BookingNumber}" id="cl1"
+                                  action="edit"
+                                  inlineStyle="font-weight:bolder;">
+                    <af:setPropertyListener from="#{bindings.BookingId.inputValue}"
+                                            to="#{pageFlowScope.addEditBook}"
+                                            type="action"/>
+                    <af:setPropertyListener from="LOV_OfferHdrId1"
+                                            to="#{sessionScope.lovName}"
+                                            type="action"/>
+                    <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/booking/#{row.BookingNumber}"
+                                            to="#{sessionScope.bookingPrint}"
+                                            type="action"/>
+                    <af:setPropertyListener from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/booking/receipt/#{bindings.BookingNumber.inputValue}"
+                                            to="#{sessionScope.bookingReceiptPrint}"
+                                            type="action"/>
+                    <af:setPropertyListener to="#{sessionScope.BookingReceiptAckPrint}"
+                                            type="action"
+                                            from="https://almlbprd.miskprops.com/Al-MuskRtfServices/webresources/rest/Booking_Receipt_Ack/receiptack/#{row.bindings.BookingNumber.inputValue}"/>
+                    <!--<af:setPropertyListener to="#{sessionScope.BookingReceiptAckPrint}"
+                                            type="action"
+                                            from="https://almlbprd.miskprops.com/Al-MuskRtfServicesDemo1/webresources/rest/Booking_Receipt_Ack/receiptack/#{row.bindings.BookingNumber.inputValue}"/>-->
+                  <af:setPropertyListener from="mbPhEmail"
+                                            to="#{sessionScope.mbPhEmail}"
+                                            type="action"/>
+                  </af:commandLink>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchBookingROVO1.hints.OfferHdrId.name}"
+                           sortable="true" headerText="Offer No" id="resId1c2"
+                           align="center" filterable="false" width="120"
+                           frozen="true">
+                  <af:selectOneChoice value="#{row.bindings.OfferHdrId.inputValue}"
+                                      label="#{row.bindings.OfferHdrId.label}"
+                                      required="#{bindings.SearchBookingROVO1.hints.OfferHdrId.mandatory}"
+                                      shortDesc="#{bindings.SearchBookingROVO1.hints.OfferHdrId.tooltip}"
+                                      id="soc2" readOnly="true">
+                    <f:selectItems value="#{row.bindings.OfferHdrId.items}"
+                                   id="si2"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.Buildname.label}"
+                           id="c7" frozen="true" width="150">
+                  <af:outputText value="#{row.Buildname}" id="ot8"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.Unitname.label}"
+                           id="c8" frozen="true">
+                  <af:outputText value="#{row.Unitname}" id="ot9"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.BookingDate.label}"
+                           id="c6"
+                           sortProperty="#{bindings.SearchBookingROVO1.hints.BookingDate.name}"
+                           filterable="true" sortable="false">
+                  <af:outputText value="#{row.BookingDate}" id="ot7">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.BookingDate}"
+                                  binding="#{backingBeanScope.backing_SearchBooking.id2}"
+                                  id="id2"/>
+                  </f:facet>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.Status.label}"
+                           id="c2" align="center">
+                  <af:outputText value="#{row.Status}" id="ot12"/>
+                </af:column>
+                <af:column headerText="Booking Sub Status"
+                           id="c12">
+                  <af:outputText value="#{row.SubStatus}" id="ot24"/>
+                </af:column>
+                <af:column headerText="Unit Status"
+                           id="c11" align="center">
+                  <af:outputText value="#{row.UnitStatus}" id="ot13"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchBookingROVO1.hints.LeadId.name}"
+                           sortable="true"
+                           headerText="#{bindings.SearchBookingROVO1.hints.LeadId.label}"
+                           id="c3" filterable="false" width="200"
+                           rendered="false">
+                  <af:selectOneChoice value="#{row.bindings.LeadId.inputValue}"
+                                      label="#{row.bindings.LeadId.label}"
+                                      required="#{bindings.SearchBookingROVO1.hints.LeadId.mandatory}"
+                                      shortDesc="#{bindings.SearchBookingROVO1.hints.LeadId.tooltip}"
+                                      id="soc3" readOnly="true"
+                                      rendered="false">
+                    <f:selectItems value="#{row.bindings.LeadId.items}"
+                                   id="si3"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="Lead Name" width="200"
+                           id="c20">
+                  <af:outputText value="#{row.LeadName}" id="ot20"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.CustName.label}"
+                           id="c4"
+                           sortProperty="#{bindings.SearchBookingROVO1.hints.CustName.name}"
+                           filterable="true" sortable="true" width="200">
+                  <af:outputText value="#{row.CustName}" id="ot4"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchBookingROVO1.hints.CustReqMoveinDate.name}"
+                           sortable="true" headerText="Customer Move in Date"
+                           id="resId1c3" align="center" width="120"
+                           filterable="true">
+                  <af:outputText value="#{row.CustReqMoveinDate}" id="ot3">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.CustReqMoveinDate}"
+                                  binding="#{backingBeanScope.backing_SearchBooking.id1}"
+                                  id="id1"/>
+                  </f:facet>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.PerformedBy.label}"
+                           id="c5" width="130"
+                           sortProperty="#{bindings.SearchBookingROVO1.hints.PerformedBy.name}"
+                           filterable="true" sortable="false">
+                  <af:outputText value="#{row.PerformedBy}" id="ot6"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.SetRentPerAnnum.label}"
+                           id="c22">
+                  <af:outputText value="#{row.SetRentPerAnnum}" id="ot22"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.SetRent.label}"
+                           id="c9" align="center">
+                  <af:outputText value="#{row.SetRent}" id="ot10"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.NetRent.label}"
+                           id="c10" align="center">
+                  <af:outputText value="#{row.NetRent}" id="ot11"/>
+                </af:column>
+                <af:column headerText="Discount"
+                           id="c23" align="center">
+                  <af:outputText value="#{row.DiscAmt}" id="ot23"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.TaxAmount.label}"
+                           id="c14" align="center">
+                  <af:outputText value="#{row.TaxAmount}" id="ot15"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.UnitDescription.label}"
+                           id="c13" width="180">
+                  <af:outputText value="#{row.UnitDescription}" id="ot14"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.MobileNumber.label}"
+                           id="c15">
+                  <af:outputText value="#{row.MobileNumber}" id="ot16"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.PhoneNumber.label}"
+                           id="c16">
+                  <af:outputText value="#{row.PhoneNumber}" id="ot17"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.EmailId.label}"
+                           id="c17" width="200">
+                  <af:outputText value="#{row.EmailId}" id="ot18"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchBookingROVO1.hints.Description.name}"
+                           sortable="true"
+                           headerText="#{bindings.SearchBookingROVO1.hints.Description.label}"
+                           id="resId1c4" filterable="true" rendered="false">
+                  <af:outputText value="#{row.Description}" id="ot2"/>
+                </af:column>
+                <af:column headerText="Offer Flag"
+                           id="c19">
+                  <af:outputText value="#{row.OfferFlag =='N' ? 'New' :row.OfferFlag =='R' ? 'Renewal' :row.OfferFlag =='S' ? 'Short Renewal' : ''}" id="ot19"/>
+                </af:column>
+                <af:column headerText="Contract Days"
+                           id="c21">
+                  <af:outputText value="#{row.ExtensionDays}" id="ot21"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.UnitIncharge.label}"
+                           id="c18">
+                  <af:outputText value="#{row.UnitIncharge}" id="ot25"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchBookingROVO1.hints.UnitOwner.label}"
+                           id="c24">
+                  <af:outputText value="#{row.UnitOwner}" id="ot26"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_SearchBooking-->
+</jsp:root>

@@ -1,0 +1,663 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout id="pgl1" layout="scroll"
+                           inlineStyle="border-color:transparent;height:900.0px;">
+        <af:panelGridLayout id="pgl5">
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+            <af:gridCell marginStart="5px" width="50%" id="gc4">
+              <af:panelGroupLayout id="pgl4" layout="vertical"
+                                   styleClass="AFStretchWidth">
+                <af:outputText value="Manage Move In" id="ot1"
+                               inlineStyle="font-size:large; font-weight:bold"
+                               rendered="#{sessionScope.moveInOut=='I'}"/>
+                <af:outputText value="Manage Move Out" id="ot5"
+                               inlineStyle="font-size:large; font-weight:bold"
+                               rendered="#{sessionScope.moveInOut=='O'}"/>
+              </af:panelGroupLayout>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                         id="gc3" halign="end">
+              <af:panelGroupLayout id="pgl6" styleClass="AFStretchWidth"
+                                   layout="horizontal">
+                <af:commandButton text="Attachments" id="cb3"
+                                  action="attachments"
+                                  actionListener="#{backingBeanScope.MoveInMoveOut.onClickAttachments}"
+                                  inlineStyle="margin-right:10px;"
+                                  visible="#{sessionScope.grantMap.MoveInMoveOut =='F' and bindings.Status.inputValue=='DRA'}"/>
+                <af:commandButton text="Approve" id="cb12" immediate="true"
+                                  inlineStyle="margin-right:10px;"
+                                  actionListener="#{backingBeanScope.MoveInMoveOut.onInvokeAppOrrejec}"
+                                  visible="#{sessionScope.grantMap.MoveInMoveOut =='F' and bindings.Status.inputValue=='PEN'}">
+                  <af:setPropertyListener from="#{'Approval'}"
+                                          to="#{pageFlowScope.Action}"
+                                          type="action"/>
+                </af:commandButton>
+                <af:commandButton text="Reject" id="cb13" immediate="true"
+                                  inlineStyle="margin-right:10px;"
+                                  actionListener="#{backingBeanScope.MoveInMoveOut.onInvokeAppOrrejec}"
+                                  visible="#{sessionScope.grantMap.MoveInMoveOut =='F' and bindings.Status.inputValue=='PEN'}">
+                  <af:setPropertyListener from="#{'Rejection'}"
+                                          to="#{pageFlowScope.Action}"
+                                          type="action"/>
+                </af:commandButton>
+                <af:commandButton text="Save" id="cb7" partialSubmit="true"
+                                  inlineStyle="margin-right:10px;"
+                                  actionListener="#{backingBeanScope.MoveInMoveOut.onClickSave}"
+                                  visible="#{sessionScope.grantMap.MoveInMoveOut =='F' and bindings.Status.inputValue=='DRA'}"/>
+                <af:commandButton text="Save and Close" id="cb1"
+                                  inlineStyle="margin-right:10px;"
+                                  actionListener="#{backingBeanScope.MoveInMoveOut.onClickSave}"
+                                  action="goBack"
+                                  visible="#{sessionScope.grantMap.MoveInMoveOut =='F' and bindings.Status.inputValue=='DRA'}"/>
+                <af:commandButton text="Submit" id="cb11" immediate="true"
+                                  inlineStyle="margin-right:10px;"
+                                  actionListener="#{backingBeanScope.MoveInMoveOut.onClickSubmit}"
+                                  action="goBack"
+                                  visible="#{sessionScope.grantMap.MoveInMoveOut =='F' and bindings.Status.inputValue=='DRA'}"
+                                  rendered="#{sessionScope.moveInOut=='O'}"/>
+                <af:commandButton text="Approval Details" id="cb4"
+                                  visible="#{sessionScope.grantMap.MoveInMoveOut =='F' and (bindings.Status.inputValue=='PEN' || bindings.Status.inputValue=='APR' || bindings.Status.inputValue=='REJ') }">
+                  <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                </af:commandButton>
+                <af:commandButton text="Cancel" id="cb2"
+                                  inlineStyle="margin-right:10px;"
+                                  action="#{backingBeanScope.MoveInMoveOut.onClickCancelAction}"
+                                  actionListener="#{backingBeanScope.MoveInMoveOut.onClickCancel}">
+                  <af:setPropertyListener from="#{sessionScope.moveInOut}"
+                                          to="#{sessionScope.moveInOut}"
+                                          type="action"/>
+                    </af:commandButton>
+                  <af:popup id="p2"
+                          binding="#{backingBeanScope.MoveInMoveOut.popup3}">
+                  <af:dialog id="d2" type="none"
+                             title="Reason for #{pageFlowScope.Action}">
+                    <f:facet name="buttonBar">
+                      <af:toolbar id="t7" flex="1">
+                        <af:spacer width="220" height="10" id="s3"/>
+                        <af:commandButton text="Save" id="cb9"
+                                          actionListener="#{backingBeanScope.MoveInMoveOut.onclickAppOrRej}"
+                                          action="goBack"/>
+                        <af:spacer width="10" height="10" id="s4"/>
+                        <af:commandButton text="Cancel" id="cb14"/>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:inputText label="Reason" id="it16" rows="5"
+                                  binding="#{backingBeanScope.MoveInMoveOut.reason}"
+                                  columns="50" autoSubmit="true"/>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="p1">
+                  <af:dialog id="d1" inlineStyle="width:80.0%;"
+                             title="Approval Work Flow History">
+                    <af:table value="#{bindings.getApprovalHistoryROVo1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.getApprovalHistoryROVo1.rangeSize}"
+                              emptyText="#{bindings.getApprovalHistoryROVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.getApprovalHistoryROVo1.rangeSize}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.getApprovalHistoryROVo1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.getApprovalHistoryROVo1.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t8" varStatus="vs"
+                              width="inherit">
+                      <af:column id="c18" headerText="S.No" width="50">
+                        <af:outputText value="#{vs.index+1}" id="ot6"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.label}"
+                                 id="c15" width="200">
+                        <af:selectOneChoice value="#{row.bindings.ApproverId.inputValue}"
+                                            label="#{row.bindings.ApproverId.label}"
+                                            required="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.mandatory}"
+                                            shortDesc="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.tooltip}"
+                                            id="soc8" autoSubmit="true"
+                                            readOnly="true">
+                          <f:selectItems value="#{row.bindings.ApproverId.items}"
+                                         id="si8"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.label}"
+                                 id="c17">
+                        <af:inputDate value="#{row.bindings.SubmissionDate.inputValue}"
+                                      label="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.label}"
+                                      required="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.mandatory}"
+                                      shortDesc="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.tooltip}"
+                                      id="id5" readOnly="true"
+                                      autoSubmit="true">
+                          <f:validator binding="#{row.bindings.SubmissionDate.validator}"/>
+                          <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:inputDate>
+                      </af:column>
+                      <af:column headerText="#{bindings.getApprovalHistoryROVo1.hints.SubmittedByTrans.label}"
+                                 id="c19">
+                        <af:outputText value="#{row.SubmittedByTrans}"
+                                       id="ot7"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.Status.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.getApprovalHistoryROVo1.hints.Status.label}"
+                                 id="c14">
+                        <af:inputText value="#{row.bindings.Status.inputValue}"
+                                      label="#{bindings.getApprovalHistoryROVo1.hints.Status.label}"
+                                      required="#{bindings.getApprovalHistoryROVo1.hints.Status.mandatory}"
+                                      columns="#{bindings.getApprovalHistoryROVo1.hints.Status.displayWidth}"
+                                      maximumLength="#{bindings.getApprovalHistoryROVo1.hints.Status.precision}"
+                                      shortDesc="#{bindings.getApprovalHistoryROVo1.hints.Status.tooltip}"
+                                      id="it18" readOnly="true">
+                          <f:validator binding="#{row.bindings.Status.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.Description.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.getApprovalHistoryROVo1.hints.Description.label}"
+                                 id="c16" width="200">
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      label="#{bindings.getApprovalHistoryROVo1.hints.Description.label}"
+                                      required="#{bindings.getApprovalHistoryROVo1.hints.Description.mandatory}"
+                                      columns="#{bindings.getApprovalHistoryROVo1.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.getApprovalHistoryROVo1.hints.Description.precision}"
+                                      shortDesc="#{bindings.getApprovalHistoryROVo1.hints.Description.tooltip}"
+                                      id="it17" readOnly="true"
+                                      autoSubmit="true">
+                          <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                    </af:table>
+                  </af:dialog>
+                </af:popup>
+              </af:panelGroupLayout>
+            </af:gridCell>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:panelGroupLayout id="pgl2" layout="vertical" rendered="false">
+          <af:panelGridLayout id="pgl3">
+            <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                        id="gr1">
+              <af:gridCell marginStart="5px" marginEnd="5px"
+                           id="gc1" rendered="true" width="auto"/>
+              <af:gridCell id="gc2" halign="end" width="auto" marginStart="5px"
+                           marginEnd="5px"/>
+            </af:gridRow>
+          </af:panelGridLayout>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s2"/>
+        <af:panelBox text="#{sessionScope.moveInOut=='I' ?'Move In':'Move Out'}" id="pb1">
+          <f:facet name="toolbar"/>
+          <af:panelFormLayout id="pfl1" rows="4" maxColumns="2"
+                              fieldWidth="350" labelWidth="200">
+            <af:inputText value="#{bindings.MoveInOutNumber.inputValue}"
+                          label="#{sessionScope.moveInOut=='I' ?'Move In No':'Move Out No'}"
+                          required="#{bindings.MoveInOutNumber.hints.mandatory}"
+                          columns="#{bindings.MoveInOutNumber.hints.displayWidth}"
+                          maximumLength="#{bindings.MoveInOutNumber.hints.precision}"
+                          shortDesc="#{bindings.MoveInOutNumber.hints.tooltip}"
+                          id="it14" readOnly="true"
+                          contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;"
+                          autoSubmit="true" partialTriggers="cb7">
+              <f:validator binding="#{bindings.MoveInOutNumber.validator}"/>
+            </af:inputText>
+            <af:inputComboboxListOfValues id="leaseNumberTransId"
+                                          popupTitle="Search and Select: #{bindings.LeaseNumberTrans.hints.label}"
+                                          value="#{bindings.LeaseNumberTrans.inputValue}"
+                                          label="#{bindings.LeaseNumberTrans.hints.label}"
+                                          model="#{bindings.LeaseNumberTrans.listOfValuesModel}"
+                                          required="#{bindings.LeaseNumberTrans.hints.mandatory}"
+                                          columns="#{bindings.LeaseNumberTrans.hints.displayWidth}"
+                                          shortDesc="#{bindings.LeaseNumberTrans.hints.tooltip}"
+                                          autoSubmit="true"
+                                          disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                          valueChangeListener="#{backingBeanScope.MoveInMoveOut.moveOutVCL}"
+                                          contentStyle="width:200px;">
+              <f:validator binding="#{bindings.LeaseNumberTrans.validator}"/>
+              <af:autoSuggestBehavior suggestItems="#{bindings.LeaseNumberTrans.suggestItems}"
+                                      maxSuggestedItems="3"/>
+            </af:inputComboboxListOfValues>
+            <af:selectOneChoice value="#{bindings.LeaseAgreementId.inputValue}"
+                                label="#{bindings.LeaseAgreementId.label}"
+                                required="#{bindings.LeaseAgreementId.hints.mandatory}"
+                                shortDesc="#{bindings.LeaseAgreementId.hints.tooltip}"
+                                id="soc3"
+                                disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                contentStyle="width:200px;" autoSubmit="true"
+                                valueChangeListener="#{backingBeanScope.MoveInMoveOut.moveOutVCL}"
+                                binding="#{backingBeanScope.MoveInMoveOut.soc3}"
+                                rendered="false">
+              <f:selectItems value="#{bindings.LeaseAgreementId.items}"
+                             id="si3"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.BookingId.inputValue}"
+                                label="#{bindings.BookingId.label}"
+                                required="#{bindings.BookingId.hints.mandatory}"
+                                shortDesc="#{bindings.BookingId.hints.tooltip}"
+                                id="soc2"
+                                contentStyle="width:200px;" autoSubmit="true"
+                                partialTriggers="soc3 leaseNumberTransId"
+                                readOnly="true">
+              <f:selectItems value="#{bindings.BookingId.items}" id="si2"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.CancelNo_Trans.inputValue}"
+                                label="Cancellation No"
+                                required="#{bindings.CancelNo_Trans.hints.mandatory}"
+                                shortDesc="#{bindings.CancelNo_Trans.hints.tooltip}"
+                                id="soc9" partialTriggers="leaseNumberTransId"
+                                autoSubmit="true" readOnly="true"
+                                rendered="#{sessionScope.moveInOut=='O'}"
+                                contentStyle="width:200px;">
+              <f:selectItems value="#{bindings.CancelNo_Trans.items}" id="si9"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.BookingId.inputValue}"
+                                label="#{bindings.BookingId.label}"
+                                required="#{bindings.BookingId.hints.mandatory}"
+                                shortDesc="#{bindings.BookingId.hints.tooltip}"
+                                id="soc1" rendered="false">
+              <f:selectItems value="#{bindings.BookingId.items}" id="si1"/>
+            </af:selectOneChoice>
+            <af:inputText value="#{bindings.ResourceName.inputValue}"
+                          label="#{bindings.ResourceName.hints.label}"
+                          required="#{bindings.ResourceName.hints.mandatory}"
+                          columns="#{bindings.ResourceName.hints.displayWidth}"
+                          maximumLength="#{bindings.ResourceName.hints.precision}"
+                          shortDesc="#{bindings.ResourceName.hints.tooltip}"
+                          id="it2"
+                          disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                          contentStyle="width:200px;">
+              <f:validator binding="#{bindings.ResourceName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Customer.inputValue}"
+                          label="#{bindings.Customer.hints.label}"
+                          required="#{bindings.Customer.hints.mandatory}"
+                          columns="#{bindings.Customer.hints.displayWidth}"
+                          maximumLength="#{bindings.Customer.hints.precision}"
+                          shortDesc="#{bindings.Customer.hints.tooltip}"
+                          id="it19"
+                          partialTriggers="leaseNumberTransId"
+                          readOnly="true" contentStyle="width:200px;">
+              <f:validator binding="#{bindings.Customer.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.MoveInOutDate.inputValue}"
+                          label="#{sessionScope.moveInOut=='I' ?'Move In Date':'Move Out Date'}"
+                          required="#{bindings.MoveInOutDate.hints.mandatory}"
+                          shortDesc="#{bindings.MoveInOutDate.hints.tooltip}"
+                          id="id1"
+                          disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                          contentStyle="width:200px;"
+                          minValue="#{bindings.BookingDate.inputValue}"
+                          partialTriggers="id4">
+              <f:validator binding="#{bindings.MoveInOutDate.validator}"/>
+              <af:convertDateTime pattern="dd-MM-yyyy"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.BookingDate.inputValue}"
+                          label="#{bindings.BookingDate.hints.label}"
+                          required="#{bindings.BookingDate.hints.mandatory}"
+                          shortDesc="#{bindings.BookingDate.hints.tooltip}"
+                          id="id2" readOnly="true" partialTriggers="soc2"
+                          rendered="false">
+              <f:validator binding="#{bindings.BookingDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.BookingDate.format}"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.BookingDateTrans.inputValue}"
+                          label="#{bindings.BookingDateTrans.hints.label}"
+                          required="#{bindings.BookingDateTrans.hints.mandatory}"
+                          shortDesc="#{bindings.BookingDateTrans.hints.tooltip}"
+                          id="id3" partialTriggers="soc2 soc3" readOnly="true"
+                          autoSubmit="true" rendered="false">
+              <f:validator binding="#{bindings.BookingDateTrans.validator}"/>
+              <af:convertDateTime pattern="#{bindings.BookingDateTrans.format}"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.BookingDate.inputValue}"
+                          label="#{bindings.BookingDate.hints.label}"
+                          required="#{bindings.BookingDate.hints.mandatory}"
+                          shortDesc="#{bindings.BookingDate.hints.tooltip}"
+                          id="id4" readOnly="true" autoSubmit="true"
+                          partialTriggers="soc3 soc2">
+              <f:validator binding="#{bindings.BookingDate.validator}"/>
+              <af:convertDateTime pattern="dd-MM-yyyy"/>
+            </af:inputDate>
+            <af:inputText value="#{bindings.Attribute1.inputValue}"
+                          label="Amount"
+                          required="#{bindings.Attribute1.hints.mandatory}"
+                          columns="#{bindings.Attribute1.hints.displayWidth}"
+                          maximumLength="#{bindings.Attribute1.hints.precision}"
+                          shortDesc="#{bindings.Attribute1.hints.tooltip}"
+                          id="it20" contentStyle="width:200px;">
+              <f:validator binding="#{bindings.Attribute1.validator}"/>
+            </af:inputText>
+            <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                                label="#{bindings.Status.label}"
+                                required="#{bindings.Status1.hints.mandatory}"
+                                shortDesc="#{bindings.Status1.hints.tooltip}"
+                                id="soc7" contentStyle="width:200px;"
+                                autoSubmit="true" disabled="true">
+              <f:selectItems value="#{bindings.Status1.items}" id="si7"/>
+            </af:selectOneChoice>
+            <af:inputText value="#{bindings.Description.inputValue}"
+                          label="#{bindings.Description.hints.label}"
+                          required="#{bindings.Description.hints.mandatory}"
+                          maximumLength="#{bindings.Description.hints.precision}"
+                          shortDesc="#{bindings.Description.hints.tooltip}"
+                          id="it3"
+                          disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                          rows="4" contentStyle="width:200px;">
+              <f:validator binding="#{bindings.Description.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.MoveInOutId.inputValue}"
+                          label="#{bindings.MoveInOutId.hints.label}"
+                          required="#{bindings.MoveInOutId.hints.mandatory}"
+                          columns="#{bindings.MoveInOutId.hints.displayWidth}"
+                          maximumLength="#{bindings.MoveInOutId.hints.precision}"
+                          shortDesc="#{bindings.MoveInOutId.hints.tooltip}"
+                          id="it4" rendered="false">
+              <f:validator binding="#{bindings.MoveInOutId.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.MoveInOutNumber.inputValue}"
+                          label="#{bindings.MoveInOutNumber.hints.label}"
+                          required="#{bindings.MoveInOutNumber.hints.mandatory}"
+                          columns="#{bindings.MoveInOutNumber.hints.displayWidth}"
+                          maximumLength="#{bindings.MoveInOutNumber.hints.precision}"
+                          shortDesc="#{bindings.MoveInOutNumber.hints.tooltip}"
+                          id="it1" rendered="false">
+              <f:validator binding="#{bindings.MoveInOutNumber.validator}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+          <af:spacer width="10" height="15" id="s1"/>
+          <af:panelBox text="Appliances" id="pb4">
+            <f:facet name="toolbar"/>
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                featuresOff="detach">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t4">
+                  <af:commandImageLink text="Update Appliances List" id="cil1"
+                                       actionListener="#{backingBeanScope.MoveInMoveOut.onClickSync}"
+                                       visible="#{sessionScope.grantMap.MoveInMoveOut =='N'?'false':'true'}"/>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.ApplianceDetails_VO1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.ApplianceDetails_VO1.rangeSize}"
+                        emptyText="#{bindings.ApplianceDetails_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.ApplianceDetails_VO1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.ApplianceDetails_VO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.ApplianceDetails_VO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t1"
+                        columnStretching="column:c12" varStatus="vs"
+                        autoHeightRows="0"
+                        binding="#{backingBeanScope.MoveInMoveOut.t1}"
+                        partialTriggers=":::soc3 :::leaseNumberTransId">
+                <af:column id="c3" headerText="S.No" align="center" width="80">
+                  <af:outputText value="#{vs.index+1}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ApplianceDetails_VO1.hints.ItemCode.name}"
+                           sortable="false"
+                           headerText="#{bindings.ApplianceDetails_VO1.hints.ItemCode.label}"
+                           id="c1" width="200">
+                  <af:inputText value="#{row.bindings.ItemCode.inputValue}"
+                                label="#{bindings.ApplianceDetails_VO1.hints.ItemCode.label}"
+                                required="#{bindings.ApplianceDetails_VO1.hints.ItemCode.mandatory}"
+                                columns="#{bindings.ApplianceDetails_VO1.hints.ItemCode.displayWidth}"
+                                maximumLength="#{bindings.ApplianceDetails_VO1.hints.ItemCode.precision}"
+                                shortDesc="#{bindings.ApplianceDetails_VO1.hints.ItemCode.tooltip}"
+                                id="it6" rendered="false">
+                    <f:validator binding="#{row.bindings.ItemCode.validator}"/>
+                  </af:inputText>
+                  <af:selectOneChoice value="#{row.bindings.ItemCode.inputValue}"
+                                      label="#{row.bindings.ItemCode.label}"
+                                      required="#{bindings.ApplianceDetails_VO1.hints.ItemCode.mandatory}"
+                                      shortDesc="#{bindings.ApplianceDetails_VO1.hints.ItemCode.tooltip}"
+                                      id="soc4" readOnly="true"
+                                      autoSubmit="true">
+                    <f:selectItems value="#{row.bindings.ItemCode.items}"
+                                   id="si4"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.ApplianceDetails_VO1.hints.Description.name}"
+                           sortable="false"
+                           headerText="#{bindings.ApplianceDetails_VO1.hints.Description.label}"
+                           id="c12">
+                  <af:inputText value="#{row.bindings.Description.inputValue}"
+                                label="#{bindings.ApplianceDetails_VO1.hints.Description.label}"
+                                required="#{bindings.ApplianceDetails_VO1.hints.Description.mandatory}"
+                                columns="#{bindings.ApplianceDetails_VO1.hints.Description.displayWidth}"
+                                maximumLength="#{bindings.ApplianceDetails_VO1.hints.Description.precision}"
+                                shortDesc="#{bindings.ApplianceDetails_VO1.hints.Description.tooltip}"
+                                id="it5"
+                                disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.ApplianceDetails_VO1.hints.Status.name}"
+                           sortable="false"
+                           headerText="#{bindings.ApplianceDetails_VO1.hints.Status.label}"
+                           id="c2" align="center">
+                  <af:inputText value="#{row.bindings.Status.inputValue}"
+                                label="#{bindings.ApplianceDetails_VO1.hints.Status.label}"
+                                required="#{bindings.ApplianceDetails_VO1.hints.Status.mandatory}"
+                                columns="#{bindings.ApplianceDetails_VO1.hints.Status.displayWidth}"
+                                maximumLength="#{bindings.ApplianceDetails_VO1.hints.Status.precision}"
+                                shortDesc="#{bindings.ApplianceDetails_VO1.hints.Status.tooltip}"
+                                id="it7" rendered="false">
+                    <f:validator binding="#{row.bindings.Status.validator}"/>
+                  </af:inputText>
+                  <af:selectBooleanCheckbox value="#{row.bindings.Checkbox_Trans.inputValue}"
+                                            label="#{row.bindings.Checkbox_Trans.label}"
+                                            shortDesc="#{bindings.ApplianceDetails_VO1.hints.Checkbox_Trans.tooltip}"
+                                            id="sbc1" autoSubmit="true"/>
+                  <af:selectBooleanCheckbox value="#{row.bindings.Checkbox_Trans.inputValue}"
+                                            label="#{row.bindings.Checkbox_Trans.label}"
+                                            shortDesc="#{bindings.ApplianceDetails_VO1.hints.Checkbox_Trans.tooltip}"
+                                            id="sbc3" rendered="false"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+          <af:panelBox text="Keys" id="pb3">
+            <f:facet name="toolbar"/>
+            <af:panelCollection id="pc2" styleClass="AFStretchWidth"
+                                featuresOff="detach">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t5">
+                  <af:commandImageLink text="Update Keys List" id="cil2"
+                                       actionListener="#{backingBeanScope.MoveInMoveOut.onClickKeySync}"
+                                       visible="#{sessionScope.grantMap.MoveInMoveOut =='N'?'false':'true'}"/>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.KeyDetails_VO1.collectionModel}"
+                        var="row" rows="#{bindings.KeyDetails_VO1.rangeSize}"
+                        emptyText="#{bindings.KeyDetails_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.KeyDetails_VO1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.KeyDetails_VO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.KeyDetails_VO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t2"
+                        columnStretching="column:c6" varStatus="vs"
+                        autoHeightRows="0"
+                        partialTriggers=":::soc3 :::leaseNumberTransId"
+                        binding="#{backingBeanScope.MoveInMoveOut.t2}">
+                <af:column id="c10" headerText="S.No" width="80" align="center">
+                  <af:outputText value="#{vs.index+1}" id="ot3"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.KeyDetails_VO1.hints.KeyCode.name}"
+                           sortable="false"
+                           headerText="#{bindings.KeyDetails_VO1.hints.KeyCode.label}"
+                           id="c4" width="200">
+                  <af:inputText value="#{row.bindings.KeyCode.inputValue}"
+                                label="#{bindings.KeyDetails_VO1.hints.KeyCode.label}"
+                                required="#{bindings.KeyDetails_VO1.hints.KeyCode.mandatory}"
+                                columns="#{bindings.KeyDetails_VO1.hints.KeyCode.displayWidth}"
+                                maximumLength="#{bindings.KeyDetails_VO1.hints.KeyCode.precision}"
+                                shortDesc="#{bindings.KeyDetails_VO1.hints.KeyCode.tooltip}"
+                                id="it9" rendered="false">
+                    <f:validator binding="#{row.bindings.KeyCode.validator}"/>
+                  </af:inputText>
+                  <af:selectOneChoice value="#{row.bindings.KeyCode.inputValue}"
+                                      label="#{row.bindings.KeyCode.label}"
+                                      required="#{bindings.KeyDetails_VO1.hints.KeyCode.mandatory}"
+                                      shortDesc="#{bindings.KeyDetails_VO1.hints.KeyCode.tooltip}"
+                                      id="soc5" readOnly="true"
+                                      autoSubmit="true">
+                    <f:selectItems value="#{row.bindings.KeyCode.items}"
+                                   id="si5"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.KeyDetails_VO1.hints.Description.name}"
+                           sortable="false"
+                           headerText="#{bindings.KeyDetails_VO1.hints.Description.label}"
+                           id="c6">
+                  <af:inputText value="#{row.bindings.Description.inputValue}"
+                                label="#{bindings.KeyDetails_VO1.hints.Description.label}"
+                                required="#{bindings.KeyDetails_VO1.hints.Description.mandatory}"
+                                columns="#{bindings.KeyDetails_VO1.hints.Description.displayWidth}"
+                                maximumLength="#{bindings.KeyDetails_VO1.hints.Description.precision}"
+                                shortDesc="#{bindings.KeyDetails_VO1.hints.Description.tooltip}"
+                                id="it8"
+                                disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.KeyDetails_VO1.hints.Status.name}"
+                           sortable="false"
+                           headerText="#{bindings.KeyDetails_VO1.hints.Status.label}"
+                           id="c5" align="center">
+                  <af:inputText value="#{row.bindings.Status.inputValue}"
+                                label="#{bindings.KeyDetails_VO1.hints.Status.label}"
+                                required="#{bindings.KeyDetails_VO1.hints.Status.mandatory}"
+                                columns="#{bindings.KeyDetails_VO1.hints.Status.displayWidth}"
+                                maximumLength="#{bindings.KeyDetails_VO1.hints.Status.precision}"
+                                shortDesc="#{bindings.KeyDetails_VO1.hints.Status.tooltip}"
+                                id="it10" rendered="false">
+                    <f:validator binding="#{row.bindings.Status.validator}"/>
+                  </af:inputText>
+                  <af:selectBooleanCheckbox value="#{row.bindings.CheckBox_Trans.inputValue}"
+                                            label="#{row.bindings.CheckBox_Trans.label}"
+                                            shortDesc="#{bindings.KeyDetails_VO1.hints.CheckBox_Trans.tooltip}"
+                                            id="sbc2" autoSubmit="true"/>
+                  <af:selectBooleanCheckbox value="#{row.bindings.CheckBox_Trans.inputValue}"
+                                            label="#{row.bindings.CheckBox_Trans.label}"
+                                            shortDesc="#{bindings.KeyDetails_VO1.hints.CheckBox_Trans.tooltip}"
+                                            id="sbc4" rendered="false"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+          <af:panelBox text="Meter Readings" id="pb2">
+            <f:facet name="toolbar"/>
+            <af:panelCollection id="pc3" styleClass="AFStretchWidth"
+                                featuresOff="detach">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t6">
+                  <af:commandImageLink text="Update Meter Readings List" id="cil3"
+                                       actionListener="#{backingBeanScope.MoveInMoveOut.onClickMeterReadingListSync}"
+                                       visible="#{sessionScope.grantMap.MoveInMoveOut =='N'?'false':'true'}"/>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.MeterReading_VO1.collectionModel}"
+                        var="row" rows="#{bindings.MeterReading_VO1.rangeSize}"
+                        emptyText="#{bindings.MeterReading_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.MeterReading_VO1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.MeterReading_VO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.MeterReading_VO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t3"
+                        columnStretching="column:c13" varStatus="vs"
+                        autoHeightRows="0"
+                        partialTriggers=":::soc3 :::leaseNumberTransId"
+                        binding="#{backingBeanScope.MoveInMoveOut.t3}">
+                <af:column id="c11" headerText="S.No" align="center" width="80">
+                  <af:outputText value="#{vs.index+1}" id="ot4"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.MeterReading_VO1.hints.MeterCode.name}"
+                           sortable="false"
+                           headerText="#{bindings.MeterReading_VO1.hints.MeterCode.label}"
+                           id="c8" width="200">
+                  <af:inputText value="#{row.bindings.MeterCode.inputValue}"
+                                label="#{bindings.MeterReading_VO1.hints.MeterCode.label}"
+                                required="#{bindings.MeterReading_VO1.hints.MeterCode.mandatory}"
+                                columns="#{bindings.MeterReading_VO1.hints.MeterCode.displayWidth}"
+                                maximumLength="#{bindings.MeterReading_VO1.hints.MeterCode.precision}"
+                                shortDesc="#{bindings.MeterReading_VO1.hints.MeterCode.tooltip}"
+                                id="it11" rendered="false">
+                    <f:validator binding="#{row.bindings.MeterCode.validator}"/>
+                  </af:inputText>
+                  <af:selectOneChoice value="#{row.bindings.MeterCode.inputValue}"
+                                      label="#{row.bindings.MeterCode.label}"
+                                      required="#{bindings.MeterReading_VO1.hints.MeterCode.mandatory}"
+                                      shortDesc="#{bindings.MeterReading_VO1.hints.MeterCode.tooltip}"
+                                      id="soc6" readOnly="true"
+                                      autoSubmit="true">
+                    <f:selectItems value="#{row.bindings.MeterCode.items}"
+                                   id="si6"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.MeterReading_VO1.hints.MeterValue.name}"
+                           sortable="false"
+                           headerText="#{bindings.MeterReading_VO1.hints.MeterValue.label}"
+                           id="c9">
+                  <af:inputText value="#{row.bindings.MeterValue.inputValue}"
+                                label="#{bindings.MeterReading_VO1.hints.MeterValue.label}"
+                                required="#{bindings.MeterReading_VO1.hints.MeterValue.mandatory}"
+                                columns="#{bindings.MeterReading_VO1.hints.MeterValue.displayWidth}"
+                                maximumLength="#{bindings.MeterReading_VO1.hints.MeterValue.precision}"
+                                shortDesc="#{bindings.MeterReading_VO1.hints.MeterValue.tooltip}"
+                                id="it13"
+                                disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                    <f:validator binding="#{row.bindings.MeterValue.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.MeterReading_VO1.hints.Description.name}"
+                           sortable="false"
+                           headerText="#{bindings.MeterReading_VO1.hints.Description.label}"
+                           id="c13">
+                  <af:inputText value="#{row.bindings.Description.inputValue}"
+                                label="#{bindings.MeterReading_VO1.hints.Description.label}"
+                                required="#{bindings.MeterReading_VO1.hints.Description.mandatory}"
+                                columns="#{bindings.MeterReading_VO1.hints.Description.displayWidth}"
+                                maximumLength="#{bindings.MeterReading_VO1.hints.Description.precision}"
+                                shortDesc="#{bindings.MeterReading_VO1.hints.Description.tooltip}"
+                                id="it15"
+                                disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.MeterReading_VO1.hints.Status.name}"
+                           sortable="false"
+                           headerText="#{bindings.MeterReading_VO1.hints.Status.label}"
+                           id="c7" rendered="false">
+                  <af:inputText value="#{row.bindings.Status.inputValue}"
+                                label="#{bindings.MeterReading_VO1.hints.Status.label}"
+                                required="#{bindings.MeterReading_VO1.hints.Status.mandatory}"
+                                columns="#{bindings.MeterReading_VO1.hints.Status.displayWidth}"
+                                maximumLength="#{bindings.MeterReading_VO1.hints.Status.precision}"
+                                shortDesc="#{bindings.MeterReading_VO1.hints.Status.tooltip}"
+                                id="it12">
+                    <f:validator binding="#{row.bindings.Status.validator}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </af:panelBox>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+</jsp:root>

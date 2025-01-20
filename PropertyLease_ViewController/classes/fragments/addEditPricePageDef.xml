@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="addEditPricePageDef"
+                Package="fragments">
+   <parameters/>
+   <executables>
+      <variableIterator id="variables"/>
+      <iterator Binds="PlHeader_VO1" RangeSize="25"
+                DataControl="PriceList_AMDataControl"
+                id="PlHeader_VO1Iterator" ChangeEventPolicy="ppr"/>
+      <iterator Binds="PlLinesVO2" RangeSize="25"
+                DataControl="PriceList_AMDataControl" id="PlLinesVO2Iterator"
+                ChangeEventPolicy="ppr"/>
+      <iterator id="PlLinesVO1Iterator" Binds="PlLinesVO1"
+                DataControl="PriceList_AMDataControl" RangeSize="25"/>
+      <iterator id="getID1Iterator" Binds="getID1"
+                DataControl="PriceList_AMDataControl" RangeSize="25"/>
+      <iterator id="getLookupCode1Iterator" Binds="getLookupCode1"
+                DataControl="PriceList_AMDataControl" RangeSize="25"/>
+      <searchRegion Binds="PlLinesVO2Iterator" Criteria=""
+                    Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                    id="PlLinesVO21Query"/>
+      <iterator id="getUnitNameROVO1Iterator" Binds="getUnitNameROVO1"
+                DataControl="PriceList_AMDataControl" RangeSize="25"/>
+      <iterator id="PlLinesVO3Iterator" Binds="PlLinesVO3"
+                DataControl="PriceList_AMDataControl" RangeSize="25"/>
+   </executables>
+   <bindings>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="PlId">
+         <AttrNames>
+            <Item Value="PlId"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="PlHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_OrgId" id="OrgId" DTSupportsMRU="false"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="PlName">
+         <AttrNames>
+            <Item Value="PlName"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="Description">
+         <AttrNames>
+            <Item Value="Description"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="StartDate">
+         <AttrNames>
+            <Item Value="StartDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="EndDate">
+         <AttrNames>
+            <Item Value="EndDate"/>
+         </AttrNames>
+      </attributeValues>
+      <button IterBinding="PlHeader_VO1Iterator" id="BasePriceYn"
+              DTSupportsMRU="false" StaticList="true">
+         <AttrNames>
+            <Item Value="BasePriceYn"/>
+         </AttrNames>
+         <ValueList>
+            <Item Value="Y"/>
+            <Item Value="N"/>
+         </ValueList>
+      </button>
+      <button IterBinding="PlHeader_VO1Iterator" id="ActiveYn"
+              DTSupportsMRU="false" StaticList="true">
+         <AttrNames>
+            <Item Value="ActiveYn"/>
+         </AttrNames>
+         <ValueList>
+            <Item Value="Y"/>
+            <Item Value="N"/>
+         </ValueList>
+      </button>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="RevisionNo">
+         <AttrNames>
+            <Item Value="RevisionNo"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="RevisionDate">
+         <AttrNames>
+            <Item Value="RevisionDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="CreatedBy">
+         <AttrNames>
+            <Item Value="CreatedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="CreationDate">
+         <AttrNames>
+            <Item Value="CreationDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlHeader_VO1Iterator" id="RevisedBy">
+         <AttrNames>
+            <Item Value="RevisedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="PlLinesVO2Iterator" id="PlLinesVO2">
+         <nodeDefinition DefName="model.VO.PlLinesVO" Name="PlLinesVO20">
+            <AttrNames>
+               <Item Value="PllId"/>
+               <Item Value="PlId"/>
+               <Item Value="UnitId"/>
+               <Item Value="PropertyId"/>
+               <Item Value="BuildId"/>
+               <Item Value="Trans_UnitName"/>
+               <Item Value="Uom"/>
+               <Item Value="BasePrice"/>
+               <Item Value="MinPrice"/>
+               <Item Value="ElectricityCharges"/>
+               <Item Value="MunicipalityCharges"/>
+               <Item Value="SecurityDeposite"/>
+               <Item Value="StartDate"/>
+               <Item Value="EndDate"/>
+               <Item Value="RevisionNo"/>
+               <Item Value="RevisionDate"/>
+               <Item Value="RevisedBy"/>
+               <Item Value="Premium1"/>
+               <Item Value="Premium2"/>
+               <Item Value="Premium3"/>
+               <Item Value="Premium4"/>
+               <Item Value="Premium5"/>
+               <Item Value="ActiveYn"/>
+               <Item Value="CreationDate"/>
+               <Item Value="LastUpdatedBy"/>
+               <Item Value="LastUpdateDate"/>
+               <Item Value="LastUpdateLogin"/>
+               <Item Value="UnitType"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <action id="Commit" DataControl="PriceList_AMDataControl"
+              RequiresUpdateModel="true" Action="commitTransaction"/>
+      <list IterBinding="PlHeader_VO1Iterator" StaticList="false"
+            Uses="LOV_CurrCode" id="CurrCode" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <button IterBinding="PlLinesVO2Iterator" id="ActiveYn1"
+              DTSupportsMRU="false">
+         <AttrNames>
+            <Item Value="ActiveYn"/>
+         </AttrNames>
+      </button>
+      <action IterBinding="PlLinesVO2Iterator" id="CreateInsert"
+              InstanceName="PriceList_AMDataControl.PlLinesVO2"
+              DataControl="PriceList_AMDataControl" RequiresUpdateModel="true"
+              Action="createInsertRow"/>
+      <action IterBinding="PlLinesVO2Iterator" id="Delete"
+              InstanceName="PriceList_AMDataControl.PlLinesVO2"
+              DataControl="PriceList_AMDataControl" RequiresUpdateModel="false"
+              Action="removeCurrentRow"/>
+      <listOfValues StaticList="false" IterBinding="PlHeader_VO1Iterator"
+                    Uses="LOV_OrgNameTrans" id="OrgNameTrans"/>
+      <listOfValues StaticList="false" IterBinding="PlHeader_VO1Iterator"
+                    Uses="LOV_CurrencyNameTrans" id="CurrencyNameTrans"/>
+      <tree IterBinding="PlLinesVO2Iterator" id="PlLinesVO21">
+         <nodeDefinition DefName="model.VO.PlLinesVO" Name="PlLinesVO210">
+            <AttrNames>
+               <Item Value="PropertyNameTrans"/>
+               <Item Value="BuildingNameTrans"/>
+               <Item Value="UnitNameTrans"/>
+               <Item Value="Uom"/>
+               <Item Value="BasePrice"/>
+               <Item Value="MinPrice"/>
+               <Item Value="ElectricityCharges"/>
+               <Item Value="MunicipalityPercentage"/>
+               <Item Value="MunicipalityCharges"/>
+               <Item Value="SecurityDeposite"/>
+               <Item Value="ThirdPartyServCharge"/>
+               <Item Value="EjariPaymentCharge"/>
+               <Item Value="OtherGovntChargeRnew"/>
+               <Item Value="OtherGovntChargeNew"/>
+               <Item Value="StartDate"/>
+               <Item Value="EndDate"/>
+               <Item Value="Premium1"/>
+               <Item Value="Premium2"/>
+               <Item Value="Premium3"/>
+               <Item Value="Premium4"/>
+               <Item Value="Premium5"/>
+               <Item Value="RevisionNo"/>
+               <Item Value="RevisionDate"/>
+               <Item Value="RevisedBy"/>
+               <Item Value="ActiveYn"/>
+               <Item Value="Trans_UnitName"/>
+               <Item Value="UnitType"/>
+               <Item Value="UnitType1"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <listOfValues StaticList="false" IterBinding="PlLinesVO2Iterator"
+                    Uses="LOV_PropertyNameTrans" id="PropertyNameTrans"/>
+      <listOfValues StaticList="false" IterBinding="PlLinesVO2Iterator"
+                    Uses="LOV_UnitNameTrans" id="UnitNameTrans"/>
+      <listOfValues StaticList="false" IterBinding="PlLinesVO2Iterator"
+                    Uses="LOV_BuildingNameTrans" id="BuildingNameTrans"/>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="Uom">
+         <AttrNames>
+            <Item Value="Uom"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="BasePrice">
+         <AttrNames>
+            <Item Value="BasePrice"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="MinPrice">
+         <AttrNames>
+            <Item Value="MinPrice"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="StartDate1">
+         <AttrNames>
+            <Item Value="StartDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="EndDate1">
+         <AttrNames>
+            <Item Value="EndDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator"
+                       id="MunicipalityCharges">
+         <AttrNames>
+            <Item Value="MunicipalityCharges"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="ElectricityCharges">
+         <AttrNames>
+            <Item Value="ElectricityCharges"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="SecurityDeposite">
+         <AttrNames>
+            <Item Value="SecurityDeposite"/>
+         </AttrNames>
+      </attributeValues>
+      <action IterBinding="PlLinesVO2Iterator" id="First"
+              RequiresUpdateModel="true" Action="first"/>
+      <action IterBinding="PlLinesVO2Iterator" id="Previous"
+              RequiresUpdateModel="true" Action="previous"/>
+      <action IterBinding="PlLinesVO2Iterator" id="Next"
+              RequiresUpdateModel="true" Action="next"/>
+      <action IterBinding="PlLinesVO2Iterator" id="Last"
+              RequiresUpdateModel="true" Action="last"/>
+      <list IterBinding="PlLinesVO2Iterator" StaticList="false"
+            Uses="LOV_MunicipalityPercentage" id="MunicipalityPercentage"
+            DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="EjariPaymentCharge">
+         <AttrNames>
+            <Item Value="EjariPaymentCharge"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator"
+                       id="OtherGovntChargeNew">
+         <AttrNames>
+            <Item Value="OtherGovntChargeNew"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator"
+                       id="OtherGovntChargeRnew">
+         <AttrNames>
+            <Item Value="OtherGovntChargeRnew"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator"
+                       id="ThirdPartyServCharge">
+         <AttrNames>
+            <Item Value="ThirdPartyServCharge"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="PlLinesVO2Iterator" StaticList="false"
+            Uses="LOV_UnitType" id="UnitType" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="LastUpdatedBy">
+         <AttrNames>
+            <Item Value="LastUpdatedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="PlLinesVO2Iterator" id="PropertyId">
+         <AttrNames>
+            <Item Value="PropertyId"/>
+         </AttrNames>
+      </attributeValues>
+   </bindings>
+</pageDefinition>

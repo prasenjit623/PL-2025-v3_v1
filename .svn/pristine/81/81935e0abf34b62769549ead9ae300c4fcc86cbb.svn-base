@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject xmlns="http://xmlns.oracle.com/bc4j" Name="MoveInOut_VO"
+            Version="11.1.1.66.73" InheritPersonalization="merge"
+            BindingStyle="OracleName" CustomQuery="true" PageIterMode="Full"
+            UseGlueCode="false" OrderBy="MOVE_IN_OUT_ID desc"
+   RowClass="model.VO.MoveInOut_VORowImpl"
+   ComponentClass="model.VO.MoveInOut_VOImpl">
+   <DesignTime>
+      <Attr Name="_isExpertMode" Value="true"/>
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+      <Attr Name="_isCodegen" Value="true"/>
+   </DesignTime>
+   <Properties>
+      <SchemaBasedProperties>
+         <LABEL ResId="model.VO.MoveInOut_VO_LABEL"/>
+      </SchemaBasedProperties>
+   </Properties>
+   <Variable Name="P_ID" Kind="viewcriteria" Type="java.lang.String">
+      <TransientExpression>adf.context.current.sessionScope.get('moveInOut')</TransientExpression>
+   </Variable>
+   <Variable Name="FLAG" Kind="viewcriteria" Type="java.lang.String"/>
+   <Variable
+      Name="BV_MIMO"
+      Kind="viewcriteria"
+      Type="java.lang.String"/>
+   <Variable
+      Name="MOFlag"
+      Kind="viewcriteria"
+      Type="java.lang.String"/>
+   <Variable
+      Name="MIO_ID"
+      Kind="viewcriteria"
+      Type="java.lang.String"/>
+   <ViewAccessor Name="LeaseAgreement_VO1"
+                 ViewObjectName="model.VO.LeaseAgreement_VO"
+                 RowLevelBinds="true"/>
+   <ViewAccessor Name="BookingHeader_VO1"
+                 ViewObjectName="model.VO.BookingHeader_VO"
+                 RowLevelBinds="true"/>
+   <ViewAccessor Name="Lookup_View_ROVO1"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO"
+                 RowLevelBinds="true">
+      <ViewCriteriaUsage Name="findByTransStatus"
+                         FullName="model.ROVO.Lookup_View_ROVO.findByTransStatus"/>
+   </ViewAccessor>
+   <ViewAccessor Name="MoveInMoveOutLeaseDetailsROVO1"
+                 ViewObjectName="model.ROVO.MoveInMoveOutLeaseDetailsROVO">
+      <ParameterMap>
+         <PIMap Variable="B_ID">
+            <TransientExpression>BookingId</TransientExpression>
+         </PIMap>
+      </ParameterMap>
+   </ViewAccessor>
+   <ViewAccessor Name="getLeaseNumber1"
+                 ViewObjectName="model.ROVO.getLeaseNumber"
+                 RowLevelBinds="true">
+      <ViewCriteriaUsage
+         Name="moveinout"
+         FullName="model.ROVO.getLeaseNumber.moveinout"/>
+   </ViewAccessor>
+   
+  <ViewAccessor
+    Name="BookingHeader_VO2"
+    ViewObjectName="model.VO.BookingHeader_VO">
+    <ViewCriteriaUsage
+      Name="findById"
+      FullName="model.VO.BookingHeader_VO.findById"/>
+    <ParameterMap>
+      <PIMap Variable="P_ID">
+        <TransientExpression><![CDATA[BookingId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+   <ViewAccessor
+    Name="LeaseAgree_ROVO1"
+    ViewObjectName="model.ROVO.LeaseAgree_ROVO"
+    RowLevelBinds="true"/>
+   <ViewAccessor
+      Name="LeaseAgreement_VO2"
+      ViewObjectName="model.VO.LeaseAgreement_VO"
+      RowLevelBinds="true">
+      <ViewCriteriaUsage
+         Name="fndByAPR"
+         FullName="model.VO.LeaseAgreement_VO.fndByAPR"/>
+   </ViewAccessor>
+   <ViewAccessor
+      Name="LeaseCancelNo_ROVO1"
+      ViewObjectName="model.ROVO.LeaseCancelNo_ROVO"
+      RowLevelBinds="true"/>
+   <ListBinding Name="LOV_LeaseAgreementId" ListVOName="getLeaseNumber1"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="LeaseAgreementId"/>
+      </AttrArray>
+      <AttrArray Name="DerivedAttrNames">
+         <Item Value="BookingId"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="LeaseAgreementId"/>
+         <Item Value="BookingId"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="LeaseNumber"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding Name="LOV_BookingId" ListVOName="BookingHeader_VO1"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="BookingId"/>
+      </AttrArray>
+      <AttrArray Name="DerivedAttrNames">
+         <Item Value="BookingDateTrans"/>
+         <Item Value="BookingDate"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="BookingId1"/>
+         <Item Value="BookingDate"/>
+         <Item Value="BookingDate"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="BookingNumber1"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding Name="LOV_Status" ListVOName="Lookup_View_ROVO1"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="Status"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="LookupValueName"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="LookupValueNameDisp"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding Name="LOV_AttributeCategory" ListVOName="LeaseAgree_ROVO1"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="AttributeCategory"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="BookingId"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="BookingNumber"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding
+      Name="LOV_LeaseNumberTrans"
+      ListVOName="LeaseAgreement_VO2"
+      ListRangeSize="4"
+      NullValueFlag="none"
+      NullValueId="LOV_LeaseNumberTrans_LOVUIHints_NullValueId"
+      MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="LeaseNumberTrans"/>
+      </AttrArray>
+      <AttrArray Name="DerivedAttrNames">
+         <Item Value="BookingId"/>
+         <Item Value="LeaseAgreementId"/>
+         <Item Value="CancelNo_Trans"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="LeaseNumber"/>
+         <Item Value="BookingId"/>
+         <Item Value="LeaseAgreementId"/>
+         <Item Value="LeaseAgreementId"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="LeaseNumber"/>
+         <Item Value="Customer"/>
+      </AttrArray>
+      <DisplayCriteria
+         Name="smartSearch"/>
+   </ListBinding>
+   <ListBinding
+      Name="LOV_CancelNo_Trans"
+      ListVOName="LeaseCancelNo_ROVO1"
+      ListRangeSize="-1"
+      NullValueFlag="none"
+      NullValueId="LOV_CancelNo_Trans_LOVUIHints_NullValueId"
+      MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="CancelNo_Trans"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="LeaseAgreementId"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="CancelNumber"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <SQLQuery>
+      <![CDATA[SELECT XxpmMoveInOut.ATTRIBUTE1, XxpmMoveInOut.ATTRIBUTE10, XxpmMoveInOut.ATTRIBUTE2, XxpmMoveInOut.ATTRIBUTE3, XxpmMoveInOut.ATTRIBUTE4, XxpmMoveInOut.ATTRIBUTE5, XxpmMoveInOut.ATTRIBUTE6, XxpmMoveInOut.ATTRIBUTE7, XxpmMoveInOut.ATTRIBUTE8, XxpmMoveInOut.ATTRIBUTE9, XxpmMoveInOut.ATTRIBUTE_CATEGORY, XxpmMoveInOut.BOOKING_ID, (select CUST_NAME from XXPM_BOOKING_CUSTOMER BS where XXPMMOVEINOUT.BOOKING_ID=BS.BOOKING_ID and rownum=1 ) as CUSTOMER, (SELECT BK.BOOKING_DATE FROM XXPM_BOOKING_HEADER BK WHERE XXPMMOVEINOUT.BOOKING_ID=BK.BOOKING_ID and ROWNUM=1 ) as BOOKING_DATE, XxpmMoveInOut.CREATED_BY, XxpmMoveInOut.CREATION_DATE, XxpmMoveInOut.DESCRIPTION, XxpmMoveInOut.FUNC_ID, XxpmMoveInOut.IN_OUT_FLAG, XxpmMoveInOut.LAST_UPDATE_DATE, XxpmMoveInOut.LAST_UPDATE_LOGIN, XxpmMoveInOut.LAST_UPDATED_BY, XxpmMoveInOut.LEASE_AGREEMENT_ID, XxpmMoveInOut.MOVE_IN_OUT_DATE, XxpmMoveInOut.MOVE_IN_OUT_ID, XxpmMoveInOut.MOVE_IN_OUT_NUMBER, XxpmMoveInOut.RESOURCE_NAME, XxpmMoveInOut.STATUS, XxpmMoveInOut.BUILDING_ID, XxpmMoveInOut.ORG_ID, XxpmMoveInOut.PROPERTY_ID, XxpmMoveInOut.USER_GRP_ID, XxpmMoveInOut.FLOW_LEVEL, XxpmMoveInOut.FLOW_STATUS, XxpmMoveInOut.FLOW_WITH,trunc(XxpmMoveInOut.MOVE_IN_OUT_DATE) MoveInOutDate_Trans FROM XXPM_MOVE_IN_OUT XxpmMoveInOut]]>
+   </SQLQuery>
+   <EntityUsage
+      Name="XxpmMoveInOut"
+      Entity="model.EO.MoveInOut_EO"/>
+   <ViewAttribute
+      Name="Attribute1"
+      PrecisionRule="true"
+      EntityAttrName="Attribute1"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE1"/>
+   <ViewAttribute
+      Name="Attribute10"
+      PrecisionRule="true"
+      EntityAttrName="Attribute10"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE10"/>
+   <ViewAttribute
+      Name="Attribute2"
+      PrecisionRule="true"
+      EntityAttrName="Attribute2"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE2"/>
+   <ViewAttribute
+      Name="Attribute3"
+      PrecisionRule="true"
+      EntityAttrName="Attribute3"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE3"/>
+   <ViewAttribute
+      Name="Attribute4"
+      PrecisionRule="true"
+      EntityAttrName="Attribute4"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE4"/>
+   <ViewAttribute
+      Name="Attribute5"
+      PrecisionRule="true"
+      EntityAttrName="Attribute5"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE5"/>
+   <ViewAttribute
+      Name="Attribute6"
+      PrecisionRule="true"
+      EntityAttrName="Attribute6"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE6"/>
+   <ViewAttribute
+      Name="Attribute7"
+      PrecisionRule="true"
+      EntityAttrName="Attribute7"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE7"/>
+   <ViewAttribute
+      Name="Attribute8"
+      PrecisionRule="true"
+      EntityAttrName="Attribute8"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE8">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.Attribute8_LABEL"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Attribute9"
+      PrecisionRule="true"
+      EntityAttrName="Attribute9"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ATTRIBUTE9"/>
+   <ViewAttribute
+      Name="AttributeCategory"
+      PrecisionRule="true"
+      EntityAttrName="AttributeCategory"
+      EntityUsage="XxpmMoveInOut"
+      LOVName="LOV_AttributeCategory"
+      AliasName="ATTRIBUTE_CATEGORY">
+      <Properties>
+         <SchemaBasedProperties>
+            <CONTROLTYPE
+               Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BookingId"
+      PrecisionRule="true"
+      EntityAttrName="BookingId"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="BOOKING_ID"
+      LOVName="LOV_BookingId">
+      <Dependencies>
+         <Item
+            Value="LeaseAgreementId"/>
+      </Dependencies>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.BookingId_LABEL"/>
+            <CONTROLTYPE
+               Value="choice"/>
+            <DISPLAYWIDTH
+               Value="30"/>
+            <AUTOSUBMIT
+               Value="true"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Customer"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="150"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="CUSTOMER"
+      Expression="CUSTOMER"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="150"/>
+      </DesignTime>
+      <Dependencies>
+         <Item
+            Value="BookingId"/>
+      </Dependencies>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BookingDate"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.sql.Date"
+      ColumnType="DATE"
+      AliasName="BOOKING_DATE"
+      Expression="BOOKING_DATE"
+      SQLType="DATE">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7"/>
+      </DesignTime>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.BookingDate_LABEL"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CreatedBy"
+      PrecisionRule="true"
+      EntityAttrName="CreatedBy"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="CREATED_BY"
+      IsUpdateable="false"/>
+   <ViewAttribute
+      Name="CreationDate"
+      PrecisionRule="true"
+      EntityAttrName="CreationDate"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="CREATION_DATE"
+      IsUpdateable="false"/>
+   <ViewAttribute
+      Name="Description"
+      PrecisionRule="true"
+      EntityAttrName="Description"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="DESCRIPTION">
+      <Properties>
+         <SchemaBasedProperties>
+            <DISPLAYWIDTH
+               Value="30"/>
+            <DISPLAYHEIGHT
+               Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="FuncId"
+      PrecisionRule="true"
+      EntityAttrName="FuncId"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="FUNC_ID"/>
+   <ViewAttribute
+      Name="InOutFlag"
+      PrecisionRule="true"
+      EntityAttrName="InOutFlag"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="IN_OUT_FLAG">
+      <TransientExpression>adf.context.current.sessionScope.get('moveInOut')</TransientExpression>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LastUpdateDate"
+      PrecisionRule="true"
+      EntityAttrName="LastUpdateDate"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="LAST_UPDATE_DATE"
+      IsUpdateable="false"/>
+   <ViewAttribute
+      Name="LastUpdateLogin"
+      PrecisionRule="true"
+      EntityAttrName="LastUpdateLogin"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="LAST_UPDATE_LOGIN"
+      IsUpdateable="false"/>
+   <ViewAttribute
+      Name="LastUpdatedBy"
+      PrecisionRule="true"
+      EntityAttrName="LastUpdatedBy"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="LAST_UPDATED_BY"
+      IsUpdateable="false"/>
+   <ViewAttribute
+      Name="LeaseAgreementId"
+      PrecisionRule="true"
+      EntityAttrName="LeaseAgreementId"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="LEASE_AGREEMENT_ID"
+      LOVName="LOV_LeaseAgreementId">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.LeaseAgreementId_LABEL"/>
+            <DISPLAYWIDTH
+               Value="30"/>
+            <CONTROLTYPE
+               Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MoveInOutDate"
+      PrecisionRule="true"
+      EntityAttrName="MoveInOutDate"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="MOVE_IN_OUT_DATE">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.MoveInOutDate_LABEL"/>
+            <DISPLAYWIDTH
+               Value="27"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MoveInOutId"
+      PrecisionRule="true"
+      EntityAttrName="MoveInOutId"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="MOVE_IN_OUT_ID">
+      <TransientExpression>(new
+                           oracle.jbo.server.SequenceImpl("MOVE_IN_OUT_ID_S",adf.object.getDBTransaction())).getSequenceNumber()</TransientExpression>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MoveInOutNumber"
+      PrecisionRule="true"
+      EntityAttrName="MoveInOutNumber"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="MOVE_IN_OUT_NUMBER">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.MoveInOutNumber_LABEL"/>
+            <DISPLAYWIDTH
+               Value="27"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ResourceName"
+      PrecisionRule="true"
+      EntityAttrName="ResourceName"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="RESOURCE_NAME">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.ResourceName_LABEL"/>
+            <DISPLAYWIDTH
+               Value="27"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Status"
+      PrecisionRule="true"
+      EntityAttrName="Status"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="STATUS"
+      LOVName="LOV_Status"
+      DefaultValue="DRA">
+      <Properties>
+         <SchemaBasedProperties>
+            <CONTROLTYPE
+               Value="choice"/>
+            <DISPLAYWIDTH
+               Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BuildingId"
+      PrecisionRule="true"
+      EntityAttrName="BuildingId"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="BUILDING_ID"/>
+   <ViewAttribute
+      Name="OrgId"
+      PrecisionRule="true"
+      EntityAttrName="OrgId"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="ORG_ID"/>
+   <ViewAttribute
+      Name="PropertyId"
+      PrecisionRule="true"
+      EntityAttrName="PropertyId"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="PROPERTY_ID"/>
+   <ViewAttribute
+      Name="UserGrpId"
+      PrecisionRule="true"
+      EntityAttrName="UserGrpId"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="USER_GRP_ID"/>
+   <ViewAttribute
+      Name="FlowLevel"
+      PrecisionRule="true"
+      EntityAttrName="FlowLevel"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="FLOW_LEVEL"/>
+   <ViewAttribute
+      Name="FlowStatus"
+      PrecisionRule="true"
+      EntityAttrName="FlowStatus"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="FLOW_STATUS"/>
+   <ViewAttribute
+      Name="FlowWith"
+      PrecisionRule="true"
+      EntityAttrName="FlowWith"
+      EntityUsage="XxpmMoveInOut"
+      AliasName="FLOW_WITH"/>
+   <ViewAttribute
+      Name="MoveinoutdateTrans"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.sql.Date"
+      ColumnType="DATE"
+      AliasName="MOVEINOUTDATE_TRANS"
+      Expression="MOVEINOUTDATE_TRANS"
+      SQLType="DATE">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="7"/>
+      </DesignTime>
+      <Properties>
+         <SchemaBasedProperties>
+            <FMT_FORMATTER
+               ResId="model.VO.MoveInOut_VO.MoveinoutdateTrans_FMT_FORMATTER"/>
+            <FMT_FORMAT
+               ResId="model.VO.MoveInOut_VO.MoveinoutdateTrans_FMT_FORMAT"/>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.MoveinoutdateTrans_LABEL"/>
+            <CONTROLTYPE
+               Value="date"/>
+            <DISPLAYWIDTH
+               Value="24"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BookingDateTrans"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.sql.Date"
+      ColumnType="DATE"
+      AliasName="VIEW_ATTR"
+      SQLType="DATE">
+      <RecalcCondition>true</RecalcCondition>
+      <TransientExpression>if(BookingId!=null){ return
+                           BookingHeader_VO2.first().getAttribute('BookingDate');
+                           } else{ return null; }</TransientExpression>
+      <Dependencies>
+         <Item
+            Value="BookingId"/>
+      </Dependencies>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.BookingDateTrans_LABEL"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="LeaseNumberTrans"
+      IsQueriable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      EntityAttrName="LeaseNumberTrans"
+      EntityUsage="XxpmMoveInOut"
+      LOVName="LOV_LeaseNumberTrans"
+      IsSelected="false"
+      AliasName="LEASENUMBERTRANS">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.MoveInOut_VO.LeaseNumberTrans_LABEL"/>
+            <DISPLAYWIDTH
+               Value="28"/>
+            <CONTROLTYPE
+               Value="combo_lov"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="CustomerTrans"
+      IsUpdateable="false"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR"/>
+   <ViewAttribute
+      Name="CancelNo_Trans"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.math.BigDecimal"
+      ColumnType="BIGINT"
+      AliasName="VIEW_ATTR"
+      SQLType="NUMERIC"
+      LOVName="LOV_CancelNo_Trans">
+      <RecalcCondition><![CDATA[true]]></RecalcCondition>
+      <TransientExpression><![CDATA[LeaseAgreementId]]></TransientExpression>
+      <Properties>
+         <SchemaBasedProperties>
+            <CONTROLTYPE
+               Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewCriteria
+      Name="SearchMoveInOut"
+      ViewObjectName="model.VO.MoveInOut_VO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+            <Property
+               Name="displayName"
+               ResId="SearchMoveInOut_displayName"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow119"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="BookingId"
+            ViewAttribute="BookingId"
+            Operator="="
+            Conjunction="AND"
+            Required="Optional"/>
+         <ViewCriteriaItem
+            Name="InOutFlag"
+            ViewAttribute="InOutFlag"
+            Operator="="
+            Conjunction="AND"
+            Value=":P_ID"
+            IsBindVarValue="true"
+            Required="Optional">
+            <Properties>
+               <CustomProperties>
+                  <Property
+                     Name="renderedMode"
+                     Value="Never"/>
+               </CustomProperties>
+            </Properties>
+         </ViewCriteriaItem>
+         <ViewCriteriaItem
+            Name="LeaseAgreementId"
+            ViewAttribute="LeaseAgreementId"
+            Operator="="
+            Conjunction="AND"
+            Required="Optional"/>
+         <ViewCriteriaItem
+            Name="MoveInOutNumber"
+            ViewAttribute="MoveInOutNumber"
+            Operator="="
+            Conjunction="AND"
+            Required="Optional"/>
+         <ViewCriteriaItem
+            Name="ResourceName"
+            ViewAttribute="ResourceName"
+            Operator="STARTSWITH"
+            Conjunction="AND"
+            Required="Optional"/>
+         <ViewCriteriaItem
+            Name="Status"
+            ViewAttribute="Status"
+            Operator="="
+            Conjunction="AND"
+            Required="Optional"/>
+         <ViewCriteriaItem
+            Name="MoveinoutdateTrans"
+            ViewAttribute="MoveinoutdateTrans"
+            Operator="="
+            Conjunction="AND"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="findByFlag"
+      ViewObjectName="model.VO.MoveInOut_VO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow189"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="InOutFlag"
+            ViewAttribute="InOutFlag"
+            Operator="="
+            Conjunction="AND"
+            Value=":FLAG"
+            IsBindVarValue="true"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="MoveInOut_VOCriteria"
+      ViewObjectName="model.VO.MoveInOut_VO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow315"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="InOutFlag"
+            ViewAttribute="InOutFlag"
+            Operator="="
+            Conjunction="AND"
+            Value=":MOFlag"
+            IsBindVarValue="true"
+            Required="Optional"/>
+         <ViewCriteriaItem
+            Name="MoveInOutId"
+            ViewAttribute="MoveInOutId"
+            Operator="="
+            Conjunction="AND"
+            Value=":BV_MIMO"
+            IsBindVarValue="true"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewCriteria
+      Name="EditQuery"
+      ViewObjectName="model.VO.MoveInOut_VO"
+      Conjunction="AND">
+      <Properties>
+         <CustomProperties>
+            <Property
+               Name="displayOperators"
+               Value="InAdvancedMode"/>
+            <Property
+               Name="autoExecute"
+               Value="false"/>
+            <Property
+               Name="allowConjunctionOverride"
+               Value="true"/>
+            <Property
+               Name="showInList"
+               Value="true"/>
+            <Property
+               Name="mode"
+               Value="Basic"/>
+         </CustomProperties>
+      </Properties>
+      <ViewCriteriaRow
+         Name="vcrow337"
+         UpperColumns="1">
+         <ViewCriteriaItem
+            Name="MoveInOutId"
+            ViewAttribute="MoveInOutId"
+            Operator="="
+            Conjunction="AND"
+            Value=":MIO_ID"
+            IsBindVarValue="true"
+            Required="Optional"/>
+      </ViewCriteriaRow>
+   </ViewCriteria>
+   <ViewLinkAccessor
+      Name="ApplianceDetails_VO"
+      ViewLink="model.VL.MoveInOut_Appliance_VL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false"/>
+   <ViewLinkAccessor
+      Name="MeterReading_VO"
+      ViewLink="model.VL.MoveInOut_Meter_VL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false"/>
+   <ViewLinkAccessor
+      Name="KeyDetails_VO"
+      ViewLink="model.VL.MoveInOut_Key_VL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false"/>
+   <ViewLinkAccessor
+      Name="getApprovalHistoryROVo"
+      ViewLink="model.VL.MoveinoutApprovalVL"
+      Type="oracle.jbo.RowIterator"
+      IsUpdateable="false"/>
+   <ResourceBundle>
+      <PropertiesBundle PropertiesFile="model.PropertyLease_ModelBundle"/>
+   </ResourceBundle>
+</ViewObject>

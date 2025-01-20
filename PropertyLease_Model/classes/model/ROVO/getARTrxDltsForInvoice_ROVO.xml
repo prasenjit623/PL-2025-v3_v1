@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="getARTrxDltsForInvoice_ROVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.getARTrxDltsForInvoice_ROVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="BV_BusinessUnitId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="BV_ChargeType"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <SQLQuery>
+    <![CDATA[SELECT xas.business_unit_id, xatt.txn_name cust_trx_type,
+       xats.txn_name batch_source, xas.concatenated_segment code_combination,
+       flv.lookup_value_name_disp natural_acct, xo.ledger_id, 
+       xo.ledger_name,charge_type
+  FROM xxpm_ar_setup xas,
+       xxstg_ar_txn_type xatt,
+       xxstg_ar_txn_source xats,
+       xxstg_organizations xo,
+       xxfnd_lookup_types flt,
+       xxfnd_lookup_values flv
+ WHERE xas.txn_type_id = xatt.cust_trx_type_id
+   AND xas.txn_source_id = xats.batch_source_id
+   AND xas.business_unit_id = xo.org_id
+   AND flt.lookup_type_id = flv.lookup_type_id
+   AND xas.charge_type = flv.lookup_value_name
+   AND flt.lookup_type_name = 'NATURAL_ACC'
+   AND charge_type ='LOU'
+   AND flv.active_yn = 'Y']]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="BusinessUnitId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="BUSINESS_UNIT_ID"
+    Expression="BUSINESS_UNIT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustTrxType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_TRX_TYPE"
+    Expression="CUST_TRX_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BatchSource"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BATCH_SOURCE"
+    Expression="BATCH_SOURCE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CodeCombination"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CODE_COMBINATION"
+    Expression="CODE_COMBINATION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NaturalAcct"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="NATURAL_ACCT"
+    Expression="NATURAL_ACCT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LedgerId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LEDGER_ID"
+    Expression="LEDGER_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LedgerName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LEDGER_NAME"
+    Expression="LEDGER_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ChargeType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CHARGE_TYPE"
+    Expression="CHARGE_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="getTrxInvoiceDtls"
+    ViewObjectName="model.ROVO.getARTrxDltsForInvoice_ROVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow313"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="BusinessUnitId"
+        ViewAttribute="BusinessUnitId"
+        Operator="="
+        Conjunction="AND"
+        Value=":BV_BusinessUnitId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ChargeType"
+        ViewAttribute="ChargeType"
+        Operator="="
+        Conjunction="AND"
+        Value=":BV_ChargeType"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

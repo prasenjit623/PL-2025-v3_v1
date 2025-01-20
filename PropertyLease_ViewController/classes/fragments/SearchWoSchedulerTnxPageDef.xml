@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchWoSchedulerTnxPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchWoSchedulerTnx_RoVo1" RangeSize="25"
+              DataControl="WoScheduler_AMDataControl"
+              id="SearchWoSchedulerTnx_RoVo1Iterator"/>
+    <searchRegion Criteria="Search"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchWoSchedulerTnx_RoVo1Iterator" id="SearchQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchWoSchedulerTnx_RoVo1Iterator"
+          id="SearchWoSchedulerTnx_RoVo1">
+      <nodeDefinition DefName="model.ROVO.SearchWoSchedulerTnx_RoVo"
+                      Name="SearchWoSchedulerTnx_RoVo10">
+        <AttrNames>
+          <Item Value="WoSchMainHdrId"/>
+          <Item Value="WoSchMainHdrNo"/>
+          <Item Value="ScWoTnxId"/>
+          <Item Value="Status"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="InterfaceStatus"/>
+          <Item Value="ReleasedDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

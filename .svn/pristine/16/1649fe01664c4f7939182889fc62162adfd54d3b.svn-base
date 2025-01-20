@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="LeadAddEdit_BTF_LeadAddEdit_BTF_CreateInsertPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="LeadVO1" RangeSize="25"
+              DataControl="LeadAppModuleDataControl" id="LeadVO1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="LeadVO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

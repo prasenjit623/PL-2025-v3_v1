@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:panelHeader text="Billing" id="ph1">
+              <af:query id="qryId1" headerText="Search" disclosed="true"
+                        value="#{bindings.SearchBillingROVOCriteriaQuery.queryDescriptor}"
+                        model="#{bindings.SearchBillingROVOCriteriaQuery.queryModel}"
+                        queryListener="#{bindings.SearchBillingROVOCriteriaQuery.processQuery}"
+                        queryOperationListener="#{bindings.SearchBillingROVOCriteriaQuery.processQueryOperation}"
+                        resultComponentId="::pc1:resId1" rows="2" maxColumns="3"/>
+        </af:panelHeader>
+        <af:panelBox text="Search" id="pb1" showDisclosure="false">
+          <f:facet name="toolbar"/>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+            <af:toolbar id="t1">
+                <af:commandImageLink id="cil3"
+                                         icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         disabledIcon="/images/func_add_16_dis.png"
+                                         depressedIcon="/images/func_add_16_act.png"
+                                         action="go" partialSubmit="true">
+                        <af:setPropertyListener from="add" to="#{pageFlowScope.mode}"
+                                        type="action"/>
+                    </af:commandImageLink>
+                    <af:spacer width="10" height="10" id="s9"/>
+                    <af:commandImageLink id="cil2"
+                                         icon="/images/func_pencil_16_ena.png"
+                                         hoverIcon="/images/func_pencil_16_hov.png"
+                                         disabledIcon="/images/func_pencil_16_dis.png"
+                                         depressedIcon="/images/func_pencil_16_act.png"
+                                         action="go" partialSubmit="true">
+                        <af:setPropertyListener from="edit" to="#{pageFlowScope.mode}"
+                                          type="action"/>
+                        <af:setPropertyListener from="#{bindings.BillingId.inputValue}"
+                                                to="#{pageFlowScope.billingId}"
+                                                type="action"/>
+                </af:commandImageLink>
+                </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.SearchBilling_ROVO1.collectionModel}"
+                      var="row" rows="#{bindings.SearchBilling_ROVO1.rangeSize}"
+                      emptyText="#{bindings.SearchBilling_ROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="6"
+                      rowBandingInterval="0" varStatus="vs"
+                      selectedRowKeys="#{bindings.SearchBilling_ROVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SearchBilling_ROVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="resId1" scrollPolicy="page"
+                      autoHeightRows="0" partialTriggers=":::qryId1">
+              <af:column id="c1" headerText="S.No" width="50" align="center">
+                <af:outputText value="#{vs.index+1}" id="ot3"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.BillingNumber.name}"
+                         sortable="false" headerText="Billing Number"
+                         id="resId1c1">
+                <af:commandLink text="#{row.BillingNumber}" id="cl1"
+                                           inlineStyle="font-weight:bolder; font-size:small; color:#1367AE;"
+                                           action="go">
+                    <af:setPropertyListener to="#{pageFlowScope.mode}"
+                                            from="edit"
+                                            type="action"/>
+                    <af:setPropertyListener to="#{pageFlowScope.billingId}"
+                                            from="#{row.BillingId}"
+                                            type="action"/>
+                </af:commandLink>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.OrganizationName.name}"
+                         sortable="false" headerText="Business Unit"
+                         id="resId1c2" width="150">
+                <af:outputText value="#{row.OrganizationName}" id="ot6"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.OfferNumber.name}"
+                         sortable="false" headerText="Offer Number"
+                         id="resId1c3">
+                <af:outputText value="#{row.OfferNumber}" id="ot12"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.BookingNumber.name}"
+                         sortable="false" headerText="Booking Number"
+                         id="resId1c4" width="120">
+                <af:outputText value="#{row.BookingNumber}" id="ot1"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.PropertyNumber.name}"
+                         sortable="false" headerText="Property No"
+                         id="resId1c5">
+                <af:outputText value="#{row.PropertyNumber}" id="ot4"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.BuildNumber.name}"
+                         sortable="false" headerText="Building No"
+                         id="resId1c6">
+                <af:outputText value="#{row.BuildNumber}" id="ot7"/>
+              </af:column>
+              <af:column headerText="#{bindings.SearchBilling_ROVO1.hints.Status.label}"
+                         id="c2">
+                <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                    label="#{row.bindings.Status.label}"
+                                    required="#{bindings.SearchBilling_ROVO1.hints.Status.mandatory}"
+                                    shortDesc="#{bindings.SearchBilling_ROVO1.hints.Status.tooltip}"
+                                    id="soc1">
+                  <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.BillingId.name}"
+                         sortable="false"
+                         headerText="#{bindings.SearchBilling_ROVO1.hints.BillingId.label}"
+                         id="resId1c8" rendered="false">
+                <af:outputText value="#{row.BillingId}" id="ot8"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.BillingDate.name}"
+                         sortable="false" headerText="Billing Date"
+                         id="resId1c9">
+                <af:outputText value="#{row.BillingDate}" id="ot2">
+                  <af:convertDateTime pattern="dd-MM-yyyy"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.CreatedBy.name}"
+                         sortable="false" headerText="Created By"
+                         id="resId1c10">
+                <af:outputText value="#{row.CreatedBy}" id="ot11"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchBilling_ROVO1.hints.CreationDate.name}"
+                         sortable="false"
+                         headerText="#{bindings.SearchBilling_ROVO1.hints.CreationDate.label}"
+                         id="resId1c11">
+                <af:outputText value="#{row.CreationDate}" id="ot5">
+                  <af:convertDateTime pattern="#{bindings.SearchBilling_ROVO1.hints.CreationDate.format}"/>
+                </af:outputText>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelBox>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+</jsp:root>

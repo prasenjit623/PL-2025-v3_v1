@@ -1,0 +1,2330 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+    <af:panelStretchLayout id="psl1"
+                             styleClass="page-container AFStretchWidth"
+                           inlineStyle="border-color:transparent; height:2200.0px;">
+        <f:facet name="center">
+          <af:panelGroupLayout id="pgl4">
+            <af:panelGroupLayout id="pgl2" layout="horizontal" rendered="false">
+              <af:spacer width="10" height="10" id="s4"/>
+              <af:spacer width="780" height="10" id="s2"/>
+              <af:panelGroupLayout id="panelGroupLayout1" layout="vertical">
+                <af:spacer width="10" height="10" id="spacer1"/>
+                <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"/>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGridLayout id="pgl1" partialTriggers="soc22">
+              <af:gridRow marginTop="5px" height="auto" id="gr2">
+                <af:gridCell marginStart="5px" width="20%" id="gc4"
+                             halign="start" valign="middle">
+                  <af:outputText id="ot1"
+                                 inlineStyle="font-size:large; font-weight:bold;"
+                                 value="Manage Offer"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="80%" marginEnd="5px"
+                             id="gc1" halign="end">
+                  <af:panelGroupLayout id="pgl3" layout="horizontal"
+                                       styleClass="AFStretchWidth">
+                    <af:commandButton text="Change to Draft" id="cb19" inlineStyle="margin-right:10px;"
+                                      visible="#{(sessionScope.grantMap.Offer =='F' and bindings.Status.inputValue!='PEN' and bindings.Status.inputValue!='DRA' and sessionScope.userId == '15') ? true : (sessionScope.grantMap.Offer =='F' and sessionScope.userId == '100') ? true : false}">
+                      <af:showPopupBehavior popupId="p5"/>
+                    </af:commandButton>
+                    <af:commandButton text="Attachments" id="cb16"
+                                      action="attachment"
+                                      inlineStyle="margin-right:10px;"
+                                      actionListener="#{backingBeanScope.OfferBean.onClickAttachment}"/>
+                    <af:commandButton text="Check List" id="cb11"
+                                      action="Checklist"
+                                      actionListener="#{backingBeanScope.OfferBean.onClickchecklist}"
+                                      inlineStyle="margin-right:10px;"
+                                      rendered="#{bindings.OfferNumber.inputValue !=null}"
+                                      visible="#{sessionScope.grantMap.Offer =='F' and bindings.Status.inputValue=='DRA'}"/>
+                    <af:commandButton text="Approve" id="cb6"
+                                      inlineStyle="margin-right:10.0px;"
+                                      actionListener="#{backingBeanScope.OfferBean.onInvokeAppOrrejec}"
+                                      immediate="true"
+                                      visible="#{backingBeanScope.OfferBean.approvalUser}">
+                      <af:setPropertyListener from="#{'Approval'}"
+                                              to="#{pageFlowScope.Action}"
+                                              type="action"/>
+                    </af:commandButton>
+                    <!--only for new offer -->
+                    <af:commandButton text="Create Booking" id="cb60"
+                                      inlineStyle="margin-right:10.0px;"
+                                      actionListener="#{backingBeanScope.OfferBean.doCreateBKonClick}"
+                                      immediate="true"
+                                      rendered="#{sessionScope.grantMap.Offer =='F' and bindings.OfferFlag.inputValue eq 'N' and bindings.Status.inputValue eq 'APR'}"
+                                      partialTriggers="soc22 soc1"
+                                      disabled="#{bindings.Attribute2.inputValue ne null}">
+                    </af:commandButton>
+                    <af:commandButton text="Reject" id="cb9" immediate="true"
+                                      inlineStyle="margin-right:10.0px;"
+                                      visible="#{backingBeanScope.OfferBean.approvalUser}"
+                                      actionListener="#{backingBeanScope.OfferBean.onInvokeAppOrrejec}">
+                      <af:setPropertyListener from="#{'Rejection'}"
+                                              to="#{pageFlowScope.Action}"
+                                              type="action"/>
+                    </af:commandButton>
+                    <af:commandButton text="Booking Process" id="cb3"
+                                      action="toBooking" immediate="true"
+                                      partialSubmit="true"
+                                      inlineStyle="margin-right:10.0px;"
+                                      rendered="false">
+                      <af:setPropertyListener from="#{'Offer'}"
+                                              to="#{pageFlowScope.TaskFlowVal}"
+                                              type="action"/>
+                      <af:setPropertyListener from="#{bindings.OfferHdrId.inputValue}"
+                                              to="#{pageFlowScope.OfferId}"
+                                              type="action"/>
+                    </af:commandButton>
+                    <af:commandButton text="Auto Create BK and RC" id="cb17"
+                                      actionListener="#{backingBeanScope.OfferBean.onClickAutoBooking}"
+                                      rendered="#{(sessionScope.grantMap.Offer =='F' and bindings.OfferFlag.inputValue eq 'R' and bindings.Status.inputValue eq 'APR') || (sessionScope.grantMap.Offer =='F' and bindings.OfferFlag.inputValue eq 'S' and bindings.Status.inputValue eq 'APR')}"
+                                      partialTriggers="soc22 cb6"
+                                      disabled="#{bindings.Attribute2.inputValue ne null}"/>
+                    <af:spacer width="10" height="10" id="s13"/>
+                    <af:commandButton text="Save" id="cb1" partialSubmit="true"
+                                      partialTriggers="soc2" immediate="true"
+                                      actionListener="#{backingBeanScope.OfferBean.onClickSave}"
+                                      inlineStyle="margin-right:10.0px;"
+                                      visible="#{sessionScope.grantMap.Offer =='F' and bindings.Status.inputValue=='DRA'}">
+                      <af:setPropertyListener from="#{sessionScope.userName}"
+                                              to="#{bindings.LastUpdatedBy.inputValue}"
+                                              type="action"/>
+                    </af:commandButton>
+                     <af:commandButton text="Save For Discount" id="cb111" partialSubmit="true"
+                                      partialTriggers="soc2" immediate="true"
+                                      actionListener="#{backingBeanScope.OfferBean.onClickSaveForDiscFlow}"
+                                      inlineStyle="margin-right:10.0px;"
+                                      visible="#{sessionScope.grantMap.Offer =='F' and bindings.Status.inputValue!='DRA'}">
+                      <af:setPropertyListener from="#{sessionScope.userName}"
+                                              to="#{bindings.LastUpdatedBy.inputValue}"
+                                              type="action"/>
+                    </af:commandButton>
+                    <af:commandButton text="Approved and Complete" id="cb20"
+                                      actionListener="#{backingBeanScope.OfferBean.onclickAppAndComplt}"
+                                      visible="#{backingBeanScope.OfferBean.approvalUser and bindings.FlowLevel.inputValue eq '2'}"/>
+                    <af:commandButton text="Save and Close" id="commandButton1"
+                                      partialSubmit="true"
+                                      partialTriggers="soc2" immediate="true"
+                                      action="#{backingBeanScope.OfferBean.onSave}"
+                                      inlineStyle="margin-right:10.0px;"
+                                      visible="#{sessionScope.grantMap.Offer =='F' and bindings.Status.inputValue=='DRA'}">
+                      <af:setPropertyListener from="#{sessionScope.userName}"
+                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                      type="action"/>
+                    </af:commandButton>
+                    <af:commandButton text="Submit" id="cb4" immediate="true"
+                                      inlineStyle="margin-right:10.0px;"
+                                      visible="#{sessionScope.grantMap.Offer =='F' and bindings.Status.inputValue=='DRA'}"
+                                      action="#{backingBeanScope.OfferBean.onClickSubmit}">
+                       <af:setPropertyListener from="#{sessionScope.userName}"
+                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                      type="action"/>
+                    </af:commandButton>
+                    <af:commandButton text="Print" id="cb10"
+                                      inlineStyle="margin-right:10.0px;"
+                                      rendered="false"
+                                      visible="#{sessionScope.grantMap.Offer =='F' || sessionScope.grantMap.Offer =='V' and bindings.Status.inputValue!='REJ'}">
+                      <af:fileDownloadActionListener contentType="application/pdf"
+                                                     filename="Offer #{bindings.OfferNumber.inputValue}.pdf"
+                                                     method="#{backingBeanScope.OfferBean.onClickPDFReport}"/>
+                    </af:commandButton>
+                    <af:commandButton text="Approval Details" id="cb15"
+                                      visible="#{sessionScope.grantMap.Offer =='F' and (bindings.Status.inputValue!='DRA') }"
+                                      inlineStyle="margin-right:10.0px;">
+                      <af:showPopupBehavior popupId="p4" triggerType="action"/>
+                    </af:commandButton>
+                    <af:commandButton text="Cancel" id="cb2" immediate="true"
+                                      action="cancel"
+                                      inlineStyle="margin-right:10.0px;">
+                      <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                    </af:commandButton>
+                    <af:goImageLink id="gil1" targetFrame="_blank"
+                                    destination="#{sessionScope.addEditOffer1}"
+                                    icon="/images/func_print_16_act.png"
+                                    inlineStyle="margin-right:10.0px;"
+                                    visible="#{sessionScope.grantMap.Offer =='F' || sessionScope.grantMap.Offer =='V' }"
+                                    text="Print"
+                                    rendered="#{bindings.Status.inputValue eq 'APR' or bindings.Status.inputValue eq 'BO'}"/>                    
+                     <af:popup id="p5">
+                      <af:dialog id="d5" titleIconSource="/images/warning.png"
+                                 type="none"
+                                 inlineStyle="width:100.0px; height:80px;"
+                                 title="Change status to Draft">
+                        <af:outputText value="Are you sure ?"
+                                       id="ot75"
+                                       inlineStyle="font-weight:bold;"/>
+                        <f:facet name="buttonBar">
+                          <af:toolbar id="t35">
+                            <af:spacer width="80" height="10" id="s255"/>
+                            <af:commandButton text="Yes" immediate="true"
+                                              id="cb85" action="cancel"
+                                              actionListener="#{backingBeanScope.OfferBean.doChangeStatusToDraft}"/>
+                            <af:spacer width="10" height="10" id="s265"/>
+                            <af:commandButton text="No" id="cb75" />
+                          </af:toolbar>
+                        </f:facet>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="p1"
+                              binding="#{backingBeanScope.OfferBean.p1}">
+                      <af:dialog id="d1" titleIconSource="/images/warning.png"
+                                 type="none"
+                                 inlineStyle="width:350.0px; height:108px;"
+                                 title="Warning">
+                        <af:outputText value="Are you sure want to Cancel this Information ?"
+                                       id="ot7"
+                                       inlineStyle="font-weight:bold;"/>
+                        <f:facet name="buttonBar">
+                          <af:toolbar id="t3">
+                            <af:spacer width="210" height="10" id="s25"/>
+                            <af:commandButton text="Ok" immediate="true"
+                                              id="cb8" action="cancel"
+                                              actionListener="#{backingBeanScope.OfferBean.onClickCancel}"/>
+                            <af:spacer width="10" height="10" id="s26"/>
+                            <af:commandButton text="Cancel" id="cb7"
+                                              actionListener="#{backingBeanScope.OfferBean.onClickPopupCancel}"/>
+                          </af:toolbar>
+                        </f:facet>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="p4">
+                      <af:dialog id="d3" title="Approval Work Flow History"
+                                 inlineStyle="width:80.0%;">
+                        <af:table value="#{bindings.getApprovalHistoryROVo2.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.getApprovalHistoryROVo2.rangeSize}"
+                                  emptyText="#{bindings.getApprovalHistoryROVo2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.getApprovalHistoryROVo2.rangeSize}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.getApprovalHistoryROVo2.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.getApprovalHistoryROVo2.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t8" varStatus="vs"
+                                  inlineStyle="width:inherit;"
+                                  columnStretching="column:c30">
+                          <af:column id="c31" headerText="S.No" width="50"
+                                     align="center">
+                            <af:outputText value="#{vs.index+1}" id="ot6"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.name}"
+                                     sortable="false"
+                                     headerText="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.label}"
+                                     id="c34" width="200">
+                            <af:selectOneChoice value="#{row.bindings.ApproverId.inputValue}"
+                                                label="#{row.bindings.ApproverId.label}"
+                                                required="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.mandatory}"
+                                                shortDesc="#{bindings.getApprovalHistoryROVo2.hints.ApproverId.tooltip}"
+                                                id="soc30" readOnly="true">
+                              <f:selectItems value="#{row.bindings.ApproverId.items}"
+                                             id="si32"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.name}"
+                                     sortable="false"
+                                     headerText="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.label}"
+                                     id="c28" width="80">
+                            <af:inputDate value="#{row.bindings.SubmissionDate.inputValue}"
+                                          label="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.label}"
+                                          required="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.mandatory}"
+                                          shortDesc="#{bindings.getApprovalHistoryROVo2.hints.SubmissionDate.tooltip}"
+                                          id="id7" readOnly="true">
+                              <f:validator binding="#{row.bindings.SubmissionDate.validator}"/>
+                              <af:convertDateTime pattern="dd-MM-yyyy"/>
+                            </af:inputDate>
+                          </af:column>
+                          <af:column headerText="#{bindings.getApprovalHistoryROVo2.hints.SubmittedByTrans.label}"
+                                     id="c36">
+                            <af:outputText value="#{row.SubmittedByTrans}"
+                                           id="ot8"/>
+                          </af:column>
+                          <af:column headerText="Approved Date"
+                                     id="c82">
+                            <af:outputText value="#{row.ActionDate}" id="ot12">
+                              <af:convertDateTime pattern="dd-MM-yyyy"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.getApprovalHistoryROVo2.hints.Status.name}"
+                                     sortable="false"
+                                     headerText="#{bindings.getApprovalHistoryROVo2.hints.Status.label}"
+                                     id="c27" width="70">
+                            <af:inputText value="#{row.bindings.Status.inputValue}"
+                                          label="#{bindings.getApprovalHistoryROVo2.hints.Status.label}"
+                                          required="#{bindings.getApprovalHistoryROVo2.hints.Status.mandatory}"
+                                          columns="#{bindings.getApprovalHistoryROVo2.hints.Status.displayWidth}"
+                                          maximumLength="#{bindings.getApprovalHistoryROVo2.hints.Status.precision}"
+                                          shortDesc="#{bindings.getApprovalHistoryROVo2.hints.Status.tooltip}"
+                                          id="it40" readOnly="true">
+                              <f:validator binding="#{row.bindings.Status.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column headerText="#{bindings.getApprovalHistoryROVo2.hints.Description.label}"
+                                     id="c30" width="200">
+                            <af:outputText value="#{row.Description}" id="ot5"/>
+                          </af:column>
+                        </af:table>
+                      </af:dialog>
+                    </af:popup>
+                  </af:panelGroupLayout>
+                </af:gridCell>
+              </af:gridRow>
+            </af:panelGridLayout>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:separator id="s6" inlineStyle="border-color:#C1C1C1;"
+                          rendered="false"/>
+            <af:panelBox text="Offer Information" id="pb2" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelFormLayout id="pfl1" maxColumns="2" rows="8"
+                                  labelWidth="220">
+                <af:popup id="p3" binding="#{backingBeanScope.OfferBean.p3}">
+                  <af:dialog id="dialog1" titleIconSource="/images/warning.png"
+                             type="none"
+                             inlineStyle="width:350.0px; height:108px;"
+                             title="Warning">
+                    <af:outputText value="Are you trying to change the Lease Type ? if yes, Offer detail values gets Reset now..!"
+                                   id="outputText1"
+                                   inlineStyle="font-weight:bold;"/>
+                    <f:facet name="buttonBar">
+                      <af:toolbar id="toolbar1" flex="1">
+                        <af:spacer width="210" height="10" id="spacer2"/>
+                        <af:commandButton text="Yes"
+                                          id="commandButton2"
+                                          action="#{backingBeanScope.OfferBean.deleteRows}"/>
+                        <af:spacer width="10" height="10" id="spacer3"/>
+                        <af:commandButton text="No" id="commandButton3"/>
+                      </af:toolbar>
+                    </f:facet>
+                  </af:dialog>
+                </af:popup>
+                <af:inputText value="#{bindings.OfferHdrId.inputValue}"
+                              label="OfferHdrId"
+                              required="#{bindings.OfferHdrId.hints.mandatory}"
+                              columns="#{bindings.OfferHdrId.hints.displayWidth}"
+                              maximumLength="#{bindings.OfferHdrId.hints.precision}"
+                              shortDesc="#{bindings.OfferHdrId.hints.tooltip}"
+                              id="it29" contentStyle="width:200px"
+                              rendered="false">
+                  <f:validator binding="#{bindings.OfferHdrId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.OfferHdrId.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.CustSiteId.inputValue}"
+                              label="CustSiteId"
+                              required="#{bindings.CustSiteId.hints.mandatory}"
+                              columns="#{bindings.CustSiteId.hints.displayWidth}"
+                              maximumLength="#{bindings.CustSiteId.hints.precision}"
+                              shortDesc="#{bindings.CustSiteId.hints.tooltip}"
+                              id="it7" contentStyle="width:200px"
+                              rendered="false">
+                  <f:validator binding="#{bindings.CustSiteId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.CustSiteId.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.CustomerId.inputValue}"
+                              label="CustomerId"
+                              required="#{bindings.CustomerId.hints.mandatory}"
+                              columns="#{bindings.CustomerId.hints.displayWidth}"
+                              maximumLength="#{bindings.CustomerId.hints.precision}"
+                              shortDesc="#{bindings.CustomerId.hints.tooltip}"
+                              id="it6" contentStyle="width:200px"
+                              rendered="false">
+                  <f:validator binding="#{bindings.CustomerId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.CustomerId.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.PerformedBy.inputValue}"
+                              label="PerformedBy"
+                              required="#{bindings.PerformedBy.hints.mandatory}"
+                              columns="#{bindings.PerformedBy.hints.displayWidth}"
+                              maximumLength="#{bindings.PerformedBy.hints.precision}"
+                              shortDesc="#{bindings.PerformedBy.hints.tooltip}"
+                              id="it4" contentStyle="width:200px"
+                              rendered="false">
+                  <f:validator binding="#{bindings.PerformedBy.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.PerformedBy.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.SalesmanId.inputValue}"
+                              label="SalesmanId"
+                              required="#{bindings.SalesmanId.hints.mandatory}"
+                              columns="#{bindings.SalesmanId.hints.displayWidth}"
+                              maximumLength="#{bindings.SalesmanId.hints.precision}"
+                              shortDesc="#{bindings.SalesmanId.hints.tooltip}"
+                              id="it14" contentStyle="width:200px"
+                              rendered="false">
+                  <f:validator binding="#{bindings.SalesmanId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SalesmanId.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.LeadId.inputValue}"
+                              label="LeadId"
+                              required="#{bindings.LeadId.hints.mandatory}"
+                              columns="#{bindings.LeadId.hints.displayWidth}"
+                              maximumLength="#{bindings.LeadId.hints.precision}"
+                              shortDesc="#{bindings.LeadId.hints.tooltip}"
+                              partialTriggers="trans_LeadNumberId" id="it24"
+                              contentStyle="width:200px" rendered="false"
+                              autoSubmit="true">
+                  <f:validator binding="#{bindings.LeadId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.LeadId.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.OfferNumber.inputValue}"
+                              label="#{bindings.OfferNumber.hints.label}"
+                              columns="#{bindings.OfferNumber.hints.displayWidth}"
+                              maximumLength="#{bindings.OfferNumber.hints.precision}"
+                              shortDesc="#{bindings.OfferNumber.hints.tooltip}"
+                              id="it31"
+                              contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;"
+                              autoSubmit="true" readOnly="true"
+                              partialTriggers="cb1 leaseNumber_TransId soc22">
+                  <f:validator binding="#{bindings.OfferNumber.validator}"/>
+                </af:inputText>
+                <af:selectOneRadio value="#{bindings.OfferFlag.inputValue}"
+                                   label="#{bindings.OfferFlag.label}"
+                                   required="#{bindings.OfferFlag.hints.mandatory}"
+                                   shortDesc="#{bindings.OfferFlag.hints.tooltip}"
+                                   id="soc22" autoSubmit="true"
+                                   valueChangeListener="#{backingBeanScope.OfferBean.omChangeFlag}"
+                                   layout="horizontal" 
+                                   disabled="#{(sessionScope.grantMap.Offer =='F' and bindings.Status.inputValue=='DRA' and sessionScope.userId == '15') ? false : (sessionScope.grantMap.Offer =='F' and bindings.Status.inputValue=='DRA' and sessionScope.userId == '10') ? false : true}">
+                  <f:selectItems value="#{bindings.OfferFlag.items}" id="si22"/>
+                </af:selectOneRadio>
+                <af:selectOneChoice value="#{bindings.LeaseAgreementId.inputValue}"
+                                    label="#{bindings.LeaseAgreementId.label}"
+                                    required="#{bindings.LeaseAgreementId.hints.mandatory}"
+                                    shortDesc="#{bindings.LeaseAgreementId.hints.tooltip}"
+                                    id="soc20"
+                                    valueChangeListener="#{backingBeanScope.OfferBean.onSelectLease}"
+                                    autoSubmit="true" partialTriggers="soc22"
+                                    contentStyle="width:200px"
+                                    disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                    rendered="false">
+                  <f:selectItems value="#{bindings.LeaseAgreementId.items}"
+                                 id="si20"/>
+                </af:selectOneChoice>
+                <af:inputListOfValues id="leaseNumber_TransId"
+                                      popupTitle="Search and Select: #{bindings.LeaseNumber_Trans.hints.label}"
+                                      value="#{bindings.LeaseNumber_Trans.inputValue}"
+                                      label="Contract No"
+                                      model="#{bindings.LeaseNumber_Trans.listOfValuesModel}"
+                                      required="#{bindings.LeaseNumber_Trans.hints.mandatory}"
+                                      columns="#{bindings.LeaseNumber_Trans.hints.displayWidth}"
+                                      shortDesc="#{bindings.LeaseNumber_Trans.hints.tooltip}"
+                                      autoSubmit="true"
+                                      partialTriggers="soc22"
+                                      contentStyle="width:180px"
+                                      disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                      rendered="#{bindings.OfferFlag.inputValue=='R' || bindings.OfferFlag.inputValue=='S'}"
+                                      valueChangeListener="#{backingBeanScope.OfferBean.onSelectLease}"
+                                      binding="#{backingBeanScope.OfferBean.leaseNumber_TransId}">
+                  <f:validator binding="#{bindings.LeaseNumber_Trans.validator}"/>
+                </af:inputListOfValues>
+                <af:inputText value="#{bindings.LeadId.inputValue}"
+                              label="#{bindings.LeadId.hints.label}"
+                              required="#{bindings.LeadId.hints.mandatory}"
+                              columns="#{bindings.LeadId.hints.displayWidth}"
+                              maximumLength="#{bindings.LeadId.hints.precision}"
+                              shortDesc="#{bindings.LeadId.hints.tooltip}"
+                              id="it17" partialTriggers="trans_LeadNumberId"
+                              autoSubmit="true" rendered="false">
+                  <f:validator binding="#{bindings.LeadId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.LeadId.format}"/>
+                </af:inputText>
+                <af:inputListOfValues id="trans_LeadNumberId"
+                                      popupTitle="Search and Select: #{bindings.Trans_LeadNumber.hints.label}"
+                                      value="#{bindings.Trans_LeadNumber.inputValue}"
+                                      label="#{bindings.Trans_LeadNumber.hints.label}"
+                                      model="#{bindings.Trans_LeadNumber.listOfValuesModel}"
+                                      columns="#{bindings.Trans_LeadNumber.hints.displayWidth}"
+                                      shortDesc="#{bindings.Trans_LeadNumber.hints.tooltip}"
+                                      contentStyle="width:180px"
+                                      autoSubmit="true"
+                                      disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                      inlineStyle=" -tr-stretch-search-dialog: true;"
+                                      partialTriggers="leaseNumber_TransId soc22"
+                                      requiredMessageDetail="Your must select a Lead Number"
+                                      showRequired="true">
+                  <f:validator binding="#{bindings.Trans_LeadNumber.validator}"/>
+                </af:inputListOfValues>
+                <af:selectOneChoice value="#{bindings.OrgId.inputValue}"
+                                    label="#{bindings.OrgId.label}"
+                                    required="#{bindings.OrgId.hints.mandatory}"
+                                    shortDesc="#{bindings.OrgId.hints.tooltip}"
+                                    id="soc2" contentStyle="width:200px"
+                                    autoSubmit="true"
+                                    partialTriggers="trans_LeadNumberId leaseNumber_TransId soc22"
+                                    disabled="false" readOnly="true"
+                                    valueChangeListener="#{backingBeanScope.OfferBean.onChangeBU}">
+                  <f:selectItems value="#{bindings.OrgId.items}" id="si3"/>
+                </af:selectOneChoice>
+                <af:inputDate value="#{bindings.OfferDate.inputValue}"
+                              label="#{bindings.OfferDate.hints.label}"
+                              shortDesc="#{bindings.OfferDate.hints.tooltip}"
+                              id="id2" contentStyle="width:200px"
+                              autoSubmit="true"
+                              required="#{bindings.Status.inputValue!='DRA' ?'true':'false'}"
+                              minValue="#{bindings.Current_Date.inputValue}"
+                              partialTriggers="leaseNumber_TransId soc22" showRequired="true"
+                              requiredMessageDetail="You must enter the Offer Date"
+                              valueChangeListener="#{backingBeanScope.OfferBean.onClickOfferDate}"
+                              disabled="true">
+                  <f:validator binding="#{bindings.OfferDate.validator}"/>
+                  <af:convertDateTime pattern="dd-MM-yyyy"/>
+                </af:inputDate>
+                <af:inputDate value="#{bindings.Offerexpireddate.inputValue}"
+                              label="#{bindings.Offerexpireddate.hints.label}"
+                              required="#{bindings.Offerexpireddate.hints.mandatory}"
+                              shortDesc="#{bindings.Offerexpireddate.hints.tooltip}"
+                              id="id10" contentStyle="width:200px"
+                              autoSubmit="true" partialTriggers="id2"
+                              rendered="false">
+                  <f:validator binding="#{bindings.Offerexpireddate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.Offerexpireddate.format}"/>
+                </af:inputDate>
+                <af:inputDate value="#{bindings.DateRestriction_Trans.inputValue}"
+                              required="#{bindings.DateRestriction_Trans.hints.mandatory}"
+                              shortDesc="#{bindings.DateRestriction_Trans.hints.tooltip}"
+                              id="id9" rendered="false">
+                  <f:validator binding="#{bindings.DateRestriction_Trans.validator}"/>
+                  <af:convertDateTime pattern="#{sessionScope.DateFormat}"/>
+                </af:inputDate>
+                <af:selectOneChoice value="#{bindings.OfferType.inputValue}"
+                                    label="#{bindings.OfferType.label}"
+                                    required="#{bindings.OfferType.hints.mandatory}"
+                                    shortDesc="#{bindings.OfferType.hints.tooltip}"
+                                    id="soc3" contentStyle="width:200px"
+                                    autoSubmit="true" rendered="false">
+                  <f:selectItems value="#{bindings.OfferType.items}" id="si1"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.Currency.inputValue}"
+                                    label="#{bindings.Currency.label}"
+                                    shortDesc="#{bindings.Currency.hints.tooltip}"
+                                    id="soc21" contentStyle="width:200px;"
+                                    autoSubmit="true" showRequired="true"
+                                    disabled="true"
+                                    requiredMessageDetail="You must select a Currency">
+                  <f:selectItems value="#{bindings.Currency.items}" id="si21"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.PlId.inputValue}"
+                                    label="#{bindings.PlId.label}"
+                                    shortDesc="#{bindings.PlId.hints.tooltip}"
+                                    id="soc12" contentStyle="width:200px"
+                                    autoSubmit="true"
+                                    partialTriggers="leaseNumber_TransId soc22 trans_LeadNumberId soc2"
+                                    requiredMessageDetail="You must select a Price List" showRequired="true"
+                                    disabled="#{(bindings.Trans_LeadNumber.inputValue eq null)||(bindings.Status.inputValue ne 'DRA' &amp;&amp;  bindings.Status.inputValue ne 'REV')}">
+                  <f:selectItems value="#{bindings.PlId.items}" id="si12"/>
+                </af:selectOneChoice>
+                <af:inputText value="#{bindings.NetOfferAmount.inputValue}"
+                              label="#{bindings.NetOfferAmount.hints.label}"
+                              required="#{bindings.NetOfferAmount.hints.mandatory}"
+                              columns="#{bindings.NetOfferAmount.hints.displayWidth}"
+                              maximumLength="#{bindings.NetOfferAmount.hints.precision}"
+                              shortDesc="#{bindings.NetOfferAmount.hints.tooltip}"
+                              id="it25" contentStyle="width:200px"
+                              autoSubmit="true" rendered="false">
+                  <f:validator binding="#{bindings.NetOfferAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.NetOfferAmount.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.OfferTotal.inputValue}"
+                              label="#{bindings.OfferTotal.hints.label}"
+                              required="#{bindings.OfferTotal.hints.mandatory}"
+                              columns="#{bindings.OfferTotal.hints.displayWidth}"
+                              maximumLength="#{bindings.OfferTotal.hints.precision}"
+                              shortDesc="#{bindings.OfferTotal.hints.tooltip}"
+                              id="it69" autoSubmit="true"
+                              binding="#{backingBeanScope.OfferBean.offerTotal}"
+                              partialTriggers="soc22 pc1:cb12 pc1:t1:it38 pc1:t1:it47 pc1:t1:it45 pc2:cb5" disabled="true"
+                              contentStyle="width:200px" visible="false">
+                  <f:validator binding="#{bindings.OfferTotal.validator}"/>
+                  <af:convertNumber groupingUsed="true"
+                                    pattern="#{SessionScope.NumberFormat}"
+                                    maxFractionDigits="2"
+                                    minIntegerDigits="0"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.OfferTotalWithoutTax.inputValue}"
+                              label="#{bindings.OfferTotalWithoutTax.hints.label}"
+                              required="#{bindings.OfferTotalWithoutTax.hints.mandatory}"
+                              columns="#{bindings.OfferTotalWithoutTax.hints.displayWidth}"
+                              maximumLength="#{bindings.OfferTotalWithoutTax.hints.precision}"
+                              shortDesc="#{bindings.OfferTotalWithoutTax.hints.tooltip}"
+                              id="it70" autoSubmit="true"
+                              binding="#{backingBeanScope.OfferBean.offerTotalWithoutTax}"
+                              partialTriggers="soc22 pc1:cb12 pc1:t1:it38 pc1:t1:it47 pc1:t1:it45 pc2:cb5" disabled="true"
+                              contentStyle="width:200px">
+                  <f:validator binding="#{bindings.OfferTotalWithoutTax.validator}"/>
+                  <af:convertNumber groupingUsed="true"
+                                    pattern="#{SessionScope.NumberFormat}"
+                                    maxFractionDigits="2"
+                                    minIntegerDigits="0"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.RequestedNetRent.inputValue}"
+                              label="#{bindings.RequestedNetRent.hints.label}"
+                              required="#{bindings.RequestedNetRent.hints.mandatory}"
+                              columns="#{bindings.RequestedNetRent.hints.displayWidth}"
+                              maximumLength="#{bindings.RequestedNetRent.hints.precision}"
+                              shortDesc="#{bindings.RequestedNetRent.hints.tooltip}"
+                              id="it43" contentStyle="width:200px"
+                              autoSubmit="true"
+                              valueChangeListener="#{backingBeanScope.OfferBean.onEntrRqstedNetRent}">
+                  <f:validator binding="#{bindings.RequestedNetRent.validator}"/>
+                  <af:convertNumber groupingUsed="true"
+                                    pattern="#{SessionScope.NumberFormat}"/>
+                </af:inputText>
+                <af:inputDate value="#{bindings.OfferFromDate.inputValue}"
+                              label="#{bindings.OfferFromDate.hints.label}"
+                              shortDesc="#{bindings.OfferFromDate.hints.tooltip}"
+                              id="id4" contentStyle="width:200px"
+                              autoSubmit="true"
+                              valueChangeListener="#{backingBeanScope.OfferBean.onClickDate}"
+                              partialTriggers="leaseNumber_TransId soc22"
+                              requiredMessageDetail="You must choose the Expt. Lease Start Date"
+                              showRequired="true"
+                              readOnly="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                              binding="#{backingBeanScope.OfferBean.id4}"
+                              rendered="true"
+                              disabled="#{bindings.OfferFlag.inputValue=='R'}">
+                  <f:validator binding="#{bindings.OfferFromDate.validator}"/>
+                  <af:convertDateTime pattern="dd-MM-yyyy"/>
+                </af:inputDate>
+                <af:inputText value="#{bindings.CreatedBy.inputValue}"
+                              label="#{bindings.CreatedBy.hints.label}"
+                              required="#{bindings.CreatedBy.hints.mandatory}"
+                              columns="#{bindings.CreatedBy.hints.displayWidth}"
+                              maximumLength="#{bindings.CreatedBy.hints.precision}"
+                              shortDesc="#{bindings.CreatedBy.hints.tooltip}"
+                              id="it28" contentStyle="width:200px"
+                              autoSubmit="true" rendered="true"
+                              disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                  <f:validator binding="#{bindings.CreatedBy.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.RevisionNo.inputValue}"
+                              label="#{bindings.RevisionNo.hints.label}"
+                              required="#{bindings.RevisionNo.hints.mandatory}"
+                              columns="#{bindings.RevisionNo.hints.displayWidth}"
+                              maximumLength="#{bindings.RevisionNo.hints.precision}"
+                              shortDesc="#{bindings.RevisionNo.hints.tooltip}"
+                              id="it23" contentStyle="width:200px"
+                              autoSubmit="true" readOnly="true"
+                              partialTriggers="leaseNumber_TransId">
+                  <f:validator binding="#{bindings.RevisionNo.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.RevisionNo.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.TaxAmount.inputValue}"
+                              label="#{bindings.TaxAmount.hints.label}"
+                              required="#{bindings.TaxAmount.hints.mandatory}"
+                              columns="#{bindings.TaxAmount.hints.displayWidth}"
+                              maximumLength="#{bindings.TaxAmount.hints.precision}"
+                              shortDesc="#{bindings.TaxAmount.hints.tooltip}"
+                              id="it19" contentStyle="width:200px"
+                              autoSubmit="true" rendered="false">
+                  <f:validator binding="#{bindings.TaxAmount.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.TaxAmount.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Description.inputValue}"
+                              label="#{bindings.Description.hints.label}"
+                              required="#{bindings.Description.hints.mandatory}"
+                              columns="#{bindings.Description.hints.displayWidth}"
+                              maximumLength="#{bindings.Description.hints.precision}"
+                              shortDesc="#{bindings.Description.hints.tooltip}"
+                              id="it11" contentStyle="width:200px"
+                              autoSubmit="true" rendered="false">
+                  <f:validator binding="#{bindings.Description.validator}"/>
+                </af:inputText>
+                <af:inputDate value="#{bindings.CreationDate.inputValue}"
+                              label="#{bindings.CreationDate.hints.label}"
+                              required="#{bindings.CreationDate.hints.mandatory}"
+                              shortDesc="#{bindings.CreationDate.hints.tooltip}"
+                              id="id3" contentStyle="width:200px"
+                              rendered="false" autoSubmit="true">
+                  <f:validator binding="#{bindings.CreationDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.CreationDate.format}"/>
+                </af:inputDate>
+                <af:inputDate value="#{bindings.LastUpdateDate.inputValue}"
+                              label="#{bindings.LastUpdateDate.hints.label}"
+                              required="#{bindings.LastUpdateDate.hints.mandatory}"
+                              shortDesc="#{bindings.LastUpdateDate.hints.tooltip}"
+                              id="id5" contentStyle="width:200px"
+                              rendered="false" autoSubmit="true">
+                  <f:validator binding="#{bindings.LastUpdateDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.LastUpdateDate.format}"/>
+                </af:inputDate>
+                <af:inputText value="#{bindings.LastUpdateLogin.inputValue}"
+                              label="#{bindings.LastUpdateLogin.hints.label}"
+                              required="#{bindings.LastUpdateLogin.hints.mandatory}"
+                              columns="#{bindings.LastUpdateLogin.hints.displayWidth}"
+                              maximumLength="#{bindings.LastUpdateLogin.hints.precision}"
+                              shortDesc="#{bindings.LastUpdateLogin.hints.tooltip}"
+                              id="it30" contentStyle="width:200px"
+                              rendered="false" autoSubmit="true">
+                  <f:validator binding="#{bindings.LastUpdateLogin.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.LastUpdatedBy.inputValue}"
+                              label="#{bindings.LastUpdatedBy.hints.label}"
+                              required="#{bindings.LastUpdatedBy.hints.mandatory}"
+                              columns="#{bindings.LastUpdatedBy.hints.displayWidth}"
+                              maximumLength="#{bindings.LastUpdatedBy.hints.precision}"
+                              shortDesc="#{bindings.LastUpdatedBy.hints.tooltip}"
+                              id="it1" contentStyle="width:200px"
+                              rendered="false" autoSubmit="true">
+                  <f:validator binding="#{bindings.LastUpdatedBy.validator}"/>
+                </af:inputText>
+                <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                                    label="#{bindings.Status.label}"
+                                    required="#{bindings.Status.hints.mandatory}"
+                                    shortDesc="#{bindings.Status.hints.tooltip}"
+                                    id="soc1" contentStyle="width:200px"
+                                    autoSubmit="true" readOnly="true"
+                                    partialTriggers="leaseNumber_TransId cb17">
+                  <f:selectItems value="#{bindings.Status.items}" id="si2"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.OfferType.inputValue}"
+                                    label="#{bindings.OfferType.label}"
+                                    shortDesc="#{bindings.OfferType.hints.tooltip}"
+                                    id="soc13" contentStyle="width:200px"
+                                    autoSubmit="true"
+                                    disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                    partialTriggers="leaseNumber_TransId soc22"
+                                    requiredMessageDetail="You must select a Offer Type"
+                                    showRequired="true">
+                  <f:selectItems value="#{bindings.OfferType.items}" id="si13"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.MsHdrId.inputValue}"
+                                    label="#{bindings.MsHdrId.label}"
+                                    shortDesc="#{bindings.MsHdrId.hints.tooltip}"
+                                    id="soc6" autoSubmit="true"
+                                    contentStyle="width:200px"
+                                    valueChangeListener="#{backingBeanScope.OfferBean.onChangeMileHrd}"
+                                    partialTriggers="soc22 leaseNumber_TransId trans_LeadNumberId id4"
+                                    requiredMessageDetail="You must select a Payment plan"
+                                    disabled="#{(bindings.OfferFromDate.inputValue eq null)||(bindings.Status.inputValue ne 'DRA' &amp;&amp;  bindings.Status.inputValue ne 'REV')}"
+                                    showRequired="true">
+                  <f:selectItems value="#{bindings.MsHdrId.items}" id="si6"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.Checklist.inputValue}"
+                                    label="#{bindings.Checklist.label}"
+                                    shortDesc="#{bindings.Checklist.hints.tooltip}"
+                                    id="soc15" contentStyle="width:200px"
+                                    autoSubmit="true"
+                                    disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                    partialTriggers="leaseNumber_TransId soc22 soc22" showRequired="true">
+                  <f:selectItems value="#{bindings.Checklist.items}" id="si15"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.Terms.inputValue}"
+                                    label="#{bindings.Terms.label}"
+                                    required="#{bindings.Terms.hints.mandatory}"
+                                    shortDesc="#{bindings.Terms.hints.tooltip}"
+                                    id="soc14" contentStyle="width:200px"
+                                    autoSubmit="true"
+                                    disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                    partialTriggers="leaseNumber_TransId soc22"
+                                    rendered="false">
+                  <f:selectItems value="#{bindings.Terms.items}" id="si14"/>
+                </af:selectOneChoice>
+                <!--<af:selectOneChoice value="#{bindings.ExtensionDays.inputValue}"
+                                    label="#{bindings.ExtensionDays.label}"
+                                    shortDesc="#{bindings.ExtensionDays.hints.tooltip}"
+                                    id="soc33"
+                                    rendered="#{bindings.OfferFlag.inputValue=='S'}"
+                                    autoSubmit="true"
+                                    partialTriggers="leaseNumber_TransId soc22"
+                                    showRequired="#{bindings.OfferFlag.inputValue=='S'}"
+                                    binding="#{backingBeanScope.OfferBean.extensionDays}"
+                                    valueChangeListener="#{backingBeanScope.OfferBean.onClickExtDateValidation}"
+                                    disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                  <f:selectItems value="#{bindings.ExtensionDays.items}"
+                                 id="si35"/>
+                </af:selectOneChoice>-->
+                <af:inputText value="#{bindings.ExtensionDays1.inputValue}"
+                              label="#{bindings.OfferFlag.inputValue=='N' ? 'No Of Contract Days' : 'Extension Days'}"
+                              showRequired="#{bindings.OfferFlag.inputValue=='S'}"
+                              autoSubmit="true"
+                              partialTriggers="soc22 leaseNumber_TransId id6"
+                              columns="#{bindings.ExtensionDays1.hints.displayWidth}"
+                              maximumLength="#{bindings.ExtensionDays1.hints.precision}"
+                              shortDesc="#{bindings.ExtensionDays1.hints.tooltip}"
+                              id="soc33"
+                              valueChangeListener="#{backingBeanScope.OfferBean.onClickExtDateValidation}"
+                              binding="#{backingBeanScope.OfferBean.extnDays}"
+                              disabled="true">
+                  <f:validator binding="#{bindings.ExtensionDays1.validator}"/>
+                </af:inputText>
+                <af:inputDate value="#{bindings.OfferToDate.inputValue}"
+                              label="#{bindings.OfferToDate.hints.label}"
+                              required="#{bindings.OfferToDate.hints.mandatory}"
+                              shortDesc="#{bindings.OfferToDate.hints.tooltip}"
+                              id="id6" contentStyle="width:200px"
+                              partialTriggers="id4 leaseNumber_TransId soc22"
+                              autoSubmit="true"
+                              disabled="#{(bindings.Status.inputValue!='DRA' and bindings.Status.inputValue!='REV')}"
+                              binding="#{backingBeanScope.OfferBean.id6}"
+                              valueChangeListener="#{backingBeanScope.OfferBean.onSelectOfferToDate}"
+                              rendered="true">
+                  <f:validator binding="#{bindings.OfferToDate.validator}"/>
+                  <af:convertDateTime pattern="dd-MM-yyyy"/>
+                </af:inputDate>
+                <af:inputDate value="#{bindings.OfferToDate.inputValue} "
+                              label="#{bindings.OfferToDate.hints.label}"
+                              shortDesc="#{bindings.OfferToDate.hints.tooltip}"
+                              id="id1" contentStyle="width:200px"
+                              autoSubmit="true"
+                              partialTriggers="id4 leaseNumber_TransId soc22"
+                              rendered="false">
+                  <f:validator binding="#{bindings.OfferToDate.validator}"/>
+                  <af:convertDateTime pattern="#{sessionScope.DateFormat}"/>
+                </af:inputDate>
+                <af:selectOneChoice value="#{bindings.TaxCode.inputValue}"
+                                    label="#{bindings.TaxCode.label}"
+                                    required="#{bindings.TaxCode.hints.mandatory}"
+                                    shortDesc="#{bindings.TaxCode.hints.tooltip}"
+                                    id="soc28" autoSubmit="true"
+                                    contentStyle="width:200px"
+                                    disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                  <f:selectItems value="#{bindings.TaxCode.items}" id="si29"/>
+                </af:selectOneChoice>
+                <af:inputText value="#{bindings.ExpectedDiscount_Trans.inputValue}"
+                              label="Expected Discount"
+                              columns="#{bindings.ExpectedDiscount_Trans.hints.displayWidth}"
+                              maximumLength="#{bindings.ExpectedDiscount_Trans.hints.precision}"
+                              shortDesc="#{bindings.ExpectedDiscount_Trans.hints.tooltip}"
+                              id="it62" autoSubmit="true" contentStyle="width:200px"
+                              valueChangeListener="#{backingBeanScope.OfferBean.onEntrExptdDisct}"
+                              disabled="#{bindings.Status.inputValue!='DRA'}"
+                              partialTriggers="it43"
+                              binding="#{backingBeanScope.OfferBean.it62ExpectedDisc}">
+                  <f:validator binding="#{bindings.ExpectedDiscount_Trans.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.ExpectedDiscount.inputValue}"
+                              label="#{bindings.ExpectedDiscount.hints.label}"
+                              required="#{bindings.ExpectedDiscount.hints.mandatory}"
+                              columns="#{bindings.ExpectedDiscount.hints.displayWidth}"
+                              maximumLength="#{bindings.ExpectedDiscount.hints.precision}"
+                              shortDesc="#{bindings.ExpectedDiscount.hints.tooltip}"
+                              id="it63" rendered="false" partialTriggers="it62">
+                  <f:validator binding="#{bindings.ExpectedDiscount.validator}"/>
+                </af:inputText>
+                <af:selectOneRadio value="#{bindings.LeaseType.inputValue}"
+                                   label="Contract Type"
+                                   required="#{bindings.LeaseType.hints.mandatory}"
+                                   shortDesc="#{bindings.LeaseType.hints.tooltip}"
+                                   id="sor1" autoSubmit="true"
+                                   valueChangeListener="#{backingBeanScope.OfferBean.onChangeLeaseType}"
+                                   disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                   layout="horizontal"
+                                   partialTriggers="leaseNumber_TransId">
+                  <f:selectItems value="#{bindings.LeaseType.items}" id="si27"/>
+                </af:selectOneRadio>
+                <af:selectOneChoice value="#{bindings.CarParkLeaseAgreId.inputValue}"
+                                    label="#{bindings.CarParkLeaseAgreId.label}"
+                                    required="#{bindings.CarParkLeaseAgreId.hints.mandatory}"
+                                    shortDesc="#{bindings.CarParkLeaseAgreId.hints.tooltip}"
+                                    id="soc29" autoSubmit="true"
+                                    contentStyle="width:200px"
+                                    partialTriggers="sor1" rendered="false">
+                  <f:selectItems value="#{bindings.CarParkLeaseAgreId.items}"
+                                 id="si31"/>
+                </af:selectOneChoice>
+                <af:inputComboboxListOfValues id="carParkLeaseAgreIdTransId"
+                                              popupTitle="Search and Select: #{bindings.CarParkLeaseAgreIdTrans.hints.label}"
+                                              value="#{bindings.CarParkLeaseAgreIdTrans.inputValue}"
+                                              label="Contract No"
+                                              model="#{bindings.CarParkLeaseAgreIdTrans.listOfValuesModel}"
+                                              required="#{bindings.CarParkLeaseAgreIdTrans.hints.mandatory}"
+                                              columns="#{bindings.CarParkLeaseAgreIdTrans.hints.displayWidth}"
+                                              shortDesc="#{bindings.CarParkLeaseAgreIdTrans.hints.tooltip}"
+                                              autoSubmit="true"
+                                              partialTriggers="sor1"
+                                              binding="#{backingBeanScope.OfferBean.leaseNumber}"
+                                              visible="#{bindings.LeaseType.inputValue=='CAR_PARKING'}"
+                                              valueChangeListener="#{backingBeanScope.OfferBean.onChangeLease}">
+                  <f:validator binding="#{bindings.CarParkLeaseAgreIdTrans.validator}"/>
+                </af:inputComboboxListOfValues>
+              </af:panelFormLayout>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s7"/>
+            <af:panelBox text="Contract Information" id="pb3" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelFormLayout id="pfl2" maxColumns="2" rows="3"
+                                  labelWidth="220">
+                <f:facet name="footer"/>
+                <af:inputText value="#{bindings.CustomerName.inputValue}"
+                              label="#{bindings.CustomerName.hints.label}"
+                              required="#{bindings.CustomerName.hints.mandatory}"
+                              columns="#{bindings.CustomerName.hints.displayWidth}"
+                              maximumLength="#{bindings.CustomerName.hints.precision}"
+                              shortDesc="#{bindings.CustomerName.hints.tooltip}"
+                              id="it64" autoSubmit="true" rendered="false">
+                  <f:validator binding="#{bindings.CustomerName.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.CustomerPhoneNo.inputValue}"
+                              label="#{bindings.CustomerPhoneNo.hints.label}"
+                              required="#{bindings.CustomerPhoneNo.hints.mandatory}"
+                              columns="#{bindings.CustomerPhoneNo.hints.displayWidth}"
+                              maximumLength="#{bindings.CustomerPhoneNo.hints.precision}"
+                              shortDesc="#{bindings.CustomerPhoneNo.hints.tooltip}"
+                              id="it65" autoSubmit="true" rendered="false">
+                  <f:validator binding="#{bindings.CustomerPhoneNo.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.CustomerCountry.inputValue}"
+                              label="#{bindings.CustomerCountry.hints.label}"
+                              required="#{bindings.CustomerCountry.hints.mandatory}"
+                              columns="#{bindings.CustomerCountry.hints.displayWidth}"
+                              maximumLength="#{bindings.CustomerCountry.hints.precision}"
+                              shortDesc="#{bindings.CustomerCountry.hints.tooltip}"
+                              id="it67" autoSubmit="true" rendered="false">
+                  <f:validator binding="#{bindings.CustomerCountry.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Trans_LeadName1.inputValue}"
+                              label="#{bindings.Trans_LeadName1.hints.label}"
+                              required="#{bindings.Trans_LeadName1.hints.mandatory}"
+                              columns="#{bindings.Trans_LeadName1.hints.displayWidth}"
+                              maximumLength="#{bindings.Trans_LeadName1.hints.precision}"
+                              shortDesc="#{bindings.Trans_LeadName1.hints.tooltip}"
+                              id="it39" partialTriggers="trans_LeadNumberId"
+                              disabled="true">
+                  <f:validator binding="#{bindings.Trans_LeadName1.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Trans_Email.inputValue}"
+                              label="#{bindings.Trans_Email.hints.label}"
+                              required="#{bindings.Trans_Email.hints.mandatory}"
+                              columns="#{bindings.Trans_Email.hints.displayWidth}"
+                              maximumLength="#{bindings.Trans_Email.hints.precision}"
+                              shortDesc="#{bindings.Trans_Email.hints.tooltip}"
+                              id="it8" partialTriggers="trans_LeadNumberId"
+                              disabled="true">
+                  <f:validator binding="#{bindings.Trans_Email.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Trans_MobileNumber.inputValue}"
+                              label="#{bindings.Trans_MobileNumber.hints.label}"
+                              required="#{bindings.Trans_MobileNumber.hints.mandatory}"
+                              columns="#{bindings.Trans_MobileNumber.hints.displayWidth}"
+                              maximumLength="#{bindings.Trans_MobileNumber.hints.precision}"
+                              shortDesc="#{bindings.Trans_MobileNumber.hints.tooltip}"
+                              id="it15" partialTriggers="trans_LeadNumberId"
+                              disabled="true">
+                  <f:validator binding="#{bindings.Trans_MobileNumber.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Trans_Address1.inputValue}"
+                              label="#{bindings.Trans_Address1.hints.label}"
+                              required="#{bindings.Trans_Address1.hints.mandatory}"
+                              columns="#{bindings.Trans_Address1.hints.displayWidth}"
+                              maximumLength="#{bindings.Trans_Address1.hints.precision}"
+                              shortDesc="#{bindings.Trans_Address1.hints.tooltip}"
+                              id="it36" partialTriggers="trans_LeadNumberId"
+                              disabled="true">
+                  <f:validator binding="#{bindings.Trans_Address1.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Trans_Address2.inputValue}"
+                              label="#{bindings.Trans_Address2.hints.label}"
+                              required="#{bindings.Trans_Address2.hints.mandatory}"
+                              columns="#{bindings.Trans_Address2.hints.displayWidth}"
+                              maximumLength="#{bindings.Trans_Address2.hints.precision}"
+                              shortDesc="#{bindings.Trans_Address2.hints.tooltip}"
+                              id="it26" partialTriggers="trans_LeadNumberId"
+                              disabled="true">
+                  <f:validator binding="#{bindings.Trans_Address2.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Trans_Address3.inputValue}"
+                              label="#{bindings.Trans_Address3.hints.label}"
+                              required="#{bindings.Trans_Address3.hints.mandatory}"
+                              columns="#{bindings.Trans_Address3.hints.displayWidth}"
+                              maximumLength="#{bindings.Trans_Address3.hints.precision}"
+                              shortDesc="#{bindings.Trans_Address3.hints.tooltip}"
+                              id="it21" partialTriggers="trans_LeadNumberId"
+                              disabled="true">
+                  <f:validator binding="#{bindings.Trans_Address3.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Trans_Address4.inputValue}"
+                              label="#{bindings.Trans_Address4.hints.label}"
+                              required="#{bindings.Trans_Address4.hints.mandatory}"
+                              columns="#{bindings.Trans_Address4.hints.displayWidth}"
+                              maximumLength="#{bindings.Trans_Address4.hints.precision}"
+                              shortDesc="#{bindings.Trans_Address4.hints.tooltip}"
+                              id="it2" partialTriggers="trans_LeadNumberId"
+                              disabled="true">
+                  <f:validator binding="#{bindings.Trans_Address4.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Trans_city.inputValue}"
+                              label="#{bindings.Trans_city.hints.label}"
+                              required="#{bindings.Trans_city.hints.mandatory}"
+                              columns="#{bindings.Trans_city.hints.displayWidth}"
+                              maximumLength="#{bindings.Trans_city.hints.precision}"
+                              shortDesc="#{bindings.Trans_city.hints.tooltip}"
+                              id="it34" partialTriggers="trans_LeadNumberId"
+                              disabled="true">
+                  <f:validator binding="#{bindings.Trans_city.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Trans_country.inputValue}"
+                              label="#{bindings.Trans_country.hints.label}"
+                              required="#{bindings.Trans_country.hints.mandatory}"
+                              columns="#{bindings.Trans_country.hints.displayWidth}"
+                              maximumLength="#{bindings.Trans_country.hints.precision}"
+                              shortDesc="#{bindings.Trans_country.hints.tooltip}"
+                              id="it18" partialTriggers="trans_LeadNumberId"
+                              disabled="true">
+                  <f:validator binding="#{bindings.Trans_country.validator}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s8"/>
+            <af:separator id="s23" rendered="false"/>
+            <af:panelBox text="Offer Details" id="pb1"
+                         showDisclosure="false"
+                         partialTriggers="carParkLeaseAgreIdTransId">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                  featuresOff="detach"
+                                  partialTriggers="::carParkLeaseAgreIdTransId ::id6">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t2" flex="1">
+                    <af:commandImageLink id="cil3"
+                                         actionListener="#{backingBeanScope.OfferBean.onClickAddOfferLine}"
+                                         icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         disabledIcon="/images/func_add_16_dis.png"
+                                         depressedIcon="/images/func_add_16_act.png"
+                                         visible="#{sessionScope.grantMap.Offer =='F'}"
+                                         disabled="#{bindings.Status.inputValue=='DRA' ? false : true}"
+                                         partialTriggers="cil2"/>
+                    <af:commandImageLink actionListener="#{bindings.CreateInsert.execute}"
+                                         id="cil1"
+                                         icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         partialSubmit="true" immediate="true"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                         disabledIcon="/images/func_add_16_dis.png"
+                                         depressedIcon="/images/func_add_16_act.png"
+                                         partialTriggers="::soc12 ::soc6"
+                                         rendered="false"/>
+                    <af:spacer width="10" height="10" id="s9"/>
+                    <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                         id="cil2"
+                                         icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         partialSubmit="true"
+                                         disabledIcon="/images/func_remove_16_dis.png"
+                                         depressedIcon="/images/func_remove_16_act.png"
+                                         visible="#{sessionScope.grantMap.Offer =='F'}"/>
+                    <af:spacer width="10" height="10" id="s1"/>
+                    <af:commandButton text="Calculate" id="cb12"
+                                      actionListener="#{backingBeanScope.OfferBean.onClickOfferLineCal}"
+                                      visible="#{sessionScope.grantMap.Offer =='F' and bindings.Status.inputValue=='DRA'}">
+                       <af:setPropertyListener from="CALC" to="#{pageFlowScope.handleCalcSavButton}" type="action"/>               
+                        </af:commandButton>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.OfferDetail_VO1.collectionModel}"
+                          var="row" rows="#{bindings.OfferDetail_VO1.rangeSize}"
+                          emptyText="#{bindings.OfferDetail_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="6"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.OfferDetail_VO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.OfferDetail_VO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1" scrollPolicy="page"
+                          styleClass="AFStretchWidth" autoHeightRows="0"
+                          binding="#{backingBeanScope.OfferBean.t1}"
+                          varStatus="vs"
+                          partialTriggers=":::soc22 :::leaseNumber_TransId :::soc2 :::carParkLeaseAgreIdTransId ::cil3 ::cb12 tra_UnitNameId :::id6">
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.OfferDtlId.name}"
+                             sortable="false" headerText="OfferDtlId" id="c37"
+                             rendered="false">
+                    <af:inputText value="#{row.bindings.OfferDtlId.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.OfferDtlId.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.OfferDtlId.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.OfferDtlId.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.OfferDtlId.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.OfferDtlId.tooltip}"
+                                  id="it22">
+                      <f:validator binding="#{row.bindings.OfferDtlId.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.OfferDetail_VO1.hints.OfferDtlId.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.OfferHdrId.name}"
+                             sortable="false" headerText="OfferHdrId" id="c26"
+                             rendered="false">
+                    <af:inputText value="#{row.bindings.OfferHdrId.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.OfferHdrId.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.OfferHdrId.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.OfferHdrId.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.OfferHdrId.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.OfferHdrId.tooltip}"
+                                  id="it20">
+                      <f:validator binding="#{row.bindings.OfferHdrId.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.OfferDetail_VO1.hints.OfferHdrId.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column id="c52" headerText="S.No" width="102"
+                             align="center" frozen="true">
+                    <af:outputText value="#{vs.index+1}" id="ot2"/>
+                  </af:column>
+                  <!--don't remove this property id-->
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.PropertyId.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDetail_VO1.hints.PropertyId.label}"
+                             id="c13" width="172" frozen="true"
+                             rendered="#{bindings.Status.inputValue!='DRA'}">
+                    <af:selectOneChoice value="#{row.bindings.PropertyId.inputValue}"
+                                        label="#{row.bindings.PropertyId.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.PropertyId.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.PropertyId.tooltip}"
+                                        id="soc5" autoSubmit="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:selectItems value="#{row.bindings.PropertyId.items}"
+                                     id="si5"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="Property Name"
+                             id="c38" width="172" frozen="true"
+                             partialTriggers=":::soc12"
+                             rendered="#{bindings.Status.inputValue=='DRA'}">
+                    <af:selectOneChoice value="#{row.bindings.PropertyId1.inputValue}"
+                                        label="#{row.bindings.PropertyId1.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.PropertyId1.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.PropertyId1.tooltip}"
+                                        id="soc34" autoSubmit="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                        partialTriggers=":::soc12">
+                      <f:selectItems value="#{row.bindings.PropertyId1.items}"
+                                     id="si30"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.BuildingId.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDetail_VO1.hints.BuildingId.label}"
+                             id="c33" width="172" frozen="true">
+                    <af:selectOneChoice value="#{row.bindings.BuildingId.inputValue}"
+                                        label="#{row.bindings.BuildingId.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.BuildingId.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.BuildingId.tooltip}"
+                                        id="soc4" partialTriggers="soc5"
+                                        autoSubmit="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:selectItems value="#{row.bindings.BuildingId.items}"
+                                     id="si4"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.UnitId.name}"
+                             sortable="false" headerText="UnitId" id="c39"
+                             rendered="false" width="150" frozen="false">
+                    <af:inputText value="#{row.bindings.UnitId.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.UnitId.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.UnitId.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.UnitId.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.UnitId.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.UnitId.tooltip}"
+                                  id="it35" partialTriggers="tra_UnitNameId">
+                      <f:validator binding="#{row.bindings.UnitId.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.OfferDetail_VO1.hints.UnitId.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.Tra_UnitName.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDetail_VO1.hints.Tra_UnitName.label}"
+                             id="c6" width="171" frozen="true">
+                    <af:inputListOfValues id="tra_UnitNameId"
+                                          popupTitle="Search and Select: #{bindings.OfferDetail_VO1.hints.Tra_UnitName.label}"
+                                          value="#{row.bindings.Tra_UnitName.inputValue}"
+                                          model="#{row.bindings.Tra_UnitName.listOfValuesModel}"
+                                          required="#{bindings.OfferDetail_VO1.hints.Tra_UnitName.mandatory}"
+                                          columns="#{bindings.OfferDetail_VO1.hints.Tra_UnitName.displayWidth}"
+                                          shortDesc="#{bindings.OfferDetail_VO1.hints.Tra_UnitName.tooltip}"
+                                          partialTriggers="soc4"
+                                          autoSubmit="true"
+                                          valueChangeListener="#{backingBeanScope.OfferBean.OnchangePriceList}"
+                                          disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.Tra_UnitName.validator}"/>
+                    </af:inputListOfValues>
+                  </af:column>
+                  <af:column headerText="Lease Unit Mapping" id="c32"
+                             partialTriggers=":::carParkLeaseAgreIdTransId"
+                             rendered="#{bindings.LeaseType.inputValue=='CAR_PARKING'}"
+                             width="123">
+                    <af:selectOneChoice value="#{row.bindings.LeaseUnitMap.inputValue}"
+                                        label="#{row.bindings.LeaseUnitMap.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.LeaseUnitMap.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.LeaseUnitMap.tooltip}"
+                                        id="soc31"
+                                        partialTriggers=":::carParkLeaseAgreIdTransId soc32"
+                                        autoSubmit="true"
+                                        binding="#{backingBeanScope.OfferBean.socmap}">
+                      <f:selectItems value="#{row.bindings.LeaseUnitMap.items}"
+                                     id="si33"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="Lease No"
+                             id="c35" rendered="false">
+                    <af:selectOneChoice value="#{row.bindings.LeaseNo_Trans.inputValue}"
+                                        label="#{row.bindings.LeaseNo_Trans.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.LeaseNo_Trans.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.LeaseNo_Trans.tooltip}"
+                                        id="soc32"
+                                        partialTriggers=":::carParkLeaseAgreIdTransId"
+                                        binding="#{backingBeanScope.OfferBean.bleaseNo}">
+                      <f:selectItems value="#{row.bindings.LeaseNo_Trans.items}"
+                                     id="si34"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.UnitType.label}"
+                             id="c7" width="122">
+                    <af:selectOneChoice value="#{row.bindings.UnitType.inputValue}"
+                                        label="#{row.bindings.UnitType.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.UnitType.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.UnitType.tooltip}"
+                                        id="soc23" readOnly="true"
+                                        partialTriggers="tra_UnitNameId"
+                                        autoSubmit="true">
+                      <f:selectItems value="#{row.bindings.UnitType.items}"
+                                     id="si23"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column id="c49" headerText="Price List" rendered="false"
+                             sortProperty="#{bindings.OfferDetail_VO1.hints.PlId.name}"
+                             sortable="false" frozen="false">
+                    <af:selectOneChoice value="#{row.bindings.PlId.inputValue}"
+                                        label="#{row.bindings.PlId.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.PlId.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.PlId.tooltip}"
+                                        id="soc11" autoSubmit="true"
+                                        valueChangeListener="#{backingBeanScope.OfferBean.OnchangePriceList}">
+                      <f:selectItems value="#{row.bindings.PlId.items}"
+                                     id="si11"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.AreaSq.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDetail_VO1.hints.AreaSq.label}"
+                             id="c18" frozen="false" width="121">
+                    <af:inputText value="#{row.bindings.AreaSq.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.AreaSq.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.AreaSq.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.AreaSq.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.AreaSq.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.AreaSq.tooltip}"
+                                  id="it37"
+                                  partialTriggers="tra_UnitNameId"
+                                  disabled="true">
+                      <f:validator binding="#{row.bindings.AreaSq.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.OfferDetail_VO1.hints.AreaSq.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.Uom.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDetail_VO1.hints.Uom.label}"
+                             id="c20" frozen="false" width="123">
+                    <af:selectOneChoice value="#{row.bindings.Uom.inputValue}"
+                                        label="#{row.bindings.Uom.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.Uom.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.Uom.tooltip}"
+                                        id="soc17" autoSubmit="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                        readOnly="true">
+                      <f:selectItems value="#{row.bindings.Uom.items}"
+                                     id="si17"/>
+                    </af:selectOneChoice>
+                  </af:column>                 
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.Purpose.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDetail_VO1.hints.Purpose.label}"
+                             id="c44" width="122">
+                    <af:selectOneChoice value="#{row.bindings.Purpose.inputValue}"
+                                        label="#{row.bindings.Purpose.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.Purpose.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.Purpose.tooltip}"
+                                        id="soc16" autoSubmit="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                        readOnly="true">
+                      <f:selectItems value="#{row.bindings.Purpose.items}"
+                                     id="si16"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column id="c41" headerText="Pull Base Rate from Price List"
+                             partialTriggers=":::soc22"
+                             visible="#{bindings.OfferFlag.inputValue ne 'S'}">
+                    <af:commandButton text="#{bindings.Attribute4.inputValue ne null ? 'Do not Pull' : 'Pull'}" id="cb18"
+                                      actionListener="#{backingBeanScope.OfferBean.doPullBasePfromPL}"
+                                      partialSubmit="true"
+                                      disabled="#{bindings.Status.inputValue!='DRA'}"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.UnitType.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDetail_VO1.hints.UnitType.label}"
+                             id="c40" rendered="false">
+                    <af:inputText value="#{row.bindings.UnitType.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.UnitType.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.UnitType.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.UnitType.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.UnitType.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.UnitType.tooltip}"
+                                  id="it44" readOnly="false"
+                                  partialTriggers="tra_UnitNameId"
+                                  disabled="true">
+                      <f:validator binding="#{row.bindings.UnitType.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="Tenancy Contract value"
+                             id="c1" align="center" visible="false">
+                    <af:outputText value="#{row.OldContractValue_Trans}"
+                                   id="ot10">
+                    <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                        </af:outputText>
+                  </af:column>
+                  <af:column headerText="Tenancy Contract value"
+                             id="c87"
+                             visible="#{bindings.OfferFlag.inputValue ne 'N'}"
+                             align="center">
+                    <af:inputText value="#{row.bindings.Attribute5.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.Attribute5.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.Attribute5.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.Attribute5.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.Attribute5.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.Attribute5.tooltip}"
+                                  id="it76" autoSubmit="true"
+                                  disabled="#{(sessionScope.userId == '20' or sessionScope.userId == '15') ? false : (sessionScope.userId == '100' and sessionScope.UR=='ACCCOUNTS') ? false : true}">
+                      <f:validator binding="#{row.bindings.Attribute5.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.SetRentPerAnnum.label}"
+                             id="c56" align="center" width="130">
+                    <af:panelGroupLayout id="pgl5" layout="horizontal">
+                    <af:inputText value="#{row.bindings.SetRentPerAnnum.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.SetRentPerAnnum.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.SetRentPerAnnum.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.SetRentPerAnnum.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.SetRentPerAnnum.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.SetRentPerAnnum.tooltip}"
+                                  id="it46" disabled="true"
+                                  partialTriggers=":::id6 tra_UnitNameId soc11 cb18 cil7">
+                      <f:validator binding="#{row.bindings.SetRentPerAnnum.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"
+                                        maxFractionDigits="2"
+                                        minIntegerDigits="0"/>
+                    </af:inputText>
+                    <af:spacer width="10" height="10" id="s14"/>
+                    <af:commandImageLink id="cil7"
+                                         icon="/images/refersh_en.png"
+                                         actionListener="#{backingBeanScope.OfferBean.doPullSteRentPaBasedOnPl}"
+                                         partialSubmit="true"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.BaseRate.name}"
+                             sortable="false" align="center"
+                             headerText="#{bindings.OfferDetail_VO1.hints.BaseRate.label}"
+                             id="c11" partialTriggers="tra_UnitNameId :::id6"
+                             width="122">
+                    <af:inputText value="#{row.bindings.BaseRate.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.BaseRate.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.BaseRate.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.BaseRate.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.BaseRate.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.BaseRate.tooltip}"
+                                  id="it38"
+                                  partialTriggers=":::id6 tra_UnitNameId soc11 cb18"
+                                  autoSubmit="true"
+                                  disabled="#{(bindings.Status.inputValue=='DRA' and sessionScope.userId == '20') ? false : (bindings.Status.inputValue=='DRA' and sessionScope.userId == '100' and sessionScope.UR=='ACCCOUNTS') ? false : true}"
+                                  binding="#{backingBeanScope.OfferBean.it38}">
+                      <f:validator binding="#{row.bindings.BaseRate.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.ElectricityCharges.label}"
+                             id="c4" width="111">
+                    <af:inputText value="#{row.bindings.ElectricityCharges.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.ElectricityCharges.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.ElectricityCharges.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.ElectricityCharges.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.ElectricityCharges.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.ElectricityCharges.tooltip}"
+                                  id="it10" partialTriggers="tra_UnitNameId"
+                                  disabled="true">
+                      <f:validator binding="#{row.bindings.ElectricityCharges.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.MunicipalityPercentage.label}"
+                             id="c17" rendered="true" width="111">
+                    <af:selectOneChoice value="#{row.bindings.MunicipalityPercentage.inputValue}"
+                                        label="#{row.bindings.MunicipalityPercentage.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.MunicipalityPercentage.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.MunicipalityPercentage.tooltip}"
+                                        id="soc27" readOnly="true">
+                      <f:selectItems value="#{row.bindings.MunicipalityPercentage.items}"
+                                     id="si28"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.MunicipalityCharges.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDetail_VO1.hints.MunicipalityCharges.label}"
+                             id="c5" width="107">
+                    <af:inputText value="#{row.bindings.MunicipalityCharges.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.MunicipalityCharges.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.MunicipalityCharges.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.MunicipalityCharges.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.MunicipalityCharges.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.MunicipalityCharges.tooltip}"
+                                  id="it9" partialTriggers="tra_UnitNameId"
+                                  disabled="true">
+                      <f:validator binding="#{row.bindings.MunicipalityCharges.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.SecurityDeposite.label}"
+                             id="c3"
+                             visible="#{bindings.OfferFlag.inputValue ne 'R' and bindings.OfferFlag.inputValue ne 'S'}">
+                    <af:inputText value="#{row.bindings.SecurityDeposite.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.SecurityDeposite.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.SecurityDeposite.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.SecurityDeposite.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.SecurityDeposite.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.SecurityDeposite.tooltip}"
+                                  id="it3" partialTriggers="tra_UnitNameId"
+                                  disabled="true">
+                      <f:validator binding="#{row.bindings.SecurityDeposite.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.ThirdPartyServCharge.label}"
+                             id="c19">
+                    <af:inputText value="#{row.bindings.ThirdPartyServCharge.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.ThirdPartyServCharge.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.ThirdPartyServCharge.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.ThirdPartyServCharge.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.ThirdPartyServCharge.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.ThirdPartyServCharge.tooltip}"
+                                  id="it41" readOnly="true" autoSubmit="true"
+                                  partialTriggers="tra_UnitNameId">
+                      <f:validator binding="#{row.bindings.ThirdPartyServCharge.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeNew.label}"
+                             id="c21">
+                    <af:inputText value="#{row.bindings.OtherGovntChargeNew.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeNew.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeNew.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeNew.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeNew.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeNew.tooltip}"
+                                  id="it27" readOnly="true" autoSubmit="true"
+                                  partialTriggers="tra_UnitNameId">
+                      <f:validator binding="#{row.bindings.OtherGovntChargeNew.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeRnew.label}"
+                             id="c22">
+                    <af:inputText value="#{row.bindings.OtherGovntChargeRnew.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeRnew.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeRnew.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeRnew.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeRnew.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.OtherGovntChargeRnew.tooltip}"
+                                  id="it32" readOnly="true" autoTab="true"
+                                  partialTriggers="tra_UnitNameId">
+                      <f:validator binding="#{row.bindings.OtherGovntChargeRnew.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.EjariPaymentCharge.label}"
+                             id="c24">
+                    <af:inputText value="#{row.bindings.EjariPaymentCharge.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.EjariPaymentCharge.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.EjariPaymentCharge.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.EjariPaymentCharge.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.EjariPaymentCharge.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.EjariPaymentCharge.tooltip}"
+                                  id="it33" readOnly="true" autoSubmit="true"
+                                  partialTriggers="tra_UnitNameId">
+                      <f:validator binding="#{row.bindings.EjariPaymentCharge.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column id="c54" headerText="Old Discount" sortable="false"
+                             rendered="#{bindings.OfferFlag.inputValue!='N'}"
+                             partialTriggers=":::soc22" visible="false">
+                  <af:column headerText="Type"
+                             id="c43">
+                    <af:selectOneChoice value="#{row.bindings.Attribute1.inputValue}"
+                                        label="#{row.bindings.Attribute1.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.Attribute1.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.Attribute1.tooltip}"
+                                        id="soc35" autoSubmit="true" readOnly="true">
+                      <f:selectItems value="#{row.bindings.Attribute1.items}"
+                                     id="si35"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="Value"
+                             id="c45">
+                    <af:selectOneChoice value="#{row.bindings.DiscountType_attribute2_trans.inputValue}"
+                                        label="#{row.bindings.DiscountType_attribute2_trans.label}"
+                                        required="#{bindings.OfferDetail_VO1.hints.DiscountType_attribute2_trans.mandatory}"
+                                        shortDesc="#{bindings.OfferDetail_VO1.hints.DiscountType_attribute2_trans.tooltip}"
+                                        id="soc36" autoSubmit="true" partialTriggers="soc35" readOnly="true">
+                      <f:selectItems value="#{row.bindings.DiscountType_attribute2_trans.items}"
+                                     id="si36"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  </af:column>
+                  <af:column headerText="Total Approved Discount"
+                             id="c79" align="center">
+                    <af:inputText value="#{row.bindings.Attribute3.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.Attribute3.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.Attribute3.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.Attribute3.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.Attribute3.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.Attribute3.tooltip}"
+                                  id="it57" disabled="true"
+                                  partialTriggers=":::pc22:t10:it58"
+                                  binding="#{backingBeanScope.OfferBean.it57disc}">
+                      <f:validator binding="#{row.bindings.Attribute3.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column id="c55" headerText="Previous Net Rent" sortable="false"
+                                        rendered="#{bindings.OfferFlag.inputValue!='N'}"
+                                        partialTriggers=":::soc22" align="center">
+                    <af:inputText value="#{row.bindings.Attribute2.inputValue}"
+                                  label="Old Net Rent"
+                                  required="#{bindings.OfferDetail_VO1.hints.Attribute2.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.Attribute2.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.Attribute2.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.Attribute2.tooltip}"
+                                  id="it42" readOnly="true">
+                      <f:validator binding="#{row.bindings.Attribute2.validator}"/>
+                    </af:inputText>
+                    </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.NetRentWithoutTax.label}"
+                             id="c16" align="center">
+                    <af:inputText value="#{row.bindings.NetRentWithoutTax.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.NetRentWithoutTax.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.NetRentWithoutTax.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.NetRentWithoutTax.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.NetRentWithoutTax.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.NetRentWithoutTax.tooltip}"
+                                  id="it71" readOnly="true"
+                                  autoSubmit="true"
+                                  binding="#{backingBeanScope.OfferBean.netRentWithoutTaxDtlLine}"
+                                  partialTriggers=":::id6 ::cb12 :::pc22:t10:it58">
+                      <f:validator binding="#{row.bindings.NetRentWithoutTax.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"
+                                        maxFractionDigits="2"
+                                        minIntegerDigits="0"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDetail_VO1.hints.TaxAmount.label}"
+                             id="c29" sortable="false" align="center" visible="false">
+                    <af:inputText value="#{row.bindings.TaxAmount.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.TaxAmount.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.TaxAmount.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.TaxAmount.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.TaxAmount.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.TaxAmount.tooltip}"
+                                  id="it47"
+                                  autoSubmit="true" visible="false"
+                                  partialTriggers="::cb12 :::pc22:t10:it58" readOnly="true"
+                                  binding="#{backingBeanScope.OfferBean.it47TaxAmt}">
+                      <f:validator binding="#{row.bindings.TaxAmount.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"
+                                        maxFractionDigits="2"
+                                        minIntegerDigits="0"/>
+                    </af:inputText>
+                    </af:column>
+                  <af:column id="c81" headerText="Tax Amount" align="center">
+                  <af:panelLabelAndMessage label="#{bindings.OfferDetail_VO1.hints.TaxAmount.label}"
+                                             id="plam1">
+                      <af:outputText value="#{row.TaxAmount}" id="ot11"
+                                     partialTriggers="::cb12 :::pc22:t10:it58">
+                        <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"
+                                        maxFractionDigits="2"
+                                        minIntegerDigits="0"/>
+                      </af:outputText>
+                    </af:panelLabelAndMessage>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDetail_VO1.hints.TotalRate.name}"
+                             sortable="false" align="center"
+                             headerText="Approved Net Rent (Including Tax)"
+                             id="c23">
+                    <af:inputText value="#{row.bindings.TotalRate.inputValue}"
+                                  label="#{bindings.OfferDetail_VO1.hints.TotalRate.label}"
+                                  required="#{bindings.OfferDetail_VO1.hints.TotalRate.mandatory}"
+                                  columns="#{bindings.OfferDetail_VO1.hints.TotalRate.displayWidth}"
+                                  maximumLength="#{bindings.OfferDetail_VO1.hints.TotalRate.precision}"
+                                  shortDesc="#{bindings.OfferDetail_VO1.hints.TotalRate.tooltip}"
+                                  id="it45" inlineStyle="color:#1367AE;"
+                                  autoSubmit="true"
+                                  binding="#{backingBeanScope.OfferBean.lineAmnt}"
+                                  partialTriggers=":::id6 ::cb12 :::pc22:t10:it58"
+                                  readOnly="true"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.TotalRate.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"
+                                        maxFractionDigits="2"
+                                        minIntegerDigits="0"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="Security Deposit"
+                             id="c42" rendered="false">
+                    <af:outputText value="#{row.SecurityDepositTrans}"
+                                   id="ot9"/>
+                  </af:column>
+                  <af:column headerText="Primary Unit"
+                             id="c2" align="center">
+                    <af:selectBooleanCheckbox value="#{row.bindings.PrimaryUnit.inputValue}"
+                                              label="#{row.bindings.PrimaryUnit.label}"
+                                              shortDesc="#{bindings.OfferDetail_VO1.hints.PrimaryUnit.tooltip}"
+                                              id="sbc1"
+                                              disabled="#{bindings.Status.inputValue!='DRA'}"
+                                              autoSubmit="true"/>
+                  </af:column>             
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s10"/>
+            <af:panelBox text="Discount Flow Details" id="pb44"
+                         showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc22" styleClass="AFStretchWidth" featuresOff="detach">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t55">
+                    <af:commandButton text="Calculate" id="cb55"
+                                      actionListener="#{backingBeanScope.OfferBean.OnClickCalculate}"
+                                      partialSubmit="true"
+                                      disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                      rendered="false"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.OfferDiscountFlow_VO1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.OfferDiscountFlow_VO1.rangeSize}"
+                          emptyText="#{bindings.OfferDiscountFlow_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.OfferDiscountFlow_VO1.rangeSize}"
+                          rowBandingInterval="0" varStatus="vs" columnStretching="column:c64"
+                          selectedRowKeys="#{bindings.OfferDiscountFlow_VO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.OfferDiscountFlow_VO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t10">
+                <af:column id="c255" align="center" headerText="S.No" width="80">
+                    <af:outputText value="#{vs.index+1}" id="ot44"/>
+                  </af:column>
+                  <af:column headerText="Approver Name"
+                             id="c59">
+                    <af:inputText value="#{row.bindings.ApproverName_Trans.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.ApproverName_Trans.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.ApproverName_Trans.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.ApproverName_Trans.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.ApproverName_Trans.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.ApproverName_Trans.tooltip}"
+                                  id="it59" readOnly="true">
+                      <f:validator binding="#{row.bindings.ApproverName_Trans.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="Discount Type"
+                             id="c72" align="center">
+                    <af:inputComboboxListOfValues id="discountType_TransId"
+                                                  popupTitle="Search and Select: #{bindings.OfferDiscountFlow_VO1.hints.DiscountType_Trans.label}"
+                                                  value="#{row.bindings.DiscountType_Trans.inputValue}"
+                                                  model="#{row.bindings.DiscountType_Trans.listOfValuesModel}"
+                                                  required="#{bindings.OfferDiscountFlow_VO1.hints.DiscountType_Trans.mandatory}"
+                                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.DiscountType_Trans.displayWidth}"
+                                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.DiscountType_Trans.tooltip}"
+                                                  disabled="#{(row.SeqApprover eq '3' and backingBeanScope.OfferBean.userDiscount eq '3' and  row.DiscountValue eq null) ? false : true}"
+                                                  partialTriggers="it58">
+                      <f:validator binding="#{row.bindings.DiscountType_Trans.validator}"/>
+                    </af:inputComboboxListOfValues>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.DiscountValue.name}"
+                             sortable="false"
+                             headerText="Value"
+                             id="c73" align="center">
+                    <af:inputText value="#{row.bindings.DiscountValue.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.DiscountValue.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.DiscountValue.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.DiscountValue.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.DiscountValue.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.DiscountValue.tooltip}"
+                                  id="it58" autoSubmit="true"
+                                  valueChangeListener="#{backingBeanScope.OfferBean.onEntrDiscValueCal}"
+                                  disabled="#{(bindings.OfferFlag.inputValue eq 'S' and row.SeqApprover ne '3') ? true : (row.DiscountType_Trans eq null) ? true :(row.SeqApprover ne backingBeanScope.OfferBean.userDiscount) ? true : false}">
+                      <f:validator binding="#{row.bindings.DiscountValue.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDiscountFlow_VO1.hints.DiscountReason.label}"
+                             id="c64">
+                    <af:inputText value="#{row.bindings.DiscountReason.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.DiscountReason.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.DiscountReason.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.DiscountReason.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.DiscountReason.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.DiscountReason.tooltip}"
+                                  id="it53" partialTriggers="it58" rows="2" autoSubmit="true"
+                                  disabled="#{(row.DiscountValue eq null) ? true : (row.SeqApprover ne backingBeanScope.OfferBean.userDiscount) ? true : false}">
+                      <f:validator binding="#{row.bindings.DiscountReason.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.DiscountAmount.name}"
+                             sortable="false"
+                             headerText="Approved Discount"
+                             id="c75" align="center">
+                    <af:inputText value="#{row.bindings.DiscountAmount.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.DiscountAmount.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.DiscountAmount.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.DiscountAmount.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.DiscountAmount.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.DiscountAmount.tooltip}"
+                                  id="it50" disabled="true"
+                                  partialTriggers="it58">
+                      <f:validator binding="#{row.bindings.DiscountAmount.validator}"/>
+                    <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"
+                                        maxFractionDigits="2"
+                                        minIntegerDigits="0"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.TotalDiscount.name}"
+                             sortable="false"
+                             headerText="Cumulative Discount"
+                             id="c76" align="center">
+                    <af:inputText value="#{row.bindings.TotalDiscount.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.TotalDiscount.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.TotalDiscount.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.TotalDiscount.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.TotalDiscount.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.TotalDiscount.tooltip}"
+                                  id="it48" disabled="true" partialTriggers="it58">
+                      <f:validator binding="#{row.bindings.TotalDiscount.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"
+                                        maxFractionDigits="2"
+                                        minIntegerDigits="0"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.ExpectedDiscount.name}"
+                             sortable="false"
+                             headerText="Expected Discount"
+                             id="c57" visible="false">
+                    <af:inputText value="#{row.bindings.ExpectedDiscount.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.ExpectedDiscount.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.ExpectedDiscount.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.ExpectedDiscount.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.ExpectedDiscount.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.ExpectedDiscount.tooltip}"
+                                  id="it60" disabled="true">
+                      <f:validator binding="#{row.bindings.ExpectedDiscount.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferDiscountFlow_VO1.hints.NetRentWithoutTax.label}"
+                             id="c80" align="center">
+                    <af:inputText value="#{row.bindings.NetRentWithoutTax.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.NetRentWithoutTax.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.NetRentWithoutTax.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.NetRentWithoutTax.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.NetRentWithoutTax.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.NetRentWithoutTax.tooltip}"
+                                  id="it72" disabled="true" partialTriggers="it58">
+                      <f:validator binding="#{row.bindings.NetRentWithoutTax.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"
+                                        maxFractionDigits="2"
+                                        minIntegerDigits="0"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.NetRate.name}"
+                             sortable="false"
+                             headerText="Approved Net Rent (Including Tax)"
+                             id="c60" align="center" visible="false">
+                    <af:inputText value="#{row.bindings.NetRate.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.NetRate.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.NetRate.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.NetRate.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.NetRate.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.NetRate.tooltip}"
+                                  id="it51" disabled="true" partialTriggers="it58">
+                      <f:validator binding="#{row.bindings.NetRate.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"
+                                        maxFractionDigits="2"
+                                        minIntegerDigits="0"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.BaseRate.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDiscountFlow_VO1.hints.BaseRate.label}"
+                             id="c69" visible="false">
+                    <af:inputText value="#{row.bindings.BaseRate.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.BaseRate.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.BaseRate.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.BaseRate.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.BaseRate.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.BaseRate.tooltip}"
+                                  id="it61">
+                      <f:validator binding="#{row.bindings.BaseRate.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.SeqApprover.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDiscountFlow_VO1.hints.SeqApprover.label}"
+                             id="c70" visible="false">
+                    <af:inputText value="#{row.bindings.SeqApprover.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.SeqApprover.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.SeqApprover.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.SeqApprover.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.SeqApprover.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.SeqApprover.tooltip}"
+                                  id="it54">
+                      <f:validator binding="#{row.bindings.SeqApprover.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.CreatedBy.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDiscountFlow_VO1.hints.CreatedBy.label}"
+                             id="c62" visible="false">
+                    <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.CreatedBy.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.CreatedBy.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.CreatedBy.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.CreatedBy.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.CreatedBy.tooltip}"
+                                  id="it52">
+                      <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.CreationDate.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDiscountFlow_VO1.hints.CreationDate.label}"
+                             id="c77" visible="false">
+                    <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.CreationDate.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.CreationDate.mandatory}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.CreationDate.tooltip}"
+                                  id="id11" disabled="true">
+                      <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdatedBy.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdatedBy.label}"
+                             id="c61" visible="false">
+                    <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdatedBy.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdatedBy.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdatedBy.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdatedBy.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdatedBy.tooltip}"
+                                  id="it55" disabled="true">
+                      <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdateDate.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdateDate.label}"
+                             id="c71" visible="false">
+                    <af:inputDate value="#{row.bindings.LastUpdateDate.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdateDate.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdateDate.mandatory}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.LastUpdateDate.tooltip}"
+                                  id="id12" disabled="true">
+                      <f:validator binding="#{row.bindings.LastUpdateDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.OfDiscountId.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDiscountFlow_VO1.hints.OfDiscountId.label}"
+                             id="c74" rendered="false">
+                    <af:inputText value="#{row.bindings.OfDiscountId.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.OfDiscountId.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.OfDiscountId.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.OfDiscountId.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.OfDiscountId.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.OfDiscountId.tooltip}"
+                                  id="it49">
+                      <f:validator binding="#{row.bindings.OfDiscountId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferDiscountFlow_VO1.hints.OfferHdrId.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferDiscountFlow_VO1.hints.OfferHdrId.label}"
+                             id="c78" rendered="false">
+                    <af:inputText value="#{row.bindings.OfferHdrId.inputValue}"
+                                  label="#{bindings.OfferDiscountFlow_VO1.hints.OfferHdrId.label}"
+                                  required="#{bindings.OfferDiscountFlow_VO1.hints.OfferHdrId.mandatory}"
+                                  columns="#{bindings.OfferDiscountFlow_VO1.hints.OfferHdrId.displayWidth}"
+                                  maximumLength="#{bindings.OfferDiscountFlow_VO1.hints.OfferHdrId.precision}"
+                                  shortDesc="#{bindings.OfferDiscountFlow_VO1.hints.OfferHdrId.tooltip}"
+                                  id="it56">
+                      <f:validator binding="#{row.bindings.OfferHdrId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s33"/>
+            <af:panelBox text="Payment Plan Details" id="pb4"
+                         showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc2" styleClass="AFStretchWidth"
+                                  featuresOff="detach">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t5">
+                    <af:commandButton text="Calculate" id="cb5"
+                                      actionListener="#{backingBeanScope.OfferBean.OnClickCalculate}"
+                                      partialSubmit="true"
+                                      disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                      rendered="false"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.OfferMilestoneDetail_VO1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.OfferMilestoneDetail_VO1.rangeSize}"
+                          emptyText="#{bindings.OfferMilestoneDetail_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="5"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.OfferMilestoneDetail_VO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.OfferMilestoneDetail_VO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t4"
+                          binding="#{backingBeanScope.OfferBean.t4}"
+                          scrollPolicy="page" autoHeightRows="-1"
+                          columnStretching="column:c47"
+                          partialTriggers=":::soc22 :::leaseNumber_TransId ::cb5 :::pc1:cb12"
+                          varStatus="vs">
+                  <af:column id="c25" align="center" headerText="S.No"
+                             width="80">
+                    <af:outputText value="#{vs.index+1}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.OfferMsDtlId.name}"
+                             sortable="false"
+                             headerText="OfferMsDtlId"
+                             id="c65" rendered="false">
+                    <af:inputText value="#{row.bindings.OfferMsDtlId.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO1.hints.OfferMsDtlId.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO1.hints.OfferMsDtlId.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO1.hints.OfferMsDtlId.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO1.hints.OfferMsDtlId.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.OfferMsDtlId.tooltip}"
+                                  id="it82"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.OfferMsDtlId.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.OfferMilestoneDetail_VO1.hints.OfferMsDtlId.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.OfferHdrId.name}"
+                             sortable="false"
+                             headerText="OfferHdrId"
+                             id="c50" rendered="false">
+                    <af:inputText value="#{row.bindings.OfferHdrId.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO1.hints.OfferHdrId.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO1.hints.OfferHdrId.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO1.hints.OfferHdrId.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO1.hints.OfferHdrId.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.OfferHdrId.tooltip}"
+                                  id="it66"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.OfferHdrId.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.OfferMilestoneDetail_VO1.hints.OfferHdrId.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.MsDtlId.name}"
+                             sortable="false"
+                             headerText="MsDtlId"
+                             id="c58" rendered="false">
+                    <af:inputText value="#{row.bindings.MsDtlId.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO1.hints.MsDtlId.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO1.hints.MsDtlId.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO1.hints.MsDtlId.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO1.hints.MsDtlId.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.MsDtlId.tooltip}"
+                                  id="it78"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.MsDtlId.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.OfferMilestoneDetail_VO1.hints.MsDtlId.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.SeqNumber.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO1.hints.SeqNumber.label}"
+                             id="c66" align="center" width="80"
+                             rendered="false">
+                    <af:inputText value="#{row.bindings.SeqNumber.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO1.hints.SeqNumber.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO1.hints.SeqNumber.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO1.hints.SeqNumber.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO1.hints.SeqNumber.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.SeqNumber.tooltip}"
+                                  id="it5" readOnly="true"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.SeqNumber.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.OfferMilestoneDetail_VO1.hints.SeqNumber.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentType.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentType.label}"
+                             id="c53" width="150">
+                    <af:selectOneChoice value="#{row.bindings.InstallmentType.inputValue}"
+                                        label="#{row.bindings.InstallmentType.label}"
+                                        required="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentType.mandatory}"
+                                        shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentType.tooltip}"
+                                        id="soc7" readOnly="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:selectItems value="#{row.bindings.InstallmentType.items}"
+                                     id="si7"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentPct.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentPct.label}"
+                             id="c51">
+                    <af:inputText value="#{row.bindings.InstallmentPct.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentPct.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentPct.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentPct.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentPct.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentPct.tooltip}"
+                                  id="it68" readOnly="true"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.InstallmentPct.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentPct.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentAmount.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentAmount.label}"
+                             id="c67" width="150">
+                    <af:inputText value="#{row.bindings.InstallmentAmount.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentAmount.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentAmount.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentAmount.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentAmount.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.InstallmentAmount.tooltip}"
+                                  id="it79" readOnly="true"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.InstallmentAmount.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.DueDate.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO1.hints.DueDate.label}"
+                             id="c63">
+                    <af:inputDate value="#{row.bindings.DueDate.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO1.hints.DueDate.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO1.hints.DueDate.mandatory}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.DueDate.tooltip}"
+                                  id="id8" readOnly="true"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.DueDate.validator}"/>
+                      <af:convertDateTime pattern="dd-MM-yyyy"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.Criteria.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO1.hints.Criteria.label}"
+                             id="c46" rendered="false">
+                    <af:selectOneChoice value="#{row.bindings.Criteria.inputValue}"
+                                        label="#{row.bindings.Criteria.label}"
+                                        required="#{bindings.OfferMilestoneDetail_VO1.hints.Criteria.mandatory}"
+                                        shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.Criteria.tooltip}"
+                                        id="soc8" readOnly="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:selectItems value="#{row.bindings.Criteria.items}"
+                                     id="si9"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.ChargeType.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO1.hints.ChargeType.label}"
+                             id="c68" width="150">
+                    <af:selectOneChoice value="#{row.bindings.ChargeType.inputValue}"
+                                        label="#{row.bindings.ChargeType.label}"
+                                        required="#{bindings.OfferMilestoneDetail_VO1.hints.ChargeType.mandatory}"
+                                        shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.ChargeType.tooltip}"
+                                        id="soc9" readOnly="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:selectItems value="#{row.bindings.ChargeType.items}"
+                                     id="si8"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferMilestoneDetail_VO1.hints.PaymentTerm.label}"
+                             id="c48">
+                    <af:selectOneChoice value="#{row.bindings.PaymentTerm.inputValue}"
+                                        label="#{row.bindings.PaymentTerm.label}"
+                                        required="#{bindings.OfferMilestoneDetail_VO1.hints.PaymentTerm.mandatory}"
+                                        shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.PaymentTerm.tooltip}"
+                                        id="soc10" readOnly="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:selectItems value="#{row.bindings.PaymentTerm.items}"
+                                     id="si10"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO1.hints.Remarks.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO1.hints.Remarks.label}"
+                             id="c47">
+                    <af:inputText value="#{row.bindings.Remarks.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO1.hints.Remarks.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO1.hints.Remarks.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO1.hints.Remarks.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO1.hints.Remarks.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO1.hints.Remarks.tooltip}"
+                                  id="it85" readOnly="true"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.Remarks.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s3"/>
+            <af:panelBox text="Other Charges" id="pb5"
+                         partialTriggers="soc22 leaseNumber_TransId">
+              <af:panelCollection id="pc3" styleClass="AFStretchWidth"
+                                  partialTriggers="::leaseNumber_TransId ::soc22">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t9" flex="1">
+                    <af:commandImageLink actionListener="#{bindings.CreateInsert1.execute}"
+                                         id="cil4" rendered="false"/>
+                    <af:commandImageLink actionListener="#{bindings.CreateWithParams.execute}"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                         id="cil5"
+                                         icon="/images/func_add_16_ena.png"
+                                         visible="#{sessionScope.grantMap.Offer =='F'}">
+                         <af:setPropertyListener from="#{bindings.OrgId.inputValue}"
+                                                to="#{pageFlowScope.orgIdOC}"
+                                                type="action"/>
+                        <af:setPropertyListener from="NO_CALC" to="#{pageFlowScope.handleCalcSavButton}" type="action"/>
+                    </af:commandImageLink>
+                    <af:commandImageLink actionListener="#{bindings.Delete1.execute}"
+                                         disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}"
+                                         id="cil6"
+                                         icon="/images/func_remove_16_ena.png"
+                                         visible="#{sessionScope.grantMap.Offer =='F'}">
+                      <af:setPropertyListener from="NO_CALC" to="#{pageFlowScope.handleCalcSavButton}" type="action"/>
+                    </af:commandImageLink>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.OfferMilestoneDetail_VO5.collectionModel}"
+                          var="row"
+                          rows="#{bindings.OfferMilestoneDetail_VO5.rangeSize}"
+                          emptyText="#{bindings.OfferMilestoneDetail_VO5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.OfferMilestoneDetail_VO5.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.OfferMilestoneDetail_VO5.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.OfferMilestoneDetail_VO5.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t6" varStatus="vs"
+                          partialTriggers=":::pc1:cb12 :::soc22 :::leaseNumber_TransId"
+                          columnStretching="column:c9"
+                          binding="#{backingBeanScope.OfferBean.t6}">
+                  <af:column id="c15" headerText="S.No" align="center"
+                             width="80">
+                    <af:outputText value="#{vs.index+1}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentType1.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentType1.label}"
+                             id="c12" width="170">
+                    <af:selectOneChoice value="#{row.bindings.InstallmentType1.inputValue}"
+                                        label="#{row.bindings.InstallmentType1.label}"
+                                        required="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentType1.mandatory}"
+                                        shortDesc="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentType1.tooltip}"
+                                        id="soc25"
+                                        autoSubmit="true"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:selectItems value="#{row.bindings.InstallmentType1.items}"
+                                     id="si25"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute4.label}"
+                             id="c83" align="center">
+                    <af:inputText value="#{row.bindings.Attribute4.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute4.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute4.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute4.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute4.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute4.tooltip}"
+                                  id="it73"
+                                  valueChangeListener="#{backingBeanScope.OfferBean.onEntrrOcLineAmt}"
+                                  autoSubmit="true" partialTriggers="soc25 it75"
+                                  disabled="#{row.Attribute5 ne null}">
+                      <f:validator binding="#{row.bindings.Attribute4.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute2.label}"
+                             id="c84" align="center">
+                    <af:selectOneChoice value="#{row.bindings.Attribute2.inputValue}"
+                                        label="#{row.bindings.Attribute2.label}"
+                                        required="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute2.mandatory}"
+                                        shortDesc="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute2.tooltip}"
+                                        id="soc18" autoSubmit="true"
+                                        valueChangeListener="#{backingBeanScope.OfferBean.onSelectTaxOCline}"
+                                        disabled="#{bindings.Status.inputValue!='DRA' and row.Attribute4==null}"
+                                        partialTriggers="it73"
+                                        binding="#{backingBeanScope.OfferBean.soc18}">
+                      <f:selectItems value="#{row.bindings.Attribute2.items}"
+                                     id="si18"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute3.label}"
+                             id="c85" align="center">
+                    <af:inputText value="#{row.bindings.Attribute3.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute3.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute3.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute3.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute3.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute3.tooltip}"
+                                  id="it74" readOnly="true"
+                                  disabled="#{bindings.Status.inputValue!='DRA'}">
+                      <f:validator binding="#{row.bindings.Attribute3.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentAmount.name}"
+                             sortable="false"
+                             headerText="Total Amount"
+                             id="c14">
+                    <af:inputText value="#{row.bindings.InstallmentAmount.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentAmount.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentAmount.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentAmount.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentAmount.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO5.hints.InstallmentAmount.tooltip}"
+                                  id="it12" autoSubmit="true"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV' and row.Attribute5 ne null}"
+                                  partialTriggers="soc25 it73 soc18 it75">
+                      <f:validator binding="#{row.bindings.InstallmentAmount.validator}"/>
+                      <af:convertNumber groupingUsed="true"
+                                        pattern="#{SessionScope.NumberFormat}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute5.label}"
+                             id="c86" rendered="false">
+                    <af:inputText value="#{row.bindings.Attribute5.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute5.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute5.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute5.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute5.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO5.hints.Attribute5.tooltip}"
+                                  id="it75" autoSubmit="true"
+                                  partialTriggers="soc25">
+                      <f:validator binding="#{row.bindings.Attribute5.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO5.hints.Criteria.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO5.hints.Criteria.label}"
+                             id="c10" width="150" rendered="false">
+                    <af:selectOneChoice value="#{row.bindings.Criteria.inputValue}"
+                                        label="#{row.bindings.Criteria.label}"
+                                        required="#{bindings.OfferMilestoneDetail_VO5.hints.Criteria.mandatory}"
+                                        shortDesc="#{bindings.OfferMilestoneDetail_VO5.hints.Criteria.tooltip}"
+                                        id="soc24">
+                      <f:selectItems value="#{row.bindings.Criteria.items}"
+                                     id="si26"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO5.hints.PaymentTerm.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO5.hints.PaymentTerm.label}"
+                             id="c8" width="150" rendered="false">
+                    <af:selectOneChoice value="#{row.bindings.PaymentTerm.inputValue}"
+                                        label="#{row.bindings.PaymentTerm.label}"
+                                        required="#{bindings.OfferMilestoneDetail_VO5.hints.PaymentTerm.mandatory}"
+                                        shortDesc="#{bindings.OfferMilestoneDetail_VO5.hints.PaymentTerm.tooltip}"
+                                        id="soc26">
+                      <f:selectItems value="#{row.bindings.PaymentTerm.items}"
+                                     id="si24"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.OfferMilestoneDetail_VO5.hints.Remarks.name}"
+                             sortable="false"
+                             headerText="#{bindings.OfferMilestoneDetail_VO5.hints.Remarks.label}"
+                             id="c9">
+                    <af:inputText value="#{row.bindings.Remarks.inputValue}"
+                                  label="#{bindings.OfferMilestoneDetail_VO5.hints.Remarks.label}"
+                                  required="#{bindings.OfferMilestoneDetail_VO5.hints.Remarks.mandatory}"
+                                  columns="#{bindings.OfferMilestoneDetail_VO5.hints.Remarks.displayWidth}"
+                                  maximumLength="#{bindings.OfferMilestoneDetail_VO5.hints.Remarks.precision}"
+                                  shortDesc="#{bindings.OfferMilestoneDetail_VO5.hints.Remarks.tooltip}"
+                                  id="it13"
+                                  disabled="#{bindings.Status.inputValue!='DRA' and  bindings.Status.inputValue!='REV'}">
+                      <f:validator binding="#{row.bindings.Remarks.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+                <af:popup id="p2"
+                          binding="#{backingBeanScope.OfferBean.popup3}">
+                  <af:dialog id="d2" type="none"
+                             title="Reason for #{pageFlowScope.Action}">
+                    <f:facet name="buttonBar">
+                      <af:toolbar id="t7" flex="1">
+                        <af:spacer width="220" height="10" id="s12"/>
+                        <af:commandButton text="Save" id="cb13"
+                                          actionListener="#{backingBeanScope.OfferBean.onclickAppOrRej}"
+                                          action="save"/>
+                        <af:spacer width="10" height="10" id="s11"/>
+                        <af:commandButton text="Cancel" id="cb14"/>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:inputText label="Reason" id="it16" rows="5"
+                                  binding="#{backingBeanScope.OfferBean.reason}"
+                                  columns="50"/>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="p22"
+                          binding="#{backingBeanScope.OfferBean.popup22}">
+                  <af:dialog id="d22" type="none"
+                             title="Reason for Approve and Complete">
+                    <f:facet name="buttonBar">
+                      <af:toolbar id="t72" flex="1">
+                        <af:spacer width="220" height="10" id="s122"/>
+                        <af:commandButton text="Save" id="cb132"
+                                          actionListener="#{backingBeanScope.OfferBean.onClickAprAndFinish}"
+                                          action="save"/>
+                        <af:spacer width="10" height="10" id="s112"/>
+                        <af:commandButton text="Cancel" id="cb142"/>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:inputText label="Reason" id="it162" rows="5"
+                                  binding="#{backingBeanScope.OfferBean.reasonAprAndComp}"
+                                  columns="50"/>
+                  </af:dialog>
+                </af:popup>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

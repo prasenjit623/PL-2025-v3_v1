@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.66.73" id="DataBindings" SeparateXMLFiles="false"
+             Package="view" ClientType="Generic">
+   <definitionFactories>
+      <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+               className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+      <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+      <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+               className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+   </definitionFactories>
+   <pageMap>
+      <page path="/WEB-INF/Offer_BTF.xml#Offer_BTF@Execute"
+            usageId="view_Offer_BTF_Offer_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/OfferAddEdit_BTF.xml#OfferAddEdit_BTF@CreateInsert"
+            usageId="view_OfferAddEdit_BTF_OfferAddEdit_BTF_CreateInsertPageDef"/>
+      <page path="/fragments/searchProperty.jsff"
+            usageId="view_searchPropertyPageDef"/>
+      <page path="/fragments/searchBuilding.jsff"
+            usageId="view_searchBuildingPageDef"/>
+      <page path="/WEB-INF/Property_BTF.xml#Property_BTF@CreateInsert"
+            usageId="view_Property_BTF_Property_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/Property_BTF.xml#Property_BTF@CreateWithParameters1"
+            usageId="view_Property_BTF_Property_BTF_CreateWithParameters1PageDef"/>
+      <page path="/WEB-INF/Property_BTF.xml#Property_BTF@Execute"
+            usageId="view_Property_BTF_Property_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/Property_BTF.xml#Property_BTF@ExecuteWithParams"
+            usageId="view_Property_BTF_Property_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/fragments/test.jsff" usageId="view_testPageDef"/>
+      <page path="/fragments/addEditProperty.jsff"
+            usageId="view_addEditPropertyPageDef"/>
+      <page path="/fragments/addEditBuilding.jsff"
+            usageId="view_addEditBuildingPageDef"/>
+      <page path="/fragments/addEditUnit.jsff"
+            usageId="view_addEditUnitPageDef"/>
+      <page path="/pages/test.jspx" usageId="view_testPageDef1"/>
+      <page path="/WEB-INF/Building_BTF.xml#Building_BTF@CreateWithParameters"
+            usageId="view_Building_BTF_Building_BTF_CreateWithParametersPageDef"/>
+      <page path="/WEB-INF/Building_BTF.xml#Building_BTF@CreateWithParameters1"
+            usageId="view_Building_BTF_Building_BTF_CreateWithParameters1PageDef"/>
+      <page path="/WEB-INF/Building_BTF.xml#Building_BTF@CreateInsert"
+            usageId="view_Building_BTF_Building_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/Building_BTF.xml#Building_BTF@ExecuteWithParams"
+            usageId="view_Building_BTF_Building_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/Units_BTF.xml#Units_BTF@CreateInsert"
+            usageId="view_Units_BTF_Units_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/Units_BTF.xml#Units_BTF@CreateWithParameters"
+            usageId="view_Units_BTF_Units_BTF_CreateWithParametersPageDef"/>
+      <page path="/WEB-INF/Units_BTF.xml#Units_BTF@CreateWithParameters1"
+            usageId="view_Units_BTF_Units_BTF_CreateWithParameters1PageDef"/>
+      <page path="/fragments/searchUnit.jsff" usageId="view_searchUnitPageDef"/>
+      <page path="/WEB-INF/Units_BTF.xml#Units_BTF@ExecuteWithParams"
+            usageId="view_Units_BTF_Units_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/Units_BTF.xml#Units_BTF@addArea"
+            usageId="view_Units_BTF_Units_BTF_addAreaPageDef"/>
+      <page path="/WEB-INF/LeadAddEdit_BTF.xml#LeadAddEdit_BTF@CreateInsert"
+            usageId="view_LeadAddEdit_BTF_LeadAddEdit_BTF_CreateInsertPageDef"/>
+      <page path="/fragments/addEditVisitorLog.jsff"
+            usageId="view_addEditVisitorLogPageDef"/>
+      <page path="/pages/home.jspx" usageId="view_homePageDef"/>
+      <page path="/WEB-INF/LeadAddEdit_BTF.xml#LeadAddEdit_BTF@ExecuteWithParams1"
+            usageId="view_LeadAddEdit_BTF_LeadAddEdit_BTF_ExecuteWithParams1PageDef"/>
+      <page path="/fragments/SearchLead.jsff" usageId="view_SearchLeadPageDef"/>
+      <page path="/fragments/AddEditMilestones.jsff"
+            usageId="view_AddEditMilestonesPageDef"/>
+      <page path="/fragments/SearchMilestones.jsff"
+            usageId="view_SearchMilestonesPageDef"/>
+      <page path="/WEB-INF/Milestones_BTF.xml#Milestones_BTF@CreateInsert"
+            usageId="view_Milestones_BTF_Milestones_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/OfferAddEdit_BTF.xml#OfferAddEdit_BTF@refreshOfferApplication"
+            usageId="view_OfferAddEdit_BTF_OfferAddEdit_BTF_refreshOfferApplicationPageDef"/>
+      <page path="/WEB-INF/OfferAddEdit_BTF.xml#OfferAddEdit_BTF@ExecuteWithParams"
+            usageId="view_OfferAddEdit_BTF_OfferAddEdit_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/fragments/addEditOffers.jsff"
+            usageId="view_addEditOffersPageDef"/>
+      <page path="/WEB-INF/Milestones_BTF.xml#Milestones_BTF@ExecuteWithParams"
+            usageId="view_Milestones_BTF_Milestones_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/fragments/SearchOffers.jsff"
+            usageId="view_SearchOffersPageDef"/>
+      <page path="/pages/Temp.jspx" usageId="view_TempPageDef"/>
+      <page path="/WEB-INF/LeadAddEdit_BTF.xml#LeadAddEdit_BTF@refreshLeadApplication"
+            usageId="view_LeadAddEdit_BTF_LeadAddEdit_BTF_refreshLeadApplicationPageDef"/>
+      <page path="/WEB-INF/Lead_BTF.xml#Lead_BTF@CreateInsert"
+            usageId="view_Lead_BTF_Lead_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/Lead_BTF.xml#Lead_BTF@Execute1"
+            usageId="view_Lead_BTF_Lead_BTF_Execute1PageDef"/>
+      <page path="/WEB-INF/Lead_BTF.xml#Lead_BTF@ExecuteWithParams"
+            usageId="view_Lead_BTF_Lead_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/fragments/SearchPrice.jsff"
+            usageId="view_SearchPricePageDef"/>
+      <page path="/fragments/addEditPrice.jsff"
+            usageId="view_addEditPricePageDef"/>
+      <page path="/WEB-INF/PriceListAddEdit.xml#PriceListAddEdit@refreshPriceListApplication"
+            usageId="view_PriceListAddEdit_PriceListAddEdit_refreshPriceListApplicationPageDef"/>
+      <page path="/WEB-INF/PriceListAddEdit.xml#PriceListAddEdit@ExecuteWithParams"
+            usageId="view_PriceListAddEdit_PriceListAddEdit_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/PriceListAddEdit.xml#PriceListAddEdit@CreateInsert"
+            usageId="view_PriceListAddEdit_PriceListAddEdit_CreateInsertPageDef"/>
+      <page path="/fragments/addEditPrice.jsff"
+            usageId="view_addEditPricePageDef"/>
+      <page path="/WEB-INF/Booking_BTF.xml#Booking_BTF@CreateBooking"
+            usageId="view_Booking_BTF_Booking_BTF_CreateBookingPageDef"/>
+      <page path="/fragments/AddEditBooking.jsff"
+            usageId="view_AddEditBookingPageDef"/>
+      <page path="/WEB-INF/Lead_BTF.xml#Lead_BTF@Execute"
+            usageId="view_Lead_BTF_Lead_BTF_ExecutePageDef"/>
+      <page path="/fragments/SearchBooking.jsff"
+            usageId="view_SearchBookingPageDef"/>
+      <page path="/WEB-INF/Booking_BTF.xml#Booking_BTF@ExecuteWithParams"
+            usageId="view_Booking_BTF_Booking_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/Milestones_BTF.xml#Milestones_BTF@Execute"
+            usageId="view_Milestones_BTF_Milestones_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/Milestones_BTF.xml#Milestones_BTF@onclickRevise"
+            usageId="view_Milestones_BTF_Milestones_BTF_onclickRevisePageDef"/>
+      <page path="/Receipt.jsff" usageId="view_ReceiptPageDef"/>
+      <page path="/WEB-INF/Receipt_BTF.xml#Receipt_BTF@CreateInsert"
+            usageId="view_Receipt_BTF_Receipt_BTF_CreateInsertPageDef"/>
+      <page path="/pages/ReceiptPge.jspx" usageId="view_ReceiptPgePageDef"/>
+      <page path="/Receipt.jspx" usageId="view_ReceiptPageDef1"/>
+      <page path="/WEB-INF/Receipt_BTF.xml#Receipt_BTF@OnCreateReceipt"
+            usageId="view_Receipt_BTF_Receipt_BTF_OnCreateReceiptPageDef"/>
+      <page path="/WEB-INF/Receipt_BTF.xml#Receipt_BTF@ExecuteWithParams"
+            usageId="view_Receipt_BTF_Receipt_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/fragments/SearchRecommendation.jsff"
+            usageId="view_SearchRecommendationPageDef"/>
+      <page path="/fragments/AddEditRecommendation.jsff"
+            usageId="view_AddEditRecommendationPageDef"/>
+      <page path="/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF@CreateInsert"
+            usageId="view_Recommendation_BTF_Recommendation_BTF_CreateInsertPageDef"/>
+      <page path="/pages/Tesst.jspx" usageId="view_TesstPageDef"/>
+      <page path="/fragments/AddEditLeaseAgreement.jsff"
+            usageId="view_AddEditLeaseAgreementPageDef"/>
+      <page path="/fragments/SearchLeaseAgreement.jsff"
+            usageId="view_SearchLeaseAgreementPageDef"/>
+      <page path="/WEB-INF/LeaseAgreement_BTF.xml#LeaseAgreement_BTF@CreateInsert"
+            usageId="view_LeaseAgreement_BTF_LeaseAgreement_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/MoveInOut_BTF.xml#MoveInOut_BTF@onCreateMoveinMoveOut"
+            usageId="view_MoveInOut_BTF_MoveInOut_BTF_onCreateMoveinMoveOutPageDef"/>
+      <page path="/fragments/AddEditMoveInOut.jsff"
+            usageId="view_AddEditMoveInOutPageDef"/>
+      <page path="/fragments/SearchMoveInOut.jsff"
+            usageId="view_SearchMoveInOutPageDef"/>
+      <page path="/Attachments.jsff" usageId="view_AttachmentsPageDef"/>
+      <page path="/WEB-INF/Attachments_BTF.xml#Attachments_BTF@refreshattachments"
+            usageId="view_Attachments_BTF_Attachments_BTF_refreshattachmentsPageDef"/>
+      <page path="/CheckListResponse.jsff"
+            usageId="view_CheckListResponsePageDef"/>
+      <page path="/WEB-INF/CheckListResponse_BTF.xml#CheckListResponse_BTF@refreshchecklist"
+            usageId="view_CheckListResponse_BTF_CheckListResponse_BTF_refreshchecklistPageDef"/>
+      <page path="/pages/Dashboard.jspx" usageId="view_DashboardPageDef"/>
+      <page path="/WEB-INF/PropertyLease_BTF.xml#PropertyLease_BTF@CheckUserNaname"
+            usageId="view_PropertyLease_BTF_PropertyLease_BTF_CheckUserNanamePageDef"/>
+      <page path="/WEB-INF/MoveInOut_BTF.xml#MoveInOut_BTF@CreateInsert"
+            usageId="view_MoveInOut_BTF_MoveInOut_BTF_CreateInsertPageDef"/>
+      <page path="/AddEditExtCan.jsff" usageId="view_AddEditExtCanPageDef"/>
+      <page path="/SearchExtCan.jsff" usageId="view_SearchExtCanPageDef"/>
+      <page path="/WEB-INF/ExtCancellation.xml#ExtCancellation@CreateInsert"
+            usageId="view_ExtCancellation_ExtCancellation_CreateInsertPageDef"/>
+      <page path="/fragments/SearchCancellationExtension.jsff"
+            usageId="view_SearchCancellationExtensionPageDef"/>
+      <page path="/WEB-INF/CancellationExtension_BTF.xml#CancellationExtension_BTF@CreateInsert"
+            usageId="view_CancellationExtension_BTF_CancellationExtension_BTF_CreateInsertPageDef"/>
+      <page path="/fragments/AddEditCancellationExtension.jsff"
+            usageId="view_AddEditCancellationExtensionPageDef"/>
+      <page path="/WEB-INF/MoveInOut_BTF.xml#MoveInOut_BTF@ExecuteWithParams1"
+            usageId="view_MoveInOut_BTF_MoveInOut_BTF_ExecuteWithParams1PageDef"/>
+      <page path="/WEB-INF/MoveInOut_BTF.xml#MoveInOut_BTF@ExecuteWithParams"
+            usageId="view_MoveInOut_BTF_MoveInOut_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/ArEdit.jsff" usageId="view_ArEditPageDef"/>
+      <page path="/fragments/ArSearch.jsff" usageId="view_ArSearchPageDef"/>
+      <page path="/WEB-INF/ArSetup_BTF.xml#ArSetup_BTF@CreateInsert"
+            usageId="view_ArSetup_BTF_ArSetup_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/ArSetup_BTF.xml#ArSetup_BTF@ExecuteWithParams"
+            usageId="view_ArSetup_BTF_ArSetup_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/ArSetup_BTF.xml#ArSetup_BTF@Execute"
+            usageId="view_ArSetup_BTF_ArSetup_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/CancellationExtension_BTF.xml#CancellationExtension_BTF@ExecuteWithParams"
+            usageId="view_CancellationExtension_BTF_CancellationExtension_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/CancellationExtension_BTF.xml#CancellationExtension_BTF@ExecuteWithParams1"
+            usageId="view_CancellationExtension_BTF_CancellationExtension_BTF_ExecuteWithParams1PageDef"/>
+      <page path="/WEB-INF/ExtCancellation.xml#ExtCancellation@ExecuteWithParams"
+            usageId="view_ExtCancellation_ExtCancellation_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/ExtCancellation.xml#ExtCancellation@ExecuteWithParams1"
+            usageId="view_ExtCancellation_ExtCancellation_ExecuteWithParams1PageDef"/>
+      <page path="/WEB-INF/Booking_BTF.xml#Booking_BTF@Execute"
+            usageId="view_Booking_BTF_Booking_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/PriceListAddEdit.xml#PriceListAddEdit@Execute"
+            usageId="view_PriceListAddEdit_PriceListAddEdit_ExecutePageDef"/>
+      <page path="/fragments/SearchReceipt.jsff"
+            usageId="view_SearchReceiptPageDef"/>
+      <page path="/WEB-INF/SearchReceipt_BTF.xml#SearchReceipt_BTF@Execute"
+            usageId="view_SearchReceipt_BTF_SearchReceipt_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF@ExecuteWithParams"
+            usageId="view_Recommendation_BTF_Recommendation_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/LeaseAgreement_BTF.xml#LeaseAgreement_BTF@Execute1"
+            usageId="view_LeaseAgreement_BTF_LeaseAgreement_BTF_Execute1PageDef"/>
+      <page path="/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF@Execute1"
+            usageId="view_Recommendation_BTF_Recommendation_BTF_Execute1PageDef"/>
+      <page path="/fragments/SearchOC.jsff" usageId="view_SearchOCPageDef"/>
+      <page path="/fragments/AddEditOC.jsff" usageId="view_AddEditOCPageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@CreateOtherCharges"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_CreateOtherChargesPageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@ExecuteWithParams"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@Execute"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_ExecutePageDef"/>
+      <page path="/fragments/searchBilling.jsff"
+            usageId="view_searchBillingPageDef"/>
+      <page path="/fragments/addEditBilling.jsff"
+            usageId="view_addEditBillingPageDef"/>
+      <page path="/WEB-INF/addEditBilling_BTF.xml#addEditBilling_BTF@CreateInsert"
+            usageId="view_addEditBilling_BTF_addEditBilling_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/addEditBilling_BTF.xml#addEditBilling_BTF@ExecuteWithParams"
+            usageId="view_addEditBilling_BTF_addEditBilling_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/addEditBilling_BTF.xml#addEditBilling_BTF@Execute"
+            usageId="view_addEditBilling_BTF_addEditBilling_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/addEditBilling_BTF.xml#addEditBilling_BTF@Execute1"
+            usageId="view_addEditBilling_BTF_addEditBilling_BTF_Execute1PageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@Execute1"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_Execute1PageDef"/>
+      <page path="/WEB-INF/LeaseAgreement_BTF.xml#LeaseAgreement_BTF@ExecuteWithParams"
+            usageId="view_LeaseAgreement_BTF_LeaseAgreement_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/LeaseAgreement_BTF.xml#LeaseAgreement_BTF@Execute"
+            usageId="view_LeaseAgreement_BTF_LeaseAgreement_BTF_ExecutePageDef"/>
+      <page path="/fragments/SearchCancellation.jsff"
+            usageId="view_SearchCancellationPageDef"/>
+      <page path="/WEB-INF/Cancelllation_BTF.xml#Cancelllation_BTF@ExecuteWithParams"
+            usageId="view_Cancelllation_BTF_Cancelllation_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/Cancelllation_BTF.xml#Cancelllation_BTF@Execute"
+            usageId="view_Cancelllation_BTF_Cancelllation_BTF_ExecutePageDef"/>
+      <page path="/fragments/AddEditCancellation.jsff"
+            usageId="view_AddEditCancellationPageDef"/>
+      <page path="/WEB-INF/MoveInOut_BTF.xml#MoveInOut_BTF@Execute"
+            usageId="view_MoveInOut_BTF_MoveInOut_BTF_ExecutePageDef"/>
+      <page path="/fragments/ReceiptRec.jsff" usageId="view_ReceiptRecPageDef"/>
+      <page path="/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF@CreateInsert1"
+            usageId="view_Recommendation_BTF_Recommendation_BTF_CreateInsert1PageDef"/>
+      <page path="/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF@Execute"
+            usageId="view_Recommendation_BTF_Recommendation_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF@ExecuteWithParams1"
+            usageId="view_Recommendation_BTF_Recommendation_BTF_ExecuteWithParams1PageDef"/>
+      <page path="/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF@CreateWithParameters"
+            usageId="view_Recommendation_BTF_Recommendation_BTF_CreateWithParametersPageDef"/>
+      <page path="/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF@CreateWithParameters1"
+            usageId="view_Recommendation_BTF_Recommendation_BTF_CreateWithParameters1PageDef"/>
+      <page path="/WEB-INF/Recommendation_BTF.xml#Recommendation_BTF@CreateWithParameters2"
+            usageId="view_Recommendation_BTF_Recommendation_BTF_CreateWithParameters2PageDef"/>
+      <page path="/fragments/ReceiptBk.jsff" usageId="view_ReceiptBkPageDef"/>
+      <page path="/fragments/ReceiptOC.jsff" usageId="view_ReceiptOCPageDef"/>
+      <page path="/WEB-INF/Booking_BTF.xml#Booking_BTF@CreateWithParameters1"
+            usageId="view_Booking_BTF_Booking_BTF_CreateWithParameters1PageDef"/>
+      <page path="/WEB-INF/Booking_BTF.xml#Booking_BTF@CreateWithParameters2"
+            usageId="view_Booking_BTF_Booking_BTF_CreateWithParameters2PageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@CreateWithParameters"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_CreateWithParametersPageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@CreateWithParameters1"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_CreateWithParameters1PageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@CreateWithParameters2"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_CreateWithParameters2PageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@ExecuteWithParams1"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParams1PageDef"/>
+      <page path="/WEB-INF/Booking_BTF.xml#Booking_BTF@ExecuteWithParams1"
+            usageId="view_Booking_BTF_Booking_BTF_ExecuteWithParams1PageDef"/>
+      <page path="/WEB-INF/Booking_BTF.xml#Booking_BTF@Execute1"
+            usageId="view_Booking_BTF_Booking_BTF_Execute1PageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@Execute2"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_Execute2PageDef"/>
+      <page path="/WEB-INF/Booking_BTF.xml#Booking_BTF@CreateWithParameters3"
+            usageId="view_Booking_BTF_Booking_BTF_CreateWithParameters3PageDef"/>
+      <page path="/WEB-INF/MoveInOut_BTF.xml#MoveInOut_BTF@Execute1"
+            usageId="view_MoveInOut_BTF_MoveInOut_BTF_Execute1PageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@Execute3"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_Execute3PageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@Execute4"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_Execute4PageDef"/>
+      <page path="/WEB-INF/WoSchedulerTnx_BTF.xml#WoSchedulerTnx_BTF@Execute"
+            usageId="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_ExecutePageDef"/>
+      <page path="/fragments/SearchWoSchedulerTnx.jsff"
+            usageId="view_SearchWoSchedulerTnxPageDef"/>
+      <page path="/WEB-INF/WoSchedulerTnx_BTF.xml#WoSchedulerTnx_BTF@CreateInsert"
+            usageId="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsertPageDef"/>
+      <page path="/fragments/AddEditWoSchedulerTnx.jsff"
+            usageId="view_AddEditWoSchedulerTnxPageDef"/>
+      <page path="/WEB-INF/WoSchedulerTnx_BTF.xml#WoSchedulerTnx_BTF@CreateInsert1"
+            usageId="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert1PageDef"/>
+      <page path="/WEB-INF/WoSchedulerTnx_BTF.xml#WoSchedulerTnx_BTF@CreateInsert2"
+            usageId="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert2PageDef"/>
+      <page path="/WEB-INF/WoSchedulerTnx_BTF.xml#WoSchedulerTnx_BTF@CreateInsert3"
+            usageId="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert3PageDef"/>
+      <page path="/WEB-INF/WoSchedulerTnx_BTF.xml#WoSchedulerTnx_BTF@ExecuteWithParams"
+            usageId="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/fragments/SearchLandLordMaster.jsff"
+            usageId="view_SearchLandLordMasterPageDef"/>
+      <page path="/WEB-INF/LandLordMaster_BTF.xml#LandLordMaster_BTF@CreateWithParameters"
+            usageId="view_LandLordMaster_BTF_LandLordMaster_BTF_CreateWithParametersPageDef"/>
+      <page path="/WEB-INF/LandLordMaster_BTF.xml#LandLordMaster_BTF@Execute"
+            usageId="view_LandLordMaster_BTF_LandLordMaster_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/LandLordMaster_BTF.xml#LandLordMaster_BTF@ExecuteWithParams"
+            usageId="view_LandLordMaster_BTF_LandLordMaster_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/WEB-INF/LandLordMaster_BTF.xml#LandLordMaster_BTF@CreateInsert"
+            usageId="view_LandLordMaster_BTF_LandLordMaster_BTF_CreateInsertPageDef"/>
+      <page path="/fragments/AddEditLandLordMaster.jsff"
+            usageId="view_AddEditLandLordMasterPageDef"/>
+      <page path="/fragments/SearchWoInv.jsff"
+            usageId="view_SearchWoInvPageDef"/>
+      <page path="/fragments/AddEditWoInv.jsff"
+            usageId="view_AddEditWoInvPageDef"/>
+      <page path="/WEB-INF/WoInv_BTF.xml#WoInv_BTF@CreateInsert"
+            usageId="view_WoInv_BTF_WoInv_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/WoInv_BTF.xml#WoInv_BTF@Execute"
+            usageId="view_WoInv_BTF_WoInv_BTF_ExecutePageDef"/>
+      <page path="/WEB-INF/WoInv_BTF.xml#WoInv_BTF@ExecuteWithParams"
+            usageId="view_WoInv_BTF_WoInv_BTF_ExecuteWithParamsPageDef"/>
+      <page path="/fragments/AddEditOcDp.jsff"
+            usageId="view_AddEditOcDpPageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@Execute5"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_Execute5PageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@ExecuteWithParams2"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParams2PageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@CreateInsert"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_CreateInsertPageDef"/>
+      <page path="/WEB-INF/OtherCharges_BTF.xml#OtherCharges_BTF@Execute6"
+            usageId="view_OtherCharges_BTF_OtherCharges_BTF_Execute6PageDef"/>
+      <page path="/fragments/AddEditWoHeader.jsff"
+            usageId="view_AddEditWoHeaderPageDef"/>
+      <page path="/WEB-INF/WoSchedulerTnx_BTF.xml#WoSchedulerTnx_BTF@ExecuteWithParams1"
+            usageId="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_ExecuteWithParams1PageDef"/>
+      <page path="/fragments/AddEditWoResource.jsff"
+            usageId="view_AddEditWoResourcePageDef"/>
+      <page path="/WEB-INF/WoInv_BTF.xml#WoInv_BTF@ExecuteWithParams1"
+            usageId="view_WoInv_BTF_WoInv_BTF_ExecuteWithParams1PageDef"/>
+      <page path="/WEB-INF/WoInv_BTF.xml#WoInv_BTF@Execute1"
+            usageId="view_WoInv_BTF_WoInv_BTF_Execute1PageDef"/>
+      <page path="/fragments/AddEditPoInv.jsff"
+            usageId="view_AddEditPoInvPageDef"/>
+   </pageMap>
+   <pageDefinitionUsages>
+      <page id="view_Offer_BTF_Offer_BTF_ExecutePageDef"
+            path="view.pageDefs.Offer_BTF_Offer_BTF_ExecutePageDef"/>
+      <page id="view_OfferAddEdit_BTF_OfferAddEdit_BTF_CreateInsertPageDef"
+            path="view.pageDefs.OfferAddEdit_BTF_OfferAddEdit_BTF_CreateInsertPageDef"/>
+      <page id="view_searchPropertyPageDef"
+            path="fragments.searchPropertyPageDef"/>
+      <page id="view_searchBuildingPageDef"
+            path="fragments.searchBuildingPageDef"/>
+      <page id="view_Property_BTF_Property_BTF_CreateInsertPageDef"
+            path="view.pageDefs.Property_BTF_Property_BTF_CreateInsertPageDef"/>
+      <page id="view_Property_BTF_Property_BTF_CreateWithParameters1PageDef"
+            path="view.pageDefs.Property_BTF_Property_BTF_CreateWithParameters1PageDef"/>
+      <page id="view_Property_BTF_Property_BTF_ExecutePageDef"
+            path="view.pageDefs.Property_BTF_Property_BTF_ExecutePageDef"/>
+      <page id="view_Property_BTF_Property_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.Property_BTF_Property_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_testPageDef" path="fragments.testPageDef"/>
+      <page id="view_addEditPropertyPageDef"
+            path="fragments.addEditPropertyPageDef"/>
+      <page id="view_addEditBuildingPageDef"
+            path="fragments.addEditBuildingPageDef"/>
+      <page id="view_addEditUnitPageDef" path="fragments.addEditUnitPageDef"/>
+      <page id="view_testPageDef1" path="pages.testPageDef"/>
+      <page id="view_Building_BTF_Building_BTF_CreateWithParametersPageDef"
+            path="view.pageDefs.Building_BTF_Building_BTF_CreateWithParametersPageDef"/>
+      <page id="view_Building_BTF_Building_BTF_CreateWithParameters1PageDef"
+            path="view.pageDefs.Building_BTF_Building_BTF_CreateWithParameters1PageDef"/>
+      <page id="view_Building_BTF_Building_BTF_CreateInsertPageDef"
+            path="view.pageDefs.Building_BTF_Building_BTF_CreateInsertPageDef"/>
+      <page id="view_Building_BTF_Building_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.Building_BTF_Building_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_Units_BTF_Units_BTF_CreateInsertPageDef"
+            path="view.pageDefs.Units_BTF_Units_BTF_CreateInsertPageDef"/>
+      <page id="view_Units_BTF_Units_BTF_CreateWithParametersPageDef"
+            path="view.pageDefs.Units_BTF_Units_BTF_CreateWithParametersPageDef"/>
+      <page id="view_Units_BTF_Units_BTF_CreateWithParameters1PageDef"
+            path="view.pageDefs.Units_BTF_Units_BTF_CreateWithParameters1PageDef"/>
+      <page id="view_searchUnitPageDef" path="fragments.searchUnitPageDef"/>
+      <page id="view_Units_BTF_Units_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.Units_BTF_Units_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_Units_BTF_Units_BTF_addAreaPageDef"
+            path="view.pageDefs.Units_BTF_Units_BTF_addAreaPageDef"/>
+      <page id="view_SearchVisitorLogPageDef"
+            path="fragments.SearchVisitorLogPageDef"/>
+      <page id="view_LeadAddEdit_BTF_LeadAddEdit_BTF_CreateInsertPageDef"
+            path="view.pageDefs.LeadAddEdit_BTF_LeadAddEdit_BTF_CreateInsertPageDef"/>
+      <page id="view_addEditVisitorLogPageDef"
+            path="fragments.addEditVisitorLogPageDef"/>
+      <page id="view_homePageDef" path="pages.homePageDef"/>
+      <page id="view_LeadAddEdit_BTF_LeadAddEdit_BTF_ExecuteWithParams1PageDef"
+            path="view.pageDefs.LeadAddEdit_BTF_LeadAddEdit_BTF_ExecuteWithParams1PageDef"/>
+      <page id="view_SearchLeadPageDef" path="fragments.SearchLeadPageDef"/>
+      <page id="view_AddEditMilestonesPageDef"
+            path="fragments.AddEditMilestonesPageDef"/>
+      <page id="view_SearchMilestonesPageDef"
+            path="fragments.SearchMilestonesPageDef"/>
+      <page id="view_Milestones_BTF_Milestones_BTF_CreateInsertPageDef"
+            path="view.pageDefs.Milestones_BTF_Milestones_BTF_CreateInsertPageDef"/>
+      <page id="view_OfferAddEdit_BTF_OfferAddEdit_BTF_refreshOfferApplicationPageDef"
+            path="view.pageDefs.OfferAddEdit_BTF_OfferAddEdit_BTF_refreshOfferApplicationPageDef"/>
+      <page id="view_OfferAddEdit_BTF_OfferAddEdit_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.OfferAddEdit_BTF_OfferAddEdit_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_addEditOffersPageDef"
+            path="fragments.addEditOffersPageDef"/>
+      <page id="view_Milestones_BTF_Milestones_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.Milestones_BTF_Milestones_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_SearchOffersPageDef" path="fragments.SearchOffersPageDef"/>
+      <page id="view_TempPageDef" path="pages.TempPageDef"/>
+      <page id="view_LeadAddEdit_BTF_LeadAddEdit_BTF_refreshLeadApplicationPageDef"
+            path="view.pageDefs.LeadAddEdit_BTF_LeadAddEdit_BTF_refreshLeadApplicationPageDef"/>
+      <page id="view_Lead_BTF_Lead_BTF_CreateInsertPageDef"
+            path="view.pageDefs.Lead_BTF_Lead_BTF_CreateInsertPageDef"/>
+      <page id="view_Lead_BTF_Lead_BTF_Execute1PageDef"
+            path="view.pageDefs.Lead_BTF_Lead_BTF_Execute1PageDef"/>
+      <page id="view_Lead_BTF_Lead_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.Lead_BTF_Lead_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_SearchPricePageDef" path="fragments.SearchPricePageDef"/>
+      <page id="view_PriceListAddEdit_PriceListAddEdit_refreshPriceListApplicationPageDef"
+            path="view.pageDefs.PriceListAddEdit_PriceListAddEdit_refreshPriceListApplicationPageDef"/>
+      <page id="view_PriceListAddEdit_PriceListAddEdit_ExecuteWithParamsPageDef"
+            path="view.pageDefs.PriceListAddEdit_PriceListAddEdit_ExecuteWithParamsPageDef"/>
+      <page id="view_PriceListAddEdit_PriceListAddEdit_CreateInsertPageDef"
+            path="view.pageDefs.PriceListAddEdit_PriceListAddEdit_CreateInsertPageDef"/>
+      <page id="view_addEditPricePageDef" path="fragments.addEditPricePageDef"/>
+      <page id="view_Booking_BTF_Booking_BTF_CreateBookingPageDef"
+            path="view.pageDefs.Booking_BTF_Booking_BTF_CreateBookingPageDef"/>
+      <page id="view_AddEditBookingPageDef"
+            path="fragments.AddEditBookingPageDef"/>
+      <page id="view_Lead_BTF_Lead_BTF_ExecutePageDef"
+            path="view.pageDefs.Lead_BTF_Lead_BTF_ExecutePageDef"/>
+      <page id="view_SearchBookingPageDef"
+            path="fragments.SearchBookingPageDef"/>
+      <page id="view_Booking_BTF_Booking_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.Booking_BTF_Booking_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_Milestones_BTF_Milestones_BTF_ExecutePageDef"
+            path="view.pageDefs.Milestones_BTF_Milestones_BTF_ExecutePageDef"/>
+      <page id="view_Milestones_BTF_Milestones_BTF_onclickRevisePageDef"
+            path="view.pageDefs.Milestones_BTF_Milestones_BTF_onclickRevisePageDef"/>
+      <page id="view_ReceiptPageDef" path="view.pageDefs.ReceiptPageDef"/>
+      <page id="view_Receipt_BTF_Receipt_BTF_CreateInsertPageDef"
+            path="view.pageDefs.Receipt_BTF_Receipt_BTF_CreateInsertPageDef"/>
+      <page id="view_ReceiptPgePageDef" path="pages.ReceiptPgePageDef"/>
+      <page id="view_ReceiptPageDef1" path="view.pageDefs.ReceiptPageDef1"/>
+      <page id="view_Receipt_BTF_Receipt_BTF_OnCreateReceiptPageDef"
+            path="view.pageDefs.Receipt_BTF_Receipt_BTF_OnCreateReceiptPageDef"/>
+      <page id="view_Receipt_BTF_Receipt_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.Receipt_BTF_Receipt_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_SearchRecommendationPageDef"
+            path="fragments.SearchRecommendationPageDef"/>
+      <page id="view_AddEditRecommendationPageDef"
+            path="fragments.AddEditRecommendationPageDef"/>
+      <page id="view_Recommendation_BTF_Recommendation_BTF_CreateInsertPageDef"
+            path="view.pageDefs.Recommendation_BTF_Recommendation_BTF_CreateInsertPageDef"/>
+      <page id="view_TesstPageDef" path="pages.TesstPageDef"/>
+      <page id="view_AddEditLeaseAgreementPageDef"
+            path="fragments.AddEditLeaseAgreementPageDef"/>
+      <page id="view_SearchLeaseAgreementPageDef"
+            path="fragments.SearchLeaseAgreementPageDef"/>
+      <page id="view_LeaseAgreement_BTF_LeaseAgreement_BTF_CreateInsertPageDef"
+            path="view.pageDefs.LeaseAgreement_BTF_LeaseAgreement_BTF_CreateInsertPageDef"/>
+    <page id="view_MoveInOut_BTF_MoveInOut_BTF_onCreateMoveinMoveOutPageDef"
+            path="view.pageDefs.MoveInOut_BTF_MoveInOut_BTF_onCreateMoveinMoveOutPageDef"/>
+      <page id="view_AddEditMoveInOutPageDef"
+            path="fragments.AddEditMoveInOutPageDef"/>
+      <page id="view_SearchMoveInOutPageDef"
+            path="fragments.SearchMoveInOutPageDef"/>
+      <page id="view_AttachmentsPageDef"
+            path="view.pageDefs.AttachmentsPageDef"/>
+      <page id="view_Attachments_BTF_Attachments_BTF_refreshattachmentsPageDef"
+            path="view.pageDefs.Attachments_BTF_Attachments_BTF_refreshattachmentsPageDef"/>
+      <page id="view_CheckListResponsePageDef"
+            path="view.pageDefs.CheckListResponsePageDef"/>
+      <page id="view_CheckListResponse_BTF_CheckListResponse_BTF_refreshchecklistPageDef"
+            path="view.pageDefs.CheckListResponse_BTF_CheckListResponse_BTF_refreshchecklistPageDef"/>
+      <page id="view_DashboardPageDef" path="pages.DashboardPageDef"/>
+      <page id="view_PropertyLease_BTF_PropertyLease_BTF_CheckUserNanamePageDef"
+            path="view.pageDefs.PropertyLease_BTF_PropertyLease_BTF_CheckUserNanamePageDef"/>
+      <page id="view_MoveInOut_BTF_MoveInOut_BTF_CreateInsertPageDef"
+            path="view.pageDefs.MoveInOut_BTF_MoveInOut_BTF_CreateInsertPageDef"/>
+      <page id="view_AddEditExtCanPageDef"
+            path="view.pageDefs.AddEditExtCanPageDef"/>
+      <page id="view_SearchExtCanPageDef"
+            path="view.pageDefs.SearchExtCanPageDef"/>
+      <page id="view_ExtCancellation_ExtCancellation_CreateInsertPageDef"
+            path="view.pageDefs.ExtCancellation_ExtCancellation_CreateInsertPageDef"/>
+      <page id="view_SearchCancellationExtensionPageDef"
+            path="fragments.SearchCancellationExtensionPageDef"/>
+      <page id="view_CancellationExtension_BTF_CancellationExtension_BTF_CreateInsertPageDef"
+            path="view.pageDefs.CancellationExtension_BTF_CancellationExtension_BTF_CreateInsertPageDef"/>
+      <page id="view_AddEditCancellationExtensionPageDef"
+            path="fragments.AddEditCancellationExtensionPageDef"/>
+      <page id="view_MoveInOut_BTF_MoveInOut_BTF_ExecuteWithParams1PageDef"
+            path="view.pageDefs.MoveInOut_BTF_MoveInOut_BTF_ExecuteWithParams1PageDef"/>
+      <page id="view_MoveInOut_BTF_MoveInOut_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.MoveInOut_BTF_MoveInOut_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_ArEditPageDef" path="view.pageDefs.ArEditPageDef"/>
+      <page id="view_ArSearchPageDef" path="fragments.ArSearchPageDef"/>
+      <page id="view_ArSetup_BTF_ArSetup_BTF_CreateInsertPageDef"
+            path="view.pageDefs.ArSetup_BTF_ArSetup_BTF_CreateInsertPageDef"/>
+      <page id="view_ArSetup_BTF_ArSetup_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.ArSetup_BTF_ArSetup_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_ArSetup_BTF_ArSetup_BTF_ExecutePageDef"
+            path="view.pageDefs.ArSetup_BTF_ArSetup_BTF_ExecutePageDef"/>
+      <page id="view_CancellationExtension_BTF_CancellationExtension_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.CancellationExtension_BTF_CancellationExtension_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_CancellationExtension_BTF_CancellationExtension_BTF_ExecuteWithParams1PageDef"
+            path="view.pageDefs.CancellationExtension_BTF_CancellationExtension_BTF_ExecuteWithParams1PageDef"/>
+      <page id="view_ExtCancellation_ExtCancellation_ExecuteWithParamsPageDef"
+            path="view.pageDefs.ExtCancellation_ExtCancellation_ExecuteWithParamsPageDef"/>
+      <page id="view_ExtCancellation_ExtCancellation_ExecuteWithParams1PageDef"
+            path="view.pageDefs.ExtCancellation_ExtCancellation_ExecuteWithParams1PageDef"/>
+      <page id="view_Booking_BTF_Booking_BTF_ExecutePageDef"
+            path="view.pageDefs.Booking_BTF_Booking_BTF_ExecutePageDef"/>
+      <page id="view_PriceListAddEdit_PriceListAddEdit_ExecutePageDef"
+            path="view.pageDefs.PriceListAddEdit_PriceListAddEdit_ExecutePageDef"/>
+      <page id="view_SearchReceiptPageDef"
+            path="fragments.SearchReceiptPageDef"/>
+      <page id="view_SearchReceipt_BTF_SearchReceipt_BTF_ExecutePageDef"
+            path="view.pageDefs.SearchReceipt_BTF_SearchReceipt_BTF_ExecutePageDef"/>
+      <page id="view_Recommendation_BTF_Recommendation_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.Recommendation_BTF_Recommendation_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_LeaseAgreement_BTF_LeaseAgreement_BTF_Execute1PageDef"
+            path="view.pageDefs.LeaseAgreement_BTF_LeaseAgreement_BTF_Execute1PageDef"/>
+      <page id="view_Recommendation_BTF_Recommendation_BTF_Execute1PageDef"
+            path="view.pageDefs.Recommendation_BTF_Recommendation_BTF_Execute1PageDef"/>
+      <page id="view_SearchOCPageDef" path="fragments.SearchOCPageDef"/>
+      <page id="view_AddEditOCPageDef" path="fragments.AddEditOCPageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_CreateOtherChargesPageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_CreateOtherChargesPageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_ExecutePageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_ExecutePageDef"/>
+      <page id="view_searchBillingPageDef"
+            path="fragments.searchBillingPageDef"/>
+      <page id="view_addEditBillingPageDef"
+            path="fragments.addEditBillingPageDef"/>
+      <page id="view_addEditBilling_BTF_addEditBilling_BTF_CreateInsertPageDef"
+            path="view.pageDefs.addEditBilling_BTF_addEditBilling_BTF_CreateInsertPageDef"/>
+      <page id="view_addEditBilling_BTF_addEditBilling_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.addEditBilling_BTF_addEditBilling_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_addEditBilling_BTF_addEditBilling_BTF_ExecutePageDef"
+            path="view.pageDefs.addEditBilling_BTF_addEditBilling_BTF_ExecutePageDef"/>
+      <page id="view_addEditBilling_BTF_addEditBilling_BTF_Execute1PageDef"
+            path="view.pageDefs.addEditBilling_BTF_addEditBilling_BTF_Execute1PageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_Execute1PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_Execute1PageDef"/>
+      <page id="view_LeaseAgreement_BTF_LeaseAgreement_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.LeaseAgreement_BTF_LeaseAgreement_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_LeaseAgreement_BTF_LeaseAgreement_BTF_ExecutePageDef"
+            path="view.pageDefs.LeaseAgreement_BTF_LeaseAgreement_BTF_ExecutePageDef"/>
+      <page id="view_SearchCancellationPageDef"
+            path="fragments.SearchCancellationPageDef"/>
+      <page id="view_Cancelllation_BTF_Cancelllation_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.Cancelllation_BTF_Cancelllation_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_Cancelllation_BTF_Cancelllation_BTF_ExecutePageDef"
+            path="view.pageDefs.Cancelllation_BTF_Cancelllation_BTF_ExecutePageDef"/>
+      <page id="view_AddEditCancellationPageDef"
+            path="fragments.AddEditCancellationPageDef"/>
+      <page id="view_MoveInOut_BTF_MoveInOut_BTF_ExecutePageDef"
+            path="view.pageDefs.MoveInOut_BTF_MoveInOut_BTF_ExecutePageDef"/>
+      <page id="view_ReceiptRecPageDef" path="fragments.ReceiptRecPageDef"/>
+      <page id="view_Recommendation_BTF_Recommendation_BTF_CreateInsert1PageDef"
+            path="view.pageDefs.Recommendation_BTF_Recommendation_BTF_CreateInsert1PageDef"/>
+      <page id="view_Recommendation_BTF_Recommendation_BTF_ExecutePageDef"
+            path="view.pageDefs.Recommendation_BTF_Recommendation_BTF_ExecutePageDef"/>
+      <page id="view_Recommendation_BTF_Recommendation_BTF_ExecuteWithParams1PageDef"
+            path="view.pageDefs.Recommendation_BTF_Recommendation_BTF_ExecuteWithParams1PageDef"/>
+      <page id="view_Recommendation_BTF_Recommendation_BTF_CreateWithParametersPageDef"
+            path="view.pageDefs.Recommendation_BTF_Recommendation_BTF_CreateWithParametersPageDef"/>
+      <page id="view_Recommendation_BTF_Recommendation_BTF_CreateWithParameters1PageDef"
+            path="view.pageDefs.Recommendation_BTF_Recommendation_BTF_CreateWithParameters1PageDef"/>
+      <page id="view_Recommendation_BTF_Recommendation_BTF_CreateWithParameters2PageDef"
+            path="view.pageDefs.Recommendation_BTF_Recommendation_BTF_CreateWithParameters2PageDef"/>
+      <page id="view_ReceiptBkPageDef" path="fragments.ReceiptBkPageDef"/>
+      <page id="view_ReceiptOCPageDef" path="fragments.ReceiptOCPageDef"/>
+      <page id="view_Booking_BTF_Booking_BTF_CreateWithParameters1PageDef"
+            path="view.pageDefs.Booking_BTF_Booking_BTF_CreateWithParameters1PageDef"/>
+      <page id="view_Booking_BTF_Booking_BTF_CreateWithParameters2PageDef"
+            path="view.pageDefs.Booking_BTF_Booking_BTF_CreateWithParameters2PageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_CreateWithParametersPageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_CreateWithParametersPageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_CreateWithParameters1PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_CreateWithParameters1PageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_CreateWithParameters2PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_CreateWithParameters2PageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParams1PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParams1PageDef"/>
+      <page id="view_Booking_BTF_Booking_BTF_ExecuteWithParams1PageDef"
+            path="view.pageDefs.Booking_BTF_Booking_BTF_ExecuteWithParams1PageDef"/>
+      <page id="view_Booking_BTF_Booking_BTF_Execute1PageDef"
+            path="view.pageDefs.Booking_BTF_Booking_BTF_Execute1PageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_Execute2PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_Execute2PageDef"/>
+      <page id="view_Booking_BTF_Booking_BTF_CreateWithParameters3PageDef"
+            path="view.pageDefs.Booking_BTF_Booking_BTF_CreateWithParameters3PageDef"/>
+      <page id="view_MoveInOut_BTF_MoveInOut_BTF_Execute1PageDef"
+            path="view.pageDefs.MoveInOut_BTF_MoveInOut_BTF_Execute1PageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_Execute3PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_Execute3PageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_Execute4PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_Execute4PageDef"/>
+      <page id="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_ExecutePageDef"
+            path="view.pageDefs.WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_ExecutePageDef"/>
+      <page id="view_SearchWoSchedulerTnxPageDef"
+            path="fragments.SearchWoSchedulerTnxPageDef"/>
+      <page id="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsertPageDef"
+            path="view.pageDefs.WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsertPageDef"/>
+      <page id="view_AddEditWoSchedulerTnxPageDef"
+            path="fragments.AddEditWoSchedulerTnxPageDef"/>
+      <page id="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert1PageDef"
+            path="view.pageDefs.WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert1PageDef"/>
+      <page id="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert2PageDef"
+            path="view.pageDefs.WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert2PageDef"/>
+      <page id="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert3PageDef"
+            path="view.pageDefs.WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_CreateInsert3PageDef"/>
+      <page id="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_SearchLandLordMasterPageDef"
+            path="fragments.SearchLandLordMasterPageDef"/>
+      <page id="view_LandLordMaster_BTF_LandLordMaster_BTF_CreateWithParametersPageDef"
+            path="view.pageDefs.LandLordMaster_BTF_LandLordMaster_BTF_CreateWithParametersPageDef"/>
+      <page id="view_LandLordMaster_BTF_LandLordMaster_BTF_ExecutePageDef"
+            path="view.pageDefs.LandLordMaster_BTF_LandLordMaster_BTF_ExecutePageDef"/>
+      <page id="view_LandLordMaster_BTF_LandLordMaster_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.LandLordMaster_BTF_LandLordMaster_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_LandLordMaster_BTF_LandLordMaster_BTF_CreateInsertPageDef"
+            path="view.pageDefs.LandLordMaster_BTF_LandLordMaster_BTF_CreateInsertPageDef"/>
+      <page id="view_AddEditLandLordMasterPageDef"
+            path="fragments.AddEditLandLordMasterPageDef"/>
+      <page id="view_SearchWoInvPageDef" path="fragments.SearchWoInvPageDef"/>
+      <page id="view_AddEditWoInvPageDef" path="fragments.AddEditWoInvPageDef"/>
+      <page id="view_WoInv_BTF_WoInv_BTF_CreateInsertPageDef"
+            path="view.pageDefs.WoInv_BTF_WoInv_BTF_CreateInsertPageDef"/>
+      <page id="view_WoInv_BTF_WoInv_BTF_ExecutePageDef"
+            path="view.pageDefs.WoInv_BTF_WoInv_BTF_ExecutePageDef"/>
+      <page id="view_WoInv_BTF_WoInv_BTF_ExecuteWithParamsPageDef"
+            path="view.pageDefs.WoInv_BTF_WoInv_BTF_ExecuteWithParamsPageDef"/>
+      <page id="view_AddEditOcDpPageDef" path="fragments.AddEditOcDpPageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_Execute5PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_Execute5PageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParams2PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_ExecuteWithParams2PageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_CreateInsertPageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_CreateInsertPageDef"/>
+      <page id="view_OtherCharges_BTF_OtherCharges_BTF_Execute6PageDef"
+            path="view.pageDefs.OtherCharges_BTF_OtherCharges_BTF_Execute6PageDef"/>
+      <page id="view_AddEditWoHeaderPageDef"
+            path="fragments.AddEditWoHeaderPageDef"/>
+      <page id="view_WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_ExecuteWithParams1PageDef"
+            path="view.pageDefs.WoSchedulerTnx_BTF_WoSchedulerTnx_BTF_ExecuteWithParams1PageDef"/>
+      <page id="view_AddEditWoResourcePageDef"
+            path="fragments.AddEditWoResourcePageDef"/>
+      <page id="view_WoInv_BTF_WoInv_BTF_ExecuteWithParams1PageDef"
+            path="view.pageDefs.WoInv_BTF_WoInv_BTF_ExecuteWithParams1PageDef"/>
+      <page id="view_WoInv_BTF_WoInv_BTF_Execute1PageDef"
+            path="view.pageDefs.WoInv_BTF_WoInv_BTF_Execute1PageDef"/>
+      <page id="view_AddEditPoInvPageDef" path="fragments.AddEditPoInvPageDef"/>
+   </pageDefinitionUsages>
+   <dataControlUsages>
+      <BC4JDataControl id="PropertyMaster_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="PropertyMaster_AMLocal"
+                       syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="PropertyBuilding_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="PropertyBuilding_AMLocal"
+                       syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="PropertyUnits_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="PropertyUnits_AMLocal"
+                       syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="LeadAppModuleDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="LeadAppModuleLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="Milestones_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="Milestones_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="OfferAppModuleDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="OfferAppModuleLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="PriceList_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="PriceList_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="Premium_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="Premium_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="Discount_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="Discount_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="Booking_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="Booking_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="ReceiptDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="ReceiptLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="Recommendation_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="Recommendation_AMLocal"
+                       syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="LeaseAgreement_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="LeaseAgreement_AMLocal"
+                       syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+                       <BC4JDataControl id="MoveInOut_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="MoveInOut_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="Attachments_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="Attachments_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="CheckListResponse_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="CheckListResponse_AMLocal"
+                       syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="UserAMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true" Configuration="UserAMLocal"
+                       syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="ExtensionCancellation_AMDataControl"
+                       Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="ExtensionCancellation_AMLocal"
+                       syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="ArSetupDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="ArSetupLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="OtherCharges_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="OtherCharges_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="Cancellation_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="Cancellation_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="WoScheduler_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="WoScheduler_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="LandLordMaster_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="LandLordMaster_AMLocal"
+                       syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+      <BC4JDataControl id="WoInv_AMDataControl" Package="model.AM"
+                       FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                       SupportsTransactions="true" SupportsFindMode="true"
+                       SupportsRangesize="true" SupportsResetState="true"
+                       SupportsSortCollection="true"
+                       Configuration="WoInv_AMLocal" syncMode="Immediate"
+                       xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+   </dataControlUsages>
+</Application>

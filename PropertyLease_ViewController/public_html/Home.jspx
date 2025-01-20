@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" inlineStyle="background-color:White;" title="Al Misk Properties">
+    <f:facet name="metaContainer">     
+    <af:outputText escape="false"             
+            value="&lt;link href=&quot;#{facesContext.externalContext.requestContextPath}/favicon.ico&quot; rel=&quot;shortcut icon&quot;>" id="o1"/>  
+    </f:facet>
+      <af:form id="f1" inlineStyle="background-color:White;">
+        <af:panelStretchLayout id="psl2" startWidth="10px" endWidth="10px"
+                               topHeight="25px" bottomHeight="10px">
+          <f:facet name="center">
+            <af:panelGroupLayout layout="scroll"
+                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                 id="pgl1">
+              <af:panelFormLayout id="pfl1" maxColumns="4" rows="1"
+                                  styleClass="AFStretchWidth"
+                                  inlineStyle="margin-top:20%;margin-left:10px;">
+                <f:facet name="footer"/>
+                <af:goImageLink text="Property Lease"
+                                destination="adf.task-flow?_id=PropertyLease_BTF&amp;_document=/WEB-INF/PropertyLease_BTF.xml"
+                                id="gl1"
+                                inlineStyle="font-weight:bolder; font-size:large; margin:25px; color:rgb(4,22,92);"
+                                icon="/images/110.png" iconPosition="leading"/>
+                <af:goImageLink text="User Managment" id="gl3"
+                                targetFrame="_self"
+                                destination="https://jcs.miskprops.com/UserManagmentModule/faces/adf.task-flow?adf.tfId=tf-main&amp;adf.tfDoc=/taskFlow/tf-main.xml"
+                                inlineStyle="font-weight:bolder; font-size:large; margin:25px; color:rgb(4,22,92);"
+                                icon="/images/70.png" iconPosition="leading"
+                                rendered="false"/>
+                <af:goImageLink text="Approvals" id="goImageLink1"
+                                targetFrame="_self"
+                                destination="https://jcs.miskprops.com:443/FunctionApprovals-FunctionApprovalsViewController-context-root/faces/adf.task-flow?adf.tfId=tf-main&amp;adf.tfDoc=/taskflow/tf-main.xml"
+                                inlineStyle="font-weight:bolder; font-size:large; margin:25px; color:rgb(4,22,92);"
+                                icon="/images/110.png" iconPosition="leading"
+                                rendered="false"/>
+                <af:goImageLink text="Scheduling"
+                                destination="https://jcs.miskprops.com/SchedulerGeneric-ViewController-context-root/faces/Schedule.jspx"
+                                id="goImageLink2"
+                                inlineStyle="font-weight:bolder; font-size:large; margin:25px; color:rgb(4,22,92);"
+                                icon="/images/60.png" iconPosition="leading"
+                                rendered="false"/>
+              </af:panelFormLayout>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="start"/>
+          <f:facet name="top">
+            <af:panelGroupLayout id="pgl2" inlineStyle="width:auto;">
+              <af:goImageLink text="Logout" id="gil1" inlineStyle="float:right;margin-right:5px;margin-top:5px;"
+                              icon="/images/logout.png"
+                              destination="/adfAuthentication?logout=true&amp;end_url=https://idcs-634083f3ee8045a094cdb71a7fb21883.identity.oraclecloud.com/oauth2/v1/userlogout?post_logout_redirect_uri=https://idcs-634083f3ee8045a094cdb71a7fb21883.identity.oraclecloud.com/ui/v1/signin"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelStretchLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

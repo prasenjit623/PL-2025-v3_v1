@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="ArSetup_BTF_ArSetup_BTF_CreateInsertPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ArSetup_VO1" RangeSize="25"
+              DataControl="ArSetupDataControl" id="ArSetup_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ArSetup_VO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

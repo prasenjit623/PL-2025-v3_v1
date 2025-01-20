@@ -1,0 +1,925 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout binding="#{backingBeanScope.backing_AddEditExtCan.pgl1}"
+                           id="pgl1" layout="scroll">
+        <af:panelGroupLayout binding="#{backingBeanScope.backing_AddEditExtCan.pgl2}"
+                             id="pgl2" layout="vertical">
+          <af:panelGridLayout binding="#{backingBeanScope.backing_AddEditExtCan.pgl5}"
+                              id="pgl5">
+            <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                        binding="#{backingBeanScope.backing_AddEditExtCan.gr2}"
+                        id="gr2">
+              <af:gridCell marginStart="5px" width="50%"
+                           binding="#{backingBeanScope.backing_AddEditExtCan.gc3}"
+                           id="gc3" valign="middle">
+                <af:outputText value="Manage Extension"
+                               binding="#{backingBeanScope.backing_AddEditExtCan.ot17}"
+                               id="ot17"
+                               inlineStyle="font-weight:bolder; font-size:large;"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                           binding="#{backingBeanScope.backing_AddEditExtCan.gc4}"
+                           id="gc4" halign="end" valign="middle">
+                <af:panelGroupLayout binding="#{backingBeanScope.backing_AddEditExtCan.pgl4}"
+                                     id="pgl4" styleClass="AFStretchWidth"
+                                     layout="horizontal">
+                  <af:commandButton text="Reject"
+                                    binding="#{backingBeanScope.backing_AddEditExtCan.cb6}"
+                                    id="cb6"
+                                    actionListener="#{backingBeanScope.backing_AddEditExtCan.onClickReject}"
+                                    inlineStyle="margin-right:10px;"
+                                    action="back"
+                                    visible="#{sessionScope.grantMap.Extension =='F' and bindings.Status.inputValue=='PEN'}"/>
+                  <af:commandButton text="Approve"
+                                    binding="#{backingBeanScope.backing_AddEditExtCan.cb5}"
+                                    id="cb5"
+                                    actionListener="#{backingBeanScope.backing_AddEditExtCan.onClickApprove}"
+                                    inlineStyle="margin-right:10px;"
+                                    action="back"
+                                    visible="#{sessionScope.grantMap.Extension =='F' and bindings.Status.inputValue=='PEN'}"/>
+                  <af:commandButton text="Save"
+                                    binding="#{backingBeanScope.backing_AddEditExtCan.cb1}"
+                                    id="cb1"
+                                    actionListener="#{backingBeanScope.backing_AddEditExtCan.onclickSaveUsingProcedure}"
+                                    inlineStyle="margin-right:10px;"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Save and close"
+                                    binding="#{backingBeanScope.backing_AddEditExtCan.cb2}"
+                                    id="cb2"
+                                    actionListener="#{backingBeanScope.backing_AddEditExtCan.onclickSaveUsingProcedure}"
+                                    action="back"
+                                    inlineStyle="margin-right:10px;"
+                                    visible="#{sessionScope.grantMap.Extension =='F' and bindings.Status.inputValue=='DRA'}"/>
+                  <af:commandButton text="Submit"
+                                    binding="#{backingBeanScope.backing_AddEditExtCan.cb4}"
+                                    id="cb4"
+                                    actionListener="#{backingBeanScope.backing_AddEditExtCan.onClickSubmit}"
+                                    inlineStyle="margin-right:10px;"
+                                    action="back"
+                                    visible="#{sessionScope.grantMap.Extension =='F' and bindings.Status.inputValue=='DRA'}"/>
+                  <af:commandButton binding="#{backingBeanScope.backing_AddEditExtCan.cb3}"
+                                    id="cb3" inlineStyle="margin-right:10px;"
+                                    text="Cancel"
+                                    action="#{backingBeanScope.backing_AddEditExtCan.onclickcancel}"/>
+                  <af:commandButton text="Approval Details"
+                                    binding="#{backingBeanScope.backing_AddEditExtCan.cb7}"
+                                    id="cb7"
+                                    visible="#{sessionScope.grantMap.Extension =='F' and (bindings.Status.inputValue=='PEN' || bindings.Status.inputValue=='APR' || bindings.Status.inputValue=='REJ') }">
+                    <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                  </af:commandButton>
+                  <af:popup binding="#{backingBeanScope.backing_AddEditExtCan.p1}"
+                            id="p1">
+                    <af:dialog binding="#{backingBeanScope.backing_AddEditExtCan.d1}"
+                               id="d1" inlineStyle="width:80.0%;">
+                      <af:table value="#{bindings.getApprovalHistoryROVo1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.getApprovalHistoryROVo1.rangeSize}"
+                                emptyText="#{bindings.getApprovalHistoryROVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.getApprovalHistoryROVo1.rangeSize}"
+                                rowBandingInterval="0"
+                                selectedRowKeys="#{bindings.getApprovalHistoryROVo1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.getApprovalHistoryROVo1.collectionModel.makeCurrent}"
+                                rowSelection="single"
+                                binding="#{backingBeanScope.backing_AddEditExtCan.t2}"
+                                id="t2" varStatus="vs"
+                                inlineStyle="width:inherit;">
+                        <af:column id="c14" headerText="S.No" width="50"
+                                   align="center">
+                          <af:outputText value="#{vs.index+1}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.label}"
+                                   id="c11" width="200">
+                          <af:selectOneChoice value="#{row.bindings.ApproverId.inputValue}"
+                                              label="#{row.bindings.ApproverId.label}"
+                                              required="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.mandatory}"
+                                              shortDesc="#{bindings.getApprovalHistoryROVo1.hints.ApproverId.tooltip}"
+                                              id="soc8" readOnly="true">
+                            <f:selectItems value="#{row.bindings.ApproverId.items}"
+                                           id="si8"/>
+                          </af:selectOneChoice>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.label}"
+                                   id="c10">
+                          <af:inputDate value="#{row.bindings.SubmissionDate.inputValue}"
+                                        label="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.label}"
+                                        required="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.mandatory}"
+                                        shortDesc="#{bindings.getApprovalHistoryROVo1.hints.SubmissionDate.tooltip}"
+                                        id="id6" readOnly="true">
+                            <f:validator binding="#{row.bindings.SubmissionDate.validator}"/>
+                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                          </af:inputDate>
+                        </af:column>
+                        <af:column headerText="#{bindings.getApprovalHistoryROVo1.hints.SubmittedByTrans.label}"
+                                   id="c47">
+                          <af:outputText value="#{row.SubmittedByTrans}"
+                                         id="ot18"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.Status.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.getApprovalHistoryROVo1.hints.Status.label}"
+                                   id="c13">
+                          <af:inputText value="#{row.bindings.Status.inputValue}"
+                                        label="#{bindings.getApprovalHistoryROVo1.hints.Status.label}"
+                                        required="#{bindings.getApprovalHistoryROVo1.hints.Status.mandatory}"
+                                        columns="#{bindings.getApprovalHistoryROVo1.hints.Status.displayWidth}"
+                                        maximumLength="#{bindings.getApprovalHistoryROVo1.hints.Status.precision}"
+                                        shortDesc="#{bindings.getApprovalHistoryROVo1.hints.Status.tooltip}"
+                                        id="it4" readOnly="true">
+                            <f:validator binding="#{row.bindings.Status.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.getApprovalHistoryROVo1.hints.Description.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.getApprovalHistoryROVo1.hints.Description.label}"
+                                   id="c12" width="200">
+                          <af:inputText value="#{row.bindings.Description.inputValue}"
+                                        label="#{bindings.getApprovalHistoryROVo1.hints.Description.label}"
+                                        required="#{bindings.getApprovalHistoryROVo1.hints.Description.mandatory}"
+                                        columns="#{bindings.getApprovalHistoryROVo1.hints.Description.displayWidth}"
+                                        maximumLength="#{bindings.getApprovalHistoryROVo1.hints.Description.precision}"
+                                        shortDesc="#{bindings.getApprovalHistoryROVo1.hints.Description.tooltip}"
+                                        id="it3" readOnly="true">
+                            <f:validator binding="#{row.bindings.Description.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                      </af:table>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </af:gridCell>
+            </af:gridRow>
+          </af:panelGridLayout>
+          <af:spacer width="10" height="20"
+                     binding="#{backingBeanScope.backing_AddEditExtCan.s2}"
+                     id="s2"/>
+          <af:panelBox text="Lease Details"
+                       binding="#{backingBeanScope.backing_AddEditExtCan.pb1}"
+                       id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelFormLayout binding="#{backingBeanScope.backing_AddEditExtCan.pfl1}"
+                                id="pfl1" maxColumns="3" rows="5">
+              <af:inputText value="#{bindings.TransNumber.inputValue}"
+                            label="Extension Number"
+                            required="#{bindings.TransNumber.hints.mandatory}"
+                            columns="#{bindings.TransNumber.hints.displayWidth}"
+                            maximumLength="#{bindings.TransNumber.hints.precision}"
+                            shortDesc="#{bindings.TransNumber.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.it1}"
+                            id="it1"
+                            contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;"
+                            readOnly="true" partialTriggers="cb1">
+                <f:validator binding="#{bindings.TransNumber.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.LeaseAgreementId.inputValue}"
+                                  label="#{bindings.LeaseAgreementId.label}"
+                                  required="#{bindings.LeaseAgreementId.hints.mandatory}"
+                                  shortDesc="#{bindings.LeaseAgreementId.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_AddEditExtCan.soc1}"
+                                  id="soc1" autoSubmit="true"
+                                  contentStyle="width:200px"
+                                  showRequired="true" rendered="false">
+                <f:selectItems value="#{bindings.LeaseAgreementId.items}"
+                               binding="#{backingBeanScope.backing_AddEditExtCan.si1}"
+                               id="si1"/>
+              </af:selectOneChoice>
+              <af:inputListOfValues id="leaseNumberSmartSearch_TransId"
+                                    popupTitle="Search and Select: #{bindings.LeaseNumberSmartSearch_Trans.hints.label}"
+                                    value="#{bindings.LeaseNumberSmartSearch_Trans.inputValue}"
+                                    label="#{bindings.LeaseNumberSmartSearch_Trans.hints.label}"
+                                    model="#{bindings.LeaseNumberSmartSearch_Trans.listOfValuesModel}"
+                                    required="#{bindings.LeaseNumberSmartSearch_Trans.hints.mandatory}"
+                                    columns="#{bindings.LeaseNumberSmartSearch_Trans.hints.displayWidth}"
+                                    shortDesc="#{bindings.LeaseNumberSmartSearch_Trans.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_AddEditExtCan.leaseNumberSmartSearch_TransId}"
+                                    contentStyle="width:180px"
+                                    autoSubmit="true"
+                                    >
+                <f:validator binding="#{bindings.LeaseNumberSmartSearch_Trans.validator}"/>
+              </af:inputListOfValues>
+              <af:selectOneChoice value="#{bindings.BookingId.inputValue}"
+                                  label="#{bindings.BookingId.label}"
+                                  required="#{bindings.BookingId.hints.mandatory}"
+                                  shortDesc="#{bindings.BookingId.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_AddEditExtCan.soc2}"
+                                  id="soc2" autoSubmit="true"
+                                  partialTriggers="soc1 leaseNumberSmartSearch_TransId" readOnly="true"
+                                  contentStyle="width:200px">
+                <f:selectItems value="#{bindings.BookingId.items}"
+                               binding="#{backingBeanScope.backing_AddEditExtCan.si2}"
+                               id="si2"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.CustName.inputValue}"
+                            label="#{bindings.CustName.hints.label}"
+                            required="#{bindings.CustName.hints.mandatory}"
+                            columns="#{bindings.CustName.hints.displayWidth}"
+                            maximumLength="#{bindings.CustName.hints.precision}"
+                            shortDesc="#{bindings.CustName.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.it2}"
+                            id="it2" partialTriggers="soc1 soc2 leaseNumberSmartSearch_TransId" readOnly="true"
+                            contentStyle="width:200px">
+                <f:validator binding="#{bindings.CustName.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                                  label="#{bindings.Status.label}"
+                                  required="#{bindings.Status.hints.mandatory}"
+                                  shortDesc="#{bindings.Status.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_AddEditExtCan.soc3}"
+                                  id="soc3" disabled="true"
+                                  contentStyle="width:200px">
+                <f:selectItems value="#{bindings.Status.items}"
+                               binding="#{backingBeanScope.backing_AddEditExtCan.si3}"
+                               id="si3"/>
+              </af:selectOneChoice>
+              <af:inputDate value="#{bindings.TransDate.inputValue}"
+                            label="Request Date"
+                            required="#{bindings.TransDate.hints.mandatory}"
+                            shortDesc="#{bindings.TransDate.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.id1}"
+                            id="id1" contentStyle="width:200px"
+                            autoSubmit="true" showRequired="true">
+                <f:validator binding="#{bindings.TransDate.validator}"/>
+                <af:convertDateTime pattern="dd-MM-yyyy"/>
+              </af:inputDate>
+              <af:inputText value="#{bindings.ExtensionDays.inputValue}"
+                            label="Extension Days"
+                            required="#{bindings.ExtensionDays.hints.mandatory}"
+                            columns="#{bindings.ExtensionDays.hints.displayWidth}"
+                            maximumLength="#{bindings.ExtensionDays.hints.precision}"
+                            shortDesc="#{bindings.ExtensionDays.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.it12}"
+                            id="it12" contentStyle="width:200px"
+                            autoSubmit="true"
+                            valueChangeListener="#{backingBeanScope.backing_AddEditExtCan.onClickExtDateValidation}"
+                            disabled="#{bindings.TransDate.inputValue==null}"
+                            partialTriggers="id1" showRequired="true"
+                            rendered="false">
+                <f:validator binding="#{bindings.ExtensionDays.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.ExtensionDays1.inputValue}"
+                                  label="#{bindings.ExtensionDays1.label}"
+                                  required="#{bindings.ExtensionDays1.hints.mandatory}"
+                                  shortDesc="#{bindings.ExtensionDays1.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_AddEditExtCan.soc9}"
+                                  id="soc9" autoSubmit="true"
+                                  partialTriggers="id1"
+                                  valueChangeListener="#{backingBeanScope.backing_AddEditExtCan.onClickExtDateValidation}"
+                                  contentStyle="width:200px"
+                                  showRequired="true">
+                <f:selectItems value="#{bindings.ExtensionDays1.items}"
+                               binding="#{backingBeanScope.backing_AddEditExtCan.si13}"
+                               id="si13"/>
+              </af:selectOneChoice>
+              <af:inputDate value="#{bindings.DueDate.inputValue}"
+                            label="Extension up to"
+                            required="#{bindings.DueDate.hints.mandatory}"
+                            shortDesc="#{bindings.DueDate.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.id2}"
+                            id="id2" contentStyle="width:200px"
+                            partialTriggers="it12 soc9"
+                            minValue="#{bindings.LeaseEndDateTrans.inputValue}"
+                            autoSubmit="true" disabled="true">
+                <f:validator binding="#{bindings.DueDate.validator}"/>
+                <af:convertDateTime pattern="dd-MM-yyyy"/>
+              </af:inputDate>
+              <af:inputText value="#{bindings.Description.inputValue}"
+                            label="#{bindings.Description.hints.label}"
+                            required="#{bindings.Description.hints.mandatory}"
+                            columns="#{bindings.Description.hints.displayWidth}"
+                            maximumLength="#{bindings.Description.hints.precision}"
+                            shortDesc="#{bindings.Description.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.it7}"
+                            id="it7" contentStyle="width:200px">
+                <f:validator binding="#{bindings.Description.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Currency.inputValue}"
+                            label="#{bindings.Currency.hints.label}"
+                            required="#{bindings.Currency.hints.mandatory}"
+                            columns="#{bindings.Currency.hints.displayWidth}"
+                            maximumLength="#{bindings.Currency.hints.precision}"
+                            shortDesc="#{bindings.Currency.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.it6}"
+                            id="it6" contentStyle="width:200px">
+                <f:validator binding="#{bindings.Currency.validator}"/>
+              </af:inputText>
+              <af:inputDate value="#{bindings.LeaseStartDateTrans.inputValue}"
+                            label="#{bindings.LeaseStartDateTrans.hints.label}"
+                            required="#{bindings.LeaseStartDateTrans.hints.mandatory}"
+                            shortDesc="#{bindings.LeaseStartDateTrans.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.id4}"
+                            id="id4" autoSubmit="true" readOnly="false"
+                            partialTriggers="soc1 leaseNumberSmartSearch_TransId" contentStyle="width:200px"
+                            disabled="true">
+                <f:validator binding="#{bindings.LeaseStartDateTrans.validator}"/>
+                <af:convertDateTime pattern="dd-MM-yyyy"/>
+              </af:inputDate>
+              <af:inputDate value="#{bindings.LeaseEndDateTrans.inputValue}"
+                            label="#{bindings.LeaseEndDateTrans.hints.label}"
+                            required="#{bindings.LeaseEndDateTrans.hints.mandatory}"
+                            shortDesc="#{bindings.LeaseEndDateTrans.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.id5}"
+                            id="id5" autoSubmit="true"
+                            partialTriggers="soc1 leaseNumberSmartSearch_TransId" contentStyle="width:200px"
+                            disabled="true">
+                <f:validator binding="#{bindings.LeaseEndDateTrans.validator}"/>
+                <af:convertDateTime pattern="dd-MM-yyyy"/>
+              </af:inputDate>
+              <af:inputText value="#{bindings.Amount.inputValue}"
+                            label="Extension Amount"
+                            required="#{bindings.Amount.hints.mandatory}"
+                            columns="#{bindings.Amount.hints.displayWidth}"
+                            maximumLength="#{bindings.Amount.hints.precision}"
+                            shortDesc="#{bindings.Amount.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.it5}"
+                            id="it5" contentStyle="width:200px"
+                            partialTriggers="cb1" disabled="true">
+                <f:validator binding="#{bindings.Amount.validator}"/>
+              </af:inputText>
+              <af:selectOneRadio value="#{bindings.DiscountType.inputValue}"
+                                 label="#{bindings.DiscountType.label}"
+                                 required="#{bindings.DiscountType.hints.mandatory}"
+                                 shortDesc="#{bindings.DiscountType.hints.tooltip}"
+                                 binding="#{backingBeanScope.backing_AddEditExtCan.sor1}"
+                                 id="sor1" contentStyle="width:200px"
+                                 autoSubmit="true" layout="horizontal"
+                                 disabled="#{bindings.Amount.inputValue eq null}">
+                <f:selectItems value="#{bindings.DiscountType.items}"
+                               binding="#{backingBeanScope.backing_AddEditExtCan.si16}"
+                               id="si16"/>
+              </af:selectOneRadio>
+              <af:inputText value="#{bindings.DiscountValue.inputValue}"
+                            label="#{bindings.DiscountValue.hints.label}"
+                            required="#{bindings.DiscountValue.hints.mandatory}"
+                            columns="#{bindings.DiscountValue.hints.displayWidth}"
+                            maximumLength="#{bindings.DiscountValue.hints.precision}"
+                            shortDesc="#{bindings.DiscountValue.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_AddEditExtCan.it18}"
+                            id="it18" contentStyle="width:200px"
+                            partialTriggers="sor1" autoSubmit="true"
+                            disabled="#{bindings.Amount.inputValue eq null and bindings.DiscountType.inputValue eq null}">
+                <f:validator binding="#{bindings.DiscountValue.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:panelBox>
+          <af:spacer width="10" height="10"
+                     binding="#{backingBeanScope.backing_AddEditExtCan.s4}"
+                     id="s4"/>
+          <af:panelBox text="Car Parking Units Details"
+                       binding="#{backingBeanScope.backing_AddEditExtCan.pb4}"
+                       id="pb4" partialTriggers="soc1 leaseNumberSmartSearch_TransId">
+            <f:facet name="toolbar"/>
+            <af:panelCollection binding="#{backingBeanScope.backing_AddEditExtCan.pc3}"
+                                id="pc3" styleClass="AFStretchWidth">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.collectionModel}"
+                        var="row"
+                        rows="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.rangeSize}"
+                        emptyText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.collectionModel.makeCurrent}"
+                        rowSelection="single"
+                        binding="#{backingBeanScope.backing_AddEditExtCan.t5}"
+                        id="t5" partialTriggers=":::soc1 :::leaseNumberSmartSearch_TransId" rendered="false">
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.UnitId.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.UnitId.label}"
+                           id="c20">
+                  <af:outputText value="#{row.UnitId}" id="ot8"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.OfferDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.OfferDate.label}"
+                           id="c22">
+                  <af:outputText value="#{row.OfferDate}" id="ot4"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.OfferFromDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.OfferFromDate.label}"
+                           id="c17">
+                  <af:outputText value="#{row.OfferFromDate}" id="ot6">
+                    <af:convertDateTime pattern="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.OfferFromDate.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.OfferToDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.OfferToDate.label}"
+                           id="c24">
+                  <af:outputText value="#{row.OfferToDate}" id="ot7">
+                    <af:convertDateTime pattern="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.OfferToDate.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.CarParkLeaseAgreId.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO3.hints.CarParkLeaseAgreId.label}"
+                           id="c21">
+                  <af:outputText value="#{row.CarParkLeaseAgreId}" id="ot5"/>
+                </af:column>
+              </af:table>
+              <af:table value="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.collectionModel}"
+                        var="row"
+                        rows="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.rangeSize}"
+                        emptyText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.collectionModel.makeCurrent}"
+                        rowSelection="single"
+                        binding="#{backingBeanScope.backing_AddEditExtCan.t6}"
+                        id="t6" partialTriggers=":::soc1 :::leaseNumberSmartSearch_TransId" varStatus="vs">
+                <af:column id="c42" width="80" align="center" headerText="S.No">
+                  <af:outputText value="#{vs.index+1}" id="ot15"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.UnitName.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.UnitName.label}"
+                           id="c27" width="120">
+                  <af:outputText value="#{row.UnitName}" id="ot11"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.UnitNumber.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.UnitNumber.label}"
+                           id="c37" width="120">
+                  <af:outputText value="#{row.UnitNumber}" id="ot12"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.Status.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.Status.label}"
+                           id="c39" width="120" rendered="false">
+                  <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                      label="#{row.bindings.Status.label}"
+                                      required="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.Status.mandatory}"
+                                      shortDesc="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.Status.tooltip}"
+                                      id="soc14" readOnly="true">
+                    <f:selectItems value="#{row.bindings.Status.items}"
+                                   id="si14"/>
+                  </af:selectOneChoice>
+                  <af:outputText value="#{row.Status}" id="ot13"
+                                 rendered="false"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferNumber.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferNumber.label}"
+                           id="c38">
+                  <af:outputText value="#{row.OfferNumber}" id="ot10"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferFromDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferFromDate.label}"
+                           id="c40" width="110">
+                  <af:outputText value="#{row.OfferFromDate}" id="ot9">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferToDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferToDate.label}"
+                           id="c28" width="110">
+                  <af:outputText value="#{row.OfferToDate}" id="ot14">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferTotal.label}"
+                           id="c44">
+                  <af:inputText value="#{row.bindings.OfferTotal.inputValue}"
+                                label="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferTotal.label}"
+                                required="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferTotal.mandatory}"
+                                columns="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferTotal.displayWidth}"
+                                maximumLength="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferTotal.precision}"
+                                shortDesc="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.OfferTotal.tooltip}"
+                                id="it16" readOnly="true">
+                    <f:validator binding="#{row.bindings.OfferTotal.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.CheckBoxeYn.label}"
+                           id="c43" align="center" rendered="false">
+                  <af:selectBooleanCheckbox value="#{row.bindings.CheckBoxeYn.inputValue}"
+                                            label="#{row.bindings.CheckBoxeYn.label}"
+                                            shortDesc="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.CheckBoxeYn.tooltip}"
+                                            id="sbc2" autoSubmit="true"/>
+                </af:column>
+                <af:column id="c41" align="center"
+                           headerText=" Select / Unselect"
+                           sortProperty="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.CheckBox_Trans.name}"
+                           sortable="false">
+                  <af:selectBooleanCheckbox value="#{row.bindings.CheckBox_Trans.inputValue}"
+                                            label="#{bindings.CheckBox_Trans.label}"
+                                            shortDesc="#{bindings.CheckBox_Trans.hints.tooltip}"
+                                            id="sbc1"
+                                            valueChangeListener="#{backingBeanScope.backing_AddEditExtCan.onSelectCheckbox}"
+                                            autoSubmit="true" rendered="false"/>
+                  <af:selectBooleanCheckbox value="#{bindings.CheckBoxeYn.inputValue}"
+                                            label="#{bindings.CheckBoxeYn.label}"
+                                            shortDesc="#{bindings.getCarParkingUnitDetailsforExtension_ROVO31.hints.CheckBoxeYn.tooltip}"
+                                            id="sbc5"
+                                            valueChangeListener="#{backingBeanScope.backing_AddEditExtCan.onSelectYN}"
+                                            autoSubmit="true"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+          <af:spacer width="10" height="10"
+                     binding="#{backingBeanScope.backing_AddEditExtCan.s1}"
+                     id="s1"/>
+          <af:panelBox text="Booking Details"
+                       binding="#{backingBeanScope.backing_AddEditExtCan.pb3}"
+                       id="pb3">
+            <f:facet name="toolbar"/>
+            <af:panelCollection binding="#{backingBeanScope.backing_AddEditExtCan.pc2}"
+                                id="pc2" styleClass="AFStretchWidth">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.BookingDetail_VO2.collectionModel}"
+                        var="row" rows="#{bindings.BookingDetail_VO2.rangeSize}"
+                        emptyText="#{bindings.BookingDetail_VO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.BookingDetail_VO2.rangeSize}"
+                        rowBandingInterval="0"
+                        binding="#{backingBeanScope.backing_AddEditExtCan.t4}"
+                        id="t4" varStatus="vs"
+                        partialTriggers=":::soc1 :::soc2 :::leaseNumberSmartSearch_TransId">
+                <af:column id="c36" headerText="S.No" align="center" width="80">
+                  <af:outputText value="#{vs.index+1}" id="ot3"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.PropertyId.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.PropertyId.label}"
+                           id="c29" width="150">
+                  <af:selectOneChoice value="#{row.bindings.PropertyId.inputValue}"
+                                      label="#{row.bindings.PropertyId.label}"
+                                      required="#{bindings.BookingDetail_VO2.hints.PropertyId.mandatory}"
+                                      shortDesc="#{bindings.BookingDetail_VO2.hints.PropertyId.tooltip}"
+                                      id="soc11" readOnly="true">
+                    <f:selectItems value="#{row.bindings.PropertyId.items}"
+                                   id="si11"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.BuildingId.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.BuildingId.label}"
+                           id="c26" width="150">
+                  <af:selectOneChoice value="#{row.bindings.BuildingId.inputValue}"
+                                      label="#{row.bindings.BuildingId.label}"
+                                      required="#{bindings.BookingDetail_VO2.hints.BuildingId.mandatory}"
+                                      shortDesc="#{bindings.BookingDetail_VO2.hints.BuildingId.tooltip}"
+                                      id="soc10" readOnly="true">
+                    <f:selectItems value="#{row.bindings.BuildingId.items}"
+                                   id="si9"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.UnitId.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.UnitId.label}"
+                           id="c30">
+                  <af:selectOneChoice value="#{row.bindings.UnitId.inputValue}"
+                                      label="#{row.bindings.UnitId.label}"
+                                      required="#{bindings.BookingDetail_VO2.hints.UnitId.mandatory}"
+                                      shortDesc="#{bindings.BookingDetail_VO2.hints.UnitId.tooltip}"
+                                      id="soc12" readOnly="true">
+                    <f:selectItems value="#{row.bindings.UnitId.items}"
+                                   id="si10"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.BookingDetail_VO2.hints.BaseRate.label}"
+                           id="c45"
+                           sortProperty="#{bindings.BookingDetail_VO2.hints.BaseRate.name}"
+                           sortable="false">
+                  <af:outputText value="#{row.BaseRate}" id="ot16">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.BookingDetail_VO2.hints.BaseRate.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.label}"
+                           id="c19">
+                  <af:inputText value="#{row.bindings.MunicipalityCharges.inputValue}"
+                                label="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.label}"
+                                required="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.mandatory}"
+                                columns="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.displayWidth}"
+                                maximumLength="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.precision}"
+                                shortDesc="#{bindings.BookingDetail_VO2.hints.MunicipalityCharges.tooltip}"
+                                id="it21" readOnly="true">
+                    <f:validator binding="#{row.bindings.MunicipalityCharges.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.ElectricityCharges.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.ElectricityCharges.label}"
+                           id="c16">
+                  <af:inputText value="#{row.bindings.ElectricityCharges.inputValue}"
+                                label="#{bindings.BookingDetail_VO2.hints.ElectricityCharges.label}"
+                                required="#{bindings.BookingDetail_VO2.hints.ElectricityCharges.mandatory}"
+                                columns="#{bindings.BookingDetail_VO2.hints.ElectricityCharges.displayWidth}"
+                                maximumLength="#{bindings.BookingDetail_VO2.hints.ElectricityCharges.precision}"
+                                shortDesc="#{bindings.BookingDetail_VO2.hints.ElectricityCharges.tooltip}"
+                                id="it17" readOnly="true">
+                    <f:validator binding="#{row.bindings.ElectricityCharges.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.SecurityDeposite.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.SecurityDeposite.label}"
+                           id="c25">
+                  <af:inputText value="#{row.bindings.SecurityDeposite.inputValue}"
+                                label="#{bindings.BookingDetail_VO2.hints.SecurityDeposite.label}"
+                                required="#{bindings.BookingDetail_VO2.hints.SecurityDeposite.mandatory}"
+                                columns="#{bindings.BookingDetail_VO2.hints.SecurityDeposite.displayWidth}"
+                                maximumLength="#{bindings.BookingDetail_VO2.hints.SecurityDeposite.precision}"
+                                shortDesc="#{bindings.BookingDetail_VO2.hints.SecurityDeposite.tooltip}"
+                                id="it14" readOnly="true">
+                    <f:validator binding="#{row.bindings.SecurityDeposite.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.label}"
+                           id="c18">
+                  <af:inputText value="#{row.bindings.ThirdPartyServCharge.inputValue}"
+                                label="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.label}"
+                                required="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.mandatory}"
+                                columns="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.displayWidth}"
+                                maximumLength="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.precision}"
+                                shortDesc="#{bindings.BookingDetail_VO2.hints.ThirdPartyServCharge.tooltip}"
+                                id="it15" readOnly="true">
+                    <f:validator binding="#{row.bindings.ThirdPartyServCharge.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.label}"
+                           id="c35">
+                  <af:inputText value="#{row.bindings.OtherGovntChargeNew.inputValue}"
+                                label="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.label}"
+                                required="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.mandatory}"
+                                columns="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.displayWidth}"
+                                maximumLength="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.precision}"
+                                shortDesc="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeNew.tooltip}"
+                                id="it19" readOnly="true">
+                    <f:validator binding="#{row.bindings.OtherGovntChargeNew.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.label}"
+                           id="c34">
+                  <af:inputText value="#{row.bindings.OtherGovntChargeRnew.inputValue}"
+                                label="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.label}"
+                                required="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.mandatory}"
+                                columns="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.displayWidth}"
+                                maximumLength="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.precision}"
+                                shortDesc="#{bindings.BookingDetail_VO2.hints.OtherGovntChargeRnew.tooltip}"
+                                id="it26" readOnly="true">
+                    <f:validator binding="#{row.bindings.OtherGovntChargeRnew.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.label}"
+                           id="c33">
+                  <af:inputText value="#{row.bindings.EjariPaymentCharge.inputValue}"
+                                label="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.label}"
+                                required="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.mandatory}"
+                                columns="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.displayWidth}"
+                                maximumLength="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.precision}"
+                                shortDesc="#{bindings.BookingDetail_VO2.hints.EjariPaymentCharge.tooltip}"
+                                id="it25" readOnly="true">
+                    <f:validator binding="#{row.bindings.EjariPaymentCharge.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.BookingDetail_VO2.hints.DiscountRate.label}"
+                           id="c46"
+                           sortProperty="#{bindings.BookingDetail_VO2.hints.DiscountRate.name}"
+                           sortable="false">
+                  <af:selectOneChoice value="#{row.bindings.DiscountRate.inputValue}"
+                                      label="#{row.bindings.DiscountRate.label}"
+                                      required="#{bindings.BookingDetail_VO2.hints.DiscountRate.mandatory}"
+                                      shortDesc="#{bindings.BookingDetail_VO2.hints.DiscountRate.tooltip}"
+                                      id="soc15" readOnly="true">
+                    <f:selectItems value="#{row.bindings.DiscountRate.items}"
+                                   id="si15"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.TaxAmount.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.TaxAmount.label}"
+                           id="c23">
+                  <af:inputText value="#{row.bindings.TaxAmount.inputValue}"
+                                label="#{bindings.BookingDetail_VO2.hints.TaxAmount.label}"
+                                required="#{bindings.BookingDetail_VO2.hints.TaxAmount.mandatory}"
+                                columns="#{bindings.BookingDetail_VO2.hints.TaxAmount.displayWidth}"
+                                maximumLength="#{bindings.BookingDetail_VO2.hints.TaxAmount.precision}"
+                                shortDesc="#{bindings.BookingDetail_VO2.hints.TaxAmount.tooltip}"
+                                id="it20" readOnly="true">
+                    <f:validator binding="#{row.bindings.TaxAmount.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.BookingDetail_VO2.hints.TaxAmount.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.TotalRate.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.TotalRate.label}"
+                           id="c32">
+                  <af:inputText value="#{row.bindings.TotalRate.inputValue}"
+                                label="#{bindings.BookingDetail_VO2.hints.TotalRate.label}"
+                                required="#{bindings.BookingDetail_VO2.hints.TotalRate.mandatory}"
+                                columns="#{bindings.BookingDetail_VO2.hints.TotalRate.displayWidth}"
+                                maximumLength="#{bindings.BookingDetail_VO2.hints.TotalRate.precision}"
+                                shortDesc="#{bindings.BookingDetail_VO2.hints.TotalRate.tooltip}"
+                                id="it13" readOnly="true">
+                    <f:validator binding="#{row.bindings.TotalRate.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.BookingDetail_VO2.hints.TotalRate.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.BookingDetail_VO2.hints.UnitAvlStatus.name}"
+                           sortable="false"
+                           headerText="#{bindings.BookingDetail_VO2.hints.UnitAvlStatus.label}"
+                           id="c31" rendered="false">
+                  <af:selectOneChoice value="#{row.bindings.UnitAvlStatus.inputValue}"
+                                      label="#{row.bindings.UnitAvlStatus.label}"
+                                      required="#{bindings.BookingDetail_VO2.hints.UnitAvlStatus.mandatory}"
+                                      shortDesc="#{bindings.BookingDetail_VO2.hints.UnitAvlStatus.tooltip}"
+                                      id="soc13" readOnly="true">
+                    <f:selectItems value="#{row.bindings.UnitAvlStatus.items}"
+                                   id="si12"/>
+                  </af:selectOneChoice>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+          <af:spacer width="10" height="10"
+                     binding="#{backingBeanScope.backing_AddEditExtCan.s3}"
+                     id="s3"/>
+          <af:panelBox text="Booking  Payments"
+                       binding="#{backingBeanScope.backing_AddEditExtCan.pb2}"
+                       id="pb2">
+            <f:facet name="toolbar"/>
+            <af:panelCollection binding="#{backingBeanScope.backing_AddEditExtCan.pc1}"
+                                id="pc1" styleClass="AFStretchWidth">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.Booking_Milestone_VO1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.Booking_Milestone_VO1.rangeSize}"
+                        emptyText="#{bindings.Booking_Milestone_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.Booking_Milestone_VO1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.Booking_Milestone_VO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.Booking_Milestone_VO1.collectionModel.makeCurrent}"
+                        rowSelection="single"
+                        binding="#{backingBeanScope.backing_AddEditExtCan.t1}"
+                        id="t1" partialTriggers=":::soc2" varStatus="vs">
+                <af:column id="c15" headerText="S.No" align="center" width="80">
+                  <af:outputText value="#{vs.index+1}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.SeqNumber.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO1.hints.SeqNumber.label}"
+                           id="c2" rendered="false">
+                  <af:inputText value="#{row.bindings.SeqNumber.inputValue}"
+                                label="#{bindings.Booking_Milestone_VO1.hints.SeqNumber.label}"
+                                required="#{bindings.Booking_Milestone_VO1.hints.SeqNumber.mandatory}"
+                                columns="#{bindings.Booking_Milestone_VO1.hints.SeqNumber.displayWidth}"
+                                maximumLength="#{bindings.Booking_Milestone_VO1.hints.SeqNumber.precision}"
+                                shortDesc="#{bindings.Booking_Milestone_VO1.hints.SeqNumber.tooltip}"
+                                id="it11" readOnly="true">
+                    <f:validator binding="#{row.bindings.SeqNumber.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.InstallmentType.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO1.hints.InstallmentType.label}"
+                           id="c8" width="150">
+                  <af:selectOneChoice value="#{row.bindings.InstallmentType.inputValue}"
+                                      label="#{row.bindings.InstallmentType.label}"
+                                      required="#{bindings.Booking_Milestone_VO1.hints.InstallmentType.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO1.hints.InstallmentType.tooltip}"
+                                      id="soc5" readOnly="true">
+                    <f:selectItems value="#{row.bindings.InstallmentType.items}"
+                                   id="si4"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.InstallmentPct.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO1.hints.InstallmentPct.label}"
+                           id="c4">
+                  <af:inputText value="#{row.bindings.InstallmentPct.inputValue}"
+                                label="#{bindings.Booking_Milestone_VO1.hints.InstallmentPct.label}"
+                                required="#{bindings.Booking_Milestone_VO1.hints.InstallmentPct.mandatory}"
+                                columns="#{bindings.Booking_Milestone_VO1.hints.InstallmentPct.displayWidth}"
+                                maximumLength="#{bindings.Booking_Milestone_VO1.hints.InstallmentPct.precision}"
+                                shortDesc="#{bindings.Booking_Milestone_VO1.hints.InstallmentPct.tooltip}"
+                                id="it8" readOnly="true">
+                    <f:validator binding="#{row.bindings.InstallmentPct.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.InstallmentAmount.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO1.hints.InstallmentAmount.label}"
+                           id="c9" width="120">
+                  <af:inputText value="#{row.bindings.InstallmentAmount.inputValue}"
+                                label="#{bindings.Booking_Milestone_VO1.hints.InstallmentAmount.label}"
+                                required="#{bindings.Booking_Milestone_VO1.hints.InstallmentAmount.mandatory}"
+                                columns="#{bindings.Booking_Milestone_VO1.hints.InstallmentAmount.displayWidth}"
+                                maximumLength="#{bindings.Booking_Milestone_VO1.hints.InstallmentAmount.precision}"
+                                shortDesc="#{bindings.Booking_Milestone_VO1.hints.InstallmentAmount.tooltip}"
+                                id="it10" readOnly="true">
+                    <f:validator binding="#{row.bindings.InstallmentAmount.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.Criteria.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO1.hints.Criteria.label}"
+                           id="c6">
+                  <af:selectOneChoice value="#{row.bindings.Criteria.inputValue}"
+                                      label="#{row.bindings.Criteria.label}"
+                                      required="#{bindings.Booking_Milestone_VO1.hints.Criteria.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO1.hints.Criteria.tooltip}"
+                                      id="soc6" readOnly="true">
+                    <f:selectItems value="#{row.bindings.Criteria.items}"
+                                   id="si5"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.ChargeType.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO1.hints.ChargeType.label}"
+                           id="c7" width="150">
+                  <af:selectOneChoice value="#{row.bindings.ChargeType.inputValue}"
+                                      label="#{row.bindings.ChargeType.label}"
+                                      required="#{bindings.Booking_Milestone_VO1.hints.ChargeType.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO1.hints.ChargeType.tooltip}"
+                                      id="soc7" readOnly="true">
+                    <f:selectItems value="#{row.bindings.ChargeType.items}"
+                                   id="si7"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.PaymentTerm.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO1.hints.PaymentTerm.label}"
+                           id="c3" width="120">
+                  <af:selectOneChoice value="#{row.bindings.PaymentTerm.inputValue}"
+                                      label="#{row.bindings.PaymentTerm.label}"
+                                      required="#{bindings.Booking_Milestone_VO1.hints.PaymentTerm.mandatory}"
+                                      shortDesc="#{bindings.Booking_Milestone_VO1.hints.PaymentTerm.tooltip}"
+                                      id="soc4" readOnly="true">
+                    <f:selectItems value="#{row.bindings.PaymentTerm.items}"
+                                   id="si6"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.DueDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO1.hints.DueDate.label}"
+                           id="c1">
+                  <af:inputDate value="#{row.bindings.DueDate.inputValue}"
+                                label="#{bindings.Booking_Milestone_VO1.hints.DueDate.label}"
+                                required="#{bindings.Booking_Milestone_VO1.hints.DueDate.mandatory}"
+                                shortDesc="#{bindings.Booking_Milestone_VO1.hints.DueDate.tooltip}"
+                                id="id3" readOnly="true">
+                    <f:validator binding="#{row.bindings.DueDate.validator}"/>
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="#{bindings.Booking_Milestone_VO1.hints.Remarks.name}"
+                           sortable="false"
+                           headerText="#{bindings.Booking_Milestone_VO1.hints.Remarks.label}"
+                           id="c5" width="220">
+                  <af:inputText value="#{row.bindings.Remarks.inputValue}"
+                                label="#{bindings.Booking_Milestone_VO1.hints.Remarks.label}"
+                                required="#{bindings.Booking_Milestone_VO1.hints.Remarks.mandatory}"
+                                columns="#{bindings.Booking_Milestone_VO1.hints.Remarks.displayWidth}"
+                                maximumLength="#{bindings.Booking_Milestone_VO1.hints.Remarks.precision}"
+                                shortDesc="#{bindings.Booking_Milestone_VO1.hints.Remarks.tooltip}"
+                                id="it9" readOnly="true">
+                    <f:validator binding="#{row.bindings.Remarks.validator}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_AddEditExtCan-->
+</jsp:root>

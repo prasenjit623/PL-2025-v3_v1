@@ -1,0 +1,546 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+    <af:panelStretchLayout id="psl1"
+                             styleClass="page-container AFStretchWidth"
+                           inlineStyle="border-color:transparent; height:2200.0px;">
+        <f:facet name="center">
+          <af:panelGroupLayout id="pgl4">
+            <af:panelGroupLayout id="pgl2" layout="horizontal" rendered="false">
+              <af:spacer width="10" height="10" id="s4"/>
+              <af:spacer width="780" height="10" id="s2"/>
+              <af:panelGroupLayout id="panelGroupLayout1" layout="vertical">
+                <af:spacer width="10" height="10" id="spacer1"/>
+                <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"/>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGridLayout id="pgl1">
+              <af:gridRow marginTop="5px" height="auto" id="gr2">
+                <af:gridCell marginStart="5px" width="30%" id="gc4"
+                             halign="start" valign="middle">
+                  <af:outputText id="ot1"
+                                 inlineStyle="font-size:large; font-weight:bold;"
+                                 value="Manage Land Lord Master"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                             id="gc1" halign="end">
+                  <af:panelGroupLayout id="pgl3" layout="horizontal"
+                                       styleClass="AFStretchWidth">
+                    <af:commandButton text="Save" id="cb1" partialSubmit="true"
+                                      immediate="true"
+                                      actionListener="#{backingBeanScope.LandLordMasterMb.doSave}"
+                                      inlineStyle="margin-right:10.0px;"
+                                      visible="#{sessionScope.UR =='SUPER_USER' or sessionScope.UR =='ROLE_ADMIN'}">
+                      <!--<af:setPropertyListener from="#{sessionScope.userName}"
+                                              to="#{bindings.LastUpdatedBy.inputValue}"
+                                              type="action"/>-->
+                    </af:commandButton>
+                      <af:commandButton text="Cancel" id="cb2" immediate="true"
+                                      action="cancel"
+                                      inlineStyle="margin-right:10.0px;"
+                                      actionListener="#{backingBeanScope.LandLordMasterMb.doCancel}">
+                    </af:commandButton>
+                  </af:panelGroupLayout>
+                </af:gridCell>
+              </af:gridRow>
+            </af:panelGridLayout>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:separator id="s6" inlineStyle="border-color:#C1C1C1;"
+                          rendered="false"/>
+            <af:panelBox text="Land Lord Information" id="pb2" showDisclosure="false">
+              <f:facet name="toolbar"/>
+                <af:panelFormLayout id="pfl1" rows="2" maxColumns="2">
+                  <af:inputText value="#{bindings.LandlordTnxId.inputValue}"
+                                label="Land lord Tnx ID"
+                                required="#{bindings.LandlordTnxId.hints.mandatory}"
+                                columns="#{bindings.LandlordTnxId.hints.displayWidth}"
+                                maximumLength="#{bindings.LandlordTnxId.hints.precision}"
+                                shortDesc="#{bindings.LandlordTnxId.hints.tooltip}"
+                                id="it3" readOnly="true"
+                                contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;">
+                    <f:validator binding="#{bindings.LandlordTnxId.validator}"/>
+                  </af:inputText>
+                  <af:selectOneChoice value="#{bindings.VendorId.inputValue}"
+                                      label="#{bindings.VendorId.label}"
+                                      required="#{bindings.VendorId.hints.mandatory}"
+                                      shortDesc="#{bindings.VendorId.hints.tooltip}"
+                                      id="soc1" rendered="false">
+                    <f:selectItems value="#{bindings.VendorId.items}" id="si1"/>
+                  </af:selectOneChoice>
+                  <af:inputListOfValues id="vendorNameId"
+                                        popupTitle="Search and Select: #{bindings.VendorName.hints.label}"
+                                        value="#{bindings.VendorName.inputValue}"
+                                        label="#{bindings.VendorName.hints.label}"
+                                        model="#{bindings.VendorName.listOfValuesModel}"
+                                        columns="#{bindings.VendorName.hints.displayWidth}"
+                                        shortDesc="#{bindings.VendorName.hints.tooltip}"
+                                        contentStyle="width:200px;"
+                                        required="true">
+                    <f:validator binding="#{bindings.VendorName.validator}"/>
+                  </af:inputListOfValues>
+                  <af:inputText value="#{bindings.CreatedBy.inputValue}"
+                                label="#{bindings.CreatedBy.hints.label}"
+                                required="#{bindings.CreatedBy.hints.mandatory}"
+                                columns="#{bindings.CreatedBy.hints.displayWidth}"
+                                maximumLength="#{bindings.CreatedBy.hints.precision}"
+                                shortDesc="#{bindings.CreatedBy.hints.tooltip}"
+                                id="it1" rendered="false">
+                    <f:validator binding="#{bindings.CreatedBy.validator}"/>
+                  </af:inputText>
+                  <af:inputDate value="#{bindings.CreationDate.inputValue}"
+                                label="#{bindings.CreationDate.hints.label}"
+                                required="#{bindings.CreationDate.hints.mandatory}"
+                                shortDesc="#{bindings.CreationDate.hints.tooltip}"
+                                id="id2" rendered="false">
+                    <f:validator binding="#{bindings.CreationDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.CreationDate.format}"/>
+                  </af:inputDate>
+                  <af:inputDate value="#{bindings.LastUpdateDate.inputValue}"
+                                label="#{bindings.LastUpdateDate.hints.label}"
+                                required="#{bindings.LastUpdateDate.hints.mandatory}"
+                                shortDesc="#{bindings.LastUpdateDate.hints.tooltip}"
+                                id="id1" rendered="false">
+                    <f:validator binding="#{bindings.LastUpdateDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.LastUpdateDate.format}"/>
+                  </af:inputDate>
+                  <af:inputText value="#{bindings.LastUpdatedBy.inputValue}"
+                                label="#{bindings.LastUpdatedBy.hints.label}"
+                                required="#{bindings.LastUpdatedBy.hints.mandatory}"
+                                columns="#{bindings.LastUpdatedBy.hints.displayWidth}"
+                                maximumLength="#{bindings.LastUpdatedBy.hints.precision}"
+                                shortDesc="#{bindings.LastUpdatedBy.hints.tooltip}"
+                                id="it2" rendered="false">
+                    <f:validator binding="#{bindings.LastUpdatedBy.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.PrimaryYn.inputValue}"
+                                label="#{bindings.PrimaryYn.hints.label}"
+                                required="#{bindings.PrimaryYn.hints.mandatory}"
+                                columns="#{bindings.PrimaryYn.hints.displayWidth}"
+                                maximumLength="#{bindings.PrimaryYn.hints.precision}"
+                                shortDesc="#{bindings.PrimaryYn.hints.tooltip}"
+                                id="it4" rendered="false">
+                    <f:validator binding="#{bindings.PrimaryYn.validator}"/>
+                  </af:inputText>
+                  <af:selectOneChoice value="#{bindings.OrgId.inputValue}"
+                                      label="#{bindings.OrgId.label}"
+                                      shortDesc="#{bindings.OrgId.hints.tooltip}"
+                                      id="soc6" autoSubmit="true"
+                                      contentStyle="width:200px;"
+                                      required="true">
+                    <f:selectItems value="#{bindings.OrgId.items}" id="si6"/>
+                  </af:selectOneChoice>
+                  <af:panelGroupLayout id="pgl5" layout="horizontal">
+                  <af:selectOneChoice value="#{bindings.PropertyManagement.inputValue}"
+                                      label="#{bindings.PropertyManagement.label}"
+                                      shortDesc="#{bindings.PropertyManagement.hints.tooltip}"
+                                      id="soc7" required="true"
+                                      contentStyle="width:200px;"
+                                      autoSubmit="true">
+                    <f:selectItems value="#{bindings.PropertyManagement.items}"
+                                   id="si7"/>
+                  </af:selectOneChoice>
+                    <af:commandImageLink 
+                                         id="cil5"
+                                         icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         disabledIcon="/images/func_add_16_dis.png"
+                                         depressedIcon="/images/func_add_16_act.png">
+                      <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                    </af:commandImageLink>                 
+                  </af:panelGroupLayout>
+    <af:popup id="p1" binding="#{backingBeanScope.LandLordMasterMb.p1}">
+        <af:dialog id="d3" title="Create Property Management">
+        <af:panelBox text="Search Result" id="pb19">
+            <f:facet name="toolbar"/>
+            <af:panelCollection  id="pc29" styleClass="AFStretchWidth" featuresOff="detach">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar  id="t19" flex="1">
+                     <af:commandImageLink actionListener="#{bindings.CreateInsert2.execute}"
+                                          id="cil6"
+                                          icon="/images/func_add_16_ena.png"
+                                          disabledIcon="/images/func_add_16_dis.png"
+                                          hoverIcon="/images/func_add_16_hov.png"
+                                          depressedIcon="/images/func_add_16_act.png"/>
+                  <af:spacer width="10" height="10" id="s90"/>
+                     <af:commandButton text="Save" id="cb3"
+                                       actionListener="#{backingBeanScope.LandLordMasterMb.doSaveProprtyMangmt}"/>
+                    <af:commandButton text="Cancel" id="cb4"
+                                      actionListener="#{backingBeanScope.LandLordMasterMb.doCancelProprtyMngmnt}"/>
+                 </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.PropertyManagement_VO1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.PropertyManagement_VO1.rangeSize}"
+                                emptyText="#{bindings.PropertyManagement_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="4"
+                                rowBandingInterval="0" varStatus="vs"
+                                selectedRowKeys="#{bindings.PropertyManagement_VO1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.PropertyManagement_VO1.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t4" columnStretching="column:c20"
+                                scrollPolicy="page" autoHeightRows="0" inlineStyle="width:inherit;">
+                            <af:column id="c21" headerText="Sl No" align="center" width="80">
+                              <af:outputText value="#{vs.index+1}" id="ot4"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.PropertyManagement_VO1.hints.PropertyManagementId.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.PropertyManagement_VO1.hints.PropertyManagementId.label}"
+                                   id="c19" visible="false">
+                          <af:inputText value="#{row.bindings.PropertyManagementId.inputValue}"
+                                        label="#{bindings.PropertyManagement_VO1.hints.PropertyManagementId.label}"
+                                        required="#{bindings.PropertyManagement_VO1.hints.PropertyManagementId.mandatory}"
+                                        columns="#{bindings.PropertyManagement_VO1.hints.PropertyManagementId.displayWidth}"
+                                        maximumLength="#{bindings.PropertyManagement_VO1.hints.PropertyManagementId.precision}"
+                                        shortDesc="#{bindings.PropertyManagement_VO1.hints.PropertyManagementId.tooltip}"
+                                        id="it15">
+                            <f:validator binding="#{row.bindings.PropertyManagementId.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.PropertyManagement_VO1.hints.PropertyManagement.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.PropertyManagement_VO1.hints.PropertyManagement.label}"
+                                   id="c20">
+                          <af:inputText value="#{row.bindings.PropertyManagement.inputValue}"
+                                        label="#{bindings.PropertyManagement_VO1.hints.PropertyManagement.label}"
+                                        required="#{bindings.PropertyManagement_VO1.hints.PropertyManagement.mandatory}"
+                                        columns="#{bindings.PropertyManagement_VO1.hints.PropertyManagement.displayWidth}"
+                                        maximumLength="#{bindings.PropertyManagement_VO1.hints.PropertyManagement.precision}"
+                                        shortDesc="#{bindings.PropertyManagement_VO1.hints.PropertyManagement.tooltip}"
+                                        id="it16">
+                            <f:validator binding="#{row.bindings.PropertyManagement.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                      </af:table>
+                   </af:panelCollection>
+                   </af:panelBox>
+                    </af:dialog>
+                  </af:popup>                
+                  </af:panelFormLayout>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s7"/>
+            <af:separator id="s23" rendered="false"/>
+            <af:panelBox text="Associated Unit Details" id="pb1" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="detach">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t2" flex="1">
+                    <af:commandImageLink actionListener="#{backingBeanScope.LandLordMasterMb.doCreateUnitDtlsLine}"
+                                         id="cil4"
+                                         icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         disabledIcon="/images/func_add_16_dis.png"
+                                         depressedIcon="/images/func_add_16_act.png"
+                                         visible="#{sessionScope.UR =='SUPER_USER' or sessionScope.UR =='ROLE_ADMIN'}"
+                                         partialTriggers="::soc6"
+                                         disabled="#{bindings.OrgId.inputValue eq null}"/>                   
+                    <af:spacer width="10" height="10" id="s9"/>
+                    <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                         id="cil1"
+                                         icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         partialSubmit="true"
+                                         disabledIcon="/images/func_remove_16_dis.png"
+                                         depressedIcon="/images/func_remove_16_act.png"
+                                         visible="#{sessionScope.UR =='SUPER_USER' or sessionScope.UR =='ROLE_ADMIN'}"/>
+                    <af:spacer width="10" height="10" id="s1"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.LandLordUnitDtls_VO1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.LandLordUnitDtls_VO1.rangeSize}"
+                          emptyText="#{bindings.LandLordUnitDtls_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="6"
+                          rowBandingInterval="0" varStatus="vs" columnStretching="column:c4"
+                          selectedRowKeys="#{bindings.LandLordUnitDtls_VO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.LandLordUnitDtls_VO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1" autoHeightRows="0"
+                          scrollPolicy="page" partialTriggers="::cil1">
+                  <af:column id="c7" headerText="Sl No" align="center" width="60">
+                    <af:outputText value="#{vs.index+1}" id="ot2"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxDtlId.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxDtlId.label}"
+                             id="c5" rendered="false">
+                    <af:inputText value="#{row.bindings.LandlordTnxDtlId.inputValue}"
+                                  label="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxDtlId.label}"
+                                  required="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxDtlId.mandatory}"
+                                  columns="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxDtlId.displayWidth}"
+                                  maximumLength="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxDtlId.precision}"
+                                  shortDesc="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxDtlId.tooltip}"
+                                  id="it5">
+                      <f:validator binding="#{row.bindings.LandlordTnxDtlId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxId.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxId.label}"
+                             id="c6" rendered="false">
+                    <af:inputText value="#{row.bindings.LandlordTnxId.inputValue}"
+                                  label="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxId.label}"
+                                  required="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxId.mandatory}"
+                                  columns="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxId.displayWidth}"
+                                  maximumLength="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxId.precision}"
+                                  shortDesc="#{bindings.LandLordUnitDtls_VO1.hints.LandlordTnxId.tooltip}"
+                                  id="it7">
+                      <f:validator binding="#{row.bindings.LandlordTnxId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordUnitDtls_VO1.hints.PropertyId.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordUnitDtls_VO1.hints.PropertyId.label}"
+                             id="c3" width="230" align="center">
+                    <af:selectOneChoice value="#{row.bindings.PropertyId.inputValue}"
+                                        label="#{row.bindings.PropertyId.label}"
+                                        required="#{bindings.LandLordUnitDtls_VO1.hints.PropertyId.mandatory}"
+                                        shortDesc="#{bindings.LandLordUnitDtls_VO1.hints.PropertyId.tooltip}"
+                                        id="soc3" autoSubmit="true"
+                                        partialTriggers="unitName_TransId">
+                      <f:selectItems value="#{row.bindings.PropertyId.items}"
+                                     id="si2"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordUnitDtls_VO1.hints.BuildId.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordUnitDtls_VO1.hints.BuildId.label}"
+                             id="c2" width="230" align="center">
+                    <af:selectOneChoice value="#{row.bindings.BuildId.inputValue}"
+                                        label="#{row.bindings.BuildId.label}"
+                                        required="#{bindings.LandLordUnitDtls_VO1.hints.BuildId.mandatory}"
+                                        shortDesc="#{bindings.LandLordUnitDtls_VO1.hints.BuildId.tooltip}"
+                                        id="soc2" autoSubmit="true"
+                                        partialTriggers="soc3">
+                      <f:selectItems value="#{row.bindings.BuildId.items}"
+                                     id="si3"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordUnitDtls_VO1.hints.UnitName_Trans.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordUnitDtls_VO1.hints.UnitName_Trans.label}"
+                             id="c4" align="center">
+                    <af:inputListOfValues id="unitName_TransId"
+                                          popupTitle="Search and Select: #{bindings.LandLordUnitDtls_VO1.hints.UnitName_Trans.label}"
+                                          value="#{row.bindings.UnitName_Trans.inputValue}"
+                                          model="#{row.bindings.UnitName_Trans.listOfValuesModel}"
+                                          required="#{bindings.LandLordUnitDtls_VO1.hints.UnitName_Trans.mandatory}"
+                                          columns="#{bindings.LandLordUnitDtls_VO1.hints.UnitName_Trans.displayWidth}"
+                                          shortDesc="#{bindings.LandLordUnitDtls_VO1.hints.UnitName_Trans.tooltip}"
+                                          autoSubmit="true" partialTriggers="soc3">
+                      <f:validator binding="#{row.bindings.UnitName_Trans.validator}"/>
+                    </af:inputListOfValues>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordUnitDtls_VO1.hints.PrimaryYn.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordUnitDtls_VO1.hints.PrimaryYn.label}"
+                             id="c1" visible="false">
+                    <af:inputText value="#{row.bindings.PrimaryYn.inputValue}"
+                                  label="#{bindings.LandLordUnitDtls_VO1.hints.PrimaryYn.label}"
+                                  required="#{bindings.LandLordUnitDtls_VO1.hints.PrimaryYn.mandatory}"
+                                  columns="#{bindings.LandLordUnitDtls_VO1.hints.PrimaryYn.displayWidth}"
+                                  maximumLength="#{bindings.LandLordUnitDtls_VO1.hints.PrimaryYn.precision}"
+                                  shortDesc="#{bindings.LandLordUnitDtls_VO1.hints.PrimaryYn.tooltip}"
+                                  id="it6">
+                      <f:validator binding="#{row.bindings.PrimaryYn.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s10"/>
+            <af:panelBox text="Approval Flow Screen Wise" id="pb44" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc22" styleClass="AFStretchWidth" featuresOff="detach">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t55" flex="1">
+                    <af:commandImageLink actionListener="#{backingBeanScope.LandLordMasterMb.doCreateLandLrdApprvlFlwLine}"
+                                         id="cil2"
+                                         icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png"
+                                         disabledIcon="/images/func_add_16_dis.png"
+                                         depressedIcon="/images/func_add_16_act.png"
+                                         visible="#{sessionScope.UR =='SUPER_USER' or sessionScope.UR =='ROLE_ADMIN'}"/>
+                    <af:spacer width="10" height="10" id="s3"/>
+                    <af:commandImageLink actionListener="#{bindings.Delete1.execute}"
+                                         id="cil3"
+                                         icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         partialSubmit="true"
+                                         disabledIcon="/images/func_remove_16_dis.png"
+                                         depressedIcon="/images/func_remove_16_act.png"
+                                         visible="#{sessionScope.UR =='SUPER_USER' or sessionScope.UR =='ROLE_ADMIN'}"/>
+                </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.LandLordAprvlFlow_VO1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.LandLordAprvlFlow_VO1.rangeSize}"
+                          emptyText="#{bindings.LandLordAprvlFlow_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="6"
+                          rowBandingInterval="0" varStatus="vs" columnStretching="column:c13"
+                          selectedRowKeys="#{bindings.LandLordAprvlFlow_VO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.LandLordAprvlFlow_VO1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t3" scrollPolicy="page"
+                          autoHeightRows="0">
+                  <af:column id="c18" headerText="Sl No" width="60" align="center">
+                    <af:outputText value="#{vs.index+1}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordAprvlFlowId.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordAprvlFlowId.label}"
+                             id="c14" rendered="false">
+                    <af:inputText value="#{row.bindings.LandlordAprvlFlowId.inputValue}"
+                                  label="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordAprvlFlowId.label}"
+                                  required="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordAprvlFlowId.mandatory}"
+                                  columns="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordAprvlFlowId.displayWidth}"
+                                  maximumLength="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordAprvlFlowId.precision}"
+                                  shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordAprvlFlowId.tooltip}"
+                                  id="it8">
+                      <f:validator binding="#{row.bindings.LandlordAprvlFlowId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordTnxId.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordTnxId.label}"
+                             id="c11" rendered="false">
+                    <af:inputText value="#{row.bindings.LandlordTnxId.inputValue}"
+                                  label="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordTnxId.label}"
+                                  required="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordTnxId.mandatory}"
+                                  columns="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordTnxId.displayWidth}"
+                                  maximumLength="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordTnxId.precision}"
+                                  shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.LandlordTnxId.tooltip}"
+                                  id="it9">
+                      <f:validator binding="#{row.bindings.LandlordTnxId.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.Seq.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.Seq.label}"
+                             id="c8" align="center">
+                    <af:inputText value="#{row.bindings.Seq.inputValue}"
+                                  label="#{bindings.LandLordAprvlFlow_VO1.hints.Seq.label}"
+                                  required="#{bindings.LandLordAprvlFlow_VO1.hints.Seq.mandatory}"
+                                  columns="#{bindings.LandLordAprvlFlow_VO1.hints.Seq.displayWidth}"
+                                  maximumLength="#{bindings.LandLordAprvlFlow_VO1.hints.Seq.precision}"
+                                  shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.Seq.tooltip}"
+                                  id="it12" autoSubmit="true">
+                      <f:validator binding="#{row.bindings.Seq.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.Code.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.Code.label}"
+                             id="c12" align="center" width="250">
+                    <af:selectOneChoice value="#{row.bindings.Code.inputValue}"
+                                        label="#{row.bindings.Code.label}"
+                                        required="#{bindings.LandLordAprvlFlow_VO1.hints.Code.mandatory}"
+                                        shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.Code.tooltip}"
+                                        id="soc5" autoSubmit="true">
+                      <f:selectItems value="#{row.bindings.Code.items}"
+                                     id="si4"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.Screen.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.Screen.label}"
+                             id="c10" visible="false">
+                    <af:inputText value="#{row.bindings.Screen.inputValue}"
+                                  label="#{bindings.LandLordAprvlFlow_VO1.hints.Screen.label}"
+                                  required="#{bindings.LandLordAprvlFlow_VO1.hints.Screen.mandatory}"
+                                  columns="#{bindings.LandLordAprvlFlow_VO1.hints.Screen.displayWidth}"
+                                  maximumLength="#{bindings.LandLordAprvlFlow_VO1.hints.Screen.precision}"
+                                  shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.Screen.tooltip}"
+                                  id="it11" partialTriggers="soc5">
+                      <f:validator binding="#{row.bindings.Screen.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.UserLevel.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.UserLevel.label}"
+                             id="c16" align="center" width="250">
+                    <af:inputText value="#{row.bindings.UserLevel.inputValue}"
+                                  label="#{bindings.LandLordAprvlFlow_VO1.hints.UserLevel.label}"
+                                  required="#{bindings.LandLordAprvlFlow_VO1.hints.UserLevel.mandatory}"
+                                  columns="#{bindings.LandLordAprvlFlow_VO1.hints.UserLevel.displayWidth}"
+                                  maximumLength="#{bindings.LandLordAprvlFlow_VO1.hints.UserLevel.precision}"
+                                  shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.UserLevel.tooltip}"
+                                  id="it13" autoSubmit="true">
+                      <f:validator binding="#{row.bindings.UserLevel.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.UserId.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.UserId.label}"
+                             id="c13" align="center">
+                    <af:selectOneChoice value="#{row.bindings.UserId.inputValue}"
+                                        label="#{row.bindings.UserId.label}"
+                                        required="#{bindings.LandLordAprvlFlow_VO1.hints.UserId.mandatory}"
+                                        shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.UserId.tooltip}"
+                                        id="soc4" autoSubmit="true">
+                      <f:selectItems value="#{row.bindings.UserId.items}"
+                                     id="si5"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column id="c22" headerText="Change All Pending Approver"
+                             visible="#{sessionScope.userId == '15'}">
+                    <af:commandButton text="Change" id="cb5"
+                                      actionListener="#{backingBeanScope.LandLordMasterMb.doChangeAllPendingApprover}"
+                                      partialSubmit="true"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdateDate.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdateDate.label}"
+                             id="c9" visible="false">
+                    <af:inputDate value="#{row.bindings.LastUpdateDate.inputValue}"
+                                  label="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdateDate.label}"
+                                  required="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdateDate.mandatory}"
+                                  shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdateDate.tooltip}"
+                                  id="id3">
+                      <f:validator binding="#{row.bindings.LastUpdateDate.validator}"/>
+                      <af:convertDateTime pattern="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdateDate.format}"/>
+                    </af:inputDate>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdatedBy.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdatedBy.label}"
+                             id="c15" visible="false">
+                    <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                                  label="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdatedBy.label}"
+                                  required="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdatedBy.mandatory}"
+                                  columns="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdatedBy.displayWidth}"
+                                  maximumLength="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdatedBy.precision}"
+                                  shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.LastUpdatedBy.tooltip}"
+                                  id="it14">
+                      <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.LandLordAprvlFlow_VO1.hints.PrimaryYn.name}"
+                             sortable="false"
+                             headerText="#{bindings.LandLordAprvlFlow_VO1.hints.PrimaryYn.label}"
+                             id="c17" visible="false">
+                    <af:inputText value="#{row.bindings.PrimaryYn.inputValue}"
+                                  label="#{bindings.LandLordAprvlFlow_VO1.hints.PrimaryYn.label}"
+                                  required="#{bindings.LandLordAprvlFlow_VO1.hints.PrimaryYn.mandatory}"
+                                  columns="#{bindings.LandLordAprvlFlow_VO1.hints.PrimaryYn.displayWidth}"
+                                  maximumLength="#{bindings.LandLordAprvlFlow_VO1.hints.PrimaryYn.precision}"
+                                  shortDesc="#{bindings.LandLordAprvlFlow_VO1.hints.PrimaryYn.tooltip}"
+                                  id="it10">
+                      <f:validator binding="#{row.bindings.PrimaryYn.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

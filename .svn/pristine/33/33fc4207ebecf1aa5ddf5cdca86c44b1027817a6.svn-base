@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Attachments_AM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.AM.Attachments_AMImpl"
+  DefClass="model.AM.Attachments_AMDefImpl"
+  ComponentInterface="model.AM.common.Attachments_AM"
+  ClientProxyName="model.AM.client.Attachments_AMClient"
+  LoadComponentsLazily="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.AM.Attachments_AM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="FuncAttachment_VO1"
+    ViewObjectName="model.VO.FuncAttachment_VO">
+    <ViewCriteriaUsage
+      Name="filterattachments"
+      FullName="model.VO.FuncAttachment_VO.filterattachments"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="CheckListResponse_ROVO1"
+    ViewObjectName="model.ROVO.CheckListResponse_ROVO"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="refreshattachments">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="funcid"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="funcrefid"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

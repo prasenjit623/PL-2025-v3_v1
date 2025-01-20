@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="searchPropertyPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchProperty_ROVO1" RangeSize="25"
+              DataControl="PropertyMaster_AMDataControl"
+              id="SearchProperty_ROVO1Iterator"/>
+    <searchRegion Criteria="SearchProperty"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchProperty_ROVO1Iterator"
+                  id="SearchPropertyQuery"/>
+    <iterator Binds="PropertyMaster_VO1" RangeSize="25"
+              DataControl="PropertyMaster_AMDataControl"
+              id="PropertyMaster_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchProperty_ROVO1Iterator" id="SearchProperty_ROVO1">
+      <nodeDefinition DefName="model.ROVO.SearchProperty_ROVO"
+                      Name="SearchProperty_ROVO10">
+        <AttrNames>
+          <Item Value="PropertyName"/>
+          <Item Value="PropertyNumber"/>
+          <Item Value="OrgId"/>
+          <Item Value="PropertyShortcode"/>
+          <Item Value="LocationId"/>
+          <Item Value="NoOfUnits"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchProperty_ROVO1Iterator" id="PropertyId">
+      <AttrNames>
+        <Item Value="PropertyId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PropertyMaster_VO1Iterator" StaticList="false"
+          Uses="LOV_PropertyType" id="PropertyType" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

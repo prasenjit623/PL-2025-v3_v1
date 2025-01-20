@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RecommendHeader_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  OrderBy="RECOMMEND_ID desc"
+  RowClass="model.VO.RecommendHeader_VORowImpl"
+  ComponentClass="model.VO.RecommendHeader_VOImpl">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VO.RecommendHeader_VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_recomId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="BookingHdrRecomm_ROVO1"
+    ViewObjectName="model.ROVO.BookingHdrRecomm_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="FindByApr"
+      FullName="model.ROVO.BookingHdrRecomm_ROVO.FindByApr"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByTransStatus"
+      FullName="model.ROVO.Lookup_View_ROVO.findByTransStatus"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="BookingHdrRecomm_ROVO2"
+    ViewObjectName="model.ROVO.BookingHdrRecomm_ROVO">
+    <ViewCriteriaUsage
+      Name="BookingHdrRecomm_ROVOCriteria"
+      FullName="model.ROVO.BookingHdrRecomm_ROVO.BookingHdrRecomm_ROVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="B_ID">
+        <TransientExpression><![CDATA[BookingId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="RecommendHeader_VO1"
+    ViewObjectName="model.VO.RecommendHeader_VO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Receipt_VO1"
+    ViewObjectName="model.VO.Receipt_VO">
+    <ViewCriteriaUsage
+      Name="FindByRefId"
+      FullName="model.VO.Receipt_VO.FindByRefId"/>
+    <ViewCriteriaUsage
+      Name="fndNotCancellType"
+      FullName="model.VO.Receipt_VO.fndNotCancellType"/>
+    <ParameterMap>
+      <PIMap Variable="REFID">
+        <TransientExpression><![CDATA[BookingId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Booking_Milestone_VO1"
+    ViewObjectName="model.VO.Booking_Milestone_VO">
+    <ViewCriteriaUsage
+      Name="findByBookingIdforMilestoneDetails"
+      FullName="model.VO.Booking_Milestone_VO.findByBookingIdforMilestoneDetails"/>
+    <ParameterMap>
+      <PIMap Variable="BV_BookId">
+        <TransientExpression><![CDATA[BookingId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="findByMileStoneName1"
+    ViewObjectName="model.ROVO.findByMileStoneName">
+    <ViewCriteriaUsage
+      Name="findByOrgId"
+      FullName="model.ROVO.findByMileStoneName.findByOrgId"/>
+    <ParameterMap>
+      <PIMap Variable="BV_OrgId">
+        <TransientExpression><![CDATA[OrgId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_BookingId"
+    ListVOName="BookingHdrRecomm_ROVO2"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BookingId"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="BookingNoTrans"/>
+      <Item Value="MilestoneName_Trans"/>
+      <Item Value="BookingNo_Trans"/>
+      <Item Value="LeaseStartDate_Trans"/>
+      <Item Value="LeaseEndDate_Trans"/>
+      <Item Value="BookingAmount_trans"/>
+      <Item Value="InvoiceAmount_Trans"/>
+      <Item Value="Payment_amount_Trans"/>
+      <Item Value="Currency_Trans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BookingId"/>
+      <Item Value="BookingNumber"/>
+      <Item Value="MilestoneName"/>
+      <Item Value="TotalRent"/>
+      <Item Value="OfferFromDate"/>
+      <Item Value="OfferToDate"/>
+      <Item Value="BookingAmount"/>
+      <Item Value="TotalRent"/>
+      <Item Value="TotalRent"/>
+      <Item Value="Currency"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BookingNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_RecommendNumber1"
+    ListVOName="RecommendHeader_VO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="RecommendNumber1"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="RecommendNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RecommendNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BookingNoTrans"
+    ListVOName="BookingHdrRecomm_ROVO1"
+    ListRangeSize="4"
+    NullValueFlag="none"
+    NullValueId="LOV_BookingNoTrans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BookingNoTrans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="BookingId"/>
+      <Item Value="MilestoneName_Trans"/>
+      <Item Value="BookingNo_Trans"/>
+      <Item Value="LeaseStartDate_Trans"/>
+      <Item Value="LeaseEndDate_Trans"/>
+      <Item Value="BookingAmount_trans"/>
+      <Item Value="InvoiceAmount_Trans"/>
+      <Item Value="Payment_amount_Trans"/>
+      <Item Value="Currency_Trans"/>
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BookingNumber"/>
+      <Item Value="BookingId"/>
+      <Item Value="MilestoneName"/>
+      <Item Value="TotalRent"/>
+      <Item Value="OfferFromDate"/>
+      <Item Value="OfferToDate"/>
+      <Item Value="BookingAmount"/>
+      <Item Value="TotalRent"/>
+      <Item Value="TotalRent"/>
+      <Item Value="Currency"/>
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BookingNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="BookingNumberSearch"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PaymentPlan_Trans"
+    ListVOName="findByMileStoneName1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_PaymentPlan_Trans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PaymentPlan_Trans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="MsHdrId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="MilestoneName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT RecommendHeader_EO.ATTRIBUTE1, 
+       RecommendHeader_EO.ATTRIBUTE10, 
+       RecommendHeader_EO.ATTRIBUTE11, 
+       RecommendHeader_EO.ATTRIBUTE12, 
+       RecommendHeader_EO.ATTRIBUTE13, 
+       RecommendHeader_EO.ATTRIBUTE14, 
+       RecommendHeader_EO.ATTRIBUTE15, 
+       RecommendHeader_EO.ATTRIBUTE16, 
+       RecommendHeader_EO.ATTRIBUTE17, 
+       RecommendHeader_EO.ATTRIBUTE18, 
+       RecommendHeader_EO.ATTRIBUTE19, 
+       RecommendHeader_EO.ATTRIBUTE2, 
+       RecommendHeader_EO.ATTRIBUTE20, 
+       RecommendHeader_EO.ATTRIBUTE3, 
+       RecommendHeader_EO.ATTRIBUTE4, 
+       RecommendHeader_EO.ATTRIBUTE5, 
+       RecommendHeader_EO.ATTRIBUTE6, 
+       RecommendHeader_EO.ATTRIBUTE7, 
+       RecommendHeader_EO.ATTRIBUTE8, 
+       RecommendHeader_EO.ATTRIBUTE9, 
+       RecommendHeader_EO.ATTRIBUTE_CATEGORY, 
+       RecommendHeader_EO.BOOKING_ID,
+     (select CUST_NAME FROM XXPM_BOOKING_CUSTOMER BKC WHERE BKC.BOOKING_ID=RecommendHeader_EO.BOOKING_ID and ROWNUM=1) as CUST_NAME, 
+       RecommendHeader_EO.CREATED_BY, 
+       RecommendHeader_EO.CREATION_DATE, 
+       RecommendHeader_EO.DESCRIPTION, 
+       RecommendHeader_EO.FLOW_LEVEL, 
+       RecommendHeader_EO.FLOW_STATUS, 
+       RecommendHeader_EO.FLOW_WITH, 
+       RecommendHeader_EO.FUNC_ID, 
+       RecommendHeader_EO.LAST_UPDATE_DATE, 
+       RecommendHeader_EO.LAST_UPDATE_LOGIN, 
+       RecommendHeader_EO.LAST_UPDATED_BY, 
+       RecommendHeader_EO.RECOMMEND_ID, 
+       RecommendHeader_EO.RECOMMEND_NUMBER, 
+       RecommendHeader_EO.STATUS, 
+       RecommendHeader_EO.OBJECT_VERSION_NUMBER, 
+       RecommendHeader_EO.BUILDING_ID, 
+       RecommendHeader_EO.ORG_ID, 
+       RecommendHeader_EO.USER_GRP_ID, 
+       RecommendHeader_EO.PROPERTY_ID, 
+       RecommendHeader_EO.BUILDING_ID AS BUILDING_ID1, 
+       RecommendHeader_EO.RECOMMEND_NUMBER AS RECOMMEND_NUMBER1,
+       RecommendHeader_EO.REVISION_NO,                        
+       RecommendHeader_EO.RECOMMEND_DATE,
+       RecommendHeader_EO.RECEIPT_AMOUNT,
+       RecommendHeader_EO.TKT_RENEWAL_FLAG,
+       RecommendHeader_EO.TKT_RNWL_LA_FLAG,
+       RecommendHeader_EO.TKT_MOV_IN_FLAG,
+       RecommendHeader_EO.UNIT_INCHARGE,
+       RecommendHeader_EO.UNIT_OWNER                   
+ FROM XXPM_RECOMMEND_HEADER RecommendHeader_EO]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="RecommendHeader_EO"
+    Entity="model.EO.RecommendHeader_EO"/>
+  <ViewAttribute
+    Name="Attribute1"
+    PrecisionRule="true"
+    EntityAttrName="Attribute1"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE1"/>
+  <ViewAttribute
+    Name="Attribute10"
+    PrecisionRule="true"
+    EntityAttrName="Attribute10"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE10"/>
+  <ViewAttribute
+    Name="Attribute11"
+    PrecisionRule="true"
+    EntityAttrName="Attribute11"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE11"/>
+  <ViewAttribute
+    Name="Attribute12"
+    PrecisionRule="true"
+    EntityAttrName="Attribute12"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE12"/>
+  <ViewAttribute
+    Name="Attribute13"
+    PrecisionRule="true"
+    EntityAttrName="Attribute13"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE13"/>
+  <ViewAttribute
+    Name="Attribute14"
+    PrecisionRule="true"
+    EntityAttrName="Attribute14"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE14"/>
+  <ViewAttribute
+    Name="Attribute15"
+    PrecisionRule="true"
+    EntityAttrName="Attribute15"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE15"/>
+  <ViewAttribute
+    Name="Attribute16"
+    PrecisionRule="true"
+    EntityAttrName="Attribute16"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE16"/>
+  <ViewAttribute
+    Name="Attribute17"
+    PrecisionRule="true"
+    EntityAttrName="Attribute17"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE17"/>
+  <ViewAttribute
+    Name="Attribute18"
+    PrecisionRule="true"
+    EntityAttrName="Attribute18"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE18"/>
+  <ViewAttribute
+    Name="Attribute19"
+    PrecisionRule="true"
+    EntityAttrName="Attribute19"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE19"/>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE2"/>
+  <ViewAttribute
+    Name="Attribute20"
+    PrecisionRule="true"
+    EntityAttrName="Attribute20"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE20"/>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE3"/>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE4"/>
+  <ViewAttribute
+    Name="Attribute5"
+    PrecisionRule="true"
+    EntityAttrName="Attribute5"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE5"/>
+  <ViewAttribute
+    Name="Attribute6"
+    PrecisionRule="true"
+    EntityAttrName="Attribute6"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE6"/>
+  <ViewAttribute
+    Name="Attribute7"
+    PrecisionRule="true"
+    EntityAttrName="Attribute7"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE7"/>
+  <ViewAttribute
+    Name="Attribute8"
+    PrecisionRule="true"
+    EntityAttrName="Attribute8"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE8"/>
+  <ViewAttribute
+    Name="Attribute9"
+    PrecisionRule="true"
+    EntityAttrName="Attribute9"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE9"/>
+  <ViewAttribute
+    Name="AttributeCategory"
+    PrecisionRule="true"
+    EntityAttrName="AttributeCategory"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ATTRIBUTE_CATEGORY"/>
+  <ViewAttribute
+    Name="BookingId"
+    PrecisionRule="true"
+    EntityAttrName="BookingId"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="BOOKING_ID"
+    LOVName="LOV_BookingId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.BookingId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_NAME"
+    Expression="CUST_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.CustName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="DESCRIPTION">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FlowLevel"
+    PrecisionRule="true"
+    EntityAttrName="FlowLevel"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="FLOW_LEVEL"/>
+  <ViewAttribute
+    Name="FlowStatus"
+    PrecisionRule="true"
+    EntityAttrName="FlowStatus"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="FLOW_STATUS"/>
+  <ViewAttribute
+    Name="FlowWith"
+    PrecisionRule="true"
+    EntityAttrName="FlowWith"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="FLOW_WITH"/>
+  <ViewAttribute
+    Name="FuncId"
+    PrecisionRule="true"
+    EntityAttrName="FuncId"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="FUNC_ID"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="LAST_UPDATE_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="LAST_UPDATE_LOGIN"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="RecommendId"
+    PrecisionRule="true"
+    EntityAttrName="RecommendId"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="RECOMMEND_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("XXPM_RECOMMEND_ID_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RecommendNumber"
+    PrecisionRule="true"
+    EntityAttrName="RecommendNumber"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="RECOMMEND_NUMBER">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.RecommendNumber_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="STATUS"
+    LOVName="LOV_Status"
+    DefaultValue="DRA">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.Status_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ObjectVersionNumber"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ObjectVersionNumber"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="OBJECT_VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="BuildingId"
+    PrecisionRule="true"
+    EntityAttrName="BuildingId"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="BUILDING_ID"/>
+  <ViewAttribute
+    Name="OrgId"
+    PrecisionRule="true"
+    EntityAttrName="OrgId"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="ORG_ID"/>
+  <ViewAttribute
+    Name="UserGrpId"
+    PrecisionRule="true"
+    EntityAttrName="UserGrpId"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="USER_GRP_ID"/>
+  <ViewAttribute
+    Name="PropertyId"
+    PrecisionRule="true"
+    EntityAttrName="PropertyId"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="PROPERTY_ID"/>
+  <ViewAttribute
+    Name="BuildingId1"
+    PrecisionRule="true"
+    EntityAttrName="BuildingId"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="BUILDING_ID1"/>
+  <ViewAttribute
+    Name="RecommendNumber1"
+    PrecisionRule="true"
+    EntityAttrName="RecommendNumber"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="RECOMMEND_NUMBER1"
+    LOVName="LOV_RecommendNumber1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.RecommendNumber1_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookingNo_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <Dependencies>
+      <Item
+        Value="BookingId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MilestoneName_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(BookingId!=null&&BookingHdrRecomm_ROVO2!=null){
+return BookingHdrRecomm_ROVO2.first().getAttribute('MilestoneName');
+}
+else{
+return null;
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="BookingId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.MilestoneName_Trans_LABEL"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseStartDate_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(BookingId!=null&&BookingHdrRecomm_ROVO2!=null){
+return BookingHdrRecomm_ROVO2.first().getAttribute('OfferFromDate');
+}
+else{
+return null;
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="BookingId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.LeaseStartDate_Trans_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseEndDate_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(BookingId!=null&&BookingHdrRecomm_ROVO2!=null){
+return BookingHdrRecomm_ROVO2.first().getAttribute('OfferToDate');
+}
+else{
+return null;
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="BookingId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.LeaseEndDate_Trans_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Currency_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[if(BookingId!=null&&BookingHdrRecomm_ROVO2!=null){
+return BookingHdrRecomm_ROVO2.first().getAttribute('Currency');
+}
+else{
+return null;
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="BookingId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.Currency_Trans_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookingAmount_trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(BookingId!=null&&BookingHdrRecomm_ROVO2!=null){
+return BookingHdrRecomm_ROVO2.first().getAttribute('BookingAmount');
+}
+else{
+return null;
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="BookingId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.BookingAmount_trans_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="InvoiceAmount_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(BookingId!=null&&BookingHdrRecomm_ROVO2!=null){
+return BookingHdrRecomm_ROVO2.first().getAttribute('TotalRent');
+}
+else{
+return null;
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="BookingId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.InvoiceAmount_Trans_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Payment_amount_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[Booking_Milestone_VO1.sum("InstallmentAmount")]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="BookingId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.Payment_amount_Trans_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerName_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="CustomerBankName_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="BankAccNumber"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="CustBranchName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Trans_ReceiptAmount"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[Receipt_VO1.sum("RecommendedAmount")]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="BookingId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.Trans_ReceiptAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookingNoTrans"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="BookingNoTrans"
+    EntityUsage="RecommendHeader_EO"
+    LOVName="LOV_BookingNoTrans"
+    IsSelected="false"
+    AliasName="BOOKINGNOTRANS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.BookingNoTrans_LABEL"/>
+        <DISPLAYWIDTH
+          Value="28"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevisionNo"
+    PrecisionRule="true"
+    EntityAttrName="RevisionNo"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="REVISION_NO"
+    DefaultValue="0">
+    <Properties>
+      <SchemaBasedProperties>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RecommendDate"
+    PrecisionRule="true"
+    EntityAttrName="RecommendDate"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="RECOMMEND_DATE"/>
+  <ViewAttribute
+    Name="ReceiptAmount"
+    PrecisionRule="true"
+    EntityAttrName="ReceiptAmount"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="RECEIPT_AMOUNT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.ReceiptAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TktRenewalFlag"
+    PrecisionRule="true"
+    EntityAttrName="TktRenewalFlag"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="TKT_RENEWAL_FLAG"/>
+  <ViewAttribute
+    Name="TktRnwlLaFlag"
+    PrecisionRule="true"
+    EntityAttrName="TktRnwlLaFlag"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="TKT_RNWL_LA_FLAG"/>
+  <ViewAttribute
+    Name="TktMovInFlag"
+    PrecisionRule="true"
+    EntityAttrName="TktMovInFlag"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="TKT_MOV_IN_FLAG"/>
+  <ViewAttribute
+    Name="PaymentPlan_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_PaymentPlan_Trans">
+    <TransientExpression><![CDATA[if(BookingId!=null&&BookingHdrRecomm_ROVO2!=null){
+return BookingHdrRecomm_ROVO2.first().getAttribute('MsHdrId');
+}
+else{
+return null;
+}]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RecommendHeader_VO.PaymentPlan_Trans_LABEL"/>
+        <DISPLAYWIDTH
+          Value="28"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitIncharge"
+    PrecisionRule="true"
+    EntityAttrName="UnitIncharge"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="UNIT_INCHARGE"/>
+  <ViewAttribute
+    Name="UnitOwner"
+    PrecisionRule="true"
+    EntityAttrName="UnitOwner"
+    EntityUsage="RecommendHeader_EO"
+    AliasName="UNIT_OWNER"/>
+  <ViewCriteria
+    Name="findByRecmId"
+    ViewObjectName="model.VO.RecommendHeader_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow189"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="RecommendId"
+        ViewAttribute="RecommendId"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_recomId"
+        Required="Optional"
+        IsBindVarValue="true"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchByRecomndNo"
+    ViewObjectName="model.VO.RecommendHeader_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow563"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="RecommendNumber"
+        ViewAttribute="RecommendNumber"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="RecommendDetail_VO"
+    ViewLink="model.VL.RecommendHeader_Detail_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="RecommendOtherCharges_VO"
+    ViewLink="model.VL.RecommendHeader_OtherCharges_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Receipt_VO"
+    ViewLink="model.VL.Recom_Rec_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Booking_Milestone_VO"
+    ViewLink="model.VL.Booking_Recommendation_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="BookingDetail_VO"
+    ViewLink="model.VL.BookingDtl_Recommendation_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="getApprovalHistoryROVo"
+    ViewLink="model.VL.RecommendationApprovalVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

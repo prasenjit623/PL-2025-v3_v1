@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Attachments_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__8">refreshattachments</default-activity>
+    <transaction id="__22">
+      <requires-transaction/>
+    </transaction>
+    <input-parameter-definition id="__1">
+      <name id="__7">funcid</name>
+      <value>#{pageFlowScope.funcid}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__21">
+      <name id="__20">funcrefid</name>
+      <value>#{pageFlowScope.funcrefid}</value>
+    </input-parameter-definition>
+    <managed-bean id="__3">
+      <managed-bean-name id="__4">backing_Attachments</managed-bean-name>
+      <managed-bean-class id="__5">view.backing.Attachments</managed-bean-class>
+      <managed-bean-scope id="__2">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1Attachments.jsff-->
+    </managed-bean>
+    <view id="Attachments">
+      <page>/Attachments.jsff</page>
+    </view>
+    <method-call id="refreshattachments">
+      <method>#{bindings.refreshattachments.execute}</method>
+      <outcome id="__6">
+        <fixed-outcome>refreshattachments</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome id="__14">
+        <name>taskFlowReturn1</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="taskFlowReturn2">
+      <outcome id="__23">
+        <name>taskFlowReturn2</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__9">
+      <from-activity-id id="__10">refreshattachments</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome id="__13">refreshattachments</from-outcome>
+        <to-activity-id id="__12">Attachments</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id id="__16">Attachments</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome id="__19">toSave</from-outcome>
+        <to-activity-id id="__17">taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome id="__26">toCancel</from-outcome>
+        <to-activity-id id="__25">taskFlowReturn2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

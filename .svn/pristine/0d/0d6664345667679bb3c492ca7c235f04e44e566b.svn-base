@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="PropertyLease_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">CheckUserNaname</default-activity>
+    <transaction id="__21">
+      <new-transaction/>
+    </transaction>
+    <input-parameter-definition id="__19">
+      <name id="__20">jwt</name>
+      <value>#{pageFlowScope.tokens}</value>
+    </input-parameter-definition>
+    <view id="Dashboard">
+      <page>/pages/Dashboard.jspx</page>
+    </view>
+    <view id="home">
+      <page>/pages/home.jspx</page>
+    </view>
+    <method-call id="CheckUserNaname">
+      <method>#{bindings.CheckUserNaname.execute}</method>
+      <outcome id="__13">
+        <fixed-outcome>CheckUserNaname</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">Dashboard</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">goToHome</from-outcome>
+        <to-activity-id id="__5">home</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">home</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome id="__11">goToDashboard</from-outcome>
+        <to-activity-id id="__9">Dashboard</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id id="__15">CheckUserNaname</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__16">CheckUserNaname</from-outcome>
+        <to-activity-id id="__18">Dashboard</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <visibility id="__12">
+      <url-invoke-allowed/>
+    </visibility>
+  </task-flow-definition>
+</adfc-config>

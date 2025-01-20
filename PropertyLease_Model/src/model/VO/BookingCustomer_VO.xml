@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject xmlns="http://xmlns.oracle.com/bc4j" Name="BookingCustomer_VO"
+            Version="11.1.1.66.73" InheritPersonalization="merge"
+            BindingStyle="OracleName"
+            ComponentClass="model.VO.BookingCustomer_VOImpl"
+   CustomQuery="true"
+            PageIterMode="Full" RowClass="model.VO.BookingCustomer_VORowImpl"
+            UseGlueCode="false">
+   <DesignTime>
+      <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+      <Attr Name="_isCodegen" Value="true"/>
+      <Attr Name="_isExpertMode" Value="true"/>
+   </DesignTime>
+   <ViewAccessor Name="Lookup_View_ROVO1"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO"
+                 RowLevelBinds="true">
+      <ViewCriteriaUsage Name="findByNationality"
+                         FullName="model.ROVO.Lookup_View_ROVO.findByNationality"/>
+   </ViewAccessor>
+   <ViewAccessor Name="CustomerTypeStaticROVO1"
+                 ViewObjectName="model.ROVO.CustomerTypeStaticROVO"
+                 RowLevelBinds="true"/>
+   <ViewAccessor Name="Lookup_View_VisaType"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO"
+                 RowLevelBinds="true">
+      <ViewCriteriaUsage Name="VisaType_LOV"
+                         FullName="model.ROVO.Lookup_View_ROVO.VisaType_LOV"/>
+   </ViewAccessor>
+   <ViewAccessor Name="Lookup_View_Res"
+                 ViewObjectName="model.ROVO.Lookup_View_ROVO"
+                 RowLevelBinds="true">
+      <ViewCriteriaUsage Name="Religion_LOV"
+                         FullName="model.ROVO.Lookup_View_ROVO.Religion_LOV"/>
+   </ViewAccessor>
+   <ViewAccessor Name="GetCustomerDetailsROVO1"
+                 ViewObjectName="model.ROVO.GetCustomerDetailsROVO"
+                 RowLevelBinds="true"/>
+   <ViewAccessor Name="GetCustomerDetailsROVO2"
+                 ViewObjectName="model.ROVO.GetCustomerDetailsROVO"
+                 RowLevelBinds="true"/>
+   <ViewAccessor Name="GetCustomerDetailsROVO3"
+                 ViewObjectName="model.ROVO.GetCustomerDetailsROVO">
+      <ViewCriteriaUsage Name="findById"
+                         FullName="model.ROVO.GetCustomerDetailsROVO.findById"/>
+      <ParameterMap>
+         <PIMap Variable="CUSID">
+            <TransientExpression>CustIdAr</TransientExpression>
+         </PIMap>
+      </ParameterMap>
+   </ViewAccessor>
+   <ViewAccessor Name="getCustomerSiteDetailsROVO1"
+                 ViewObjectName="model.ROVO.getCustomerSiteDetailsROVO">
+      <ViewCriteriaUsage Name="findByCustId"
+                         FullName="model.ROVO.getCustomerSiteDetailsROVO.findByCustId"/>
+      <ViewCriteriaUsage
+         Name="findByOrgIdNull"
+         FullName="model.ROVO.getCustomerSiteDetailsROVO.findByOrgIdNull"/>
+      <ParameterMap>
+         <PIMap Variable="P_CUST_ID">
+            <TransientExpression>CustIdAr</TransientExpression>
+         </PIMap>
+      </ParameterMap>
+   </ViewAccessor>
+   <ViewAccessor
+      Name="getCustomerSiteDetailsROVO2"
+      ViewObjectName="model.ROVO.getCustomerSiteDetailsROVO"
+      RowLevelBinds="true"/>
+   <ViewAccessor
+      Name="getCustomerSiteDetailsROVO3"
+      ViewObjectName="model.ROVO.getCustomerSiteDetailsROVO"
+      RowLevelBinds="true"/>
+   <ListBinding Name="LOV_VisaType" ListVOName="Lookup_View_VisaType"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="VisaType"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="LookupValueName"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="LookupValueNameDisp"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding Name="LOV_Nationality" ListVOName="Lookup_View_ROVO1"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="Nationality"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="LookupValueName"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="LookupValueNameDisp"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding Name="LOV_Religion" ListVOName="Lookup_View_Res"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="Religion"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="LookupValueName"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="LookupValueNameDisp"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding Name="LOV_CustCategory" ListVOName="CustomerTypeStaticROVO1"
+                ListRangeSize="-1" NullValueFlag="none"
+                NullValueId="LOV_CustCategory_LOVUIHints_NullValueId"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="CustCategory"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="Id"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="Val"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding Name="LOV_CustomerNameAr" ListVOName="GetCustomerDetailsROVO1"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="CustomerNameAr"/>
+      </AttrArray>
+      <AttrArray Name="DerivedAttrNames">
+         <Item Value="CustomerNumberAr"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="CustomerName"/>
+         <Item Value="CustomerNumber"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="CustomerName"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding Name="LOV_CustIdAr" ListVOName="GetCustomerDetailsROVO2"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="CustIdAr"/>
+      </AttrArray>
+      <AttrArray Name="DerivedAttrNames">
+         <Item Value="CustomerNumberAr"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="CustId"/>
+         <Item Value="CustomerNumber"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="CustomerName"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   
+  <ListBinding
+    Name="LOV_ShipToAddr"
+    ListVOName="getCustomerSiteDetailsROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ShipToAddr"/>
+    </AttrArray>
+      <AttrArray Name="ListAttrNames">
+      <Item Value="SiteNumber"/>
+      </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Address1"/>
+      <Item Value="City"/>
+    </AttrArray>
+    <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding
+    Name="LOV_NationalityTrans"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="4"
+    NullValueFlag="none"
+    NullValueId="LOV_NationalityTrans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="NationalityTrans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Nationality"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SearchNationality"/>
+  </ListBinding>
+  <ListBinding Name="LOV_BillToAddr" ListVOName="getCustomerSiteDetailsROVO1"
+                ListRangeSize="-1" NullValueFlag="start"
+                NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+                MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="BillToAddr"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="SiteNumber"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="Address1"/>
+         <Item Value="City"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding
+      Name="LOV_Trans_CustIdAr"
+      ListVOName="GetCustomerDetailsROVO2"
+      ListRangeSize="4"
+      NullValueFlag="none"
+      NullValueId="LOV_Trans_CustIdAr_LOVUIHints_NullValueId"
+      MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="Trans_CustIdAr"/>
+      </AttrArray>
+      <AttrArray Name="DerivedAttrNames">
+         <Item Value="CustIdAr"/>
+         <Item Value="CustomerNameAr"/>
+         <Item Value="CustomerNumberAr"/>
+         <Item Value="CustName"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="CustomerName"/>
+         <Item Value="CustId"/>
+         <Item Value="CustomerName"/>
+         <Item Value="CustomerNumber"/>
+         <Item Value="CustomerName"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="CustomerName"/>
+      </AttrArray>
+      <DisplayCriteria
+         Name="SearchARCustomerDetails"/>
+   </ListBinding>
+   <ListBinding
+      Name="LOV_MobileNoTrans"
+      ListVOName="getCustomerSiteDetailsROVO2"
+      ListRangeSize="-1"
+      NullValueFlag="start"
+      NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+      MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="MobileNoTrans"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="MobileNo"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="MobileNo"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding
+      Name="LOV_PhoneNoTrans"
+      ListVOName="getCustomerSiteDetailsROVO2"
+      ListRangeSize="-1"
+      NullValueFlag="start"
+      NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+      MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="PhoneNoTrans"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="PhoneNo"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="PhoneNo"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding
+      Name="LOV_EmailIdTrans"
+      ListVOName="getCustomerSiteDetailsROVO2"
+      ListRangeSize="-1"
+      NullValueFlag="start"
+      NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+      MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="EmailIdTrans"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="EmailId"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="EmailId"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding
+      Name="LOV_BillToAddr1"
+      ListVOName="getCustomerSiteDetailsROVO3"
+      ListRangeSize="-1"
+      NullValueFlag="start"
+      NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+      MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="BillToAddr1"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="SiteNumber"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="Address1"/>
+         <Item Value="City"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <ListBinding
+      Name="LOV_ShipToAddr1"
+      ListVOName="getCustomerSiteDetailsROVO3"
+      ListRangeSize="-1"
+      NullValueFlag="start"
+      NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+      MRUCount="0">
+      <AttrArray Name="AttrNames">
+         <Item Value="ShipToAddr1"/>
+      </AttrArray>
+      <AttrArray Name="ListAttrNames">
+         <Item Value="SiteNumber"/>
+      </AttrArray>
+      <AttrArray Name="ListDisplayAttrNames">
+         <Item Value="Address1"/>
+         <Item Value="City"/>
+      </AttrArray>
+      <DisplayCriteria/>
+   </ListBinding>
+   <SQLQuery>
+      <![CDATA[SELECT BookingCustomer_EO.BOOK_CUST_ID, 
+       BookingCustomer_EO.BOOKING_ID, 
+       BookingCustomer_EO.CUST_ID, 
+       BookingCustomer_EO.CUST_SITE_ID, 
+       BookingCustomer_EO.CUST_CONTACT_ID, 
+       BookingCustomer_EO.CUST_NAME, 
+       BookingCustomer_EO.TRN_NUMBER, 
+       BookingCustomer_EO.CUST_CATEGORY, 
+       BookingCustomer_EO.CUST_ACC_NAME, 
+       BookingCustomer_EO.SHIP_TO_ADDR, 
+       BookingCustomer_EO.BILL_TO_ADDR, 
+       BookingCustomer_EO.RELIGION, 
+       BookingCustomer_EO.VISA_TYPE, 
+       BookingCustomer_EO.NATIONALITY, 
+       BookingCustomer_EO.CUST_BANK_NAME, 
+       BookingCustomer_EO.CUST_BRANCH_NAME, 
+       BookingCustomer_EO.CUST_BANK_ACC_NUMBER, 
+       BookingCustomer_EO.ATTRIBUTE_CATEGORY, 
+       BookingCustomer_EO.ATTRIBUTE1, 
+       BookingCustomer_EO.ATTRIBUTE2, 
+       BookingCustomer_EO.ATTRIBUTE3, 
+       BookingCustomer_EO.ATTRIBUTE4, 
+       BookingCustomer_EO.ATTRIBUTE5, 
+       BookingCustomer_EO.ATTRIBUTE6, 
+       BookingCustomer_EO.ATTRIBUTE7, 
+       BookingCustomer_EO.ATTRIBUTE8, 
+       BookingCustomer_EO.ATTRIBUTE9, 
+       BookingCustomer_EO.ATTRIBUTE10, 
+       BookingCustomer_EO.ATTRIBUTE11, 
+       BookingCustomer_EO.ATTRIBUTE12, 
+       BookingCustomer_EO.ATTRIBUTE13, 
+       BookingCustomer_EO.ATTRIBUTE14, 
+       BookingCustomer_EO.ATTRIBUTE15, 
+       BookingCustomer_EO.ATTRIBUTE16, 
+       BookingCustomer_EO.ATTRIBUTE17, 
+       BookingCustomer_EO.ATTRIBUTE18, 
+       BookingCustomer_EO.ATTRIBUTE19, 
+       BookingCustomer_EO.ATTRIBUTE20, 
+       BookingCustomer_EO.CREATED_BY, 
+       BookingCustomer_EO.CREATION_DATE, 
+       BookingCustomer_EO.LAST_UPDATED_BY, 
+       BookingCustomer_EO.LAST_UPDATE_DATE, 
+       BookingCustomer_EO.LAST_UPDATE_LOGIN, 
+       BookingCustomer_EO.ROWID, 
+       BookingCustomer_EO.CUSTOMER_NAME_AR, 
+       BookingCustomer_EO.CUSTOMER_NUMBER_AR, 
+       BookingCustomer_EO.CUST_ID_AR, 
+       BookingCustomer_EO.BILL_TO_ADDR AS BILL_TO_ADDR1, 
+       BookingCustomer_EO.SHIP_TO_ADDR AS SHIP_TO_ADDR1,
+       (select cc.MOBILE_NUMBER from xxstg_cust_contacts cc where cc.CUST_ID = BookingCustomer_EO.CUST_ID_AR and rownum=1) as MOBILE_NO,
+       (select cc.PHONE_NUMBER from xxstg_cust_contacts cc where cc.CUST_ID = BookingCustomer_EO.CUST_ID_AR and rownum=1) as PHONE_NO,
+       (select cc.EMAIL_ID from xxstg_cust_contacts cc where cc.CUST_ID = BookingCustomer_EO.CUST_ID_AR and rownum=1) as EMAIL_ID     
+FROM XXPM_BOOKING_CUSTOMER BookingCustomer_EO]]>
+   </SQLQuery>
+   <EntityUsage Name="BookingCustomer_EO" Entity="model.EO.BookingCustomer_EO"/>
+   <ViewAttribute Name="BookCustId" PrecisionRule="true"
+                  EntityAttrName="BookCustId" EntityUsage="BookingCustomer_EO"
+                  AliasName="BOOK_CUST_ID">
+      <TransientExpression>(new
+                           oracle.jbo.server.SequenceImpl("XXPM_BOOKING_CUST_ID_S",adf.object.getDBTransaction())).getSequenceNumber()</TransientExpression>
+   </ViewAttribute>
+   <ViewAttribute Name="BookingId" PrecisionRule="true"
+                  EntityAttrName="BookingId" EntityUsage="BookingCustomer_EO"
+                  AliasName="BOOKING_ID">
+      <TransientExpression>BookingHeader_VO.BookingId</TransientExpression>
+   </ViewAttribute>
+   <ViewAttribute Name="CustId" PrecisionRule="true" EntityAttrName="CustId"
+                  EntityUsage="BookingCustomer_EO" AliasName="CUST_ID"/>
+   <ViewAttribute Name="CustSiteId" PrecisionRule="true"
+                  EntityAttrName="CustSiteId" EntityUsage="BookingCustomer_EO"
+                  AliasName="CUST_SITE_ID"/>
+   <ViewAttribute Name="CustContactId" PrecisionRule="true"
+                  EntityAttrName="CustContactId"
+                  EntityUsage="BookingCustomer_EO" AliasName="CUST_CONTACT_ID"/>
+   <ViewAttribute Name="CustName" PrecisionRule="true" EntityAttrName="CustName"
+                  EntityUsage="BookingCustomer_EO" AliasName="CUST_NAME">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.CustName_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="TrnNumber" PrecisionRule="true"
+                  EntityAttrName="TrnNumber" EntityUsage="BookingCustomer_EO"
+                  AliasName="TRN_NUMBER">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.TrnNumber_LABEL"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="CustCategory" PrecisionRule="true"
+                  EntityAttrName="CustCategory" EntityUsage="BookingCustomer_EO"
+                  AliasName="CUST_CATEGORY" LOVName="LOV_CustCategory">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.CustCategory_LABEL"/>
+            <CONTROLTYPE Value="radio"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="CustAccName" PrecisionRule="true"
+                  EntityAttrName="CustAccName" EntityUsage="BookingCustomer_EO"
+                  AliasName="CUST_ACC_NAME">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.CustAccName_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+            <AUTOSUBMIT
+               Value="true"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="ShipToAddr" PrecisionRule="true"
+                  EntityAttrName="ShipToAddr" EntityUsage="BookingCustomer_EO"
+                  LOVName="LOV_ShipToAddr" AliasName="SHIP_TO_ADDR">
+      <Dependencies>
+         <Item Value="CustIdAr"/>
+      </Dependencies>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.ShipToAddr_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+            <CONTROLTYPE Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="BillToAddr" PrecisionRule="true"
+                  EntityAttrName="BillToAddr" EntityUsage="BookingCustomer_EO"
+                  LOVName="LOV_BillToAddr" AliasName="BILL_TO_ADDR">
+      <Dependencies>
+         <Item Value="CustIdAr"/>
+      </Dependencies>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.BillToAddr_LABEL"/>
+            <CONTROLTYPE Value="choice"/>
+            <DISPLAYWIDTH Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="Religion" PrecisionRule="true" EntityAttrName="Religion"
+                  EntityUsage="BookingCustomer_EO" AliasName="RELIGION"
+                  LOVName="LOV_Religion">
+      <Properties>
+         <SchemaBasedProperties>
+            <DISPLAYWIDTH Value="30"/>
+            <CONTROLTYPE Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="VisaType" PrecisionRule="true" EntityAttrName="VisaType"
+                  EntityUsage="BookingCustomer_EO" AliasName="VISA_TYPE"
+                  LOVName="LOV_VisaType">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.VisaType_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+            <CONTROLTYPE Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="Nationality" PrecisionRule="true"
+                  EntityAttrName="Nationality" EntityUsage="BookingCustomer_EO"
+                  AliasName="NATIONALITY" LOVName="LOV_Nationality">
+      <Properties>
+         <SchemaBasedProperties>
+            <DISPLAYWIDTH Value="30"/>
+            <CONTROLTYPE Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="CustBankName" PrecisionRule="true"
+                  EntityAttrName="CustBankName" EntityUsage="BookingCustomer_EO"
+                  AliasName="CUST_BANK_NAME">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.CustBankName_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="CustBranchName" PrecisionRule="true"
+                  EntityAttrName="CustBranchName"
+                  EntityUsage="BookingCustomer_EO" AliasName="CUST_BRANCH_NAME">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.CustBranchName_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="CustBankAccNumber" PrecisionRule="true"
+                  EntityAttrName="CustBankAccNumber"
+                  EntityUsage="BookingCustomer_EO"
+                  AliasName="CUST_BANK_ACC_NUMBER">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.CustBankAccNumber_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="AttributeCategory" PrecisionRule="true"
+                  EntityAttrName="AttributeCategory"
+                  EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE_CATEGORY"/>
+   <ViewAttribute Name="Attribute1" PrecisionRule="true"
+                  EntityAttrName="Attribute1" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE1"/>
+   <ViewAttribute Name="Attribute2" PrecisionRule="true"
+                  EntityAttrName="Attribute2" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE2"/>
+   <ViewAttribute Name="Attribute3" PrecisionRule="true"
+                  EntityAttrName="Attribute3" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE3"/>
+   <ViewAttribute Name="Attribute4" PrecisionRule="true"
+                  EntityAttrName="Attribute4" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE4"/>
+   <ViewAttribute Name="Attribute5" PrecisionRule="true"
+                  EntityAttrName="Attribute5" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE5"/>
+   <ViewAttribute Name="Attribute6" PrecisionRule="true"
+                  EntityAttrName="Attribute6" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE6"/>
+   <ViewAttribute Name="Attribute7" PrecisionRule="true"
+                  EntityAttrName="Attribute7" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE7"/>
+   <ViewAttribute Name="Attribute8" PrecisionRule="true"
+                  EntityAttrName="Attribute8" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE8"/>
+   <ViewAttribute Name="Attribute9" PrecisionRule="true"
+                  EntityAttrName="Attribute9" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE9"/>
+   <ViewAttribute Name="Attribute10" PrecisionRule="true"
+                  EntityAttrName="Attribute10" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE10"/>
+   <ViewAttribute Name="Attribute11" PrecisionRule="true"
+                  EntityAttrName="Attribute11" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE11"/>
+   <ViewAttribute Name="Attribute12" PrecisionRule="true"
+                  EntityAttrName="Attribute12" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE12"/>
+   <ViewAttribute Name="Attribute13" PrecisionRule="true"
+                  EntityAttrName="Attribute13" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE13"/>
+   <ViewAttribute Name="Attribute14" PrecisionRule="true"
+                  EntityAttrName="Attribute14" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE14"/>
+   <ViewAttribute Name="Attribute15" PrecisionRule="true"
+                  EntityAttrName="Attribute15" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE15"/>
+   <ViewAttribute Name="Attribute16" PrecisionRule="true"
+                  EntityAttrName="Attribute16" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE16"/>
+   <ViewAttribute Name="Attribute17" PrecisionRule="true"
+                  EntityAttrName="Attribute17" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE17"/>
+   <ViewAttribute Name="Attribute18" PrecisionRule="true"
+                  EntityAttrName="Attribute18" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE18"/>
+   <ViewAttribute Name="Attribute19" PrecisionRule="true"
+                  EntityAttrName="Attribute19" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE19"/>
+   <ViewAttribute Name="Attribute20" PrecisionRule="true"
+                  EntityAttrName="Attribute20" EntityUsage="BookingCustomer_EO"
+                  AliasName="ATTRIBUTE20"/>
+   <ViewAttribute Name="CreatedBy" PrecisionRule="true"
+                  EntityAttrName="CreatedBy" EntityUsage="BookingCustomer_EO"
+                  AliasName="CREATED_BY"/>
+   <ViewAttribute Name="CreationDate" PrecisionRule="true"
+                  EntityAttrName="CreationDate" EntityUsage="BookingCustomer_EO"
+                  AliasName="CREATION_DATE"/>
+   <ViewAttribute Name="LastUpdatedBy" PrecisionRule="true"
+                  EntityAttrName="LastUpdatedBy"
+                  EntityUsage="BookingCustomer_EO" AliasName="LAST_UPDATED_BY"/>
+   <ViewAttribute Name="LastUpdateDate" PrecisionRule="true"
+                  EntityAttrName="LastUpdateDate"
+                  EntityUsage="BookingCustomer_EO"
+                  AliasName="LAST_UPDATE_DATE"/>
+   <ViewAttribute Name="LastUpdateLogin" PrecisionRule="true"
+                  EntityAttrName="LastUpdateLogin"
+                  EntityUsage="BookingCustomer_EO"
+                  AliasName="LAST_UPDATE_LOGIN"/>
+   <ViewAttribute Name="RowID" IsUpdateable="false" PrecisionRule="true"
+                  EntityAttrName="RowID" EntityUsage="BookingCustomer_EO"
+                  AliasName="ROWID"/>
+   <ViewAttribute Name="CustomerNameAr" PrecisionRule="true"
+                  EntityAttrName="CustomerNameAr"
+                  EntityUsage="BookingCustomer_EO" AliasName="CUSTOMER_NAME_AR"
+                  LOVName="LOV_CustomerNameAr">
+      <Properties>
+         <SchemaBasedProperties>
+            <DISPLAYWIDTH Value="30"/>
+            <AUTOSUBMIT Value="true"/>
+            <CONTROLTYPE Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="CustomerNumberAr" PrecisionRule="true"
+                  EntityAttrName="CustomerNumberAr"
+                  EntityUsage="BookingCustomer_EO"
+                  AliasName="CUSTOMER_NUMBER_AR">
+      <Dependencies>
+         <Item
+            Value="CustIdAr"/>
+         <Item
+            Value="CustomerNameAr"/>
+      </Dependencies>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.BookingCustomer_VO.CustomerNumberAr_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="CustIdAr" PrecisionRule="true" EntityAttrName="CustIdAr"
+                  EntityUsage="BookingCustomer_EO" AliasName="CUST_ID_AR"
+                  LOVName="LOV_CustIdAr">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.CustIdAr_LABEL"/>
+            <DISPLAYWIDTH
+               Value="30"/>
+            <CONTROLTYPE Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="BillToAddr1"
+      PrecisionRule="true"
+      EntityAttrName="BillToAddr"
+      EntityUsage="BookingCustomer_EO"
+      AliasName="BILL_TO_ADDR1"
+      LOVName="LOV_BillToAddr1">
+      <Properties>
+         <SchemaBasedProperties>
+            <CONTROLTYPE
+               Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="ShipToAddr1"
+      PrecisionRule="true"
+      EntityAttrName="ShipToAddr"
+      EntityUsage="BookingCustomer_EO"
+      AliasName="SHIP_TO_ADDR1"
+      LOVName="LOV_ShipToAddr1">
+      <Properties>
+         <SchemaBasedProperties>
+            <CONTROLTYPE
+               Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MobileNo"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="MOBILE_NO"
+      Expression="MOBILE_NO"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PhoneNo"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="PHONE_NO"
+      Expression="PHONE_NO"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmailId"
+      IsUpdateable="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Precision="60"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="EMAIL_ID"
+      Expression="EMAIL_ID"
+      SQLType="VARCHAR">
+      <DesignTime>
+         <Attr Name="_DisplaySize" Value="60"/>
+      </DesignTime>
+   </ViewAttribute>
+   <ViewAttribute Name="Trans_CustomerNo" IsSelected="false"
+                  IsPersistent="false" PrecisionRule="true"
+                  Type="java.lang.String" ColumnType="VARCHAR2"
+                  AliasName="VIEW_ATTR" SQLType="VARCHAR">
+      <RecalcCondition>true</RecalcCondition>
+      <TransientExpression>if(CustIdAr!=null&amp;&amp;GetCustomerDetailsROVO3!=null){
+                           return
+                           GetCustomerDetailsROVO3.first().getAttribute('CustomerNumber');
+                           } else{ return null; }</TransientExpression>
+      <Dependencies>
+         <Item Value="CustIdAr"/>
+      </Dependencies>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.Trans_CustomerNo_LABEL"/>
+            <DISPLAYWIDTH Value="30"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute Name="NationalityTrans" IsQueriable="false"
+                  IsPersistent="false" PrecisionRule="true"
+                  EntityAttrName="NationalityTrans"
+                  EntityUsage="BookingCustomer_EO"
+                  LOVName="LOV_NationalityTrans" IsSelected="false"
+                  AliasName="NATIONALITYTRANS">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL ResId="model.VO.BookingCustomer_VO.NationalityTrans_LABEL"/>
+            <CONTROLTYPE Value="combo_lov"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="Trans_CustIdAr"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR"
+      LOVName="LOV_Trans_CustIdAr">
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.BookingCustomer_VO.Trans_CustIdAr_LABEL"/>
+            <CONTROLTYPE
+               Value="combo_lov"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="MobileNoTrans"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR"
+      LOVName="LOV_MobileNoTrans">
+      <Dependencies>
+         <Item
+            Value="ShipToAddr"/>
+      </Dependencies>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.BookingCustomer_VO.MobileNoTrans_LABEL"/>
+            <CONTROLTYPE
+               Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="PhoneNoTrans"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR"
+      LOVName="LOV_PhoneNoTrans">
+      <Dependencies>
+         <Item
+            Value="ShipToAddr"/>
+      </Dependencies>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.BookingCustomer_VO.PhoneNoTrans_LABEL"/>
+            <CONTROLTYPE
+               Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ViewAttribute
+      Name="EmailIdTrans"
+      IsSelected="false"
+      IsPersistent="false"
+      PrecisionRule="true"
+      Type="java.lang.String"
+      ColumnType="VARCHAR2"
+      AliasName="VIEW_ATTR"
+      SQLType="VARCHAR"
+      LOVName="LOV_EmailIdTrans">
+      <Dependencies>
+         <Item
+            Value="ShipToAddr"/>
+      </Dependencies>
+      <Properties>
+         <SchemaBasedProperties>
+            <LABEL
+               ResId="model.VO.BookingCustomer_VO.EmailIdTrans_LABEL"/>
+            <CONTROLTYPE
+               Value="choice"/>
+         </SchemaBasedProperties>
+      </Properties>
+   </ViewAttribute>
+   <ResourceBundle>
+      <PropertiesBundle PropertiesFile="model.PropertyLease_ModelBundle"/>
+   </ResourceBundle>
+</ViewObject>

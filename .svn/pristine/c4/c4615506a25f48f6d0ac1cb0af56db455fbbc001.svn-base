@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchRecommendationPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RecommendHeader_VO1" RangeSize="25"
+              DataControl="Recommendation_AMDataControl"
+              id="RecommendHeader_VO1Iterator"/>
+    <searchRegion Criteria="RecommSearch_VC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="RecommendHeader_VO1Iterator" id="RecommSearchVCQuery"/>
+    <searchRegion Criteria="Recomm_Search_VC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="RecommendHeader_VO1Iterator"
+                  id="RecommSearchVCQuery1"/>
+    <iterator id="RecommendDetail_VO1Iterator" Binds="RecommendDetail_VO1"
+              DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+    <iterator id="Booking_Milestone_VO1Iterator" Binds="Booking_Milestone_VO1"
+              DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+    <iterator id="PropertyMaster_VO1Iterator" Binds="PropertyMaster_VO1"
+              DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+    <iterator id="BookingDetail_VO2Iterator" Binds="BookingDetail_VO2"
+              DataControl="Recommendation_AMDataControl" RangeSize="25"/>
+    <iterator Binds="SearchRecommendationRoVo1" RangeSize="6"
+              DataControl="Recommendation_AMDataControl"
+              id="SearchRecommendationRoVo1Iterator"/>
+    <searchRegion Criteria="SearchRecommVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchRecommendationRoVo1Iterator"
+                  id="SearchRecommVCQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RecommendHeader_VO1Iterator" id="RecommendHeader_VO1">
+      <nodeDefinition DefName="model.VO.RecommendHeader_VO"
+                      Name="RecommendHeader_VO10">
+        <AttrNames>
+          <Item Value="RecommendNumber"/>
+          <Item Value="BookingId"/>
+          <Item Value="CustName"/>
+          <Item Value="Status"/>
+          <Item Value="MilestoneName_Trans"/>
+          <Item Value="LeaseStartDate_Trans"/>
+          <Item Value="LeaseEndDate_Trans"/>
+          <Item Value="Currency_Trans"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="ReviseRecommendation"
+                  InstanceName="Recommendation_AMDataControl.dataProvider"
+                  DataControl="Recommendation_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="ReviseRecommendation" IsViewObjectMethod="false"
+                  ReturnName="data.Recommendation_AMDataControl.methodResults.ReviseRecommendation_Recommendation_AMDataControl_dataProvider_ReviseRecommendation_result">
+      <NamedData NDName="recomNo" NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="RecommendHeader_VO1Iterator"
+                     id="RecommendNumber">
+      <AttrNames>
+        <Item Value="RecommendNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SearchRecommendationRoVo1Iterator"
+          id="SearchRecommendationRoVo1">
+      <nodeDefinition DefName="model.ROVO.SearchRecommendationRoVo"
+                      Name="SearchRecommendationRoVo10">
+        <AttrNames>
+          <Item Value="RecommendId"/>
+          <Item Value="RecommendNumber1"/>
+          <Item Value="BookingNumber_Trans"/>
+          <Item Value="CustName"/>
+          <Item Value="Status"/>
+          <Item Value="MilestoneName_Trans"/>
+          <Item Value="Description"/>
+          <Item Value="LeaseStartDate_Trans"/>
+          <Item Value="LeaseEndDate_Trans"/>
+          <Item Value="RecommendDate"/>
+          <Item Value="ReceiptAmount"/>
+          <Item Value="Currency_Trans"/>
+          <Item Value="RecommendNumber"/>
+          <Item Value="BookingId"/>
+          <Item Value="MilestonenameTrans"/>
+          <Item Value="LeasestartdateTrans"/>
+          <Item Value="LeaseenddateTrans"/>
+          <Item Value="CurrencyTrans"/>
+          <Item Value="BookingnumberTrans"/>
+          <Item Value="Buildname"/>
+          <Item Value="Unitname"/>
+          <Item Value="CreateDate"/>
+          <Item Value="UnitStatus"/>
+          <Item Value="SetRent"/>
+          <Item Value="NetRent"/>
+          <Item Value="UnitDescription"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="MobileNumber"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="EmailId"/>
+          <Item Value="OfferFlag"/>
+          <Item Value="ExtensionDays"/>
+          <Item Value="SetRentPerAnnum"/>
+          <Item Value="DiscAmt"/>
+          <Item Value="SubStatus"/>
+          <Item Value="UnitIncharge"/>
+          <Item Value="UnitOwner"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchRecommendationRoVo1Iterator"
+                     id="RecommendId">
+      <AttrNames>
+        <Item Value="RecommendId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

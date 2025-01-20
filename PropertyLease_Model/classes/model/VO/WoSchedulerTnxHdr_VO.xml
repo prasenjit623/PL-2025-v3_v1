@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="WoSchedulerTnxHdr_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VO.WoSchedulerTnxHdr_VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_scWoTnxId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="GetWoHdrInfo_ROVO1"
+    ViewObjectName="model.ROVO.GetWoHdrInfo_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByTimeAmPmType"
+      FullName="model.ROVO.Lookup_View_ROVO.findByTimeAmPmType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="userROVO1"
+    ViewObjectName="model.ROVO.userROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByDispNTL_WO"
+      FullName="model.ROVO.userROVO.findByDispNTL_WO"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="WoResourceOnly_RoVo1"
+    ViewObjectName="model.ROVO.WoResourceOnly_RoVo"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_WoNo"
+    ListVOName="GetWoHdrInfo_ROVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_WoNo_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="WoNo"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="WoId"/>
+      <Item Value="Asset"/>
+      <Item Value="ReleasedDate"/>
+      <Item Value="ActualStartDate"/>
+      <Item Value="StartDate"/>
+      <Item Value="UnitName"/>
+      <Item Value="BuildingName"/>
+      <Item Value="UnitId"/>
+      <Item Value="BuildingId"/>
+      <Item Value="WoType"/>
+      <Item Value="WoSubType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="WorkOrder"/>
+      <Item Value="WorkOrderId"/>
+      <Item Value="Asset"/>
+      <Item Value="ReleasedDate"/>
+      <Item Value="ActualStartDate"/>
+      <Item Value="StartDate"/>
+      <Item Value="UnitName"/>
+      <Item Value="BuildName"/>
+      <Item Value="UnitId"/>
+      <Item Value="BuildId"/>
+      <Item Value="Type"/>
+      <Item Value="SubType"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="WorkOrder"/>
+      <Item Value="Asset"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"
+      Name="findByWoNoSearch"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_FromTimeAmPm"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="FromTimeAmPm"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ToTimeAmPm"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ToTimeAmPm"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_AssignedForman"
+    ListVOName="userROVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_AssignedForman_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AssignedForman"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="findByUserName"/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT WoSchedulerTnxHdr_EO.ACTUAL_START_DATE, 
+       WoSchedulerTnxHdr_EO.ASSET, 
+       WoSchedulerTnxHdr_EO.ASSIGNED_FORMAN, 
+       WoSchedulerTnxHdr_EO.BUILDING_ID, 
+       WoSchedulerTnxHdr_EO.CREATED_BY, 
+       WoSchedulerTnxHdr_EO.CREATION_DATE, 
+       WoSchedulerTnxHdr_EO.FROM_TIME, 
+       WoSchedulerTnxHdr_EO.ITERATION_DETAILS, 
+       WoSchedulerTnxHdr_EO.LAST_UPDATE_DATE, 
+       WoSchedulerTnxHdr_EO.LAST_UPDATE_LOGIN, 
+       WoSchedulerTnxHdr_EO.LAST_UPDATED_BY, 
+       WoSchedulerTnxHdr_EO.PROPERTY_ID, 
+       WoSchedulerTnxHdr_EO.RELEASED_DATE, 
+       WoSchedulerTnxHdr_EO.RESCHEDULE_DATE, 
+       WoSchedulerTnxHdr_EO.RESCHEDULE_REASON, 
+       WoSchedulerTnxHdr_EO.SC_WO_TNX_ID, 
+       WoSchedulerTnxHdr_EO.SC_WO_TNX_NO, 
+       WoSchedulerTnxHdr_EO.START_DATE, 
+       WoSchedulerTnxHdr_EO.STATUS, 
+       WoSchedulerTnxHdr_EO.TIME_TAKEN, 
+       WoSchedulerTnxHdr_EO.TO_TIME, 
+       WoSchedulerTnxHdr_EO.UNIT_ID, 
+       WoSchedulerTnxHdr_EO.WO_DESCRIPTION, 
+       WoSchedulerTnxHdr_EO.WO_ID, 
+       WoSchedulerTnxHdr_EO.WO_NO, 
+       WoSchedulerTnxHdr_EO.WO_TYPE, 
+       WoSchedulerTnxHdr_EO.FUNC_ID, 
+       WoSchedulerTnxHdr_EO.FLOW_LEVEL, 
+       WoSchedulerTnxHdr_EO.FLOW_STATUS, 
+       WoSchedulerTnxHdr_EO.FLOW_WITH, 
+       WoSchedulerTnxHdr_EO.USER_GRP_ID, 
+       WoSchedulerTnxHdr_EO.WO_SCH_MAIN_HDR_ID, 
+       WoSchedulerTnxHdr_EO.WO_SCH_MAIN_HDR_NO, 
+       WoSchedulerTnxHdr_EO.FROM_TIME_AM_PM, 
+       WoSchedulerTnxHdr_EO.TO_TIME_AM_PM, 
+       WoSchedulerTnxHdr_EO.WO_SUB_TYPE, 
+       WoSchedulerTnxHdr_EO.UNIT_NAME, 
+       WoSchedulerTnxHdr_EO.BUILDING_NAME, 
+       WoSchedulerTnxHdr_EO.COMPLETE_DATE,
+TO_CHAR((WoSchedulerTnxHdr_EO.START_DATE +4/24), 'dd-MON-yyyy HH12:MI:SS AM') as START_DATE_TRANS,
+TO_CHAR((WoSchedulerTnxHdr_EO.COMPLETE_DATE +4/24), 'dd-MON-yyyy HH12:MI:SS AM') as COMPLETE_DATE_TRANS
+FROM XXPM_SCHEDULER_TNX WoSchedulerTnxHdr_EO
+order by WoSchedulerTnxHdr_EO.RELEASED_DATE desc]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="WoSchedulerTnxHdr_EO"
+    Entity="model.EO.WoSchedulerTnxHdr_EO"/>
+  <ViewAttribute
+    Name="ActualStartDate"
+    PrecisionRule="true"
+    EntityAttrName="ActualStartDate"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="ACTUAL_START_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.VO.WoSchedulerTnxHdr_VO.ActualStartDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.VO.WoSchedulerTnxHdr_VO.ActualStartDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Asset"
+    PrecisionRule="true"
+    EntityAttrName="Asset"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="ASSET"/>
+  <ViewAttribute
+    Name="AssignedForman"
+    PrecisionRule="true"
+    EntityAttrName="AssignedForman"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="ASSIGNED_FORMAN"
+    LOVName="LOV_AssignedForman">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildingId"
+    PrecisionRule="true"
+    EntityAttrName="BuildingId"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="BUILDING_ID"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="FromTime"
+    PrecisionRule="true"
+    EntityAttrName="FromTime"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="FROM_TIME"/>
+  <ViewAttribute
+    Name="IterationDetails"
+    PrecisionRule="true"
+    EntityAttrName="IterationDetails"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="ITERATION_DETAILS"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="LAST_UPDATE_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="LAST_UPDATE_LOGIN"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="LAST_UPDATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="PropertyId"
+    PrecisionRule="true"
+    EntityAttrName="PropertyId"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="PROPERTY_ID"/>
+  <ViewAttribute
+    Name="ReleasedDate"
+    PrecisionRule="true"
+    EntityAttrName="ReleasedDate"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="RELEASED_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.VO.WoSchedulerTnxHdr_VO.ReleasedDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.VO.WoSchedulerTnxHdr_VO.ReleasedDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RescheduleDate"
+    PrecisionRule="true"
+    EntityAttrName="RescheduleDate"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="RESCHEDULE_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.VO.WoSchedulerTnxHdr_VO.RescheduleDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.VO.WoSchedulerTnxHdr_VO.RescheduleDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RescheduleReason"
+    PrecisionRule="true"
+    EntityAttrName="RescheduleReason"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="RESCHEDULE_REASON"/>
+  <ViewAttribute
+    Name="ScWoTnxId"
+    PrecisionRule="true"
+    EntityAttrName="ScWoTnxId"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="SC_WO_TNX_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("SC_WO_TNX_ID_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ScWoTnxNo"
+    PrecisionRule="true"
+    EntityAttrName="ScWoTnxNo"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="SC_WO_TNX_NO"/>
+  <ViewAttribute
+    Name="StartDate"
+    PrecisionRule="true"
+    EntityAttrName="StartDate"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="START_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.VO.WoSchedulerTnxHdr_VO.StartDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.VO.WoSchedulerTnxHdr_VO.StartDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="STATUS"/>
+  <ViewAttribute
+    Name="TimeTaken"
+    PrecisionRule="true"
+    EntityAttrName="TimeTaken"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="TIME_TAKEN"/>
+  <ViewAttribute
+    Name="ToTime"
+    PrecisionRule="true"
+    EntityAttrName="ToTime"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="TO_TIME"/>
+  <ViewAttribute
+    Name="UnitId"
+    PrecisionRule="true"
+    EntityAttrName="UnitId"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="UNIT_ID"/>
+  <ViewAttribute
+    Name="WoDescription"
+    PrecisionRule="true"
+    EntityAttrName="WoDescription"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="WO_DESCRIPTION"/>
+  <ViewAttribute
+    Name="WoId"
+    PrecisionRule="true"
+    EntityAttrName="WoId"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="WO_ID"/>
+  <ViewAttribute
+    Name="WoNo"
+    PrecisionRule="true"
+    EntityAttrName="WoNo"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="WO_NO"
+    LOVName="LOV_WoNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WoType"
+    PrecisionRule="true"
+    EntityAttrName="WoType"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="WO_TYPE"/>
+  <ViewAttribute
+    Name="FuncId"
+    PrecisionRule="true"
+    EntityAttrName="FuncId"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="FUNC_ID"/>
+  <ViewAttribute
+    Name="FlowLevel"
+    PrecisionRule="true"
+    EntityAttrName="FlowLevel"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="FLOW_LEVEL"/>
+  <ViewAttribute
+    Name="FlowStatus"
+    PrecisionRule="true"
+    EntityAttrName="FlowStatus"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="FLOW_STATUS"/>
+  <ViewAttribute
+    Name="FlowWith"
+    PrecisionRule="true"
+    EntityAttrName="FlowWith"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="FLOW_WITH"/>
+  <ViewAttribute
+    Name="UserGrpId"
+    PrecisionRule="true"
+    EntityAttrName="UserGrpId"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="USER_GRP_ID"/>
+  <ViewAttribute
+    Name="WoSchMainHdrId"
+    PrecisionRule="true"
+    EntityAttrName="WoSchMainHdrId"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="WO_SCH_MAIN_HDR_ID"/>
+  <ViewAttribute
+    Name="WoSchMainHdrNo"
+    PrecisionRule="true"
+    EntityAttrName="WoSchMainHdrNo"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="WO_SCH_MAIN_HDR_NO"/>
+  <ViewAttribute
+    Name="FromTimeAmPm"
+    PrecisionRule="true"
+    EntityAttrName="FromTimeAmPm"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="FROM_TIME_AM_PM"
+    LOVName="LOV_FromTimeAmPm">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ToTimeAmPm"
+    PrecisionRule="true"
+    EntityAttrName="ToTimeAmPm"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="TO_TIME_AM_PM"
+    LOVName="LOV_ToTimeAmPm">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WoSubType"
+    PrecisionRule="true"
+    EntityAttrName="WoSubType"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="WO_SUB_TYPE"/>
+  <ViewAttribute
+    Name="UnitName"
+    PrecisionRule="true"
+    EntityAttrName="UnitName"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="UNIT_NAME"/>
+  <ViewAttribute
+    Name="BuildingName"
+    PrecisionRule="true"
+    EntityAttrName="BuildingName"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="BUILDING_NAME"/>
+  <ViewAttribute
+    Name="CompleteDate"
+    PrecisionRule="true"
+    EntityAttrName="CompleteDate"
+    EntityUsage="WoSchedulerTnxHdr_EO"
+    AliasName="COMPLETE_DATE"/>
+  <ViewAttribute
+    Name="StartDateTrans"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="DATE"
+    AliasName="START_DATE_TRANS"
+    Expression="START_DATE_TRANS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CompleteDateTrans"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="DATE"
+    AliasName="COMPLETE_DATE_TRANS"
+    Expression="COMPLETE_DATE_TRANS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="findByScWoTnxId"
+    ViewObjectName="model.VO.WoSchedulerTnxHdr_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow312"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ScWoTnxId"
+        ViewAttribute="ScWoTnxId"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_scWoTnxId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="WoSchedulerTnxResource_VO"
+    ViewLink="model.VL.WoSchTnxHdrTnxResource_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="getApprovalHistoryROVo"
+    ViewLink="model.ROVO.WoSchTnxApproval_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

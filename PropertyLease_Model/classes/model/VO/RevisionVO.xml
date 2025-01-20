@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RevisionVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="RevisionEO.CREATED_BY, 
+       RevisionEO.CREATION_DATE, 
+       RevisionEO.DESCRIPTION, 
+       RevisionEO.LAST_UPDATE_DATE, 
+       RevisionEO.LAST_UPDATE_LOGIN, 
+       RevisionEO.LAST_UPDATED_BY, 
+       RevisionEO.PL_ID, 
+       RevisionEO.PL_REVISON_ID, 
+       RevisionEO.REVISED_BY, 
+       RevisionEO.REVISED_DATE, 
+       RevisionEO.REVISION_TYPE, 
+       RevisionEO.REVISION_VALUE, 
+       RevisionEO.REVISON_NO"
+  FromList="XXPM_REVISION RevisionEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VO.RevisionVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="PlHeader_VO1"
+    ViewObjectName="model.VO.PlHeader_VO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PlHeader_VO2"
+    ViewObjectName="model.VO.PlHeader_VO">
+    <ViewCriteriaUsage
+      Name="findByPLId"
+      FullName="model.VO.PlHeader_VO.findByPLId"/>
+    <ParameterMap>
+      <PIMap Variable="BV_PLID">
+        <TransientExpression><![CDATA[PlId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_PlId"
+    ListVOName="PlHeader_VO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PlId"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="RevisonNo"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PlId"/>
+      <Item Value="RevisionNo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PlName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PriceListTrans"
+    ListVOName="PlHeader_VO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_PriceListTrans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PriceListTrans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="PlId"/>
+      <Item Value="RevisonNo"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PlName"/>
+      <Item Value="PlId"/>
+      <Item Value="RevisionNo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PlName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SOCCriteriaForRevision"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="RevisionEO"
+    Entity="model.EO.RevisionEO"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="RevisionEO"
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="RevisionEO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="RevisionEO"
+    AliasName="DESCRIPTION">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="RevisionEO"
+    AliasName="LAST_UPDATE_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="RevisionEO"
+    AliasName="LAST_UPDATE_LOGIN"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="RevisionEO"
+    AliasName="LAST_UPDATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="PlId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PlId"
+    EntityUsage="RevisionEO"
+    AliasName="PL_ID"
+    LOVName="LOV_PlId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PlRevisonId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PlRevisonId"
+    EntityUsage="RevisionEO"
+    AliasName="PL_REVISON_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("XXPM_REVISION_ID_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevisedBy"
+    PrecisionRule="true"
+    EntityAttrName="RevisedBy"
+    EntityUsage="RevisionEO"
+    AliasName="REVISED_BY"/>
+  <ViewAttribute
+    Name="RevisedDate"
+    PrecisionRule="true"
+    EntityAttrName="RevisedDate"
+    EntityUsage="RevisionEO"
+    AliasName="REVISED_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RevisionVO.RevisedDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevisionType"
+    PrecisionRule="true"
+    EntityAttrName="RevisionType"
+    EntityUsage="RevisionEO"
+    AliasName="REVISION_TYPE"/>
+  <ViewAttribute
+    Name="RevisionValue"
+    PrecisionRule="true"
+    EntityAttrName="RevisionValue"
+    EntityUsage="RevisionEO"
+    AliasName="REVISION_VALUE"/>
+  <ViewAttribute
+    Name="RevisonNo"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RevisonNo"
+    EntityUsage="RevisionEO"
+    AliasName="REVISON_NO"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ViewAttribute
+    Name="PriceListTrans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_PriceListTrans">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(PlId!=null&&PlHeader_VO2!=null){
+return PlHeader_VO2.first().getAttribute('PlName');
+}
+else{
+return null;
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="PlId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.RevisionVO.PriceListTrans_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="RevisionLineVO"
+    ViewLink="model.VL.Revision_LineVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

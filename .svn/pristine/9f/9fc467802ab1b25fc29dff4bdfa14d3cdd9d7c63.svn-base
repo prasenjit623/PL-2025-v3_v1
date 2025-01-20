@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="OtherCharges_BTF">
+    <default-activity id="__1">router1</default-activity>
+    <managed-bean id="__13">
+      <managed-bean-name id="__14">SearchOC_Mb</managed-bean-name>
+      <managed-bean-class id="__12">view.backing.SearchOtherChargesBb</managed-bean-class>
+      <managed-bean-scope id="__15">backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__32">
+      <managed-bean-name id="__33">AddEditOC_Mb</managed-bean-name>
+      <managed-bean-class id="__34">view.backing.AddEditOtherChargesBb</managed-bean-class>
+      <managed-bean-scope id="__35">backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__76">
+      <managed-bean-name id="__75">ReceiptOCBean</managed-bean-name>
+      <managed-bean-class id="__74">view.backing.ReceiptOC</managed-bean-class>
+      <managed-bean-scope id="__73">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__173">
+      <managed-bean-name id="__172">AddEditOcDpMb</managed-bean-name>
+      <managed-bean-class id="__171">view.backing.AddEditOcDpBb</managed-bean-class>
+      <managed-bean-scope id="__170">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchOC">
+      <page>/fragments/SearchOC.jsff</page>
+    </view>
+    <view id="AddEditOC">
+      <page>/fragments/AddEditOC.jsff</page>
+    </view>
+    <method-call id="CreateOtherCharges">
+      <method>#{bindings.CreateOtherCharges.execute}</method>
+      <outcome id="__16">
+        <fixed-outcome>CreateOtherCharges</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="router1">
+      <case>
+        <expression>#{pageFlowScope.searchOrAdd=='OtherCharges'}</expression>
+        <outcome id="__22">add</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.searchOrAdd != 'OtherCharges'}</expression>
+        <outcome id="__23">search</outcome>
+      </case>
+      <default-outcome>search</default-outcome>
+    </router>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__36">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__45">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="Receipt_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Receipt_BTF.xml</document>
+        <id>Receipt_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__11">
+        <name>TransId</name>
+        <value>#{pageFlowScope.TransId}</value>
+      </input-parameter>
+      <input-parameter id="__56">
+        <name>BookingId</name>
+        <value>#{pageFlowScope.BookingId}</value>
+      </input-parameter>
+      <input-parameter id="__57">
+        <name>recid</name>
+        <value>#{pageFlowScope.recid}</value>
+      </input-parameter>
+      <input-parameter id="__58">
+        <name>RecType</name>
+        <value>#{pageFlowScope.recType}</value>
+      </input-parameter>
+      <input-parameter id="__59">
+        <name>scfnId</name>
+        <value>#{pageFlowScope.scfnId}</value>
+      </input-parameter>
+      <input-parameter id="__60">
+        <name>funcId</name>
+        <value>#{pageFlowScope.funcId}</value>
+      </input-parameter>
+      <input-parameter id="__61">
+        <name>OrgId</name>
+        <value>#{pageFlowScope.OrgId}</value>
+      </input-parameter>
+      <input-parameter id="__63">
+        <name>CustName</name>
+        <value>#{pageFlowScope.CustName}</value>
+      </input-parameter>
+      <input-parameter id="__62">
+        <name>CustBankName</name>
+        <value>#{pageFlowScope.CustBankName}</value>
+      </input-parameter>
+      <input-parameter id="__64">
+        <name>CustBankAccNumber</name>
+        <value>#{pageFlowScope.CustBankAccNumber}</value>
+      </input-parameter>
+      <input-parameter id="__65">
+        <name>CustBranchName</name>
+        <value>#{pageFlowScope.CustBranchName}</value>
+      </input-parameter>
+      <input-parameter id="__66">
+        <name>Amount</name>
+        <value>#{pageFlowScope.Amount}</value>
+      </input-parameter>
+      <input-parameter id="__67">
+        <name>Duedate</name>
+        <value>#{pageFlowScope.DueDate}</value>
+      </input-parameter>
+      <input-parameter id="__68">
+        <name>BookingMsId</name>
+        <value>#{pageFlowScope.BookingMsId}</value>
+      </input-parameter>
+      <input-parameter id="__69">
+        <name>Type</name>
+        <value>#{pageFlowScope.Type}</value>
+      </input-parameter>
+      <input-parameter id="__102">
+        <name>chrgTyp</name>
+        <value>#{pageFlowScope.chrgTyp}</value>
+      </input-parameter>
+      <input-parameter id="__70">
+        <name>oc_rt_dis</name>
+        <value>#{pageFlowScope.oc_rt_dis}</value>
+      </input-parameter>
+      <input-parameter id="__71">
+        <name>Status11</name>
+        <value>#{pageFlowScope.Status11}</value>
+      </input-parameter>
+      <input-parameter id="__72">
+        <name>CancelId</name>
+        <value>#{pageFlowScope.CancelId}</value>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type id="__10">
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <view id="ReceiptOC">
+      <page>/fragments/ReceiptOC.jsff</page>
+    </view>
+    <router id="router2">
+      <case>
+        <expression>#{pageFlowScope.Type=='INS'}</expression>
+        <outcome id="__80">line</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.Type!='INS'}</expression>
+        <outcome id="__81">header</outcome>
+      </case>
+      <default-outcome>header</default-outcome>
+    </router>
+    <method-call id="CreateWithParameters">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__77">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateWithParameters1">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__78">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateWithParameters2">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__79">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__7">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute1">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__117">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute2">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__118">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute3">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__129">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute4">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__130">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="AddEditOcDp">
+      <page>/fragments/AddEditOcDp.jsff</page>
+    </view>
+    <method-call id="Execute5">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__144">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams2">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__155">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__174">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute6">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__180">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">SearchOC</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">addEdit</from-outcome>
+        <to-activity-id id="__4">CreateOtherCharges</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__38">
+        <from-outcome id="__39">edit</from-outcome>
+        <to-activity-id id="__37">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__141">
+        <from-outcome id="__143">addOcDp</from-outcome>
+        <to-activity-id id="__142">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__157">
+        <from-outcome id="__158">editOcDp</from-outcome>
+        <to-activity-id id="__156">ExecuteWithParams2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id id="__18">CreateOtherCharges</from-activity-id>
+      <control-flow-case id="__21">
+        <from-outcome id="__20">CreateOtherCharges</from-outcome>
+        <to-activity-id id="__19">AddEditOC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__24">
+      <from-activity-id id="__25">router1</from-activity-id>
+      <control-flow-case id="__27">
+        <from-outcome id="__28">search</from-outcome>
+        <to-activity-id id="__26">SearchOC</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__30">
+        <from-outcome id="__29">add</from-outcome>
+        <to-activity-id id="__31">CreateOtherCharges</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__40">
+      <from-activity-id id="__41">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__44">
+        <from-outcome id="__43">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__42">AddEditOC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__46">
+      <from-activity-id id="__47">AddEditOC</from-activity-id>
+      <control-flow-case id="__48">
+        <from-outcome id="__50">back</from-outcome>
+        <to-activity-id id="__49">Execute</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__82">
+        <from-outcome id="__108">receipt</from-outcome>
+        <to-activity-id id="__83">router2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome id="__91">Edit</from-outcome>
+        <to-activity-id id="__8">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__51">
+      <from-activity-id id="__52">Execute</from-activity-id>
+      <control-flow-case id="__55">
+        <from-outcome id="__53">Execute</from-outcome>
+        <to-activity-id id="__54">SearchOC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__84">
+      <from-activity-id id="__85">router2</from-activity-id>
+      <control-flow-case id="__88">
+        <from-outcome id="__87">header</from-outcome>
+        <to-activity-id id="__86">CreateWithParameters</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__96">
+        <from-outcome id="__95">line</from-outcome>
+        <to-activity-id id="__94">CreateWithParameters1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__89">
+      <from-activity-id id="__90">CreateWithParameters</from-activity-id>
+      <control-flow-case id="__93">
+        <to-activity-id id="__92">ReceiptOC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__97">
+      <from-activity-id id="__98">CreateWithParameters1</from-activity-id>
+      <control-flow-case id="__101">
+        <to-activity-id id="__99">CreateWithParameters2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__103">
+      <from-activity-id id="__104">CreateWithParameters2</from-activity-id>
+      <control-flow-case id="__107">
+        <to-activity-id id="__105">ReceiptOC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__100">
+      <from-activity-id id="__106">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__110">
+        <from-outcome id="__111">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__109">ReceiptOC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__112">
+      <from-activity-id id="__113">ReceiptOC</from-activity-id>
+      <control-flow-case id="__114">
+        <from-outcome id="__116">toSave</from-outcome>
+        <to-activity-id id="__115">Execute1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__182">
+        <from-outcome id="__183">backToAddEditOcDp</from-outcome>
+        <to-activity-id id="__181">Execute6</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__119">
+      <from-activity-id id="__120">Execute1</from-activity-id>
+      <control-flow-case id="__122">
+        <from-outcome id="__123">Execute</from-outcome>
+        <to-activity-id id="__121">Execute2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__124">
+      <from-activity-id id="__125">Execute2</from-activity-id>
+      <control-flow-case id="__126">
+        <from-outcome id="__128">Execute</from-outcome>
+        <to-activity-id id="__127">Execute3</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__131">
+      <from-activity-id id="__132">Execute3</from-activity-id>
+      <control-flow-case id="__135">
+        <from-outcome id="__133">Execute</from-outcome>
+        <to-activity-id id="__134">Execute4</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__136">
+      <from-activity-id id="__137">Execute4</from-activity-id>
+      <control-flow-case id="__138">
+        <from-outcome id="__140">Execute</from-outcome>
+        <to-activity-id id="__139">AddEditOC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__145">
+      <from-activity-id id="__146">AddEditOcDp</from-activity-id>
+      <control-flow-case id="__147">
+        <from-outcome id="__149">backToSrch</from-outcome>
+        <to-activity-id id="__148">Execute5</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__165">
+        <from-outcome id="__166">addRcptOcDp</from-outcome>
+        <to-activity-id id="__164">router2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__167">
+        <from-outcome id="__169">editRcptOcDp</from-outcome>
+        <to-activity-id id="__168">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__150">
+      <from-activity-id id="__151">Execute5</from-activity-id>
+      <control-flow-case id="__153">
+        <from-outcome id="__152">Execute</from-outcome>
+        <to-activity-id id="__154">SearchOC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__159">
+      <from-activity-id id="__160">ExecuteWithParams2</from-activity-id>
+      <control-flow-case id="__163">
+        <from-outcome id="__161">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__162">AddEditOcDp</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__175">
+      <from-activity-id id="__176">CreateInsert</from-activity-id>
+      <control-flow-case id="__179">
+        <from-outcome id="__178">CreateInsert</from-outcome>
+        <to-activity-id id="__177">AddEditOcDp</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__184">
+      <from-activity-id id="__185">Execute6</from-activity-id>
+      <control-flow-case id="__187">
+        <from-outcome id="__186">Execute</from-outcome>
+        <to-activity-id id="__188">AddEditOcDp</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

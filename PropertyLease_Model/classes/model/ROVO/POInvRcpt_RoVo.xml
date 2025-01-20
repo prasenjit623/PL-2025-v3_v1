@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="POInvRcpt_RoVo"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ROVO.POInvRcpt_RoVo_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[SELECT DISTINCT
+    XXPM_PO_INV_RCPT_V.PO_INV_HDR_ID PO_INV_HDR_ID, 
+    XXPM_PO_INV_RCPT_V.PO_NUMBER PO_NUMBER, 
+    XXPM_PO_INV_RCPT_V.RECEIPT_DATE RECEIPT_DATE, 
+    XXPM_PO_INV_RCPT_V.RECEIPT_NUM RECEIPT_NUM, 
+    XXPM_PO_INV_RCPT_V.RECEIPT_AMOUNT RECEIPT_AMOUNT, 
+    XXPM_PO_INV_RCPT_V.RCPT_DESCRIPTION RCPT_DESCRIPTION ,
+    XXPM_PO_INV_RCPT_V.RETURNED_AMT RETURNED_AMT
+FROM 
+    XXPM_PO_INV_RCPT_V 
+ORDER BY XXPM_PO_INV_RCPT_V.RECEIPT_NUM DESC]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="PoInvHdrId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="PO_INV_HDR_ID"
+    Expression="PO_INV_HDR_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PoNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PO_NUMBER"
+    Expression="PO_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReceiptDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="RECEIPT_DATE"
+    Expression="RECEIPT_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReceiptNum"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="60"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="RECEIPT_NUM"
+    Expression="RECEIPT_NUM"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReceiptAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="RECEIPT_AMOUNT"
+    Expression="RECEIPT_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RcptDescription"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="350"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="RCPT_DESCRIPTION"
+    Expression="RCPT_DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="350"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReturnedAmt"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="RETURNED_AMT"
+    Expression="RETURNED_AMT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="PoInvHdrId"/>
+    <Item Value="ReceiptNum"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

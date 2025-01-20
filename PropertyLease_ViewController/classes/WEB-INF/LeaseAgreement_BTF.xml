@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="LeaseAgreement_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">SearchLeaseAgreement</default-activity>
+    <managed-bean id="__24">
+      <managed-bean-name id="__22">LeaseAgreement</managed-bean-name>
+      <managed-bean-class id="__23">LeaseAgreement</managed-bean-class>
+      <managed-bean-scope id="__21">request</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchLeaseAgreement">
+      <page>/fragments/SearchLeaseAgreement.jsff</page>
+    </view>
+    <view id="AddEditLeaseAgreement">
+      <page>/fragments/AddEditLeaseAgreement.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__15">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="Attachments_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Attachments_BTF.xml</document>
+        <id>Attachments_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__33">
+        <name>funcid</name>
+        <value>#{pageFlowScope.lefuncId}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__34">
+        <name>funcrefid</name>
+        <value>#{pageFlowScope.leId}</value>
+        <pass-by-value/>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="CheckListResponse_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/CheckListResponse_BTF.xml</document>
+        <id>CheckListResponse_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__43">
+        <name>funcid</name>
+        <value>#{pageFlowScope.leasefuncid}</value>
+      </input-parameter>
+      <input-parameter id="__44">
+        <name>funcrefid</name>
+        <value>#{pageFlowScope.leasefuncrefid}</value>
+      </input-parameter>
+      <input-parameter id="__45">
+        <name>lookup</name>
+        <value>#{pageFlowScope.leaselookup}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="MoveInOut_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/MoveInOut_BTF.xml</document>
+        <id>MoveInOut_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__49">
+        <name>inputParameter1</name>
+        <value>#{pageFlowScope.EditMoveInOut}</value>
+      </input-parameter>
+      <input-parameter id="__50">
+        <name>inputParameter2</name>
+        <value>#{pageFlowScope.Move}</value>
+      </input-parameter>
+      <input-parameter id="__51">
+        <name>inputParameter3</name>
+        <value>#{sessionScope.moveInOut}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="ExtCancellation">
+      <task-flow-reference>
+        <document>/WEB-INF/ExtCancellation.xml</document>
+        <id>ExtCancellation</id>
+      </task-flow-reference>
+      <input-parameter id="__53">
+        <name>inputParameter1</name>
+        <value>#{sessionScope.transno}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="CancellationExtension_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/CancellationExtension_BTF.xml</document>
+        <id>CancellationExtension_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__52">
+        <name>inputParameter1</name>
+        <value>#{sessionScope.transno}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__60">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__66">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">SearchLeaseAgreement</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">toAdd</from-outcome>
+        <to-activity-id id="__5">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome id="__9">toEdit</from-outcome>
+        <to-activity-id id="__7">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">AddEditLeaseAgreement</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">goBack</from-outcome>
+        <to-activity-id id="__12">Execute1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome id="__27">attachments</from-outcome>
+        <to-activity-id id="__25">Attachments_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__35">
+        <from-outcome id="__42">CheckList</from-outcome>
+        <to-activity-id id="__36">CheckListResponse_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__47">
+        <from-outcome id="__48">toMoveInOut</from-outcome>
+        <to-activity-id id="__46">MoveInOut_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__55">
+        <from-outcome id="__56">can</from-outcome>
+        <to-activity-id id="__54">CancellationExtension_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__57">
+        <from-outcome id="__59">ext</from-outcome>
+        <to-activity-id id="__58">ExtCancellation</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__73">
+        <from-outcome id="__74">goBack</from-outcome>
+        <to-activity-id id="__72">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id id="__17">CreateInsert</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome id="__20">CreateInsert</from-outcome>
+        <to-activity-id id="__18">AddEditLeaseAgreement</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__28">
+      <from-activity-id id="__29">Attachments_BTF</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__32">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__30">AddEditLeaseAgreement</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__37">
+      <from-activity-id id="__38">CheckListResponse_BTF</from-activity-id>
+      <control-flow-case id="__41">
+        <from-outcome id="__40">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__39">AddEditLeaseAgreement</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__67">
+      <from-activity-id id="__68">Execute1</from-activity-id>
+      <control-flow-case id="__69">
+        <from-outcome id="__70">Execute</from-outcome>
+        <to-activity-id id="__71">SearchLeaseAgreement</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__61">
+      <from-activity-id id="__62">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__64">
+        <from-outcome id="__63">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__65">AddEditLeaseAgreement</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__75">
+      <from-activity-id id="__76">Execute</from-activity-id>
+      <control-flow-case id="__77">
+        <from-outcome id="__78">Execute</from-outcome>
+        <to-activity-id id="__79">SearchLeaseAgreement</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

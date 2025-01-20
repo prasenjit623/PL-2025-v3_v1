@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditLandLordMasterPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LandLordMaster_VO1" RangeSize="25"
+              DataControl="LandLordMaster_AMDataControl"
+              id="LandLordMaster_VO1Iterator"/>
+    <iterator Binds="LandLordUnitDtls_VO1" RangeSize="25"
+              DataControl="LandLordMaster_AMDataControl"
+              id="LandLordUnitDtls_VO1Iterator"/>
+    <iterator Binds="LandLordAprvlFlow_VO1" RangeSize="25"
+              DataControl="LandLordMaster_AMDataControl"
+              id="LandLordAprvlFlow_VO1Iterator"/>
+    <iterator Binds="PropertyManagement_VO1" RangeSize="25"
+              DataControl="LandLordMaster_AMDataControl"
+              id="PropertyManagement_VO1Iterator"/>
+    <iterator id="GetLandlordApprFlwDtls_RoVo1Iterator"
+              Binds="GetLandlordApprFlwDtls_RoVo1"
+              DataControl="LandLordMaster_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="LandLordMaster_VO1Iterator"
+                     id="LandlordTnxId">
+      <AttrNames>
+        <Item Value="LandlordTnxId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="LandLordMaster_VO1Iterator" StaticList="false"
+          Uses="LOV_VendorId" id="VendorId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LandLordMaster_VO1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LandLordMaster_VO1Iterator" id="CreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LandLordMaster_VO1Iterator"
+                     id="LastUpdateDate">
+      <AttrNames>
+        <Item Value="LastUpdateDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LandLordMaster_VO1Iterator"
+                     id="LastUpdatedBy">
+      <AttrNames>
+        <Item Value="LastUpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LandLordMaster_VO1Iterator" id="PrimaryYn">
+      <AttrNames>
+        <Item Value="PrimaryYn"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="LandLordMaster_VO1Iterator"
+                  Uses="LOV_VendorName" id="VendorName"/>
+    <tree IterBinding="LandLordUnitDtls_VO1Iterator" id="LandLordUnitDtls_VO1">
+      <nodeDefinition DefName="model.VO.LandLordUnitDtls_VO"
+                      Name="LandLordUnitDtls_VO10">
+        <AttrNames>
+          <Item Value="LandlordTnxDtlId"/>
+          <Item Value="LandlordTnxId"/>
+          <Item Value="UnitName_Trans"/>
+          <Item Value="BuildId"/>
+          <Item Value="PropertyId"/>
+          <Item Value="PrimaryYn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="LandLordAprvlFlow_VO1Iterator"
+          id="LandLordAprvlFlow_VO1">
+      <nodeDefinition DefName="model.VO.LandLordAprvlFlow_VO"
+                      Name="LandLordAprvlFlow_VO10">
+        <AttrNames>
+          <Item Value="LandlordAprvlFlowId"/>
+          <Item Value="LandlordTnxId"/>
+          <Item Value="Seq"/>
+          <Item Value="Code"/>
+          <Item Value="Screen"/>
+          <Item Value="UserLevel"/>
+          <Item Value="UserId"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="PrimaryYn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="LandLordUnitDtls_VO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="LandLordAprvlFlow_VO1Iterator" id="Delete1"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <list IterBinding="LandLordMaster_VO1Iterator" StaticList="false"
+          Uses="LOV_OrgId" id="OrgId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <action id="Commit" DataControl="LandLordMaster_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="LandLordMaster_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="LandLordUnitDtls_VO1Iterator" id="CreateInsert"
+            InstanceName="LandLordMaster_AMDataControl.LandLordUnitDtls_VO1"
+            DataControl="LandLordMaster_AMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <list IterBinding="LandLordMaster_VO1Iterator" StaticList="false"
+          Uses="LOV_PropertyManagement" id="PropertyManagement"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="PropertyManagement_VO1Iterator"
+          id="PropertyManagement_VO1">
+      <nodeDefinition DefName="model.VO.PropertyManagement_VO"
+                      Name="PropertyManagement_VO10">
+        <AttrNames>
+          <Item Value="PropertyManagementId"/>
+          <Item Value="PropertyManagement"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PropertyManagement_VO1Iterator" id="CreateInsert2"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="LandLordAprvlFlow_VO1Iterator" id="CreateInsert1"
+            InstanceName="LandLordMaster_AMDataControl.LandLordAprvlFlow_VO1"
+            DataControl="LandLordMaster_AMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <methodAction id="changeAllPendingApprover"
+                  InstanceName="LandLordMaster_AMDataControl.dataProvider"
+                  DataControl="LandLordMaster_AMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="changeAllPendingApprover"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.LandLordMaster_AMDataControl.methodResults.changeAllPendingApprover_LandLordMaster_AMDataControl_dataProvider_changeAllPendingApprover_result">
+      <NamedData NDName="landlordTnxId" NDType="java.lang.String"/>
+      <NamedData NDName="seq" NDType="java.lang.String"/>
+      <NamedData NDName="aprvlFlowId" NDType="java.lang.String"/>
+      <NamedData NDName="approverId" NDType="java.lang.String"/>
+      <NamedData NDName="updaterName" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,30 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<weblogic-web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd"
+                  xmlns="http://www.bea.com/ns/weblogic/weblogic-web-app">
+    <context-root>/bi_sample</context-root>
+    <security-role-assignment>
+        <role-name>appmanager</role-name>
+        <principal-name>manager</principal-name>
+    </security-role-assignment>
+    <security-role-assignment>
+        <role-name>appsecurity</role-name>
+        <principal-name>security</principal-name>
+    </security-role-assignment>
+    <security-role-assignment>
+        <role-name>appemployee</role-name>
+        <principal-name>employee</principal-name>
+    </security-role-assignment>
+    <library-ref>
+        <library-name>adf.oracle.domain.webapp</library-name>
+    </library-ref>
+    <library-ref>
+        <library-name>jstl</library-name>
+        <specification-version>1.2</specification-version>
+    </library-ref>
+    <library-ref>
+        <library-name>jsf</library-name>
+        <specification-version>2.0</specification-version>
+        <exact-match>true</exact-match>
+    </library-ref>
+</weblogic-web-app>

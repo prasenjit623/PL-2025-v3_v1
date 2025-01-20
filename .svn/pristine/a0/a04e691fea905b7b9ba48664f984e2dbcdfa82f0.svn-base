@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchOffersPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="searchOfferDetailROVO1" RangeSize="25"
+              DataControl="OfferAppModuleDataControl"
+              id="searchOfferDetailROVO1Iterator"/>
+    <iterator Binds="searchOffersInfoROVO1" RangeSize="25"
+              DataControl="OfferAppModuleDataControl"
+              id="searchOffersInfoROVO1Iterator"/>
+    <iterator id="DistinctOfferDetailROVO1Iterator"
+              Binds="DistinctOfferDetailROVO1"
+              DataControl="OfferAppModuleDataControl" RangeSize="25"/>
+    <iterator id="OfferHrd_VO1Iterator" Binds="OfferHrd_VO1"
+              DataControl="OfferAppModuleDataControl" RangeSize="25"/>
+    <iterator id="OfferHrd_VO2Iterator" Binds="OfferHrd_VO2"
+              DataControl="OfferAppModuleDataControl" RangeSize="25"/>
+    <iterator Binds="RevisionVO1" RangeSize="25"
+              DataControl="PriceList_AMDataControl" id="RevisionVO1Iterator"/>
+    <searchRegion Binds="searchOffersInfoROVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="searchOffersInfoROVO1Query"/>
+    <searchRegion Criteria="searchOffersInfoROVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="searchOffersInfoROVO1Iterator"
+                  id="searchOffersInfoROVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <list IterBinding="searchOfferDetailROVO1Iterator" StaticList="false"
+          Uses="LOV_PropertyId" id="PropertyId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="searchOfferDetailROVO1Iterator" StaticList="false"
+          Uses="LOV_BuildingId" id="BuildingId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="searchOfferDetailROVO1Iterator" StaticList="false"
+          Uses="LOV_UnitId" id="UnitId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <tree IterBinding="searchOffersInfoROVO1Iterator"
+          id="searchOffersInfoROVO1">
+      <nodeDefinition DefName="model.ROVO.searchOffersInfoROVO"
+                      Name="searchOffersInfoROVO10">
+        <AttrNames>
+          <Item Value="OfferHdrId"/>
+          <Item Value="LeadId"/>
+          <Item Value="OrgId"/>
+          <Item Value="OfferNumber"/>
+          <Item Value="Leadnumber"/>
+          <Item Value="Businessunit"/>
+          <Item Value="OfferDate"/>
+          <Item Value="OfferFromDate"/>
+          <Item Value="OfferToDate"/>
+          <Item Value="PerformedBy"/>
+          <Item Value="RevisionNo"/>
+          <Item Value="MsHdrId"/>
+          <Item Value="OfferType"/>
+          <Item Value="Status"/>
+          <Item Value="Leadname"/>
+          <Item Value="Mobilenumber"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="OfferTotal"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="Description"/>
+          <Item Value="PropnumberTrans"/>
+          <Item Value="BuildnumberTrans"/>
+          <Item Value="UnitnumberTrans"/>
+          <Item Value="BuildName"/>
+          <Item Value="Unitname"/>
+          <Item Value="UnitStatus"/>
+          <Item Value="SetRent"/>
+          <Item Value="UnitDescription"/>
+          <Item Value="TaxAmountTrans"/>
+          <Item Value="OfferFlag"/>
+          <Item Value="LeaseNumber"/>
+          <Item Value="ExtensionDays"/>
+          <Item Value="SetRentPerAnnum"/>
+          <Item Value="DiscValue"/>
+          <Item Value="SubStatus"/>
+          <Item Value="UnitIncharge"/>
+          <Item Value="UnitOwner"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="searchOffersInfoROVO1Iterator"
+                     id="OfferHdrId">
+      <AttrNames>
+        <Item Value="OfferHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="OfferAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <list IterBinding="searchOffersInfoROVO1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <listOfValues StaticList="false" IterBinding="RevisionVO1Iterator"
+                  Uses="LOV_PriceListTrans" id="PriceListTrans"/>
+    <attributeValues IterBinding="RevisionVO1Iterator" id="RevisonNo">
+      <AttrNames>
+        <Item Value="RevisonNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RevisionVO1Iterator" id="RevisionValue">
+      <AttrNames>
+        <Item Value="RevisionValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="searchOfferDetailROVO1Iterator"
+                     id="OfferNumber">
+      <AttrNames>
+        <Item Value="OfferNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="searchOffersInfoROVO1Iterator" id="Status1">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="searchOffersInfoROVO1Iterator"
+                     id="OfferNumber1">
+      <AttrNames>
+        <Item Value="OfferNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OfferHrd_VO1Iterator" id="CarParkLeaseAgreId">
+      <AttrNames>
+        <Item Value="CarParkLeaseAgreId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

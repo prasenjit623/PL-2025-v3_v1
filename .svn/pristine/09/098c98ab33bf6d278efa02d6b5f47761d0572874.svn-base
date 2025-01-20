@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchLeaseAgreementPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LeaseAgreement_VO1" RangeSize="25"
+              DataControl="LeaseAgreement_AMDataControl"
+              id="LeaseAgreement_VO1Iterator"/>
+    <iterator id="BookingDetail_VO2Iterator" Binds="BookingDetail_VO2"
+              DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+    <iterator id="PropertyMaster_VO1Iterator" Binds="PropertyMaster_VO1"
+              DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+    <iterator id="OfferDetail_VO1Iterator" Binds="OfferDetail_VO1"
+              DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+    <iterator Binds="SearchLeaseAgreementInfo_RoVo1" RangeSize="25"
+              DataControl="LeaseAgreement_AMDataControl"
+              id="SearchLeaseAgreementInfo_RoVo1Iterator"/>
+    <searchRegion Criteria="SearchLeaseAgreementInfo_RoVoCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchLeaseAgreementInfo_RoVo1Iterator"
+                  id="SearchLeaseAgreementInfoRoVoCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchLeaseAgreementInfo_RoVo1Iterator"
+          id="SearchLeaseAgreementInfo_RoVo1">
+      <nodeDefinition DefName="model.ROVO.SearchLeaseAgreementInfo_RoVo"
+                      Name="SearchLeaseAgreementInfo_RoVo10">
+        <AttrNames>
+          <Item Value="LeaseNumber"/>
+          <Item Value="RecommendnoTrans"/>
+          <Item Value="OffernoTrans"/>
+          <Item Value="BookingnoTrans"/>
+          <Item Value="Customer"/>
+          <Item Value="TenancyConDocNo"/>
+          <Item Value="Status"/>
+          <Item Value="Description"/>
+          <Item Value="Buildname"/>
+          <Item Value="Unitname"/>
+          <Item Value="CreateDate"/>
+          <Item Value="LeaseStartDate"/>
+          <Item Value="LeaseEndDate"/>
+          <Item Value="UnitStatus"/>
+          <Item Value="SetRent"/>
+          <Item Value="NetRent"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="UnitDescription"/>
+          <Item Value="MobileNumber"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="EmailId"/>
+          <Item Value="UnitShortcode"/>
+          <Item Value="OfferFlag"/>
+          <Item Value="TenanctStatus"/>
+          <Item Value="NocDateActual"/>
+          <Item Value="CancellationNocDate"/>
+          <Item Value="ExtensionDays"/>
+          <Item Value="SetRentPerAnnum"/>
+          <Item Value="DiscAmt"/>
+          <Item Value="SubStatus"/>
+          <Item Value="UnitIncharge"/>
+          <Item Value="UnitOwner"/>
+          <Item Value="UnitCategory"/>
+          <Item Value="AreaValue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchLeaseAgreementInfo_RoVo1Iterator"
+                     id="LeaseNumber">
+      <AttrNames>
+        <Item Value="LeaseNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SearchLeaseAgreementInfo_RoVo1Iterator"
+                     id="LeaseAgreementId">
+      <AttrNames>
+        <Item Value="LeaseAgreementId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="LeaseAgreement_BTF_LeaseAgreement_BTF_CreateInsertPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="LeaseAgreement_VO1" RangeSize="25"
+              DataControl="LeaseAgreement_AMDataControl"
+              id="LeaseAgreement_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="LeaseAgreement_VO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

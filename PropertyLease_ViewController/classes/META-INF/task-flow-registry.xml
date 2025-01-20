@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="WEB-INF/Units_BTF.xml" id="Units_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="selectedUnitLine"/>
+      <input-parameter name="unitSubTabLine"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/WoSchedulerTnx_BTF.xml" id="WoSchedulerTnx_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/WoInv_BTF.xml" id="WoInv_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/addEditBilling_BTF.xml" id="addEditBilling_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="billing_id"/>
+      <input-parameter name="mode"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/OfferAddEdit_BTF.xml" id="OfferAddEdit_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="TaskFlowVal"/>
+      <input-parameter name="OfferId"/>
+      <input-parameter name="leaseid"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/CheckListResponse_BTF.xml" id="CheckListResponse_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="funcrefid"/>
+      <input-parameter name="funcid"/>
+      <input-parameter name="lookup"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/ExtCancellation.xml" id="ExtCancellation" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="inputParameter1"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/Property_BTF.xml" id="Property_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/CancellationExtension_BTF.xml" id="CancellationExtension_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="inputParameter1"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/PropertyLease_BTF.xml" id="PropertyLease_BTF" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="jwt"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/Lead_BTF.xml" id="Lead_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/homeBTF.xml" id="homeBTF" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/LeaseAgreement_BTF.xml" id="LeaseAgreement_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/MoveInOut_BTF.xml" id="MoveInOut_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="inputParameter1"/>
+      <input-parameter name="inputParameter2"/>
+      <input-parameter name="inputParameter3"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/LandLordMaster_BTF.xml" id="LandLordMaster_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/Recommendation_BTF.xml" id="Recommendation_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="BookingId"/>
+      <input-parameter name="recid"/>
+      <input-parameter name="TransId"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/LeadAddEdit_BTF.xml" id="LeadAddEdit_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/SearchReceipt_BTF.xml" id="SearchReceipt_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/Attachments_BTF.xml" id="Attachments_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="funcrefid"/>
+      <input-parameter name="funcid"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/PriceListAddEdit.xml" id="PriceListAddEdit" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/searchBilling_BTF.xml" id="searchBilling_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/Booking_BTF.xml" id="Booking_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="TaskFlowVal"/>
+      <input-parameter name="OfferId"/>
+      <input-parameter name="BookingId"/>
+      <input-parameter name="CustBranchName"/>
+      <input-parameter name="recid"/>
+      <input-parameter name="TransId"/>
+      <input-parameter name="CustBankAccNumber"/>
+      <input-parameter name="CustName"/>
+      <input-parameter name="CustBankName"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/Receipt_BTF.xml" id="Receipt_BTF" type="task-flow-definition" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="funcId"/>
+      <input-parameter name="BookingMsId"/>
+      <input-parameter name="Amount"/>
+      <input-parameter name="BookingId"/>
+      <input-parameter name="Type"/>
+      <input-parameter name="Duedate"/>
+      <input-parameter name="CustBranchName"/>
+      <input-parameter name="Status11"/>
+      <input-parameter name="CustName"/>
+      <input-parameter name="oc_rt_dis"/>
+      <input-parameter name="RecType"/>
+      <input-parameter name="CusName"/>
+      <input-parameter name="recid"/>
+      <input-parameter name="scfnId"/>
+      <input-parameter name="InstallmentType"/>
+      <input-parameter name="TransId"/>
+      <input-parameter name="OrgId"/>
+      <input-parameter name="CustBankAccNumber"/>
+      <input-parameter name="InstallmentAmount"/>
+      <input-parameter name="chrgTyp"/>
+      <input-parameter name="CancelId"/>
+      <input-parameter name="CustBankName"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/Offer_BTF.xml" id="Offer_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/OtherCharges_BTF.xml" id="OtherCharges_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/PriceList_BTF.xml" id="PriceList_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/Milestones_BTF.xml" id="Milestones_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/Cancelllation_BTF.xml" id="Cancelllation_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/Building_BTF.xml" id="Building_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="selectedBuildingLine"/>
+      <input-parameter name="BuildingSubTab"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/ArSetup_BTF.xml" id="ArSetup_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+</task-flow-registry>

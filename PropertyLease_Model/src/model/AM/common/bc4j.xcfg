@@ -1,0 +1,306 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="model.AM.LeaseAgreement_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="LeaseAgreement_AMLocal" ApplicationName="model.AM.LeaseAgreement_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.LeaseAgreement_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="LeaseAgreement_AMShared" ApplicationName="model.AM.LeaseAgreement_AM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.LeaseAgreement_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.PropertyBuilding_AM" default="PropertyBuilding_AMLocal">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="PropertyBuilding_AMLocal" ApplicationName="model.AM.PropertyBuilding_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="model.AM.PropertyBuilding_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="PropertyBuilding_AMShared" ApplicationName="model.AM.PropertyBuilding_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.PropertyBuilding_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.PropertyMaster_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="PropertyMaster_AMLocal" ApplicationName="model.AM.PropertyMaster_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="model.AM.PropertyMaster_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="PropertyMaster_AMShared" ApplicationName="model.AM.PropertyMaster_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.PropertyMaster_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.PropertyUnits_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="PropertyUnits_AMLocal" ApplicationName="model.AM.PropertyUnits_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="model.AM.PropertyUnits_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="PropertyUnits_AMShared" ApplicationName="model.AM.PropertyUnits_AM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.PropertyUnits_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.LeadAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="LeadAppModuleLocal" ApplicationName="model.AM.LeadAppModule" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="model.AM.LeadAppModule"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig ApplicationName="model.AM.LeadAppModule" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="LeadAppModuleShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.LeadAppModule"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.OfferAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="OfferAppModuleLocal" ApplicationName="model.AM.OfferAppModule" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="model.AM.OfferAppModule"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="OfferAppModuleShared" ApplicationName="model.AM.OfferAppModule">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.OfferAppModule"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.Milestones_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" ApplicationName="model.AM.Milestones_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" name="Milestones_AMLocal">
+         <Security AppModuleJndiName="model.AM.Milestones_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Milestones_AMShared" ApplicationName="model.AM.Milestones_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.Milestones_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.PriceList_AM">
+      <AppModuleConfig ApplicationName="model.AM.PriceList_AM" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="PriceList_AMLocal">
+         <Security AppModuleJndiName="model.AM.PriceList_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="PriceList_AMShared" ApplicationName="model.AM.PriceList_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.PriceList_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.Premium_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Premium_AMLocal" ApplicationName="model.AM.Premium_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="model.AM.Premium_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" ApplicationName="model.AM.Premium_AM" name="Premium_AMShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.Premium_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.Discount_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Discount_AMLocal" ApplicationName="model.AM.Discount_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="model.AM.Discount_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" ApplicationName="model.AM.Discount_AM" name="Discount_AMShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.Discount_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.Booking_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Booking_AMLocal" ApplicationName="model.AM.Booking_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="model.AM.Booking_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Booking_AMShared" ApplicationName="model.AM.Booking_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.Booking_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.Receipt">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="ReceiptLocal" ApplicationName="model.AM.Receipt" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.Receipt"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="ReceiptShared" ApplicationName="model.AM.Receipt">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.Receipt"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.MoveInOut_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="MoveInOut_AMLocal" ApplicationName="model.AM.MoveInOut_AM">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.MoveInOut_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="MoveInOut_AMShared" ApplicationName="model.AM.MoveInOut_AM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.MoveInOut_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.Recommendation_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Recommendation_AMLocal" ApplicationName="model.AM.Recommendation_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.Recommendation_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Recommendation_AMShared" ApplicationName="model.AM.Recommendation_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.Recommendation_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.Attachments_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Attachments_AMLocal" ApplicationName="model.AM.Attachments_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="model.AM.Attachments_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.CheckListResponse_AM">
+      <AppModuleConfig ApplicationName="model.AM.CheckListResponse_AM" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="CheckListResponse_AMLocal">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.CheckListResponse_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Attachments_AMShared" ApplicationName="model.AM.Attachments_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.AM.Attachments_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="CheckListResponse_AMShared" ApplicationName="model.AM.CheckListResponse_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.CheckListResponse_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.UserAM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="UserAMLocal" ApplicationName="model.AM.UserAM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.UserAM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig ApplicationName="model.AM.UserAM" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="UserAMShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.UserAM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.ExtensionCancellation_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="ExtensionCancellation_AMLocal" ApplicationName="model.AM.ExtensionCancellation_AM">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.ExtensionCancellation_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" jbo.project="model.PropertyLease_Model" name="ExtensionCancellation_AMShared" ApplicationName="model.AM.ExtensionCancellation_AM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.ExtensionCancellation_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.InvoiceSyncAM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="InvoiceSyncAMLocal" ApplicationName="model.AM.InvoiceSyncAM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.InvoiceSyncAM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="InvoiceSyncAMShared" ApplicationName="model.AM.InvoiceSyncAM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.InvoiceSyncAM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.ArSetup">
+      <AppModuleConfig name="ArSetupLocal" jbo.project="model.PropertyLease_Model" ApplicationName="model.AM.ArSetup" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.ArSetup"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="ArSetupShared" jbo.project="model.PropertyLease_Model" ApplicationName="model.AM.ArSetup" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.ArSetup"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.OtherCharges_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="OtherCharges_AMLocal" ApplicationName="model.AM.OtherCharges_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.OtherCharges_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="OtherCharges_AMShared" ApplicationName="model.AM.OtherCharges_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.OtherCharges_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.Cancellation_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Cancellation_AMLocal" ApplicationName="model.AM.Cancellation_AM">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.Cancellation_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="Cancellation_AMShared" ApplicationName="model.AM.Cancellation_AM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.Cancellation_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.WoScheduler_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="WoScheduler_AMLocal" ApplicationName="model.AM.WoScheduler_AM">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.WoScheduler_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.PropertyLease_Model" name="WoScheduler_AMShared" ApplicationName="model.AM.WoScheduler_AM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.WoScheduler_AM"/>
+         <Custom JDBCDataSource="PL_TEST"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.LandLordMaster_AM">
+      <AppModuleConfig name="LandLordMaster_AMLocal" jbo.project="model.PropertyLease_Model" ApplicationName="model.AM.LandLordMaster_AM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.LandLordMaster_AM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/PL_TEST_Version2DS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="LandLordMaster_AMShared" jbo.project="model.PropertyLease_Model" ApplicationName="model.AM.LandLordMaster_AM" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.LandLordMaster_AM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/PL_TEST_Version2DS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.AM.WoInv_AM">
+      <AppModuleConfig name="WoInv_AMLocal" jbo.project="model.PropertyLease_Model" ApplicationName="model.AM.WoInv_AM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.WoInv_AM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/PL_TEST_Version2DS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="WoInv_AMShared" jbo.project="model.PropertyLease_Model" ApplicationName="model.AM.WoInv_AM" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="model.AM.WoInv_AM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/PL_TEST_Version2DS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

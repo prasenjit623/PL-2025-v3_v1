@@ -1,0 +1,906 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelTabbed position="above" id="pt2"
+                      styleClass="AFStretchWidth" inlineStyle="height:650.0px;">
+        <af:showDetailItem id="tab1" text="Price List" flex="0"
+                           styleClass="AFStretchWidth">
+          <af:panelHeader text="Search PriceList" id="ph1">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.SearchPriceListROVOCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.SearchPriceListROVOCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.SearchPriceListROVOCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.SearchPriceListROVOCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc4:resId1" rows="3" maxColumns="3"/>
+          </af:panelHeader>
+          <af:panelCollection id="pc4" styleClass="AFStretchWidth">
+            <f:facet name="menus">
+              <af:menu text="Actions" id="menu2" rendered="true"
+                       visible="#{sessionScope.grantMap.PriceList =='N'?'false':'true'}">
+                <af:commandMenuItem text="Create" id="commandMenuItem7"
+                                    action="PriceList"/>
+                <af:commandMenuItem text="Edit" id="commandMenuItem8"
+                                    action="PriceList"/>
+                <af:commandMenuItem text="Delete" id="commandMenuItem9"/>
+                <af:commandMenuItem text="Duplicate" id="commandMenuItem10"/>
+                <af:commandMenuItem text="Export to Excel"
+                                    id="commandMenuItem11">
+                  <af:exportCollectionActionListener exportedId="resId1"
+                                                     type="excelHTML"
+                                                     filename="PriceList.xls"
+                                                     title="Price List "/>
+                </af:commandMenuItem>
+                <af:commandMenuItem text="View PDF" id="commandMenuItem12"/>
+              </af:menu>
+            </f:facet>
+            <f:facet name="toolbar">
+              <af:toolbar id="t1" flex="1">
+                <af:commandImageLink id="cil1"
+                                     icon="/images/func_add_16_ena.png"
+                                     action="PriceList"
+                                     hoverIcon="/images/func_add_16_hov.png"
+                                     depressedIcon="/images/func_add_16_act.png"
+                                     disabledIcon="/images/func_add_16_dis.png"
+                                     inlineStyle="margin-right:10px;"
+                                     visible="#{sessionScope.grantMap.PriceList =='F'}">
+                  <af:setPropertyListener from="#{'Add'}"
+                                          to="#{sessionScope.addEditPriceList}"
+                                          type="action"/>
+                </af:commandImageLink>
+                <af:commandImageLink id="cil6" action="PriceList"
+                                     icon="/images/func_pencil_16_ena.png"
+                                     hoverIcon="/images/func_pencil_16_hov.png"
+                                     depressedIcon="/images/func_pencil_16_act.png"
+                                     disabledIcon=" /images/func_pencil_16_dis.png"
+                                     visible="#{sessionScope.grantMap.PriceList =='F'}">
+                  <af:setPropertyListener from="#{'Edit'}"
+                                          to="#{sessionScope.addEditPriceList}"
+                                          type="action"/>
+                  <af:setPropertyListener from="#{bindings.PlId.inputValue}"
+                                          to="#{sessionScope.PriceList}"
+                                          type="action"/>
+                </af:commandImageLink>
+                <af:commandButton text="Edit" id="cb1" action="PriceList"
+                                  rendered="false"/>
+                <af:spacer width="10" height="10" id="s6"/>
+                <af:commandImageLink binding="#{backingBeanScope.backing_fragments_searchBuilding.cil3}"
+                                                id="commandImageLink1"
+                                                icon="/images/xl.png"
+                                                hoverIcon="/images/filedownload_ena.png"
+                                                depressedIcon="/images/filedownload_dis.png"
+                                                visible="#{sessionScope.grantMap.PriceList =='N'?'false':'true'}">
+                              <af:fileDownloadActionListener contentType="application/xls"
+                                                             filename="Price List.xls"
+                                                             method="#{backingBeanScope.backing_pages_Temp.exportToExcel}"/>
+                           </af:commandImageLink>
+                <af:commandImageLink text="Renewal" id="cil7"
+                                     actionListener="#{backingBeanScope.backing_pages_Temp.onclickPricelistRenewal}"
+                                     visible="#{sessionScope.grantMap.PriceList =='N'?'false':'true'}"/>
+                <af:commandImageLink actionListener="#{bindings.CreateInsert3.execute}"
+                                     text="Renewal"
+                                     disabled="#{!bindings.CreateInsert3.enabled}"
+                                     id="cil9" rendered="false">
+                  <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                </af:commandImageLink>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.SearchPriceListROVO1.collectionModel}"
+                      var="row"
+                      rows="#{bindings.SearchPriceListROVO1.rangeSize}"
+                      emptyText="#{bindings.SearchPriceListROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="6"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.SearchPriceListROVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SearchPriceListROVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="resId1" varStatus="vs"
+                      columnStretching="column:resId1c2" scrollPolicy="page"
+                      autoHeightRows="0" first="0" columnSelection="single"
+                      filterModel="#{bindings.SearchPriceListROVOCriteriaQuery.queryDescriptor}"
+                      queryListener="#{bindings.SearchPriceListROVOCriteriaQuery.processQuery}"
+                      filterVisible="false">
+              <af:column id="c24" headerText="S.No" align="center" width="50"
+                         frozen="true">
+                <af:outputText value="#{vs.index+1}" id="ot10"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchPriceListROVO1.hints.PlName.name}"
+                         sortable="true" headerText="Price List Name"
+                         id="resId1c1" width="150" frozen="true"
+                         filterable="true">
+                <af:outputText value="#{row.PlName}" id="ot3" rendered="false"/>
+                <af:commandLink text="#{row.PlName}" id="cl1"
+                                inlineStyle="font-weight:bolder; font-size:small; color:#1367AE;"
+                                action="PriceList">
+                  <af:setPropertyListener from="#{'Edit'}"
+                                          to="#{sessionScope.addEditPriceList}"
+                                          type="action"/>
+                  <af:setPropertyListener from="#{bindings.PlId.inputValue}"
+                                          to="#{sessionScope.PriceList}"
+                                          type="action"/>
+                </af:commandLink>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchPriceListROVO1.hints.OrgId.name}"
+                         sortable="true" headerText="Buisniness Unit"
+                         id="resId1c3" width="150" frozen="true"
+                         filterable="true">
+                <af:selectOneChoice value="#{row.bindings.OrgId.inputValue}"
+                                    label="#{row.bindings.OrgId.label}"
+                                    required="#{bindings.SearchPriceListROVO1.hints.OrgId.mandatory}"
+                                    shortDesc="#{bindings.SearchPriceListROVO1.hints.OrgId.tooltip}"
+                                    id="soc7" readOnly="true">
+                  <f:selectItems value="#{row.bindings.OrgId.items}" id="si7"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchPriceListROVO1.hints.PropertyId.name}"
+                         sortable="true" headerText="Property" id="resId1c4"
+                         width="150" frozen="true" filterable="true">
+                <af:selectOneChoice value="#{row.bindings.PropertyId.inputValue}"
+                                    label="#{row.bindings.PropertyId.label}"
+                                    required="#{bindings.SearchPriceListROVO1.hints.PropertyId.mandatory}"
+                                    shortDesc="#{bindings.SearchPriceListROVO1.hints.PropertyId.tooltip}"
+                                    id="soc5" readOnly="true">
+                  <f:selectItems value="#{row.bindings.PropertyId.items}"
+                                 id="si5"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchPriceListROVO1.hints.BuildId.name}"
+                         sortable="true" headerText="Building" id="resId1c5"
+                         width="150" frozen="true" filterable="true">
+                <af:selectOneChoice value="#{row.bindings.BuildId.inputValue}"
+                                    label="#{row.bindings.BuildId.label}"
+                                    required="#{bindings.SearchPriceListROVO1.hints.BuildId.mandatory}"
+                                    shortDesc="#{bindings.SearchPriceListROVO1.hints.BuildId.tooltip}"
+                                    id="soc4" readOnly="true">
+                  <f:selectItems value="#{row.bindings.BuildId.items}"
+                                 id="si4"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchPriceListROVO1.hints.UnitId.name}"
+                         sortable="true" headerText="Unit" id="resId1c6"
+                         width="150" frozen="true" filterable="true">
+                <af:selectOneChoice value="#{row.bindings.UnitId.inputValue}"
+                                    label="#{row.bindings.UnitId.label}"
+                                    required="#{bindings.SearchPriceListROVO1.hints.UnitId.mandatory}"
+                                    shortDesc="#{bindings.SearchPriceListROVO1.hints.UnitId.tooltip}"
+                                    id="soc6" readOnly="true">
+                  <f:selectItems value="#{row.bindings.UnitId.items}" id="si6"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchPriceListROVO1.hints.RevisionNo.name}"
+                         sortable="true" headerText="Revision No" id="resId1c7"
+                         filterable="true">
+                <af:outputText value="#{row.RevisionNo}" id="ot1">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SearchPriceListROVO1.hints.RevisionNo.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchPriceListROVO1.hints.RevisionDate.name}"
+                         sortable="true" headerText="Date" id="resId1c8"
+                         filterable="true">
+                <af:outputText value="#{row.RevisionDate}" id="ot8">
+                  <af:convertDateTime pattern="dd-MM-yyyy"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.RevisionDate}"
+                                id="id10"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchPriceListROVO1.hints.RevisedBy.name}"
+                         sortable="true" headerText="Revised By" id="resId1c9"
+                         filterable="true">
+                <af:outputText value="#{row.RevisedBy}" id="ot4">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SearchPriceListROVO1.hints.RevisedBy.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SearchPriceListROVO1.hints.Description.name}"
+                         sortable="true"
+                         headerText="#{bindings.SearchPriceListROVO1.hints.Description.label}"
+                         id="resId1c2" width="250" filterable="true">
+                <af:outputText value="#{row.Description}" id="ot2"/>
+              </af:column>
+            </af:table>
+            <af:popup id="p1"
+                      binding="#{backingBeanScope.backing_pages_Temp.pop1}">
+              <af:dialog id="d1" type="none">
+                <af:panelFormLayout id="pfl1" rows="3" maxColumns="3">
+                  <af:inputListOfValues id="priceListTransId"
+                                        popupTitle="Search and Select: #{bindings.PriceListTrans.hints.label}"
+                                        value="#{bindings.PriceListTrans.inputValue}"
+                                        label="#{bindings.PriceListTrans.hints.label}"
+                                        model="#{bindings.PriceListTrans.listOfValuesModel}"
+                                        required="#{bindings.PriceListTrans.hints.mandatory}"
+                                        columns="#{bindings.PriceListTrans.hints.displayWidth}"
+                                        shortDesc="#{bindings.PriceListTrans.hints.tooltip}"
+                                        autoSubmit="true">
+                    <f:validator binding="#{bindings.PriceListTrans.validator}"/>
+                  </af:inputListOfValues>
+                  <af:inputText value="#{bindings.RevisonNo.inputValue}"
+                                label="#{bindings.RevisonNo.hints.label}"
+                                required="#{bindings.RevisonNo.hints.mandatory}"
+                                columns="#{bindings.RevisonNo.hints.displayWidth}"
+                                maximumLength="#{bindings.RevisonNo.hints.precision}"
+                                shortDesc="#{bindings.RevisonNo.hints.tooltip}"
+                                id="it5" autoSubmit="true"
+                                partialTriggers="priceListTransId"
+                                readOnly="true">
+                    <f:validator binding="#{bindings.RevisonNo.validator}"/>
+                  </af:inputText>
+                  <af:inputDate value="#{bindings.RevisedDate.inputValue}"
+                                label="#{bindings.RevisedDate.hints.label}"
+                                required="#{bindings.RevisedDate.hints.mandatory}"
+                                shortDesc="#{bindings.RevisedDate.hints.tooltip}"
+                                id="id9" autoSubmit="true">
+                    <f:validator binding="#{bindings.RevisedDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.RevisedDate.format}"/>
+                  </af:inputDate>
+                  <af:inputText value="#{bindings.RevisionValue.inputValue}"
+                                label="#{bindings.RevisionValue.hints.label}"
+                                required="#{bindings.RevisionValue.hints.mandatory}"
+                                columns="#{bindings.RevisionValue.hints.displayWidth}"
+                                maximumLength="#{bindings.RevisionValue.hints.precision}"
+                                shortDesc="#{bindings.RevisionValue.hints.tooltip}"
+                                id="it15" autoSubmit="true" rendered="false">
+                    <f:validator binding="#{bindings.RevisionValue.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.Description.inputValue}"
+                                label="#{bindings.Description.hints.label}"
+                                required="#{bindings.Description.hints.mandatory}"
+                                columns="#{bindings.Description.hints.displayWidth}"
+                                maximumLength="#{bindings.Description.hints.precision}"
+                                shortDesc="#{bindings.Description.hints.tooltip}"
+                                id="it14" autoSubmit="true">
+                    <f:validator binding="#{bindings.Description.validator}"/>
+                  </af:inputText>
+                </af:panelFormLayout>
+                <af:panelCollection id="pc5" styleClass="AFStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                    <af:toolbar id="t8">
+                      <af:commandButton text="commandButton 1" id="cb8"
+                                        rendered="false"/>
+                      <af:commandImageLink actionListener="#{bindings.CreateInsert4.execute}"
+                                           id="cil8" partialSubmit="true"
+                                           icon="/images/func_add_16_ena.png"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.RevisionLineVO1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.RevisionLineVO1.rangeSize}"
+                            emptyText="#{bindings.RevisionLineVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.RevisionLineVO1.rangeSize}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.RevisionLineVO1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.RevisionLineVO1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t7"
+                            partialTriggers="::cil8" varStatus="vs">
+                    <af:column id="c34" headerText="S.No">
+                      <af:outputText value="#{vs.index+1}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.UnitType.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.UnitType.label}"
+                               id="c28" width="100">
+                      <af:selectOneChoice value="#{row.bindings.UnitType.inputValue}"
+                                          label="#{row.bindings.UnitType.label}"
+                                          required="#{bindings.RevisionLineVO1.hints.UnitType.mandatory}"
+                                          shortDesc="#{bindings.RevisionLineVO1.hints.UnitType.tooltip}"
+                                          id="soc8">
+                        <f:selectItems value="#{row.bindings.UnitType.items}"
+                                       id="si8"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.RevBaseCharge.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.RevBaseCharge.label}"
+                               id="c29" width="100">
+                      <af:inputText value="#{row.bindings.RevBaseCharge.inputValue}"
+                                    label="#{bindings.RevisionLineVO1.hints.RevBaseCharge.label}"
+                                    required="#{bindings.RevisionLineVO1.hints.RevBaseCharge.mandatory}"
+                                    columns="#{bindings.RevisionLineVO1.hints.RevBaseCharge.displayWidth}"
+                                    maximumLength="#{bindings.RevisionLineVO1.hints.RevBaseCharge.precision}"
+                                    shortDesc="#{bindings.RevisionLineVO1.hints.RevBaseCharge.tooltip}"
+                                    id="it21">
+                        <f:validator binding="#{row.bindings.RevBaseCharge.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.RevElectricityCharge.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.RevElectricityCharge.label}"
+                               id="c33">
+                      <af:inputText value="#{row.bindings.RevElectricityCharge.inputValue}"
+                                    label="#{bindings.RevisionLineVO1.hints.RevElectricityCharge.label}"
+                                    required="#{bindings.RevisionLineVO1.hints.RevElectricityCharge.mandatory}"
+                                    columns="#{bindings.RevisionLineVO1.hints.RevElectricityCharge.displayWidth}"
+                                    maximumLength="#{bindings.RevisionLineVO1.hints.RevElectricityCharge.precision}"
+                                    shortDesc="#{bindings.RevisionLineVO1.hints.RevElectricityCharge.tooltip}"
+                                    id="it16">
+                        <f:validator binding="#{row.bindings.RevElectricityCharge.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.RevMinCharge.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.RevMinCharge.label}"
+                               id="c32">
+                      <af:inputText value="#{row.bindings.RevMinCharge.inputValue}"
+                                    label="#{bindings.RevisionLineVO1.hints.RevMinCharge.label}"
+                                    required="#{bindings.RevisionLineVO1.hints.RevMinCharge.mandatory}"
+                                    columns="#{bindings.RevisionLineVO1.hints.RevMinCharge.displayWidth}"
+                                    maximumLength="#{bindings.RevisionLineVO1.hints.RevMinCharge.precision}"
+                                    shortDesc="#{bindings.RevisionLineVO1.hints.RevMinCharge.tooltip}"
+                                    id="it17">
+                        <f:validator binding="#{row.bindings.RevMinCharge.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.RevMunicipalityCharge.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.RevMunicipalityCharge.label}"
+                               id="c30">
+                      <af:inputText value="#{row.bindings.RevMunicipalityCharge.inputValue}"
+                                    label="#{bindings.RevisionLineVO1.hints.RevMunicipalityCharge.label}"
+                                    required="#{bindings.RevisionLineVO1.hints.RevMunicipalityCharge.mandatory}"
+                                    columns="#{bindings.RevisionLineVO1.hints.RevMunicipalityCharge.displayWidth}"
+                                    maximumLength="#{bindings.RevisionLineVO1.hints.RevMunicipalityCharge.precision}"
+                                    shortDesc="#{bindings.RevisionLineVO1.hints.RevMunicipalityCharge.tooltip}"
+                                    id="it19">
+                        <f:validator binding="#{row.bindings.RevMunicipalityCharge.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.RevSecuritydepositCharge.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.RevSecuritydepositCharge.label}"
+                               id="c31">
+                      <af:inputText value="#{row.bindings.RevSecuritydepositCharge.inputValue}"
+                                    label="#{bindings.RevisionLineVO1.hints.RevSecuritydepositCharge.label}"
+                                    required="#{bindings.RevisionLineVO1.hints.RevSecuritydepositCharge.mandatory}"
+                                    columns="#{bindings.RevisionLineVO1.hints.RevSecuritydepositCharge.displayWidth}"
+                                    maximumLength="#{bindings.RevisionLineVO1.hints.RevSecuritydepositCharge.precision}"
+                                    shortDesc="#{bindings.RevisionLineVO1.hints.RevSecuritydepositCharge.tooltip}"
+                                    id="it18">
+                        <f:validator binding="#{row.bindings.RevSecuritydepositCharge.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.EjariPaymentCharge.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.EjariPaymentCharge.label}"
+                               id="c36">
+                      <af:inputText value="#{row.bindings.EjariPaymentCharge.inputValue}"
+                                    label="#{bindings.RevisionLineVO1.hints.EjariPaymentCharge.label}"
+                                    required="#{bindings.RevisionLineVO1.hints.EjariPaymentCharge.mandatory}"
+                                    columns="#{bindings.RevisionLineVO1.hints.EjariPaymentCharge.displayWidth}"
+                                    maximumLength="#{bindings.RevisionLineVO1.hints.EjariPaymentCharge.precision}"
+                                    shortDesc="#{bindings.RevisionLineVO1.hints.EjariPaymentCharge.tooltip}"
+                                    id="it20" autoSubmit="true">
+                        <f:validator binding="#{row.bindings.EjariPaymentCharge.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.OtherGovntChargeNew.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.OtherGovntChargeNew.label}"
+                               id="c37">
+                      <af:inputText value="#{row.bindings.OtherGovntChargeNew.inputValue}"
+                                    label="#{bindings.RevisionLineVO1.hints.OtherGovntChargeNew.label}"
+                                    required="#{bindings.RevisionLineVO1.hints.OtherGovntChargeNew.mandatory}"
+                                    columns="#{bindings.RevisionLineVO1.hints.OtherGovntChargeNew.displayWidth}"
+                                    maximumLength="#{bindings.RevisionLineVO1.hints.OtherGovntChargeNew.precision}"
+                                    shortDesc="#{bindings.RevisionLineVO1.hints.OtherGovntChargeNew.tooltip}"
+                                    id="it24" autoSubmit="true">
+                        <f:validator binding="#{row.bindings.OtherGovntChargeNew.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.OtherGovntChargeRnew.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.OtherGovntChargeRnew.label}"
+                               id="c38">
+                      <af:inputText value="#{row.bindings.OtherGovntChargeRnew.inputValue}"
+                                    label="#{bindings.RevisionLineVO1.hints.OtherGovntChargeRnew.label}"
+                                    required="#{bindings.RevisionLineVO1.hints.OtherGovntChargeRnew.mandatory}"
+                                    columns="#{bindings.RevisionLineVO1.hints.OtherGovntChargeRnew.displayWidth}"
+                                    maximumLength="#{bindings.RevisionLineVO1.hints.OtherGovntChargeRnew.precision}"
+                                    shortDesc="#{bindings.RevisionLineVO1.hints.OtherGovntChargeRnew.tooltip}"
+                                    id="it23" autoSubmit="true">
+                        <f:validator binding="#{row.bindings.OtherGovntChargeRnew.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RevisionLineVO1.hints.ThirdPartyServCharge.name}"
+                               sortable="false"
+                               headerText="#{bindings.RevisionLineVO1.hints.ThirdPartyServCharge.label}"
+                               id="c35">
+                      <af:inputText value="#{row.bindings.ThirdPartyServCharge.inputValue}"
+                                    label="#{bindings.RevisionLineVO1.hints.ThirdPartyServCharge.label}"
+                                    required="#{bindings.RevisionLineVO1.hints.ThirdPartyServCharge.mandatory}"
+                                    columns="#{bindings.RevisionLineVO1.hints.ThirdPartyServCharge.displayWidth}"
+                                    maximumLength="#{bindings.RevisionLineVO1.hints.ThirdPartyServCharge.precision}"
+                                    shortDesc="#{bindings.RevisionLineVO1.hints.ThirdPartyServCharge.tooltip}"
+                                    id="it22" autoSubmit="true">
+                        <f:validator binding="#{row.bindings.ThirdPartyServCharge.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <f:facet name="buttonBar">
+                  <af:group id="g1">
+                    <af:commandButton actionListener="#{bindings.Commit2.execute}"
+                                      text="Save"
+                                      disabled="#{!bindings.Commit2.enabled}"
+                                      id="cb7" rendered="false"/>
+                    <af:commandButton text="Go Renewal" id="cb6"
+                                      actionListener="#{backingBeanScope.backing_pages_Temp.onClickGoRenewal}"
+                                      action="PriceList">
+                      <af:setPropertyListener from="#{bindings.PlId1.inputValue}"
+                                              to="#{sessionScope.PriceList}"
+                                              type="action"/>
+                      <af:setPropertyListener from="#{'Edit'}"
+                                              to="#{sessionScope.addEditPriceList}"
+                                              type="action"/>
+                    </af:commandButton>
+                  </af:group>
+                </f:facet>
+              </af:dialog>
+            </af:popup>
+          </af:panelCollection>
+          <af:panelGroupLayout id="pgl1" rendered="false"/>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                              rendered="false">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="statusbar"/>
+          </af:panelCollection>
+        </af:showDetailItem>
+        <af:showDetailItem id="tab2" text="Premiums"
+                           styleClass="AFStretchWidth" rendered="false">
+          <af:panelBox text="Premiums" id="pb1" styleClass="AFStretchWidth"
+                       showDisclosure="false">
+            <f:facet name="toolbar">
+              <af:toolbar id="t3" inlineStyle="margin-left: 152px" flex="100">
+                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                  text="Save" id="cb2" partialSubmit="true"/>
+                <af:spacer width="10" height="10" id="s2"/>
+                <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                  text="Cancel" immediate="true" id="cb3"/>
+                <af:spacer width="10" height="10" id="s1"/>
+              </af:toolbar>
+            </f:facet>
+            <af:panelCollection id="pc2" styleClass="AFStretchWidth"
+                                featuresOff="detach">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t4" flex="100">
+                  <af:commandImageLink actionListener="#{bindings.CreateInsert.execute}"
+                                       text="Add" id="cil2"
+                                       icon="/images/add_dis.png"/>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                       text="Delete" id="cil3"
+                                       icon="/images/delete_dis.png"
+                                       hoverIcon="/images/delete_ovr.png"/>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.PlPremiums_VO1.collectionModel}"
+                        var="row" rows="#{bindings.PlPremiums_VO1.rangeSize}"
+                        emptyText="#{bindings.PlPremiums_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.PlPremiums_VO1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.PlPremiums_VO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.PlPremiums_VO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t2">
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.PremiumId.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.PremiumId.label}"
+                           id="c5" rendered="false">
+                  <af:inputText value="#{row.bindings.PremiumId.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.PremiumId.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.PremiumId.mandatory}"
+                                columns="#{bindings.PlPremiums_VO1.hints.PremiumId.displayWidth}"
+                                maximumLength="#{bindings.PlPremiums_VO1.hints.PremiumId.precision}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.PremiumId.tooltip}"
+                                id="it7">
+                    <f:validator binding="#{row.bindings.PremiumId.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PlPremiums_VO1.hints.PremiumId.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.PremiumName.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.PremiumName.label}"
+                           id="c11" width="180">
+                  <af:inputText value="#{row.bindings.PremiumName.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.PremiumName.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.PremiumName.mandatory}"
+                                columns="#{bindings.PlPremiums_VO1.hints.PremiumName.displayWidth}"
+                                maximumLength="#{bindings.PlPremiums_VO1.hints.PremiumName.precision}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.PremiumName.tooltip}"
+                                id="it3">
+                    <f:validator binding="#{row.bindings.PremiumName.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.RateType.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.RateType.label}"
+                           id="c2" width="180">
+                  <af:selectOneChoice value="#{row.bindings.RateType.inputValue}"
+                                      label="#{row.bindings.RateType.label}"
+                                      required="#{bindings.PlPremiums_VO1.hints.RateType.mandatory}"
+                                      shortDesc="#{bindings.PlPremiums_VO1.hints.RateType.tooltip}"
+                                      id="soc1" autoSubmit="true">
+                    <f:selectItems value="#{row.bindings.RateType.items}"
+                                   id="si1"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.RateValue.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.RateValue.label}"
+                           id="c4" width="180">
+                  <af:inputText value="#{row.bindings.RateValue.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.RateValue.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.RateValue.mandatory}"
+                                columns="#{bindings.PlPremiums_VO1.hints.RateValue.displayWidth}"
+                                maximumLength="#{bindings.PlPremiums_VO1.hints.RateValue.precision}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.RateValue.tooltip}"
+                                id="it6">
+                    <f:validator binding="#{row.bindings.RateValue.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PlPremiums_VO1.hints.RateValue.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.StartDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.StartDate.label}"
+                           id="c12">
+                  <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.StartDate.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.StartDate.mandatory}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.StartDate.tooltip}"
+                                id="id2">
+                    <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.PlPremiums_VO1.hints.StartDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.EndDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.EndDate.label}"
+                           id="c3">
+                  <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.EndDate.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.EndDate.mandatory}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.EndDate.tooltip}"
+                                id="id4">
+                    <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.PlPremiums_VO1.hints.EndDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column headerText="#{bindings.PlPremiums_VO1.hints.ActiveYn.label}"
+                           id="c26" align="center">
+                  <af:selectBooleanCheckbox value="#{row.bindings.ActiveYn.inputValue}"
+                                            label="#{row.bindings.ActiveYn.label}"
+                                            shortDesc="#{bindings.PlPremiums_VO1.hints.ActiveYn.tooltip}"
+                                            id="sbc2" autoSubmit="true"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.CreatedBy.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.CreatedBy.label}"
+                           id="c8" rendered="false">
+                  <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.CreatedBy.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.CreatedBy.mandatory}"
+                                columns="#{bindings.PlPremiums_VO1.hints.CreatedBy.displayWidth}"
+                                maximumLength="#{bindings.PlPremiums_VO1.hints.CreatedBy.precision}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.CreatedBy.tooltip}"
+                                id="it1">
+                    <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.CreationDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.CreationDate.label}"
+                           id="c6" rendered="false">
+                  <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.CreationDate.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.CreationDate.mandatory}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.CreationDate.tooltip}"
+                                id="id1">
+                    <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.PlPremiums_VO1.hints.CreationDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.LastUpdatedBy.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.LastUpdatedBy.label}"
+                           id="c10" rendered="false">
+                  <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.LastUpdatedBy.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.LastUpdatedBy.mandatory}"
+                                columns="#{bindings.PlPremiums_VO1.hints.LastUpdatedBy.displayWidth}"
+                                maximumLength="#{bindings.PlPremiums_VO1.hints.LastUpdatedBy.precision}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.LastUpdatedBy.tooltip}"
+                                id="it4">
+                    <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.LastUpdateDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.LastUpdateDate.label}"
+                           id="c7" rendered="false">
+                  <af:inputDate value="#{row.bindings.LastUpdateDate.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.LastUpdateDate.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.LastUpdateDate.mandatory}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.LastUpdateDate.tooltip}"
+                                id="id3">
+                    <f:validator binding="#{row.bindings.LastUpdateDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.PlPremiums_VO1.hints.LastUpdateDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlPremiums_VO1.hints.LastUpdateLogin.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlPremiums_VO1.hints.LastUpdateLogin.label}"
+                           id="c1" rendered="false">
+                  <af:inputText value="#{row.bindings.LastUpdateLogin.inputValue}"
+                                label="#{bindings.PlPremiums_VO1.hints.LastUpdateLogin.label}"
+                                required="#{bindings.PlPremiums_VO1.hints.LastUpdateLogin.mandatory}"
+                                columns="#{bindings.PlPremiums_VO1.hints.LastUpdateLogin.displayWidth}"
+                                maximumLength="#{bindings.PlPremiums_VO1.hints.LastUpdateLogin.precision}"
+                                shortDesc="#{bindings.PlPremiums_VO1.hints.LastUpdateLogin.tooltip}"
+                                id="it2">
+                    <f:validator binding="#{row.bindings.LastUpdateLogin.validator}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </af:showDetailItem>
+        <af:showDetailItem id="tab3" text="Discount"
+                           styleClass="AFStretchWidth">
+          <af:panelGroupLayout layout="vertical" id="pgl2">
+            <af:panelHeader text="PlDiscounts_EO" id="ph2">
+              <af:query id="qryId2" headerText="Search" disclosed="true"
+                        value="#{bindings.searchDiscountQuery.queryDescriptor}"
+                        model="#{bindings.searchDiscountQuery.queryModel}"
+                        queryListener="#{bindings.searchDiscountQuery.processQuery}"
+                        queryOperationListener="#{bindings.searchDiscountQuery.processQueryOperation}"/>
+            </af:panelHeader>
+          </af:panelGroupLayout>
+          <af:panelBox text="Discount" id="pb2" styleClass="AFStretchWidth"
+                       showDisclosure="false">
+            <f:facet name="toolbar">
+              <af:toolbar id="toolbar1" inlineStyle="margin-left:152px"
+                          flex="100">
+                <af:commandButton actionListener="#{bindings.Commit1.execute}"
+                                  text="Save" id="cb4"
+                                  inlineStyle="margin-right:10px;"
+                                  visible="#{sessionScope.grantMap.PriceList =='F'}"/>
+                <af:commandButton actionListener="#{bindings.Rollback1.execute}"
+                                  text="Cancel" immediate="true" id="cb5"
+                                  visible="#{sessionScope.grantMap.PriceList =='F' || sessionScope.grantMap.PriceList =='V'}"/>
+              </af:toolbar>
+            </f:facet>
+            <af:panelCollection id="pc3" styleClass="AFStretchWidth">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t6" flex="100">
+                  <af:commandImageLink actionListener="#{bindings.CreateInsert1.execute}"
+                                       disabled="#{!bindings.CreateInsert1.enabled}"
+                                       id="cil4"
+                                       icon="/images/func_add_16_ena.png"
+                                       inlineStyle="margin-right:10px;"
+                                       disabledIcon="/images/func_add_16_dis.png"
+                                       hoverIcon="/images/func_add_16_hov.png"
+                                       depressedIcon="/images/func_add_16_act.png"
+                                       visible="#{sessionScope.grantMap.PriceList =='F'}"/>
+                  <af:commandImageLink actionListener="#{bindings.Delete1.execute}"
+                                       disabled="#{!bindings.Delete1.enabled}"
+                                       id="cil5"
+                                       icon="/images/func_remove_16_ena.png"
+                                       disabledIcon="/images/func_remove_16_dis.png"
+                                       hoverIcon="/images/func_remove_16_hov.png"
+                                       depressedIcon="/images/func_remove_16_act.png"
+                                       visible="#{sessionScope.grantMap.PriceList =='F'}"
+                                       rendered="false"/>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.PlDiscounts_VO1.collectionModel}"
+                        var="row" rows="#{bindings.PlDiscounts_VO1.rangeSize}"
+                        emptyText="#{bindings.PlDiscounts_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="5"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.PlDiscounts_VO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.PlDiscounts_VO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t5" varStatus="vs"
+                        columnStretching="column:c21" autoHeightRows="0"
+                        scrollPolicy="page" partialTriggers=":::qryId2">
+                <af:column id="c27" headerText="S.No" align="center" width="50">
+                  <af:outputText value="#{vs.index+1}" id="ot11"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.DiscountId.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.DiscountId.label}"
+                           id="c23" rendered="false">
+                  <af:inputText value="#{row.bindings.DiscountId.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.DiscountId.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.DiscountId.mandatory}"
+                                columns="#{bindings.PlDiscounts_VO1.hints.DiscountId.displayWidth}"
+                                maximumLength="#{bindings.PlDiscounts_VO1.hints.DiscountId.precision}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.DiscountId.tooltip}"
+                                id="it11">
+                    <f:validator binding="#{row.bindings.DiscountId.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PlDiscounts_VO1.hints.DiscountId.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.DiscountName.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.DiscountName.label}"
+                           id="c21" width="230">
+                  <af:inputText value="#{row.bindings.DiscountName.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.DiscountName.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.DiscountName.mandatory}"
+                                columns="#{bindings.PlDiscounts_VO1.hints.DiscountName.displayWidth}"
+                                maximumLength="#{bindings.PlDiscounts_VO1.hints.DiscountName.precision}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.DiscountName.tooltip}"
+                                id="it10">
+                    <f:validator binding="#{row.bindings.DiscountName.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.DiscountType.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.DiscountType.label}"
+                           id="c14" width="220">
+                  <af:selectOneChoice value="#{row.bindings.DiscountType.inputValue}"
+                                      label="#{row.bindings.DiscountType.label}"
+                                      required="#{bindings.PlDiscounts_VO1.hints.DiscountType.mandatory}"
+                                      shortDesc="#{bindings.PlDiscounts_VO1.hints.DiscountType.tooltip}"
+                                      id="soc2">
+                    <f:selectItems value="#{row.bindings.DiscountType.items}"
+                                   id="si2"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.DiscountLevel.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.DiscountLevel.label}"
+                           id="c18" width="200">
+                  <af:selectOneChoice value="#{row.bindings.DiscountLevel.inputValue}"
+                                      label="#{row.bindings.DiscountLevel.label}"
+                                      required="#{bindings.PlDiscounts_VO1.hints.DiscountLevel.mandatory}"
+                                      shortDesc="#{bindings.PlDiscounts_VO1.hints.DiscountLevel.tooltip}"
+                                      id="soc3">
+                    <f:selectItems value="#{row.bindings.DiscountLevel.items}"
+                                   id="si3"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.DiscountValue.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.DiscountValue.label}"
+                           id="c19" width="180">
+                  <af:inputText value="#{row.bindings.DiscountValue.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.DiscountValue.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.DiscountValue.mandatory}"
+                                columns="#{bindings.PlDiscounts_VO1.hints.DiscountValue.displayWidth}"
+                                maximumLength="#{bindings.PlDiscounts_VO1.hints.DiscountValue.precision}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.DiscountValue.tooltip}"
+                                id="it12">
+                    <f:validator binding="#{row.bindings.DiscountValue.validator}"/>
+                    <af:convertNumber groupingUsed="true"
+                                      pattern="#{SessionScope.NumberFormat}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.StartDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.StartDate.label}"
+                           id="c13" rendered="false">
+                  <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.StartDate.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.StartDate.mandatory}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.StartDate.tooltip}"
+                                id="id8">
+                    <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.PlDiscounts_VO1.hints.StartDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.EndDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.EndDate.label}"
+                           id="c20" rendered="false">
+                  <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.EndDate.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.EndDate.mandatory}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.EndDate.tooltip}"
+                                id="id7">
+                    <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.PlDiscounts_VO1.hints.EndDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.CreatedBy.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.CreatedBy.label}"
+                           id="c25" rendered="false">
+                  <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.CreatedBy.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.CreatedBy.mandatory}"
+                                columns="#{bindings.PlDiscounts_VO1.hints.CreatedBy.displayWidth}"
+                                maximumLength="#{bindings.PlDiscounts_VO1.hints.CreatedBy.precision}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.CreatedBy.tooltip}"
+                                id="it13">
+                    <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.CreationDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.CreationDate.label}"
+                           id="c22" rendered="false">
+                  <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.CreationDate.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.CreationDate.mandatory}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.CreationDate.tooltip}"
+                                id="id5">
+                    <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.PlDiscounts_VO1.hints.CreationDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.LastUpdatedBy.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.LastUpdatedBy.label}"
+                           id="c15" rendered="false">
+                  <af:inputText value="#{row.bindings.LastUpdatedBy.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.LastUpdatedBy.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.LastUpdatedBy.mandatory}"
+                                columns="#{bindings.PlDiscounts_VO1.hints.LastUpdatedBy.displayWidth}"
+                                maximumLength="#{bindings.PlDiscounts_VO1.hints.LastUpdatedBy.precision}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.LastUpdatedBy.tooltip}"
+                                id="it8">
+                    <f:validator binding="#{row.bindings.LastUpdatedBy.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.LastUpdateDate.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.LastUpdateDate.label}"
+                           id="c16" rendered="false">
+                  <af:inputDate value="#{row.bindings.LastUpdateDate.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.LastUpdateDate.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.LastUpdateDate.mandatory}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.LastUpdateDate.tooltip}"
+                                id="id6">
+                    <f:validator binding="#{row.bindings.LastUpdateDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.PlDiscounts_VO1.hints.LastUpdateDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column sortProperty="#{bindings.PlDiscounts_VO1.hints.LastUpdateLogin.name}"
+                           sortable="false"
+                           headerText="#{bindings.PlDiscounts_VO1.hints.LastUpdateLogin.label}"
+                           id="c17" rendered="false">
+                  <af:inputText value="#{row.bindings.LastUpdateLogin.inputValue}"
+                                label="#{bindings.PlDiscounts_VO1.hints.LastUpdateLogin.label}"
+                                required="#{bindings.PlDiscounts_VO1.hints.LastUpdateLogin.mandatory}"
+                                columns="#{bindings.PlDiscounts_VO1.hints.LastUpdateLogin.displayWidth}"
+                                maximumLength="#{bindings.PlDiscounts_VO1.hints.LastUpdateLogin.precision}"
+                                shortDesc="#{bindings.PlDiscounts_VO1.hints.LastUpdateLogin.tooltip}"
+                                id="it9">
+                    <f:validator binding="#{row.bindings.LastUpdateLogin.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.PlDiscounts_VO1.hints.ActiveYn.label}"
+                           id="c9" align="center">
+                  <af:selectBooleanCheckbox value="#{row.bindings.ActiveYn.inputValue}"
+                                            label="#{row.bindings.ActiveYn.label}"
+                                            shortDesc="#{bindings.PlDiscounts_VO1.hints.ActiveYn.tooltip}"
+                                            id="sbc1" autoSubmit="true"
+                                            rendered="false"/>
+                  <af:selectBooleanCheckbox value="#{row.bindings.CheckBox_Trans.inputValue}"
+                                            label="#{row.bindings.CheckBox_Trans.label}"
+                                            shortDesc="#{bindings.PlDiscounts_VO1.hints.CheckBox_Trans.tooltip}"
+                                            id="sbc3" autoSubmit="true"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+          <f:facet name="toolbar"/>
+        </af:showDetailItem>
+      </af:panelTabbed>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

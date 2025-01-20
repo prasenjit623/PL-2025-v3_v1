@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_Attachments-->
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:group binding="#{backingBeanScope.backing_Attachments.g1}" id="g1">
+        <af:panelCollection binding="#{backingBeanScope.backing_Attachments.pc1}"
+                            id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar binding="#{backingBeanScope.backing_Attachments.t3}"
+                        id="t3" flex="1">
+              <af:commandImageLink
+                                   binding="#{backingBeanScope.backing_Attachments.cil1}"
+                                   id="cil1"
+                                   icon="/images/func_add_16_ena.png"
+                                   actionListener="#{backingBeanScope.backing_Attachments.onClickAddAttachments}"
+                                   disabledIcon="/images/func_add_16_dis.png"
+                                   hoverIcon="/images/func_add_16_hov.png"
+                                   depressedIcon="/images/func_add_16_act.png"
+                                   inlineStyle="margin-right:10px;margin-left:10px;"/>
+              <af:spacer width="10" height="10"
+                         binding="#{backingBeanScope.backing_Attachments.s4}"
+                         id="s4"/>
+              <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                   disabled="#{!bindings.Delete.enabled}"
+                                   binding="#{backingBeanScope.backing_Attachments.cil5}"
+                                   id="cil5"
+                                   icon="/images/func_remove_16_ena.png"
+                                   disabledIcon="/images/func_remove_16_dis.png"
+                                   hoverIcon="/images/func_remove_16_hov.png"
+                                   depressedIcon="/images/func_remove_16_act.png"
+                                   inlineStyle="margin-right:10px;"/>
+              <af:spacer width="10" height="10"
+                         binding="#{backingBeanScope.backing_Attachments.s5}"
+                         id="s5"/>
+              <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                text="Save"
+                                binding="#{backingBeanScope.backing_Attachments.cb3}"
+                                id="cb3" action="toSave"
+                                inlineStyle="margin-right:10px;"/>
+              <af:spacer width="10" height="10"
+                         binding="#{backingBeanScope.backing_Attachments.s6}"
+                         id="s6"/>
+              <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                text="Cancel" immediate="true"
+                                binding="#{backingBeanScope.backing_Attachments.cb4}"
+                                id="cb4" action="toCancel">
+                <af:resetActionListener/>
+              </af:commandButton>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.FuncAttachment_VO1.collectionModel}"
+                    var="row" rows="#{bindings.FuncAttachment_VO1.rangeSize}"
+                    emptyText="#{bindings.FuncAttachment_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.FuncAttachment_VO1.rangeSize}"
+                    rowBandingInterval="0"
+                    binding="#{backingBeanScope.backing_Attachments.t4}" id="t4"
+                    partialTriggers="::cil1" rowSelection="single"
+                    selectedRowKeys="#{bindings.FuncAttachment_VO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.FuncAttachment_VO1.collectionModel.makeCurrent}"
+                    varStatus="vs" columnStretching="column:c2">
+            <af:column id="c9" headerText="S.No" width="50" align="center">
+              <af:outputText value="#{vs.index+1}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.FuncAttachment_VO1.hints.FuncId.name}"
+                       sortable="false"
+                       headerText="#{bindings.FuncAttachment_VO1.hints.FuncId.label}"
+                       id="c3" width="180" rendered="false">
+              <af:inputText value="#{row.bindings.FuncId.inputValue}"
+                            label="#{bindings.FuncAttachment_VO1.hints.FuncId.label}"
+                            required="#{bindings.FuncAttachment_VO1.hints.FuncId.mandatory}"
+                            columns="#{bindings.FuncAttachment_VO1.hints.FuncId.displayWidth}"
+                            maximumLength="#{bindings.FuncAttachment_VO1.hints.FuncId.precision}"
+                            shortDesc="#{bindings.FuncAttachment_VO1.hints.FuncId.tooltip}"
+                            id="it5">
+                <f:validator binding="#{row.bindings.FuncId.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.FuncAttachment_VO1.hints.FuncRefId.name}"
+                       sortable="false"
+                       headerText="#{bindings.FuncAttachment_VO1.hints.FuncRefId.label}"
+                       id="c5" width="180" rendered="false">
+              <af:inputText value="#{row.bindings.FuncRefId.inputValue}"
+                            label="#{bindings.FuncAttachment_VO1.hints.FuncRefId.label}"
+                            required="#{bindings.FuncAttachment_VO1.hints.FuncRefId.mandatory}"
+                            columns="#{bindings.FuncAttachment_VO1.hints.FuncRefId.displayWidth}"
+                            maximumLength="#{bindings.FuncAttachment_VO1.hints.FuncRefId.precision}"
+                            shortDesc="#{bindings.FuncAttachment_VO1.hints.FuncRefId.tooltip}"
+                            id="it4">
+                <f:validator binding="#{row.bindings.FuncRefId.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.FuncAttachment_VO1.hints.FileName.name}"
+                       sortable="false"
+                       headerText="#{bindings.FuncAttachment_VO1.hints.FileName.label}"
+                       id="c4" width="180">
+              <af:inputText value="#{row.bindings.FileName.inputValue}"
+                            label="#{bindings.FuncAttachment_VO1.hints.FileName.label}"
+                            required="#{bindings.FuncAttachment_VO1.hints.FileName.mandatory}"
+                            columns="#{bindings.FuncAttachment_VO1.hints.FileName.displayWidth}"
+                            maximumLength="#{bindings.FuncAttachment_VO1.hints.FileName.precision}"
+                            shortDesc="#{bindings.FuncAttachment_VO1.hints.FileName.tooltip}"
+                            id="it1" readOnly="true">
+                <f:validator binding="#{row.bindings.FileName.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.FuncAttachment_VO1.hints.FileType.name}"
+                       sortable="false"
+                       headerText="#{bindings.FuncAttachment_VO1.hints.FileType.label}"
+                       id="c1" width="180">
+              <af:inputText value="#{row.bindings.FileType.inputValue}"
+                            label="#{bindings.FuncAttachment_VO1.hints.FileType.label}"
+                            required="#{bindings.FuncAttachment_VO1.hints.FileType.mandatory}"
+                            columns="#{bindings.FuncAttachment_VO1.hints.FileType.displayWidth}"
+                            maximumLength="#{bindings.FuncAttachment_VO1.hints.FileType.precision}"
+                            shortDesc="#{bindings.FuncAttachment_VO1.hints.FileType.tooltip}"
+                            id="it3" readOnly="true">
+                <f:validator binding="#{row.bindings.FileType.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="#{bindings.FuncAttachment_VO1.hints.Attachment.label}"
+                       id="c6" width="180">
+              <af:inputText value="#{row.bindings.Attachment.inputValue}"
+                            label="#{bindings.FuncAttachment_VO1.hints.Attachment.label}"
+                            required="#{bindings.FuncAttachment_VO1.hints.Attachment.mandatory}"
+                            columns="#{bindings.FuncAttachment_VO1.hints.Attachment.displayWidth}"
+                            maximumLength="#{bindings.FuncAttachment_VO1.hints.Attachment.precision}"
+                            shortDesc="#{bindings.FuncAttachment_VO1.hints.Attachment.tooltip}"
+                            id="it6" rendered="false">
+                <f:validator binding="#{row.bindings.Attachment.validator}"/>
+              </af:inputText>
+              <af:inputFile id="if1"
+                            valueChangeListener="#{backingBeanScope.backing_Attachments.OnFileUpload}"/>
+            </af:column>
+            <af:column headerText="#{bindings.FuncAttachment_VO1.hints.Download.label}"
+                       id="c7" width="120" align="center">
+              <af:inputText value="#{row.bindings.Download.inputValue}"
+                            label="#{bindings.FuncAttachment_VO1.hints.Download.label}"
+                            required="#{bindings.FuncAttachment_VO1.hints.Download.mandatory}"
+                            columns="#{bindings.FuncAttachment_VO1.hints.Download.displayWidth}"
+                            maximumLength="#{bindings.FuncAttachment_VO1.hints.Download.precision}"
+                            shortDesc="#{bindings.FuncAttachment_VO1.hints.Download.tooltip}"
+                            id="it7" rendered="false">
+                <f:validator binding="#{row.bindings.Download.validator}"/>
+              </af:inputText>
+              <af:commandImageLink id="cil3"
+                                   icon="/images/filedownload_dwn.png"
+                                   shortDesc="Download the Document">
+                <af:fileDownloadActionListener method="#{backingBeanScope.backing_Attachments.onFileDownload}"
+                                               filename="#{bindings.FileName.inputValue}"/>
+              </af:commandImageLink>
+            </af:column>
+            <af:column headerText="#{bindings.FuncAttachment_VO1.hints.FuncTableName.label}"
+                       id="c8" rendered="false">
+              <af:inputText value="#{row.bindings.FuncTableName.inputValue}"
+                            label="#{bindings.FuncAttachment_VO1.hints.FuncTableName.label}"
+                            required="#{bindings.FuncAttachment_VO1.hints.FuncTableName.mandatory}"
+                            columns="#{bindings.FuncAttachment_VO1.hints.FuncTableName.displayWidth}"
+                            maximumLength="#{bindings.FuncAttachment_VO1.hints.FuncTableName.precision}"
+                            shortDesc="#{bindings.FuncAttachment_VO1.hints.FuncTableName.tooltip}"
+                            id="it8">
+                <f:validator binding="#{row.bindings.FuncTableName.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.FuncAttachment_VO1.hints.Description.name}"
+                       sortable="false"
+                       headerText="#{bindings.FuncAttachment_VO1.hints.Description.label}"
+                       id="c2" width="180">
+              <af:inputText value="#{row.bindings.Description.inputValue}"
+                            label="#{bindings.FuncAttachment_VO1.hints.Description.label}"
+                            required="#{bindings.FuncAttachment_VO1.hints.Description.mandatory}"
+                            columns="#{bindings.FuncAttachment_VO1.hints.Description.displayWidth}"
+                            maximumLength="#{bindings.FuncAttachment_VO1.hints.Description.precision}"
+                            shortDesc="#{bindings.FuncAttachment_VO1.hints.Description.tooltip}"
+                            id="it2">
+                <f:validator binding="#{row.bindings.Description.validator}"/>
+              </af:inputText>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:group>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+</jsp:root>

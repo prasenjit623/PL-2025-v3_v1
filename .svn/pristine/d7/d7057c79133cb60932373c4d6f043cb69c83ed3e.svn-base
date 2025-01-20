@@ -1,0 +1,1520 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OfferDetail_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="findPropertyROVA"
+    ViewObjectName="model.ROVO.findPropertyROVO">
+    <ViewCriteriaUsage
+      Name="findByOrg"
+      FullName="model.ROVO.findPropertyROVO.findByOrg"/>
+    <ParameterMap>
+      <PIMap Variable="ORGId">
+        <TransientExpression><![CDATA[OfferHrd_VO.OrgId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="findBuildingROVA"
+    ViewObjectName="model.ROVO.findBuildingROVO">
+    <ParameterMap>
+      <PIMap Variable="BV_PRO_ID">
+        <TransientExpression><![CDATA[PropertyId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="findUnitROVA"
+    ViewObjectName="model.ROVO.findUnitROVO">
+    <ParameterMap>
+      <PIMap Variable="BV_BUILD_ID">
+        <TransientExpression><![CDATA[BuildingId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="BV_PRO_ID">
+        <TransientExpression><![CDATA[PropertyId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_type">
+        <TransientExpression><![CDATA[OfferHrd_VO.LeaseType]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="findByUnitName_E"
+    ViewObjectName="model.ROVO.findByUnitName">
+    <ViewCriteriaUsage
+      Name="findByUnitId"
+      FullName="model.ROVO.findByUnitName.findByUnitId"/>
+    <ParameterMap>
+      <PIMap Variable="BV_UNT_ID">
+        <TransientExpression><![CDATA[UnitId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PlHeader_VO1"
+    ViewObjectName="model.VO.PlHeader_VO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByPurpose"
+      FullName="model.ROVO.Lookup_View_ROVO.findByPurpose"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_ROVO_UOM"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="UomType_LOV"
+      FullName="model.ROVO.Lookup_View_ROVO.UomType_LOV"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PricediscountROVO1"
+    ViewObjectName="model.ROVO.PricediscountROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="fndByActive"
+      FullName="model.ROVO.PricediscountROVO.fndByActive"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PricediscountROVO2"
+    ViewObjectName="model.ROVO.PricediscountROVO">
+    <ViewCriteriaUsage
+      Name="PricediscountROVOCriteria"
+      FullName="model.ROVO.PricediscountROVO.PricediscountROVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="P_D">
+        <TransientExpression><![CDATA[DiscountAmount]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_ROVO2"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PricediscountROVO3"
+    ViewObjectName="model.ROVO.PricediscountROVO">
+    <ViewCriteriaUsage
+      Name="PricediscountROVOCriteria"
+      FullName="model.ROVO.PricediscountROVO.PricediscountROVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="P_D">
+        <TransientExpression><![CDATA[DiscountAmount]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PricediscountROVA"
+    ViewObjectName="model.ROVO.PricediscountROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="fndByActive"
+      FullName="model.ROVO.PricediscountROVO.fndByActive"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_ROVO3"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByUnitType"
+      FullName="model.ROVO.Lookup_View_ROVO.findByUnitType"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Lookup_View_ROVO_MuniCharge"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByMuniCharge"
+      FullName="model.ROVO.Lookup_View_ROVO.findByMuniCharge"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="LeasUnitMappingROVO1"
+    ViewObjectName="model.ROVO.LeasUnitMappingROVO">
+    <ParameterMap>
+      <PIMap Variable="P_LEASE_AGREEMENT_ID">
+        <TransientExpression><![CDATA[adf.context.current.pageFlowScope.get('leaseId')]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="CarPArkLeaseROVO1"
+    ViewObjectName="model.ROVO.CarPArkLeaseROVO">
+    <ViewCriteriaUsage
+      Name="findbyLeaseId"
+      FullName="model.ROVO.CarPArkLeaseROVO.findbyLeaseId"/>
+    <ParameterMap>
+      <PIMap Variable="p_leaseid">
+        <TransientExpression><![CDATA[LeaseNo_Trans]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="offerDetailsforExtnandCancel_ROVO1"
+    ViewObjectName="model.ROVO.offerDetailsforExtnandCancel_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="OfferHrd_VOVA"
+    ViewObjectName="model.VO.OfferHrd_VO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PropertyBasedPList_RoVo1"
+    ViewObjectName="model.ROVO.PropertyBasedPList_RoVo">
+    <ViewCriteriaUsage
+      Name="findByOrg"
+      FullName="model.ROVO.PropertyBasedPList_RoVo.findByOrg"/>
+    <ViewCriteriaUsage
+      Name="findByPriceList"
+      FullName="model.ROVO.PropertyBasedPList_RoVo.findByPriceList"/>
+    <ParameterMap>
+      <PIMap Variable="ORGId">
+        <TransientExpression><![CDATA[OfferHrd_VO.OrgId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_pl_id">
+        <TransientExpression><![CDATA[OfferHrd_VO.PlId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PricediscountROVO4"
+    ViewObjectName="model.ROVO.PricediscountROVO">
+    <ViewCriteriaUsage
+      Name="PricediscountROVOCriteria"
+      FullName="model.ROVO.PricediscountROVO.PricediscountROVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="P_D">
+        <TransientExpression><![CDATA[Attribute1]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PricediscountROVO5"
+    ViewObjectName="model.ROVO.PricediscountROVO">
+    <ViewCriteriaUsage
+      Name="PricediscountROVOCriteria"
+      FullName="model.ROVO.PricediscountROVO.PricediscountROVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="P_D">
+        <TransientExpression><![CDATA[Attribute1]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="findOldOfrDtlsWrtLease_RoVo1"
+    ViewObjectName="model.ROVO.findOldOfrDtlsWrtLease_RoVo">
+    <ViewCriteriaUsage
+      Name="findByOfrIdAndUnitId"
+      FullName="model.ROVO.findOldOfrDtlsWrtLease_RoVo.findByOfrIdAndUnitId"/>
+    <ParameterMap>
+      <PIMap Variable="p_ofrId">
+        <TransientExpression><![CDATA[OfferHdrId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_unitId">
+        <TransientExpression><![CDATA[UnitId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_PropertyId"
+    ListVOName="findPropertyROVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BuildingId"
+    ListVOName="findBuildingROVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuildingId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuildId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Tra_UnitName"
+    ListVOName="findUnitROVA"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_Tra_UnitName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Tra_UnitName"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="UnitId"/>
+      <Item Value="UnitType"/>
+      <Item Value="AreaSq"/>
+      <Item Value="Uom"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UnitName"/>
+      <Item Value="UnitId"/>
+      <Item Value="UnitType"/>
+      <Item Value="Areasq"/>
+      <Item Value="AreaUom"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Propertyname"/>
+      <Item Value="Buildname"/>
+      <Item Value="UnitName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="searchUnit"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PlId"
+    ListVOName="PlHeader_VO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PlId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PlId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PlName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Purpose"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Purpose"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Uom"
+    ListVOName="Lookup_View_ROVO_UOM"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Uom"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DiscountAmount"
+    ListVOName="PricediscountROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DiscountAmount"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DiscountDetails_Trans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DiscountId"/>
+      <Item Value="DiscountType"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DiscountName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DiscountDetails_Trans"
+    ListVOName="PricediscountROVO3"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DiscountDetails_Trans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DiscountType"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DiscountValue"/>
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DiscountAmount1"
+    ListVOName="PricediscountROVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DiscountAmount"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DiscountDetails_Trans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DiscountId"/>
+      <Item Value="DiscountType"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DiscountName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UnitType"
+    ListVOName="Lookup_View_ROVO3"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UnitType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_MunicipalityPercentage"
+    ListVOName="Lookup_View_ROVO_MuniCharge"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MunicipalityPercentage"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_LeaseUnitMap"
+    ListVOName="CarPArkLeaseROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LeaseUnitMap"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UnitId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UnitName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_LeaseNo_Trans"
+    ListVOName="offerDetailsforExtnandCancel_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LeaseNo_Trans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LeaseNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LeaseNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyId1"
+    ListVOName="PropertyBasedPList_RoVo1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyId1"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyId"/>
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Attribute1"
+    ListVOName="PricediscountROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Attribute1"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DiscountDetails_Trans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DiscountId"/>
+      <Item Value="DiscountType"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DiscountName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DiscountType_attribute2_trans"
+    ListVOName="PricediscountROVO4"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DiscountType_attribute2_trans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DiscountType"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DiscountValue"/>
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT OfferDetail_EO.OFFER_DTL_ID, 
+       OfferDetail_EO.OFFER_HDR_ID, 
+       OfferDetail_EO.PROPERTY_ID, 
+       OfferDetail_EO.BUILDING_ID, 
+       OfferDetail_EO.UNIT_ID, 
+       OfferDetail_EO.PURPOSE, 
+       OfferDetail_EO.UOM, 
+       OfferDetail_EO.QUANTITY, 
+       OfferDetail_EO.BASE_RATE, 
+       OfferDetail_EO.PREMIUM_RATE_1, 
+       OfferDetail_EO.PREMIUM_RATE_TYPE_1, 
+       OfferDetail_EO.PREMIUM_RATE_2, 
+       OfferDetail_EO.PREMIUM_RATE_TYPE_2, 
+       OfferDetail_EO.PREMIUM_RATE_3, 
+       OfferDetail_EO.PREMIUM_RATE_TYPE_3, 
+       OfferDetail_EO.PREMIUM_RATE_4, 
+       OfferDetail_EO.PREMIUM_RATE_TYPE_4, 
+       OfferDetail_EO.PREMIUM_RATE_5, 
+       OfferDetail_EO.PREMIUM_RATE_TYPE_5, 
+       OfferDetail_EO.DISC_PCT_BASE_RATE, 
+       OfferDetail_EO.DISC_BASE_RATE, 
+       OfferDetail_EO.DISC_PCT_PREMIUM_RATE_1, 
+       OfferDetail_EO.DISC_PREMIUM_RATE_1, 
+       OfferDetail_EO.DISC_PCT_PREMIUM_RATE_2, 
+       OfferDetail_EO.DISC_PREMIUM_RATE_2, 
+       OfferDetail_EO.DISC_PCT_PREMIUM_RATE_3, 
+       OfferDetail_EO.DISC_PREMIUM_RATE_3, 
+       OfferDetail_EO.DISC_PCT_PREMIUM_RATE_4, 
+       OfferDetail_EO.DISC_PREMIUM_RATE_4, 
+       OfferDetail_EO.DISC_PCT_PREMIUM_RATE_5, 
+       OfferDetail_EO.DISC_PREMIUM_RATE_5, 
+       OfferDetail_EO.TOTAL_RATE, 
+       OfferDetail_EO.OFFER_AMOUNT, 
+       OfferDetail_EO.DISCOUNT_AMOUNT, 
+       OfferDetail_EO.TAX_AMOUNT, 
+       OfferDetail_EO.TAX_CODE, 
+       OfferDetail_EO.TAX_RATE, 
+       OfferDetail_EO.ATTRIBUTE_CATEGORY, 
+       OfferDetail_EO.ATTRIBUTE1, 
+       OfferDetail_EO.ATTRIBUTE2, 
+       OfferDetail_EO.ATTRIBUTE3, 
+       OfferDetail_EO.ATTRIBUTE4, 
+       OfferDetail_EO.ATTRIBUTE5, 
+       OfferDetail_EO.ATTRIBUTE6, 
+       OfferDetail_EO.ATTRIBUTE7, 
+       OfferDetail_EO.ATTRIBUTE8, 
+       OfferDetail_EO.ATTRIBUTE9, 
+       OfferDetail_EO.ATTRIBUTE10, 
+       OfferDetail_EO.CREATED_BY, 
+       OfferDetail_EO.CREATION_DATE, 
+       OfferDetail_EO.LAST_UPDATED_BY, 
+       OfferDetail_EO.LAST_UPDATE_DATE, 
+       OfferDetail_EO.LAST_UPDATE_LOGIN, 
+       OfferDetail_EO.UNIT_TYPE, 
+       OfferDetail_EO.AREA_SQ, 
+       OfferDetail_EO.PL_ID, 
+       OfferDetail_EO.MUNICIPALITY_CHARGES, 
+       OfferDetail_EO.ELECTRICITY_CHARGES, 
+       OfferDetail_EO.SECURITY_DEPOSITE, 
+       OfferDetail_EO.OTHER_GOVNT_CHARGE_NEW, 
+       OfferDetail_EO.OTHER_GOVNT_CHARGE_RNEW, 
+       OfferDetail_EO.MUNICIPALITY_PERCENTAGE, 
+       OfferDetail_EO.EJARI_PAYMENT_CHARGE, 
+       OfferDetail_EO.THIRD_PARTY_SERV_CHARGE, 
+       OfferDetail_EO.LEASE_UNIT_MAP, 
+       OfferDetail_EO.CHECK_BOXE_YN, 
+       OfferDetail_EO.PROPERTY_ID AS PROPERTY_ID1,
+       nvl((select SECURITY_DEPOSITE from XXPM_OFFER_DETAIL d,xxpm_offer_header o
+where 
+o.offer_hdr_id=d.offer_hdr_id and
+d.unit_id=OfferDetail_EO.unit_id and d.building_id=OfferDetail_EO.building_id 
+and o.lead_id=(select oh.lead_id from xxpm_offer_header oh where oh.offer_hdr_id=OfferDetail_EO.offer_hdr_id) and
+d.SECURITY_DEPOSITE is not null and rownum=1),'0') as Security_deposit_trans,
+OfferDetail_EO.SET_RENT_PER_ANNUM,
+OfferDetail_EO.CANCEL_STATUS,
+OfferDetail_EO.PRIMARY_UNIT,
+OfferDetail_EO.CANCELLED_TAG,
+OfferDetail_EO.NET_RENT_WITHOUT_TAX
+FROM XXPM_OFFER_DETAIL OfferDetail_EO]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="OfferDetail_EO"
+    Entity="model.EO.OfferDetail_EO"/>
+  <ViewAttribute
+    Name="OfferDtlId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OfferDtlId"
+    EntityUsage="OfferDetail_EO"
+    AliasName="OFFER_DTL_ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="OfferHdrId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OfferHdrId"
+    EntityUsage="OfferDetail_EO"
+    AliasName="OFFER_HDR_ID"/>
+  <ViewAttribute
+    Name="PropertyId"
+    PrecisionRule="true"
+    EntityAttrName="PropertyId"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PROPERTY_ID"
+    LOVName="LOV_PropertyId">
+    <Dependencies>
+      <Item
+        Value="PropertyId1"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.PropertyId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildingId"
+    PrecisionRule="true"
+    EntityAttrName="BuildingId"
+    EntityUsage="OfferDetail_EO"
+    AliasName="BUILDING_ID"
+    LOVName="LOV_BuildingId">
+    <Dependencies>
+      <Item
+        Value="PropertyId1"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.BuildingId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitId"
+    PrecisionRule="true"
+    EntityAttrName="UnitId"
+    EntityUsage="OfferDetail_EO"
+    AliasName="UNIT_ID">
+    <Dependencies>
+      <Item
+        Value="BuildingId"/>
+      <Item
+        Value="PropertyId"/>
+      <Item
+        Value="PropertyId1"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Purpose"
+    PrecisionRule="true"
+    EntityAttrName="Purpose"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PURPOSE"
+    LOVName="LOV_Purpose">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Uom"
+    PrecisionRule="true"
+    EntityAttrName="Uom"
+    EntityUsage="OfferDetail_EO"
+    AliasName="UOM"
+    LOVName="LOV_Uom"
+    DefaultValue="SQFT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.Uom_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Quantity"
+    PrecisionRule="true"
+    EntityAttrName="Quantity"
+    EntityUsage="OfferDetail_EO"
+    AliasName="QUANTITY"/>
+  <ViewAttribute
+    Name="BaseRate"
+    PrecisionRule="true"
+    EntityAttrName="BaseRate"
+    EntityUsage="OfferDetail_EO"
+    AliasName="BASE_RATE">
+    <Dependencies>
+      <Item
+        Value="PropertyId1"/>
+      <Item
+        Value="Tra_UnitName"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.BaseRate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PremiumRate1"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate1"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_1"/>
+  <ViewAttribute
+    Name="PremiumRateType1"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType1"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_TYPE_1"/>
+  <ViewAttribute
+    Name="PremiumRate2"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate2"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_2"/>
+  <ViewAttribute
+    Name="PremiumRateType2"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType2"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_TYPE_2"/>
+  <ViewAttribute
+    Name="PremiumRate3"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate3"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_3"/>
+  <ViewAttribute
+    Name="PremiumRateType3"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType3"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_TYPE_3"/>
+  <ViewAttribute
+    Name="PremiumRate4"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate4"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_4"/>
+  <ViewAttribute
+    Name="PremiumRateType4"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType4"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_TYPE_4"/>
+  <ViewAttribute
+    Name="PremiumRate5"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRate5"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_5"/>
+  <ViewAttribute
+    Name="PremiumRateType5"
+    PrecisionRule="true"
+    EntityAttrName="PremiumRateType5"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PREMIUM_RATE_TYPE_5"/>
+  <ViewAttribute
+    Name="DiscPctBaseRate"
+    PrecisionRule="true"
+    EntityAttrName="DiscPctBaseRate"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PCT_BASE_RATE"/>
+  <ViewAttribute
+    Name="DiscBaseRate"
+    PrecisionRule="true"
+    EntityAttrName="DiscBaseRate"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_BASE_RATE"/>
+  <ViewAttribute
+    Name="DiscPctPremiumRate1"
+    PrecisionRule="true"
+    EntityAttrName="DiscPctPremiumRate1"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PCT_PREMIUM_RATE_1"/>
+  <ViewAttribute
+    Name="DiscPremiumRate1"
+    PrecisionRule="true"
+    EntityAttrName="DiscPremiumRate1"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PREMIUM_RATE_1"/>
+  <ViewAttribute
+    Name="DiscPctPremiumRate2"
+    PrecisionRule="true"
+    EntityAttrName="DiscPctPremiumRate2"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PCT_PREMIUM_RATE_2"/>
+  <ViewAttribute
+    Name="DiscPremiumRate2"
+    PrecisionRule="true"
+    EntityAttrName="DiscPremiumRate2"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PREMIUM_RATE_2"/>
+  <ViewAttribute
+    Name="DiscPctPremiumRate3"
+    PrecisionRule="true"
+    EntityAttrName="DiscPctPremiumRate3"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PCT_PREMIUM_RATE_3"/>
+  <ViewAttribute
+    Name="DiscPremiumRate3"
+    PrecisionRule="true"
+    EntityAttrName="DiscPremiumRate3"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PREMIUM_RATE_3"/>
+  <ViewAttribute
+    Name="DiscPctPremiumRate4"
+    PrecisionRule="true"
+    EntityAttrName="DiscPctPremiumRate4"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PCT_PREMIUM_RATE_4"/>
+  <ViewAttribute
+    Name="DiscPremiumRate4"
+    PrecisionRule="true"
+    EntityAttrName="DiscPremiumRate4"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PREMIUM_RATE_4"/>
+  <ViewAttribute
+    Name="DiscPctPremiumRate5"
+    PrecisionRule="true"
+    EntityAttrName="DiscPctPremiumRate5"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PCT_PREMIUM_RATE_5"/>
+  <ViewAttribute
+    Name="DiscPremiumRate5"
+    PrecisionRule="true"
+    EntityAttrName="DiscPremiumRate5"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISC_PREMIUM_RATE_5"/>
+  <ViewAttribute
+    Name="TotalRate"
+    PrecisionRule="true"
+    EntityAttrName="TotalRate"
+    EntityUsage="OfferDetail_EO"
+    AliasName="TOTAL_RATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.TotalRate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OfferAmount"
+    PrecisionRule="true"
+    EntityAttrName="OfferAmount"
+    EntityUsage="OfferDetail_EO"
+    AliasName="OFFER_AMOUNT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.OfferAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DiscountAmount"
+    PrecisionRule="true"
+    EntityAttrName="DiscountAmount"
+    EntityUsage="OfferDetail_EO"
+    AliasName="DISCOUNT_AMOUNT"
+    LOVName="LOV_DiscountAmount"
+    LOVFinder="Trans_LovType">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.DiscountAmount_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TaxAmount"
+    PrecisionRule="true"
+    EntityAttrName="TaxAmount"
+    EntityUsage="OfferDetail_EO"
+    AliasName="TAX_AMOUNT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.TaxAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TaxCode"
+    PrecisionRule="true"
+    EntityAttrName="TaxCode"
+    EntityUsage="OfferDetail_EO"
+    AliasName="TAX_CODE"/>
+  <ViewAttribute
+    Name="TaxRate"
+    PrecisionRule="true"
+    EntityAttrName="TaxRate"
+    EntityUsage="OfferDetail_EO"
+    AliasName="TAX_RATE"/>
+  <ViewAttribute
+    Name="AttributeCategory"
+    PrecisionRule="true"
+    EntityAttrName="AttributeCategory"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE_CATEGORY"/>
+  <ViewAttribute
+    Name="Attribute1"
+    PrecisionRule="true"
+    EntityAttrName="Attribute1"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE1"
+    LOVName="LOV_Attribute1">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE2"/>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE3"/>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE4"/>
+  <ViewAttribute
+    Name="Attribute5"
+    PrecisionRule="true"
+    EntityAttrName="Attribute5"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE5"/>
+  <ViewAttribute
+    Name="Attribute6"
+    PrecisionRule="true"
+    EntityAttrName="Attribute6"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE6"/>
+  <ViewAttribute
+    Name="Attribute7"
+    PrecisionRule="true"
+    EntityAttrName="Attribute7"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE7"/>
+  <ViewAttribute
+    Name="Attribute8"
+    PrecisionRule="true"
+    EntityAttrName="Attribute8"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE8"/>
+  <ViewAttribute
+    Name="Attribute9"
+    PrecisionRule="true"
+    EntityAttrName="Attribute9"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE9"/>
+  <ViewAttribute
+    Name="Attribute10"
+    PrecisionRule="true"
+    EntityAttrName="Attribute10"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ATTRIBUTE10"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="OfferDetail_EO"
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="OfferDetail_EO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="OfferDetail_EO"
+    AliasName="LAST_UPDATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="OfferDetail_EO"
+    AliasName="LAST_UPDATE_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="OfferDetail_EO"
+    AliasName="LAST_UPDATE_LOGIN"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="UnitType"
+    PrecisionRule="true"
+    EntityAttrName="UnitType"
+    EntityUsage="OfferDetail_EO"
+    AliasName="UNIT_TYPE"
+    LOVName="LOV_UnitType">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.UnitType_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AreaSq"
+    PrecisionRule="true"
+    EntityAttrName="AreaSq"
+    EntityUsage="OfferDetail_EO"
+    AliasName="AREA_SQ">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+      <Item
+        Value="UnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.AreaSq_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PlId"
+    PrecisionRule="true"
+    EntityAttrName="PlId"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PL_ID"
+    LOVName="LOV_PlId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MunicipalityCharges"
+    PrecisionRule="true"
+    EntityAttrName="MunicipalityCharges"
+    EntityUsage="OfferDetail_EO"
+    AliasName="MUNICIPALITY_CHARGES">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+      <Item
+        Value="UnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.MunicipalityCharges_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ElectricityCharges"
+    PrecisionRule="true"
+    EntityAttrName="ElectricityCharges"
+    EntityUsage="OfferDetail_EO"
+    AliasName="ELECTRICITY_CHARGES">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+      <Item
+        Value="UnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.ElectricityCharges_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityDeposite"
+    PrecisionRule="true"
+    EntityAttrName="SecurityDeposite"
+    EntityUsage="OfferDetail_EO"
+    AliasName="SECURITY_DEPOSITE">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+      <Item
+        Value="UnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.SecurityDeposite_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OtherGovntChargeNew"
+    PrecisionRule="true"
+    EntityAttrName="OtherGovntChargeNew"
+    EntityUsage="OfferDetail_EO"
+    AliasName="OTHER_GOVNT_CHARGE_NEW">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+      <Item
+        Value="UnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.OtherGovntChargeNew_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OtherGovntChargeRnew"
+    PrecisionRule="true"
+    EntityAttrName="OtherGovntChargeRnew"
+    EntityUsage="OfferDetail_EO"
+    AliasName="OTHER_GOVNT_CHARGE_RNEW">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+      <Item
+        Value="UnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.OtherGovntChargeRnew_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MunicipalityPercentage"
+    PrecisionRule="true"
+    EntityAttrName="MunicipalityPercentage"
+    EntityUsage="OfferDetail_EO"
+    AliasName="MUNICIPALITY_PERCENTAGE"
+    LOVName="LOV_MunicipalityPercentage">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+      <Item
+        Value="UnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.MunicipalityPercentage_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EjariPaymentCharge"
+    PrecisionRule="true"
+    EntityAttrName="EjariPaymentCharge"
+    EntityUsage="OfferDetail_EO"
+    AliasName="EJARI_PAYMENT_CHARGE">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+      <Item
+        Value="UnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.EjariPaymentCharge_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ThirdPartyServCharge"
+    PrecisionRule="true"
+    EntityAttrName="ThirdPartyServCharge"
+    EntityUsage="OfferDetail_EO"
+    AliasName="THIRD_PARTY_SERV_CHARGE">
+    <Dependencies>
+      <Item
+        Value="Tra_UnitName"/>
+      <Item
+        Value="UnitId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.ThirdPartyServCharge_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseUnitMap"
+    PrecisionRule="true"
+    EntityAttrName="LeaseUnitMap"
+    EntityUsage="OfferDetail_EO"
+    AliasName="LEASE_UNIT_MAP"
+    LOVName="LOV_LeaseUnitMap">
+    <Dependencies>
+      <Item
+        Value="LeaseNo_Trans"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CheckBoxeYn"
+    PrecisionRule="true"
+    EntityAttrName="CheckBoxeYn"
+    EntityUsage="OfferDetail_EO"
+    AliasName="CHECK_BOXE_YN"/>
+  <ViewAttribute
+    Name="PropertyId1"
+    PrecisionRule="true"
+    EntityAttrName="PropertyId"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PROPERTY_ID1"
+    LOVName="LOV_PropertyId1">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SecurityDepositTrans"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="SECURITY_DEPOSIT_TRANS"
+    Expression="SECURITY_DEPOSIT_TRANS"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Tra_UnitName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_Tra_UnitName">
+    <RecalcCondition><![CDATA[false]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(UnitId!=null&&findByUnitName_E!=null){
+return findByUnitName_E.first().getAttribute('UnitName');
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="BuildingId"/>
+      <Item
+        Value="PropertyId"/>
+      <Item
+        Value="PropertyId1"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.Tra_UnitName_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DiscountDetails_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_DiscountDetails_Trans">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if(DiscountAmount!=null&&PricediscountROVO2.first()!=null){
+return PricediscountROVO2.first().getAttribute("DiscountType");
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="DiscountAmount"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Trans_LovType"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[adf.context.current.sessionScope.lovDisName]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseNo_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_LeaseNo_Trans"
+    DefaultValue="OfferHrd_VO.CarParkLeaseAgreIdTrans">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[OfferHrd_VO.CarParkLeaseAgreIdTrans]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <AUTOSUBMIT
+          Value="true"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DiscountType_attribute2_trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_DiscountType_attribute2_trans">
+    <TransientExpression><![CDATA[if(Attribute1!=null&&PricediscountROVO5.first()!=null){
+return PricediscountROVO5.first().getAttribute("DiscountType");
+}]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Attribute1"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SetRentPerAnnum"
+    PrecisionRule="true"
+    EntityAttrName="SetRentPerAnnum"
+    EntityUsage="OfferDetail_EO"
+    AliasName="SET_RENT_PER_ANNUM">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.SetRentPerAnnum_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OldContractValue_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[findOldOfrDtlsWrtLease_RoVo1.sum("OldBaseRate")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.OldContractValue_Trans_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CancelStatus"
+    PrecisionRule="true"
+    EntityAttrName="CancelStatus"
+    EntityUsage="OfferDetail_EO"
+    AliasName="CANCEL_STATUS"
+    DefaultValue="Y"/>
+  <ViewAttribute
+    Name="PrimaryUnit"
+    PrecisionRule="true"
+    EntityAttrName="PrimaryUnit"
+    EntityUsage="OfferDetail_EO"
+    AliasName="PRIMARY_UNIT"/>
+  <ViewAttribute
+    Name="CancelledTag"
+    PrecisionRule="true"
+    EntityAttrName="CancelledTag"
+    EntityUsage="OfferDetail_EO"
+    AliasName="CANCELLED_TAG"
+    DefaultValue="N"/>
+  <ViewAttribute
+    Name="NetRentWithoutTax"
+    PrecisionRule="true"
+    EntityAttrName="NetRentWithoutTax"
+    EntityUsage="OfferDetail_EO"
+    AliasName="NET_RENT_WITHOUT_TAX">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OfferDetail_VO.NetRentWithoutTax_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="OfferHrd_VO"
+    ViewLink="model.VL.OfferHrd_Link_OfferDeta"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CheckListResponse_AM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ComponentInterface="model.AM.common.CheckListResponse_AM"
+  ClientProxyName="model.AM.client.CheckListResponse_AMClient"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.AM.CheckListResponse_AMImpl"
+  DefClass="model.AM.CheckListResponse_AMDefImpl"
+  LoadComponentsLazily="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.AM.CheckListResponse_AM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="ChecklistResponse_VO1"
+    ViewObjectName="model.VO.ChecklistResponse_VO"/>
+  <ViewUsage
+    Name="CheckListResponse_ROVO1"
+    ViewObjectName="model.ROVO.CheckListResponse_ROVO"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="refreshchecklist">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="funcid"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="funcrefid"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="Lookup"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

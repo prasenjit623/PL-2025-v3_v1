@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+   <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                    id="pt1">
+      <f:facet name="pageContents">
+         <af:panelGroupLayout id="pgl1" layout="scroll">
+            <af:panelGroupLayout id="pgl2" layout="vertical">
+               <af:panelGridLayout id="pgl3">
+                  <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                              id="gr1">
+                     <af:gridCell marginStart="5px" width="100%" marginEnd="5px"
+                                  id="gc1" rendered="true">
+                        <af:outputText value="Manage PO Window" id="ot1"
+                                       inlineStyle="font-size:large; font-weight:bold"/>
+                     </af:gridCell>
+                     <af:gridCell id="gc2" halign="end">
+                        <af:panelGroupLayout id="pgl4"
+                                             styleClass="AFStretchWidth"
+                                             layout="horizontal">
+                           <af:commandButton text="Attachments" id="cb6"
+                                             action="attachment"
+                                             inlineStyle="margin-right:10px;"
+                                             rendered="false"/>
+                           <af:commandButton text="CheckList" id="cb14"
+                                             action="Checklist"
+                                             inlineStyle="margin-right:10px;"
+                                             rendered="false"/>
+                           <af:commandButton text="Change To Draft" id="cb1"
+                                             action="back"
+                                             inlineStyle="margin-right:10px;"
+                                             visible="false"/>
+                           <!--<af:commandButton text="Generate Invoice" id="cb15"
+                                      inlineStyle="margin-right:10px;"
+                                      actionListener="#{backingBeanScope.WoInvHdrMb.doGenerateInvoice}"
+                                             partialSubmit="true"
+                                             disabled="#{bindings.InvStatus.inputValue eq 'INVOICED'}"
+                                             partialTriggers="it11"/>-->
+                           <!--<af:commandButton text="Sync Invoice" id="cb20"
+                                      partialSubmit="true"
+                                      actionListener="#{backingBeanScope.WoInvHdrMb.doSyncInvoice}"
+                                      disabled="#{bindings.InvStatus.inputValue ne 'INVOICED'}"
+                                      inlineStyle="margin-right:10px;"/>-->
+                           <!--<af:commandButton text="Approve" id="cb12"
+                                             immediate="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.WoInvHdrMb.onInvokeAppOrReject}"
+                                             visible="false">
+                              <af:setPropertyListener from="#{'Approval'}"
+                                                      to="#{pageFlowScope.Action}"
+                                                      type="action"/>
+                           </af:commandButton>-->
+                           <!--<af:commandButton text="Reject" id="cb13"
+                                             immediate="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.WoInvHdrMb.onInvokeAppOrReject}"
+                                             visible="false">
+                              <af:setPropertyListener from="#{'Rejection'}"
+                                                      to="#{pageFlowScope.Action}"
+                                                      type="action"/>
+                           </af:commandButton>-->
+                           <af:commandButton text="Save" id="cb7"
+                                             partialSubmit="true"
+                                             inlineStyle="margin-right:10px;"
+                                             actionListener="#{backingBeanScope.PoInvHdrMb.doPoSave}">
+                              <!--<af:setPropertyListener from="#{sessionScope.userName}"
+                                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                                      type="action"/>-->
+                                </af:commandButton>
+                           <!--<af:commandButton text="Save and Close" id="cb1"
+                                             inlineStyle="margin-right:10px;"
+                                             partialSubmit="true"
+                                             action="#{backingBeanScope.WoInvHdrMb.onSaveAndClose}"
+                                             >
+                              --><!--<af:setPropertyListener from="#{sessionScope.userName}"
+                                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                                      type="action"/>--><!--
+                           </af:commandButton>-->
+                           <!--<af:commandButton text="Submit" id="cb11"
+                                             inlineStyle="margin-right:10px;"
+                                             action="#{backingBeanScope.WoInvHdrMb.onClickSubmit}"
+                                             visible="false">
+                              --><!--<af:setPropertyListener from="#{sessionScope.userName}"
+                                                      to="#{bindings.LastUpdatedBy.inputValue}"
+                                                      type="action"/>--><!--
+                           </af:commandButton>-->
+                           <!--<af:commandButton text="Approval Details" id="cb19"
+                                             inlineStyle="margin-right:10px;"
+                                             visible="#{bindings.Status.inputValue!='DRA'}"
+                                             rendered="false">
+                              <af:showPopupBehavior popupId="pc2:p2" triggerType="action"/>
+                           </af:commandButton>-->
+                           <af:commandButton text="Cancel" id="cb2"
+                                             inlineStyle="margin-right:10px;"
+                                             immediate="true" action="backToPo"/>
+                           <!--<af:commandButton text="Cancel WO" id="cb221"
+                                             inlineStyle="margin-right:10px;"
+                                             immediate="true" action="goTo"
+                                             actionListener="#{backingBeanScope.WoInvHdrMb.onDoCancelWo}"
+                                             visible="#{sessionScope.userId eq '100' and sessionScope.UR eq 'ROLE_CRM_HEAD'}"/>-->
+                        </af:panelGroupLayout>
+                     </af:gridCell>
+                  </af:gridRow>
+               </af:panelGridLayout>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s2"/>
+            <af:panelBox text="PO Header" id="pb3">
+               <f:facet name="toolbar"/>
+                  <af:panelFormLayout id="pfl1" maxColumns="3" rows="4">
+                     <af:inputText value="#{bindings.PoInvHdrId.inputValue}"
+                                   label="#{bindings.PoInvHdrId.hints.label}"
+                                   required="#{bindings.PoInvHdrId.hints.mandatory}"
+                                   columns="#{bindings.PoInvHdrId.hints.displayWidth}"
+                                   maximumLength="#{bindings.PoInvHdrId.hints.precision}"
+                                   shortDesc="#{bindings.PoInvHdrId.hints.tooltip}"
+                                   id="it4" rendered="false">
+                        <f:validator binding="#{bindings.PoInvHdrId.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.PoId.inputValue}"
+                                   label="#{bindings.PoId.hints.label}"
+                                   required="#{bindings.PoId.hints.mandatory}"
+                                   columns="#{bindings.PoId.hints.displayWidth}"
+                                   maximumLength="#{bindings.PoId.hints.precision}"
+                                   shortDesc="#{bindings.PoId.hints.tooltip}"
+                                   id="it17" rendered="false">
+                        <f:validator binding="#{bindings.PoId.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.PoInvHdrNo.inputValue}"
+                                   label="#{bindings.PoInvHdrNo.hints.label}"
+                                   required="#{bindings.PoInvHdrNo.hints.mandatory}"
+                                   columns="#{bindings.PoInvHdrNo.hints.displayWidth}"
+                                   maximumLength="#{bindings.PoInvHdrNo.hints.precision}"
+                                   shortDesc="#{bindings.PoInvHdrNo.hints.tooltip}"
+                                   id="it6" readOnly="true"
+                                   contentStyle="width:200px;font-size:medium; font-weight:bold;color:#1367ae;">
+                        <f:validator binding="#{bindings.PoInvHdrNo.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.PoNumber.inputValue}"
+                                   label="#{bindings.PoNumber.hints.label}"
+                                   required="#{bindings.PoNumber.hints.mandatory}"
+                                   columns="#{bindings.PoNumber.hints.displayWidth}"
+                                   maximumLength="#{bindings.PoNumber.hints.precision}"
+                                   shortDesc="#{bindings.PoNumber.hints.tooltip}"
+                                   id="it15" readOnly="true">
+                        <f:validator binding="#{bindings.PoNumber.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.BuName.inputValue}"
+                                   label="#{bindings.BuName.hints.label}"
+                                   required="#{bindings.BuName.hints.mandatory}"
+                                   columns="#{bindings.BuName.hints.displayWidth}"
+                                   maximumLength="#{bindings.BuName.hints.precision}"
+                                   shortDesc="#{bindings.BuName.hints.tooltip}"
+                                   id="it7" readOnly="true">
+                        <f:validator binding="#{bindings.BuName.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.Asset.inputValue}"
+                                   label="#{bindings.Asset.hints.label}"
+                                   required="#{bindings.Asset.hints.mandatory}"
+                                   columns="#{bindings.Asset.hints.displayWidth}"
+                                   maximumLength="#{bindings.Asset.hints.precision}"
+                                   shortDesc="#{bindings.Asset.hints.tooltip}"
+                                   id="it1" readOnly="true" rendered="false">
+                        <f:validator binding="#{bindings.Asset.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.BuildingName.inputValue}"
+                                   label="#{bindings.BuildingName.hints.label}"
+                                   required="#{bindings.BuildingName.hints.mandatory}"
+                                   columns="#{bindings.BuildingName.hints.displayWidth}"
+                                   maximumLength="#{bindings.BuildingName.hints.precision}"
+                                   shortDesc="#{bindings.BuildingName.hints.tooltip}"
+                                   id="it2" readOnly="true" rendered="false">
+                        <f:validator binding="#{bindings.BuildingName.validator}"/>
+                     </af:inputText>
+                     <af:inputDate value="#{bindings.ClosedDate.inputValue}"
+                                   label="#{bindings.ClosedDate.hints.label}"
+                                   required="#{bindings.ClosedDate.hints.mandatory}"
+                                   shortDesc="#{bindings.ClosedDate.hints.tooltip}"
+                                   id="id1" readOnly="true">
+                        <f:validator binding="#{bindings.ClosedDate.validator}"/>
+                        <af:convertDateTime pattern="dd-MM-yyyy"/>
+                     </af:inputDate>
+                     <af:inputText value="#{bindings.ItemDesc.inputValue}"
+                                   label="#{bindings.ItemDesc.hints.label}"
+                                   required="#{bindings.ItemDesc.hints.mandatory}"
+                                   columns="#{bindings.ItemDesc.hints.displayWidth}"
+                                   maximumLength="#{bindings.ItemDesc.hints.precision}"
+                                   shortDesc="#{bindings.ItemDesc.hints.tooltip}"
+                                   id="it10" readOnly="true">
+                        <f:validator binding="#{bindings.ItemDesc.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.ItemNo.inputValue}"
+                                   label="#{bindings.ItemNo.hints.label}"
+                                   required="#{bindings.ItemNo.hints.mandatory}"
+                                   columns="#{bindings.ItemNo.hints.displayWidth}"
+                                   maximumLength="#{bindings.ItemNo.hints.precision}"
+                                   shortDesc="#{bindings.ItemNo.hints.tooltip}"
+                                   id="it13" readOnly="true">
+                        <f:validator binding="#{bindings.ItemNo.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.JobCard.inputValue}"
+                                   label="#{bindings.JobCard.hints.label}"
+                                   required="#{bindings.JobCard.hints.mandatory}"
+                                   columns="#{bindings.JobCard.hints.displayWidth}"
+                                   maximumLength="#{bindings.JobCard.hints.precision}"
+                                   shortDesc="#{bindings.JobCard.hints.tooltip}"
+                                   id="it14" readOnly="true">
+                        <f:validator binding="#{bindings.JobCard.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.PoStatus.inputValue}"
+                                   label="#{bindings.PoStatus.hints.label}"
+                                   required="#{bindings.PoStatus.hints.mandatory}"
+                                   columns="#{bindings.PoStatus.hints.displayWidth}"
+                                   maximumLength="#{bindings.PoStatus.hints.precision}"
+                                   shortDesc="#{bindings.PoStatus.hints.tooltip}"
+                                   id="it11"  readOnly="true">
+                        <f:validator binding="#{bindings.PoStatus.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.PoType.inputValue}"
+                                   label="#{bindings.PoType.hints.label}"
+                                   required="#{bindings.PoType.hints.mandatory}"
+                                   columns="#{bindings.PoType.hints.displayWidth}"
+                                   maximumLength="#{bindings.PoType.hints.precision}"
+                                   shortDesc="#{bindings.PoType.hints.tooltip}"
+                                   id="it5" readOnly="true">
+                        <f:validator binding="#{bindings.PoType.validator}"/>
+                     </af:inputText>
+               <af:selectOneChoice value="#{bindings.PoSubType.inputValue}"
+                                   label="#{bindings.PoSubType.label}"
+                                   required="#{bindings.PoSubType.hints.mandatory}"
+                                   shortDesc="#{bindings.PoSubType.hints.tooltip}"
+                                   id="soc1" autoSubmit="true"
+                                   valueChangeListener="#{backingBeanScope.PoInvHdrMb.doSlctPoSubTyp}">
+                  <f:selectItems value="#{bindings.PoSubType.items}" id="si1"/>
+               </af:selectOneChoice>
+               <af:inputText value="#{bindings.Status.inputValue}"
+                                   label="#{bindings.Status.hints.label}"
+                                   required="#{bindings.Status.hints.mandatory}"
+                                   columns="#{bindings.Status.hints.displayWidth}"
+                                   maximumLength="#{bindings.Status.hints.precision}"
+                                   shortDesc="#{bindings.Status.hints.tooltip}"
+                                   id="it8" readOnly="true" rendered="false">
+                        <f:validator binding="#{bindings.Status.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.VendorName.inputValue}"
+                                   label="#{bindings.VendorName.hints.label}"
+                                   required="#{bindings.VendorName.hints.mandatory}"
+                                   columns="#{bindings.VendorName.hints.displayWidth}"
+                                   maximumLength="#{bindings.VendorName.hints.precision}"
+                                   shortDesc="#{bindings.VendorName.hints.tooltip}"
+                                   id="it9" readOnly="true">
+                        <f:validator binding="#{bindings.VendorName.validator}"/>
+                     </af:inputText>
+                     <af:inputText value="#{bindings.VendorNo.inputValue}"
+                                   label="#{bindings.VendorNo.hints.label}"
+                                   required="#{bindings.VendorNo.hints.mandatory}"
+                                   columns="#{bindings.VendorNo.hints.displayWidth}"
+                                   maximumLength="#{bindings.VendorNo.hints.precision}"
+                                   shortDesc="#{bindings.VendorNo.hints.tooltip}"
+                                   id="it12" readOnly="true">
+                        <f:validator binding="#{bindings.VendorNo.validator}"/>
+                     </af:inputText>
+                  <af:inputText value="#{bindings.Attribute1.inputValue}"
+                                label="Group Name"
+                                required="#{bindings.Attribute1.hints.mandatory}"
+                                columns="#{bindings.Attribute1.hints.displayWidth}"
+                                maximumLength="#{bindings.Attribute1.hints.precision}"
+                                shortDesc="#{bindings.Attribute1.hints.tooltip}"
+                                id="it3" partialTriggers="soc1">
+                     <f:validator binding="#{bindings.Attribute1.validator}"/>
+                  </af:inputText>
+               </af:panelFormLayout>
+             </af:panelBox>
+            <af:spacer width="10" height="10" id="s1"/>
+            <af:panelBox text="PO Details" id="pb1">
+               <f:facet name="toolbar"/>
+               <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="detach" inlineStyle="height:6.0cm;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                     <af:toolbar id="t2" flex="100">
+                     </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.PoInvDtls_RoVo1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.PoInvDtls_RoVo1.rangeSize}"
+                            emptyText="#{bindings.PoInvDtls_RoVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.PoInvDtls_RoVo1.rangeSize}"
+                            rowBandingInterval="0" columnStretching="column:c12"
+                            selectedRowKeys="#{bindings.PoInvDtls_RoVo1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.PoInvDtls_RoVo1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1">
+                     <af:column sortProperty="#{bindings.PoInvDtls_RoVo1.hints.PoInvHdrId.name}"
+                                sortable="false"
+                                headerText="#{bindings.PoInvDtls_RoVo1.hints.PoInvHdrId.label}"
+                                id="c6" rendered="false">
+                        <af:outputText value="#{row.PoInvHdrId}" id="ot3"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.PoInvDtls_RoVo1.hints.PoInvHdrNo.name}"
+                                sortable="false"
+                                headerText="#{bindings.PoInvDtls_RoVo1.hints.PoInvHdrNo.label}"
+                                id="c5" rendered="false">
+                        <af:outputText value="#{row.PoInvHdrNo}" id="ot5"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.PoInvDtls_RoVo1.hints.PoId.name}"
+                                sortable="false"
+                                headerText="#{bindings.PoInvDtls_RoVo1.hints.PoId.label}"
+                                id="c8" rendered="false">
+                        <af:outputText value="#{row.PoId}" id="ot4"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.PoInvDtls_RoVo1.hints.PoLineNum.name}"
+                                sortable="false"
+                                headerText="PO Line No"
+                                id="c1" align="center">
+                        <af:outputText value="#{row.PoLineNum}" id="ot8"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.PoInvDtls_RoVo1.hints.PoNumber.name}"
+                                sortable="false"
+                                headerText="PO Number"
+                                id="c7">
+                        <af:outputText value="#{row.PoNumber}" id="ot6"/>
+                     </af:column>
+                     <af:column headerText="#{bindings.PoInvDtls_RoVo1.hints.Asset.label}"
+                                id="c10">
+                        <af:outputText value="#{row.Asset}" id="ot11"/>
+                     </af:column>                    
+                     <af:column sortProperty="#{bindings.PoInvDtls_RoVo1.hints.LineStatus.name}"
+                                sortable="false"
+                                headerText="Line Status"
+                                id="c4">
+                        <af:outputText value="#{row.LineStatus}" id="ot10"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.PoInvDtls_RoVo1.hints.UnitPrice.name}"
+                                sortable="false"
+                                headerText="Unit Price"
+                                id="c3">
+                        <af:outputText value="#{row.UnitPrice}" id="ot2"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.PoInvDtls_RoVo1.hints.PoTax.name}"
+                                sortable="false"
+                                headerText="PO Tax"
+                                id="c9">
+                        <af:outputText value="#{row.PoTax}" id="ot7"/>
+                     </af:column>
+                     <af:column sortProperty="#{bindings.PoInvDtls_RoVo1.hints.PoLineTotal.name}"
+                                sortable="false"
+                                headerText="PO Line Total"
+                                id="c2">
+                        <af:outputText value="#{row.PoLineTotal}" id="ot9"/>
+                     </af:column>
+                     <af:column headerText="Building Name"
+                                id="c12">
+                        <af:outputText value="#{row.PaasBuildName}" id="ot13"/>
+                     </af:column>
+                     <af:column headerText="Building Name"
+                                id="c11" rendered="false">
+                        <af:outputText value="#{row.BuildingName}" id="ot12"/>
+                     </af:column>
+                  </af:table>
+               </af:panelCollection>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s3"/>
+            <af:panelBox text="WO Invoice Ar Details" id="pb2" rendered="false">
+               <f:facet name="toolbar"/>
+               <af:panelCollection id="pc2" styleClass="AFStretchWidth" featuresOff="detach">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                     <af:toolbar id="t5" flex="100">
+                        <af:spacer width="10" height="10" id="s40"/>
+                     </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  
+                  <!--<af:popup id="p3"
+                            binding="#{backingBeanScope.WoInvHdrMb.p3}">
+                     <af:dialog id="d3" type="none"
+                                title="Reason for #{pageFlowScope.Action}">
+                        <f:facet name="buttonBar">
+                           <af:toolbar id="t7" flex="1">
+                              <af:spacer width="220" height="10" id="s12"/>
+                              <af:commandButton text="Save" id="cb2021"
+                                                action="back"
+                                                actionListener="#{backingBeanScope.WoInvHdrMb.onclickAppOrRej}"/>
+                              <af:spacer width="10" height="10" id="s11"/>
+                              <af:commandButton text="Cancel" id="cb21"/>
+                           </af:toolbar>
+                        </f:facet>
+                        <af:inputText label="Reason" id="it16" rows="5"
+                                      columns="50"
+                                      binding="#{backingBeanScope.WoInvHdrMb.reason}"/>
+                     </af:dialog>
+                  </af:popup>-->
+                  <af:popup id="p2">
+                     <af:dialog id="d2" inlineStyle="width:80.0%;"
+                                title="Approval Work Flow History">
+                        
+                     </af:dialog>
+                  </af:popup>
+               </af:panelCollection>
+            </af:panelBox>
+         </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="footerStart"/>
+      <f:facet name="footer"/>
+      <f:facet name="footerEnd"/>
+      <f:facet name="startPanel"/>
+      <f:facet name="endPanel"/>
+      <f:facet name="headerStart"/>
+      <f:facet name="header"/>
+      <f:facet name="headerEnd"/>
+   
+   </af:pageTemplate>
+</jsp:root>

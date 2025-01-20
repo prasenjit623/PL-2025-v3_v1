@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout id="pgl1" layout="default">
+        <af:panelGridLayout id="pgl2">
+          <af:gridRow marginTop="5px" height="auto" id="gr1">
+            <af:gridCell marginStart="5px" width="50%" id="gc1">
+              <af:outputLabel value="" id="ol1"
+                              inlineStyle="font-weight:bolder; font-size:large;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:panelGroupLayout layout="vertical" id="pgl3">
+          <af:panelGroupLayout layout="vertical" id="pgl6">
+            <af:panelGroupLayout layout="vertical" id="pgl7"/>
+            
+            <af:panelGroupLayout layout="vertical" id="pgl4">
+              <af:panelHeader text="Scheduling WO" id="ph1">
+                <af:query id="qryId1" headerText="Search" disclosed="true"
+                          value="#{bindings.SearchQuery.queryDescriptor}"
+                          model="#{bindings.SearchQuery.queryModel}"
+                          queryListener="#{bindings.SearchQuery.processQuery}"
+                          queryOperationListener="#{bindings.SearchQuery.processQueryOperation}"
+                          rows="3" maxColumns="3"/>
+              </af:panelHeader>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+          <af:spacer width="10" height="10" id="s5"/>
+          <af:panelBox text="Search Result" id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelCollection  id="pc2" styleClass="AFStretchWidth"
+                                featuresOff="detach">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar  id="t1" flex="1">
+                  <af:commandImageLink
+                                       id="cil1"
+                                       icon="/images/func_add_16_ena.png"
+                                       action="add"
+                                       disabledIcon="/images/func_add_16_dis.png"
+                                       hoverIcon="/images/func_add_16_hov.png"
+                                       depressedIcon="/images/func_add_16_act.png">
+                   
+                  </af:commandImageLink>
+                  <af:spacer width="10" height="10" id="s3"/>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.SearchWoSchedulerTnx_RoVo1.collectionModel}"
+                        var="row" varStatus="vs"
+                        rows="#{bindings.SearchWoSchedulerTnx_RoVo1.rangeSize}"
+                        emptyText="#{bindings.SearchWoSchedulerTnx_RoVo1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.SearchWoSchedulerTnx_RoVo1.rangeSize}"
+                        rowBandingInterval="0" columnStretching="column:c3"
+                        selectedRowKeys="#{bindings.SearchWoSchedulerTnx_RoVo1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.SearchWoSchedulerTnx_RoVo1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t2"
+                        partialTriggers=":::qryId1">
+                <af:column id="c09" headerText="S.No" align="center" width="60"
+                           frozen="true">
+                  <af:outputText value="#{vs.index+1}" id="ot50"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.WoSchMainHdrId.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.WoSchMainHdrId.label}"
+                           id="c2" rendered="false">
+                  <af:outputText value="#{row.WoSchMainHdrId}" id="ot8"/>
+                </af:column>
+               <af:column sortProperty="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.WoSchMainHdrNo.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.WoSchMainHdrNo.label}"
+                           id="c6" align="center" width="140">
+                  <af:commandLink  id="cl2" action="edit">
+                   <af:outputText value="#{row.WoSchMainHdrNo}" id="ot59" inlineStyle="font-weight:bolder;"/>
+                    <af:setPropertyListener from="#{row.WoSchMainHdrId}" to="#{pageFlowScope.woSchMainHdrId}" type="action"/>
+                  </af:commandLink>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.ScWoTnxId.name}"
+                           sortable="false"
+                           headerText="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.ScWoTnxId.label}"
+                           id="c5" rendered="false">
+                  <af:outputText value="#{row.ScWoTnxId}" id="ot5"/>
+                </af:column>
+                <af:column headerText="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.Status.label}"
+                           id="c7" width="150" visible="false">
+                  <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                      label="#{row.bindings.Status.label}"
+                                      required="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.Status.mandatory}"
+                                      shortDesc="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.Status.tooltip}"
+                                      id="soc1" readOnly="true">
+                    <f:selectItems value="#{row.bindings.Status.items}"
+                                   id="si1"/>
+                  </af:selectOneChoice>
+                  <!--<af:outputText value="#{row.Status}" id="ot6"/>-->
+                </af:column>
+                <af:column headerText="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.InterfaceStatus.label}"
+                           id="c9" width="180">
+                  <af:outputText value="#{row.InterfaceStatus}" id="ot1"/>
+                </af:column>
+                <af:column headerText="Released Date"
+                           id="c10" width="120">
+                  <af:outputText value="#{row.ReleasedDate}" id="ot6">
+                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.CreatedBy.name}"
+                           sortable="false"
+                           headerText="Created By"
+                           id="c8" width="150">
+                  <af:outputText value="#{row.CreatedBy}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.CreationDate.name}"
+                           sortable="false"
+                           headerText="Creation Date"
+                           id="c1">
+                  <af:outputText value="#{row.CreationDate}" id="ot7">
+                    <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.LastUpdatedBy.name}"
+                           sortable="false"
+                           headerText="Last Updated By"
+                           id="c4" width="150">
+                  <af:outputText value="#{row.LastUpdatedBy}" id="ot4"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.SearchWoSchedulerTnx_RoVo1.hints.LastUpdateDate.name}"
+                           sortable="false"
+                           headerText="Last Updated Date"
+                           id="c3">
+                  <af:outputText value="#{row.LastUpdateDate}" id="ot3">
+                    <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="startPanel"/>
+    <f:facet name="endPanel"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+</jsp:root>

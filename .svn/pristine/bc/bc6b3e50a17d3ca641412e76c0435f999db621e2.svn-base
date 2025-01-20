@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1"
+                 binding="#{backingBeanScope.backing_pages_ReceiptPge.d1}"
+                 inlineStyle="background-color:White;">
+      <af:messages binding="#{backingBeanScope.backing_pages_ReceiptPge.m1}"
+                   id="m1"/>
+      <af:form id="f1"
+               binding="#{backingBeanScope.backing_pages_ReceiptPge.f1}">
+        <af:panelGroupLayout binding="#{backingBeanScope.backing_pages_ReceiptPge.pgl1}"
+                             id="pgl1" layout="scroll">
+          <af:panelGroupLayout binding="#{backingBeanScope.backing_pages_ReceiptPge.pgl2}"
+                               id="pgl2" layout="vertical">
+            <af:panelGridLayout binding="#{backingBeanScope.backing_pages_ReceiptPge.pgl3}"
+                                id="pgl3">
+              <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                          binding="#{backingBeanScope.backing_pages_ReceiptPge.gr1}"
+                          id="gr1">
+                <af:gridCell marginStart="5px" width="100%" marginEnd="5px"
+                             binding="#{backingBeanScope.backing_pages_ReceiptPge.gc1}"
+                             id="gc1">
+                  <af:commandButton text="Save"
+                                    binding="#{backingBeanScope.backing_pages_ReceiptPge.cb1}"
+                                    id="cb1"/>
+                </af:gridCell>
+              </af:gridRow>
+            </af:panelGridLayout>
+            <af:panelFormLayout binding="#{backingBeanScope.backing_pages_ReceiptPge.pfl1}"
+                                id="pfl1" rows="4" maxColumns="4">
+              <af:inputText value="#{bindings.ReceiptNumber.inputValue}"
+                            label="#{bindings.ReceiptNumber.hints.label}"
+                            required="#{bindings.ReceiptNumber.hints.mandatory}"
+                            columns="#{bindings.ReceiptNumber.hints.displayWidth}"
+                            maximumLength="#{bindings.ReceiptNumber.hints.precision}"
+                            shortDesc="#{bindings.ReceiptNumber.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it1}"
+                            id="it1" autoSubmit="true">
+                <f:validator binding="#{bindings.ReceiptNumber.validator}"/>
+              </af:inputText>
+              <af:inputDate value="#{bindings.ReceiptDate.inputValue}"
+                            label="#{bindings.ReceiptDate.hints.label}"
+                            required="#{bindings.ReceiptDate.hints.mandatory}"
+                            shortDesc="#{bindings.ReceiptDate.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.id1}"
+                            id="id1" autoSubmit="true">
+                <f:validator binding="#{bindings.ReceiptDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.ReceiptDate.format}"/>
+              </af:inputDate>
+              <af:inputText value="#{bindings.CustomerName.inputValue}"
+                            label="#{bindings.CustomerName.hints.label}"
+                            required="#{bindings.CustomerName.hints.mandatory}"
+                            columns="#{bindings.CustomerName.hints.displayWidth}"
+                            maximumLength="#{bindings.CustomerName.hints.precision}"
+                            shortDesc="#{bindings.CustomerName.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it2}"
+                            id="it2" autoSubmit="true">
+                <f:validator binding="#{bindings.CustomerName.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.CurrencyCode.inputValue}"
+                            label="#{bindings.CurrencyCode.hints.label}"
+                            required="#{bindings.CurrencyCode.hints.mandatory}"
+                            columns="#{bindings.CurrencyCode.hints.displayWidth}"
+                            maximumLength="#{bindings.CurrencyCode.hints.precision}"
+                            shortDesc="#{bindings.CurrencyCode.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it3}"
+                            id="it3" autoSubmit="true">
+                <f:validator binding="#{bindings.CurrencyCode.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ReceiptAmount.inputValue}"
+                            label="#{bindings.ReceiptAmount.hints.label}"
+                            required="#{bindings.ReceiptAmount.hints.mandatory}"
+                            columns="#{bindings.ReceiptAmount.hints.displayWidth}"
+                            maximumLength="#{bindings.ReceiptAmount.hints.precision}"
+                            shortDesc="#{bindings.ReceiptAmount.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it4}"
+                            id="it4" autoSubmit="true">
+                <f:validator binding="#{bindings.ReceiptAmount.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.PayRefNumber.inputValue}"
+                            label="#{bindings.PayRefNumber.hints.label}"
+                            required="#{bindings.PayRefNumber.hints.mandatory}"
+                            columns="#{bindings.PayRefNumber.hints.displayWidth}"
+                            maximumLength="#{bindings.PayRefNumber.hints.precision}"
+                            shortDesc="#{bindings.PayRefNumber.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it5}"
+                            id="it5" autoSubmit="true">
+                <f:validator binding="#{bindings.PayRefNumber.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.PayMode.inputValue}"
+                                  label="#{bindings.PayMode.label}"
+                                  required="#{bindings.PayMode.hints.mandatory}"
+                                  shortDesc="#{bindings.PayMode.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_pages_ReceiptPge.soc1}"
+                                  id="soc1" autoSubmit="true">
+                <f:selectItems value="#{bindings.PayMode.items}"
+                               binding="#{backingBeanScope.backing_pages_ReceiptPge.si1}"
+                               id="si1"/>
+              </af:selectOneChoice>
+              <af:inputDate value="#{bindings.PayRefDate.inputValue}"
+                            label="#{bindings.PayRefDate.hints.label}"
+                            required="#{bindings.PayRefDate.hints.mandatory}"
+                            shortDesc="#{bindings.PayRefDate.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.id2}"
+                            id="id2" autoSubmit="true">
+                <f:validator binding="#{bindings.PayRefDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.PayRefDate.format}"/>
+              </af:inputDate>
+              <af:inputDate value="#{bindings.PayRevDate.inputValue}"
+                            label="#{bindings.PayRevDate.hints.label}"
+                            required="#{bindings.PayRevDate.hints.mandatory}"
+                            shortDesc="#{bindings.PayRevDate.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.id3}"
+                            id="id3" autoSubmit="true">
+                <f:validator binding="#{bindings.PayRevDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.PayRevDate.format}"/>
+              </af:inputDate>
+              <af:inputDate value="#{bindings.PayRecDate.inputValue}"
+                            label="#{bindings.PayRecDate.hints.label}"
+                            required="#{bindings.PayRecDate.hints.mandatory}"
+                            shortDesc="#{bindings.PayRecDate.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.id4}"
+                            id="id4" autoSubmit="true">
+                <f:validator binding="#{bindings.PayRecDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.PayRecDate.format}"/>
+              </af:inputDate>
+              <af:inputText value="#{bindings.DiffInDays.inputValue}"
+                            label="#{bindings.DiffInDays.hints.label}"
+                            required="#{bindings.DiffInDays.hints.mandatory}"
+                            columns="#{bindings.DiffInDays.hints.displayWidth}"
+                            maximumLength="#{bindings.DiffInDays.hints.precision}"
+                            shortDesc="#{bindings.DiffInDays.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it6}"
+                            id="it6" autoSubmit="true">
+                <f:validator binding="#{bindings.DiffInDays.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.BankName.inputValue}"
+                            label="#{bindings.BankName.hints.label}"
+                            required="#{bindings.BankName.hints.mandatory}"
+                            columns="#{bindings.BankName.hints.displayWidth}"
+                            maximumLength="#{bindings.BankName.hints.precision}"
+                            shortDesc="#{bindings.BankName.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it7}"
+                            id="it7" autoSubmit="true">
+                <f:validator binding="#{bindings.BankName.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.BankBranchName.inputValue}"
+                            label="#{bindings.BankBranchName.hints.label}"
+                            required="#{bindings.BankBranchName.hints.mandatory}"
+                            columns="#{bindings.BankBranchName.hints.displayWidth}"
+                            maximumLength="#{bindings.BankBranchName.hints.precision}"
+                            shortDesc="#{bindings.BankBranchName.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it8}"
+                            id="it8" autoSubmit="true">
+                <f:validator binding="#{bindings.BankBranchName.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.DrawnBy.inputValue}"
+                            label="#{bindings.DrawnBy.hints.label}"
+                            required="#{bindings.DrawnBy.hints.mandatory}"
+                            columns="#{bindings.DrawnBy.hints.displayWidth}"
+                            maximumLength="#{bindings.DrawnBy.hints.precision}"
+                            shortDesc="#{bindings.DrawnBy.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it9}"
+                            id="it9" autoSubmit="true">
+                <f:validator binding="#{bindings.DrawnBy.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Status.inputValue}"
+                            label="#{bindings.Status.hints.label}"
+                            required="#{bindings.Status.hints.mandatory}"
+                            columns="#{bindings.Status.hints.displayWidth}"
+                            maximumLength="#{bindings.Status.hints.precision}"
+                            shortDesc="#{bindings.Status.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it10}"
+                            id="it10" rendered="false">
+                <f:validator binding="#{bindings.Status.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ReceiptId.inputValue}"
+                            label="#{bindings.ReceiptId.hints.label}"
+                            required="#{bindings.ReceiptId.hints.mandatory}"
+                            columns="#{bindings.ReceiptId.hints.displayWidth}"
+                            maximumLength="#{bindings.ReceiptId.hints.precision}"
+                            shortDesc="#{bindings.ReceiptId.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it11}"
+                            id="it11" rendered="false">
+                <f:validator binding="#{bindings.ReceiptId.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.FuncId.inputValue}"
+                            label="#{bindings.FuncId.hints.label}"
+                            required="#{bindings.FuncId.hints.mandatory}"
+                            columns="#{bindings.FuncId.hints.displayWidth}"
+                            maximumLength="#{bindings.FuncId.hints.precision}"
+                            shortDesc="#{bindings.FuncId.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it12}"
+                            id="it12" rendered="false">
+                <f:validator binding="#{bindings.FuncId.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.SourceFuncId.inputValue}"
+                            label="#{bindings.SourceFuncId.hints.label}"
+                            required="#{bindings.SourceFuncId.hints.mandatory}"
+                            columns="#{bindings.SourceFuncId.hints.displayWidth}"
+                            maximumLength="#{bindings.SourceFuncId.hints.precision}"
+                            shortDesc="#{bindings.SourceFuncId.hints.tooltip}"
+                            binding="#{backingBeanScope.backing_pages_ReceiptPge.it13}"
+                            id="it13" rendered="false">
+                <f:validator binding="#{bindings.SourceFuncId.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_pages_ReceiptPge-->
+</jsp:root>

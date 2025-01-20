@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="WoScheduler_AM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.AM.WoScheduler_AMImpl"
+  DefClass="model.AM.WoScheduler_AMDefImpl"
+  ComponentInterface="model.AM.common.WoScheduler_AM"
+  ClientProxyName="model.AM.client.WoScheduler_AMClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.AM.WoScheduler_AM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="SearchWoSchedulerTnx_RoVo1"
+    ViewObjectName="model.ROVO.SearchWoSchedulerTnx_RoVo"/>
+  <ViewUsage
+    Name="WoSchedulingMainHdr_VO1"
+    ViewObjectName="model.VO.WoSchedulingMainHdr_VO">
+    <ViewCriteriaUsage
+      Name="findByWoSchMainHdrId"
+      FullName="model.VO.WoSchedulingMainHdr_VO.findByWoSchMainHdrId"/>
+    <ParameterMap>
+      <PIMap Variable="p_WoSchMainHdrId">
+        <TransientExpression><![CDATA[adf.context.pageFlowScope.woSchMainHdrId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="WoSchedulerTnxHdr_VO1"
+    ViewObjectName="model.VO.WoSchedulerTnxHdr_VO"/>
+  <ViewUsage
+    Name="WoSchedulerTnxResource_VO1"
+    ViewObjectName="model.VO.WoSchedulerTnxResource_VO"/>
+  <ViewUsage
+    Name="getApprovalHistoryROVo1"
+    ViewObjectName="model.ROVO.getApprovalHistoryROVo"/>
+  <ViewUsage
+    Name="getFunctionCodeROVO1"
+    ViewObjectName="model.ROVO.getFunctionCodeROVO"/>
+  <ViewUsage
+    Name="getAllWoRscTnxDtls_RoVo1"
+    ViewObjectName="model.ROVO.getAllWoRscTnxDtls_RoVo"/>
+  <ViewUsage
+    Name="GetWoOperationRoVo1"
+    ViewObjectName="model.ROVO.GetWoOperationRoVo"/>
+  <ViewLinkUsage
+    Name="WoSchMainHdr_WoSchTnxHdr_VL1"
+    ViewLinkObjectName="model.VL.WoSchMainHdr_WoSchTnxHdr_VL"
+    SrcViewUsageName="model.AM.WoScheduler_AM.WoSchedulingMainHdr_VO1"
+    DstViewUsageName="model.AM.WoScheduler_AM.WoSchedulerTnxHdr_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="WoSchTnxHdrTnxResource_VL1"
+    ViewLinkObjectName="model.VL.WoSchTnxHdrTnxResource_VL"
+    SrcViewUsageName="model.AM.WoScheduler_AM.WoSchedulerTnxHdr_VO1"
+    DstViewUsageName="model.AM.WoScheduler_AM.WoSchedulerTnxResource_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="WoSchMainHdr_Approval_VL1"
+    ViewLinkObjectName="model.VL.WoSchMainHdr_Approval_VL"
+    SrcViewUsageName="model.AM.WoScheduler_AM.WoSchedulingMainHdr_VO1"
+    DstViewUsageName="model.AM.WoScheduler_AM.getApprovalHistoryROVo1"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="reWorkForHistRecord">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="mainId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="reason"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

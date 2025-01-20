@@ -1,0 +1,1315 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OtherChargesHeader_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="model.VO.OtherChargesHeader_VORowImpl"
+  ComponentClass="model.VO.OtherChargesHeader_VOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VO.OtherChargesHeader_VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_ocHdrId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="p_orgName"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="SearchBookingROVO1"
+    ViewObjectName="model.ROVO.SearchBookingROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SearchLeaseAgreement_ROVO1"
+    ViewObjectName="model.ROVO.SearchLeaseAgreement_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByNotRej"
+      FullName="model.ROVO.SearchLeaseAgreement_ROVO.findByNotRej"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Organizations_ROVO1"
+    ViewObjectName="model.ROVO.Organizations_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="findByPropertyName1"
+    ViewObjectName="model.ROVO.findByPropertyName"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="findByBuildName1"
+    ViewObjectName="model.ROVO.findByBuildName"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Org_ROVO1"
+    ViewObjectName="model.ROVO.Org_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO1"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByTransStatus"
+      FullName="model.ROVO.Lookup_View_ROVO.findByTransStatus"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="findByUnitName1"
+    ViewObjectName="model.ROVO.findByUnitName"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SearchLeaseAgreement_ROVO2"
+    ViewObjectName="model.ROVO.SearchLeaseAgreement_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="GetCustomerDetailsROVO1"
+    ViewObjectName="model.ROVO.GetCustomerDetailsROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="GetCustomerDetailsROVO4"
+    ViewObjectName="model.ROVO.GetCustomerDetailsROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="getCustomerSiteDetailsROVO1"
+    ViewObjectName="model.ROVO.getCustomerSiteDetailsROVO">
+    <ViewCriteriaUsage
+      Name="findByCustId"
+      FullName="model.ROVO.getCustomerSiteDetailsROVO.findByCustId"/>
+    <ViewCriteriaUsage
+      Name="findByOrgIdNull"
+      FullName="model.ROVO.getCustomerSiteDetailsROVO.findByOrgIdNull"/>
+    <ParameterMap>
+      <PIMap Variable="P_CUST_ID">
+        <TransientExpression><![CDATA[CustId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SrearchCancellation_RoVo1"
+    ViewObjectName="model.ROVO.SrearchCancellation_RoVo"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="getCancelLeaseDetailsForOtherCharges_RoVo1"
+    ViewObjectName="model.ROVO.getCancelLeaseDetailsForOtherCharges_RoVo"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_View_ROVO2"
+    ViewObjectName="model.ROVO.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="findByOcAddType"
+      FullName="model.ROVO.Lookup_View_ROVO.findByOcAddType"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_BookingId_Trans"
+    ListVOName="SearchBookingROVO1"
+    ListRangeSize="6"
+    NullValueFlag="none"
+    NullValueId="LOV_BookingId_Trans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BookingId_Trans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="BookingId"/>
+      <Item Value="BuildingId"/>
+      <Item Value="OrgId"/>
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BookingNumber"/>
+      <Item Value="BookingId"/>
+      <Item Value="BuildingId"/>
+      <Item Value="OrgId"/>
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BookingNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="findByBookingNo"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_OrgId"
+    ListVOName="Org_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrgName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyId"
+    ListVOName="findByPropertyName1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BuildingId"
+    ListVOName="findByBuildName1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuildingId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuildId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuildName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="Lookup_View_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_LeaseAgreementId_Trans"
+    ListVOName="SearchLeaseAgreement_ROVO1"
+    ListRangeSize="6"
+    NullValueFlag="none"
+    NullValueId="LOV_LeaseAgreementId_Trans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LeaseAgreementId_Trans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="LeaseAgreementId"/>
+      <Item Value="PropertyId"/>
+      <Item Value="BuildingId"/>
+      <Item Value="OrgId"/>
+      <Item Value="UnitId"/>
+      <Item Value="CustId"/>
+      <Item Value="Lease_start_date_trans"/>
+      <Item Value="Lease_end_date_trans"/>
+      <Item Value="LeaseStartDate"/>
+      <Item Value="LeaseEndDate"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LeaseNumber"/>
+      <Item Value="LeaseAgreementId"/>
+      <Item Value="PropertyId"/>
+      <Item Value="BuildingId"/>
+      <Item Value="OrgId"/>
+      <Item Value="UnitId"/>
+      <Item Value="CustIdAr"/>
+      <Item Value="LeaseStartDate"/>
+      <Item Value="LeaseEndDate"/>
+      <Item Value="LeaseStartDate"/>
+      <Item Value="LeaseEndDate"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LeaseNumber"/>
+      <Item Value="CustName"/>
+      <Item Value="TenancyConDocNo"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="findByLsNoCustNamTdocNoOC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UnitId"
+    ListVOName="findByUnitName1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UnitId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UnitId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UnitName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CustomerNameTrans"
+    ListVOName="SearchLeaseAgreement_ROVO2"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CustomerNameTrans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BookingId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CustName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CustId"
+    ListVOName="GetCustomerDetailsROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CustId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CustId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CustomerName"/>
+      <Item Value="CustomerNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BillToAddre"
+    ListVOName="getCustomerSiteDetailsROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BillToAddre"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SiteNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Address1"/>
+      <Item Value="City"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ShipToAddre"
+    ListVOName="getCustomerSiteDetailsROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ShipToAddre"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SiteNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Address1"/>
+      <Item Value="City"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DestinationBu"
+    ListVOName="Org_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DestinationBu"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrgName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CancelNo_Trans"
+    ListVOName="getCancelLeaseDetailsForOtherCharges_RoVo1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_CancelNo_Trans_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CancelNo_Trans"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="LeaseAgreementId_Trans"/>
+      <Item Value="BookingId_Trans"/>
+      <Item Value="CancelId"/>
+      <Item Value="Lease_start_date_trans"/>
+      <Item Value="Lease_start_date_trans"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CancelNumber"/>
+      <Item Value="LeaseNumber"/>
+      <Item Value="BookingNumber"/>
+      <Item Value="CancelId"/>
+      <Item Value="ConStartDate"/>
+      <Item Value="ConEndDate"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CancelNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="findByCancelNo"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_OcFlag"
+    ListVOName="Lookup_View_ROVO2"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_OcFlag_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OcFlag"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT OtherCharges_EO.OC_HDR_ID, 
+       OtherCharges_EO.ATTRIBUTE1, 
+       OtherCharges_EO.ATTRIBUTE10, 
+       OtherCharges_EO.ATTRIBUTE2, 
+       OtherCharges_EO.ATTRIBUTE3, 
+       OtherCharges_EO.ATTRIBUTE4, 
+       OtherCharges_EO.ATTRIBUTE5, 
+       OtherCharges_EO.ATTRIBUTE6, 
+       OtherCharges_EO.ATTRIBUTE7, 
+       OtherCharges_EO.ATTRIBUTE8, 
+       OtherCharges_EO.ATTRIBUTE9, 
+       OtherCharges_EO.ATTRIBUTE_CATEGORY, 
+       OtherCharges_EO.BOOKING_ID, 
+       OtherCharges_EO.BUILDING_ID, 
+       OtherCharges_EO.CREATED_BY, 
+       OtherCharges_EO.CREATION_DATE, 
+       OtherCharges_EO.DESCRIPTION, 
+       OtherCharges_EO.FLOW_LEVEL, 
+       OtherCharges_EO.FLOW_STATUS, 
+       OtherCharges_EO.FLOW_WITH, 
+       OtherCharges_EO.FUNC_ID, 
+       OtherCharges_EO.LAST_UPDATE_DATE, 
+       OtherCharges_EO.LAST_UPDATE_LOGIN, 
+       OtherCharges_EO.LAST_UPDATED_BY, 
+       OtherCharges_EO.LEASE_AGREEMENT_ID,
+       (select lease_start_date from xxpm_lease_agreement la where la.lease_agreement_id=OtherCharges_EO.LEASE_AGREEMENT_ID) as L_START_DATE,
+       (select lease_end_date from xxpm_lease_agreement la where la.lease_agreement_id=OtherCharges_EO.LEASE_AGREEMENT_ID) as L_END_DATE,
+       OtherCharges_EO.OBJECT_VERSION_NUMBER,
+       OtherCharges_EO.ORG_ID, 
+       OtherCharges_EO.PROPERTY_ID, 
+       OtherCharges_EO.STATUS, 
+       OtherCharges_EO.UNIT_ID, 
+       OtherCharges_EO.OTHER_CHARGES_NUMBER, 
+       OtherCharges_EO.CUST_ID, 
+       OtherCharges_EO.CUSTOMER_TRXN_ID, 
+       OtherCharges_EO.CUSTOMER_TRXN_NUM, 
+       OtherCharges_EO.OTHERS_TOTAL_RATE, 
+       OtherCharges_EO.RECEIPT_TOTAL, 
+       OtherCharges_EO.GL_DATE, 
+       OtherCharges_EO.BILL_TO_ADDRE, 
+       OtherCharges_EO.SHIP_TO_ADDRE, 
+       OtherCharges_EO.USER_GRP_ID, 
+       OtherCharges_EO.DESTINATION_BU,
+       (select org_name from xxstg_organizations o where o.org_Id=OtherCharges_EO.DESTINATION_BU) OrgName_Trans,
+       OtherCharges_EO.OC_FLAG, 
+       OtherCharges_EO.CANCEL_ID,
+       OtherCharges_EO.INTEGRATION_RESPONSE, to_date(to_char(OtherCharges_EO.CREATION_DATE,'dd-mm-yyyy'),'dd-mm-yyyy') as create_date,
+      OtherCharges_EO.LEASE_START_DATE,
+      OtherCharges_EO.LEASE_END_DATE,
+(select CUST_NAME FROM XXPM_BOOKING_CUSTOMER BKC WHERE BKC.BOOKING_ID=OtherCharges_EO.BOOKING_ID and ROWNUM=1) as CUST_NAME
+FROM XXPM_OC_HEADER OtherCharges_EO]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="OtherCharges_EO"
+    Entity="model.EO.OtherChargesHeader_EO"/>
+  <ViewAttribute
+    Name="OcHdrId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OcHdrId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="OC_HDR_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("xxpm_oc_hdr_id_s",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Attribute1"
+    PrecisionRule="true"
+    EntityAttrName="Attribute1"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE1"/>
+  <ViewAttribute
+    Name="Attribute10"
+    PrecisionRule="true"
+    EntityAttrName="Attribute10"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE10"/>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE2"/>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE3"/>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE4"/>
+  <ViewAttribute
+    Name="Attribute5"
+    PrecisionRule="true"
+    EntityAttrName="Attribute5"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE5"/>
+  <ViewAttribute
+    Name="Attribute6"
+    PrecisionRule="true"
+    EntityAttrName="Attribute6"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE6"/>
+  <ViewAttribute
+    Name="Attribute7"
+    PrecisionRule="true"
+    EntityAttrName="Attribute7"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE7"/>
+  <ViewAttribute
+    Name="Attribute8"
+    PrecisionRule="true"
+    EntityAttrName="Attribute8"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE8"/>
+  <ViewAttribute
+    Name="Attribute9"
+    PrecisionRule="true"
+    EntityAttrName="Attribute9"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE9"/>
+  <ViewAttribute
+    Name="AttributeCategory"
+    PrecisionRule="true"
+    EntityAttrName="AttributeCategory"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ATTRIBUTE_CATEGORY"/>
+  <ViewAttribute
+    Name="BookingId"
+    PrecisionRule="true"
+    EntityAttrName="BookingId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="BOOKING_ID">
+    <Dependencies>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BuildingId"
+    PrecisionRule="true"
+    EntityAttrName="BuildingId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="BUILDING_ID"
+    LOVName="LOV_BuildingId">
+    <Dependencies>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.BuildingId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="OtherCharges_EO"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="FlowLevel"
+    PrecisionRule="true"
+    EntityAttrName="FlowLevel"
+    EntityUsage="OtherCharges_EO"
+    AliasName="FLOW_LEVEL"/>
+  <ViewAttribute
+    Name="FlowStatus"
+    PrecisionRule="true"
+    EntityAttrName="FlowStatus"
+    EntityUsage="OtherCharges_EO"
+    AliasName="FLOW_STATUS"/>
+  <ViewAttribute
+    Name="FlowWith"
+    PrecisionRule="true"
+    EntityAttrName="FlowWith"
+    EntityUsage="OtherCharges_EO"
+    AliasName="FLOW_WITH"/>
+  <ViewAttribute
+    Name="FuncId"
+    PrecisionRule="true"
+    EntityAttrName="FuncId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="FUNC_ID"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="LAST_UPDATE_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="OtherCharges_EO"
+    AliasName="LAST_UPDATE_LOGIN"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="OtherCharges_EO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LeaseAgreementId"
+    PrecisionRule="true"
+    EntityAttrName="LeaseAgreementId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="LEASE_AGREEMENT_ID">
+    <Dependencies>
+      <Item
+        Value="CancelNo_Trans"/>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LStartDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="L_START_DATE"
+    Expression="L_START_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LEndDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="L_END_DATE"
+    Expression="L_END_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ObjectVersionNumber"
+    PrecisionRule="true"
+    EntityAttrName="ObjectVersionNumber"
+    EntityUsage="OtherCharges_EO"
+    AliasName="OBJECT_VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="OrgId"
+    PrecisionRule="true"
+    EntityAttrName="OrgId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="ORG_ID"
+    LOVName="LOV_OrgId">
+    <Dependencies>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.OrgId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyId"
+    PrecisionRule="true"
+    EntityAttrName="PropertyId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="PROPERTY_ID"
+    LOVName="LOV_PropertyId">
+    <Dependencies>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.PropertyId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="OtherCharges_EO"
+    AliasName="STATUS"
+    LOVName="LOV_Status"
+    DefaultValue="DRA">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.Status_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitId"
+    PrecisionRule="true"
+    EntityAttrName="UnitId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="UNIT_ID"
+    LOVName="LOV_UnitId">
+    <Dependencies>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.UnitId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OtherChargesNumber"
+    PrecisionRule="true"
+    EntityAttrName="OtherChargesNumber"
+    EntityUsage="OtherCharges_EO"
+    AliasName="OTHER_CHARGES_NUMBER">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.OtherChargesNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustId"
+    PrecisionRule="true"
+    EntityAttrName="CustId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CUST_ID"
+    LOVName="LOV_CustId">
+    <Dependencies>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerTrxnId"
+    PrecisionRule="true"
+    EntityAttrName="CustomerTrxnId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CUSTOMER_TRXN_ID"/>
+  <ViewAttribute
+    Name="CustomerTrxnNum"
+    PrecisionRule="true"
+    EntityAttrName="CustomerTrxnNum"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CUSTOMER_TRXN_NUM"/>
+  <ViewAttribute
+    Name="OthersTotalRate"
+    PrecisionRule="true"
+    EntityAttrName="OthersTotalRate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="OTHERS_TOTAL_RATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.OthersTotalRate_LABEL"/>
+        <DISPLAYWIDTH
+          Value="27"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReceiptTotal"
+    PrecisionRule="true"
+    EntityAttrName="ReceiptTotal"
+    EntityUsage="OtherCharges_EO"
+    AliasName="RECEIPT_TOTAL">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.ReceiptTotal_LABEL"/>
+        <DISPLAYWIDTH
+          Value="27"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GlDate"
+    PrecisionRule="true"
+    EntityAttrName="GlDate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="GL_DATE"/>
+  <ViewAttribute
+    Name="BillToAddre"
+    PrecisionRule="true"
+    EntityAttrName="BillToAddre"
+    EntityUsage="OtherCharges_EO"
+    AliasName="BILL_TO_ADDRE"
+    LOVName="LOV_BillToAddre">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ShipToAddre"
+    PrecisionRule="true"
+    EntityAttrName="ShipToAddre"
+    EntityUsage="OtherCharges_EO"
+    AliasName="SHIP_TO_ADDRE"
+    LOVName="LOV_ShipToAddre">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UserGrpId"
+    PrecisionRule="true"
+    EntityAttrName="UserGrpId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="USER_GRP_ID"/>
+  <ViewAttribute
+    Name="DestinationBu"
+    PrecisionRule="true"
+    EntityAttrName="DestinationBu"
+    EntityUsage="OtherCharges_EO"
+    AliasName="DESTINATION_BU"
+    LOVName="LOV_DestinationBu">
+    <Dependencies>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.DestinationBu_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgnameTrans"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ORGNAME_TRANS"
+    Expression="ORGNAME_TRANS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OcFlag"
+    PrecisionRule="true"
+    EntityAttrName="OcFlag"
+    EntityUsage="OtherCharges_EO"
+    AliasName="OC_FLAG"
+    LOVName="LOV_OcFlag"
+    DefaultValue="N">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.OcFlag_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CancelId"
+    PrecisionRule="true"
+    EntityAttrName="CancelId"
+    EntityUsage="OtherCharges_EO"
+    AliasName="CANCEL_ID">
+    <Dependencies>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IntegrationResponse"
+    PrecisionRule="true"
+    EntityAttrName="IntegrationResponse"
+    EntityUsage="OtherCharges_EO"
+    AliasName="INTEGRATION_RESPONSE"/>
+  <ViewAttribute
+    Name="CreateDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="CREATE_DATE"
+    Expression="CREATE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseStartDate"
+    PrecisionRule="true"
+    EntityAttrName="LeaseStartDate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="LEASE_START_DATE">
+    <Dependencies>
+      <Item
+        Value="CancelNo_Trans"/>
+      <Item
+        Value="LeaseAgreementId_Trans"/>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.LeaseStartDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseEndDate"
+    PrecisionRule="true"
+    EntityAttrName="LeaseEndDate"
+    EntityUsage="OtherCharges_EO"
+    AliasName="LEASE_END_DATE">
+    <Dependencies>
+      <Item
+        Value="CancelId"/>
+      <Item
+        Value="CancelNo_Trans"/>
+      <Item
+        Value="LeaseAgreementId_Trans"/>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.LeaseEndDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_NAME"
+    Expression="CUST_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BookingId_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_BookingId_Trans">
+    <Dependencies>
+      <Item
+        Value="CancelId"/>
+      <Item
+        Value="CancelNo_Trans"/>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.BookingId_Trans_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LeaseAgreementId_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_LeaseAgreementId_Trans">
+    <Dependencies>
+      <Item
+        Value="CancelId"/>
+      <Item
+        Value="CancelNo_Trans"/>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.LeaseAgreementId_Trans_LABEL"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerNameTrans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_CustomerNameTrans">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.CustomerNameTrans_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CancelNo_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_CancelNo_Trans">
+    <Dependencies>
+      <Item
+        Value="OcFlag"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.OtherChargesHeader_VO.CancelNo_Trans_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Cust_name_trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Lease_start_date_trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <Dependencies>
+      <Item
+        Value="CancelNo_Trans"/>
+      <Item
+        Value="LeaseAgreementId"/>
+      <Item
+        Value="LeaseAgreementId_Trans"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Lease_end_date_trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <Dependencies>
+      <Item
+        Value="CancelNo_Trans"/>
+      <Item
+        Value="LeaseAgreementId"/>
+      <Item
+        Value="LeaseAgreementId_Trans"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TnxDate_Trans"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.VO.OtherChargesHeader_VO.TnxDate_Trans_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.VO.OtherChargesHeader_VO.TnxDate_Trans_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="findByOcHdrId"
+    ViewObjectName="model.VO.OtherChargesHeader_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow939"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="OcHdrId"
+        ViewAttribute="OcHdrId"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_ocHdrId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="findByOrgName"
+    ViewObjectName="model.VO.OtherChargesHeader_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow230"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="OrgnameTrans"
+        ViewAttribute="OrgnameTrans"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_orgName"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="OtherChargesDetail_VO"
+    ViewLink="model.VL.OtherCharges_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="getApprovalHistoryROVo"
+    ViewLink="model.VL.OtherChargesApproval_Vl"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Receipt_VO"
+    ViewLink="model.VL.OcReceipt_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Booking_Milestone_VO"
+    ViewLink="model.VL.OC_BookingMilestone_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Booking_Milestone_VO1"
+    ViewLink="model.VL.OC_BookingMilestoneForAppr_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Receipt_VO1"
+    ViewLink="model.VL.OC_ReceiptForAppr_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Booking_Milestone_VO2"
+    ViewLink="model.VL.OC_BookingMstone_CancelId_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Receipt_VO2"
+    ViewLink="model.VL.OC_Receipt_CancelId_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="BookingMilestoneOC_Hstry"
+    ViewLink="model.VL.OcHeader_BookingMilestoneOC_Hstry_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth"
+                             dimensionsFrom="children">
+        <f:facet name="center">
+          <af:panelGroupLayout layout="vertical" id="pgl1">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.ArSetupROVOCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.ArSetupROVOCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.ArSetupROVOCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.ArSetupROVOCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1:resId1"/>
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t1">
+                  <af:commandImageLink id="cil1" action="add"
+                                       icon="/images/func_add_16_ena.png"
+                                       visible="#{sessionScope.grantMap.ArSetup =='F'}"/>
+                  <af:spacer width="10" height="10" id="s1"/>
+                  <af:commandImageLink id="cil2" action="edit"
+                                       icon="/images/func_pencil_16_ena.png">
+                    <af:setPropertyListener from="#{bindings.ArSetupId.inputValue}"
+                                            to="#{pageFlowScope.setupid}"
+                                            type="action"/>
+                  </af:commandImageLink>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.ArSetup_ROVO1.collectionModel}"
+                        var="row" rows="#{bindings.ArSetup_ROVO1.rangeSize}"
+                        emptyText="#{bindings.ArSetup_ROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.ArSetup_ROVO1.rangeSize}"
+                        rowBandingInterval="0"
+                        filterModel="#{bindings.ArSetupROVOCriteriaQuery.queryDescriptor}"
+                        queryListener="#{bindings.ArSetupROVOCriteriaQuery.processQuery}"
+                        filterVisible="true" varStatus="vs"
+                        selectedRowKeys="#{bindings.ArSetup_ROVO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.ArSetup_ROVO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="resId1"
+                        styleClass="AFStretchWidth" scrollPolicy="page"
+                        autoHeightRows="0">
+                <af:column id="c3" headerText="S.No" width="40"
+                           displayIndex="-1">
+                  <af:outputText value="#{vs.index+1}" id="ot20"/>
+                </af:column>
+                <af:column headerText="#{bindings.ArSetup_ROVO1.hints.BusinessUnitId.label}"
+                           id="c2"
+                           sortProperty="#{bindings.ArSetup_ROVO1.hints.BusinessUnitId.name}"
+                           filterable="true" sortable="false" width="200">
+                  <af:selectOneChoice value="#{row.bindings.BusinessUnitId.inputValue}"
+                                      label="#{row.bindings.BusinessUnitId.label}"
+                                      required="#{bindings.ArSetup_ROVO1.hints.BusinessUnitId.mandatory}"
+                                      shortDesc="#{bindings.ArSetup_ROVO1.hints.BusinessUnitId.tooltip}"
+                                      id="soc2" readOnly="true">
+                    <f:selectItems value="#{row.bindings.BusinessUnitId.items}"
+                                   id="si2"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.ArSetup_ROVO1.hints.ChargeType.label}"
+                           id="c1"
+                           sortProperty="#{bindings.ArSetup_ROVO1.hints.ChargeType.name}"
+                           filterable="true" sortable="false">
+                  <af:selectOneChoice value="#{row.bindings.ChargeType.inputValue}"
+                                      label="#{row.bindings.ChargeType.label}"
+                                      required="#{bindings.ArSetup_ROVO1.hints.ChargeType.mandatory}"
+                                      shortDesc="#{bindings.ArSetup_ROVO1.hints.ChargeType.tooltip}"
+                                      id="soc1" readOnly="true">
+                    <f:selectItems value="#{row.bindings.ChargeType.items}"
+                                   id="si1"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.ArSetupId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.ArSetupId.label}"
+                           id="resId1c1" rendered="false">
+                  <af:outputText value="#{row.ArSetupId}" id="ot10"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.BusinessUnitId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.BusinessUnitId.label}"
+                           id="resId1c2" rendered="false">
+                  <af:outputText value="#{row.BusinessUnitId}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.LegalEntityId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.LegalEntityId.label}"
+                           id="resId1c3" rendered="false">
+                  <af:outputText value="#{row.LegalEntityId}" id="ot7"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.ChargeType.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.ChargeType.label}"
+                           id="resId1c4" rendered="false">
+                  <af:outputText value="#{row.ChargeType}" id="ot5"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.TxnType.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.TxnType.label}"
+                           id="resId1c5">
+                  <af:outputText value="#{row.TxnType}" id="ot15"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.TxnSource.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.TxnSource.label}"
+                           id="resId1c6">
+                  <af:outputText value="#{row.TxnSource}" id="ot16"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.CmTxnType.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.CmTxnType.label}"
+                           id="resId1c7" rendered="false">
+                  <af:outputText value="#{row.CmTxnType}" id="ot4"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.CmTxnSource.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.CmTxnSource.label}"
+                           id="resId1c8" rendered="false">
+                  <af:outputText value="#{row.CmTxnSource}" id="ot17"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.TypeId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.TypeId.label}"
+                           id="resId1c9" rendered="false">
+                  <af:outputText value="#{row.TypeId}" id="ot12"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.TxnTypeId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.TxnTypeId.label}"
+                           id="resId1c10" rendered="false">
+                  <af:outputText value="#{row.TxnTypeId}" id="ot11"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.TxnSourceId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.TxnSourceId.label}"
+                           id="resId1c11" rendered="false">
+                  <af:outputText value="#{row.TxnSourceId}" id="ot13"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.CmTxnTypeId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.CmTxnTypeId.label}"
+                           id="resId1c12" rendered="false">
+                  <af:outputText value="#{row.CmTxnTypeId}" id="ot18"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.CmTxnSourceId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.CmTxnSourceId.label}"
+                           id="resId1c13" rendered="false">
+                  <af:outputText value="#{row.CmTxnSourceId}" id="ot3"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.RevAccountId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.RevAccountId.label}"
+                           id="resId1c14" rendered="false">
+                  <af:outputText value="#{row.RevAccountId}" id="ot8"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.ConcatenatedSegment.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.ConcatenatedSegment.label}"
+                           id="resId1c15">
+                  <af:outputText value="#{row.ConcatenatedSegment}" id="ot6"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.AccountingRuleName.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.AccountingRuleName.label}"
+                           id="resId1c16">
+                  <af:outputText value="#{row.AccountingRuleName}" id="ot9"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.InvoicingRule.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.InvoicingRule.label}"
+                           id="resId1c17">
+                  <af:outputText value="#{row.InvoicingRule}" id="ot1"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.IntercompanyGlCode.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.IntercompanyGlCode.label}"
+                           id="resId1c18">
+                  <af:outputText value="#{row.IntercompanyGlCode}" id="ot14"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ArSetup_ROVO1.hints.CostCenterGlCode.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ArSetup_ROVO1.hints.CostCenterGlCode.label}"
+                           id="resId1c19" width="150" displayIndex="-1">
+                  <af:outputText value="#{row.CostCenterGlCode}" id="ot19"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

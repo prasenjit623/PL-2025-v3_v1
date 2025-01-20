@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="SearchBookingPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchBookingROVO1" RangeSize="25"
+              DataControl="Booking_AMDataControl"
+              id="SearchBookingROVO1Iterator"/>
+    <searchRegion Criteria="Search"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchBookingROVO1Iterator" id="SearchQuery"/>
+    <iterator id="BookingHeader_VO1Iterator" Binds="BookingHeader_VO1"
+              DataControl="Booking_AMDataControl" RangeSize="25"/>
+    <iterator id="Booking_Milestone_VO1Iterator" Binds="Booking_Milestone_VO1"
+              DataControl="Booking_AMDataControl" RangeSize="25"/>
+    <iterator id="BookingDetail_VO1Iterator" Binds="BookingDetail_VO1"
+              DataControl="Booking_AMDataControl" RangeSize="25"/>
+    <iterator id="BookingCustomer_VO1Iterator" Binds="BookingCustomer_VO1"
+              DataControl="Booking_AMDataControl" RangeSize="25"/>
+    <iterator id="PropertyUnits_VO2Iterator" Binds="PropertyUnits_VO2"
+              DataControl="Booking_AMDataControl" RangeSize="25"/>
+    <iterator id="OfferHrd_VO1Iterator" Binds="OfferHrd_VO1"
+              DataControl="Booking_AMDataControl" RangeSize="25"/>
+    <iterator id="OfferDetail_VO2Iterator" Binds="OfferDetail_VO2"
+              DataControl="Booking_AMDataControl" RangeSize="25"/>
+    <iterator id="OfferMilestoneDetail_VO1Iterator"
+              Binds="OfferMilestoneDetail_VO1"
+              DataControl="Booking_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchBookingROVO1Iterator" id="SearchBookingROVO1">
+      <nodeDefinition DefName="model.ROVO.SearchBookingROVO"
+                      Name="SearchBookingROVO10">
+        <AttrNames>
+          <Item Value="BookingNumber"/>
+          <Item Value="OfferHdrId"/>
+          <Item Value="BookingDate"/>
+          <Item Value="Status"/>
+          <Item Value="LeadId"/>
+          <Item Value="CustName"/>
+          <Item Value="CustReqMoveinDate"/>
+          <Item Value="PerformedBy"/>
+          <Item Value="Description"/>
+          <Item Value="Buildname"/>
+          <Item Value="Unitname"/>
+          <Item Value="SetRent"/>
+          <Item Value="NetRent"/>
+          <Item Value="UnitDescription"/>
+          <Item Value="TaxAmount"/>
+          <Item Value="MobileNumber"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="EmailId"/>
+          <Item Value="UnitStatus"/>
+          <Item Value="OfferFlag"/>
+          <Item Value="LeadName"/>
+          <Item Value="ExtensionDays"/>
+          <Item Value="SetRentPerAnnum"/>
+          <Item Value="DiscAmt"/>
+          <Item Value="SubStatus"/>
+          <Item Value="UnitIncharge"/>
+          <Item Value="UnitOwner"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SearchBookingROVO1Iterator" id="BookingId">
+      <AttrNames>
+        <Item Value="BookingId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SearchBookingROVO1Iterator"
+                     id="BookingNumber">
+      <AttrNames>
+        <Item Value="BookingNumber"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

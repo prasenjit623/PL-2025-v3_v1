@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Units_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">router1</default-activity>
+    <input-parameter-definition id="__45">
+      <name id="__46">selectedUnitLine</name>
+      <value>#{pageFlowScope.EditunitId}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__48">
+      <name id="__47">unitSubTabLine</name>
+      <value>#{pageFlowScope.SUBEditUnitId}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <view id="searchUnit">
+      <page>/fragments/searchUnit.jsff</page>
+    </view>
+    <view id="addEditUnit">
+      <page>/fragments/addEditUnit.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__2">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateWithParameters">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__3">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateWithParameters1">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__4">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__25">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="addArea">
+      <method>#{bindings.addArea.execute}</method>
+      <outcome id="__34">
+        <fixed-outcome>addArea</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="router1">
+      <case>
+        <expression>#{pageFlowScope.EditunitId==null}</expression>
+        <outcome id="__43">toSearch</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.EditunitId!=null &amp;&amp;
+                    pageFlowScope.SUBEditUnitId=='SUBTABUNIT'}</expression>
+        <outcome id="__44">toNavigateUnit</outcome>
+      </case>
+      <default-outcome>toSearch</default-outcome>
+    </router>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome id="__49">
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <task-flow-call id="Attachments_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Attachments_BTF.xml</document>
+        <id>Attachments_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__62">
+        <name>funcrefid</name>
+        <value>#{pageFlowScope.unitId}</value>
+      </input-parameter>
+      <input-parameter id="__63">
+        <name>funcid</name>
+        <value>#{pageFlowScope.unitfuncId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__5">
+      <from-activity-id id="__6">searchUnit</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome id="__9">add</from-outcome>
+        <to-activity-id id="__7">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome id="__28">edit</from-outcome>
+        <to-activity-id id="__27">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">CreateInsert</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">CreateInsert</from-outcome>
+        <to-activity-id id="__12">addEditUnit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id id="__16">CreateWithParameters</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__18">CreateWithParams</from-outcome>
+        <to-activity-id id="__19">CreateWithParameters1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id id="__30">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__33">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__32">addEditUnit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__35">
+      <from-activity-id id="__36">addEditUnit</from-activity-id>
+      <control-flow-case id="__37">
+        <from-outcome id="__39">back</from-outcome>
+        <to-activity-id id="__38">searchUnit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__51">
+        <from-outcome id="__52">returntoProperty</from-outcome>
+        <to-activity-id id="__50">taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__54">
+        <from-outcome id="__55">attachments</from-outcome>
+        <to-activity-id id="__53">Attachments_BTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id id="__21">router1</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome id="__24">toSearch</from-outcome>
+        <to-activity-id id="__23">searchUnit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__40">
+        <from-outcome id="__42">toNavigateUnit</from-outcome>
+        <to-activity-id id="__41">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__56">
+      <from-activity-id id="__57">Attachments_BTF</from-activity-id>
+      <control-flow-case id="__59">
+        <from-outcome id="__60">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__58">addEditUnit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

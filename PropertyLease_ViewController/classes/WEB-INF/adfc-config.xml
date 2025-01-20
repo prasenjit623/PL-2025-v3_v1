@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <managed-bean id="__1">
+    <managed-bean-name id="__4">backing_fragments_test</managed-bean-name>
+    <managed-bean-class id="__3">view.backing.fragments.Test</managed-bean-class>
+    <managed-bean-scope id="__2">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/test.jsff-->
+  </managed-bean>
+  <managed-bean id="__6">
+    <managed-bean-name id="__8">backing_pages_test</managed-bean-name>
+    <managed-bean-class id="__5">view.backing.pages.Test</managed-bean-class>
+    <managed-bean-scope id="__7">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1pages/test.jspx-->
+  </managed-bean>
+  <managed-bean id="__12">
+    <managed-bean-name id="__10">backing_fragments_searchProperty</managed-bean-name>
+    <managed-bean-class id="__9">view.backing.fragments.SearchProperty</managed-bean-class>
+    <managed-bean-scope id="__11">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/searchProperty.jsff-->
+  </managed-bean>
+  <managed-bean id="__16">
+    <managed-bean-name id="__13">backing_fragments_addEditProperty</managed-bean-name>
+    <managed-bean-class id="__14">view.backing.fragments.AddEditProperty</managed-bean-class>
+    <managed-bean-scope id="__15">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/addEditProperty.jsff-->
+  </managed-bean>
+  <managed-bean id="__20">
+    <managed-bean-name id="__19">backing_fragments_searchBuilding</managed-bean-name>
+    <managed-bean-class id="__18">view.backing.fragments.SearchBuilding</managed-bean-class>
+    <managed-bean-scope id="__17">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/searchBuilding.jsff-->
+  </managed-bean>
+  <managed-bean id="__24">
+    <managed-bean-name id="__21">backing_fragments_addEditBuilding</managed-bean-name>
+    <managed-bean-class id="__22">view.backing.fragments.AddEditBuilding</managed-bean-class>
+    <managed-bean-scope id="__23">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/addEditBuilding.jsff-->
+  </managed-bean>
+  <managed-bean id="__26">
+    <managed-bean-name id="__25">backing_fragments_searchUnit</managed-bean-name>
+    <managed-bean-class id="__28">view.backing.fragments.SearchUnit</managed-bean-class>
+    <managed-bean-scope id="__27">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/searchUnit.jsff-->
+  </managed-bean>
+  <managed-bean id="__32">
+    <managed-bean-name id="__29">backing_fragments_addEditUnit</managed-bean-name>
+    <managed-bean-class id="__31">view.backing.fragments.AddEditUnit</managed-bean-class>
+    <managed-bean-scope id="__30">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/addEditUnit.jsff-->
+  </managed-bean>
+  <managed-bean id="__38">
+    <managed-bean-name id="__37">backing_fragments_addEditVisitorLog</managed-bean-name>
+    <managed-bean-class id="__39">view.backing.fragments.AddEditVisitorLog</managed-bean-class>
+    <managed-bean-scope id="__40">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/addEditVisitorLog.jsff-->
+  </managed-bean>
+  <managed-bean id="__52">
+    <managed-bean-name id="__51">backing_fragments_SearchMilestones</managed-bean-name>
+    <managed-bean-class id="__50">view.backing.fragments.SearchMilestones</managed-bean-class>
+    <managed-bean-scope id="__49">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/SearchMilestones.jsff-->
+  </managed-bean>
+  <managed-bean id="__56">
+    <managed-bean-name id="__55">backing_fragments_AddEditMilestones</managed-bean-name>
+    <managed-bean-class id="__53">view.backing.fragments.AddEditMilestones</managed-bean-class>
+    <managed-bean-scope id="__54">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1fragments/AddEditMilestones.jsff-->
+  </managed-bean>
+  <managed-bean id="__80">
+    <managed-bean-name id="__78">backing_pages_Temp</managed-bean-name>
+    <managed-bean-class id="__77">view.backing.pages.Temp</managed-bean-class>
+    <managed-bean-scope id="__79">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1pages/Temp.jspx-->
+  </managed-bean>
+  <managed-bean id="__84">
+    <managed-bean-name id="__81">Temp1</managed-bean-name>
+    <managed-bean-class id="__82">Temp1</managed-bean-class>
+    <managed-bean-scope id="__83">backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__35">
+    <managed-bean-name id="__36">Booking</managed-bean-name>
+    <managed-bean-class id="__34">BookingProcess</managed-bean-class>
+    <managed-bean-scope id="__33">backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__42">
+    <managed-bean-name id="__41">backing_pages_ReceiptPge</managed-bean-name>
+    <managed-bean-class id="__43">view.backing.pages.ReceiptPge</managed-bean-class>
+    <managed-bean-scope id="__44">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1pages/ReceiptPge.jspx-->
+  </managed-bean>
+  <managed-bean id="__87">
+    <managed-bean-name id="__88">ReceiptBean</managed-bean-name>
+    <managed-bean-class id="__86">Receiptclass</managed-bean-class>
+    <managed-bean-scope id="__85">backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__46">
+    <managed-bean-name id="__48">backing_pages_Tesst</managed-bean-name>
+    <managed-bean-class id="__47">view.backing.pages.Tesst</managed-bean-class>
+    <managed-bean-scope id="__45">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1pages/Tesst.jspx-->
+  </managed-bean>
+  <managed-bean>
+
+  <managed-bean-name>
+
+    oracle$adfinternal$view$rich$dailogInlineDocument
+
+  </managed-bean-name>
+
+  <managed-bean-class>java.util.TreeMap</managed-bean-class>
+
+  <managed-bean-scope>application</managed-bean-scope>
+
+    <map-entries>
+
+     
+<key-class>java.lang.String</key-class>
+
+     
+<value-class>java.lang.String</value-class>
+
+      <map-entry>
+
+        <key>MODE</key>
+
+        <value>withoutCancel</value>
+
+      </map-entry>
+
+    </map-entries>
+
+  </managed-bean>
+  <managed-bean id="__63">
+    <managed-bean-name id="__64">Receipt</managed-bean-name>
+    <managed-bean-class id="__62">view.backing.Receipt</managed-bean-class>
+    <managed-bean-scope id="__61">backingBean</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

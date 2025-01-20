@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Property_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__1">searchProperty</default-activity>
+    <view id="searchProperty">
+      <page>/fragments/searchProperty.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__2">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="addEditProperty">
+      <page>/fragments/addEditProperty.jsff</page>
+    </view>
+    <method-call id="CreateWithParameters">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__21">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateWithParameters1">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome id="__22">
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__38">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__49">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="Building_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Building_BTF.xml</document>
+        <id>Building_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__11">
+        <name>selectedBuildingLine</name>
+        <value>#{pageFlowScope.EditBuildId}</value>
+      </input-parameter>
+      <input-parameter id="__16">
+        <name>BuildingSubTab</name>
+        <value>#{pageFlowScope.SUBEditBuildId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="Units_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Units_BTF.xml</document>
+        <id>Units_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__15">
+        <name>selectedUnitLine</name>
+        <value>#{pageFlowScope.EditunitId}</value>
+      </input-parameter>
+      <input-parameter id="__17">
+        <name>unitSubTabLine</name>
+        <value>#{pageFlowScope.SUBEditUnitId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="Attachments_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/Attachments_BTF.xml</document>
+        <id>Attachments_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__34">
+        <name>funcrefid</name>
+        <value>#{pageFlowScope.proId}</value>
+        <pass-by-value/>
+      </input-parameter>
+      <input-parameter id="__35">
+        <name>funcid</name>
+        <value>#{pageFlowScope.profuncId}</value>
+        <pass-by-value/>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__4">searchProperty</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__7">toAdd</from-outcome>
+        <to-activity-id id="__6">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__51">
+        <from-outcome id="__52">toEdit</from-outcome>
+        <to-activity-id id="__50">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__24">CreateInsert</from-activity-id>
+      <control-flow-case id="__27">
+        <from-outcome id="__25">CreateInsert</from-outcome>
+        <to-activity-id id="__26">addEditProperty</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__28">
+      <from-activity-id id="__29">CreateWithParameters</from-activity-id>
+      <control-flow-case id="__32">
+        <from-outcome id="__31">CreateWithParams</from-outcome>
+        <to-activity-id id="__30">CreateWithParameters1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__39">
+      <from-activity-id id="__40">addEditProperty</from-activity-id>
+      <control-flow-case id="__41">
+        <from-outcome id="__43">goBack</from-outcome>
+        <to-activity-id id="__42">Execute</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome id="__10">toBuilding</from-outcome>
+        <to-activity-id id="__8">Building_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">toUnit</from-outcome>
+        <to-activity-id id="__12">Units_BTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome id="__20">attachments</from-outcome>
+        <to-activity-id id="__19">Attachments_BTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__44">
+      <from-activity-id id="__45">Execute</from-activity-id>
+      <control-flow-case id="__47">
+        <from-outcome id="__46">Execute</from-outcome>
+        <to-activity-id id="__48">searchProperty</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__36">
+      <from-activity-id id="__37">Attachments_BTF</from-activity-id>
+      <control-flow-case id="__54">
+        <from-outcome id="__55">taskFlowReturn1</from-outcome>
+        <to-activity-id id="__53">addEditProperty</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__33">
+      <from-activity-id id="__56">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__58">
+        <from-outcome id="__59">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__57">addEditProperty</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

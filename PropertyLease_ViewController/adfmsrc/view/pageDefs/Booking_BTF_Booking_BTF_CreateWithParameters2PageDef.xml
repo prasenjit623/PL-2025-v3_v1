@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="Booking_BTF_Booking_BTF_CreateWithParameters2PageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="Receipt_VO2" RangeSize="25"
+              DataControl="Booking_AMDataControl" id="Receipt_VO2Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="Receipt_VO2Iterator" id="CreateWithParams"
+            RequiresUpdateModel="true" Action="createWithParams">
+      <NamedData NDName="CustomerName" NDValue="#{pageFlowScope.CustName}"
+                 NDType="java.lang.String"/>
+      <NamedData NDType="java.math.BigDecimal"
+                 NDValue="#{pageFlowScope.BookingId}" NDName="BookingId"/>
+      <NamedData NDName="SourceFuncId" NDValue="#{pageFlowScope.funcId}"
+                 NDType="java.math.BigDecimal"/>
+      <NamedData NDName="OrgId" NDType="java.math.BigDecimal"
+                 NDValue="#{pageFlowScope.OrgId}"/>
+      <NamedData NDName="BankName" NDType="java.lang.String"
+                 NDValue="#{pageFlowScope.CustBankName}"/>
+      <NamedData NDName="PayRefNumber" NDType="java.lang.String"
+                 NDValue="#{pageFlowScope.CustBankAccNumber}"/>
+      <NamedData NDName="BankBranchName" NDType="java.lang.String"
+                 NDValue="#{pageFlowScope.CustBranchName}"/>
+      <NamedData NDName="SourceFuncRefId" NDType="java.math.BigDecimal"
+                 NDValue="#{pageFlowScope.scfnId}"/>
+      <NamedData NDName="RecommendedAmount" NDType="java.math.BigDecimal"
+                 NDValue="#{pageFlowScope.Amount}"/>
+      <NamedData NDName="ReceivedAmount" NDValue="#{pageFlowScope.Amount}"
+                 NDType="java.math.BigDecimal"/>
+      <NamedData NDType="java.lang.String" NDName="RctType"
+                 NDValue="#{pageFlowScope.chrgTyp}"/>
+      <NamedData NDName="PayRecDate" NDType="oracle.jbo.domain.Date"
+                 NDValue="#{pageFlowScope.DueDate}"/>
+      <NamedData NDName="Description" NDType="java.lang.String"
+                 NDValue="#{pageFlowScope.Dscrption}"/>
+      <NamedData NDValue="#{pageFlowScope.chrgTypDesc}"
+                 NDType="java.lang.String" NDName="RctDesc"/>
+      <NamedData NDValue="#{pageFlowScope.remark}" NDType="java.lang.String"
+                 NDName="Attribute3"/>
+      <NamedData NDValue="#{pageFlowScope.modeType}" NDType="java.lang.String"
+                 NDName="Attribute2"/>
+      <NamedData NDName="Attribute4" NDValue="#{pageFlowScope.TempReceipt}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="Attribute6" NDType="java.lang.String"
+                 NDValue="#{pageFlowScope.isVat}"/>
+    </action>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="WoInvHdr_WoInvDetailAr_VL"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  EntityAssociation="model.ASSO.WoInvHdr_WoInvDetailAr_Assoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VL.WoInvHdr_WoInvDetailAr_VL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="WoInvHdr_VO"
+    Cardinality="1"
+    Owner="model.VO.WoInvHdr_VO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="WoInvHdr_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.WoInvHdr_VO.WoInvHdrId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="WoInvDetailAr_VO"
+    Cardinality="-1"
+    Owner="model.VO.WoInvDetailAr_VO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="WoInvDetailAr_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.WoInvDetailAr_VO.WoInvHdrId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="CheckListResponse_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__28">refreshchecklist</default-activity>
+    <transaction id="__9">
+      <requires-transaction/>
+    </transaction>
+    <input-parameter-definition id="__23">
+      <name id="__24">funcid</name>
+      <value>#{pageFlowScope.Funcid}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__26">
+      <name id="__25">funcrefid</name>
+      <value>#{pageFlowScope.FuncreFid}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__1">
+      <name id="__6">lookup</name>
+      <value>#{pageFlowScope.Lookup}</value>
+    </input-parameter-definition>
+    <managed-bean id="__2">
+      <managed-bean-name id="__3">backing_CheckListResponse</managed-bean-name>
+      <managed-bean-class id="__4">view.backing.CheckListResponse</managed-bean-class>
+      <managed-bean-scope id="__5">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1CheckListResponse.jsff-->
+    </managed-bean>
+    <view id="CheckListResponse">
+      <page>/CheckListResponse.jsff</page>
+    </view>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome id="__7">
+        <name>taskFlowReturn1</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="taskFlowReturn2">
+      <outcome id="__8">
+        <name>taskFlowReturn2</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <method-call id="refreshchecklist">
+      <method>#{bindings.refreshchecklist.execute}</method>
+      <outcome id="__10">
+        <fixed-outcome>refreshchecklist</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__15">
+      <from-activity-id id="__16">CheckListResponse</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__19">tosave</from-outcome>
+        <to-activity-id id="__18">taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__20">
+        <from-outcome id="__22">tocancel</from-outcome>
+        <to-activity-id id="__21">taskFlowReturn2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">refreshchecklist</from-activity-id>
+      <control-flow-case id="__27">
+        <from-outcome id="__13">refreshchecklist</from-outcome>
+        <to-activity-id id="__14">CheckListResponse</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

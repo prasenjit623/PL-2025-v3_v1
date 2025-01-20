@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RecommendHeader_OtherCharges_VL"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  EntityAssociation="model.ASSO.RecommendHeader_OtherCharges_Assoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VL.RecommendHeader_OtherCharges_VL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="RecommendHeader_VO"
+    Cardinality="1"
+    Owner="model.VO.RecommendHeader_VO"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="RecommendHeader_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.RecommendHeader_VO.RecommendId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="RecommendOtherCharges_VO"
+    Cardinality="-1"
+    Owner="model.VO.RecommendOtherCharges_VO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="RecommendOtherCharges_VO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.VO.RecommendOtherCharges_VO.RecommendId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Lead_BTF">
+    <template-reference>
+      <document>/WEB-INF/error-taskflow-template.xml</document>
+    </template-reference>
+    <default-activity id="__20">SearchLead</default-activity>
+    <managed-bean id="__23">
+      <managed-bean-name id="__24">SearchLeadBean</managed-bean-name>
+      <managed-bean-class id="__22">SearchLead</managed-bean-class>
+      <managed-bean-scope id="__21">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchLead">
+      <page>/fragments/SearchLead.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__28">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="addEditVisitorLog">
+      <page>/fragments/addEditVisitorLog.jsff</page>
+    </view>
+    <method-call id="Execute1">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__34">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__45">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__6">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id id="__2">SearchLead</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome id="__5">toAdd</from-outcome>
+        <to-activity-id id="__4">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__46">
+        <from-outcome id="__48">toEdit</from-outcome>
+        <to-activity-id id="__47">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id id="__30">CreateInsert</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__33">CreateInsert</from-outcome>
+        <to-activity-id id="__32">addEditVisitorLog</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__35">
+      <from-activity-id id="__36">addEditVisitorLog</from-activity-id>
+      <control-flow-case id="__37">
+        <from-outcome id="__44">goBack</from-outcome>
+        <to-activity-id id="__38">Execute1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__39">
+      <from-activity-id id="__40">Execute1</from-activity-id>
+      <control-flow-case id="__43">
+        <from-outcome id="__41">Execute</from-outcome>
+        <to-activity-id id="__42">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__49">
+      <from-activity-id id="__50">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__52">
+        <from-outcome id="__51">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__53">addEditVisitorLog</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">Execute</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome id="__11">Execute</from-outcome>
+        <to-activity-id id="__9">SearchLead</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UserAM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.AM.UserAMImpl"
+  DefClass="model.AM.UserAMDefImpl"
+  ComponentInterface="model.AM.common.UserAM"
+  ClientProxyName="model.AM.client.UserAMClient"
+  LoadComponentsLazily="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.AM.UserAM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="getMenuAccessforMenuROVO1"
+    ViewObjectName="model.ROVO.getMenuAccessforMenuROVO"/>
+  <ViewUsage
+    Name="getUserDetailsROVO1"
+    ViewObjectName="model.ROVO.getUserDetailsROVO"/>
+  <ViewUsage
+    Name="getUserGroupIdROVo1"
+    ViewObjectName="model.ROVO.getUserGroupIdROVo"/>
+  <ViewUsage
+    Name="getDataCombinationROVO1"
+    ViewObjectName="model.ROVO.getDataCombinationROVO"/>
+  <ViewUsage
+    Name="userROVO1"
+    ViewObjectName="model.ROVO.userROVO"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="prepareMenu">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="userRole"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="CheckUserNaname">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="UserName"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

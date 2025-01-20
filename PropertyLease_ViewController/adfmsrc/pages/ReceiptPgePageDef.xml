@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="ReceiptPgePageDef" Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Receipt_VO1" RangeSize="25"
+              DataControl="ReceiptDataControl" id="Receipt_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptNumber">
+      <AttrNames>
+        <Item Value="ReceiptNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptDate">
+      <AttrNames>
+        <Item Value="ReceiptDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="CustomerName">
+      <AttrNames>
+        <Item Value="CustomerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="CurrencyCode">
+      <AttrNames>
+        <Item Value="CurrencyCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptAmount">
+      <AttrNames>
+        <Item Value="ReceiptAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="PayRefNumber">
+      <AttrNames>
+        <Item Value="PayRefNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Receipt_VO1Iterator" StaticList="false"
+          Uses="LOV_PayMode" id="PayMode" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="PayRefDate">
+      <AttrNames>
+        <Item Value="PayRefDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="PayRevDate">
+      <AttrNames>
+        <Item Value="PayRevDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="PayRecDate">
+      <AttrNames>
+        <Item Value="PayRecDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="DiffInDays">
+      <AttrNames>
+        <Item Value="DiffInDays"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="BankName">
+      <AttrNames>
+        <Item Value="BankName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="BankBranchName">
+      <AttrNames>
+        <Item Value="BankBranchName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="DrawnBy">
+      <AttrNames>
+        <Item Value="DrawnBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="ReceiptId">
+      <AttrNames>
+        <Item Value="ReceiptId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="FuncId">
+      <AttrNames>
+        <Item Value="FuncId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Receipt_VO1Iterator" id="SourceFuncId">
+      <AttrNames>
+        <Item Value="SourceFuncId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

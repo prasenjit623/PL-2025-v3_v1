@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PlPremiums_EO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXPM_PL_PREMIUMS"
+  AliasName="PlPremiums_EO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="PremiumId"
+    IsUpdateable="while_insert"
+    IsNotNull="true"
+    ColumnName="PREMIUM_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XXPM_PL_PREMIUMS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("XXPM_PREMIUM_ID_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="PremiumName"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="PREMIUM_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_PL_PREMIUMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RateType"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="RATE_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_PL_PREMIUMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RateValue"
+    IsNotNull="true"
+    ColumnName="RATE_VALUE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XXPM_PL_PREMIUMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StartDate"
+    ColumnName="START_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="XXPM_PL_PREMIUMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EndDate"
+    ColumnName="END_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="XXPM_PL_PREMIUMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActiveYn"
+    ColumnName="ACTIVE_YN"
+    SQLType="VARCHAR"
+    Type="java.lang.Boolean"
+    ColumnType="NUMBER"
+    TableName="XXPM_PL_PREMIUMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsUpdateable="while_insert"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_PL_PREMIUMS"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsUpdateable="while_insert"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXPM_PL_PREMIUMS"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_PL_PREMIUMS"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXPM_PL_PREMIUMS"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    Precision="150"
+    ColumnName="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXPM_PL_PREMIUMS"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="XxpmPlPremiumsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="XXPM_PL_PREMIUMS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.PlPremiums_EO.PremiumId"/>
+    </AttrArray>
+  </Key>
+</Entity>

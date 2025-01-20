@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditWoHeaderPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="WoHeader_VO1" RangeSize="25"
+              DataControl="WoInv_AMDataControl" id="WoHeader_VO1Iterator"/>
+    <searchRegion Binds="WoHeader_VO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WoHeader_VO1Query"/>
+    <iterator id="GetWoHdrInfo_ROVO1Iterator" Binds="GetWoHdrInfo_ROVO1"
+              DataControl="WoInv_AMDataControl" RangeSize="25"/>
+    <iterator Binds="OpResourceStg_VO1" RangeSize="25"
+              DataControl="WoInv_AMDataControl" id="OpResourceStg_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="WoHeader_VO1Iterator" id="WoHeader_VO1">
+      <nodeDefinition DefName="model.VO.WoHeader_VO" Name="WoHeader_VO10">
+        <AttrNames>
+          <Item Value="WorkOrderId"/>
+          <Item Value="WorkOrder"/>
+          <Item Value="Asset"/>
+          <Item Value="Type"/>
+          <Item Value="Status"/>
+          <Item Value="StartDate"/>
+          <Item Value="CompletionDate"/>
+          <Item Value="AssetDescription"/>
+          <Item Value="Description"/>
+          <Item Value="ReleasedDate"/>
+          <Item Value="ClosedDate"/>
+          <Item Value="ActualStartDate"/>
+          <Item Value="Item"/>
+          <Item Value="ActualCompletionDate"/>
+          <Item Value="BillableTo"/>
+          <Item Value="DefaultSupplyType"/>
+          <Item Value="SubType"/>
+          <Item Value="ResourceCost"/>
+          <Item Value="MaterialCost"/>
+          <Item Value="BillableContractStatus"/>
+          <Item Value="Version"/>
+          <Item Value="TotalCost"/>
+          <Item Value="Name"/>
+          <Item Value="Priority"/>
+          <Item Value="RowID"/>
+          <Item Value="SerialNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="WoHeader_VO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="WoHeader_VO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="WoInv_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="WoInv_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <methodAction id="callAutoWoInv"
+                  InstanceName="WoInv_AMDataControl.dataProvider"
+                  DataControl="WoInv_AMDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="callAutoWoInv"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.WoInv_AMDataControl.methodResults.callAutoWoInv_WoInv_AMDataControl_dataProvider_callAutoWoInv_result">
+      <NamedData NDName="frmDate" NDType="java.lang.String"/>
+      <NamedData NDName="tooDate" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="OpResourceStg_VO1Iterator" id="OpResourceStg_VO1">
+      <nodeDefinition DefName="model.VO.OpResourceStg_VO"
+                      Name="OpResourceStg_VO10">
+        <AttrNames>
+          <Item Value="ResourceId"/>
+          <Item Value="Name"/>
+          <Item Value="Code"/>
+          <Item Value="WorkOrderNumber"/>
+          <Item Value="WoOperationId"/>
+          <Item Value="OperationSeqNumber"/>
+          <Item Value="OperationName"/>
+          <Item Value="StartDate"/>
+          <Item Value="CompletionDate"/>
+          <Item Value="Activity"/>
+          <Item Value="ActualResourceUsage"/>
+          <Item Value="AssignedUnits"/>
+          <Item Value="Basis"/>
+          <Item Value="BuildName"/>
+          <Item Value="ChargeType"/>
+          <Item Value="Description"/>
+          <Item Value="DescriptionCode"/>
+          <Item Value="InverseRequiredUsage"/>
+          <Item Value="RequiredUsage"/>
+          <Item Value="ResourceType"/>
+          <Item Value="RowID"/>
+          <Item Value="Scheduled"/>
+          <Item Value="UomCode"/>
+          <Item Value="UsageRate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="OpResourceStg_VO1Iterator" id="CreateInsert1"
+            InstanceName="WoInv_AMDataControl.OpResourceStg_VO1"
+            DataControl="WoInv_AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="OpResourceStg_VO1Iterator" id="Delete1"
+            InstanceName="WoInv_AMDataControl.OpResourceStg_VO1"
+            DataControl="WoInv_AMDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

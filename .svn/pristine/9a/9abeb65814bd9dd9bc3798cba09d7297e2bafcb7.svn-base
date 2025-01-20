@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="searchBilling_BTF">
+    <default-activity id="__1">searchBilling</default-activity>
+    <view id="searchBilling">
+      <page>/fragments/searchBilling.jsff</page>
+    </view>
+    <task-flow-call id="addEditBilling_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/addEditBilling_BTF.xml</document>
+        <id>addEditBilling_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__7">
+        <name>mode</name>
+        <value>#{pageFlowScope.mode}</value>
+      </input-parameter>
+      <input-parameter id="__8">
+        <name>billing_id</name>
+        <value>#{pageFlowScope.billingId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">searchBilling</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">go</from-outcome>
+        <to-activity-id id="__5">addEditBilling_BTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

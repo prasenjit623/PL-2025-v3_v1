@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LandLordMaster_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="LandLordMaster_EO.ATTRIBUTE1, 
+       LandLordMaster_EO.ATTRIBUTE10, 
+       LandLordMaster_EO.ATTRIBUTE2, 
+       LandLordMaster_EO.ATTRIBUTE3, 
+       LandLordMaster_EO.ATTRIBUTE4, 
+       LandLordMaster_EO.ATTRIBUTE5, 
+       LandLordMaster_EO.ATTRIBUTE6, 
+       LandLordMaster_EO.ATTRIBUTE7, 
+       LandLordMaster_EO.ATTRIBUTE8, 
+       LandLordMaster_EO.ATTRIBUTE9, 
+       LandLordMaster_EO.ATTRIBUTE_CATEGORY, 
+       LandLordMaster_EO.CREATED_BY, 
+       LandLordMaster_EO.CREATION_DATE, 
+       LandLordMaster_EO.DESCRIPTION, 
+       LandLordMaster_EO.LANDLORD_TNX_ID, 
+       LandLordMaster_EO.LAST_UPDATE_DATE, 
+       LandLordMaster_EO.LAST_UPDATE_LOGIN, 
+       LandLordMaster_EO.LAST_UPDATED_BY, 
+       LandLordMaster_EO.PRIMARY_YN, 
+       LandLordMaster_EO.VEND_SITE_ID, 
+       LandLordMaster_EO.VENDOR_ID, 
+       LandLordMaster_EO.VENDOR_NAME, 
+       LandLordMaster_EO.ORG_ID, 
+       LandLordMaster_EO.PROPERTY_MANAGEMENT"
+  FromList="XXPL_LANDLORD_MASTER LandLordMaster_EO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VO.LandLordMaster_VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_landlordTnxId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="VendorROVO1"
+    ViewObjectName="model.ROVO.VendorROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Org_ROVO1"
+    ViewObjectName="model.ROVO.Org_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PropertyManagement_RoVo1"
+    ViewObjectName="model.ROVO.PropertyManagement_RoVo"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_VendorId"
+    ListVOName="VendorROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="VendorId"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="VendorName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="VendId"/>
+      <Item Value="VendorName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="VendorName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_VendorName"
+    ListVOName="VendorROVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_VendorName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="VendorName"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="VendorId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="VendorName"/>
+      <Item Value="VendId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="VendorName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="findByLandLordName"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_OrgId"
+    ListVOName="Org_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrgId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrgName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_PropertyManagement"
+    ListVOName="PropertyManagement_RoVo1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="PropertyManagement"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="PropertyManagement"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PropertyManagement"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="LandLordMaster_EO"
+    Entity="model.EO.LandLordMaster_EO"/>
+  <ViewAttribute
+    Name="Attribute1"
+    PrecisionRule="true"
+    EntityAttrName="Attribute1"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE1"/>
+  <ViewAttribute
+    Name="Attribute10"
+    PrecisionRule="true"
+    EntityAttrName="Attribute10"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE10"/>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE2"/>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE3"/>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE4"/>
+  <ViewAttribute
+    Name="Attribute5"
+    PrecisionRule="true"
+    EntityAttrName="Attribute5"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE5"/>
+  <ViewAttribute
+    Name="Attribute6"
+    PrecisionRule="true"
+    EntityAttrName="Attribute6"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE6"/>
+  <ViewAttribute
+    Name="Attribute7"
+    PrecisionRule="true"
+    EntityAttrName="Attribute7"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE7"/>
+  <ViewAttribute
+    Name="Attribute8"
+    PrecisionRule="true"
+    EntityAttrName="Attribute8"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE8"/>
+  <ViewAttribute
+    Name="Attribute9"
+    PrecisionRule="true"
+    EntityAttrName="Attribute9"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE9"/>
+  <ViewAttribute
+    Name="AttributeCategory"
+    PrecisionRule="true"
+    EntityAttrName="AttributeCategory"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ATTRIBUTE_CATEGORY"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="LandlordTnxId"
+    PrecisionRule="true"
+    EntityAttrName="LandlordTnxId"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="LANDLORD_TNX_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("LANDLORD_TNX_ID_S",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="LAST_UPDATE_LOGIN"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="PrimaryYn"
+    PrecisionRule="true"
+    EntityAttrName="PrimaryYn"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="PRIMARY_YN"/>
+  <ViewAttribute
+    Name="VendSiteId"
+    PrecisionRule="true"
+    EntityAttrName="VendSiteId"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="VEND_SITE_ID"/>
+  <ViewAttribute
+    Name="VendorId"
+    PrecisionRule="true"
+    EntityAttrName="VendorId"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="VENDOR_ID"
+    LOVName="LOV_VendorId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.LandLordMaster_VO.VendorId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VendorName"
+    PrecisionRule="true"
+    EntityAttrName="VendorName"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="VENDOR_NAME"
+    LOVName="LOV_VendorName">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.LandLordMaster_VO.VendorName_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.PropertyLease_ModelBundle"/>
+  </ResourceBundle>
+  <ViewAttribute
+    Name="OrgId"
+    PrecisionRule="true"
+    EntityAttrName="OrgId"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="ORG_ID"
+    LOVName="LOV_OrgId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.LandLordMaster_VO.OrgId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PropertyManagement"
+    PrecisionRule="true"
+    EntityAttrName="PropertyManagement"
+    EntityUsage="LandLordMaster_EO"
+    AliasName="PROPERTY_MANAGEMENT"
+    LOVName="LOV_PropertyManagement">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.VO.LandLordMaster_VO.PropertyManagement_LABEL"/>
+        <DISPLAYWIDTH
+          Value="26"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="findByLandlordTnxId"
+    ViewObjectName="model.VO.LandLordMaster_VO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow681"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="LandlordTnxId"
+        ViewAttribute="LandlordTnxId"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_landlordTnxId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="LandLordUnitDtls_VO"
+    ViewLink="model.VL.LandLordMstr_UnitDtls_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="LandLordAprvlFlow_VO"
+    ViewLink="model.VL.LandLordMstr_AprvlFlow_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

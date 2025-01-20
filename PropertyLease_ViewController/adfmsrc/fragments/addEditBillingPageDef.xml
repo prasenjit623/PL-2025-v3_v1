@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="addEditBillingPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Billing_VO2" RangeSize="25"
+              DataControl="Booking_AMDataControl" id="Billing_VO2Iterator"/>
+    <iterator Binds="Booking_Milestone_VO3" RangeSize="25"
+              DataControl="Booking_AMDataControl"
+              id="Booking_Milestone_VO3Iterator"/>
+    <iterator Binds="Booking_Milestone_VO4" RangeSize="25"
+              DataControl="Booking_AMDataControl"
+              id="Booking_Milestone_VO4Iterator"/>
+    <iterator id="SearchBilling_ROVO1Iterator" Binds="SearchBilling_ROVO1"
+              DataControl="Booking_AMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Billing_VO2Iterator" id="BillingNumber">
+      <AttrNames>
+        <Item Value="BillingNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Billing_VO2Iterator" id="BillingDate">
+      <AttrNames>
+        <Item Value="BillingDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Billing_VO2Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="Booking_Milestone_VO3Iterator"
+          id="Booking_Milestone_VO3">
+      <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                      Name="Booking_Milestone_VO30">
+        <AttrNames>
+          <Item Value="InstallmentType"/>
+          <Item Value="InstallmentPct"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="MilestoneType"/>
+          <Item Value="ChargeType"/>
+          <Item Value="PaymentTerm"/>
+          <Item Value="Remarks"/>
+          <Item Value="BillingId"/>
+          <Item Value="Status"/>
+          <Item Value="InstallmentType1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="Booking_Milestone_VO4Iterator"
+          id="Booking_Milestone_VO4">
+      <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                      Name="Booking_Milestone_VO40">
+        <AttrNames>
+          <Item Value="SelectRow" Binds="SelectRow"/>
+          <Item Value="InstallmentType"/>
+          <Item Value="InstallmentPct"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="MilestoneType"/>
+          <Item Value="ChargeType"/>
+          <Item Value="PaymentTerm"/>
+          <Item Value="Remarks"/>
+          <Item Value="BillingId"/>
+          <Item Value="Status"/>
+          <Item Value="InstallmentType1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="Booking_Milestone_VO4Iterator" id="SelectRow"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SelectRow"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="Billing_VO2Iterator" id="BillingId">
+      <AttrNames>
+        <Item Value="BillingId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="Billing_VO2Iterator"
+                  Uses="LOV_BookingNumber" id="BookingNumber1"/>
+    <list IterBinding="Billing_VO2Iterator" StaticList="false" Uses="LOV_OrgId"
+          id="OrgId" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="Billing_VO2Iterator" StaticList="false"
+          Uses="LOV_PropertyName" id="PropertyName" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Billing_VO2Iterator" StaticList="false"
+          Uses="LOV_BuildName" id="BuildName" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Billing_VO2Iterator" id="BookingId">
+      <AttrNames>
+        <Item Value="BookingId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Billing_VO2Iterator" StaticList="false" Uses="LOV_Status"
+          id="Status" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

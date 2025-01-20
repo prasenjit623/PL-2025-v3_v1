@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditLeaseAgreementPageDef"
+                Package="fragments">
+   <parameters/>
+   <executables>
+      <variableIterator id="variables"/>
+      <iterator Binds="LeaseAgreement_VO1" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="LeaseAgreement_VO1Iterator"/>
+      <iterator Binds="Booking_Milestone_VO1" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="Booking_Milestone_VO1Iterator"/>
+      <iterator Binds="Booking_Milestone_VO2" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="Booking_Milestone_VO2Iterator"/>
+      <iterator Binds="BookingDetail_VO2" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="BookingDetail_VO2Iterator"/>
+      <iterator id="getFunctionCodeROVO1Iterator" Binds="getFunctionCodeROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator Binds="MoveInOut_VO1" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="MoveInOut_VO1Iterator"/>
+      <iterator Binds="MoveInOut_VO2" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="MoveInOut_VO2Iterator"/>
+      <iterator id="PropertyMaster_VO1Iterator" Binds="PropertyMaster_VO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="PropertyUnits_VO1Iterator" Binds="PropertyUnits_VO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="BookingMileStoneROVO1Iterator" Binds="BookingMileStoneROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="BookingDetailsROVO1Iterator" Binds="BookingDetailsROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="getID1Iterator" Binds="getID1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="findCustomerROVO1Iterator" Binds="findCustomerROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="custSiteROVO1Iterator" Binds="custSiteROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator Binds="Cancel_VO" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="Cancel_VOIterator"/>
+      <iterator Binds="ExtVO" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl" id="ExtVOIterator"/>
+      <iterator Binds="Receipt_VO1" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="Receipt_VO1Iterator"/>
+      <iterator Binds="Booking_Milestone_VO3" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="Booking_Milestone_VO3Iterator"/>
+      <iterator id="Receipt_VO2Iterator" Binds="Receipt_VO2"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="Receipt_VO3Iterator" Binds="Receipt_VO3"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="ReceiptDtlVO3Iterator" Binds="ReceiptDtlVO3"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="ReceiptDtlVO4Iterator" Binds="ReceiptDtlVO4"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferHrd_VO1Iterator" Binds="OfferHrd_VO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="BookingHdrRecomm_ROVO1Iterator"
+                Binds="BookingHdrRecomm_ROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="BookingDetail_VO1Iterator" Binds="BookingDetail_VO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator Binds="getApprovalHistoryROVo1" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="getApprovalHistoryROVo1Iterator"/>
+      <iterator id="getARTrxDltsForInvoice_ROVO1Iterator"
+                Binds="getARTrxDltsForInvoice_ROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="getARTrxDltsForReceipt_ROVO1Iterator"
+                Binds="getARTrxDltsForReceipt_ROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="OfferDetail_VO1Iterator" Binds="OfferDetail_VO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="DiscountsROVO1Iterator" Binds="DiscountsROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="getTaxCodeROVO1Iterator" Binds="getTaxCodeROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="getBookingDetailsROVO1Iterator"
+                Binds="getBookingDetailsROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="getInvoiceInterfacePayloadValues_ROVO1Iterator"
+                Binds="getInvoiceInterfacePayloadValues_ROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="getReceiptPayloadDtls_ROVO1Iterator"
+                Binds="getReceiptPayloadDtls_ROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="getReceiptMethod_ROVO1Iterator"
+                Binds="getReceiptMethod_ROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="ArSetup_ROVO1Iterator" Binds="ArSetup_ROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="getARSetupDetails_ROVO1Iterator"
+                Binds="getARSetupDetails_ROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator Binds="Receipt_VO5" RangeSize="25"
+                DataControl="LeaseAgreement_AMDataControl"
+                id="Receipt_VO5Iterator"/>
+      <iterator id="RecommendHeader_VO1Iterator" Binds="RecommendHeader_VO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="LeaseDuplicateROVO1Iterator" Binds="LeaseDuplicateROVO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="BookingHeader_VO1Iterator" Binds="BookingHeader_VO1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+      <iterator id="userROVO1Iterator" Binds="userROVO1"
+                DataControl="UserAMDataControl" RangeSize="25"/>
+      <iterator id="SearchBkDtls_RoVo1Iterator" Binds="SearchBkDtls_RoVo1"
+                DataControl="LeaseAgreement_AMDataControl" RangeSize="25"/>
+   </executables>
+   <bindings>
+      <list IterBinding="LeaseAgreement_VO1Iterator" StaticList="false"
+            Uses="LOV_BookingId" id="BookingId" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <tree IterBinding="Booking_Milestone_VO1Iterator"
+            id="Booking_Milestone_VO1">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO10">
+            <AttrNames>
+               <Item Value="SeqNumber"/>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentPct"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Criteria"/>
+               <Item Value="ChargeType"/>
+               <Item Value="PaymentTerm"/>
+               <Item Value="Remarks"/>
+               <Item Value="DueDate"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="Installment_Type_Trans"/>
+               <Item Value="ChargeType_Trans"/>
+               <Item Value="PaymentTerm_Trans"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="Booking_Milestone_VO2Iterator"
+            id="Booking_Milestone_VO2">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO20">
+            <AttrNames>
+               <Item Value="SeqNumber"/>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentPct"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Criteria"/>
+               <Item Value="ChargeType"/>
+               <Item Value="PaymentTerm"/>
+               <Item Value="Remarks"/>
+               <Item Value="DueDate"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="InstallmentType1"/>
+               <Item Value="InstallmentType2"/>
+               <Item Value="InstallmentType2_Trans"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="BookingDetail_VO2Iterator" id="BookingDetail_VO2">
+         <nodeDefinition DefName="model.VO.BookingDetail_VO"
+                         Name="BookingDetail_VO20">
+            <AttrNames>
+               <Item Value="PropertyId"/>
+               <Item Value="BuildingId"/>
+               <Item Value="UnitId"/>
+               <Item Value="MunicipalityCharges"/>
+               <Item Value="MunicipalityPercentage"/>
+               <Item Value="SecurityDeposite"/>
+               <Item Value="ThirdPartyServCharge"/>
+               <Item Value="OtherGovntChargeNew"/>
+               <Item Value="OtherGovntChargeRnew"/>
+               <Item Value="EjariPaymentCharge"/>
+               <Item Value="TaxAmount"/>
+               <Item Value="TotalRate"/>
+               <Item Value="UnitAvlStatus"/>
+               <Item Value="Attribute1"/>
+               <Item Value="BaseRate"/>
+               <Item Value="CustomerTrxnId"/>
+               <Item Value="CustomerTrxnNum"/>
+               <Item Value="DiscountRate"/>
+               <Item Value="LeaseUnitMapTrans"/>
+               <Item Value="UnitTypeTrans"/>
+               <Item Value="SecurityDepositTrans"/>
+               <Item Value="SetRentPerAnnum"/>
+               <Item Value="Attribute3"/>
+               <Item Value="PropertyName_Trans"/>
+               <Item Value="BuildingName_Trans"/>
+               <Item Value="UnitName_Trans"/>
+               <Item Value="OldContractValue_Trans"/>
+               <Item Value="NetRentWithoutTax"/>
+               <Item Value="Attribute4"/>
+               <Item Value="Attribute5"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+              DataControl="LeaseAgreement_AMDataControl"/>
+      <action id="Rollback" RequiresUpdateModel="false"
+              Action="rollbackTransaction"
+              DataControl="LeaseAgreement_AMDataControl"/>
+      <list IterBinding="LeaseAgreement_VO1Iterator" StaticList="false"
+            Uses="LOV_RecommendId" id="RecommendId" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator"
+                       id="LeaseNumber">
+         <AttrNames>
+            <Item Value="LeaseNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="LeaseAgreement_VO1Iterator" StaticList="false"
+            Uses="LOV_Status" id="Status" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator"
+                       id="TenancyConDocNo">
+         <AttrNames>
+            <Item Value="TenancyConDocNo"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="MoveInOut_VO1Iterator" id="MoveInOut_VO1">
+         <nodeDefinition DefName="model.VO.MoveInOut_VO" Name="MoveInOut_VO10">
+            <AttrNames>
+               <Item Value="MoveInOutNumber"/>
+               <Item Value="BookingId"/>
+               <Item Value="MoveInOutDate"/>
+               <Item Value="Description"/>
+               <Item Value="ResourceName"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="MoveInOut_VO2Iterator" id="MoveInOut_VO2">
+         <nodeDefinition DefName="model.VO.MoveInOut_VO" Name="MoveInOut_VO20">
+            <AttrNames>
+               <Item Value="MoveInOutNumber"/>
+               <Item Value="BookingId"/>
+               <Item Value="MoveInOutDate"/>
+               <Item Value="Description"/>
+               <Item Value="ResourceName"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator" id="Customer">
+         <AttrNames>
+            <Item Value="Customer"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="MoveInOut_VO1Iterator" id="MoveInOutId">
+         <AttrNames>
+            <Item Value="MoveInOutId"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="Cancel_VOIterator" id="Cancel_VO">
+         <nodeDefinition DefName="model.VO.ExtCanVO" Name="Cancel_VO0">
+            <AttrNames>
+               <Item Value="TransNumber"/>
+               <Item Value="TransDate"/>
+               <Item Value="Amount"/>
+               <Item Value="Currency"/>
+               <Item Value="Status"/>
+               <Item Value="DueDate"/>
+               <Item Value="CustName"/>
+               <Item Value="LeaseAgreementId"/>
+               <Item Value="OrgId"/>
+               <Item Value="PropertyId"/>
+               <Item Value="BuildId"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="ExtVOIterator" id="ExtVO">
+         <nodeDefinition DefName="model.VO.ExtCanVO" Name="ExtVO0">
+            <AttrNames>
+               <Item Value="TransNumber"/>
+               <Item Value="TransDate"/>
+               <Item Value="Amount"/>
+               <Item Value="Currency"/>
+               <Item Value="Status"/>
+               <Item Value="DueDate"/>
+               <Item Value="CustName"/>
+               <Item Value="LeaseAgreementId"/>
+               <Item Value="OrgId"/>
+               <Item Value="PropertyId"/>
+               <Item Value="BuildId"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="Receipt_VO1Iterator" id="Receipt_VO1">
+         <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO10">
+            <AttrNames>
+               <Item Value="ReceiptNumber"/>
+               <Item Value="ReceiptDate"/>
+               <Item Value="CustomerName"/>
+               <Item Value="ReceiptAmount"/>
+               <Item Value="OrgId"/>
+               <Item Value="ReceiptType"/>
+               <Item Value="PropertyId"/>
+               <Item Value="UnitId"/>
+               <Item Value="BuildId"/>
+               <Item Value="LeadId"/>
+               <Item Value="CustId"/>
+               <Item Value="Description"/>
+               <Item Value="Attribute1"/>
+               <Item Value="RecommendedAmount"/>
+               <Item Value="RctType"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <tree IterBinding="Booking_Milestone_VO3Iterator"
+            id="Booking_Milestone_VO3">
+         <nodeDefinition DefName="model.VO.Booking_Milestone_VO"
+                         Name="Booking_Milestone_VO30">
+            <AttrNames>
+               <Item Value="BookingMsDtlId"/>
+               <Item Value="SeqNumber"/>
+               <Item Value="InstallmentType"/>
+               <Item Value="InstallmentPct"/>
+               <Item Value="InstallmentAmount"/>
+               <Item Value="Criteria"/>
+               <Item Value="ChargeType"/>
+               <Item Value="PaymentTerm"/>
+               <Item Value="Remarks"/>
+               <Item Value="DueDate"/>
+               <Item Value="MilestoneType"/>
+               <Item Value="Installment_Type_Trans"/>
+               <Item Value="ChargeType_Trans"/>
+               <Item Value="PaymentTerm_Trans"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator"
+                       id="LeaseStartDate">
+         <AttrNames>
+            <Item Value="LeaseStartDate"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator"
+                       id="LeaseEndDate">
+         <AttrNames>
+            <Item Value="LeaseEndDate"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="LeaseAgreement_VO1Iterator" StaticList="false"
+            Uses="LOV_TaxCode" id="TaxCode" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <methodAction id="getARInvoiceTrxDetails"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="getARInvoiceTrxDetails"
+                    IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.getARInvoiceTrxDetails_LeaseAgreement_AMDataControl_dataProvider_getARInvoiceTrxDetails_result">
+         <NamedData NDName="pLeaseNo" NDType="java.lang.String"/>
+         <NamedData NDName="pChargeTyp" NDType="java.lang.String"/>
+         <NamedData NDName="pCustomerTrxId" NDType="java.lang.String"/>
+         <NamedData NDName="pCustomerTrxNo" NDType="java.lang.String"/>
+      </methodAction>
+      <list IterBinding="LeaseAgreement_VO1Iterator" StaticList="false"
+            Uses="LOV_ResidentialDetails" id="ResidentialDetails"
+            DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator" id="NoOfYears">
+         <AttrNames>
+            <Item Value="NoOfYears"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="getApprovalHistoryROVo1Iterator"
+            id="getApprovalHistoryROVo1">
+         <nodeDefinition DefName="model.ROVO.getApprovalHistoryROVo"
+                         Name="getApprovalHistoryROVo10">
+            <AttrNames>
+               <Item Value="ApproverId"/>
+               <Item Value="ActionDate"/>
+               <Item Value="Status"/>
+               <Item Value="Description"/>
+               <Item Value="SubmittedByTrans"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+    <attributeValues IterBinding="LeaseAgreement_VO1Iterator"
+                     id="Trans_LeaseNumber">
+      <AttrNames>
+        <Item Value="Trans_LeaseNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MoveInOut_VO2Iterator" id="MoveInOutId1">
+      <AttrNames>
+        <Item Value="MoveInOutId"/>
+      </AttrNames>
+    </attributeValues>
+      <attributeValues IterBinding="Cancel_VOIterator" id="TransNumber">
+         <AttrNames>
+            <Item Value="TransNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="ExtVOIterator" id="TransNumber1">
+         <AttrNames>
+            <Item Value="TransNumber"/>
+         </AttrNames>
+      </attributeValues>
+      <list IterBinding="LeaseAgreement_VO1Iterator" StaticList="false"
+            Uses="LOV_PurposeOfRent" id="PurposeOfRent" DTSupportsMRU="true"
+            SelectItemValueMode="ListObject"/>
+      <methodAction id="getCodeSegmentCombination"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="getCodeSegmentCombination"
+                    IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.getCodeSegmentCombination_LeaseAgreement_AMDataControl_dataProvider_getCodeSegmentCombination_result">
+         <NamedData NDName="pBusinessUnitId"
+                    NDValue="#{pageFlowScope.pBusinessUnitId}"
+                    NDType="java.lang.String"/>
+         <NamedData NDName="pChargeType" NDValue="#{pageFlowScope.pChargeType}"
+                    NDType="java.lang.String"/>
+         <NamedData NDName="pUnitId" NDValue="#{pageFlowScope.pUnitId}"
+                    NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="getGLCodeCombination"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="getGLCodeCombination" IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.getGLCodeCombination_LeaseAgreement_AMDataControl_dataProvider_getGLCodeCombination_result">
+         <NamedData NDName="pBusinessunitId" NDType="java.lang.String"/>
+         <NamedData NDName="pChargeType" NDType="java.lang.String"/>
+         <NamedData NDName="pUnitId" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="BookingDetail_VO2Iterator"
+                       id="CustomerTrxnNum">
+         <AttrNames>
+            <Item Value="CustomerTrxnNum"/>
+         </AttrNames>
+      </attributeValues>
+      <tree IterBinding="Receipt_VO5Iterator" id="Receipt_VO5">
+         <nodeDefinition DefName="model.VO.Receipt_VO" Name="Receipt_VO50">
+            <AttrNames>
+               <Item Value="ReceiptNumber"/>
+               <Item Value="ReceiptDate"/>
+               <Item Value="RctType"/>
+               <Item Value="CustomerName"/>
+               <Item Value="Description"/>
+               <Item Value="RecommendedAmount"/>
+               <Item Value="PayMode"/>
+               <Item Value="PayRefNumber"/>
+               <Item Value="PayRefDate"/>
+               <Item Value="BankName"/>
+               <Item Value="CurrencyCode"/>
+               <Item Value="AckFlag"/>
+               <Item Value="CreatedBy"/>
+               <Item Value="AckBy"/>
+               <Item Value="AckDate"/>
+            </AttrNames>
+         </nodeDefinition>
+      </tree>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator" id="OrgId">
+         <AttrNames>
+            <Item Value="OrgId"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator"
+                       id="LastUpdatedBy">
+         <AttrNames>
+            <Item Value="LastUpdatedBy"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator"
+                       id="TotalInWords">
+         <AttrNames>
+            <Item Value="TotalInWords"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="BookingDetail_VO2Iterator"
+                       id="LeaseUnitMapTrans">
+         <AttrNames>
+            <Item Value="LeaseUnitMapTrans"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator"
+                       id="IntegrationResponse">
+         <AttrNames>
+            <Item Value="IntegrationResponse"/>
+         </AttrNames>
+      </attributeValues>
+      <methodAction id="autoRoffer"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="autoRoffer" IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.autoRoffer_LeaseAgreement_AMDataControl_dataProvider_autoRoffer_result">
+         <NamedData NDName="offerHdrId" NDType="java.lang.String"/>
+         <NamedData NDName="leaseId" NDType="java.lang.String"/>
+         <NamedData NDName="userName" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="autoSoffer"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="autoSoffer" IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.autoSoffer_LeaseAgreement_AMDataControl_dataProvider_autoSoffer_result">
+         <NamedData NDName="offerHdrId" NDType="java.lang.String"/>
+         <NamedData NDName="leaseId" NDType="java.lang.String"/>
+         <NamedData NDName="userName" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator" id="Attribute5">
+         <AttrNames>
+            <Item Value="Attribute5"/>
+         </AttrNames>
+      </attributeValues>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator"
+                       id="TenanctStatus">
+         <AttrNames>
+            <Item Value="TenanctStatus"/>
+         </AttrNames>
+      </attributeValues>
+      <listOfValues StaticList="false" IterBinding="LeaseAgreement_VO1Iterator"
+                    Uses="LOV_RecommendationIdTrans"
+                    id="RecommendationIdTrans"/>
+      <methodAction id="sbmtforappr"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="sbmtforappr" IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.sbmtforappr_LeaseAgreement_AMDataControl_dataProvider_sbmtforappr_result">
+         <NamedData NDName="p_func_id" NDType="java.lang.String"/>
+         <NamedData NDName="p_ref_id" NDType="java.lang.String"/>
+         <NamedData NDName="p_table_name" NDType="java.lang.String"/>
+         <NamedData NDName="p_org_id" NDType="java.lang.String"/>
+         <NamedData NDName="p_prop_id" NDType="java.lang.String"/>
+         <NamedData NDName="p_build_id" NDType="java.lang.String"/>
+         <NamedData NDName="p_unit_id" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="forappr"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="forappr" IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.forappr_LeaseAgreement_AMDataControl_dataProvider_forappr_result">
+         <NamedData NDName="p_func_id" NDType="java.lang.String"/>
+         <NamedData NDName="p_ref_id" NDType="java.lang.String"/>
+         <NamedData NDName="p_user_grp_id" NDType="java.lang.String"/>
+         <NamedData NDName="p_level_no" NDType="java.lang.String"/>
+         <NamedData NDName="p_flow_with_id" NDType="java.lang.String"/>
+         <NamedData NDName="p_reason" NDType="java.lang.String"/>
+         <NamedData NDName="p_apr_rej" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="submitLaForAppr"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="submitLaForAppr" IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.submitLaForAppr_LeaseAgreement_AMDataControl_dataProvider_submitLaForAppr_result">
+         <NamedData NDName="laId" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="responseLaForAppr"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="responseLaForAppr" IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.responseLaForAppr_LeaseAgreement_AMDataControl_dataProvider_responseLaForAppr_result">
+         <NamedData NDName="laId" NDType="java.lang.String"/>
+         <NamedData NDName="reason" NDType="java.lang.String"/>
+         <NamedData NDName="apr_rej" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="getCashRcptIdRspnse"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="getCashRcptIdRspnse" IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.getCashRcptIdRspnse_LeaseAgreement_AMDataControl_dataProvider_getCashRcptIdRspnse_result">
+         <NamedData NDName="pReceiptNo" NDType="java.lang.String"/>
+         <NamedData NDName="pCshRcptId" NDType="java.lang.String"/>
+      </methodAction>
+      <methodAction id="cancellationCall"
+                    InstanceName="LeaseAgreement_AMDataControl.dataProvider"
+                    DataControl="LeaseAgreement_AMDataControl"
+                    RequiresUpdateModel="true" Action="invokeMethod"
+                    MethodName="cancellationCall" IsViewObjectMethod="false"
+                    ReturnName="data.LeaseAgreement_AMDataControl.methodResults.cancellationCall_LeaseAgreement_AMDataControl_dataProvider_cancellationCall_result">
+         <NamedData NDName="leaseId" NDType="java.lang.String"/>
+         <NamedData NDName="userName" NDType="java.lang.String"/>
+      </methodAction>
+      <attributeValues IterBinding="LeaseAgreement_VO1Iterator" id="Attribute6">
+         <AttrNames>
+            <Item Value="Attribute6"/>
+         </AttrNames>
+      </attributeValues>
+   </bindings>
+</pageDefinition>
